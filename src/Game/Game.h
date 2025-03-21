@@ -4,6 +4,8 @@
 
 #pragma once
 
+#include "Game/Scene.h"
+
 namespace Neon 
 {
     class Game
@@ -13,5 +15,9 @@ namespace Neon
             ~Game();
 
         public:
+            void AddScene(Scene* scene);
+
+        private:
+            Scene* m_onlyScene{nullptr};
     };
 }
