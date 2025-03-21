@@ -9,13 +9,14 @@
 #include "Runtime/OpenGL.h"
 //#include "Runtime/Core/Platform.h"
 
+
 namespace Neon 
 {
     OpenGL::OpenGL() 
         : Platform()
         , m_window(nullptr) 
     {
-        // ...
+        std::cout << "OpenGL::Constructor called\n";
     }
 
     OpenGL::~OpenGL() 
@@ -51,7 +52,7 @@ namespace Neon
         return true;
     }
 
-    void OpenGL::Run() 
+    void OpenGL::Run(Game* game) 
     {
         if (!m_window) return;
 

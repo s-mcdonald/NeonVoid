@@ -4,6 +4,7 @@
 #include <GLFW/glfw3.h>
 
 #include "Runtime/Core/Platform.h"
+#include "Game/Game.h"
 
 namespace Neon 
 {
@@ -15,7 +16,7 @@ namespace Neon
 
             bool Initialize(int width, int height, const char* title) override;
 
-            void Run() override; 
+            void Run(Game* game) override; 
  
         protected:
             void CleanResources() override;

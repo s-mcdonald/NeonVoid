@@ -3,6 +3,7 @@
  */
 #include <iostream>
 
+#include "Game/Game.h"
 #include "Runtime/OpenGL.h"
 #include "Runtime/Core/Platform.h"
 
@@ -26,7 +27,7 @@ namespace Neon
         return true;
     }
 
-    void Platform::Run() 
+    void Platform::Run(Game* game) 
     {
         //
     }

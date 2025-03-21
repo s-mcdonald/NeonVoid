@@ -13,7 +13,7 @@ namespace Neon
         public:
             bool Initialize(int width, int height, const char* title);
 
-            void Run();   
+            void Run(Game* game);   
 
         protected:            
             void CleanResources();

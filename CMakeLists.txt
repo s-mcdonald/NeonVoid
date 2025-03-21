@@ -61,7 +61,10 @@ set(SOURCE_FILES
     #
     # Main entry file
     #
-    src/Entry.cpp   
+    src/Entry.cpp  
+    
+    src/Game/Game.h
+    src/Game/Game.cpp
 
     #
     # Runtime Files

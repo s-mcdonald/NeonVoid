@@ -10,11 +10,13 @@ namespace Neon
 {
     GameEngine::GameEngine() : m_platform(nullptr)
     {
+        std::cout << "GameEngine::Constructor called\n";
         m_platform = new Neon::OpenGL();
     }
 
     GameEngine::~GameEngine() 
     {
+        std::cout << "GameEngine::Destructor called\n";
         CleanResources();
     }
 
@@ -23,9 +25,9 @@ namespace Neon
         return m_platform->Initialize(width, height,title);
     }
 
-    void GameEngine::Run() 
+    void GameEngine::Run(Game* game) 
     {
-        m_platform->Run();
+        m_platform->Run(game);
     }
 
     void GameEngine::CleanResources() 

@@ -3,6 +3,8 @@
  */
 #pragma once
 
+#include "Game/Game.h"
+
 namespace Neon 
 {
     class Platform 
@@ -13,7 +15,7 @@ namespace Neon
     
             virtual bool Initialize(int width, int height, const char* title);
 
-            virtual void Run();    
+            virtual void Run(Game* game);
             
         protected:
             virtual void CleanResources();
