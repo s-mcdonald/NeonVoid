@@ -37,6 +37,13 @@ Thumbs.db
 # Ignore macOS specific files
 .DS_Store
 
+
+
+# Include
+/include/**
+
+
+
 # CMake files
 CMakeCache.txt
 CMakeFiles/
