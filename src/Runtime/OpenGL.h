@@ -3,22 +3,12 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
+#include "Runtime/Runtime.h"
+
 namespace Neon 
 {
-    class OpenGL 
+    class OpenGL : public Runtime
     {
-        public:
-            OpenGL();
-            ~OpenGL();
-    
-            bool Initialize(int width, int height, const char* title);
-
-            void Run();    
-            
-        protected:
-            void CleanResources();
-
-        private:
-            GLFWwindow* window;
-        };
+        //
+    };
 }
