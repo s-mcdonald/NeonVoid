@@ -9,6 +9,13 @@ cmake_minimum_required(VERSION 3.10)
 project(NeonVoid)
 
 #
+# Nice .
+#
+SET(${PROJECT_NAME}_MAJOR_VERSION 0)
+SET(${PROJECT_NAME}_MINOR_VERSION 1)
+SET(${PROJECT_NAME}_PATCH_LEVEL 0)
+
+#
 # Specify the compiler (g++)
 #
 set(CMAKE_CXX_COMPILER "g++")
