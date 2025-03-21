@@ -5,6 +5,7 @@
 #pragma once
 
 #include "Game/Scene.h"
+#include "Game/GameState.h"
 
 namespace Neon 
 {
@@ -17,7 +18,10 @@ namespace Neon
         public:
             void AddScene(Scene* scene);
 
+            Scene* GetCurrentScene();
+
         private:
+            GameState* m_gameState{nullptr};    
             Scene* m_onlyScene{nullptr};
     };
 }

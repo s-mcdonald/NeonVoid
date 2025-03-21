@@ -7,8 +7,6 @@
 #include <GLFW/glfw3.h>
 
 #include "Runtime/OpenGL.h"
-//#include "Runtime/Core/Platform.h"
-
 
 namespace Neon 
 {
@@ -27,14 +25,16 @@ namespace Neon
 
     bool OpenGL::Initialize(int width, int height, const char* title) 
     {
-        if (!glfwInit()) {
+        if (!glfwInit()) 
+        {
             std::cerr << "Failed to initialize GLFW!\n";
             return false;
         }
 
         // Create window
         m_window = glfwCreateWindow(width, height, title, nullptr, nullptr);
-        if (!m_window) {
+        if (!m_window) 
+        {
             std::cerr << "Failed to create GLFW window!\n";
             glfwTerminate();
             return false;
@@ -63,6 +63,17 @@ namespace Neon
 
             // perhaps the game has scene obj where we can get the current scene and render here.
             // game.GetCurrentScene().OnRender(); ??
+            auto* scene = game->GetCurrentScene();
+            
+            // Render the Scene to OpenGL
+            scene->Render();
+
+            // Currently...
+            // The rendering of the scene will be handled by Scene directly and will be in
+            // OpenGL exclusivly. Because we want the abstraction for DX and OpenGL the 
+            // Runtime will have funcs like RenderPolygon(), ApplyShader() ... 
+            // or whatever. I dont know because I never made a game 
+            // before but in due course ill find out.
 
             // Push to Ogl
             glfwSwapBuffers(m_window);

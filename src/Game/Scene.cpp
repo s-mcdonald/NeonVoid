@@ -16,4 +16,9 @@ namespace Neon
     {
         std::cout << "Scene::Destructor called\n";
     }
+
+    void Scene::Render() const
+    {
+        std::cout << "Scene::Renderrrring..\n";
+    }
 }

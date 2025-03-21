@@ -11,5 +11,8 @@ namespace Neon
         public:
             Scene();
             ~Scene();
+
+        public:
+            void Render() const;
     };
 }

@@ -66,6 +66,9 @@ set(SOURCE_FILES
     src/Game/Game.h
     src/Game/Game.cpp
 
+    src/Game/GameState.h
+    src/Game/GameState.cpp
+
     src/Game/Scene.h
     src/Game/Scene.cpp
 
