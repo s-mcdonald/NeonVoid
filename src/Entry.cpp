@@ -5,7 +5,7 @@
 #include <iostream>
 
 #include "Game/Game.h"
-#include "Game/NeonFunctions.h"
+#include "Game/Utils/NeonFunctions.h"
 #include "Runtime/GameEngine.h"
 
 int main()
