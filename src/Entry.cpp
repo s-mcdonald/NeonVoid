@@ -4,11 +4,13 @@
 
 #include <iostream>
 
-#include "Runtime/Runtime.h"
+#include "Runtime/OpenGL.h"
+#include "Runtime/Core/Platform.h"
+#include "Runtime/GameEngine.h"
 
-int main(int argc, char** argv)
+int main()
 {
-    Neon::Runtime gameEngine;
+    Neon::GameEngine gameEngine;
 
     if (gameEngine.Initialize(800, 600, "Neon Game")) 
     {
