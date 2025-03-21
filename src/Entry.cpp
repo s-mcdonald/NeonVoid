@@ -4,8 +4,9 @@
 
 #include <iostream>
 
-#include "Runtime/GameEngine.h"
 #include "Game/Game.h"
+#include "Game/NeonFunctions.h"
+#include "Runtime/GameEngine.h"
 
 int main()
 {
@@ -15,8 +16,9 @@ int main()
     Game* game;
     game = new Game();
 
-    // We need a way to confiure the game since our gameEngine wil be empty
-    // LoadGameData(gameEngine);
+    // We configure our game here
+    // potentially yaml file for scenes ect.
+    LoadGameData(game);
 
     if (gameEngine.Initialize(800, 600, "Neon Game")) 
     {

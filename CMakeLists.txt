@@ -66,6 +66,9 @@ set(SOURCE_FILES
     src/Game/Game.h
     src/Game/Game.cpp
 
+    src/Game/NeonFunctions.h
+    src/Game/NeonFunctions.cpp
+
     #
     # Runtime Files
     #
