@@ -1,0 +1,52 @@
+# Ignore build directories
+**/build/
+
+# Ignore Visual Studio specific files
+.vs/
+.vscode/
+.vsconfig
+*.user
+*.userosscache
+*.suo
+*.sdf
+*.sln.docstates
+
+# Ignore generated files from builds
+*.o
+*.obj
+*.a
+*.lib
+*.dll
+*.so
+*.dylib
+*.pdb
+*.idb
+*.exe
+*.app
+
+# Ignore core dumps
+core.*
+
+# Ignore temporary files from the OS
+.DS_Store
+Thumbs.db
+
+# Ignore other IDE-specific files
+.idea/
+
+# Ignore macOS specific files
+.DS_Store
+
+# CMake files
+CMakeCache.txt
+CMakeFiles/
+CMakeSettings.json
+Makefile
+cmake_install.cmake
+*.cmake
+
+# Ignore CMake generated folders/files in subdirectories
+**/CMakeFiles/**
+**/CMakeCache.txt
+**/cmake_install.cmake
+**/Makefile
