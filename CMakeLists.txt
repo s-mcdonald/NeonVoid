@@ -66,10 +66,14 @@ set(SOURCE_FILES
     #
     # Runtime Files
     #
-    src/Runtime/Runtime.h
-    src/Runtime/Runtime.cpp
+    src/Runtime/Core/Platform.h
+    src/Runtime/Core/Platform.cpp
+
     src/Runtime/OpenGL.h
     src/Runtime/OpenGL.cpp
+
+    src/Runtime/GameEngine.h
+    src/Runtime/GameEngine.cpp
 )
 
 #
