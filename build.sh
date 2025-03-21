@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cmake --build .
+cmake --build . --clean-first
