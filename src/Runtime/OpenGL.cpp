@@ -6,22 +6,25 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include "Runtime/Runtime.h"
+#include "Runtime/OpenGL.h"
+//#include "Runtime/Core/Platform.h"
 
 namespace Neon 
 {
-    Runtime::Runtime() : window(nullptr) 
+    OpenGL::OpenGL() 
+        : Platform()
+        , m_window(nullptr) 
     {
         // ...
     }
 
-    Runtime::~Runtime() 
+    OpenGL::~OpenGL() 
     {
-        std::cout << "Runtime::Destructor called\n";
+        std::cout << "OpenGL::Destructor called\n";
         CleanResources();
     }
 
-    bool Runtime::Initialize(int width, int height, const char* title) 
+    bool OpenGL::Initialize(int width, int height, const char* title) 
     {
         if (!glfwInit()) {
             std::cerr << "Failed to initialize GLFW!\n";
@@ -29,15 +32,15 @@ namespace Neon
         }
 
         // Create window
-        window = glfwCreateWindow(width, height, title, nullptr, nullptr);
-        if (!window) {
+        m_window = glfwCreateWindow(width, height, title, nullptr, nullptr);
+        if (!m_window) {
             std::cerr << "Failed to create GLFW window!\n";
             glfwTerminate();
             return false;
         }
 
         // Set as the active window, without this it loads in background.
-        glfwMakeContextCurrent(window);
+        glfwMakeContextCurrent(m_window);
 
         glfwSwapInterval(1);
 
@@ -48,11 +51,11 @@ namespace Neon
         return true;
     }
 
-    void Runtime::Run() 
+    void OpenGL::Run() 
     {
-        if (!window) return;
+        if (!m_window) return;
 
-        while (!glfwWindowShouldClose(window)) 
+        while (!glfwWindowShouldClose(m_window)) 
         {
             glfwPollEvents();
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -61,15 +64,15 @@ namespace Neon
             // game.GetCurrentScene().OnRender(); ??
 
             // Push to Ogl
-            glfwSwapBuffers(window);
+            glfwSwapBuffers(m_window);
         }
     }
 
-    void Runtime::CleanResources() 
+    void OpenGL::CleanResources() 
     {
-        if (window) 
+        if (m_window) 
         {
-            glfwDestroyWindow(window);
+            glfwDestroyWindow(m_window);
         }
         glfwTerminate();
     }
