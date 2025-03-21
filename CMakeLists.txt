@@ -25,6 +25,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_BUILD_TYPE Release)
 
 #
+# Hopefully this dictates the new version of ogl
+#
+set(OpenGL_GL_PREFERENCE GLVND)
+
+#
 # Specify include directories
 #
 include_directories(src)
@@ -37,7 +42,7 @@ set(SOURCE_FILES
 #
 # Create the executable (instead of a static library)
 #
-add_executable(neon-void ${SOURCE_FILES})
+add_executable(NeonVoid ${SOURCE_FILES})
 
 #
 # Specify libraries to link with (GL, GLU, GLUT)
@@ -48,12 +53,12 @@ find_package(GLUT REQUIRED)
 #
 # Link OpenGL libraries
 #
-target_link_libraries(neon-void PRIVATE OpenGL::GL OpenGL::GLU GLUT::GLUT)
+target_link_libraries(NeonVoid PRIVATE OpenGL::GL OpenGL::GLU GLUT::GLUT)
 
 
 #
 # Specify the output directory for the executable
 #
-set_target_properties(neon-void PROPERTIES
+set_target_properties(NeonVoid PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build
 )
