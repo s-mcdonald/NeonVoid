@@ -50,10 +50,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 #
 set(OpenGL_GL_PREFERENCE GLVND)
 
-#
-# Specify include directories
-#
-include_directories(src)
+
 
 # Source files
 set(SOURCE_FILES
@@ -100,17 +97,26 @@ add_executable(NeonVoid ${SOURCE_FILES})
 find_package(OpenGL REQUIRED)
 find_package(glfw3 REQUIRED)
 find_package(glm REQUIRED)
+find_package(GLEW REQUIRED)
+
+#
+# Specify include directories
+#
+#include_directories(src)
+
+include_directories(
+    ${CMAKE_SOURCE_DIR}/src
+    ${CMAKE_SOURCE_DIR}/include/stb
+    ${CMAKE_SOURCE_DIR}/include/glm/glm
+    ${GLEW_INCLUDE_DIR}
+    ${GLEW_INCLUDE_DIRS}
+)
 
 
 #
 # Link OpenGL libraries
 #
-# target_link_libraries(NeonVoid
-#     ${OPENGL_LIBRARIES}
-#     ${GLEW_LIBRARIES}
-# )
-
-target_link_libraries(NeonVoid PRIVATE OpenGL::GL glfw)
+target_link_libraries(NeonVoid PRIVATE OpenGL::GL glfw ${GLEW_LIBRARY} ${GLEW_LIBRARIES})
 
 target_compile_options(NeonVoid PRIVATE -Wall -Wextra -Wpedantic)
 
