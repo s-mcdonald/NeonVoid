@@ -2,14 +2,18 @@
  * 
  */
 
- // C & C++ Libs
 #include <iostream>
 
-// OpenGl Libs
-#include <GL/gl.h>
-#include <GL/glut.h>
+#include "Runtime/Runtime.h"
 
 int main(int argc, char** argv)
 {
-    std::cout << "Hello World. \n";
+    Neon::Runtime gameEngine;
+
+    if (gameEngine.Initialize(800, 600, "Neon Game")) 
+    {
+        gameEngine.Run();
+    }
+
+    // Did I forget to return ?? ;)
 }
