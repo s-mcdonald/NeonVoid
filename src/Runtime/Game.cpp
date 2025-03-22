@@ -1,10 +1,10 @@
 /**
  * 
  */
+
 #include <iostream>
 
-#include "Game.h"
-#include "Game/Scene.h"
+#include "Runtime/Runtime.hpp"
 
 namespace Neon 
 {

@@ -3,10 +3,7 @@
  */
 #include <iostream>
 
-#include "Game/Game.h"
-#include "Runtime/OpenGL.h"
-#include "Runtime/Core/Platform.h"
-
+#include "Runtime/Runtime.hpp"
 
 namespace Neon 
 {
@@ -23,11 +20,15 @@ namespace Neon
 
     bool Platform::Initialize(int width, int height, const char* title) 
     {
-        //
         return true;
     }
 
     void Platform::Run(Game* game) 
+    {
+        //
+    }
+    
+    void Platform::TriggerPostRedisplay()
     {
         //
     }

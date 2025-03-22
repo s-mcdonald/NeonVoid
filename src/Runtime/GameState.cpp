@@ -3,7 +3,7 @@
  */
 #include <iostream>
 
-#include "Game/GameState.h"
+#include "Runtime/Runtime.hpp"
 
 namespace Neon 
 {

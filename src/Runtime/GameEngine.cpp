@@ -3,8 +3,7 @@
  */
 #include <iostream>
 
-#include "Runtime/GameEngine.h"
-#include "Runtime/OpenGL.h"
+#include "Runtime/Runtime.hpp"
 
 namespace Neon 
 {
@@ -28,6 +27,11 @@ namespace Neon
     void GameEngine::Run(Game* game) 
     {
         m_platform->Run(game);
+    }
+
+    Platform* GameEngine::GetPlatform() const
+    {
+        return m_platform;
     }
 
     void GameEngine::CleanResources() 

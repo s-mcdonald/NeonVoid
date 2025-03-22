@@ -59,29 +59,20 @@ set(SOURCE_FILES
     # Main entry file
     #
     src/Entry.cpp  
-    
-    src/Game/Game.h
-    src/Game/Game.cpp
 
-    src/Game/GameState.h
-    src/Game/GameState.cpp
+    src/Runtime/Game.cpp
+    src/Runtime/GameState.cpp
+    src/Runtime/Scene.cpp
 
-    src/Game/Scene.h
-    src/Game/Scene.cpp
-
-    src/Game/Utils/NeonFunctions.h
-    src/Game/Utils/NeonFunctions.cpp
+    src/Game/NeonFunctions.hpp
+    src/Game/NeonFunctions.cpp
 
     #
     # Runtime Files
     #
-    src/Runtime/Core/Platform.h
+    src/Runtime/Runtime.hpp
     src/Runtime/Core/Platform.cpp
-
-    src/Runtime/OpenGL.h
-    src/Runtime/OpenGL.cpp
-
-    src/Runtime/GameEngine.h
+    src/Runtime/Core/Backends/OpenGL.cpp
     src/Runtime/GameEngine.cpp
 )
 

@@ -4,9 +4,9 @@
 
 #include <iostream>
 
-#include "Game/Game.h"
-#include "Game/Utils/NeonFunctions.h"
-#include "Runtime/GameEngine.h"
+#include "Game/NeonFunctions.hpp"
+
+#include "Runtime/Runtime.hpp"
 
 int main()
 {
@@ -18,7 +18,7 @@ int main()
 
     // We configure our game here
     // potentially yaml file for scenes ect.
-    LoadGameData(game);
+    LoadGameData(game, gameEngine);
 
     if (gameEngine.Initialize(800, 600, "Neon Game")) 
     {
