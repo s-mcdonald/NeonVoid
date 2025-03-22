@@ -55,6 +55,8 @@ set(OpenGL_GL_PREFERENCE GLVND)
 # Source files
 set(SOURCE_FILES
 
+    include/miniaudio/miniaudio.h
+
     #
     # Main entry file
     #
@@ -71,6 +73,7 @@ set(SOURCE_FILES
     # Runtime Files
     #
     src/Runtime/Runtime.hpp
+    src/Runtime/AudioSystem.cpp
     src/Runtime/Core/Platform.cpp
     src/Runtime/Core/Backends/OpenGL.cpp
     src/Runtime/GameEngine.cpp
@@ -99,6 +102,7 @@ include_directories(
     ${CMAKE_SOURCE_DIR}/src
     ${CMAKE_SOURCE_DIR}/include/stb
     ${CMAKE_SOURCE_DIR}/include/glm/glm
+    ${CMAKE_SOURCE_DIR}/include/miniaudio
     ${GLEW_INCLUDE_DIR}
     ${GLEW_INCLUDE_DIRS}
 )

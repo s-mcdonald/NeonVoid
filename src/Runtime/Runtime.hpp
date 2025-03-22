@@ -4,6 +4,8 @@
 
 #pragma once
 
+#include <miniaudio.h>
+
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
@@ -11,6 +13,17 @@
 namespace Neon 
 {
     class Game;
+
+    class AudioSystem 
+    {
+        public:
+            AudioSystem();
+            ~AudioSystem();
+        
+        private:
+
+        private:
+    };
 
     class GameState
     {
