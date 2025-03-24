@@ -13,8 +13,7 @@ int main()
     using namespace Neon;
 
     GameEngine gameEngine;
-    Game* game;
-    game = new Game();
+    Game* game = new Game();
 
     // We configure our game here
     // potentially yaml file for scenes ect.
