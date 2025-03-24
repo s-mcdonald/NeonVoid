@@ -68,14 +68,12 @@ namespace Neon
 
         if (!m_openGlInitialized) return;
 
-        bool sceneInit = false;
-
         while (!glfwWindowShouldClose(m_window)) 
         {
             auto* scene = game->GetCurrentScene();
-            if (sceneInit == false ) {
+            if (false == scene->IsInitialized())
+            {
                 scene->Init();
-                sceneInit = true;
                 std::cout << "Scene initialized in run loop\n";
             }
 

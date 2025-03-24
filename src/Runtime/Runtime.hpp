@@ -74,11 +74,14 @@ namespace Neon
         public:
             void Init() override;
             void Render() override;
+            bool IsInitialized() const;
+
         private:
             Neon::Platform* m_platform{nullptr};
             GLuint VAO; 
             GLuint VBO;
             GLuint shaderProgram;
+            bool m_isInitialized = false;
     };
 
     class Game

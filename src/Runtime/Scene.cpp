@@ -29,6 +29,8 @@ namespace Neon
     {
         std::cout << "Scene::Init() [IRenderable]\n";
 
+        if (m_isInitialized) return; // dont redo...       
+
         // Define a simple triangle
         GLfloat vertices[] = {
             0.0f,  0.5f,    // Top vertex
@@ -70,7 +72,13 @@ namespace Neon
     
         shaderProgram = m_platform->createShaderProgram(vertexSource, fragmentSource);
     
+        m_isInitialized = true;
         std::cout << "Scene::Init() [Complete]\n";
+    }
+
+    bool Scene::IsInitialized() const
+    {
+        return m_isInitialized;
     }
 
     void Scene::Render()
