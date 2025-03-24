@@ -74,7 +74,6 @@ set(SOURCE_FILES
     #
     src/Runtime/Runtime.hpp
     src/Runtime/AudioSystem.cpp
-    src/Runtime/Core/Platform.cpp
     src/Runtime/Core/Backends/OpenGL.cpp
     src/Runtime/GameEngine.cpp
 )
