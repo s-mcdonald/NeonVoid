@@ -1,6 +1,8 @@
 # NeonVoid
 
-An attempt at a OGL c++ game.
+An attempt at a OGL c++ retro game(/engine).
+
+NeonVoid is a side project I'm currently developing. It's intended to be both a game and a game engine, inspired by 80s arcade games. My goal is to create a framework that makes building retro-style games fun, simple, and clean. Additionally, if the project evolves, I plan to incorporate advanced features like HDR and bloom effects to enhance the visual experience of these simple games, giving them a high-gloss, polished look. - if I ever get to that level.
 
 ### Build & Compile
 First initialize CMakeList
