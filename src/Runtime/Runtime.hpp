@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include <miniaudio.h>
+#include <functional>
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -15,11 +16,33 @@ namespace Neon
 {
     class Game;
 
-    class IRenderable 
+    using InitFunction = std::function<void()>;
+    using RenderFunction = std::function<void()>;
+
+    class IRenderable
     {
         public:
+            virtual ~IRenderable() = default;
             virtual void Init() = 0;
             virtual void Render() = 0;
+    };
+
+    class Component : public IRenderable
+    {
+        public:
+            virtual void Init() override;
+            virtual void Render() override;
+
+            const std::vector<float>& GetVertices() const;
+
+            void SetInitFunction(InitFunction initFunc);
+            void SetRenderFunction(RenderFunction renderFunc);
+            void SetVertices(const std::vector<float>& vertices);
+
+        private:
+            InitFunction m_initFunc;
+            RenderFunction m_renderFunc;
+            std::vector<float> m_vertices;
     };
 
     class AudioSystem 
