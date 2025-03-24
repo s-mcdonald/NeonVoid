@@ -15,6 +15,16 @@ void Neon::LoadGameData(Game* game, GameEngine& gameEngine)
         std::cout << "Entry ==> LoadGameData(game)\n";
 
         Scene* scene = new Scene(gameEngine.GetPlatform());
+
+        // Maybe a nice api fir title screens
+        // This way the tiotkle scene is part of the GE and does not have to be manually coded
+        // game->EnableTitleScene(true);
+        // game->SetTitleSceneSoundTrack("playback.mp3");
+        // game->SetGameShortTitle("AstroVoid");
+        // game->SetGameLongTitle("AstroVoid: Epic battle of Outter Space");
+        // game->SetFont(FontNames::FontA)
+        // game->SetFontSize(FontSizes::FontSize44)
+
         game->AddScene(scene);
 
         Component* component = new Component();
