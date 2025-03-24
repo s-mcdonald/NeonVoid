@@ -62,16 +62,16 @@ set(SOURCE_FILES
     #
     src/Entry.cpp  
 
-    src/Runtime/Game.cpp
-    src/Runtime/GameState.cpp
-    src/Runtime/Scene.cpp
-
     src/Game/NeonFunctions.hpp
     src/Game/NeonFunctions.cpp
 
     #
     # Runtime Files
     #
+    src/Runtime/Game.cpp
+    src/Runtime/GameState.cpp
+    src/Runtime/Scene.cpp
+    src/Runtime/Component.cpp
     src/Runtime/Runtime.hpp
     src/Runtime/AudioSystem.cpp
     src/Runtime/Core/Backends/OpenGL.cpp
