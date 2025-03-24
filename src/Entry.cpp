@@ -5,13 +5,14 @@
 #include <iostream>
 
 #include "Game/NeonFunctions.hpp"
-
 #include "Runtime/Runtime.hpp"
 
 int main()
 {
     using namespace Neon;
 
+    // Perhaps the gameEngine provides a game singleton.
+    // game* = gameEngine.GetGame();
     GameEngine gameEngine;
     Game* game = new Game();
 
