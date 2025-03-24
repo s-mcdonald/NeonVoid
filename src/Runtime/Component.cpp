@@ -10,6 +10,8 @@ namespace Neon
 {
     Component::Component() 
         : IRenderable()
+        , m_VAO(0)
+        , m_VBO(0)
     {
         std::cout << "Component::Constructor called\n";
     }
@@ -17,6 +19,10 @@ namespace Neon
     Component::~Component() 
     {
         std::cout << "Component::Destructor called\n";
+
+        if (m_VAO) glDeleteVertexArrays(1, &m_VAO);
+        if (m_VBO) glDeleteBuffers(1, &m_VBO);
+        if (m_shaderProgram) glDeleteProgram(m_shaderProgram);
     }
 
     void Component::Init() 

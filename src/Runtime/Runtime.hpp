@@ -39,10 +39,16 @@ namespace Neon
             void SetInitFunction(InitFunction initFunc);
             void SetRenderFunction(RenderFunction renderFunc);
 
+        // ya ya.. only temp until I sort out the assignment for the lambda
+        public:
+            GLuint m_VAO; 
+            GLuint m_VBO;
+            GLuint m_shaderProgram;
         private:
             InitFunction m_initFunc;
             RenderFunction m_renderFunc;
             std::vector<float> m_vertices;
+
     };
 
     class AudioSystem 
@@ -104,9 +110,6 @@ namespace Neon
         // Members.. ;)
         private:
             Neon::Platform* m_platform{nullptr};
-            GLuint m_VAO; 
-            GLuint m_VBO;
-            GLuint m_shaderProgram;
             bool m_isInitialized = false;
             Component* m_component{nullptr};
     };
