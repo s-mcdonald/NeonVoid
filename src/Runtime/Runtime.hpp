@@ -36,11 +36,8 @@ namespace Neon
             virtual void Init() override;
             virtual void Render() override;
 
-            const std::vector<float>& GetVertices() const;
-
             void SetInitFunction(InitFunction initFunc);
             void SetRenderFunction(RenderFunction renderFunc);
-            void SetVertices(const std::vector<float>& vertices);
 
         private:
             InitFunction m_initFunc;
@@ -97,17 +94,24 @@ namespace Neon
             Scene(Platform* platform);
             ~Scene();
 
+        // OpenGL Hooks
         public:
             void Init() override;
             void Render() override;
             bool IsInitialized() const;
 
+        // Component Management
+        public:
+            void AddComponent(Component* component);
+
+        // Members.. ;)
         private:
             Neon::Platform* m_platform{nullptr};
-            GLuint VAO; 
-            GLuint VBO;
-            GLuint shaderProgram;
+            GLuint m_VAO; 
+            GLuint m_VBO;
+            GLuint m_shaderProgram;
             bool m_isInitialized = false;
+            Component* m_component{nullptr};
     };
 
     class Game

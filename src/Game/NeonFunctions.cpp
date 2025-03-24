@@ -14,8 +14,8 @@ void Neon::LoadGameData(Game* game, GameEngine& gameEngine)
     {
         std::cout << "Entry ==> LoadGameData(game)\n";
 
-        Scene* onlyScene = new Scene(gameEngine.GetPlatform());
-        game->AddScene(onlyScene);
+        Scene* scene = new Scene(gameEngine.GetPlatform());
+        game->AddScene(scene);
 
         Component* component = new Component();
 
@@ -25,10 +25,9 @@ void Neon::LoadGameData(Game* game, GameEngine& gameEngine)
     
         component->SetRenderFunction([]() {
             std::cout << "Rendering component...\n";
-        });
-    
-        component->SetVertices({0.0f, 0.5f, -0.5f, -0.5f, 0.5f, -0.5f});
+        });       
 
         // Now we need to add component to scene!
+        scene->AddComponent(component);
     }
 }

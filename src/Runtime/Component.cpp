@@ -34,11 +34,6 @@ namespace Neon
             m_renderFunc(); 
         }
     }
-    
-    const std::vector<float>& Component::GetVertices() const 
-    {
-        return m_vertices;
-    }
 
     void Component::SetInitFunction(InitFunction initFunc) 
     {
@@ -49,9 +44,5 @@ namespace Neon
     {
         m_renderFunc = renderFunc;
     }
-    
-    void Component::SetVertices(const std::vector<float>& vertices) 
-    {
-        m_vertices = vertices;
-    }
+
 }

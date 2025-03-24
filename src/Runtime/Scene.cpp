@@ -11,8 +11,8 @@ namespace Neon
     Scene::Scene(Platform* platform) 
         : IRenderable()
         , m_platform(platform)
-        , VAO(0)
-        , VBO(0)
+        , m_VAO(0)
+        , m_VBO(0)
     {
         std::cout << "Scene::Constructor called\n";
     }
@@ -20,9 +20,10 @@ namespace Neon
     Scene::~Scene() 
     {
         std::cout << "Scene::Destructor called\n";
-        if (VAO) glDeleteVertexArrays(1, &VAO);
-        if (VBO) glDeleteBuffers(1, &VBO);
-        if (shaderProgram) glDeleteProgram(shaderProgram);  // Delete shader program
+        if (m_VAO) glDeleteVertexArrays(1, &m_VAO);
+        if (m_VBO) glDeleteBuffers(1, &m_VBO);
+        if (m_shaderProgram) glDeleteProgram(m_shaderProgram);
+        if (m_component) delete m_component;
     }
 
     void Scene::Init()
@@ -38,20 +39,20 @@ namespace Neon
             0.5f, -0.5f     // Bottom right
         };
     
-        // Generate VAO and VBO
-        glGenVertexArrays(1, &VAO);
-        glGenBuffers(1, &VBO);
+        // Generate m_VAO and m_VBO
+        glGenVertexArrays(1, &m_VAO);
+        glGenBuffers(1, &m_VBO);
     
-        // Bind VAO and VBO
-        glBindVertexArray(VAO);
-        glBindBuffer(GL_ARRAY_BUFFER, VBO);
+        // Bind m_VAO and m_VBO
+        glBindVertexArray(m_VAO);
+        glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
         glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
     
         // Set the vertex attribute pointer
         glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (GLvoid*)0);
         glEnableVertexAttribArray(0);
     
-        // Unbind VBO and VAO
+        // Unbind m_VBO and m_VAO
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         glBindVertexArray(0);
     
@@ -70,9 +71,15 @@ namespace Neon
                 FragColor = vec4(0.4f, 0.7f, 0.2f, 1.0f);
             })";
     
-        shaderProgram = m_platform->createShaderProgram(vertexSource, fragmentSource);
-    
+        m_shaderProgram = m_platform->createShaderProgram(vertexSource, fragmentSource);
+        
+        //
+        // Initialize all the scenes components
+        //
+        if (m_component) m_component->Init();
+
         m_isInitialized = true;
+
         std::cout << "Scene::Init() [Complete]\n";
     }
 
@@ -87,12 +94,19 @@ namespace Neon
 
         glClear(GL_COLOR_BUFFER_BIT);  // Clear the screen
     
-        glUseProgram(shaderProgram);  // Use the shader program
+        glUseProgram(m_shaderProgram);  // Use the shader program
     
-        glBindVertexArray(VAO);
+        glBindVertexArray(m_VAO);
         glDrawArrays(GL_TRIANGLES, 0, 3);
         glBindVertexArray(0);
     
         m_platform->TriggerPostRedisplay();
+    }
+
+    // Eventually we can add abunch of components to a scene.
+    // for now we just need to prove a render from a cmp.
+    void Scene::AddComponent(Component* component)
+    {
+        m_component = component;
     }
 }
