@@ -116,6 +116,7 @@ namespace Neon
 
         protected:
             GLFWwindow* m_window;
+            bool m_openGlInitialized = false;
     };
 
     class GameEngine

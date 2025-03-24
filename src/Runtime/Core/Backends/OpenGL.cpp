@@ -23,6 +23,9 @@ namespace Neon
         CleanResources();
     }
 
+    ///
+    /// Initialize OpenGL core before render
+    ///
     bool OpenGL::Initialize(int width, int height, const char* title) 
     {
         if (!glfwInit()) 
@@ -35,7 +38,6 @@ namespace Neon
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-        // Create window
         m_window = glfwCreateWindow(width, height, title, nullptr, nullptr);
         if (!m_window) 
         {
@@ -44,10 +46,8 @@ namespace Neon
             return false;
         }
 
-        // Set as the active window, without this it loads in background.
         glfwMakeContextCurrent(m_window);
 
-        // Initialize GLEW after setting the OpenGL context current
         if (glewInit() != GLEW_OK) {
             std::cerr << "Failed to initialize GLEW!" << std::endl;
             return false;
@@ -56,12 +56,17 @@ namespace Neon
         glViewport(0, 0, 800, 600);  // Set OpenGL viewport size
 
         std::cout << "OpenGL Initialized Successfully!\n";
+
+        m_openGlInitialized = true;
+
         return true;
     }
 
     void OpenGL::Run(Game* game) 
     {
         if (!m_window) return;
+
+        if (!m_openGlInitialized) return;
 
         bool sceneInit = false;
 
