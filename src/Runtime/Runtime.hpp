@@ -4,6 +4,7 @@
 
 #pragma once
 
+#include <iostream>
 #include <miniaudio.h>
 
 #include <GL/glew.h>
@@ -14,13 +15,18 @@ namespace Neon
 {
     class Game;
 
+    class IRenderable 
+    {
+        public:
+            virtual void Init() = 0;
+            virtual void Render() = 0;
+    };
+
     class AudioSystem 
     {
         public:
             AudioSystem();
             ~AudioSystem();
-        
-        private:
 
         private:
     };
@@ -44,30 +50,35 @@ namespace Neon
     class Platform 
     {
         public:
-            Platform();
-            virtual ~Platform();
-    
-            virtual bool Initialize(int width, int height, const char* title);
+            Platform() = default;
+            virtual ~Platform() = default;
+        public:
+            virtual bool Initialize(int width, int height, const char* title) = 0;
+            virtual void Run(Game* game) = 0;
+            virtual void TriggerPostRedisplay() = 0;
 
-            virtual void Run(Game* game);
-
-            virtual void TriggerPostRedisplay();
+            virtual GLuint compileShader(const char* source, GLenum shaderType) = 0;
+            virtual GLuint createShaderProgram(const char* vertexSource, const char* fragmentSource) = 0;
             
         protected:
-            virtual void CleanResources();
+            virtual void CleanResources() = 0;
     };
 
-    class Scene
+    class Scene : public IRenderable
     {
         public:
-            Scene() = default;
+            Scene() = delete;
             Scene(Platform* platform);
             ~Scene();
 
         public:
-            void Render() const;
+            void Init() override;
+            void Render() override;
         private:
             Neon::Platform* m_platform{nullptr};
+            GLuint VAO; 
+            GLuint VBO;
+            GLuint shaderProgram;
     };
 
     class Game
@@ -96,12 +107,10 @@ namespace Neon
 
             void Run(Game* game) override; 
 
+            GLuint compileShader(const char* source, GLenum shaderType) override;
+            GLuint createShaderProgram(const char* vertexSource, const char* fragmentSource) override;
+
         protected:
-            void LoadFont(const char *fontPath);
-            void CompileShaders();
-            void RenderText(const char *text, float x, float y, float scale, glm::vec3 color);
-
-
             void TriggerPostRedisplay() override;
             void CleanResources() override;
 
