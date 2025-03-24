@@ -100,7 +100,7 @@ namespace Neon
         glfwPostEmptyEvent();
     }
 
-    GLuint OpenGL::compileShader(const char* source, GLenum shaderType) 
+    GLuint OpenGL::CompileShader(const char* source, GLenum shaderType) 
     {
         GLuint shader = glCreateShader(shaderType);
         glShaderSource(shader, 1, &source, nullptr);
@@ -116,10 +116,10 @@ namespace Neon
         return shader;
     }
     
-    GLuint OpenGL::createShaderProgram(const char* vertexSource, const char* fragmentSource) 
+    GLuint OpenGL::CreateShaderProgram(const char* vertexSource, const char* fragmentSource) 
     {
-        GLuint vertexShader = compileShader(vertexSource, GL_VERTEX_SHADER);
-        GLuint fragmentShader = compileShader(fragmentSource, GL_FRAGMENT_SHADER);
+        GLuint vertexShader = OpenGL::CompileShader(vertexSource, GL_VERTEX_SHADER);
+        GLuint fragmentShader = OpenGL::CompileShader(fragmentSource, GL_FRAGMENT_SHADER);
     
         GLuint shaderProgram = glCreateProgram();
         glAttachShader(shaderProgram, vertexShader);
@@ -139,5 +139,4 @@ namespace Neon
     
         return shaderProgram;
     }
-    
 }

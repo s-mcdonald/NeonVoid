@@ -71,7 +71,7 @@ namespace Neon
                 FragColor = vec4(0.4f, 0.7f, 0.2f, 1.0f);
             })";
     
-        m_shaderProgram = m_platform->createShaderProgram(vertexSource, fragmentSource);
+        m_shaderProgram = OpenGL::CreateShaderProgram(vertexSource, fragmentSource);
         
         //
         // Initialize all the scenes components

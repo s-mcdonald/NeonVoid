@@ -79,9 +79,6 @@ namespace Neon
             virtual bool Initialize(int width, int height, const char* title) = 0;
             virtual void Run(Game* game) = 0;
             virtual void TriggerPostRedisplay() = 0;
-
-            virtual GLuint compileShader(const char* source, GLenum shaderType) = 0;
-            virtual GLuint createShaderProgram(const char* vertexSource, const char* fragmentSource) = 0;
             
         protected:
             virtual void CleanResources() = 0;
@@ -140,8 +137,8 @@ namespace Neon
 
             void Run(Game* game) override; 
 
-            GLuint compileShader(const char* source, GLenum shaderType) override;
-            GLuint createShaderProgram(const char* vertexSource, const char* fragmentSource) override;
+            static GLuint CompileShader(const char* source, GLenum shaderType);
+            static GLuint CreateShaderProgram(const char* vertexSource, const char* fragmentSource);
 
         protected:
             void TriggerPostRedisplay() override;

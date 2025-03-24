@@ -14,11 +14,11 @@ namespace Neon
 {
     AudioSystem::AudioSystem()
     {
-        //
+        // Nottin here I know, just early planning...
     }
 
     AudioSystem::~AudioSystem() 
     {
-        //
+        // Nottin here I know, just early planning...
     }
 }
