@@ -14,8 +14,6 @@ void Neon::LoadGameData(Game* game, GameEngine& gameEngine)
     {
         std::cout << "Entry ==> LoadGameData(game)\n";
 
-        Scene* scene = new Scene(gameEngine.GetPlatform());
-
         // Maybe a nice api fir title screens
         // This way the tiotkle scene is part of the GE and does not have to be manually coded
         // game->EnableTitleScene(true);
@@ -25,9 +23,19 @@ void Neon::LoadGameData(Game* game, GameEngine& gameEngine)
         // game->SetFont(FontNames::FontA)
         // game->SetFontSize(FontSizes::FontSize44)
 
+        Scene* scene = new Scene(gameEngine.GetPlatform());
+
+        // KeyBoardInput per scene, so each game level could have diff behaviour
+
+        // the default game->kb controls are requried where the scene is optional
+        // game->SetDefaultKeyboardControls(cb); // if a scene doesnt define, use these controls
+        // scene->SetKeyboardControls(cb); // if there is no default
+
         game->AddScene(scene);
 
         Component* component = new Component();
+        // We need a way to position a component especially if its visual, 
+        // and move it around if need be. Have I done this right ??
 
         // OK, but now we have rendering on the component, but its OGL,
         // what should the dev do if he wants DX, ??

@@ -156,7 +156,6 @@ namespace Neon
 
         public:
             bool Initialize(int width, int height, const char* title);
-
             void Run(Game* game);
             
             Platform* GetPlatform() const;
@@ -164,6 +163,5 @@ namespace Neon
         private:
             Platform* m_platform;
     };
-
 }
  

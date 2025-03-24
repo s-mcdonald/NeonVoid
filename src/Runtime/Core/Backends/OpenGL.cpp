@@ -76,6 +76,7 @@ namespace Neon
         while (!glfwWindowShouldClose(m_window)) 
         {
             auto* scene = game->GetCurrentScene();
+
             if (false == scene->IsInitialized())
             {
                 scene->Init();
@@ -95,6 +96,10 @@ namespace Neon
     {
         glfwPostEmptyEvent();
     }
+    
+    ///
+    /// Statics
+    ///
 
     GLuint OpenGL::CompileShader(const char* source, GLenum shaderType) 
     {

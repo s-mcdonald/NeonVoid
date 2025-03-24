@@ -26,7 +26,7 @@ namespace Neon
     {
         std::cout << "Scene::Init() [IRenderable]\n";
 
-        if (m_isInitialized) return; // dont redo...       
+        if (m_isInitialized) return;      
 
         if (m_component) m_component->Init();
 
