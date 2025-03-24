@@ -20,7 +20,12 @@ namespace Neon
     OpenGL::~OpenGL() 
     {
         std::cout << "OpenGL::Destructor called\n";
-        CleanResources();
+
+        if (m_window) 
+        {
+            glfwDestroyWindow(m_window);
+        }
+        glfwTerminate();
     }
 
     ///
@@ -84,15 +89,6 @@ namespace Neon
 
             glfwSwapBuffers(m_window);
         }
-    }
-
-    void OpenGL::CleanResources()
-    {
-        if (m_window) 
-        {
-            glfwDestroyWindow(m_window);
-        }
-        glfwTerminate();
     }
 
     void OpenGL::TriggerPostRedisplay()

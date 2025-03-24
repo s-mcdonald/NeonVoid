@@ -6,7 +6,7 @@
 
 #include "Runtime/Runtime.hpp"
 
-namespace Neon 
+namespace Neon
 {
     Scene::Scene(Platform* platform) 
         : IRenderable()
@@ -28,15 +28,9 @@ namespace Neon
 
         if (m_isInitialized) return; // dont redo...       
 
-    
-        //
-        // Initialize all the scenes components
-        //
         if (m_component) m_component->Init();
 
         m_isInitialized = true;
-
-        std::cout << "Scene::Init() [Complete]\n";
     }
 
     bool Scene::IsInitialized() const

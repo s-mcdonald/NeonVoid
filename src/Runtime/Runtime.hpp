@@ -85,9 +85,6 @@ namespace Neon
             virtual bool Initialize(int width, int height, const char* title) = 0;
             virtual void Run(Game* game) = 0;
             virtual void TriggerPostRedisplay() = 0;
-            
-        protected:
-            virtual void CleanResources() = 0;
     };
 
     class Scene : public IRenderable
@@ -145,7 +142,6 @@ namespace Neon
 
         protected:
             void TriggerPostRedisplay() override;
-            void CleanResources() override;
 
         protected:
             GLFWwindow* m_window;
@@ -164,9 +160,6 @@ namespace Neon
             void Run(Game* game);
             
             Platform* GetPlatform() const;
-
-        protected:            
-            void CleanResources();
 
         private:
             Platform* m_platform;

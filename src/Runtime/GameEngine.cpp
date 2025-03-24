@@ -10,13 +10,16 @@ namespace Neon
     GameEngine::GameEngine() : m_platform(nullptr)
     {
         std::cout << "GameEngine::Constructor called\n";
+
+        // On the heap you go
         m_platform = new Neon::OpenGL();
     }
 
     GameEngine::~GameEngine() 
     {
         std::cout << "GameEngine::Destructor called\n";
-        CleanResources();
+
+        delete m_platform;
     }
 
     bool GameEngine::Initialize(int width, int height, const char* title) 
@@ -32,10 +35,5 @@ namespace Neon
     Platform* GameEngine::GetPlatform() const
     {
         return m_platform;
-    }
-
-    void GameEngine::CleanResources() 
-    {
-        delete m_platform;
     }
 }
