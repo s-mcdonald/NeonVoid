@@ -30,6 +30,9 @@ namespace Neon
     class Component : public IRenderable
     {
         public:
+            Component();
+            virtual ~Component();
+        public:
             virtual void Init() override;
             virtual void Render() override;
 
