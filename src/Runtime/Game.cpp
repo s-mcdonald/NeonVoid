@@ -17,17 +17,20 @@ namespace Neon
     Game::~Game() 
     {
         std::cout << "Game::Destructor called\n";
-        delete m_onlyScene;
+
+        for (auto s : m_scenes)
+            delete s;
+
         delete m_gameState;
     }
 
     void Game::AddScene(Scene* scene)
     {
-        m_onlyScene = scene;
+        m_scenes.emplace_back(scene);
     }
 
     Scene* Game::GetCurrentScene()
     {
-        return m_onlyScene;
+        return m_scenes.at(0);
     }
 }

@@ -19,16 +19,19 @@ namespace Neon
     {
         std::cout << "Scene::Destructor called\n";
 
-        if (m_component) delete m_component;
+        for (auto x : m_components)
+            delete x;
     }
 
     void Scene::Init()
     {
         std::cout << "Scene::Init() [IRenderable]\n";
 
-        if (m_isInitialized) return;      
+        if (m_isInitialized) 
+            return;      
 
-        if (m_component) m_component->Init();
+        for (auto x : m_components)
+            x->Init();
 
         m_isInitialized = true;
     }
@@ -42,15 +45,14 @@ namespace Neon
     {       
         std::cout << "Scene::Rendering..\n";
 
-        if (m_component) m_component->Render();
+        for (auto x : m_components)
+            x->Render();
 
         m_platform->TriggerPostRedisplay();
     }
 
-    // Eventually we can add abunch of components to a scene.
-    // for now we just need to prove a render from a cmp.
     void Scene::AddComponent(Component* component)
     {
-        m_component = component;
+        m_components.emplace_back(component);
     }
 }

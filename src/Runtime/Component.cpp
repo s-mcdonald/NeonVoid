@@ -50,5 +50,4 @@ namespace Neon
     {
         m_renderFunc = renderFunc;
     }
-
 }

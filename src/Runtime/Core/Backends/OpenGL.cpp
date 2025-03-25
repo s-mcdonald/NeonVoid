@@ -58,7 +58,8 @@ namespace Neon
             return false;
         }
 
-        glViewport(0, 0, 800, 600);  // Set OpenGL viewport size
+        // just remember the wxh here is not always the same as window wxh
+        glViewport(0, 0, width, height);  // Set OpenGL viewport size
 
         std::cout << "OpenGL Initialized Successfully!\n";
 

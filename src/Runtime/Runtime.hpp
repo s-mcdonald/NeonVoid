@@ -7,6 +7,7 @@
 #include <iostream>
 #include <miniaudio.h>
 #include <functional>
+#include <vector>
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -108,7 +109,7 @@ namespace Neon
         private:
             Neon::Platform* m_platform{nullptr};
             bool m_isInitialized = false;
-            Component* m_component{nullptr};
+            std::vector<Component*> m_components;
     };
 
     class Game
@@ -123,8 +124,8 @@ namespace Neon
             Scene* GetCurrentScene();
 
         private:
-            GameState* m_gameState{nullptr};    
-            Scene* m_onlyScene;
+            GameState* m_gameState{nullptr};
+            std::vector<Scene*> m_scenes;
     };
 
     class OpenGL : public Platform

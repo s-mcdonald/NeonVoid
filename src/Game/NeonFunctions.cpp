@@ -83,22 +83,20 @@ void Neon::LoadGameData(Game* game, GameEngine& gameEngine)
                 })";
 
             component->m_shaderProgram = OpenGL::CreateShaderProgram(vertexSource, fragmentSource);
-            
         });
     
         component->SetRenderFunction([component]() {
             std::cout << "Rendering component...\n";
 
-            glClear(GL_COLOR_BUFFER_BIT);  // Clear the screen
+            glClear(GL_COLOR_BUFFER_BIT);
     
-            glUseProgram(component->m_shaderProgram);  // Use the shader program
+            glUseProgram(component->m_shaderProgram);  
         
             glBindVertexArray(component->m_VAO);
             glDrawArrays(GL_TRIANGLES, 0, 3);
             glBindVertexArray(0);
         });       
 
-        // Now we need to add component to scene!
         scene->AddComponent(component);
     }
 }
