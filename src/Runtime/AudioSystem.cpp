@@ -116,12 +116,11 @@ namespace Neon
     {
         ma_device_config config = ma_device_config_init(ma_device_type_playback);
     
-        config.playback.format   = ma_format_f32;
-        config.playback.channels = 2;
-        config.sampleRate        = 44100;
-        config.dataCallback      = AudioSystem::dataCallback;
-        config.pUserData        = this;
-    
+        config.playback.format      = ma_format_f32;
+        config.playback.channels    = 2;
+        config.sampleRate           = 44100;
+        config.dataCallback         = AudioSystem::dataCallback;
+        config.pUserData            = this;
     
         return config;
     }
