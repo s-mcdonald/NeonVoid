@@ -126,7 +126,7 @@ namespace Neon
         return config;
     }
 
-    void AudioSystem::dataCallback(ma_device* pDevice, void* pOutput, const void* pInput, uint32_t frameCount) 
+    void AudioSystem::dataCallback(ma_device* pDevice, void* pOutput, [[maybe_unused]] const void* pInput, uint32_t frameCount) 
     {
         AudioSystem* player = reinterpret_cast<AudioSystem*>(pDevice->pUserData);
 
