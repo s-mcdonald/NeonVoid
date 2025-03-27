@@ -79,6 +79,22 @@ namespace Neon
             bool m_isStopRequested{false};
     };
 
+
+    class AudioComponent : public Component 
+    {
+        public:
+            AudioComponent();
+            ~AudioComponent();
+
+        public:
+            void Init();    // Change to OnInit()
+            void Render();  // Change to OnUpdate()
+
+        private:
+            bool m_repeats{false};
+            std::string m_filename;
+    };
+
     class GameState
     {
         public:

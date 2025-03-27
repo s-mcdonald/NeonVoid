@@ -71,6 +71,7 @@ set(SOURCE_FILES
     src/Runtime/GameState.cpp
     src/Runtime/Scene.cpp
     src/Runtime/Component.cpp
+    src/Runtime/AudioComponent.cpp
     src/Runtime/Runtime.hpp
     src/Runtime/AudioSystem.cpp
     src/Runtime/Core/Backends/OpenGL.cpp
