@@ -5,22 +5,42 @@ An attempt at a OGL c++ retro game(/engine).
 NeonVoid is a side project I'm currently developing. It's intended to be both a game and a game engine, inspired by 80s arcade games. My goal is to create a framework that makes building retro-style games fun, simple, and clean. Additionally, if the project evolves, I plan to incorporate advanced features like HDR and bloom effects to enhance the visual experience of these simple games, giving them a high-gloss, polished look. - if I ever get to that level.
 
 
-### Goals
+### Goals (Must haves)
 
 ```
-[x] Abstracted Playform for DX and OGL
+[x] OpenGL/DirectX Abstraction Layer
 [x] Render OGL Window
 [x] Render Basic Shape on a via Shape->Component
 [ ] Move component on screen  
 [ ] Scoreboard (On Screen display)
-[ ] Collision Detecton
-[x] Audio Playback (initial, needs refactoring)
-[ ] Title Sceen
-[ ] Menu Sceen  
+  [ ] - Player Health
+  [ ] - Player Score
+  [ ] - Player Bonus XP
+  [ ] - Player Toolbelt (Chest)
+[ ] Basic Collision Detecton
+[x] Audio System (initial, needs refactoring)
+  [ ]  - Scene background audio
+  [ ]  - Component Sound effects
+  [ ]  - Custom audio sounds
+[ ] Title Scene
+[ ] Menu Scene  
 [ ] Save / Load Games 
-[ ] Multi Levels (Multi Scene)
 [ ] Configurable Levels via Yaml
+
+Nice to haves
+
+### Goals (Achievable Nice to haves)
+```
+[ ] Game Engine UI
+  [ ] - Scene building
+```
+
+### Goals (Nice to have but not required)
+```
+[ ] ECS
+[ ] Multi Levels (Multi Scene)
 [ ] Physics Engine
+[ ] DirectX rendering
 ```
 
 ### Build & Compile
