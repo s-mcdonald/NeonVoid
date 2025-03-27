@@ -17,10 +17,10 @@ namespace Neon
 
     Scene::~Scene() 
     {
-        std::cout << "Scene::Destructor called\n";
-
         for (auto x : m_components)
             delete x;
+        
+        std::cout << "Scene::Destructor called\n";
     }
 
     void Scene::Init()
