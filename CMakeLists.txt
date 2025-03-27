@@ -33,6 +33,7 @@ SET(${PROJECT_NAME}_PATCH_LEVEL 0)
 set(CMAKE_BUILD_TYPE ${NeonReleaseMode})
 
 
+
 #
 # Specify the compiler (g++)
 #
@@ -111,6 +112,16 @@ include_directories(
 target_link_libraries(NeonVoid PRIVATE OpenGL::GL glfw ${GLEW_LIBRARY} ${GLEW_LIBRARIES})
 
 target_compile_options(NeonVoid PRIVATE -Wall -Wextra -Wpedantic)
+
+#
+# Debug Preprocessor values
+#
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    target_compile_definitions(NeonVoid PRIVATE NEON_DEBUG_AUDIO)
+else()
+
+endif()
+
 
 #
 # Specify the output directory for the executable

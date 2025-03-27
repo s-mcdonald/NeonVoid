@@ -101,19 +101,25 @@ namespace Neon
         AudioSystem* player = reinterpret_cast<AudioSystem*>(pDevice->pUserData);
 
         if (player == nullptr) {
-            std::cerr << "[ERROR] Player is null in callback!" << std::endl;
+            #ifdef NEON_DEBUG_AUDIO
+                std::cerr << "[ERROR] Player is null in callback!" << std::endl;
+            #endif
+            
             return;
         }
 
-        // Only enable in NEON_DEBUG_AUDIO mode
-        //std::cout << "[DEBUG] Callback called with frameCount: " << frameCount << std::endl;
+        #ifdef NEON_DEBUG_AUDIO
+            std::cout << "[DEBUG] Callback called with frameCount: " << frameCount << std::endl;
+        #endif
 
         // OK here is the guts of it, read from decoder into the OutputBuffer
         ma_decoder* pDecoder = &player->m_decoder;
         ma_result result = ma_decoder_read_pcm_frames(pDecoder, pOutput, frameCount, NULL);
 
         if (result != MA_SUCCESS) {
-            std::cerr << "[ERROR] Failed to read PCM frames!" << std::endl;
+            #ifdef NEON_DEBUG_AUDIO
+                std::cerr << "[ERROR] Failed to read PCM frames!" << std::endl;
+            #endif
             return;
         }
     }

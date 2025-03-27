@@ -20,7 +20,7 @@ int main()
 
     // a dramatic pause before opening title
     // honmestly this is only for development until audio is in..
-    std::this_thread::sleep_for(std::chrono::seconds(2));
+    // std::this_thread::sleep_for(std::chrono::seconds(1));
 
     Game game;
     GameEngine gameEngine;
