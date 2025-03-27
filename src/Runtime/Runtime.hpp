@@ -35,7 +35,7 @@ namespace Neon
             virtual ~Component();
         public:
             virtual void Init() override;
-            virtual void Render() override;
+            virtual void Render() override; // i think IComponent Render should be OnUpdate() since its about a game loop, not all components render!
 
             void SetInitFunction(InitFunction initFunc);
             void SetRenderFunction(RenderFunction renderFunc);
