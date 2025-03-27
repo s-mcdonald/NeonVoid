@@ -40,7 +40,9 @@ Thumbs.db
 
 
 # Include
-/include/**
+/include/glew/*
+/include/glm/*
+/include/stb/*
 !/include/miniaudio/miniaudio.h
 
 
