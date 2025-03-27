@@ -24,7 +24,9 @@ namespace Neon
 
         if (result != MA_SUCCESS) 
         {
-            std::cerr << "[ERROR] Failed to initialize audio device!" << std::endl;
+            #ifdef NEON_DEBUG_AUDIO
+                std::cerr << "[ERROR] Failed to initialize audio device!" << std::endl;
+            #endif
         }
 
         std::cout << "AudioSystem::Constructor completed\n";
@@ -47,33 +49,44 @@ namespace Neon
     {
         if (m_isPlaying) 
         {
-            std::cerr << "[ERROR] Already playing audio!" << std::endl;
+            #ifdef NEON_DEBUG_AUDIO
+                std::cerr << "[ERROR] Already playing audio!" << std::endl;
+            #endif
+
             return;
         }
     
         ma_result result = ma_decoder_init_file(filename.c_str(), NULL, &m_decoder);
         if (result != MA_SUCCESS) 
         {
-            std::cerr << "[ERROR] Failed to load audio file: " << filename << std::endl;
+            #ifdef NEON_DEBUG_AUDIO
+                std::cerr << "[ERROR] Failed to load audio file: " << filename << std::endl;
+            #endif
+            
             return;
         }
     
         result = ma_device_start(&m_device);
         if (result != MA_SUCCESS) 
         {
-            std::cerr << "[ERROR] Failed to start playback!" << std::endl;
+            #ifdef NEON_DEBUG_AUDIO
+                std::cerr << "[ERROR] Failed to start playback!" << std::endl;
+            #endif
+            
             return;
         }
     
         m_isPlaying = true;
-        std::cout << "Playing audio: " << filename << std::endl;
     }
 
     void AudioSystem::Stop() 
     {
         if (!m_isPlaying) 
         {
-            std::cerr << "[ERROR] No audio is playing!" << std::endl;
+            #ifdef NEON_DEBUG_AUDIO
+                std::cerr << "[ERROR] No audio is playing!" << std::endl;
+            #endif
+            
             return;
         }
     
@@ -120,6 +133,7 @@ namespace Neon
             #ifdef NEON_DEBUG_AUDIO
                 std::cerr << "[ERROR] Failed to read PCM frames!" << std::endl;
             #endif
+
             return;
         }
     }
