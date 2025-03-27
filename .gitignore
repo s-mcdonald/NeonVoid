@@ -41,7 +41,7 @@ Thumbs.db
 
 # Include
 /include/**
-!/include/miniaudio/**
+!/include/miniaudio/miniaudio.h
 
 
 
