@@ -14,10 +14,20 @@ void Neon::LoadGameData(Game* game, GameEngine& gameEngine)
     {
         std::cout << "Entry ==> LoadGameData(game)\n";
 
+        // Approved API
+        // game->setTitleScene(scene, 10sec);
+        // game->SetSceneSelectionMode(Mode::OnlySelectCurrentOrCompletedScenes, Mode::FreeSelectionViaMenu);
+
+        // On Scene
+        // scene->AddSoundTrack("playback.mp3");
+
+
+        
+
         // Maybe a nice api fir title screens
-        // This way the tiotkle scene is part of the GE and does not have to be manually coded
+        // This way the title scene is part of the GE and does not have to be manually coded
         // game->EnableTitleScene(true);
-        // game->SetTitleSceneSoundTrack("playback.mp3");
+
         // game->SetGameShortTitle("AstroVoid");
         // game->SetGameLongTitle("AstroVoid: Epic battle of Outter Space");
         // game->SetFont(FontNames::FontA)
@@ -36,6 +46,7 @@ void Neon::LoadGameData(Game* game, GameEngine& gameEngine)
         Component* component = new Component();
         // We need a way to position a component especially if its visual, 
         // and move it around if need be. Have I done this right ??
+
 
         // OK, but now we have rendering on the component, but its OGL,
         // what should the dev do if he wants DX, ??
