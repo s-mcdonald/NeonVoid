@@ -25,7 +25,7 @@ namespace Neon
         std::cout << "Component::Destructor completed\n";
     }
 
-    void Component::Init() 
+    void Component::OnInit() 
     {
         if (m_initFunc) 
         {
@@ -33,7 +33,7 @@ namespace Neon
         }
     }
 
-    void Component::Render() 
+    void Component::OnUpdate() 
     {
         if (m_renderFunc) 
         {

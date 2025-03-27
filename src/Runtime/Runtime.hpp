@@ -24,8 +24,8 @@ namespace Neon
     {
         public:
             virtual ~IRenderable() = default;
-            virtual void Init() = 0;
-            virtual void Render() = 0;
+            virtual void OnInit() = 0;
+            virtual void OnUpdate() = 0;
     };
 
     class Component : public IRenderable
@@ -34,8 +34,8 @@ namespace Neon
             Component();
             virtual ~Component();
         public:
-            virtual void Init() override;
-            virtual void Render() override; // i think IComponent Render should be OnUpdate() since its about a game loop, not all components render!
+            virtual void OnInit() override;
+            virtual void OnUpdate() override; // i think IComponent Render should be OnUpdate() since its about a game loop, not all components render!
 
             void SetInitFunction(InitFunction initFunc);
             void SetRenderFunction(RenderFunction renderFunc);
@@ -79,7 +79,6 @@ namespace Neon
             bool m_isStopRequested{false};
     };
 
-
     class AudioComponent : public Component 
     {
         public:
@@ -87,8 +86,8 @@ namespace Neon
             ~AudioComponent();
 
         public:
-            void Init();    // Change to OnInit()
-            void Render();  // Change to OnUpdate()
+            void OnInit();
+            void OnUpdate();
 
         private:
             bool m_repeats{false};
@@ -131,8 +130,8 @@ namespace Neon
 
         // OpenGL Hooks
         public:
-            void Init() override;
-            void Render() override;
+            void OnInit() override;
+            void OnUpdate() override;
             bool IsInitialized() const;
 
         // Component Management

@@ -23,7 +23,7 @@ namespace Neon
         std::cout << "Scene::Destructor called\n";
     }
 
-    void Scene::Init()
+    void Scene::OnInit()
     {
         std::cout << "Scene::Init() [IRenderable]\n";
 
@@ -31,7 +31,7 @@ namespace Neon
             return;      
 
         for (auto x : m_components)
-            x->Init();
+            x->OnInit();
 
         m_isInitialized = true;
     }
@@ -41,12 +41,12 @@ namespace Neon
         return m_isInitialized;
     }
 
-    void Scene::Render()
+    void Scene::OnUpdate()
     {       
         std::cout << "Scene::Rendering..\n";
 
         for (auto x : m_components)
-            x->Render();
+            x->OnUpdate();
 
         m_platform->TriggerPostRedisplay();
     }

@@ -18,12 +18,12 @@ namespace Neon
         std::cout << "AudioComponent::Destructor completed\n";
     }
 
-    void AudioComponent::Init() 
+    void AudioComponent::OnInit() 
     {
         //
     }
 
-    void AudioComponent::Render() 
+    void AudioComponent::OnUpdate() 
     {
         //
     }

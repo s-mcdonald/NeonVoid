@@ -80,14 +80,14 @@ namespace Neon
 
             if (false == scene->IsInitialized())
             {
-                scene->Init();
+                scene->OnInit();
                 std::cout << "Scene initialized in run loop\n";
             }
 
             // Check events like window close
             glfwPollEvents();
 
-            scene->Render();
+            scene->OnUpdate();
 
             glfwSwapBuffers(m_window);
         }
