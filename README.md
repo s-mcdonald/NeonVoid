@@ -14,7 +14,7 @@ NeonVoid is a side project I'm currently developing. It's intended to be both a 
 [ ] Move component on screen  
 [ ] Scoreboard (On Screen display)
 [ ] Collision Detecton
-[ ] Audio Playback
+[x] Audio Playback (initial, needs refactoring)
 [ ] Title Sceen
 [ ] Menu Sceen  
 [ ] Save / Load Games 
