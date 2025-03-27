@@ -16,7 +16,9 @@ int main()
     using namespace Neon;
 
     AudioSystem player;
-    player.Play("./neon_void_into.mp3");
+    //player.Play("./neon_void_into.mp3");
+    player.PlayOnce("./neon_void_into.mp3");
+    //player.PlayOnLoop("./neon_void_into.mp3");
 
     // a dramatic pause before opening title
     // honmestly this is only for development until audio is in..
@@ -32,6 +34,7 @@ int main()
 
     if (gameEngine.Initialize(800, 600, "Neon Game")) 
     {
+        player.Update();
         gameEngine.Run(&game);
     }
 

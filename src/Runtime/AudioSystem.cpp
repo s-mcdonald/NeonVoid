@@ -16,7 +16,9 @@
 
 namespace Neon 
 {
-    AudioSystem::AudioSystem() : m_isPlaying(false)
+    AudioSystem::AudioSystem() 
+        : m_isPlaying(false)
+        , m_onLoop(false)
     {
         ma_result result;
         ma_device_config deviceConfig = getDeviceConfig();
@@ -79,6 +81,18 @@ namespace Neon
         m_isPlaying = true;
     }
 
+    void AudioSystem::PlayOnce(const std::string& filename)
+    {
+        m_onLoop = false;
+        Play(filename);
+    }
+
+    void AudioSystem::PlayOnLoop(const std::string& filename)
+    {
+        m_onLoop = true;
+        Play(filename);
+    }
+
     void AudioSystem::Stop() 
     {
         if (!m_isPlaying) 
@@ -92,6 +106,8 @@ namespace Neon
     
         ma_device_stop(&m_device);
         m_isPlaying = false;
+
+        ma_decoder_seek_to_pcm_frame(&m_decoder, 0);
 
         std::cout << "Audio stopped!" << std::endl;
     }
@@ -110,10 +126,12 @@ namespace Neon
         return config;
     }
 
-    void AudioSystem::dataCallback(ma_device* pDevice, void* pOutput, const void* pInput, uint32_t frameCount) {
+    void AudioSystem::dataCallback(ma_device* pDevice, void* pOutput, const void* pInput, uint32_t frameCount) 
+    {
         AudioSystem* player = reinterpret_cast<AudioSystem*>(pDevice->pUserData);
 
-        if (player == nullptr) {
+        if (player == nullptr) 
+        {
             #ifdef NEON_DEBUG_AUDIO
                 std::cerr << "[ERROR] Player is null in callback!" << std::endl;
             #endif
@@ -129,12 +147,45 @@ namespace Neon
         ma_decoder* pDecoder = &player->m_decoder;
         ma_result result = ma_decoder_read_pcm_frames(pDecoder, pOutput, frameCount, NULL);
 
-        if (result != MA_SUCCESS) {
-            #ifdef NEON_DEBUG_AUDIO
-                std::cerr << "[ERROR] Failed to read PCM frames!" << std::endl;
-            #endif
+        switch(result)
+        {
+            case MA_AT_END:
+                if (false == player->m_onLoop) 
+                {
+                    #ifdef NEON_DEBUG_AUDIO
+                        std::cout << "[INFO] Reached end of file, stopping audio." << std::endl;
+                    #endif
+        
+                    player->m_isStopRequested = true;
+                    return;
+                } 
 
-            return;
+                #ifdef NEON_DEBUG_AUDIO
+                    std::cout << "[INFO] Reached end of file, replay because on loop." << std::endl;
+                #endif
+
+                ma_decoder_seek_to_pcm_frame(pDecoder, 0);
+                break;
+            case MA_SUCCESS:
+                break;
+            default:
+                #ifdef NEON_DEBUG_AUDIO
+                    std::cerr << "[ERROR] Failed to read PCM frames!" << std::endl;
+                #endif
+                break;
+        }
+    }
+
+    void AudioSystem::Update() 
+    {
+        if (m_isStopRequested) 
+        {
+            #ifdef NEON_DEBUG_AUDIO
+                std::cerr << "[INFO] Attempting to stop player." << std::endl;
+            #endif
+            
+            Stop();
+            m_isStopRequested = false;
         }
     }
 }

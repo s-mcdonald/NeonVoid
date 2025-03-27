@@ -62,7 +62,10 @@ namespace Neon
 
         public:
             void Play(const std::string& filename);
+            void PlayOnce(const std::string& filename);
+            void PlayOnLoop(const std::string& filename);
             void Stop();
+            void Update();
 
         private:
             ma_device_config getDeviceConfig();
@@ -71,7 +74,9 @@ namespace Neon
         private:
             ma_decoder m_decoder;
             ma_device m_device;
-            bool m_isPlaying{false};            
+            bool m_isPlaying{false};
+            bool m_onLoop{false};
+            bool m_isStopRequested{false};
     };
 
     class GameState
