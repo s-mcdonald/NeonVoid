@@ -18,11 +18,11 @@ namespace Neon
 
     Component::~Component() 
     {
-        std::cout << "Component::Destructor called\n";
-
         if (m_VAO) glDeleteVertexArrays(1, &m_VAO);
         if (m_VBO) glDeleteBuffers(1, &m_VBO);
         if (m_shaderProgram) glDeleteProgram(m_shaderProgram);
+
+        std::cout << "Component::Destructor completed\n";
     }
 
     void Component::Init() 
