@@ -32,7 +32,7 @@ int main()
     // @todo: Nope, this is not how we should configure a game
     LoadGameData(&game, gameEngine);
 
-    if (gameEngine.Initialize(800, 600, "Neon Game")) 
+    if (gameEngine.Initialize(800, 600, "Neon Void (0.0.1)")) 
     {
         player.Update();
         gameEngine.Run(&game);
