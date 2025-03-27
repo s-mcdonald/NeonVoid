@@ -1,0 +1,44 @@
+# Todos
+
+```
+[x] OpenGL/DirectX Abstraction Layer
+[x] Render
+  [x] - Render OGL Window
+  [x] - Render Basic Shader
+  [ ] - Render Shader Component
+[x] Render Basic Shape on a via Shape->Component
+[ ] Input Control
+  [ ] - Keyboard Input (scene)
+  [ ] - Mouse Button Input (scene)
+  [ ] - Mouse Wheel Input (scene)
+[ ] Scoreboard (On Screen display + HUD) - Component
+  [ ] - Player Health
+  [ ] - Player Score
+  [ ] - Player Bonus XP
+  [ ] - Player Toolbelt (Chest)
+[ ] Basic Collision Detecton
+[x] Audio System (initial, needs refactoring)
+  [ ]  - Scene background audio
+  [ ]  - Component Sound effects
+  [ ]  - Custom audio sounds
+[ ] Title Scene
+[ ] Menu Scene  
+[ ] Save / Load Games 
+[ ] Configurable Levels via Yaml
+```
+
+Nice to haves
+
+### Goals (Achievable Nice to haves)
+```
+[ ] Game Engine UI
+  [ ] - Scene building
+```
+
+### Goals (Nice to have but not required)
+```
+[ ] ECS
+[ ] Multi Levels (Multi Scene)
+[ ] Physics Engine
+[ ] DirectX rendering
+```
