@@ -55,8 +55,6 @@ set(OpenGL_GL_PREFERENCE GLVND)
 # Source files
 set(SOURCE_FILES
 
-    include/miniaudio/miniaudio.h
-
     #
     # Main entry file
     #

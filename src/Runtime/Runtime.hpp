@@ -5,14 +5,14 @@
 #pragma once
 
 #include <iostream>
-#include <miniaudio.h>
 #include <functional>
 #include <vector>
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
- 
+#include <miniaudio.h>
+
 namespace Neon 
 {
     class Game;
@@ -42,15 +42,17 @@ namespace Neon
 
         // ya ya.. only temp until I sort out the assignment for the lambda
         public:
-            GLuint m_VAO; 
+            GLuint m_VAO;
             GLuint m_VBO;
             GLuint m_shaderProgram;
         private:
             InitFunction m_initFunc;
             RenderFunction m_renderFunc;
-            std::vector<float> m_vertices;
-
     };
+
+    // More Component Types here .. TextComponent ect..
+    // class TextComponent : public Component;
+    // class Player : public Component;
 
     class AudioSystem 
     {
@@ -58,7 +60,18 @@ namespace Neon
             AudioSystem();
             ~AudioSystem();
 
+        public:
+            void Play(const std::string& filename);
+            void Stop();
+
         private:
+            ma_device_config getDeviceConfig();
+            static void dataCallback(ma_device* pDevice, void* pOutput, const void* pInput, uint32_t frameCount);
+
+        private:
+            ma_decoder m_decoder;
+            ma_device m_device;
+            bool m_isPlaying{false};            
     };
 
     class GameState
@@ -111,6 +124,8 @@ namespace Neon
             bool m_isInitialized = false;
             std::vector<Component*> m_components;
     };
+
+    // define more scenes here... TitleScene ect
 
     class Game
     {
