@@ -5,6 +5,7 @@
 #include <iostream>
 
 #include "NeonFunctions.hpp"
+#include "TitleScene.hpp"
 #include "../../GameEngine/src/Runtime/Runtime.hpp"
 
 void Neon::LoadGameData(Game* game, GameEngine& gameEngine)
@@ -13,43 +14,14 @@ void Neon::LoadGameData(Game* game, GameEngine& gameEngine)
     {
         std::cout << "Entry ==> LoadGameData(game)\n";
 
-        // Approved API
-        // game->setTitleScene(scene, 10sec);
-        // game->SetSceneSelectionMode(Mode::OnlySelectCurrentOrCompletedScenes, Mode::FreeSelectionViaMenu);
+        //Scene* scene = new Scene(gameEngine.GetPlatform());
+        TitleScene* scene = new TitleScene(gameEngine.GetPlatform());
 
-        // On Scene
-        // scene->AddSoundTrack("playback.mp3");
-
-
-        
-
-        // Maybe a nice api fir title screens
-        // This way the title scene is part of the GE and does not have to be manually coded
-        // game->EnableTitleScene(true);
-
-        // game->SetGameShortTitle("AstroVoid");
-        // game->SetGameLongTitle("AstroVoid: Epic battle of Outter Space");
-        // game->SetFont(FontNames::FontA)
-        // game->SetFontSize(FontSizes::FontSize44)
-
-        Scene* scene = new Scene(gameEngine.GetPlatform());
-
-        // KeyBoardInput per scene, so each game level could have diff behaviour
-
-        // the default game->kb controls are requried where the scene is optional
-        // game->SetDefaultKeyboardControls(cb); // if a scene doesnt define, use these controls
-        // scene->SetKeyboardControls(cb); // if there is no default
 
         game->AddScene(scene);
 
         Component* component = new Component();
-        // We need a way to position a component especially if its visual, 
-        // and move it around if need be. Have I done this right ??
 
-
-        // OK, but now we have rendering on the component, but its OGL,
-        // what should the dev do if he wants DX, ??
-        // this I will have to think a bit more :(
         component->SetInitFunction([component]() {
             std::cout << "Initializing component...\n";
 
@@ -115,9 +87,5 @@ void Neon::LoadGameData(Game* game, GameEngine& gameEngine)
 
         AudioComponent* introMusic = new AudioComponent("./neon_void_intro.mp3");
         scene->AddComponent(introMusic);
-
-        //player.Play("./neon_void_into.mp3");
-        //player.PlayOnce("./neon_void_into.mp3");
-        //player.PlayOnLoop("./neon_void_into.mp3");
     }
 }

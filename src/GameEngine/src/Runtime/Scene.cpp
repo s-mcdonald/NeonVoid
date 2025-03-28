@@ -58,11 +58,6 @@ namespace Neon
             x->OnUpdate();
 
         m_platform->TriggerPostRedisplay();
-
-        // hmm do we check for user input here
-        // CheckUserInputControls();
-        // CheckUserSpecialInputControls();
-        // CheckUserMouseControls();
     }
 
     void Scene::AddComponent(Component* component)

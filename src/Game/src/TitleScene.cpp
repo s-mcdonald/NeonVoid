@@ -5,19 +5,24 @@
 #include <cmath>
 
 #include "../../GameEngine/src/Runtime/Runtime.hpp"
+#include "TitleScene.hpp"
 
 namespace Neon
 {
-    class TitleScene : public Scene
+    TitleScene::TitleScene(Platform* platform)
+        : Scene(platform)
     {
-        public:
-            TitleScene(Platform* platform)
-                : Scene(platform) {}
-            ~TitleScene() {}
 
-        public:
-            void OnInit() override {};
-            void OnUpdate() override {};
-            bool IsInitialized() const { return true;};
-    };
+    }
+                
+    TitleScene::~TitleScene()
+    {
+        //
+    }
+
+    void TitleScene::OnUpdate()
+    {     
+        std::cout << "Child \n";
+        //Scene::OnUpdate();
+    }
 }
