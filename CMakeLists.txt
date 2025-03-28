@@ -47,16 +47,16 @@ set(OpenGL_GL_PREFERENCE GLVND)
 # Source files
 #
 set(GAME_ENGINE_SRC
-    GameEngine/src/Runtime/Types.hpp
-    GameEngine/src/Runtime/Game.cpp
-    GameEngine/src/Runtime/GameState.cpp
-    GameEngine/src/Runtime/Scene.cpp
-    GameEngine/src/Runtime/Component.cpp
-    GameEngine/src/Runtime/AudioComponent.cpp
-    GameEngine/src/Runtime/Runtime.hpp
-    GameEngine/src/Runtime/AudioSystem.cpp
-    GameEngine/src/Runtime/Core/Backends/OpenGL.cpp
-    GameEngine/src/Runtime/GameEngine.cpp
+    src/GameEngine/src/Runtime/Types.hpp
+    src/GameEngine/src/Runtime/Game.cpp
+    src/GameEngine/src/Runtime/GameState.cpp
+    src/GameEngine/src/Runtime/Scene.cpp
+    src/GameEngine/src/Runtime/Component.cpp
+    src/GameEngine/src/Runtime/AudioComponent.cpp
+    src/GameEngine/src/Runtime/Runtime.hpp
+    src/GameEngine/src/Runtime/AudioSystem.cpp
+    src/GameEngine/src/Runtime/Core/Backends/OpenGL.cpp
+    src/GameEngine/src/Runtime/GameEngine.cpp
 )
 
 # Create GameEngine as a static library
@@ -70,10 +70,10 @@ set_target_properties(GameEngine PROPERTIES
 
 # GameENgine include directories
 target_include_directories(GameEngine PUBLIC
-    ${CMAKE_SOURCE_DIR}/GameEngine/src
-    ${CMAKE_SOURCE_DIR}/GameEngine/include/stb
-    ${CMAKE_SOURCE_DIR}/GameEngine/include/glm/glm
-    ${CMAKE_SOURCE_DIR}/GameEngine/include/miniaudio
+    ${CMAKE_SOURCE_DIR}/src/GameEngine/src
+    ${CMAKE_SOURCE_DIR}/src/GameEngine/include/stb
+    ${CMAKE_SOURCE_DIR}/src/GameEngine/include/glm/glm
+    ${CMAKE_SOURCE_DIR}/src/GameEngine/include/miniaudio
     ${GLEW_INCLUDE_DIR}
     ${GLEW_INCLUDE_DIRS}
 )
