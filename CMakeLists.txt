@@ -17,11 +17,13 @@ set(NeonBackendSystem OpenGL)   # OpenGL | (Vulkan not yet supported)
 # Warning, dont change below here
 #
 
+set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Configurations" FORCE)
+
 
 #
 # Project name
 #
-project(PROJECT_NAME)
+project("NeonVoid")
 
 #
 # Nice .
@@ -34,7 +36,11 @@ set(${PROJECT_NAME}_PATCH_LEVEL 0)
 set(CMAKE_BUILD_TYPE ${NeonReleaseMode})
 
 # Specify the compiler (g++/c++)
-set(CMAKE_CXX_COMPILER "g++")
+if(WIN32)
+	set(CMAKE_CXX_COMPILER "cl.exe")
+elseif(UNIX)
+	set(CMAKE_CXX_COMPILER "g++")
+endif()
 
 # Set C++ standard
 set(CMAKE_CXX_STANDARD ${NeonCppVersion})
@@ -115,7 +121,12 @@ set(GAME_SRC
 )
 
 # Create the game executable
-add_executable(NeonVoid ${GAME_SRC})
+if(WIN32)
+	add_executable(NeonVoid WIN32 ${GAME_SRC})
+elseif(UNIX)
+	add_executable(NeonVoid ${GAME_SRC})
+endif()
+
 
 # Link GameEngine to the game executable
 target_link_libraries(NeonVoid PRIVATE GameEngine)
