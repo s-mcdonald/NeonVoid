@@ -96,10 +96,10 @@ target_compile_options(GameEngine PRIVATE -Wall -Wextra -Wpedantic)
 # Game - Create the main game executable
 #
 set(GAME_SRC
-    Game/src/GameMain.cpp
-    Game/src/NeonFunctions.hpp
-    Game/src/NeonFunctions.cpp
-    Game/src/TitleScene.cpp
+    src/Game/src/GameMain.cpp
+    src/Game/src/NeonFunctions.hpp
+    src/Game/src/NeonFunctions.cpp
+    src/Game/src/TitleScene.cpp
 )
 
 # Create the game executable
