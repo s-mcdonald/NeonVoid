@@ -20,8 +20,8 @@ namespace Neon
 
     Scene::~Scene() 
     {
-        for (auto x : m_components)
-            delete x;
+        for (auto& [key, component] : m_components)
+            delete component;
         
         #ifdef NEON_DEBUG
             std::cout << "Scene::Destructor called\n";
@@ -37,8 +37,8 @@ namespace Neon
         if (m_isInitialized) 
             return;      
 
-        for (auto x : m_components)
-            x->OnInit();
+        for (auto& [key, component] : m_components)
+            component->OnInit();
 
         m_isInitialized = true;
     }
@@ -54,14 +54,26 @@ namespace Neon
             std::cout << "Scene::Rendering..\n";
         #endif
 
-        for (auto x : m_components)
-            x->OnUpdate();
+        for (auto& [key, component] : m_components)
+            component->OnUpdate();
 
         m_platform->TriggerPostRedisplay();
     }
 
-    void Scene::AddComponent(Component* component)
+    void Scene::AddComponent(const std::string& tag, Component* component)
     {
-        m_components.emplace_back(component);
+        m_components[tag] = component;
+    }
+
+    Component* Scene::GetComponent(const std::string& tag)
+    {
+        if (auto it = m_components.find(tag); it != m_components.end()) 
+        {
+            auto& [key, component] = *it;
+    
+            return component;
+        }
+
+        return nullptr;
     }
 }

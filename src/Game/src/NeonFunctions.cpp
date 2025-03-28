@@ -82,10 +82,10 @@ void Neon::LoadGameData(Game* game, GameEngine& gameEngine)
             glBindVertexArray(0);
         });       
 
-        scene->AddComponent(component);
+        scene->AddComponent("vao.triangle", component);
 
 
         AudioComponent* introMusic = new AudioComponent("./neon_void_intro.mp3");
-        scene->AddComponent(introMusic);
+        scene->AddComponent("aud.intro", introMusic);
     }
 }

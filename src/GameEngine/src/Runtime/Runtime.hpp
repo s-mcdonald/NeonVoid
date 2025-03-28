@@ -7,6 +7,7 @@
 #include <iostream>
 #include <functional>
 #include <vector>
+#include <unordered_map>
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -95,6 +96,7 @@ namespace Neon
         public:
             void OnInit();
             void OnUpdate();
+
         public:
             void TriggerPlayOnce();
             void TriggerPlayRepeat();
@@ -137,13 +139,14 @@ namespace Neon
 
         // Component Management
         public:
-            void AddComponent(Component* component);
+            void AddComponent(const std::string& tag, Component* component);
+            Component* GetComponent(const std::string& tag);
 
         // Members.. ;)
         private:
             Neon::Platform* m_platform{nullptr};
             bool m_isInitialized = false;
-            std::vector<Component*> m_components;
+            std::unordered_map<std::string, Component*> m_components;
     };
 
     // define more scenes here... TitleScene ect
