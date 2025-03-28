@@ -95,6 +95,9 @@ namespace Neon
         public:
             void OnInit();
             void OnUpdate();
+        public:
+            void TriggerPlayOnce();
+            void TriggerPlayRepeat();
 
         private:
             std::string m_filename;    

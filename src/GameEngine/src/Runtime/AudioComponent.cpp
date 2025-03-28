@@ -32,11 +32,21 @@ namespace Neon
     ///
     void AudioComponent::OnInit() 
     {
-        PlayOnce(m_filename);
+        //
     }
 
     void AudioComponent::OnUpdate() 
     {
         //
+    }
+
+    void AudioComponent::TriggerPlayOnce() 
+    {
+        PlayOnce(m_filename);
+    }
+
+    void AudioComponent::TriggerPlayRepeat() 
+    {
+        PlayOnLoop(m_filename);
     }
 }
