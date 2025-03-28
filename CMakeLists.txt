@@ -1,5 +1,5 @@
 #
-# Minimum CMake version required
+# Minimum CMake version (required)
 #
 cmake_minimum_required(VERSION 3.30)
 
@@ -16,108 +16,104 @@ set(NeonCppVersion 20)
 # Warning, dont change below here
 #
 
+
 #
 # Project name
 #
-project(NeonVoid)
+project(PROJECT_NAME)
 
 #
 # Nice .
 #
-SET(${PROJECT_NAME}_MAJOR_VERSION 0)
-SET(${PROJECT_NAME}_MINOR_VERSION 1)
-SET(${PROJECT_NAME}_PATCH_LEVEL 0)
+set(${PROJECT_NAME}_MAJOR_VERSION 0)
+set(${PROJECT_NAME}_MINOR_VERSION 1)
+set(${PROJECT_NAME}_PATCH_LEVEL 0)
 
-
-# Now set the CMake build type using the custom variable
+# Build Mode
 set(CMAKE_BUILD_TYPE ${NeonReleaseMode})
 
-
-
-#
-# Specify the compiler (g++)
-#
+# Specify the compiler (g++/c++)
 set(CMAKE_CXX_COMPILER "g++")
 
-#
 # Set C++ standard
-#
 set(CMAKE_CXX_STANDARD ${NeonCppVersion})
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-
-#
-# Hopefully this dictates the new version of ogl
-#
+# OpenGL Configurations
 set(OpenGL_GL_PREFERENCE GLVND)
 
 
-
+#
 # Source files
-set(SOURCE_FILES
-
-    #
-    # Main entry file
-    #
-    src/Entry.cpp  
-
-    src/Game/NeonFunctions.hpp
-    src/Game/NeonFunctions.cpp
-
-    #
-    # Runtime Files
-    #
-    src/Runtime/Types.hpp
-    src/Runtime/Game.cpp
-    src/Runtime/GameState.cpp
-    src/Runtime/Scene.cpp
-    src/Runtime/Component.cpp
-    src/Runtime/AudioComponent.cpp
-    src/Runtime/Runtime.hpp
-    src/Runtime/AudioSystem.cpp
-    src/Runtime/Core/Backends/OpenGL.cpp
-    src/Runtime/GameEngine.cpp
+#
+set(GAME_ENGINE_SRC
+    GameEngine/src/Runtime/Types.hpp
+    GameEngine/src/Runtime/Game.cpp
+    GameEngine/src/Runtime/GameState.cpp
+    GameEngine/src/Runtime/Scene.cpp
+    GameEngine/src/Runtime/Component.cpp
+    GameEngine/src/Runtime/AudioComponent.cpp
+    GameEngine/src/Runtime/Runtime.hpp
+    GameEngine/src/Runtime/AudioSystem.cpp
+    GameEngine/src/Runtime/Core/Backends/OpenGL.cpp
+    GameEngine/src/Runtime/GameEngine.cpp
 )
 
-#
-# Create the executable (instead of a static library)
-#
-add_executable(NeonVoid ${SOURCE_FILES})
+# Create GameEngine as a static library
+add_library(GameEngine STATIC ${GAME_ENGINE_SRC})
 
+# Set the output name of the GameEngine static library (optional)
+set_target_properties(GameEngine PROPERTIES
+    ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build
+    OUTPUT_NAME "GameEngine"
+)
 
-#
+# GameENgine include directories
+target_include_directories(GameEngine PUBLIC
+    ${CMAKE_SOURCE_DIR}/GameEngine/src
+    ${CMAKE_SOURCE_DIR}/GameEngine/include/stb
+    ${CMAKE_SOURCE_DIR}/GameEngine/include/glm/glm
+    ${CMAKE_SOURCE_DIR}/GameEngine/include/miniaudio
+    ${GLEW_INCLUDE_DIR}
+    ${GLEW_INCLUDE_DIRS}
+)
+
 # Specify libraries to link with (GL, GLU, GLUT)
-#
 find_package(OpenGL REQUIRED)
 find_package(glfw3 REQUIRED)
 find_package(glm REQUIRED)
 find_package(GLEW REQUIRED)
 
-#
-# Specify include directories
-#
-#include_directories(src)
+# Link OpenGL libraries
+target_link_libraries(GameEngine PRIVATE OpenGL::GL glfw ${GLEW_LIBRARY} ${GLEW_LIBRARIES})
 
-include_directories(
-    ${CMAKE_SOURCE_DIR}/src
-    ${CMAKE_SOURCE_DIR}/include/stb
-    ${CMAKE_SOURCE_DIR}/include/glm/glm
-    ${CMAKE_SOURCE_DIR}/include/miniaudio
-    ${GLEW_INCLUDE_DIR}
-    ${GLEW_INCLUDE_DIRS}
+# Enable compiler warnings for GameEngine
+target_compile_options(GameEngine PRIVATE -Wall -Wextra -Wpedantic)
+
+
+
+#
+# Game - Create the main game executable
+#
+set(GAME_SRC
+    Game/src/GameMain.cpp
+    Game/src/NeonFunctions.hpp
+    Game/src/NeonFunctions.cpp
+    Game/src/TitleScene.cpp
 )
 
+# Create the game executable
+add_executable(NeonVoid ${GAME_SRC})
 
-#
-# Link OpenGL libraries
-#
-target_link_libraries(NeonVoid PRIVATE OpenGL::GL glfw ${GLEW_LIBRARY} ${GLEW_LIBRARIES})
+# Link GameEngine to the game executable
+target_link_libraries(NeonVoid PRIVATE GameEngine)
 
-target_compile_options(NeonVoid PRIVATE -Wall -Wextra -Wpedantic)
+# Specify include directories for the Game (can be expanded)
+target_include_directories(NeonVoid PRIVATE 
+    ${CMAKE_SOURCE_DIR}/Game/include
+)
 
-#
 # Debug Preprocessor values
-#
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     target_compile_definitions(
         NeonVoid PRIVATE 
