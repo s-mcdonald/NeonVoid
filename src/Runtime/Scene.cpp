@@ -9,10 +9,13 @@
 namespace Neon
 {
     Scene::Scene(Platform* platform) 
-        : IRenderable()
+        : IComponent()
+        , IRenderable()
         , m_platform(platform)
     {
-        std::cout << "Scene::Constructor called\n";
+        #ifdef NEON_DEBUG
+            std::cout << "Scene::Constructor called\n";
+        #endif
     }
 
     Scene::~Scene() 
@@ -20,13 +23,17 @@ namespace Neon
         for (auto x : m_components)
             delete x;
         
-        std::cout << "Scene::Destructor called\n";
+        #ifdef NEON_DEBUG
+            std::cout << "Scene::Destructor called\n";
+        #endif
     }
 
     void Scene::OnInit()
     {
-        std::cout << "Scene::Init() [IRenderable]\n";
-
+        #ifdef NEON_DEBUG
+            std::cout << "Scene::Init()\n";
+        #endif
+        
         if (m_isInitialized) 
             return;      
 
@@ -43,12 +50,19 @@ namespace Neon
 
     void Scene::OnUpdate()
     {       
-        std::cout << "Scene::Rendering..\n";
+        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
+            std::cout << "Scene::Rendering..\n";
+        #endif
 
         for (auto x : m_components)
             x->OnUpdate();
 
         m_platform->TriggerPostRedisplay();
+
+        // hmm do we check for user input here
+        // CheckUserInputControls();
+        // CheckUserSpecialInputControls();
+        // CheckUserMouseControls();
     }
 
     void Scene::AddComponent(Component* component)

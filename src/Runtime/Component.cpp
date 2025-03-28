@@ -9,11 +9,13 @@
 namespace Neon 
 {
     Component::Component() 
-        : IRenderable()
+        : IComponent()
         , m_VAO(0)
         , m_VBO(0)
     {
-        std::cout << "Component::Constructor called\n";
+        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
+            std::cout << "Component::Constructor called\n";
+        #endif
     }
 
     Component::~Component() 
@@ -22,7 +24,9 @@ namespace Neon
         if (m_VBO) glDeleteBuffers(1, &m_VBO);
         if (m_shaderProgram) glDeleteProgram(m_shaderProgram);
 
-        std::cout << "Component::Destructor completed\n";
+        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
+            std::cout << "Component::Destructor completed\n";
+        #endif
     }
 
     void Component::OnInit() 

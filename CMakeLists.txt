@@ -67,6 +67,7 @@ set(SOURCE_FILES
     #
     # Runtime Files
     #
+    src/Runtime/Types.hpp
     src/Runtime/Game.cpp
     src/Runtime/GameState.cpp
     src/Runtime/Scene.cpp
@@ -118,7 +119,12 @@ target_compile_options(NeonVoid PRIVATE -Wall -Wextra -Wpedantic)
 # Debug Preprocessor values
 #
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-    target_compile_definitions(NeonVoid PRIVATE NEON_DEBUG_AUDIO)
+    target_compile_definitions(
+        NeonVoid PRIVATE 
+        NEON_DEBUG
+        NEON_DEBUG_VERBOSE
+        NEON_DEBUG_AUDIO
+    )
 else()
 
 endif()

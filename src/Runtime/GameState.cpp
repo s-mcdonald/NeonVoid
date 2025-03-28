@@ -9,11 +9,15 @@ namespace Neon
 {
     GameState::GameState()
     {
-        std::cout << "GameState::Constructor called\n";
+        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
+            std::cout << "GameState::Constructor called\n";
+        #endif
     }
 
     GameState::~GameState() 
     {
-        std::cout << "GameState::Destructor called\n";
+        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
+            std::cout << "GameState::Destructor called\n";
+        #endif
     }
 }

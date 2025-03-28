@@ -31,7 +31,9 @@ namespace Neon
             #endif
         }
 
-        std::cout << "AudioSystem::Constructor completed\n";
+        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_AUDIO)
+            std::cout << "AudioSystem::Constructor completed\n";
+        #endif
     }
 
     AudioSystem::~AudioSystem() 
@@ -44,7 +46,9 @@ namespace Neon
         ma_decoder_uninit(&m_decoder);
         ma_device_uninit(&m_device);
 
-        std::cout << "AudioSystem::Destructor completed\n";
+        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_AUDIO)
+            std::cout << "AudioSystem::Destructor completed\n";
+        #endif
     }
 
     void AudioSystem::Play(const std::string& filename) 
@@ -109,7 +113,9 @@ namespace Neon
 
         ma_decoder_seek_to_pcm_frame(&m_decoder, 0);
 
-        std::cout << "Audio stopped!" << std::endl;
+        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_AUDIO)
+            std::cout << "Audio stopped!" << std::endl;
+        #endif
     }
 
     ma_device_config AudioSystem::getDeviceConfig() 
@@ -124,6 +130,13 @@ namespace Neon
     
         return config;
     }
+
+    // We may want to change volume at some point
+    // void AudioSystem::SetVolume(Volume v)
+    // {
+    //     auto x* = ma_device_get_master_volume(m_device);
+    //     ma_device_set_master_volume_db(ma_device* pDevice, float gainDB)
+    // }
 
     void AudioSystem::dataCallback(ma_device* pDevice, void* pOutput, [[maybe_unused]] const void* pInput, uint32_t frameCount) 
     {

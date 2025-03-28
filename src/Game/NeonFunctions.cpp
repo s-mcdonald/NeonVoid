@@ -97,7 +97,10 @@ void Neon::LoadGameData(Game* game, GameEngine& gameEngine)
         });
     
         component->SetRenderFunction([component]() {
-            std::cout << "Rendering component...\n";
+
+            #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
+                std::cout << "Rendering component...\n";
+            #endif
 
             glClear(GL_COLOR_BUFFER_BIT);
     
@@ -109,5 +112,13 @@ void Neon::LoadGameData(Game* game, GameEngine& gameEngine)
         });       
 
         scene->AddComponent(component);
+
+
+        AudioComponent* introMusic = new AudioComponent("./neon_void_into.mp3");
+        scene->AddComponent(introMusic);
+
+        //player.Play("./neon_void_into.mp3");
+        //player.PlayOnce("./neon_void_into.mp3");
+        //player.PlayOnLoop("./neon_void_into.mp3");
     }
 }

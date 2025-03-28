@@ -14,12 +14,16 @@ namespace Neon
         : Platform()
         , m_window(nullptr) 
     {
-        std::cout << "OpenGL::Constructor called\n";
+        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
+            std::cout << "OpenGL::Constructor called\n";
+        #endif
     }
 
     OpenGL::~OpenGL() 
     {
-        std::cout << "OpenGL::Destructor called\n";
+        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
+            std::cout << "OpenGL::Destructor called\n";
+        #endif
 
         if (m_window) 
         {
@@ -35,7 +39,10 @@ namespace Neon
     {
         if (!glfwInit()) 
         {
-            std::cerr << "Failed to initialize GLFW!\n";
+            #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
+                std::cerr << "Failed to initialize GLFW!\n";
+            #endif
+            
             return false;
         }
 
@@ -53,7 +60,8 @@ namespace Neon
 
         glfwMakeContextCurrent(m_window);
 
-        if (glewInit() != GLEW_OK) {
+        if (glewInit() != GLEW_OK) 
+        {
             std::cerr << "Failed to initialize GLEW!" << std::endl;
             return false;
         }
@@ -110,10 +118,14 @@ namespace Neon
     
         GLint success;
         glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
-        if (!success) {
+        if (!success) 
+        {
             char infoLog[512];
             glGetShaderInfoLog(shader, 512, nullptr, infoLog);
-            std::cerr << "Shader compilation failed: " << infoLog << std::endl;
+
+            #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
+                std::cerr << "Shader compilation failed: " << infoLog << std::endl;
+            #endif
         }
         return shader;
     }
@@ -130,13 +142,16 @@ namespace Neon
     
         GLint success;
         glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
-        if (!success) {
+        if (!success) 
+        {
             char infoLog[512];
             glGetProgramInfoLog(shaderProgram, 512, nullptr, infoLog);
-            std::cerr << "Program linking failed: " << infoLog << std::endl;
+            #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
+                std::cerr << "Program linking failed: " << infoLog << std::endl;
+            #endif
         }
     
-        glDeleteShader(vertexShader);  // Cleanup after linking
+        glDeleteShader(vertexShader);
         glDeleteShader(fragmentShader);
     
         return shaderProgram;

@@ -9,7 +9,9 @@ namespace Neon
 {
     GameEngine::GameEngine() : m_platform(nullptr)
     {
-        std::cout << "GameEngine::Constructor called\n";
+        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
+            std::cout << "GameEngine::Constructor called\n";
+        #endif
 
         // On the heap you go
         m_platform = new Neon::OpenGL();
@@ -17,7 +19,9 @@ namespace Neon
 
     GameEngine::~GameEngine() 
     {
-        std::cout << "GameEngine::Destructor called\n";
+        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
+            std::cout << "GameEngine::Destructor called\n";
+        #endif
 
         delete m_platform;
     }

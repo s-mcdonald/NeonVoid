@@ -17,18 +17,48 @@ namespace Neon
 {
     class Game;
 
+    class AudioSystem 
+    {
+        public:
+            AudioSystem();
+            ~AudioSystem();
+
+        public:
+            virtual void Play(const std::string& filename);
+            virtual void PlayOnce(const std::string& filename);
+            virtual void PlayOnLoop(const std::string& filename);
+            virtual void Stop();
+            virtual void Update();
+
+        private:
+            ma_device_config getDeviceConfig();
+            static void dataCallback(ma_device* pDevice, void* pOutput, const void* pInput, uint32_t frameCount);
+
+        private:
+            ma_decoder m_decoder;
+            ma_device m_device;
+            bool m_isPlaying{false};
+            bool m_onLoop{false};
+            bool m_isStopRequested{false};
+    };
+
     using InitFunction = std::function<void()>;
     using RenderFunction = std::function<void()>;
 
     class IRenderable
     {
+        //
+    };
+
+    class IComponent
+    {
         public:
-            virtual ~IRenderable() = default;
+            virtual ~IComponent() = default;
             virtual void OnInit() = 0;
             virtual void OnUpdate() = 0;
     };
 
-    class Component : public IRenderable
+    class Component : public IComponent
     {
         public:
             Component();
@@ -54,35 +84,12 @@ namespace Neon
     // class TextComponent : public Component;
     // class Player : public Component;
 
-    class AudioSystem 
+    class AudioComponent 
+        : public Component
+        , public AudioSystem
     {
         public:
-            AudioSystem();
-            ~AudioSystem();
-
-        public:
-            void Play(const std::string& filename);
-            void PlayOnce(const std::string& filename);
-            void PlayOnLoop(const std::string& filename);
-            void Stop();
-            void Update();
-
-        private:
-            ma_device_config getDeviceConfig();
-            static void dataCallback(ma_device* pDevice, void* pOutput, const void* pInput, uint32_t frameCount);
-
-        private:
-            ma_decoder m_decoder;
-            ma_device m_device;
-            bool m_isPlaying{false};
-            bool m_onLoop{false};
-            bool m_isStopRequested{false};
-    };
-
-    class AudioComponent : public Component 
-    {
-        public:
-            AudioComponent();
+            AudioComponent(const std::string& filename);
             ~AudioComponent();
 
         public:
@@ -90,8 +97,8 @@ namespace Neon
             void OnUpdate();
 
         private:
-            bool m_repeats{false};
-            std::string m_filename;
+            std::string m_filename;    
+            bool m_repeats;
     };
 
     class GameState
@@ -112,7 +119,7 @@ namespace Neon
             virtual void TriggerPostRedisplay() = 0;
     };
 
-    class Scene : public IRenderable
+    class Scene : public IComponent, public IRenderable
     {
         public:
             Scene() = delete;
