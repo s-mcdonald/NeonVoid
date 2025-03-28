@@ -23,6 +23,6 @@ namespace Neon
     void TitleScene::OnUpdate()
     {     
         std::cout << "Child \n";
-        //Scene::OnUpdate();
+        Scene::OnUpdate();
     }
 }
