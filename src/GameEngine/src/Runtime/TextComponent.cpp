@@ -10,6 +10,7 @@ namespace Neon
 {
     TextComponent::TextComponent(const std::string& text, int fontSize) 
         : Component()
+        , IRenderable()
         , m_text(text)
         , m_fontSize(fontSize)
     {

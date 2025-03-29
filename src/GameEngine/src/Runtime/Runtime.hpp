@@ -116,7 +116,7 @@ namespace Neon
             bool m_repeats;
     };
 
-    class TextComponent : public Component
+    class TextComponent : public Component, public IRenderable
     {
         public:
             TextComponent(const std::string& text, int fontSize = 12);
