@@ -118,6 +118,26 @@ namespace Neon
         #endif
     }
 
+    void AudioSystem::Update() 
+    {
+        if (m_isStopRequested) 
+        {
+            #ifdef NEON_DEBUG_AUDIO
+                std::cerr << "[INFO] Attempting to stop player." << std::endl;
+            #endif
+            
+            Stop();
+            m_isStopRequested = false;
+        }
+    }
+
+    void AudioSystem::SetVolume([[ maybe_unused ]]const Volume& volume) 
+    {
+        #ifdef NEON_DEBUG_AUDIO
+            std::cerr << "[INFO] Set volume..." << std::endl;
+        #endif
+    }
+
     ma_device_config AudioSystem::getDeviceConfig() 
     {
         ma_device_config config = ma_device_config_init(ma_device_type_playback);
@@ -185,19 +205,6 @@ namespace Neon
                     std::cerr << "[ERROR] Failed to read PCM frames!" << std::endl;
                 #endif
                 break;
-        }
-    }
-
-    void AudioSystem::Update() 
-    {
-        if (m_isStopRequested) 
-        {
-            #ifdef NEON_DEBUG_AUDIO
-                std::cerr << "[INFO] Attempting to stop player." << std::endl;
-            #endif
-            
-            Stop();
-            m_isStopRequested = false;
         }
     }
 }

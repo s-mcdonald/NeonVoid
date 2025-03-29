@@ -49,4 +49,9 @@ namespace Neon
     {
         PlayOnLoop(m_filename);
     }
+
+    void AudioComponent::SetVolume(const Volume& volume) 
+    {
+        AudioSystem::SetVolume(volume);
+    }
 }

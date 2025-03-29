@@ -5,6 +5,7 @@
 #pragma once
 
 #include <iostream>
+#include <stdexcept>
 #include <cstdint>
 
 namespace Neon 
@@ -12,12 +13,12 @@ namespace Neon
     class Volume
     {
         public:
-            constexpr Volume(const uint8_t volume) : m_volume(volume) 
+            Volume(uint8_t volume) : m_volume(volume) 
             {
-                static_assert(volume >= 0 && volume <= 100, "Volume must be between 0 and 100");
+               //static_assert(volume <= 100, "Volume must be between 0 and 100");
             }
         
-            int GetVolume() const 
+            uint8_t GetVolume() const 
             {
                 return m_volume;
             }
