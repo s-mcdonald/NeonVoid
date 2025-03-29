@@ -93,9 +93,12 @@ target_include_directories(GameEngine PUBLIC
     ${CMAKE_SOURCE_DIR}/src/GameEngine/include/stb
     ${CMAKE_SOURCE_DIR}/src/GameEngine/include/glm/glm
     ${CMAKE_SOURCE_DIR}/src/GameEngine/include/miniaudio
-    ${GLEW_INCLUDE_DIR}
-    ${GLEW_INCLUDE_DIRS}
 )
+
+# removed inc dirs
+# ${GLEW_INCLUDE_DIR}
+# ${GLEW_INCLUDE_DIRS}
+
 
 # Specify libraries to link with (GL, GLU, GLUT)
 find_package(OpenGL REQUIRED)
