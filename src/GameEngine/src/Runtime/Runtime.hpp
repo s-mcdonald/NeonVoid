@@ -8,6 +8,7 @@
 #include <functional>
 #include <vector>
 #include <unordered_map>
+#include <deque>
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -231,12 +232,12 @@ namespace Neon
 
         public:
             void AddScene(Scene* scene);
-
             Scene* GetCurrentScene();
+            void SwitchScene();
 
         private:
             GameState* m_gameState{nullptr};
-            std::vector<Scene*> m_scenes;
+            std::deque<Scene*> m_scenes;
     };
 
     class OpenGL : public Platform

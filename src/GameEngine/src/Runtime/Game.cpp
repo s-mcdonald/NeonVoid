@@ -3,6 +3,7 @@
  */
 
 #include <iostream>
+#include <deque>
 
 #include "Runtime/Runtime.hpp"
 
@@ -30,11 +31,22 @@ namespace Neon
 
     void Game::AddScene(Scene* scene)
     {
-        m_scenes.emplace_back(scene);
+        m_scenes.push_back(scene);
     }
 
     Scene* Game::GetCurrentScene()
     {
-        return m_scenes.at(0);
+        return m_scenes.empty() ? nullptr : m_scenes.front();
+    }
+
+    void Game::SwitchScene()
+    {
+        if (!m_scenes.empty())
+        {
+            Scene* currentScene = m_scenes.front();
+            m_scenes.pop_front();
+
+            delete currentScene;
+        }
     }
 }
