@@ -87,5 +87,8 @@ void Neon::LoadGameData(Game* game, GameEngine& gameEngine)
 
         AudioComponent* introMusic = new AudioComponent("./neon_void_intro.mp3");
         scene->AddComponent("aud.intro", introMusic);
+
+        TextComponent* titleText = new TextComponent("Neon Void: A Saga", 16);
+        scene->AddComponent("text.title", titleText);
     }
 }
