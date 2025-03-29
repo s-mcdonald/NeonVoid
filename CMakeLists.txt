@@ -63,6 +63,7 @@ set(GAME_ENGINE_SRC
     
     # Audio
     src/GameEngine/src/Runtime/Audio/Volume.hpp
+    src/GameEngine/src/Runtime/Audio/AudioSystem.hpp
     src/GameEngine/src/Runtime/Audio/AudioSystem.cpp
 
     # Components
