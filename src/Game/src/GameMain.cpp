@@ -13,6 +13,16 @@
  int main()
  {
      using namespace Neon;
+
+     // once initialized, game will load from its working/launch dir, load scenes ect.
+     //  Eseentially this is the only code I want in entry.
+     // Game game; 
+     // if (game.Initialize()) 
+     // {
+     //    game.Run();
+     // }
+
+
  
      Game game;
      GameEngine gameEngine;
