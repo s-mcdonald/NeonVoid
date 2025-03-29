@@ -9,7 +9,7 @@
 namespace Neon 
 {
     // AudioConfig config
-    TextComponent::TextComponent(const std::string& text, int fontSize = 12) 
+    TextComponent::TextComponent(const std::string& text, int fontSize) 
         : Component()
         , m_text(text)
         , m_fontSize(fontSize)

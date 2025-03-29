@@ -53,6 +53,7 @@ set(GAME_ENGINE_SRC
     src/GameEngine/src/Runtime/Scene.cpp
     src/GameEngine/src/Runtime/Component.cpp
     src/GameEngine/src/Runtime/AudioComponent.cpp
+    src/GameEngine/src/Runtime/TextComponent.cpp
     src/GameEngine/src/Runtime/Runtime.hpp
     src/GameEngine/src/Runtime/AudioSystem.cpp
     src/GameEngine/src/Runtime/GameEngine.cpp
