@@ -8,8 +8,6 @@
 
 namespace Neon 
 {
-   // typedef float Volume;
-
    struct AudioConfig {
       bool repeat = false;
       bool onInit = false;
@@ -20,6 +18,6 @@ namespace Neon
    typedef struct {
       uint16_t x;
       uint16_t y;
-  } Point;
+   } Point;
 }
 
