@@ -51,6 +51,12 @@ namespace Neon
     using InitFunction = std::function<void()>;
     using RenderFunction = std::function<void()>;
 
+    /******************************************** 
+     *                                          *
+     *           C O M P O N E N T S            *
+     *                                          *
+     ********************************************/
+
     class IRenderable
     {
         //
@@ -86,10 +92,6 @@ namespace Neon
             RenderFunction m_renderFunc;
     };
 
-    // More Component Types here .. TextComponent ect..
-    // class TextComponent : public Component;
-    // class Player : public Component;
-
     class AudioComponent 
         : public Component
         , public AudioSystem
@@ -113,6 +115,33 @@ namespace Neon
             std::string m_filename;    
             bool m_repeats;
     };
+
+    class TextComponent : public Component
+    {
+        public:
+            TextComponent(const std::string& text, int fontSize = 12);
+            ~TextComponent();
+    
+        public:
+            const std::string& GetText() const;
+            void SetText(const std::string& text);
+    
+            int GetFontSize() const;
+            void SetFontSize(int fontSize);
+
+            void OnInit() override;
+            void OnUpdate() override;
+    
+        private:
+            std::string m_text;
+            int m_fontSize;
+    };
+
+    /******************************************** 
+     *                                          *
+     *          G A M E - C O N T R O L         *
+     *                                          *
+     ********************************************/
 
     class GameState
     {
