@@ -15,7 +15,7 @@ void Neon::LoadGameData(Game* game, GameEngine& gameEngine)
         std::cout << "Entry ==> LoadGameData(game)\n";
 
         //Scene* scene = new Scene(gameEngine.GetPlatform());
-        TitleScene* scene = new TitleScene(gameEngine.GetPlatform());
+        TitleScene* scene = new TitleScene(SceneType::Gameplay, gameEngine.GetPlatform());
 
         game->AddScene(scene);
 

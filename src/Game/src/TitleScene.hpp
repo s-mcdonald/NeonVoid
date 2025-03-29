@@ -10,7 +10,7 @@ namespace Neon
     class TitleScene : public Scene
     {
         public:
-            TitleScene(Platform* platform);
+            TitleScene(SceneType type, Platform* platform);
             ~TitleScene();
 
             void OnUpdate();

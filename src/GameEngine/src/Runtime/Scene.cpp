@@ -8,9 +8,10 @@
 
 namespace Neon
 {
-    Scene::Scene(Platform* platform) 
+    Scene::Scene(SceneType type, Platform* platform) 
         : IComponent()
         , IRenderable()
+        , m_scene_type(type)
         , m_platform(platform)
     {
         #ifdef NEON_DEBUG
@@ -75,5 +76,10 @@ namespace Neon
         }
 
         return nullptr;
+    }
+
+    SceneType Scene::GetSceneType() const
+    {
+        return m_scene_type;
     }
 }

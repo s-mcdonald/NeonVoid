@@ -9,8 +9,8 @@
 
 namespace Neon
 {
-    TitleScene::TitleScene(Platform* platform)
-        : Scene(platform)
+    TitleScene::TitleScene(SceneType type, Platform* platform)
+        : Scene(type, platform)
     {
         //
     }

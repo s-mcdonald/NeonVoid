@@ -201,22 +201,21 @@ namespace Neon
     {
         public:
             Scene() = delete;
-            Scene(Platform* platform);
+            Scene(SceneType type, Platform* platform);
             ~Scene();
 
-        // OpenGL Hooks
         public:
             void OnInit() override;
             void OnUpdate() override;
             bool IsInitialized() const;
 
-        // Component Management
         public:
             void AddComponent(const std::string& tag, Component* component);
             Component* GetComponent(const std::string& tag);
+            SceneType GetSceneType() const;
 
-        // Members.. ;)
         private:
+            SceneType m_scene_type;
             Neon::Platform* m_platform{nullptr};
             bool m_isInitialized = false;
             std::unordered_map<std::string, Component*> m_components;
