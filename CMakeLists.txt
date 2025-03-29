@@ -123,6 +123,13 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
         NEON_DEBUG_VERBOSE
         NEON_DEBUG_AUDIO
     )
+
+    target_compile_definitions(
+        GameEngine PRIVATE 
+        NEON_DEBUG
+        NEON_DEBUG_VERBOSE
+        NEON_DEBUG_AUDIO
+    )
 else()
 
 endif()
