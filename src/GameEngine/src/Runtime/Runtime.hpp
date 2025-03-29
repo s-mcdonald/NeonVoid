@@ -15,6 +15,7 @@
 #include <miniaudio.h>
 
 #include "Types.hpp"
+#include "Audio/Volume.hpp"
 
 namespace Neon 
 {
@@ -32,6 +33,8 @@ namespace Neon
             virtual void PlayOnLoop(const std::string& filename);
             virtual void Stop();
             virtual void Update();
+
+            void SetVolume(const Volume& volume);
 
         private:
             ma_device_config getDeviceConfig();
@@ -102,6 +105,9 @@ namespace Neon
         public:
             void TriggerPlayOnce();
             void TriggerPlayRepeat();
+
+        public:
+            void SetVolume(const Volume& volume);
 
         private:
             std::string m_filename;    
