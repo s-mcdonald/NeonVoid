@@ -57,7 +57,8 @@ set(GAME_ENGINE_SRC
     src/GameEngine/src/Runtime/Runtime.hpp
     src/GameEngine/src/Runtime/AudioSystem.cpp
     src/GameEngine/src/Runtime/GameEngine.cpp
-    src/GameEngine/src/Runtime/Core/Backends/OpenGL.cpp
+    src/GameEngine/src/Runtime/Core/Backends/OpenGL/OpenGL.cpp
+    src/GameEngine/src/Runtime/Core/Backends/OpenGL/OpenGLRenderer.cpp
     src/GameEngine/src/Runtime/Audio/Volume.hpp
 )
 

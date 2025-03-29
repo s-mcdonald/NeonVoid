@@ -139,6 +139,41 @@ namespace Neon
 
     /******************************************** 
      *                                          *
+     *          A P I    R E N D E R E R        *
+     *                                          *
+     ********************************************/
+
+     class IRenderer
+     {
+        public:
+            virtual void RenderText(const TextComponent& component) = 0;
+            virtual void RenderTriangle(float x1, float y1, float x2, float y2, float x3, float y3, const Color& color) = 0;
+     };
+ 
+     class OpenGLRenderer : public IRenderer
+     {
+        public:
+            OpenGLRenderer() = default;
+            ~OpenGLRenderer() = default;
+        public:
+            void RenderText(const TextComponent& component) override;
+            void RenderTriangle(float x1, float y1, float x2, float y2, float x3, float y3, const Color& color);
+     };
+
+#ifdef NEON_BUILD_VULKAN
+     class VulkanRenderer : public IRenderer
+     {
+        public:
+            OpenGLRenderer() = default;
+            ~OpenGLRenderer() = default;
+        public:
+            void RenderText(const TextComponent& component) override;
+            void RenderTriangle(float x1, float y1, float x2, float y2, float x3, float y3, const Color& color);
+     };
+#endif
+
+    /******************************************** 
+     *                                          *
      *          G A M E - C O N T R O L         *
      *                                          *
      ********************************************/
