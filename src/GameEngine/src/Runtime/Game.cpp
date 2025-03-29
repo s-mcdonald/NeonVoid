@@ -39,6 +39,10 @@ namespace Neon
         return m_scenes.empty() ? nullptr : m_scenes.front();
     }
 
+    // @todo:
+    // we need to be able to remove the OnINit() call from the main game loop
+    // and trigger this switch scene func.
+    // so far this func does not get called.
     void Game::SwitchScene()
     {
         if (!m_scenes.empty())
@@ -46,7 +50,11 @@ namespace Neon
             Scene* currentScene = m_scenes.front();
             m_scenes.pop_front();
 
-            delete currentScene;
+            if (false == currentScene->IsInitialized())
+            {
+                currentScene->OnInit();
+                std::cout << "Scene initialized in run loop\n";
+            }
         }
     }
 }
