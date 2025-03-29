@@ -13,10 +13,13 @@ namespace Neon
     OpenGL::OpenGL() 
         : Platform()
         , m_window(nullptr) 
+        , m_renderer(nullptr)
     {
         #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
             std::cout << "OpenGL::Constructor called\n";
         #endif
+
+        m_renderer = new OpenGLRenderer();
     }
 
     OpenGL::~OpenGL() 
@@ -24,6 +27,8 @@ namespace Neon
         #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
             std::cout << "OpenGL::Destructor called\n";
         #endif
+
+        delete m_renderer;
 
         if (m_window) 
         {
@@ -106,6 +111,11 @@ namespace Neon
         glfwPostEmptyEvent();
     }
     
+    IRenderer* OpenGL::GetRenderer()
+    {
+        return m_renderer;
+    }
+
     ///
     /// Statics
     ///

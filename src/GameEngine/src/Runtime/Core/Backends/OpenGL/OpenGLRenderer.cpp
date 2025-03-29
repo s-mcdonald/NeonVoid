@@ -10,6 +10,20 @@
 
 namespace Neon 
 {
+    OpenGLRenderer::OpenGLRenderer() 
+    {
+        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
+            std::cout << "OpenGLRenderer::Constructor called\n";
+        #endif
+    }
+
+    OpenGLRenderer::~OpenGLRenderer() 
+    {
+        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
+            std::cout << "OpenGLRenderer::~Destructor called\n";
+        #endif
+    }
+
     void OpenGLRenderer::RenderText(const TextComponent& component)
     {
         #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)

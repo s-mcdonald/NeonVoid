@@ -20,7 +20,6 @@ namespace Neon
         #ifdef NEON_BUILD_VULKAN
             m_platform = new Neon::OpenGL();
         #endif
-
     }
 
     GameEngine::~GameEngine() 

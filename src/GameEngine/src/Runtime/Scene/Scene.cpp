@@ -56,7 +56,16 @@ namespace Neon
         #endif
 
         for (auto& [key, component] : m_components)
+        {
             component->OnUpdate();
+
+            if (dynamic_cast<TextComponent*>(component))
+            {
+               // const auto* c = dynamic_cast<TextComponent*>(component);
+               // m_platform->GetRenderer()->RenderText(*c);
+               // OpenGLRenderer::RenderText(component);
+            }
+        }
 
         m_platform->TriggerPostRedisplay();
     }

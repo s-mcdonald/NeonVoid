@@ -154,8 +154,8 @@ namespace Neon
      class OpenGLRenderer : public IRenderer
      {
         public:
-            OpenGLRenderer() = default;
-            ~OpenGLRenderer() = default;
+            OpenGLRenderer();
+            ~OpenGLRenderer();
         public:
             void RenderText(const TextComponent& component) override;
             void RenderTriangle(float x1, float y1, float x2, float y2, float x3, float y3, const Color& color);
@@ -191,9 +191,13 @@ namespace Neon
         public:
             Platform() = default;
             virtual ~Platform() = default;
+
         public:
             virtual bool Initialize(int width, int height, const char* title) = 0;
             virtual void Run(Game* game) = 0;
+
+        public:
+            virtual IRenderer* GetRenderer() = 0;
             virtual void TriggerPostRedisplay() = 0;
     };
 
@@ -252,12 +256,15 @@ namespace Neon
             static GLuint CompileShader(const char* source, GLenum shaderType);
             static GLuint CreateShaderProgram(const char* vertexSource, const char* fragmentSource);
 
+            IRenderer* GetRenderer() override;
+
         protected:
             void TriggerPostRedisplay() override;
 
         protected:
             GLFWwindow* m_window;
             bool m_openGlInitialized = false;
+            IRenderer* m_renderer;
     };
 
     class GameEngine
