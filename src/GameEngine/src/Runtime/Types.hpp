@@ -25,5 +25,13 @@ namespace Neon
       uint16_t x;
       uint16_t y;
    } Point;
+
+   enum class SceneType
+   {
+      Title = 0,
+      Menu,
+      Gameplay,
+      Pause
+   };
 }
 
