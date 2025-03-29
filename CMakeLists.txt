@@ -8,8 +8,9 @@ cmake_minimum_required(VERSION 3.30)
 # Configurable Options
 #
 set(PROJECT_NAME NeonVoid)
-set(NeonReleaseMode Debug)
-set(NeonCppVersion 20)
+set(NeonReleaseMode Debug)      # Release | Debug | (Dist not supported)
+set(NeonCppVersion 20)          # 20 | 23 
+set(NeonBackendSystem OpenGL)   # OpenGL | (Vulkan not yet supported)
 
 
 #
@@ -50,16 +51,24 @@ set(GAME_ENGINE_SRC
     src/GameEngine/src/Runtime/Types.hpp
     src/GameEngine/src/Runtime/Game.cpp
     src/GameEngine/src/Runtime/GameState.cpp
-    src/GameEngine/src/Runtime/Scene.cpp
-    src/GameEngine/src/Runtime/Component.cpp
-    src/GameEngine/src/Runtime/AudioComponent.cpp
-    src/GameEngine/src/Runtime/TextComponent.cpp
+    
+    # Scene(s)
+    src/GameEngine/src/Runtime/Scene/Scene.cpp
+    
+    # Audio
+    src/GameEngine/src/Runtime/Audio/Volume.hpp
+    src/GameEngine/src/Runtime/Audio/AudioSystem.cpp
+
+    # Components
+    src/GameEngine/src/Runtime/Components/Component.cpp
+    src/GameEngine/src/Runtime/Components/AudioComponent.cpp
+    src/GameEngine/src/Runtime/Components/TextComponent.cpp
+
     src/GameEngine/src/Runtime/Runtime.hpp
-    src/GameEngine/src/Runtime/AudioSystem.cpp
     src/GameEngine/src/Runtime/GameEngine.cpp
     src/GameEngine/src/Runtime/Core/Backends/OpenGL/OpenGL.cpp
     src/GameEngine/src/Runtime/Core/Backends/OpenGL/OpenGLRenderer.cpp
-    src/GameEngine/src/Runtime/Audio/Volume.hpp
+    
 )
 
 # Create GameEngine as a static library
@@ -116,6 +125,16 @@ target_include_directories(NeonVoid PRIVATE
     ${CMAKE_SOURCE_DIR}/Game/include
 )
 
+
+
+if(NeonBackendSystem STREQUAL "OpenGL")        
+    set(NEON_BACKEND_GPU_LIB NEON_BUILD_OPENGL)
+endif()
+
+if(NeonBackendSystem STREQUAL "Vulkan")        
+    set(NEON_BACKEND_GPU_LIB NEON_BUILD_VULKAN)
+endif()
+
 # Debug Preprocessor values
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     target_compile_definitions(
@@ -123,6 +142,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
         NEON_DEBUG
         NEON_DEBUG_VERBOSE
         NEON_DEBUG_AUDIO
+        ${NEON_BACKEND_GPU_LIB}
     )
 
     target_compile_definitions(
@@ -130,9 +150,18 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
         NEON_DEBUG
         NEON_DEBUG_VERBOSE
         NEON_DEBUG_AUDIO
+        ${NEON_BACKEND_GPU_LIB}
     )
 else()
+    target_compile_definitions(
+        NeonVoid PRIVATE 
+        ${NEON_BACKEND_GPU_LIB}
+    )
 
+    target_compile_definitions(
+        GameEngine PRIVATE 
+        ${NEON_BACKEND_GPU_LIB}
+    )
 endif()
 
 
