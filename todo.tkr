@@ -19,6 +19,7 @@
   [ ] - Player Score
   [ ] - Player Bonus XP
   [ ] - Player Toolbelt (Chest)
+[x] Entity (ies)
 [ ] Basic Collision Detecton
 [x] Audio System (initial, needs refactoring)
   [ ]  - Scene background audio
@@ -45,7 +46,7 @@ Nice to haves
 
 ### Goals (Nice to have but not required)
 ```
-[ ] ECS
+[x] ECS
 [ ] Multi Levels (Multi Scene)
 [ ] Physics Engine
 [ ] DirectX rendering

@@ -19,6 +19,7 @@
 
 #include "Audio/AudioSystem.hpp"
 #include "Audio/Volume.hpp"
+#include "Entity/Entity.hpp"
 
 namespace Neon 
 {
@@ -111,6 +112,25 @@ namespace Neon
         private:
             std::string m_text;
             int m_fontSize;
+    };
+
+    class PositionComponent : public Component 
+    {
+        public:
+            PositionComponent(float x = 0.0f, float y = 0.0f) : X(x), Y(y) {}
+        
+            // we should prob use Point for this
+            float X, Y;
+    };
+
+    class ComponentManager 
+    {
+        public:
+            template <typename T>
+            void AddComponent(Entity& entity, T* component);
+        
+            template <typename T>
+            T* GetComponent(const Entity& entity);
     };
 
     /******************************************** 
