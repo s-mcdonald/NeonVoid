@@ -97,6 +97,7 @@ namespace Neon
     {
         public:
             TextComponent(const std::string& text, int fontSize = 12);
+            TextComponent(const std::string& text, int fontSize, const Point& point);
             ~TextComponent();
     
         public:
@@ -108,10 +109,14 @@ namespace Neon
 
             void OnInit() override;
             void OnUpdate() override;
+
+        public:
+            Point GetPosition();
     
         private:
             std::string m_text;
             int m_fontSize;
+            Point m_point;
     };
 
     class PositionComponent : public Component 

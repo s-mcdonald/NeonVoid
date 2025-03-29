@@ -18,13 +18,14 @@ namespace Neon
    typedef struct  
    {
       bool repeat = false;
+      uint8_t delay = 0; // milliseconds of delay time once play initialized
    } AudioConfig;
 
-   typedef struct 
+   struct Point
    {
       uint16_t x;
       uint16_t y;
-   } Point;
+   };
 
    enum class SceneType
    {

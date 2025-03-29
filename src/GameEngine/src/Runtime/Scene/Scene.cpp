@@ -59,6 +59,11 @@ namespace Neon
         {
             component->OnUpdate();
 
+            ///
+            /// Hacky code for now until we can render
+            /// then we can decide how to 
+            /// refactor this.
+            ///
             if (dynamic_cast<TextComponent*>(component))
             {
                const auto* c = dynamic_cast<TextComponent*>(component);

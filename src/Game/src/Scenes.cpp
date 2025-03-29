@@ -5,7 +5,7 @@
 #include <cmath>
 
 #include "../../GameEngine/src/Runtime/Runtime.hpp"
-#include "TitleScene.hpp"
+#include "Scenes.hpp"
 
 namespace Neon
 {

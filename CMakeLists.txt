@@ -125,7 +125,8 @@ set(GAME_SRC
     src/Game/src/GameMain.cpp
     src/Game/src/NeonFunctions.hpp
     src/Game/src/NeonFunctions.cpp
-    src/Game/src/TitleScene.cpp
+    src/Game/src/Scenes.cpp
+    src/Game/src/Scenes.hpp
 )
 
 # Create the game executable

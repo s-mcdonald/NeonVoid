@@ -9,10 +9,17 @@
 namespace Neon 
 {
     TextComponent::TextComponent(const std::string& text, int fontSize) 
+        : TextComponent(text, fontSize, Point(0, 0))
+    {
+        //
+    }
+
+    TextComponent::TextComponent(const std::string& text, int fontSize, const Point& point) 
         : Component()
         , IRenderable()
         , m_text(text)
         , m_fontSize(fontSize)
+        , m_point(point)
     {
         #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
             std::cout << "TextComponent::Constructor called\n";
@@ -59,5 +66,10 @@ namespace Neon
     void TextComponent::SetFontSize(int fontSize) 
     {
         m_fontSize = fontSize; 
+    }
+
+    Point TextComponent::GetPosition()
+    {
+        return m_point;
     }
 }

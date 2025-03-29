@@ -5,7 +5,7 @@
 #include <iostream>
 
 #include "NeonFunctions.hpp"
-#include "TitleScene.hpp"
+#include "Scenes.hpp"
 #include "../../GameEngine/src/Runtime/Runtime.hpp"
 
 void Neon::LoadGameData(Game* game, GameEngine& gameEngine)
