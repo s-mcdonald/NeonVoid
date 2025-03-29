@@ -6,6 +6,9 @@
   [x] - Render OGL Window
   [x] - Render Basic Shader
   [ ] - Render Shader Component
+  [ ] - Render Text Component
+  [ ] - Render Quad Component
+  [x] - Render/Update Audio Component
 [x] Render Basic Shape on a via Shape->Component
 [ ] Input Control
   [ ] - Keyboard Input (scene)
@@ -21,9 +24,12 @@
   [ ]  - Scene background audio
   [ ]  - Component Sound effects
   [ ]  - Custom audio sounds
-[ ] Title Scene
-[ ] Menu Scene  
+[ ] Scenes  
+  [ ] Title Scene
+  [ ] Menu Scene  
+[ ] Application Operations  
 [ ] Save / Load Games 
+[ ] Load Textures /Assets into GPU storage
 [ ] Configurable Levels via Yaml
 ```
 
