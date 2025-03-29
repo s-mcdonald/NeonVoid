@@ -17,9 +17,10 @@ void Neon::LoadGameData(Game* game, GameEngine& gameEngine)
         //Scene* scene = new Scene(gameEngine.GetPlatform());
         TitleScene* scene = new TitleScene(gameEngine.GetPlatform());
 
-
         game->AddScene(scene);
 
+        // we need to remove this code and not add Component directly or OGL directly
+        // best to create a Buffer Object for abstraction and load shaders.
         Component* component = new Component();
 
         component->SetInitFunction([component]() {
@@ -83,7 +84,6 @@ void Neon::LoadGameData(Game* game, GameEngine& gameEngine)
         });       
 
         scene->AddComponent("vao.triangle", component);
-
 
         AudioComponent* introMusic = new AudioComponent("./neon_void_intro.mp3");
         scene->AddComponent("aud.intro", introMusic);

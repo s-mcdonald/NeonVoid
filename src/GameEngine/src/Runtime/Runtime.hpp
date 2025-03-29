@@ -14,6 +14,8 @@
 #include <glm/glm.hpp>
 #include <miniaudio.h>
 
+#include "Types.hpp"
+
 namespace Neon 
 {
     class Game;
