@@ -147,6 +147,8 @@ namespace Neon
      class IRenderer
      {
         public:
+            virtual ~IRenderer() = default;
+        public:
             virtual void RenderText(const TextComponent& component) = 0;
             virtual void RenderTriangle(float x1, float y1, float x2, float y2, float x3, float y3, const Color& color) = 0;
      };
@@ -155,7 +157,7 @@ namespace Neon
      {
         public:
             OpenGLRenderer();
-            ~OpenGLRenderer();
+            ~OpenGLRenderer() override;
         public:
             void RenderText(const TextComponent& component) override;
             void RenderTriangle(float x1, float y1, float x2, float y2, float x3, float y3, const Color& color);

@@ -61,9 +61,8 @@ namespace Neon
 
             if (dynamic_cast<TextComponent*>(component))
             {
-               // const auto* c = dynamic_cast<TextComponent*>(component);
-               // m_platform->GetRenderer()->RenderText(*c);
-               // OpenGLRenderer::RenderText(component);
+               const auto* c = dynamic_cast<TextComponent*>(component);
+               m_platform->GetRenderer()->RenderText(*c);
             }
         }
 

@@ -10,7 +10,7 @@
 
 namespace Neon 
 {
-    OpenGLRenderer::OpenGLRenderer() 
+    OpenGLRenderer::OpenGLRenderer()
     {
         #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
             std::cout << "OpenGLRenderer::Constructor called\n";
