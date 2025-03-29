@@ -154,8 +154,16 @@ namespace Neon
             OpenGLRenderer();
             ~OpenGLRenderer() override;
         public:
-            void RenderText(const TextComponent& component) override;
-            void RenderTriangle(float x1, float y1, float x2, float y2, float x3, float y3, const Color& color);
+            void RenderText([[ maybe_unused ]] const TextComponent& component) override;
+            void RenderTriangle(
+                [[ maybe_unused ]] float x1, 
+                [[ maybe_unused ]] float y1, 
+                [[ maybe_unused ]] float x2, 
+                [[ maybe_unused ]] float y2, 
+                [[ maybe_unused ]] float x3, 
+                [[ maybe_unused ]] float y3, 
+                [[ maybe_unused ]] const Color& color
+            );
      };
 
 #ifdef NEON_BUILD_VULKAN
