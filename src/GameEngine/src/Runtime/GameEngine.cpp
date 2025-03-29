@@ -13,8 +13,14 @@ namespace Neon
             std::cout << "GameEngine::Constructor called\n";
         #endif
 
-        // On the heap you go
-        m_platform = new Neon::OpenGL();
+        #ifdef NEON_BUILD_OPENGL
+            m_platform = new Neon::OpenGL();
+        #endif
+
+        #ifdef NEON_BUILD_VULKAN
+            m_platform = new Neon::OpenGL();
+        #endif
+
     }
 
     GameEngine::~GameEngine() 
