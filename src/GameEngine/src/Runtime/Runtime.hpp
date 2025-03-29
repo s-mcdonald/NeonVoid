@@ -156,13 +156,6 @@ namespace Neon
      *                                          *
      ********************************************/
 
-    class GameState
-    {
-        public:
-            GameState();
-            ~GameState();
-    };
-
     class Platform 
     {
         public:
@@ -216,7 +209,6 @@ namespace Neon
             void SwitchScene();
 
         private:
-            GameState* m_gameState{nullptr};
             std::deque<Scene*> m_scenes;
     };
 

@@ -10,7 +10,6 @@
 namespace Neon 
 {
     Game::Game()
-        : m_gameState(new GameState())
     {
         #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
             std::cout << "Game::Constructor called\n";
@@ -25,8 +24,6 @@ namespace Neon
 
         for (auto s : m_scenes)
             delete s;
-
-        delete m_gameState;
     }
 
     void Game::AddScene(Scene* scene)

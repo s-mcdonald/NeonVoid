@@ -56,7 +56,6 @@ set(OpenGL_GL_PREFERENCE GLVND)
 set(GAME_ENGINE_SRC
     src/GameEngine/src/Runtime/Types.hpp
     src/GameEngine/src/Runtime/Game.cpp
-    src/GameEngine/src/Runtime/GameState.cpp
     
     # Scene(s)
     src/GameEngine/src/Runtime/Scene/Scene.cpp
