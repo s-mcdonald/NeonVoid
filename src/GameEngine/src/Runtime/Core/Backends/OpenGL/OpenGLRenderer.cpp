@@ -32,7 +32,7 @@ namespace Neon
     }
 
     /// @brief Load font into memory
-    void OpenGLRenderer::LoadFont(const char* fontPath)
+    void OpenGLRenderer::LoadTrueTypeFont(const char* fontPath)
     {
         std::ifstream fontFile(fontPath, std::ios::binary);
         std::vector<unsigned char> fontData((std::istreambuf_iterator<char>(fontFile)), std::istreambuf_iterator<char>());

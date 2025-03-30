@@ -164,7 +164,7 @@ namespace Neon
             OpenGLRenderer();
             ~OpenGLRenderer() override;
         public:
-            void LoadFont(const char* fontPath);
+            void LoadTrueTypeFont(const char* fontPath);
             void RenderText([[ maybe_unused ]] const TextComponent& component) override;
             void RenderText(const std::string& text, float x, float y, int fontSize);
             void RenderTriangle(

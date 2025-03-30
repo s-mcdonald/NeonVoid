@@ -64,6 +64,9 @@ namespace Neon
             /// then we can decide how to 
             /// refactor this.
             ///
+            /// The component should have a handle to the renderer
+            /// then on component.ONUpdate() -> Renderer()->renderText()
+            ///
             if (dynamic_cast<TextComponent*>(component))
             {
                const auto* c = dynamic_cast<TextComponent*>(component);
