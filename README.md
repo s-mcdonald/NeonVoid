@@ -30,6 +30,7 @@ Future updates will see these libs source code included in the repo.
 * [glew](https://github.com/nigels-com/glew)
 * [glm](https://github.com/icaven/glm)
 * [minaudio](https://miniaud.io/)
+* [std](https://github.com/nothings/stb/tree/master)
 
 
 ### Sound
