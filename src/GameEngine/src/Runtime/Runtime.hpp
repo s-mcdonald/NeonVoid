@@ -15,6 +15,8 @@
 #include <glm/glm.hpp>
 #include <miniaudio.h>
 
+#include "stb_truetype.h"
+
 #include "Types.hpp"
 
 #include "Audio/AudioSystem.hpp"
@@ -159,7 +161,9 @@ namespace Neon
             OpenGLRenderer();
             ~OpenGLRenderer() override;
         public:
+            void LoadFont(const char* fontPath);
             void RenderText([[ maybe_unused ]] const TextComponent& component) override;
+            void RenderText(const std::string& text, float x, float y, int fontSize);
             void RenderTriangle(
                 [[ maybe_unused ]] float x1, 
                 [[ maybe_unused ]] float y1, 
@@ -169,6 +173,11 @@ namespace Neon
                 [[ maybe_unused ]] float y3, 
                 [[ maybe_unused ]] const Color& color
             );
+
+            GLuint createTextureFromBitmap(unsigned char* bitmap, int width, int height);
+        private:
+            stbtt_fontinfo m_font;
+            unsigned char* m_fontBuffer;
      };
 
 #ifdef NEON_BUILD_VULKAN
