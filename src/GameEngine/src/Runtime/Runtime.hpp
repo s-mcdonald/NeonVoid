@@ -98,16 +98,18 @@ namespace Neon
     class TextComponent : public Component, public IRenderable
     {
         public:
-            TextComponent(const std::string& text, int fontSize = 12);
-            TextComponent(const std::string& text, int fontSize, const Point& point);
+            TextComponent(const std::string& text);
+            TextComponent(const std::string& text, float fontSize);
+            TextComponent(const std::string& text, float fontSize, const Point& point);
+            TextComponent(const std::string& text, float fontSize, const Point& point, ColorAlpha color);
             ~TextComponent();
     
         public:
             const std::string& GetText() const;
             void SetText(const std::string& text);
     
-            int GetFontSize() const;
-            void SetFontSize(int fontSize);
+            float GetFontSize() const;
+            void SetFontSize(float fontSize);
 
             void OnInit() override;
             void OnUpdate() override;
@@ -117,8 +119,9 @@ namespace Neon
     
         private:
             std::string m_text;
-            int m_fontSize;
+            float m_fontSize;
             Point m_point;
+            ColorAlpha m_colorAlpha;
     };
 
     class PositionComponent : public Component 
@@ -181,15 +184,13 @@ namespace Neon
      };
 
 #ifdef NEON_BUILD_VULKAN
-     class VulkanRenderer : public IRenderer
-     {
-        public:
-            OpenGLRenderer() = default;
-            ~OpenGLRenderer() = default;
-        public:
-            void RenderText(const TextComponent& component) override;
-            void RenderTriangle(float x1, float y1, float x2, float y2, float x3, float y3, const Color& color);
-     };
+    // todo: create a Vulkan renderer
+    //  class VulkanRenderer : public IRenderer
+    //  {
+    //     public:
+    //         VulkanRenderer() = default;
+    //         ~VulkanRenderer() = default;
+    //  };
 #endif
 
     /******************************************** 

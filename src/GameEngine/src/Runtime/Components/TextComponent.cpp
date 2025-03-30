@@ -5,21 +5,35 @@
 #include <cmath>
 
 #include "Runtime/Runtime.hpp"
+#include "Runtime/Types.hpp"
 
 namespace Neon 
 {
-    TextComponent::TextComponent(const std::string& text, int fontSize) 
-        : TextComponent(text, fontSize, Point(0, 0))
+    TextComponent::TextComponent(const std::string& text) 
+        : TextComponent(text, DEFAULT_FONT_SIZE, Point{0, 0}, ColorAlpha{1,1,1,1})
     {
         //
     }
 
-    TextComponent::TextComponent(const std::string& text, int fontSize, const Point& point) 
+    TextComponent::TextComponent(const std::string& text, float fontSize) 
+        : TextComponent(text, fontSize, Point{0, 0}, ColorAlpha{1,1,1,1})
+    {
+        //
+    }
+
+    TextComponent::TextComponent(const std::string& text, float fontSize, const Point& point) 
+        : TextComponent(text, fontSize, point, ColorAlpha{1,1,1,1})
+    {
+        //
+    }
+
+    TextComponent::TextComponent(const std::string& text, float fontSize, const Point& point, ColorAlpha color) 
         : Component()
         , IRenderable()
         , m_text(text)
         , m_fontSize(fontSize)
         , m_point(point)
+        , m_colorAlpha(color)
     {
         #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
             std::cout << "TextComponent::Constructor called\n";
@@ -58,12 +72,12 @@ namespace Neon
         m_text = text;
     }
 
-    int TextComponent::GetFontSize() const 
+    float TextComponent::GetFontSize() const 
     { 
         return m_fontSize; 
     }
 
-    void TextComponent::SetFontSize(int fontSize) 
+    void TextComponent::SetFontSize(float fontSize) 
     {
         m_fontSize = fontSize; 
     }
