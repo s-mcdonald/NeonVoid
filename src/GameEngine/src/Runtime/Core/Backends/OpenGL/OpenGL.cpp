@@ -20,6 +20,7 @@ namespace Neon
         #endif
 
         m_renderer = new OpenGLRenderer();
+        m_assetManager = new AssetManager();
     }
 
     OpenGL::~OpenGL() 
@@ -28,6 +29,7 @@ namespace Neon
             std::cout << "OpenGL::Destructor called\n";
         #endif
 
+        delete m_assetManager;
         delete m_renderer;
 
         if (m_window) 
@@ -78,6 +80,12 @@ namespace Neon
 
         m_openGlInitialized = true;
 
+        //
+        // Assets
+        // Attempt to load assets, font etxtures ect here
+        //
+        m_assetManager->LoadTrueTypeFont("default.ttf");
+
         return true;
     }
 
@@ -96,6 +104,8 @@ namespace Neon
                 scene->OnInit();
                 std::cout << "Scene initialized in run loop\n";
             }
+
+            glClear(GL_COLOR_BUFFER_BIT);
 
             // Check events like window close
             glfwPollEvents();

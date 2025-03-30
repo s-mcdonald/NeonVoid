@@ -36,7 +36,7 @@ namespace Neon
         #endif
         
         if (m_isInitialized) 
-            return;      
+            return;
 
         for (auto& [key, component] : m_components)
             component->OnInit();

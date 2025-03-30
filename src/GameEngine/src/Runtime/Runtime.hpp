@@ -36,6 +36,20 @@ namespace Neon
      *                                          *
      ********************************************/
 
+    class AssetManager
+    {
+        public:
+            AssetManager();
+            ~AssetManager();
+
+        public:
+            bool LoadTrueTypeFont(const char* fontPath);
+
+        private:
+            stbtt_fontinfo m_font;
+            unsigned char* m_fontBuffer;
+    };
+
     class IRenderable
     {
         //
@@ -155,6 +169,7 @@ namespace Neon
             virtual ~IRenderer() = default;
         public:
             virtual void RenderText(const TextComponent& component) = 0;
+            virtual void RenderText(const std::string& text, float x, float y, int fontSize) = 0;
             virtual void RenderTriangle(float x1, float y1, float x2, float y2, float x3, float y3, const Color& color) = 0;
      };
  
@@ -164,9 +179,8 @@ namespace Neon
             OpenGLRenderer();
             ~OpenGLRenderer() override;
         public:
-            void LoadTrueTypeFont(const char* fontPath);
             void RenderText([[ maybe_unused ]] const TextComponent& component) override;
-            void RenderText(const std::string& text, float x, float y, int fontSize);
+            void RenderText(const std::string& text, float x, float y, int fontSize) override;
             void RenderTriangle(
                 [[ maybe_unused ]] float x1, 
                 [[ maybe_unused ]] float y1, 
@@ -177,10 +191,8 @@ namespace Neon
                 [[ maybe_unused ]] const Color& color
             );
 
-            GLuint createTextureFromBitmap(unsigned char* bitmap, int width, int height);
         private:
-            stbtt_fontinfo m_font;
-            unsigned char* m_fontBuffer;
+
      };
 
 #ifdef NEON_BUILD_VULKAN
@@ -277,6 +289,7 @@ namespace Neon
             GLFWwindow* m_window;
             bool m_openGlInitialized = false;
             IRenderer* m_renderer;
+            AssetManager* m_assetManager;
     };
 
     class GameEngine
