@@ -71,18 +71,24 @@ namespace Neon
         public:
             virtual void OnInit() override;
             virtual void OnUpdate() override;
+    };
 
-            void SetInitFunction(InitFunction initFunc);
-            void SetRenderFunction(RenderFunction renderFunc);
-
-        // ya ya.. only temp until I sort out the assignment for the lambda
+    class QuadComponent 
+        : public Component
+    {
         public:
+            QuadComponent();
+            ~QuadComponent();
+
+        public:
+            void OnInit();
+            void OnUpdate();
+
+        private:  
             GLuint m_VAO;
             GLuint m_VBO;
             GLuint m_shaderProgram;
-        private:
-            InitFunction m_initFunc;
-            RenderFunction m_renderFunc;
+            GLfloat m_vertices;
     };
 
     class AudioComponent 
@@ -168,28 +174,23 @@ namespace Neon
         public:
             virtual ~IRenderer() = default;
         public:
+            virtual void BeginFrame() = 0;
+            virtual void EndFrame() = 0;
             virtual void RenderText(const TextComponent& component) = 0;
-            virtual void RenderText(const std::string& text, float x, float y, int fontSize) = 0;
-            virtual void RenderTriangle(float x1, float y1, float x2, float y2, float x3, float y3, const Color& color) = 0;
+            virtual void RenderQuad(GLuint shaderProgram, GLuint VAO) = 0;
      };
  
+     // we should make this static ?
      class OpenGLRenderer : public IRenderer
      {
         public:
             OpenGLRenderer();
             ~OpenGLRenderer() override;
         public:
-            void RenderText([[ maybe_unused ]] const TextComponent& component) override;
-            void RenderText(const std::string& text, float x, float y, int fontSize) override;
-            void RenderTriangle(
-                [[ maybe_unused ]] float x1, 
-                [[ maybe_unused ]] float y1, 
-                [[ maybe_unused ]] float x2, 
-                [[ maybe_unused ]] float y2, 
-                [[ maybe_unused ]] float x3, 
-                [[ maybe_unused ]] float y3, 
-                [[ maybe_unused ]] const Color& color
-            );
+            void BeginFrame() override;
+            void EndFrame() override;
+            void RenderText(const TextComponent& component) override;
+            void RenderQuad(GLuint shaderProgram, GLuint VAO);
 
         private:
 
@@ -220,10 +221,6 @@ namespace Neon
         public:
             virtual bool Initialize(int width, int height, const char* title) = 0;
             virtual void Run(Game* game) = 0;
-
-        public:
-            virtual IRenderer* GetRenderer() = 0;
-            virtual void TriggerPostRedisplay() = 0;
     };
 
     class Scene : public IComponent, public IRenderable
@@ -280,15 +277,13 @@ namespace Neon
             static GLuint CompileShader(const char* source, GLenum shaderType);
             static GLuint CreateShaderProgram(const char* vertexSource, const char* fragmentSource);
 
-            IRenderer* GetRenderer() override;
-
         protected:
-            void TriggerPostRedisplay() override;
+
 
         protected:
             GLFWwindow* m_window;
             bool m_openGlInitialized = false;
-            IRenderer* m_renderer;
+
             AssetManager* m_assetManager;
     };
 
@@ -306,6 +301,25 @@ namespace Neon
 
         private:
             Platform* m_platform;
+    };
+
+    class GameEngineApi 
+    {
+        public:
+            static GameEngineApi& getInstance();    
+            static void RenderQuad(GLuint shaderProgram, GLuint VAO);
+        
+            IRenderer* GetRenderer();
+
+        private:
+            GameEngineApi();
+            ~GameEngineApi();
+        
+            GameEngineApi(const GameEngineApi&) = delete;
+            GameEngineApi& operator=(const GameEngineApi&) = delete;
+
+        private:
+            IRenderer* m_renderer;
     };
 }
  

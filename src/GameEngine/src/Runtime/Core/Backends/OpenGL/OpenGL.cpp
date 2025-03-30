@@ -12,14 +12,12 @@ namespace Neon
 {
     OpenGL::OpenGL() 
         : Platform()
-        , m_window(nullptr) 
-        , m_renderer(nullptr)
+        , m_window(nullptr)
     {
         #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
             std::cout << "OpenGL::Constructor called\n";
         #endif
 
-        m_renderer = new OpenGLRenderer();
         m_assetManager = new AssetManager();
     }
 
@@ -30,7 +28,6 @@ namespace Neon
         #endif
 
         delete m_assetManager;
-        delete m_renderer;
 
         if (m_window) 
         {
@@ -82,9 +79,9 @@ namespace Neon
 
         //
         // Assets
-        // Attempt to load assets, font etxtures ect here
+        // Attempt to load assets, font textures ect here..
         //
-        m_assetManager->LoadTrueTypeFont("default.ttf");
+        m_assetManager->LoadTrueTypeFont("./assets/fonts/default.ttf");
 
         return true;
     }
@@ -114,16 +111,6 @@ namespace Neon
 
             glfwSwapBuffers(m_window);
         }
-    }
-
-    void OpenGL::TriggerPostRedisplay()
-    {
-        glfwPostEmptyEvent();
-    }
-    
-    IRenderer* OpenGL::GetRenderer()
-    {
-        return m_renderer;
     }
 
     ///

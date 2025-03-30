@@ -75,12 +75,14 @@ set(GAME_ENGINE_SRC
 
     # Components
     src/GameEngine/src/Runtime/Components/Component.cpp
+    src/GameEngine/src/Runtime/Components/QuadComponent.cpp
     src/GameEngine/src/Runtime/Components/AudioComponent.cpp
     src/GameEngine/src/Runtime/Components/TextComponent.cpp
 
     src/GameEngine/src/Runtime/Runtime.hpp
     src/GameEngine/src/Runtime/GameEngine.cpp
     src/GameEngine/src/Runtime/Core/Backends/OpenGL/OpenGL.cpp
+    src/GameEngine/src/Runtime/Core/Backends/OpenGL/GameEngineApi.cpp
     src/GameEngine/src/Runtime/Core/Backends/OpenGL/OpenGLRenderer.cpp
     
 )

@@ -13,6 +13,15 @@ namespace Neon
             TitleScene(SceneType type, Platform* platform);
             ~TitleScene();
 
-            void OnUpdate();
+            void OnUpdate() override;
+    };
+
+    class GamePlayScene : public Scene
+    {
+        public:
+            GamePlayScene(SceneType type, Platform* platform);
+            ~GamePlayScene();
+
+            void OnUpdate() override;
     };
 }

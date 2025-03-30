@@ -33,4 +33,23 @@ namespace Neon
 
         Scene::OnUpdate();
     }
+
+
+    GamePlayScene::GamePlayScene(SceneType type, Platform* platform)
+        : Scene(type, platform)
+    {
+        //
+    }
+                
+    GamePlayScene::~GamePlayScene()
+    {
+        //
+    }
+
+    void GamePlayScene::OnUpdate()
+    {
+        std::cout << "Child \n";
+
+        Scene::OnUpdate();
+    }
 }

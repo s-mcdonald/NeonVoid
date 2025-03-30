@@ -26,33 +26,38 @@ namespace Neon
         #endif
     }
 
-    void OpenGLRenderer::RenderText([[ maybe_unused ]] const TextComponent& component)
+    void OpenGLRenderer::BeginFrame()
+    {
+        glClearColor(0.0f,0.0f,0.0f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
+    }
+    
+    void OpenGLRenderer::EndFrame()
+    {
+        glFlush();
+    }
+
+    void OpenGLRenderer::RenderText(const TextComponent& component)
     {
         #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
             std::cout << "OpenGLRenderer::RenderText called\n";
         #endif
 
-        // component.GetPosition().X, component->GetPosition().Y
-        RenderText(component.GetText(), 0, 0, 18);
+        std::cout << "Renderring Text: " << component.GetText() << std::endl;
     }
 
-    void OpenGLRenderer::RenderText(const std::string& text, float x, float y, int fontSize) 
-    {
-        std::cout << "Renderring Text: " << text << std::endl;
-    }
-
-    [[ maybe_unused ]] void OpenGLRenderer::RenderTriangle(
-        [[ maybe_unused ]] float x1, 
-        [[ maybe_unused ]] float y1, 
-        [[ maybe_unused ]] float x2, 
-        [[ maybe_unused ]] float y2, 
-        [[ maybe_unused ]] float x3, 
-        [[ maybe_unused ]] float y3, 
-        [[ maybe_unused ]] const Color& color
-    )
+    void OpenGLRenderer::RenderQuad(GLuint shaderProgram, GLuint VAO) 
     {
         #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-            std::cout << "OpenGLRenderer::RenderTriangle called\n";
+            std::cout << "OpenGLRenderer::RenderQuad called\n";
         #endif
+
+        glUseProgram(shaderProgram);
+
+        glBindVertexArray(VAO);
+    
+        glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+
+        glBindVertexArray(0);
     }
 }

@@ -30,11 +30,7 @@ namespace Neon
     }
 
     void Scene::OnInit()
-    {
-        #ifdef NEON_DEBUG
-            std::cout << "Scene::Init()\n";
-        #endif
-        
+    {       
         if (m_isInitialized) 
             return;
 
@@ -51,30 +47,10 @@ namespace Neon
 
     void Scene::OnUpdate()
     {       
-        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-            std::cout << "Scene::Rendering..\n";
-        #endif
-
         for (auto& [key, component] : m_components)
         {
             component->OnUpdate();
-
-            ///
-            /// Hacky code for now until we can render
-            /// then we can decide how to 
-            /// refactor this.
-            ///
-            /// The component should have a handle to the renderer
-            /// then on component.ONUpdate() -> Renderer()->renderText()
-            ///
-            if (dynamic_cast<TextComponent*>(component))
-            {
-               const auto* c = dynamic_cast<TextComponent*>(component);
-               m_platform->GetRenderer()->RenderText(*c);
-            }
         }
-
-        m_platform->TriggerPostRedisplay();
     }
 
     void Scene::AddComponent(const std::string& tag, Component* component)
