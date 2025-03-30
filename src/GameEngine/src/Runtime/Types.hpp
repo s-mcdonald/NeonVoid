@@ -10,10 +10,23 @@ namespace Neon
 {
    typedef struct
    {
-      float x, y, z, w;
-   } Vec4;
+      float x, y, z;
+   } Vec2;
 
-   typedef Vec4 Color;
+   typedef struct
+   {
+      float x, y, z;
+   } Vec3;
+
+   typedef struct
+   {
+      float r, g, b;
+   } Color;
+
+   typedef struct
+   {
+      float r, g, b, a;
+   } ColorAlpha;
 
    typedef struct  
    {
