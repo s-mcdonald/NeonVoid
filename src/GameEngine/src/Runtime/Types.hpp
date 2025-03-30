@@ -8,9 +8,12 @@
 
 namespace Neon 
 {
+   constexpr float MIN_FONT_SIZE = 8;
    constexpr float BASE_FONT_SIZE = 18;
    constexpr float MULTIPLIER_RESOLUTION = 1;
-   constexpr float DEFAULT_FONT_SIZE = BASE_FONT_SIZE * MULTIPLIER_RESOLUTION;
+
+   constexpr float NV_DEFAULT_FONT_SIZE = BASE_FONT_SIZE * MULTIPLIER_RESOLUTION;
+   constexpr float NV_MINIMUM_FONT_SIZE = MIN_FONT_SIZE * MULTIPLIER_RESOLUTION;
 
    typedef struct
    {

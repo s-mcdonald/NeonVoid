@@ -10,7 +10,7 @@
 namespace Neon 
 {
     TextComponent::TextComponent(const std::string& text) 
-        : TextComponent(text, DEFAULT_FONT_SIZE, Point{0, 0}, ColorAlpha{1,1,1,1})
+        : TextComponent(text, NV_DEFAULT_FONT_SIZE, Point{0, 0}, ColorAlpha{1,1,1,1})
     {
         //
     }
@@ -39,9 +39,9 @@ namespace Neon
             std::cout << "TextComponent::Constructor called\n";
         #endif
 
-        if (m_fontSize <= 0) 
+        if (m_fontSize <= NV_MINIMUM_FONT_SIZE) 
         {
-            m_fontSize = 12;
+            m_fontSize = NV_MINIMUM_FONT_SIZE;
         }
     }
 

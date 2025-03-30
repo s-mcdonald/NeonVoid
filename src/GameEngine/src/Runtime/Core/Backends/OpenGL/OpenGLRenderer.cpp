@@ -28,16 +28,17 @@ namespace Neon
             std::cout << "OpenGLRenderer::~Destructor called\n";
         #endif
 
-        delete m_fontBuffer
+        delete m_fontBuffer;
     }
 
+    /// @brief Load font into memory
     void OpenGLRenderer::LoadFont(const char* fontPath)
     {
         std::ifstream fontFile(fontPath, std::ios::binary);
         std::vector<unsigned char> fontData((std::istreambuf_iterator<char>(fontFile)), std::istreambuf_iterator<char>());
         m_fontBuffer = fontData.data();
 
-        if (!stbtt_InitFont(&m_font, fontBuffer, 0)) 
+        if (!stbtt_InitFont(&m_font, m_fontBuffer, 0)) 
         {
             std::cerr << "Failed to initialize font." << std::endl;
         }
@@ -48,7 +49,6 @@ namespace Neon
         #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
             std::cout << "OpenGLRenderer::RenderText called\n";
         #endif
-        return;
 
         // component.GetPosition().X, component->GetPosition().Y
         RenderText(component.GetText(), 0, 0, 18);
