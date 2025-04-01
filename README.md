@@ -9,7 +9,7 @@ A real-time scene editor using Imgui to build scenes and levels.
 
 ### Build System
 
-Then run build script (depending if you are running Windows or a Linux system, choose the script wisely).
+Then run build script (depending on if you are running Windows or a Linux system, choose the script wisely).
 
 #### Linux
 ```
