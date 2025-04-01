@@ -3,6 +3,7 @@
  */
 #include <iostream>
 #include <cmath>
+#include <utility>
 
 #include "Runtime/Runtime.hpp"
 #include "Runtime/Types.hpp"
@@ -27,10 +28,10 @@ namespace Neon
         //
     }
 
-    TextComponent::TextComponent(const std::string& text, float fontSize, const Point& point, ColorAlpha color) 
+    TextComponent::TextComponent(std::string  text, float fontSize, const Point& point, ColorAlpha color)
         : Component()
         , IRenderable()
-        , m_text(text)
+        , m_text(std::move(text))
         , m_fontSize(fontSize)
         , m_point(point)
         , m_colorAlpha(color)
@@ -82,8 +83,13 @@ namespace Neon
         m_fontSize = fontSize; 
     }
 
-    Point TextComponent::GetPosition()
+    Point TextComponent::GetPosition() const
     {
         return m_point;
+    }
+
+    void TextComponent::OnDestory()
+    {
+        // ....
     }
 }

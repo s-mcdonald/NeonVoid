@@ -7,18 +7,17 @@
 
 namespace Neon 
 {
-    PositionComponent::PositionComponent(float x = 0.0f, float y = 0.0f) : x(x), y(y) 
+    PositionComponent::PositionComponent(const float x = 0.0f, const float y = 0.0f)
         : Component()
+        , X(x), Y(y)
     {
         #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
             std::cout << "PositionComponent::Constructor called\n";
         #endif
     }
 
-    PositionComponent::~PositionComponent() 
+    void PositionComponent::OnDestory()
     {
-        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-            std::cout << "PositionComponent::Destructor completed\n";
-        #endif
+        // ....
     }
 }

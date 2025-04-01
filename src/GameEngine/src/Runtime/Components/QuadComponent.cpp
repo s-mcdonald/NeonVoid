@@ -92,4 +92,9 @@ namespace Neon
         auto& api = GameEngineApi::getInstance();
         api.GetRenderer()->RenderQuad(m_shaderProgram, m_VAO);
     }
+
+    void QuadComponent::OnDestory()
+    {
+        // .... clear the GL loaded data
+    }
 }

@@ -44,10 +44,6 @@ namespace Neon
 
         public:
             static bool LoadTrueTypeFont(const char* fontPath);
-
-        private:
-            stbtt_fontinfo m_font{};
-            unsigned char* m_fontBuffer{};
     };
 
     class IRenderable
@@ -61,6 +57,7 @@ namespace Neon
             virtual ~IComponent() = default;
             virtual void OnInit() = 0;
             virtual void OnUpdate() = 0;
+            virtual void OnDestory() = 0;
     };
 
     class Component : public IComponent
@@ -83,6 +80,7 @@ namespace Neon
         public:
             void OnInit() override;
             void OnUpdate() override;
+            void OnDestory() override;
 
         private:  
             GLuint m_VAO;
@@ -96,7 +94,7 @@ namespace Neon
           , public AudioSystem
     {
         public:
-            explicit AudioComponent(std::string   filename);
+            explicit AudioComponent(std::string filename);
             ~AudioComponent() override;
 
         public:
@@ -109,6 +107,7 @@ namespace Neon
 
         public:
             void SetVolume(const Volume& volume) override;
+            void OnDestory() override;
 
         private:
             std::string m_filename;    
@@ -121,7 +120,7 @@ namespace Neon
             explicit TextComponent(const std::string& text);
             TextComponent(const std::string& text, float fontSize);
             TextComponent(const std::string& text, float fontSize, const Point& point);
-            TextComponent(const std::string& text, float fontSize, const Point& point, ColorAlpha color);
+            TextComponent(std::string  text, float fontSize, const Point& point, ColorAlpha color);
             ~TextComponent() override;
     
         public:
@@ -135,8 +134,9 @@ namespace Neon
             void OnUpdate() override;
 
         public:
-            Point GetPosition();
-    
+            [[nodiscard]] Point GetPosition() const;
+            void OnDestory() override;
+
         private:
             std::string m_text;
             float m_fontSize;
@@ -147,8 +147,12 @@ namespace Neon
     class PositionComponent final : public Component
     {
         public:
-            explicit PositionComponent(float x = 0.0f, float y = 0.0f) : X(x), Y(y) {}
-        
+            PositionComponent() = delete;
+            ~PositionComponent() override = default;
+        public:
+            explicit PositionComponent(float x = 0.0f, float y = 0.0f);
+            void OnDestory() override;
+
             // we should prob use Point for this
             float X, Y;
     };
