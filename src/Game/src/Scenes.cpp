@@ -21,6 +21,8 @@ namespace Neon
     {
         std::cout << "Child \n";
 
+        // Need to give config to AudioComponents so the comp
+        // knows when and how to start playing..
         if (auto* x = GetComponent("aud.intro"))
         {
             auto* ac = dynamic_cast<AudioComponent*>(x);

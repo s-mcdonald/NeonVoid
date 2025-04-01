@@ -20,12 +20,19 @@ namespace Neon
 
     Scene::~Scene() 
     {
-        DestroyRenderable(m_entities);
-        DestroyRenderable(m_components);
-
         #ifdef NEON_DEBUG
             std::cout << "Scene::Destructor called\n";
         #endif
+
+        Destroy();
+    }
+
+    void Scene::Destroy()
+    {
+        DestroyRenderable(m_entities);
+        DestroyRenderable(m_components);
+
+        OnDestroy();
     }
 
     bool Scene::IsInitialized() const

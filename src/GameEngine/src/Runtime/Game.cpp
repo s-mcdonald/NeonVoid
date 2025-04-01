@@ -43,10 +43,23 @@ namespace Neon
 
     void Game::SwitchScene()
     {
-        if (!m_scenes.empty())
+        if (m_currentScene == nullptr && !m_scenes.empty())
         {
             m_currentScene = m_scenes.front();
             m_scenes.pop_front();
+            return;
         }
+
+        if (m_currentScene != nullptr && !m_scenes.empty())
+        {
+            m_currentScene->Destroy();
+
+            m_currentScene = m_scenes.front();
+            m_scenes.pop_front();
+            return;
+        }
+
+        // we must have reached the end of the game..
+        // if (m_scenes.empty())....
     }
 }
