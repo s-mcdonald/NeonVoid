@@ -240,6 +240,9 @@ namespace Neon
 
         private:
             template <typename T>
+            void InitRenderable(const T& t);
+
+            template <typename T>
             void UpdateRenderable(const T& t);
 
         protected:

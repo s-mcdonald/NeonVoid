@@ -33,11 +33,8 @@ namespace Neon
         if (m_isInitialized)
             return;
 
-        for (auto& [key, entity] : m_entities)
-            entity->OnInit();
-
-        for (auto& [key, component] : m_components)
-            component->OnInit();
+        InitRenderable(m_entities);
+        InitRenderable(m_components);
 
         OnInit();
 
@@ -76,6 +73,15 @@ namespace Neon
     SceneType Scene::GetSceneType() const
     {
         return m_scene_type;
+    }
+
+    template <typename T>
+    void Scene::InitRenderable(const T& t)
+    {
+        for (auto& [key, value] : t)
+        {
+            value->OnInit();  // Assuming value exposes an OnUpdate() method
+        }
     }
 
     template <typename T>

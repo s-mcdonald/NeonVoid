@@ -13,7 +13,7 @@ namespace Neon
             TitleScene(SceneType type, Platform* platform);
             ~TitleScene() override = default;
 
-            void OnUpdate() override;
+            void OnInit() override;
     };
 
     class GamePlayScene final : public Scene

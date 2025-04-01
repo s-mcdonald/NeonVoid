@@ -17,7 +17,7 @@ namespace Neon
         //
     }
 
-    void TitleScene::OnUpdate()
+    void TitleScene::OnInit()
     {
         std::cout << "Child \n";
 
