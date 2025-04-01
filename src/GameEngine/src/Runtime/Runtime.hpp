@@ -199,7 +199,7 @@ namespace Neon
     {
         public:
             Scene() = delete;
-            Scene(SceneType type, Platform* platform);
+            Scene(SceneType type);
             virtual ~Scene();
 
         public:
@@ -232,9 +232,24 @@ namespace Neon
 
         private:
             SceneType m_scene_type;
-            Neon::Platform* m_platform{nullptr};
             bool m_isInitialized = false;
             std::unordered_map<std::string, Component*> m_components;
+    };
+
+    class GameEngine
+    {
+    public:
+        GameEngine();
+        ~GameEngine();
+
+    public:
+        bool Initialize(int width, int height, const char* title) const;
+        void Run(Game* game) const;
+
+        [[nodiscard]] Platform* GetPlatform() const;
+
+    private:
+        Platform* m_platform;
     };
 
     class Game
@@ -242,6 +257,9 @@ namespace Neon
         public:
             Game();
             ~Game();
+
+        bool Initialize(int width, int height, const char* title) const;
+        void Run();
 
         public:
             void AddScene(Scene* scene);
@@ -251,6 +269,9 @@ namespace Neon
         private:
             std::deque<Scene*> m_scenes;
             Scene* m_currentScene{nullptr};
+
+        private:
+            GameEngine gameEngine;
     };
 
     class OpenGL final : public Platform
@@ -273,21 +294,7 @@ namespace Neon
             AssetManager* m_assetManager;
     };
 
-    class GameEngine
-    {
-        public:
-            GameEngine();
-            ~GameEngine();
 
-        public:
-            bool Initialize(int width, int height, const char* title) const;
-            void Run(Game* game) const;
-            
-            [[nodiscard]] Platform* GetPlatform() const;
-
-        private:
-            Platform* m_platform;
-    };
 
     class GameEngineApi 
     {

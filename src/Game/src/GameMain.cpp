@@ -14,23 +14,15 @@
  {
      using namespace Neon;
 
-     // once initialized, game will load from its working/launch dir, load scenes ect.
-     //  Essentially this is the only code I want in entry.
-     // Game game; 
-     // if (game.Initialize()) 
-     // {
-     //    game.Run();
-     // }
-
- 
+     // Next refactor here is to create a separate MyGame class that abstracts a bit more, but this is now looking
+     // much better for entry.
      Game game;
-     const GameEngine gameEngine;
  
-     LoadGameData(&game, gameEngine);
+     LoadGameData(&game);
  
-     if (gameEngine.Initialize(800, 600, "Neon Void (0.0.2)")) 
+     if (game.Initialize(800, 600, "Neon Void (0.0.2)"))
      {
-         gameEngine.Run(&game);
+         game.Run();
      }
  }
  

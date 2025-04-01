@@ -8,12 +8,12 @@
 #include "Scenes.hpp"
 #include "../../GameEngine/src/Runtime/Runtime.hpp"
 
-void Neon::LoadGameData(Game* game, const GameEngine& gameEngine)
+void Neon::LoadGameData(Game* game)
 {
     using namespace Neon;
     {
-        auto* scene = new TitleScene(SceneType::Title, gameEngine.GetPlatform());
-        auto* gamePlayScene = new GamePlayScene(SceneType::Gameplay, gameEngine.GetPlatform());
+        auto* scene = new TitleScene(SceneType::Title);
+        auto* gamePlayScene = new GamePlayScene(SceneType::Gameplay);
 
         game->AddScene(scene);
         game->AddScene(gamePlayScene);

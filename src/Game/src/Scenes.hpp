@@ -10,7 +10,7 @@ namespace Neon
     class TitleScene final : public Scene
     {
         public:
-            TitleScene(SceneType type, Platform* platform);
+            TitleScene(SceneType type);
             ~TitleScene() override = default;
 
             void OnInit() override;
@@ -20,7 +20,7 @@ namespace Neon
     class GamePlayScene final : public Scene
     {
         public:
-            GamePlayScene(SceneType type, Platform* platform);
+            GamePlayScene(SceneType type);
             ~GamePlayScene() override = default;
 
             void OnInit() override;

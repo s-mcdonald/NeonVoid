@@ -11,8 +11,8 @@ namespace Neon
 {
     constexpr uint8_t MAIN_PLAYER = 1;
 
-    TitleScene::TitleScene(const SceneType type, Platform* platform)
-        : Scene(type, platform)
+    TitleScene::TitleScene(const SceneType type)
+        : Scene(type)
     {
         // Add Quad / triangle
         auto* component = new QuadComponent();
@@ -41,8 +41,8 @@ namespace Neon
         // later we will control entities from here
     }
 
-    GamePlayScene::GamePlayScene(const SceneType type, Platform* platform)
-        : Scene(type, platform)
+    GamePlayScene::GamePlayScene(const SceneType type)
+        : Scene(type)
     {
         // Add Text
         auto* titleText = new TextComponent("Neon Void: A Saga", 16);

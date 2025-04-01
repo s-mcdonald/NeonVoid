@@ -8,9 +8,8 @@
 
 namespace Neon
 {
-    Scene::Scene(const SceneType type, Platform* platform)
+    Scene::Scene(const SceneType type)
         : m_scene_type(type)
-        , m_platform(platform)
     {
         #ifdef NEON_DEBUG
             std::cout << "Scene::Constructor called\n";
