@@ -14,7 +14,13 @@ namespace Neon
     TitleScene::TitleScene(const SceneType type, Platform* platform)
         : Scene(type, platform)
     {
-        //
+        // Add Quad / triangle
+        auto* component = new QuadComponent();
+        AddComponent("vao.triangle", component);
+
+        // Add Audio
+        auto* introMusic = new AudioComponent("./assets/audio/neon_void_intro.mp3");
+        AddComponent("aud.intro", introMusic);
     }
 
     void TitleScene::OnInit()
@@ -34,7 +40,9 @@ namespace Neon
     GamePlayScene::GamePlayScene(const SceneType type, Platform* platform)
         : Scene(type, platform)
     {
-        //
+        // Add Text
+        auto* titleText = new TextComponent("Neon Void: A Saga", 16);
+        AddComponent("text.title", titleText);
     }
 
     void GamePlayScene::OnInit()

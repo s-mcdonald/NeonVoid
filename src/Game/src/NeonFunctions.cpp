@@ -17,20 +17,5 @@ void Neon::LoadGameData(Game* game, const GameEngine& gameEngine)
 
         game->AddScene(scene);
         game->AddScene(gamePlayScene);
-
-   
-        // Add Quad / triangle
-        auto* component = new QuadComponent();
-        scene->AddComponent("vao.triangle", component);
-
-        // Add Audio
-        auto* introMusic = new AudioComponent("./assets/audio/neon_void_intro.mp3");
-        scene->AddComponent("aud.intro", introMusic);
-
-        // Add Text
-        auto* titleText = new TextComponent("Neon Void: A Saga", 16);
-        scene->AddComponent("text.title", titleText);
-
-        // Add Trigger to move to new Scene after
     }
 }
