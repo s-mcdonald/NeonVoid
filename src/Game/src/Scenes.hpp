@@ -14,6 +14,7 @@ namespace Neon
             ~TitleScene() override = default;
 
             void OnInit() override;
+            void OnUpdate() override;
     };
 
     class GamePlayScene final : public Scene

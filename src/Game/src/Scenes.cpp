@@ -36,6 +36,10 @@ namespace Neon
         }
     }
 
+    void TitleScene::OnUpdate()
+    {
+        // later we will control entities from here
+    }
 
     GamePlayScene::GamePlayScene(const SceneType type, Platform* platform)
         : Scene(type, platform)

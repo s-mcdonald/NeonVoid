@@ -24,7 +24,7 @@
 
  
      Game game;
-     GameEngine gameEngine;
+     const GameEngine gameEngine;
  
      LoadGameData(&game, gameEngine);
  
