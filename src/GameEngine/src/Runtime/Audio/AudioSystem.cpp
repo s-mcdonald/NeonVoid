@@ -176,7 +176,7 @@ namespace Neon
         // OK here is the guts of it, read from decoder into the OutputBuffer
         ma_decoder* pDecoder = &player->m_decoder;
 
-        switch(ma_result result = ma_decoder_read_pcm_frames(pDecoder, pOutput, frameCount, nullptr))
+        switch(ma_decoder_read_pcm_frames(pDecoder, pOutput, frameCount, nullptr))
         {
             case MA_AT_END:
                 if (false == player->m_onLoop) 

@@ -12,8 +12,8 @@
 
 namespace Neon 
 {
-    class IComponent;
-    
+    class Component;
+
     class Entity 
     {
         public:
@@ -21,7 +21,7 @@ namespace Neon
             ~Entity();
         
             template <typename T>
-            void AddComponent(IComponent* component);
+            void AddComponent(Component* component);
         
             template <typename T>
             T* GetComponent();
@@ -30,6 +30,6 @@ namespace Neon
 
         private:
             int m_id;
-            std::unordered_map<std::string, IComponent*> components;
+            std::unordered_map<std::string, Component*> components;
     };
 }

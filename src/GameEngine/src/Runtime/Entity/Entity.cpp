@@ -22,7 +22,7 @@ namespace Neon
     }
 
     template <typename T>
-    void Entity::AddComponent(IComponent* component) 
+    void Entity::AddComponent(Component* component)
     {
         components[typeid(T).name()] = component;
     }

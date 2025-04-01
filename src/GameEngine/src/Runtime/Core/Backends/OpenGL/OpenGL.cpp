@@ -81,7 +81,7 @@ namespace Neon
         // Assets
         // Attempt to load assets, font textures ect here..
         //
-        m_assetManager->LoadTrueTypeFont("./assets/fonts/default.ttf");
+       // m_assetManager->LoadTrueTypeFont("./assets/fonts/default.ttf");
 
         return true;
     }

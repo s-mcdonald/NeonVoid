@@ -43,7 +43,7 @@ namespace Neon
             ~AssetManager();
 
         public:
-            static bool LoadTrueTypeFont(const char* fontPath);
+            //static bool LoadTrueTypeFont(const char* fontPath);
     };
 
     class IRenderable
@@ -51,23 +51,16 @@ namespace Neon
         //
     };
 
-    class IComponent
+    class Component
     {
         public:
-            virtual ~IComponent() = default;
-            virtual void OnInit() = 0;
-            virtual void OnUpdate() = 0;
-            virtual void OnDestroy() = 0;
-    };
+            Component() = default;
+            virtual ~Component() = default;
 
-    class Component : public IComponent
-    {
         public:
-            Component();
-            ~Component() override;
-        public:
-            void OnInit() override;
-            void OnUpdate() override;
+            virtual void OnInit() {};
+            virtual void OnUpdate() {};
+            virtual void OnDestroy() {};
     };
 
     class QuadComponent final
@@ -85,8 +78,8 @@ namespace Neon
         private:  
             GLuint m_VAO;
             GLuint m_VBO;
-            GLuint m_shaderProgram;
-            GLfloat m_vertices;
+            GLuint m_shaderProgram{};
+            GLfloat m_vertices{};
     };
 
     class AudioComponent final
@@ -144,11 +137,9 @@ namespace Neon
             ColorAlpha m_colorAlpha;
     };
 
-    class PositionComponent final : public Component
+    class PositionComponent final
+        : public Component
     {
-        public:
-            PositionComponent() = delete;
-            ~PositionComponent() override = default;
         public:
             explicit PositionComponent(float, float);
             void OnDestroy() override;

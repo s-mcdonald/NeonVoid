@@ -29,8 +29,8 @@ namespace Neon
         #endif
     }
 
-    bool AssetManager::LoadTrueTypeFont(const char* fontPath)
-    {
-        return true;
-    }
+    // bool AssetManager::LoadTrueTypeFont(const char* fontPath)
+    // {
+    //     return true;
+    // }
 }
