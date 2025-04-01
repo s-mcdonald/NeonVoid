@@ -57,7 +57,7 @@ namespace Neon
             virtual ~IComponent() = default;
             virtual void OnInit() = 0;
             virtual void OnUpdate() = 0;
-            virtual void OnDestory() = 0;
+            virtual void OnDestroy() = 0;
     };
 
     class Component : public IComponent
@@ -80,7 +80,7 @@ namespace Neon
         public:
             void OnInit() override;
             void OnUpdate() override;
-            void OnDestory() override;
+            void OnDestroy() override;
 
         private:  
             GLuint m_VAO;
@@ -107,7 +107,7 @@ namespace Neon
 
         public:
             void SetVolume(const Volume& volume) override;
-            void OnDestory() override;
+            void OnDestroy() override;
 
         private:
             std::string m_filename;    
@@ -135,7 +135,7 @@ namespace Neon
 
         public:
             [[nodiscard]] Point GetPosition() const;
-            void OnDestory() override;
+            void OnDestroy() override;
 
         private:
             std::string m_text;
@@ -150,8 +150,8 @@ namespace Neon
             PositionComponent() = delete;
             ~PositionComponent() override = default;
         public:
-            explicit PositionComponent(float x = 0.0f, float y = 0.0f);
-            void OnDestory() override;
+            explicit PositionComponent(float, float);
+            void OnDestroy() override;
 
             // we should prob use Point for this
             float X, Y;

@@ -93,7 +93,7 @@ namespace Neon
         api.GetRenderer()->RenderQuad(m_shaderProgram, m_VAO);
     }
 
-    void QuadComponent::OnDestory()
+    void QuadComponent::OnDestroy()
     {
         // .... clear the GL loaded data
     }

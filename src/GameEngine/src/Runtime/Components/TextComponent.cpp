@@ -88,7 +88,7 @@ namespace Neon
         return m_point;
     }
 
-    void TextComponent::OnDestory()
+    void TextComponent::OnDestroy()
     {
         // ....
     }

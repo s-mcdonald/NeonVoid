@@ -16,7 +16,7 @@ namespace Neon
         #endif
     }
 
-    void PositionComponent::OnDestory()
+    void PositionComponent::OnDestroy()
     {
         // ....
     }

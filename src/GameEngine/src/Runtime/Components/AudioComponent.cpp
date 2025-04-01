@@ -56,7 +56,7 @@ namespace Neon
         AudioSystem::SetVolume(volume);
     }
 
-    void AudioComponent::OnDestory()
+    void AudioComponent::OnDestroy()
     {
         // ....
     }
