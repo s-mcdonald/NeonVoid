@@ -22,6 +22,7 @@ namespace Neon
             GamePlayScene(SceneType type, Platform* platform);
             ~GamePlayScene() override = default;
 
+            void OnInit() override;
             void OnUpdate() override;
     };
 }

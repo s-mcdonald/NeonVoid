@@ -26,8 +26,6 @@ namespace Neon
             auto* ac = dynamic_cast<AudioComponent*>(x);
             ac->TriggerPlayOnce();
         }
-
-        Scene::OnUpdate();
     }
 
 
@@ -37,10 +35,13 @@ namespace Neon
         //
     }
 
+    void GamePlayScene::OnInit()
+    {
+        std::cout << "GamePlayScene::OnInit \n";
+    }
+
     void GamePlayScene::OnUpdate()
     {
-        std::cout << "Child \n";
-
-        Scene::OnUpdate();
+        std::cout << "GamePlayScene::OnUpdate \n";
     }
 }
