@@ -17,8 +17,8 @@ namespace Neon
     class Entity 
     {
         public:
-            Entity(int id);
-            ~Entity();
+            explicit Entity(int id);
+            virtual ~Entity();
         
             template <typename T>
             void AddComponent(Component* component);
@@ -27,6 +27,11 @@ namespace Neon
             T* GetComponent();
         
             int GetId() const;
+
+        public:
+            virtual void OnInit() {};
+            virtual void OnUpdate() {};
+            virtual void OnDestroy() {};
 
         private:
             int m_id;

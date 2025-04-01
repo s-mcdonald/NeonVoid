@@ -31,9 +31,14 @@ namespace Neon
         m_scenes.push_back(scene);
     }
 
-    Scene* Game::GetCurrentScene() const
+    Scene* Game::GetCurrentScene()
     {
-        return m_scenes.empty() ? nullptr : m_scenes.front();
+        if (m_currentScene == nullptr)
+        {
+            SwitchScene();
+        }
+
+        return m_currentScene;
     }
 
     // @todo:
@@ -44,14 +49,8 @@ namespace Neon
     {
         if (!m_scenes.empty())
         {
-            Scene* currentScene = m_scenes.front();
+            m_currentScene = m_scenes.front();
             m_scenes.pop_front();
-
-            if (false == currentScene->IsInitialized())
-            {
-                currentScene->OnInit();
-                std::cout << "Scene initialized in run loop\n";
-            }
         }
     }
 }

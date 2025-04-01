@@ -226,7 +226,7 @@ namespace Neon
             virtual ~Scene();
 
         public:
-            virtual void OnInit();
+            void Init();
             virtual void OnUpdate();
             bool IsInitialized() const;
 
@@ -254,11 +254,12 @@ namespace Neon
 
         public:
             void AddScene(Scene* scene);
-            [[nodiscard]] Scene* GetCurrentScene() const;
+            Scene* GetCurrentScene();
             void SwitchScene();
 
         private:
             std::deque<Scene*> m_scenes;
+            Scene* m_currentScene{nullptr};
     };
 
     class OpenGL final : public Platform

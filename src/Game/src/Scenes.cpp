@@ -14,7 +14,7 @@ namespace Neon
     TitleScene::TitleScene(const SceneType type, Platform* platform)
         : Scene(type, platform)
     {
-        m_entities['player'] = new Entity(MAIN_PLAYER);
+        //
     }
 
     void TitleScene::OnUpdate()

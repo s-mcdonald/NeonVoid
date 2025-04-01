@@ -28,10 +28,13 @@ namespace Neon
         #endif
     }
 
-    void Scene::OnInit()
-    {       
-        if (m_isInitialized) 
+    void Scene::Init()
+    {
+        if (m_isInitialized)
             return;
+
+        for (auto& [key, entity] : m_entities)
+            entity->OnInit();
 
         for (auto& [key, component] : m_components)
             component->OnInit();

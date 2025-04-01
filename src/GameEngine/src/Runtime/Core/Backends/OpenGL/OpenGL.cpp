@@ -98,18 +98,16 @@ namespace Neon
 
             if (false == scene->IsInitialized())
             {
-                scene->OnInit();
-                std::cout << "Scene initialized in run loop\n";
+                scene->Init();
             }
 
-            glClear(GL_COLOR_BUFFER_BIT);
-
-            // Check events like window close
             glfwPollEvents();
 
             scene->OnUpdate();
 
             glfwSwapBuffers(m_window);
+
+            glClear(GL_COLOR_BUFFER_BIT);
         }
     }
 
