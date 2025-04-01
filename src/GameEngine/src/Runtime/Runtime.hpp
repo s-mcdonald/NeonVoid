@@ -22,6 +22,7 @@
 #include "Audio/AudioSystem.hpp"
 #include "Audio/Volume.hpp"
 #include "Entity/Entity.hpp"
+#include "AssetManager/AssetManager.hpp"
 
 namespace Neon 
 {
@@ -36,15 +37,6 @@ namespace Neon
      *                                          *
      ********************************************/
 
-    class AssetManager
-    {
-        public:
-            AssetManager();
-            ~AssetManager();
-
-        public:
-            //static bool LoadTrueTypeFont(const char* fontPath);
-    };
 
     class Component
     {

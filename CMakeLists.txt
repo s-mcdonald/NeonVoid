@@ -58,6 +58,7 @@ set(GAME_ENGINE_SRC
     src/GameEngine/src/Runtime/Game.cpp
     
     # AssetManager
+    src/GameEngine/src/Runtime/AssetManager/AssetManager.hpp
     src/GameEngine/src/Runtime/AssetManager/AssetManager.cpp
 
     # Scene(s)
