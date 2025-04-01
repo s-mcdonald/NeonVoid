@@ -239,8 +239,8 @@ namespace Neon
             SceneType GetSceneType() const;
 
         private:
-            void UpdateEntities() const;
-            void UpdateComponents() const;
+            template <typename T>
+            void UpdateRenderable(const T& t);
 
         protected:
             std::unordered_map<std::string, Entity*> m_entities;

@@ -51,8 +51,8 @@ namespace Neon
 
     void Scene::Update()
     {       
-        UpdateEntities();
-        UpdateComponents();
+        UpdateRenderable(m_entities);
+        UpdateRenderable(m_components);
         OnUpdate();
     }
 
@@ -78,20 +78,13 @@ namespace Neon
         return m_scene_type;
     }
 
-
-    void Scene::UpdateEntities() const
+    template <typename T>
+    void Scene::UpdateRenderable(const T& t)
     {
-        for (auto& [key, entity] : m_entities)
+        for (auto& [key, value] : t)
         {
-            entity->OnUpdate();
+            value->OnUpdate();  // Assuming value exposes an OnUpdate() method
         }
     }
 
-    void Scene::UpdateComponents() const
-    {
-        for (auto& [key, component] : m_components)
-        {
-            component->OnUpdate();
-        }
-    }
 }
