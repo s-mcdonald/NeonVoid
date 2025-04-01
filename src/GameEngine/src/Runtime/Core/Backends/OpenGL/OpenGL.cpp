@@ -103,7 +103,7 @@ namespace Neon
 
             glfwPollEvents();
 
-            scene->OnUpdate();
+            scene->Update();
 
             glfwSwapBuffers(m_window);
 

@@ -39,6 +39,8 @@ namespace Neon
         for (auto& [key, component] : m_components)
             component->OnInit();
 
+        OnInit();
+
         m_isInitialized = true;
     }
 
@@ -47,12 +49,15 @@ namespace Neon
         return m_isInitialized;
     }
 
-    void Scene::OnUpdate()
+    void Scene::Update()
     {       
+        for (auto& [key, entity] : m_entities)
+            entity->OnUpdate();
+
         for (auto& [key, component] : m_components)
-        {
             component->OnUpdate();
-        }
+
+        OnUpdate();
     }
 
     void Scene::AddComponent(const std::string& tag, Component* component)

@@ -227,7 +227,9 @@ namespace Neon
 
         public:
             void Init();
-            virtual void OnUpdate();
+            void Update();
+            virtual void OnInit() {};
+            virtual void OnUpdate() {};
             bool IsInitialized() const;
 
         public:

@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 
 #include <iostream>
@@ -41,10 +41,6 @@ namespace Neon
         return m_currentScene;
     }
 
-    // @todo:
-    // we need to be able to remove the OnInit() call from the main game loop
-    // and trigger this switch scene func.
-    // so far this func does not get called.
     void Game::SwitchScene()
     {
         if (!m_scenes.empty())
