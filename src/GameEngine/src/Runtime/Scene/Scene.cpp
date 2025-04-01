@@ -51,12 +51,8 @@ namespace Neon
 
     void Scene::Update()
     {       
-        for (auto& [key, entity] : m_entities)
-            entity->OnUpdate();
-
-        for (auto& [key, component] : m_components)
-            component->OnUpdate();
-
+        UpdateEntities();
+        UpdateComponents();
         OnUpdate();
     }
 
@@ -80,5 +76,22 @@ namespace Neon
     SceneType Scene::GetSceneType() const
     {
         return m_scene_type;
+    }
+
+
+    void Scene::UpdateEntities() const
+    {
+        for (auto& [key, entity] : m_entities)
+        {
+            entity->OnUpdate();
+        }
+    }
+
+    void Scene::UpdateComponents() const
+    {
+        for (auto& [key, component] : m_components)
+        {
+            component->OnUpdate();
+        }
     }
 }
