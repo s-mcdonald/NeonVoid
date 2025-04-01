@@ -14,8 +14,6 @@ namespace Neon
         #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
             std::cout << "Game::Constructor called\n";
         #endif
-
-        // Create gameEngine here
     }
 
     Game::~Game() 
