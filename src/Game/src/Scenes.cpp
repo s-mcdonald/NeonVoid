@@ -9,13 +9,8 @@
 
 namespace Neon
 {
-    TitleScene::TitleScene(SceneType type, Platform* platform)
+    TitleScene::TitleScene(const SceneType type, Platform* platform)
         : Scene(type, platform)
-    {
-        //
-    }
-                
-    TitleScene::~TitleScene()
     {
         //
     }
@@ -24,10 +19,9 @@ namespace Neon
     {
         std::cout << "Child \n";
 
-        auto* x = GetComponent("aud.intro");
-        if (x)
+        if (auto* x = GetComponent("aud.intro"))
         {
-            AudioComponent* ac = static_cast<AudioComponent*>(x);
+            auto* ac = dynamic_cast<AudioComponent*>(x);
             ac->TriggerPlayOnce();
         }
 
@@ -35,13 +29,8 @@ namespace Neon
     }
 
 
-    GamePlayScene::GamePlayScene(SceneType type, Platform* platform)
+    GamePlayScene::GamePlayScene(const SceneType type, Platform* platform)
         : Scene(type, platform)
-    {
-        //
-    }
-                
-    GamePlayScene::~GamePlayScene()
     {
         //
     }

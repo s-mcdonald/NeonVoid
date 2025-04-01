@@ -13,7 +13,7 @@ namespace Neon
     {
         public:
             AudioSystem();
-            ~AudioSystem();
+            virtual ~AudioSystem();
 
         public:
             virtual void Play(const std::string& filename);
@@ -22,7 +22,7 @@ namespace Neon
             virtual void Stop();
             virtual void Update();
 
-            void SetVolume(const Volume& volume);
+            virtual void SetVolume(const Volume& volume);
 
         private:
             ma_device_config getDeviceConfig();

@@ -8,5 +8,5 @@
 
 namespace Neon
 {
-    void LoadGameData(Game* game, GameEngine& gameEngine);
+    void LoadGameData(Game* game, const GameEngine& gameEngine);
 }

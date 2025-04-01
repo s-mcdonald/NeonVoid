@@ -67,22 +67,22 @@ namespace Neon
     {
         public:
             Component();
-            virtual ~Component();
+            ~Component() override;
         public:
-            virtual void OnInit() override;
-            virtual void OnUpdate() override;
+            void OnInit() override;
+            void OnUpdate() override;
     };
 
-    class QuadComponent 
+    class QuadComponent final
         : public Component
     {
         public:
             QuadComponent();
-            ~QuadComponent();
+            ~QuadComponent() override;
 
         public:
-            void OnInit();
-            void OnUpdate();
+            void OnInit() override;
+            void OnUpdate() override;
 
         private:  
             GLuint m_VAO;
@@ -91,44 +91,44 @@ namespace Neon
             GLfloat m_vertices;
     };
 
-    class AudioComponent 
+    class AudioComponent final
         : public Component
-        , public AudioSystem
+          , public AudioSystem
     {
         public:
-            AudioComponent(const std::string& filename);
-            ~AudioComponent();
+            explicit AudioComponent(const std::string& filename);
+            ~AudioComponent() override;
 
         public:
-            void OnInit();
-            void OnUpdate();
+            void OnInit() override;
+            void OnUpdate() override;
 
         public:
             void TriggerPlayOnce();
             void TriggerPlayRepeat();
 
         public:
-            void SetVolume(const Volume& volume);
+            void SetVolume(const Volume& volume) override;
 
         private:
             std::string m_filename;    
             bool m_repeats;
     };
 
-    class TextComponent : public Component, public IRenderable
+    class TextComponent final : public Component, public IRenderable
     {
         public:
-            TextComponent(const std::string& text);
+            explicit TextComponent(const std::string& text);
             TextComponent(const std::string& text, float fontSize);
             TextComponent(const std::string& text, float fontSize, const Point& point);
             TextComponent(const std::string& text, float fontSize, const Point& point, ColorAlpha color);
-            ~TextComponent();
+            ~TextComponent() override;
     
         public:
-            const std::string& GetText() const;
+            [[nodiscard]] const std::string& GetText() const;
             void SetText(const std::string& text);
     
-            float GetFontSize() const;
+            [[nodiscard]] float GetFontSize() const;
             void SetFontSize(float fontSize);
 
             void OnInit() override;
@@ -144,10 +144,10 @@ namespace Neon
             ColorAlpha m_colorAlpha;
     };
 
-    class PositionComponent : public Component 
+    class PositionComponent final : public Component
     {
         public:
-            PositionComponent(float x = 0.0f, float y = 0.0f) : X(x), Y(y) {}
+            explicit PositionComponent(float x = 0.0f, float y = 0.0f) : X(x), Y(y) {}
         
             // we should prob use Point for this
             float X, Y;
@@ -181,7 +181,7 @@ namespace Neon
      };
  
      // we should make this static ?
-     class OpenGLRenderer : public IRenderer
+     class OpenGLRenderer final : public IRenderer
      {
         public:
             OpenGLRenderer();
@@ -223,7 +223,7 @@ namespace Neon
             virtual void Run(Game* game) = 0;
     };
 
-    class Scene : public IComponent, public IRenderable
+    class Scene : public IRenderable
     {
         public:
             Scene() = delete;
@@ -231,8 +231,8 @@ namespace Neon
             ~Scene();
 
         public:
-            void OnInit() override;
-            void OnUpdate() override;
+            void OnInit();
+            void OnUpdate();
             bool IsInitialized() const;
 
         public:
@@ -257,20 +257,20 @@ namespace Neon
 
         public:
             void AddScene(Scene* scene);
-            Scene* GetCurrentScene();
+            [[nodiscard]] Scene* GetCurrentScene() const;
             void SwitchScene();
 
         private:
             std::deque<Scene*> m_scenes;
     };
 
-    class OpenGL : public Platform
+    class OpenGL final : public Platform
     {
         public:
             OpenGL();
-            ~OpenGL();
+            ~OpenGL() override;
 
-            bool Initialize(const int width, const int height, const char* title) override;
+            bool Initialize(int width, int height, const char* title) override;
 
             void Run(Game* game) override; 
 
@@ -297,7 +297,7 @@ namespace Neon
             bool Initialize(int width, int height, const char* title);
             void Run(Game* game);
             
-            Platform* GetPlatform() const;
+            [[nodiscard]] Platform* GetPlatform() const;
 
         private:
             Platform* m_platform;
@@ -305,6 +305,10 @@ namespace Neon
 
     class GameEngineApi 
     {
+        public:
+            GameEngineApi(const GameEngineApi&) = delete;
+            GameEngineApi& operator=(const GameEngineApi&) = delete;
+
         public:
             static GameEngineApi& getInstance();    
             static void RenderQuad(GLuint shaderProgram, GLuint VAO);
@@ -314,9 +318,6 @@ namespace Neon
         private:
             GameEngineApi();
             ~GameEngineApi();
-        
-            GameEngineApi(const GameEngineApi&) = delete;
-            GameEngineApi& operator=(const GameEngineApi&) = delete;
 
         private:
             IRenderer* m_renderer;

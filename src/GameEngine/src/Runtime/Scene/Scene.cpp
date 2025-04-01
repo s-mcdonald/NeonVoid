@@ -9,8 +9,7 @@
 namespace Neon
 {
     Scene::Scene(SceneType type, Platform* platform) 
-        : IComponent()
-        , IRenderable()
+        : IRenderable()
         , m_scene_type(type)
         , m_platform(platform)
     {

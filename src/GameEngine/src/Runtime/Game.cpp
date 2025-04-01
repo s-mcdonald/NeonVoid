@@ -31,13 +31,13 @@ namespace Neon
         m_scenes.push_back(scene);
     }
 
-    Scene* Game::GetCurrentScene()
+    Scene* Game::GetCurrentScene() const
     {
         return m_scenes.empty() ? nullptr : m_scenes.front();
     }
 
     // @todo:
-    // we need to be able to remove the OnINit() call from the main game loop
+    // we need to be able to remove the OnInit() call from the main game loop
     // and trigger this switch scene func.
     // so far this func does not get called.
     void Game::SwitchScene()
