@@ -135,16 +135,6 @@ namespace Neon
             float X, Y;
     };
 
-    class ComponentManager 
-    {
-        public:
-            template <typename T>
-            void AddComponent(Entity& entity, T* component);
-        
-            template <typename T>
-            T* GetComponent(const Entity& entity);
-    };
-
     /******************************************** 
      *                                          *
      *          A P I    R E N D E R E R        *

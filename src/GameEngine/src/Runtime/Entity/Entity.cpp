@@ -7,35 +7,32 @@
 
 namespace Neon 
 {
-    Entity::Entity(int id) 
+    Entity::Entity(const int id)
         : m_id(id)
     {
         //
     }
 
+    Entity::Entity(const int id, const std::initializer_list<Component*> components)
+        : m_id(id)
+    {
+        for (auto& component : components) {
+            m_components.emplace_back(component);
+        }
+    }
+
     Entity::~Entity()
     {
-        for (auto& pair : components) 
+        for (auto* c : m_components)
         {
-            delete pair.second;
+            delete c;
         }
     }
 
     template <typename T>
     void Entity::AddComponent(Component* component)
     {
-        components[typeid(T).name()] = component;
-    }
-
-    template <typename T>
-    T* Entity::GetComponent() 
-    {
-        auto it = components.find(typeid(T).name());
-        if (it != components.end()) 
-        {
-            return dynamic_cast<T*>(it->second);
-        }
-        return nullptr;
+        m_components.emplace_back(component);
     }
         
     int Entity::GetId() const 

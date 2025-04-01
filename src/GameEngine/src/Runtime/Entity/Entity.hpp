@@ -18,15 +18,13 @@ namespace Neon
     {
         public:
             explicit Entity(int id);
+            explicit Entity(int id, std::initializer_list<Component*> components);
             virtual ~Entity();
         
             template <typename T>
             void AddComponent(Component* component);
         
-            template <typename T>
-            T* GetComponent();
-        
-            int GetId() const;
+            [[nodiscard]] int GetId() const;
 
         public:
             virtual void OnInit() {};
@@ -35,6 +33,7 @@ namespace Neon
 
         private:
             int m_id;
-            std::unordered_map<std::string, Component*> components;
+            std::vector<Component*> m_components;
+
     };
 }
