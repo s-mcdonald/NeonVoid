@@ -39,7 +39,7 @@ namespace Neon
     ///
     /// Initialize OpenGL core before render
     ///
-    bool OpenGL::Initialize(int width, int height, const char* title) 
+    bool OpenGL::Initialize(const int width, const int height, const char* title)
     {
         if (!glfwInit()) 
         {

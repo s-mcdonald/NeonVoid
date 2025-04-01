@@ -190,7 +190,7 @@ namespace Neon
             void BeginFrame() override;
             void EndFrame() override;
             void RenderText(const TextComponent& component) override;
-            void RenderQuad(GLuint shaderProgram, GLuint VAO);
+            void RenderQuad(GLuint shaderProgram, GLuint VAO) override;
 
         private:
 
@@ -270,7 +270,7 @@ namespace Neon
             OpenGL();
             ~OpenGL();
 
-            bool Initialize(int width, int height, const char* title) override;
+            bool Initialize(const int width, const int height, const char* title) override;
 
             void Run(Game* game) override; 
 
