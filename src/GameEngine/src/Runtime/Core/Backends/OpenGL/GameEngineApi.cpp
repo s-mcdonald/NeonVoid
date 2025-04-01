@@ -24,12 +24,12 @@ namespace Neon
         delete m_renderer;
     }
 
-    IRenderer* GameEngineApi::GetRenderer()
+    IRenderer* GameEngineApi::GetRenderer() const
     {
         return m_renderer;
     }
 
-    void GameEngineApi::RenderQuad(GLuint shaderProgram, GLuint VAO) 
+    void GameEngineApi::RenderQuad(const GLuint shaderProgram, const GLuint VAO)
     {
         #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
             std::cout << "GameEngineApi::RenderQuad called\n";

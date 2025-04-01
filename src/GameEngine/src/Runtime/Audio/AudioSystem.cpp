@@ -3,7 +3,7 @@
  */
 /* #define MINIAUDIO_IMPLEMENTATION */
 
-#include <stdio.h>
+#include <cstdio>
 #include <stdlib.h>
 #include <unistd.h>
 #include <iostream>
@@ -20,11 +20,9 @@ namespace Neon
         : m_isPlaying(false)
         , m_onLoop(false)
     {
-        ma_result result;
-        ma_device_config deviceConfig = getDeviceConfig();
-        result = ma_device_init(NULL, &deviceConfig, &m_device);
+        const ma_device_config deviceConfig = getDeviceConfig();
 
-        if (result != MA_SUCCESS) 
+        if (ma_result result = ma_device_init(nullptr, &deviceConfig, &m_device); result != MA_SUCCESS)
         {
             #ifdef NEON_DEBUG_AUDIO
                 std::cerr << "[ERROR] Failed to initialize audio device!" << std::endl;
@@ -40,7 +38,7 @@ namespace Neon
     {
         if (m_isPlaying) 
         {
-            Stop();
+            AudioSystem::Stop();
         }
 
         ma_decoder_uninit(&m_decoder);
@@ -62,7 +60,7 @@ namespace Neon
             return;
         }
     
-        ma_result result = ma_decoder_init_file(filename.c_str(), NULL, &m_decoder);
+        ma_result result = ma_decoder_init_file(filename.c_str(), nullptr, &m_decoder);
         if (result != MA_SUCCESS) 
         {
             #ifdef NEON_DEBUG_AUDIO
@@ -160,7 +158,7 @@ namespace Neon
 
     void AudioSystem::dataCallback(ma_device* pDevice, void* pOutput, [[maybe_unused]] const void* pInput, uint32_t frameCount) 
     {
-        AudioSystem* player = reinterpret_cast<AudioSystem*>(pDevice->pUserData);
+        auto* player = static_cast<AudioSystem*>(pDevice->pUserData);
 
         if (player == nullptr) 
         {
@@ -177,9 +175,8 @@ namespace Neon
 
         // OK here is the guts of it, read from decoder into the OutputBuffer
         ma_decoder* pDecoder = &player->m_decoder;
-        ma_result result = ma_decoder_read_pcm_frames(pDecoder, pOutput, frameCount, NULL);
 
-        switch(result)
+        switch(ma_result result = ma_decoder_read_pcm_frames(pDecoder, pOutput, frameCount, nullptr))
         {
             case MA_AT_END:
                 if (false == player->m_onLoop) 

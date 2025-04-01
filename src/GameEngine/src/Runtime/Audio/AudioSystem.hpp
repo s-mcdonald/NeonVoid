@@ -29,8 +29,8 @@ namespace Neon
             static void dataCallback(ma_device* pDevice, void* pOutput, const void* pInput, uint32_t frameCount);
 
         private:
-            ma_decoder m_decoder;
-            ma_device m_device;
+            ma_decoder m_decoder{};
+            ma_device m_device{};
             bool m_isPlaying{false};
             bool m_onLoop{false};
             bool m_isStopRequested{false};

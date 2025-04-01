@@ -43,11 +43,11 @@ namespace Neon
             ~AssetManager();
 
         public:
-            bool LoadTrueTypeFont(const char* fontPath);
+            static bool LoadTrueTypeFont(const char* fontPath);
 
         private:
-            stbtt_fontinfo m_font;
-            unsigned char* m_fontBuffer;
+            stbtt_fontinfo m_font{};
+            unsigned char* m_fontBuffer{};
     };
 
     class IRenderable
@@ -96,7 +96,7 @@ namespace Neon
           , public AudioSystem
     {
         public:
-            explicit AudioComponent(const std::string& filename);
+            explicit AudioComponent(std::string   filename);
             ~AudioComponent() override;
 
         public:
@@ -228,11 +228,11 @@ namespace Neon
         public:
             Scene() = delete;
             Scene(SceneType type, Platform* platform);
-            ~Scene();
+            virtual ~Scene();
 
         public:
-            void OnInit();
-            void OnUpdate();
+            virtual void OnInit();
+            virtual void OnUpdate();
             bool IsInitialized() const;
 
         public:
@@ -246,8 +246,6 @@ namespace Neon
             bool m_isInitialized = false;
             std::unordered_map<std::string, Component*> m_components;
     };
-
-    // define more scenes here... TitleScene ect
 
     class Game
     {
@@ -278,9 +276,6 @@ namespace Neon
             static GLuint CreateShaderProgram(const char* vertexSource, const char* fragmentSource);
 
         protected:
-
-
-        protected:
             GLFWwindow* m_window;
             bool m_openGlInitialized = false;
 
@@ -294,8 +289,8 @@ namespace Neon
             ~GameEngine();
 
         public:
-            bool Initialize(int width, int height, const char* title);
-            void Run(Game* game);
+            bool Initialize(int width, int height, const char* title) const;
+            void Run(Game* game) const;
             
             [[nodiscard]] Platform* GetPlatform() const;
 
@@ -313,7 +308,7 @@ namespace Neon
             static GameEngineApi& getInstance();    
             static void RenderQuad(GLuint shaderProgram, GLuint VAO);
         
-            IRenderer* GetRenderer();
+            [[nodiscard]] IRenderer* GetRenderer() const;
 
         private:
             GameEngineApi();

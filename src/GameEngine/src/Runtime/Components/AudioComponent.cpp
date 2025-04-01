@@ -3,16 +3,17 @@
  */
 #include <iostream>
 #include <cmath>
+#include <utility>
 
 #include "Runtime/Runtime.hpp"
 
 namespace Neon 
 {
     // AudioConfig config
-    AudioComponent::AudioComponent(const std::string& filename) 
+    AudioComponent::AudioComponent(std::string filename)
         : Component()
         , AudioSystem()
-        , m_filename(filename)
+        , m_filename(std::move(filename))
         , m_repeats(false)
     {
         #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)

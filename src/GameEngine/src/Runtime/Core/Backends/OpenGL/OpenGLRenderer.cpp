@@ -43,7 +43,7 @@ namespace Neon
             std::cout << "OpenGLRenderer::RenderText called\n";
         #endif
 
-        std::cout << "Renderring Text: " << component.GetText() << std::endl;
+        std::cout << "Rendering Text: " << component.GetText() << std::endl;
     }
 
     void OpenGLRenderer::RenderQuad(GLuint shaderProgram, GLuint VAO) 

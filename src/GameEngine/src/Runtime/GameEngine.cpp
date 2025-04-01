@@ -31,12 +31,12 @@ namespace Neon
         delete m_platform;
     }
 
-    bool GameEngine::Initialize(int width, int height, const char* title) 
+    bool GameEngine::Initialize(const int width, const int height, const char* title) const
     {
         return m_platform->Initialize(width, height,title);
     }
 
-    void GameEngine::Run(Game* game) 
+    void GameEngine::Run(Game* game) const
     {
         m_platform->Run(game);
     }
