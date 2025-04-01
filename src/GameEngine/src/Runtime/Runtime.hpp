@@ -233,7 +233,11 @@ namespace Neon
         public:
             void AddComponent(const std::string& tag, Component* component);
             Component* GetComponent(const std::string& tag);
+
             SceneType GetSceneType() const;
+
+        protected:
+            std::unordered_map<std::string, Entity*> m_entities;
 
         private:
             SceneType m_scene_type;

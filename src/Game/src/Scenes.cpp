@@ -9,10 +9,12 @@
 
 namespace Neon
 {
+    constexpr uint8_t MAIN_PLAYER = 1;
+
     TitleScene::TitleScene(const SceneType type, Platform* platform)
         : Scene(type, platform)
     {
-        //
+        m_entities['player'] = new Entity(MAIN_PLAYER);
     }
 
     void TitleScene::OnUpdate()
