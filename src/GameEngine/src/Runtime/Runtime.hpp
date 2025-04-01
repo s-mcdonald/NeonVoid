@@ -46,11 +46,6 @@ namespace Neon
             //static bool LoadTrueTypeFont(const char* fontPath);
     };
 
-    class IRenderable
-    {
-        //
-    };
-
     class Component
     {
         public:
@@ -107,7 +102,7 @@ namespace Neon
             bool m_repeats;
     };
 
-    class TextComponent final : public Component, public IRenderable
+    class TextComponent final : public Component
     {
         public:
             explicit TextComponent(const std::string& text);
@@ -218,7 +213,7 @@ namespace Neon
             virtual void Run(Game* game) = 0;
     };
 
-    class Scene : public IRenderable
+    class Scene
     {
         public:
             Scene() = delete;

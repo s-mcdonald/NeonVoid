@@ -30,7 +30,6 @@ namespace Neon
 
     TextComponent::TextComponent(std::string  text, float fontSize, const Point& point, ColorAlpha color)
         : Component()
-        , IRenderable()
         , m_text(std::move(text))
         , m_fontSize(fontSize)
         , m_point(point)
