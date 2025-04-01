@@ -20,12 +20,17 @@ namespace Neon
 
     Scene::~Scene() 
     {
-        for (auto& [key, component] : m_components)
-            delete component;
-        
+        DestroyRenderable(m_entities);
+        DestroyRenderable(m_components);
+
         #ifdef NEON_DEBUG
             std::cout << "Scene::Destructor called\n";
         #endif
+    }
+
+    bool Scene::IsInitialized() const
+    {
+        return m_isInitialized;
     }
 
     void Scene::Init()
@@ -39,11 +44,6 @@ namespace Neon
         OnInit();
 
         m_isInitialized = true;
-    }
-
-    bool Scene::IsInitialized() const
-    {
-        return m_isInitialized;
     }
 
     void Scene::Update()
@@ -80,7 +80,7 @@ namespace Neon
     {
         for (auto& [key, value] : t)
         {
-            value->OnInit();  // Assuming value exposes an OnUpdate() method
+            value->OnInit();
         }
     }
 
@@ -89,7 +89,18 @@ namespace Neon
     {
         for (auto& [key, value] : t)
         {
-            value->OnUpdate();  // Assuming value exposes an OnUpdate() method
+            value->OnUpdate();
+        }
+    }
+
+    template <typename T>
+    void Scene::DestroyRenderable(const T& t)
+    {
+        for (auto& [key, value] : t)
+        {
+            value->OnDestroy();
+
+            delete value;
         }
     }
 

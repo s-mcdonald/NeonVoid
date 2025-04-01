@@ -228,8 +228,10 @@ namespace Neon
         public:
             void Init();
             void Update();
+            void Destroy();
             virtual void OnInit() {};
             virtual void OnUpdate() {};
+            virtual void OnDestroy() {};
             bool IsInitialized() const;
 
         public:
@@ -244,6 +246,9 @@ namespace Neon
 
             template <typename T>
             void UpdateRenderable(const T& t);
+
+            template <typename T>
+            void DestroyRenderable(const T& t);
 
         protected:
             std::unordered_map<std::string, Entity*> m_entities;
