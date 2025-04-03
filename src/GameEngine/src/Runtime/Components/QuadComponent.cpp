@@ -10,8 +10,6 @@ namespace Neon
 {
     QuadComponent::QuadComponent() 
         : Component()
-        , m_VAO(0)
-        , m_VBO(0)
     {
         #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
             std::cout << "QuadComponent::Constructor called\n";
@@ -21,22 +19,15 @@ namespace Neon
     // @todo: Abstract this to platforms
     QuadComponent::~QuadComponent() 
     {
-        if (m_VAO) 
-        {
-            glDeleteVertexArrays(1, &m_VAO);
-            m_VAO = 0;
-        }
-        
-        if (m_VBO)
-        {
-            glDeleteBuffers(1, &m_VBO);
-            m_VBO = 0;
-        }
-
-        if (m_shaderProgram) 
+        if (m_shaderProgram)
         {
             glDeleteProgram(m_shaderProgram);
             m_shaderProgram = 0;
+        }
+
+        if (m_buffer)
+        {
+            delete m_buffer;
         }
 
         #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
@@ -44,7 +35,7 @@ namespace Neon
         #endif
     }
 
-    float* QuadComponent::GetVerticies()
+    void QuadComponent::OnInit()
     {
         float vertices[] = {
             0.0f,  0.5f,        // Top vertex
@@ -52,35 +43,7 @@ namespace Neon
             0.5f, -0.5f,        // Bottom right
         };
 
-        return vertices;
-    }
-
-    void QuadComponent::OnInit() 
-    {
-        // m_VAO = GlComponentInitializer::InitQuadComponent(this);
-
-        GLfloat vertices[] = {
-            0.0f,  0.5f,        // Top vertex
-            -0.5f, -0.5f,       // Bottom left
-            0.5f, -0.5f,        // Bottom right
-        };
-
-        // Generate m_VAO and m_VBO
-        glGenVertexArrays(1, &m_VAO);
-        glGenBuffers(1, &m_VBO);
-
-        // Bind m_VAO and m_VBO
-        glBindVertexArray(m_VAO);
-        glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-        // Set the vertex attribute pointer
-        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (GLvoid*)0);
-        glEnableVertexAttribArray(0);
-
-        // Unbind m_VBO and m_VAO
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
-        glBindVertexArray(0);
+        m_buffer = GameEngine::CreateVertexBuffer(vertices, sizeof(vertices) );
 
         // Compile and link shaders
         const char* vertexSource = R"(
@@ -104,7 +67,12 @@ namespace Neon
     {
         // hmm, not sure if we should prob use events instead..
         auto& api = GameEngineApi::getInstance();
-        api.GetRenderer()->RenderQuad(m_shaderProgram, m_VAO);
+
+        //api.GetRenderer()->RenderQuad(m_shaderProgram, m_VAO);
+        //std::cout << "QuadComponent::m_VAO: " << m_VAO << "\n";
+
+        api.GetRenderer()->RenderQuad(m_shaderProgram, m_buffer->GetVao());
+        std::cout << "QuadComponent::m_VAO: " << m_buffer->GetVao() << "\n";
     }
 
     void QuadComponent::OnDestroy()

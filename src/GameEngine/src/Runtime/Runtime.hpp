@@ -53,16 +53,11 @@ namespace Neon
             ~QuadComponent() override;
 
         public:
-            float* GetVerticies();
-
-        public:
             void OnInit() override;
             void OnUpdate() override;
             void OnDestroy() override;
 
-        private:  
-            GLuint m_VAO;
-            GLuint m_VBO;
+        private:
             GLuint m_shaderProgram{};
             GLfloat m_vertices{};
             VertexBuffer* m_buffer;
@@ -166,15 +161,6 @@ namespace Neon
 
         private:
 
-    };
-
-    class GlComponentInitializer final
-    {
-        public:
-            GlComponentInitializer() = default;
-            ~GlComponentInitializer() = default;
-        public:
-            static GLuint InitQuadComponent(QuadComponent* component);
     };
 
 #ifdef NEON_BUILD_VULKAN

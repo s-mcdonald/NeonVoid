@@ -48,7 +48,7 @@ namespace Neon
 
     void OpenGLRenderer::RenderQuad(const GLuint shaderProgram, const GLuint VAO)
     {
-        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
+        #if defined(NEON_DEBUG)
             std::cout << "OpenGLRenderer::RenderQuad called\n";
         #endif
 

@@ -48,6 +48,9 @@ namespace Neon
 
     VertexBuffer* GameEngine::CreateVertexBuffer(float* vertices, size_t size)
     {
+        return new OpenGLVertexBuffer(vertices, size);
+
+
         #ifdef NEON_BUILD_OPENGL
             return new OpenGLVertexBuffer(vertices, size);
         #elif defined(NEON_BUILD_VULKAN)

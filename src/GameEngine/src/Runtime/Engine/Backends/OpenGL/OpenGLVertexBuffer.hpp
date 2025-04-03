@@ -13,14 +13,16 @@ namespace Neon
     class OpenGLVertexBuffer : public VertexBuffer
     {
         public:
-            OpenGLVertexBuffer(float* vertices, size_t size);
-            ~OpenGLVertexBuffer() override;
+            OpenGLVertexBuffer(const float* vertices, size_t size);
+            ~OpenGLVertexBuffer();
 
             void Bind() const override;
             void Unbind() const override;
             void UpdateData(const void* data, size_t size) override;
 
+            GLuint GetVao() override;
+
         private:
-            GLuint m_VAO, m_VBO;
+            GLuint m_VAO{}, m_VBO{};
     };
 }
