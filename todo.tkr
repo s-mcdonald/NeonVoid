@@ -1,5 +1,7 @@
 # Todos
 
+move Components and Entities into Scene folder ??
+
 ```
 [x] OpenGL/DirectX Abstraction Layer
 [x] Render
@@ -7,7 +9,7 @@
   [x] - Render Basic Shader
   [ ] - Render Shader Component
   [ ] - Render Text Component
-  [ ] - Render Quad Component
+  [x] - Render Quad Component
   [x] - Render/Update Audio Component
 [x] Render Basic Shape on a via Shape->Component
 [ ] Input Control
@@ -20,7 +22,7 @@
   [ ] - Player Bonus XP
   [ ] - Player Toolbelt (Chest)
 [x] Entity (ies)
-[ ] Basic Collision Detecton
+[ ] Basic Collision Detection
 [x] Audio System (initial, needs refactoring)
   [ ]  - Scene background audio
   [ ]  - Component Sound effects
