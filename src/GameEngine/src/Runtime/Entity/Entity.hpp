@@ -18,13 +18,13 @@ namespace Neon
     {
         public:
             explicit Entity(int id);
-            explicit Entity(int id, std::initializer_list<Component*> components);
+            explicit Entity(uint32_t id, std::initializer_list<Component*> components);
             virtual ~Entity();
         
             template <typename T>
             void AddComponent(Component* component);
         
-            [[nodiscard]] int GetId() const;
+            [[nodiscard]] uint32_t GetId() const;
 
         public:
             virtual void OnInit() {};
@@ -32,7 +32,7 @@ namespace Neon
             virtual void OnDestroy() {};
 
         private:
-            int m_id;
+            uint32_t m_id;
             std::vector<Component*> m_components;
 
     };

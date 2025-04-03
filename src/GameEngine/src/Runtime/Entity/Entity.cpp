@@ -13,7 +13,7 @@ namespace Neon
         //
     }
 
-    Entity::Entity(const int id, const std::initializer_list<Component*> components)
+    Entity::Entity(const uint32_t id, const std::initializer_list<Component*> components)
         : m_id(id)
     {
         for (auto& component : components) {
@@ -23,7 +23,7 @@ namespace Neon
 
     Entity::~Entity()
     {
-        for (auto* c : m_components)
+        for (const auto* c : m_components)
         {
             delete c;
         }
@@ -34,8 +34,8 @@ namespace Neon
     {
         m_components.emplace_back(component);
     }
-        
-    int Entity::GetId() const 
+
+    uint32_t Entity::GetId() const
     {
         return m_id; 
     }
