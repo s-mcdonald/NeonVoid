@@ -90,7 +90,8 @@ set(GAME_ENGINE_SRC
         src/GameEngine/src/Runtime/Engine/Backends/OpenGL/GameEngineApi.cpp
         src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLRenderer.cpp
         src/GameEngine/src/Runtime/Engine/Backends/OpenGL/GLComponentInitializer.cpp
-    
+        src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLVertexBuffer.hpp
+        src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLVertexBuffer.cpp
 )
 
 # Create GameEngine as a static library
