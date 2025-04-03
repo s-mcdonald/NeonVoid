@@ -44,16 +44,16 @@ namespace Neon
         #endif
     }
 
-    float* QuadComponent::GetVerticies()
-    {
-        float vertices[] = {
-            0.0f,  0.5f,        // Top vertex
-            -0.5f, -0.5f,       // Bottom left
-            0.5f, -0.5f,        // Bottom right
-        };
-
-        return vertices;
-    }
+    // float* QuadComponent::GetVerticies()
+    // {
+    //     float vertices[] = {
+    //         0.0f,  0.5f,        // Top vertex
+    //         -0.5f, -0.5f,       // Bottom left
+    //         0.5f, -0.5f,        // Bottom right
+    //     };
+    //
+    //     return vertices;
+    // }
 
     void QuadComponent::OnInit() 
     {

@@ -53,7 +53,7 @@ namespace Neon
             ~QuadComponent() override;
 
         public:
-            float* GetVerticies();
+            //float* GetVerticies();
 
         public:
             void OnInit() override;
