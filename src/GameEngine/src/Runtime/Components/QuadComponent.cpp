@@ -44,8 +44,21 @@ namespace Neon
         #endif
     }
 
+    float* QuadComponent::GetVerticies()
+    {
+        float vertices[] = {
+            0.0f,  0.5f,        // Top vertex
+            -0.5f, -0.5f,       // Bottom left
+            0.5f, -0.5f,        // Bottom right
+        };
+
+        return vertices;
+    }
+
     void QuadComponent::OnInit() 
     {
+        // m_VAO = GlComponentInitializer::InitQuadComponent(this);
+
         GLfloat vertices[] = {
             0.0f,  0.5f,        // Top vertex
             -0.5f, -0.5f,       // Bottom left
@@ -89,6 +102,7 @@ namespace Neon
 
     void QuadComponent::OnUpdate() 
     {
+        // hmm, not sure if we should prob use events instead..
         auto& api = GameEngineApi::getInstance();
         api.GetRenderer()->RenderQuad(m_shaderProgram, m_VAO);
     }

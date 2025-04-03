@@ -58,6 +58,9 @@ namespace Neon
             ~QuadComponent() override;
 
         public:
+            float* GetVerticies();
+
+        public:
             void OnInit() override;
             void OnUpdate() override;
             void OnDestroy() override;
@@ -67,6 +70,7 @@ namespace Neon
             GLuint m_VBO;
             GLuint m_shaderProgram{};
             GLfloat m_vertices{};
+            // VertexBuffer* m_buffer;
     };
 
     class AudioComponent final
