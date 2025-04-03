@@ -13,8 +13,9 @@ namespace Neon
 {
     GLuint GlComponentInitializer::InitQuadComponent(QuadComponent* component)
     {
-        const auto vertices = static_cast<GLfloat>(component->GetVerticies());
+        //const auto vertices = static_cast<GLfloat>(component->GetVerticies());
 
+        const auto vertices = {0.0f, 0.0f};
         GLuint m_VAO;
         GLuint m_VBO;
 

@@ -6,7 +6,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include "Runtime/Runtime.hpp"
+#include "../../../../Runtime/Runtime.hpp"
 
 namespace Neon
 {
