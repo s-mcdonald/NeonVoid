@@ -9,24 +9,17 @@
 
 namespace Neon 
 {
-    Game::Game()
-    {
-        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-            std::cout << "Game::Constructor called\n";
-        #endif
-    }
-
-    Game::~Game() 
+    Game::~Game()
     {
         #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
             std::cout << "Game::Destructor called\n";
         #endif
 
-        for (auto s : m_scenes)
+        for (const auto s : m_scenes)
             delete s;
     }
 
-    bool Game::Initialize(int width, int height, const char* title) const
+    bool Game::Initialize(const int width, const int height, const char* title) const
     {
         return gameEngine.Initialize(width, height, title);
     }
