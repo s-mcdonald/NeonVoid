@@ -62,6 +62,7 @@ set(GAME_ENGINE_SRC
     src/GameEngine/src/Runtime/AssetManager/AssetManager.cpp
 
     # Scene(s)
+    src/GameEngine/src/Runtime/Scene/Scene.hpp
     src/GameEngine/src/Runtime/Scene/Scene.cpp
 
     # Entity
@@ -132,8 +133,6 @@ target_compile_options(GameEngine PRIVATE -Wall -Wextra -Wpedantic)
 #
 set(GAME_SRC
     src/Game/src/GameMain.cpp
-    src/Game/src/NeonFunctions.hpp
-    src/Game/src/NeonFunctions.cpp
     src/Game/src/Scenes.cpp
     src/Game/src/Scenes.hpp
     src/Game/src/MyGame.cpp
