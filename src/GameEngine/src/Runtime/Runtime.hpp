@@ -130,9 +130,9 @@ namespace Neon
         public:
             explicit PositionComponent(float, float);
             void OnDestroy() override;
-
-            // we should prob use Point for this
-            float X, Y;
+            Point GetPoint() const;
+        private:
+            Point m_position;
     };
 
     /******************************************** 
