@@ -3,13 +3,6 @@
  */
 #include <iostream>
 #include <fstream>
-#include <vector>
-
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-
-#define STB_TRUETYPE_IMPLEMENTATION
-
 
 #include "Runtime/Runtime.hpp"
 
@@ -33,4 +26,10 @@ namespace Neon
     // {
     //     return true;
     // }
+
+    // Load SoundFiles
+
+    // LoadTextures
+
+    // ..
 }
