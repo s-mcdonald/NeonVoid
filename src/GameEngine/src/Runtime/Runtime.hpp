@@ -145,8 +145,18 @@ namespace Neon
      *                                          *
      ********************************************/
 
-     class IRenderer
-     {
+    class VertexBuffer
+    {
+        public:
+            virtual ~VertexBuffer() = default;
+
+            virtual void Bind() const = 0;
+            virtual void Unbind() const = 0;
+            virtual void UpdateData(const void* data, size_t size) = 0;
+    };
+
+    class IRenderer
+    {
         public:
             virtual ~IRenderer() = default;
         public:
@@ -251,18 +261,20 @@ namespace Neon
 
     class GameEngine
     {
-    public:
-        GameEngine();
-        ~GameEngine();
+        public:
+            GameEngine();
+            ~GameEngine();
 
-    public:
-        bool Initialize(int width, int height, const char* title) const;
-        void Run(Game* game) const;
+        public:
+            bool Initialize(int width, int height, const char* title) const;
+            void Run(Game* game) const;
 
-        [[nodiscard]] Platform* GetPlatform() const;
+            [[nodiscard]] Platform* GetPlatform() const;
 
-    private:
-        Platform* m_platform;
+            static VertexBuffer* CreateVertexBuffer(float* vertices, size_t size);
+
+        private:
+            Platform* m_platform;
     };
 
     class Game
