@@ -68,7 +68,11 @@ set(GAME_ENGINE_SRC
     src/GameEngine/src/Runtime/Entity/Entity.hpp
     src/GameEngine/src/Runtime/Entity/Entity.cpp
 
-        # Audio
+    # Transition
+    src/GameEngine/src/Runtime/Transition/Transition.hpp
+    src/GameEngine/src/Runtime/Transition/Transition.cpp
+
+    # Audio
     src/GameEngine/src/Runtime/Audio/Volume.hpp
     src/GameEngine/src/Runtime/Audio/AudioSystem.hpp
     src/GameEngine/src/Runtime/Audio/AudioSystem.cpp
