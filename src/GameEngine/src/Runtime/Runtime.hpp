@@ -166,7 +166,16 @@ namespace Neon
 
         private:
 
-     };
+    };
+
+    class GlComponentInitializer final
+    {
+        public:
+            GlComponentInitializer() = default;
+            ~GlComponentInitializer() = default;
+        public:
+            static GLuint InitQuadComponent(QuadComponent* component);
+    };
 
 #ifdef NEON_BUILD_VULKAN
     // todo: create a Vulkan renderer
