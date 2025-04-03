@@ -4,7 +4,8 @@
 #include <iostream>
 #include <cmath>
 
-#include "Runtime/Runtime.hpp"
+#include "Runtime/Types.hpp"
+#include "Runtime/Scene/Scene.hpp"
 
 namespace Neon
 {
