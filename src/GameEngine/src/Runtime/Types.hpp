@@ -17,7 +17,7 @@ namespace Neon
 
    typedef struct
    {
-      float x, y, z;
+      float x, y;
    } Vec2;
 
    typedef struct
