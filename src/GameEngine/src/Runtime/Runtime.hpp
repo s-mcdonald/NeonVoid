@@ -21,7 +21,7 @@
 
 #include "Audio/AudioSystem.hpp"
 #include "Audio/Volume.hpp"
-#include "Entity/Entity.hpp"
+#include "Scene/Scene.hpp"
 #include "AssetManager/AssetManager.hpp"
 
 namespace Neon 
@@ -276,6 +276,8 @@ namespace Neon
         private:
             Platform* m_platform;
     };
+
+    class Scene;
 
     class Game
     {
