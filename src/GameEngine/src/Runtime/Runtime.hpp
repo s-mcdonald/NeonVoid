@@ -15,6 +15,7 @@
 #include "Audio/Volume.hpp"
 #include "Scene/Scene.hpp"
 #include "AssetManager/AssetManager.hpp"
+#include "Runtime/Engine/VertexBuffer.hpp"
 #include "Runtime/Engine/Backends/OpenGL/OpenGLVertexBuffer.hpp"
 
 namespace Neon 
@@ -140,16 +141,6 @@ namespace Neon
      *          A P I    R E N D E R E R        *
      *                                          *
      ********************************************/
-
-    class VertexBuffer
-    {
-        public:
-            virtual ~VertexBuffer() = default;
-
-            virtual void Bind() const = 0;
-            virtual void Unbind() const = 0;
-            virtual void UpdateData(const void* data, size_t size) = 0;
-    };
 
     class IRenderer
     {
