@@ -4,25 +4,18 @@
 
 #pragma once
 
-#include <iostream>
 #include <functional>
-#include <vector>
-#include <unordered_map>
 #include <deque>
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-#include <glm/glm.hpp>
-#include <miniaudio.h>
-
-#include "stb_truetype.h"
 
 #include "Types.hpp"
-
 #include "Audio/AudioSystem.hpp"
 #include "Audio/Volume.hpp"
 #include "Scene/Scene.hpp"
 #include "AssetManager/AssetManager.hpp"
+#include "Runtime/Engine/Backends/OpenGL/OpenGLVertexBuffer.hpp"
 
 namespace Neon 
 {
@@ -31,12 +24,13 @@ namespace Neon
     using InitFunction = std::function<void()>;
     using RenderFunction = std::function<void()>;
 
+
+
     /******************************************** 
      *                                          *
      *           C O M P O N E N T S            *
      *                                          *
      ********************************************/
-
 
     class Component
     {
@@ -139,7 +133,9 @@ namespace Neon
             Point m_position;
     };
 
-    /******************************************** 
+
+
+    /********************************************
      *                                          *
      *          A P I    R E N D E R E R        *
      *                                          *
@@ -164,11 +160,10 @@ namespace Neon
             virtual void EndFrame() = 0;
             virtual void RenderText(const TextComponent& component) = 0;
             virtual void RenderQuad(GLuint shaderProgram, GLuint VAO) = 0;
-     };
+    };
  
-     // we should make this static ?
-     class OpenGLRenderer final : public IRenderer
-     {
+    class OpenGLRenderer final : public IRenderer
+    {
         public:
             OpenGLRenderer();
             ~OpenGLRenderer() override;
@@ -218,47 +213,13 @@ namespace Neon
             virtual void Run(Game* game) = 0;
     };
 
-    class Scene
-    {
-        public:
-            Scene() = delete;
-            Scene(SceneType type);
-            virtual ~Scene();
 
-        public:
-            void Init();
-            void Update();
-            void Destroy();
-            virtual void OnInit() {};
-            virtual void OnUpdate() {};
-            virtual void OnDestroy() {};
-            bool IsInitialized() const;
 
-        public:
-            void AddComponent(const std::string& tag, Component* component);
-            Component* GetComponent(const std::string& tag);
-
-            SceneType GetSceneType() const;
-
-        private:
-            template <typename T>
-            void InitRenderable(const T& t);
-
-            template <typename T>
-            void UpdateRenderable(const T& t);
-
-            template <typename T>
-            void DestroyRenderable(const T& t);
-
-        protected:
-            std::unordered_map<std::string, Entity*> m_entities;
-
-        private:
-            SceneType m_scene_type;
-            bool m_isInitialized = false;
-            std::unordered_map<std::string, Component*> m_components;
-    };
-
+    /********************************************
+     *                                          *
+     *          G A M E   E N G I N E           *
+     *                                          *
+     ********************************************/
     class GameEngine
     {
         public:
@@ -282,11 +243,12 @@ namespace Neon
     class Game
     {
         public:
-            Game();
-            ~Game();
+            Game() = default;
+            virtual ~Game();
 
-        bool Initialize(int width, int height, const char* title) const;
-        void Run();
+        public:
+            virtual bool Initialize(int width, int height, const char* title) const;
+            virtual void Run();
 
         public:
             void AddScene(Scene* scene);
@@ -320,8 +282,6 @@ namespace Neon
 
             AssetManager* m_assetManager;
     };
-
-
 
     class GameEngineApi 
     {
