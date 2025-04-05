@@ -2,7 +2,6 @@
  * 
  */
 #include <iostream>
-#include <cmath>
 #include <utility>
 
 #include "Runtime/Runtime.hpp"
