@@ -8,22 +8,8 @@
 
 namespace Neon 
 {
-    QuadComponent::QuadComponent(const std::vector<float>& vertices)
-        : Component()
-        , m_vertices(vertices)
+    QuadComponent::~QuadComponent()
     {
-        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-            std::cout << "QuadComponent::Constructor called\n";
-        #endif
-    }
-
-    // @todo: Abstract this to platforms
-    QuadComponent::~QuadComponent() 
-    {
-        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-            std::cout << "QuadComponent::Destructor completed\n";
-        #endif
-
         OnDestroy();
     }
 

@@ -40,16 +40,17 @@ namespace Neon
             virtual ~Component() = default;
 
         public:
-            virtual void OnInit() {};
-            virtual void OnUpdate() {};
-            virtual void OnDestroy() {};
+            virtual void OnInit() = 0;
+            virtual void OnUpdate() = 0;
+            virtual void OnDestroy() = 0;
     };
 
     class QuadComponent final
         : public Component
     {
         public:
-            explicit QuadComponent(const std::vector<float>&);
+            QuadComponent() = delete;
+            explicit QuadComponent(const std::vector<float>& vertices) : Component(), m_vertices(vertices) {};
             ~QuadComponent() override;
 
         public:
@@ -68,7 +69,7 @@ namespace Neon
           , public AudioSystem
     {
         public:
-            explicit AudioComponent(std::string filename);
+            explicit AudioComponent(std::string);
             ~AudioComponent() override;
 
         public:
@@ -80,7 +81,7 @@ namespace Neon
             void TriggerPlayRepeat();
 
         public:
-            void SetVolume(const Volume& volume) override;
+            void SetVolume(const Volume&) override;
             void OnDestroy() override;
 
         private:
