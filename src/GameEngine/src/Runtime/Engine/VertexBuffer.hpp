@@ -13,8 +13,5 @@ namespace Neon
 
             // temp
             virtual GLuint GetVao() = 0;
-        private:
-            GLuint m_VAO;
-            GLuint m_VBO;
     };
 }
