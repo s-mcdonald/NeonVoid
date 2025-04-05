@@ -48,15 +48,12 @@ namespace Neon
 
     VertexBuffer* GameEngine::CreateVertexBuffer(float* vertices, size_t size)
     {
-        return new OpenGLVertexBuffer(vertices, size);
-
-
         #ifdef NEON_BUILD_OPENGL
             return new OpenGLVertexBuffer(vertices, size);
         #elif defined(NEON_BUILD_VULKAN)
             return new VulkanVertexBuffer(vertices, size);
         #else
-            // lets also do an assert here, i think cherno did this too.
+            // let's also do an assert here, i think cherno did this too.
             // need to learn more about compile time asserts.
             return nullptr;
         #endif
