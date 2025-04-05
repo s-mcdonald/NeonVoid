@@ -5,7 +5,7 @@
 #include <cmath>
 
 #include "../../GameEngine/src/Runtime/Runtime.hpp"
-#include "Scenes.hpp"
+#include "TitleScene.hpp"
 
 namespace Neon
 {
@@ -43,23 +43,5 @@ namespace Neon
     void TitleScene::OnUpdate()
     {
         // later we will control entities from here
-    }
-
-    GamePlayScene::GamePlayScene(const SceneType type)
-        : Scene(type)
-    {
-        // Add Text
-        auto* titleText = new TextComponent("Neon Void: A Saga", 16);
-        AddComponent("text.title", titleText);
-    }
-
-    void GamePlayScene::OnInit()
-    {
-        std::cout << "GamePlayScene::OnInit \n";
-    }
-
-    void GamePlayScene::OnUpdate()
-    {
-        std::cout << "GamePlayScene::OnUpdate \n";
     }
 }

@@ -8,7 +8,7 @@
 
 namespace Neon
 {
-    class MyGame : public Game
+    class MyGame final : public Game
     {
         public:
             MyGame();

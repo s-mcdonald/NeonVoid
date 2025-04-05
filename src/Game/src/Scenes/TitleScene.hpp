@@ -10,18 +10,8 @@ namespace Neon
     class TitleScene final : public Scene
     {
         public:
-            TitleScene(SceneType type);
+            explicit TitleScene(SceneType type);
             ~TitleScene() override = default;
-
-            void OnInit() override;
-            void OnUpdate() override;
-    };
-
-    class GamePlayScene final : public Scene
-    {
-        public:
-            GamePlayScene(SceneType type);
-            ~GamePlayScene() override = default;
 
             void OnInit() override;
             void OnUpdate() override;

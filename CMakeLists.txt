@@ -85,13 +85,13 @@ set(GAME_ENGINE_SRC
     src/GameEngine/src/Runtime/Components/PositionComponent.cpp
 
     src/GameEngine/src/Runtime/Runtime.hpp
-        src/GameEngine/src/Runtime/Engine/GameEngine.cpp
-        src/GameEngine/src/Runtime/Engine/VertexBuffer.hpp
-        src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGL.cpp
-        src/GameEngine/src/Runtime/Engine/Backends/OpenGL/GameEngineApi.cpp
-        src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLRenderer.cpp
-        src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLVertexBuffer.hpp
-        src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLVertexBuffer.cpp
+    src/GameEngine/src/Runtime/Engine/GameEngine.cpp
+    src/GameEngine/src/Runtime/Engine/VertexBuffer.hpp
+    src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGL.cpp
+    src/GameEngine/src/Runtime/Engine/Backends/OpenGL/GameEngineApi.cpp
+    src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLRenderer.cpp
+    src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLVertexBuffer.hpp
+    src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLVertexBuffer.cpp
 )
 
 # Create GameEngine as a static library
@@ -134,10 +134,11 @@ target_compile_options(GameEngine PRIVATE -Wall -Wextra -Wpedantic)
 #
 set(GAME_SRC
     src/Game/src/GameMain.cpp
-    src/Game/src/Scenes.cpp
-    src/Game/src/Scenes.hpp
     src/Game/src/MyGame.cpp
-    src/Game/src/MyGame.hpp
+    src/Game/src/Scenes/TitleScene.cpp
+    src/Game/src/Scenes/TitleScene.hpp
+    src/Game/src/Scenes/GamePlayScene.cpp
+    src/Game/src/Scenes/GamePlayScene.hpp
 )
 
 # Create the game executable

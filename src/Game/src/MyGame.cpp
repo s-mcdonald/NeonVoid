@@ -3,7 +3,8 @@
  */
 
 #include "MyGame.hpp"
-#include "Scenes.hpp"
+#include "Scenes/TitleScene.hpp"
+#include "Scenes/GamePlayScene.hpp"
 
 namespace Neon
 {
