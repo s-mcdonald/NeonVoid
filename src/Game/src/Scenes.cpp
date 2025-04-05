@@ -14,8 +14,12 @@ namespace Neon
     TitleScene::TitleScene(const SceneType type)
         : Scene(type)
     {
-        // Add Quad / triangle
-        auto* component = new QuadComponent();
+        std::vector<float> vertices = {
+            0.0f,  0.5f,   // Top vertex
+           -0.5f, -0.5f,   // Bottom left vertex
+            0.5f, -0.5f    // Bottom right vertex
+        };
+        auto* component = new QuadComponent(vertices); // LoadShaderGSL('triangle'));
         AddComponent("vao.triangle", component);
 
         // Add Audio

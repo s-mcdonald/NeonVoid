@@ -8,8 +8,9 @@
 
 namespace Neon 
 {
-    QuadComponent::QuadComponent() 
+    QuadComponent::QuadComponent(const std::vector<float>& vertices)
         : Component()
+        , m_vertices(vertices)
     {
         #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
             std::cout << "QuadComponent::Constructor called\n";
@@ -28,13 +29,7 @@ namespace Neon
 
     void QuadComponent::OnInit()
     {
-        float vertices[] = {
-            0.0f,  0.5f,        // Top vertex
-            -0.5f, -0.5f,       // Bottom left
-            0.5f, -0.5f,        // Bottom right
-        };
-
-        m_buffer = GameEngine::CreateVertexBuffer(vertices, sizeof(vertices) );
+        m_buffer = GameEngine::CreateVertexBuffer(m_vertices.data(), m_vertices.size() * sizeof(float));
 
         m_buffer->Bind();
 

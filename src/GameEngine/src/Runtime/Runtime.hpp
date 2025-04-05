@@ -49,7 +49,7 @@ namespace Neon
         : public Component
     {
         public:
-            QuadComponent();
+            explicit QuadComponent(const std::vector<float>&);
             ~QuadComponent() override;
 
         public:
@@ -59,8 +59,8 @@ namespace Neon
 
         private:
             GLuint m_shaderProgram{};
-            GLfloat m_vertices{};
-            VertexBuffer* m_buffer;
+            std::vector<float> m_vertices;
+            VertexBuffer* m_buffer{};
     };
 
     class AudioComponent final
