@@ -19,20 +19,11 @@ namespace Neon
     // @todo: Abstract this to platforms
     QuadComponent::~QuadComponent() 
     {
-        if (m_shaderProgram)
-        {
-            glDeleteProgram(m_shaderProgram);
-            m_shaderProgram = 0;
-        }
-
-        if (m_buffer)
-        {
-            delete m_buffer;
-        }
-
         #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
             std::cout << "QuadComponent::Destructor completed\n";
         #endif
+
+        OnDestroy();
     }
 
     void QuadComponent::OnInit()
@@ -44,6 +35,8 @@ namespace Neon
         };
 
         m_buffer = GameEngine::CreateVertexBuffer(vertices, sizeof(vertices) );
+
+        m_buffer->Bind();
 
         // Compile and link shaders
         const char* vertexSource = R"(
@@ -61,15 +54,14 @@ namespace Neon
             })";
 
         m_shaderProgram = OpenGL::CreateShaderProgram(vertexSource, fragmentSource);
+
+        m_buffer->Unbind();
     }
 
     void QuadComponent::OnUpdate() 
     {
-        // hmm, not sure if we should prob use events instead..
+        // hmm, not sure if we should prob use events instead.
         auto& api = GameEngineApi::getInstance();
-
-        //api.GetRenderer()->RenderQuad(m_shaderProgram, m_VAO);
-        //std::cout << "QuadComponent::m_VAO: " << m_VAO << "\n";
 
         api.GetRenderer()->RenderQuad(m_shaderProgram, m_buffer->GetVao());
         std::cout << "QuadComponent::m_VAO: " << m_buffer->GetVao() << "\n";
@@ -77,6 +69,16 @@ namespace Neon
 
     void QuadComponent::OnDestroy()
     {
-        // .... clear the GL loaded data
+        if (m_shaderProgram)
+        {
+            glDeleteProgram(m_shaderProgram);
+            m_shaderProgram = 0;
+        }
+
+        if (m_buffer)
+        {
+            delete m_buffer;
+            m_buffer = nullptr;
+        }
     }
 }
