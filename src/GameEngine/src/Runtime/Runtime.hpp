@@ -119,13 +119,13 @@ namespace Neon
             ColorAlpha m_colorAlpha;
     };
 
-    class PositionComponent final
+    class PositionComponent
         : public Component
     {
         public:
             explicit PositionComponent(float, float);
             void OnDestroy() override;
-            Point GetPoint() const;
+            [[nodiscard]] Point GetPoint() const;
         private:
             Point m_position;
     };
