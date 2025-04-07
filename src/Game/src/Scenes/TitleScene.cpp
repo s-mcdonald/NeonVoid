@@ -7,6 +7,7 @@
 #include "TitleScene.hpp"
 #include "../../GameEngine/src/Runtime/Runtime.hpp"
 #include "../../GameEngine/src/Runtime/Components/AudioComponent.hpp"
+#include "../../GameEngine/src/Runtime/Components/ShaderComponent.hpp"
 #include "../../GameEngine/src/Runtime/Engine/Shader.hpp"
 
 namespace Neon

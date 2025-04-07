@@ -39,33 +39,9 @@ namespace Neon
             Component() = default;
             virtual ~Component() = default;
 
-        public:
             virtual void OnInit() = 0;
             virtual void OnUpdate() = 0;
             virtual void OnDestroy() = 0;
-    };
-
-    class ShaderComponent final
-        : public Component
-    {
-        public:
-            ShaderComponent() = delete;
-            explicit ShaderComponent(const std::vector<float>& vertices, Shader* shader)
-                : Component()
-                , m_shader(shader)
-                , m_vertices(vertices) {};
-            ~ShaderComponent() override;
-
-        public:
-            void OnInit() override;
-            void OnUpdate() override;
-            void OnDestroy() override;
-
-        private:
-            Shader* m_shader;
-            std::vector<float> m_vertices;
-            VertexBuffer* m_buffer{};
-            int m_verticies_size{};
     };
 
     class TextComponent final : public Component
@@ -108,7 +84,6 @@ namespace Neon
         private:
             Point m_position;
     };
-
 
 
     /********************************************

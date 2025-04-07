@@ -4,8 +4,8 @@
 #include <iostream>
 #include <utility>
 
-#include "Runtime/Runtime.hpp"
 #include "AudioComponent.hpp"
+#include "Runtime/Runtime.hpp"
 
 namespace Neon 
 {

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../Runtime.hpp"
+
 namespace Neon
 {
     class AudioComponent final

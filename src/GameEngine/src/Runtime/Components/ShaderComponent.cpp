@@ -2,6 +2,7 @@
  * 
  */
 
+#include "ShaderComponent.hpp"
 #include "Runtime/Runtime.hpp"
 #include "Runtime/Engine/Shader.hpp"
 
