@@ -1,22 +1,16 @@
 /**
  * 
  */
-#include "Runtime/Runtime.hpp"
+#include <Runtime/Runtime.hpp>
+#include <Runtime/Entity/Entity.hpp>
 
-#include "Entity.hpp"
-
-namespace Neon 
+namespace Neon
 {
-    Entity::Entity(const int id)
-        : m_id(id)
-    {
-        //
-    }
-
     Entity::Entity(const uint32_t id, const std::initializer_list<Component*> components)
         : m_id(id)
     {
-        for (auto& component : components) {
+        for (auto& component : components)
+        {
             m_components.emplace_back(component);
         }
     }
