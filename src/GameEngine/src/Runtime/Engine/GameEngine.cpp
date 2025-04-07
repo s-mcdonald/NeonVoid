@@ -9,16 +9,12 @@ namespace Neon
 {
     GameEngine::GameEngine() : m_platform(nullptr)
     {
-        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-            std::cout << "GameEngine::Constructor called\n";
-        #endif
-
         #ifdef NEON_BUILD_OPENGL
             m_platform = new Neon::OpenGL();
-        #endif
-
-        #ifdef NEON_BUILD_VULKAN
-            m_platform = new Neon::OpenGL();
+        #elif defined(NEON_BUILD_VULKAN)
+            m_platform = new Neon::Vulkan();
+        #else
+                return nullptr;
         #endif
     }
 
@@ -58,5 +54,4 @@ namespace Neon
             return nullptr;
         #endif
     }
-
 }

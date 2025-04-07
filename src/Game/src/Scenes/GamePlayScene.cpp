@@ -2,10 +2,9 @@
  * 
  */
 #include <iostream>
-#include <cmath>
 
-#include "../../GameEngine/src/Runtime/Runtime.hpp"
 #include "GamePlayScene.hpp"
+#include "../../GameEngine/src/Runtime/Runtime.hpp"
 
 namespace Neon
 {

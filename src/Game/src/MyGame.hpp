@@ -14,5 +14,4 @@ namespace Neon
             MyGame();
             [[nodiscard]] bool Initialize() const;
     };
-
 }

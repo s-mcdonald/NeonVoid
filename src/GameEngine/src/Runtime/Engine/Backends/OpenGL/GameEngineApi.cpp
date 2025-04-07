@@ -4,8 +4,6 @@
 
 #include "Runtime/Runtime.hpp"
 
-#include <iostream>
-
 namespace Neon
 {
     GameEngineApi& GameEngineApi::getInstance() 

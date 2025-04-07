@@ -9,8 +9,12 @@ namespace Neon
         , public AudioSystem
     {
         public:
-            explicit AudioComponent(std::string);
-            ~AudioComponent() override;
+            explicit AudioComponent(std::string filename)
+                : Component()
+                , AudioSystem()
+                , m_filename(std::move(filename))
+                , m_repeats(false) {};
+            ~AudioComponent() override = default;
 
             void OnInit() override;
             void OnUpdate() override;

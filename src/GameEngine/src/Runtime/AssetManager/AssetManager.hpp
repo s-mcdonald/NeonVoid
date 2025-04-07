@@ -11,8 +11,5 @@ namespace Neon
         public:
             AssetManager();
             ~AssetManager();
-
-        public:
-            //static bool LoadTrueTypeFont(const char* fontPath);
     };
 }

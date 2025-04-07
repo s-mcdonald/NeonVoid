@@ -1,8 +1,8 @@
 /**
  * 
  */
-#include <iostream>
 #include <fstream>
+#include <iostream>
 
 #include "Runtime/Runtime.hpp"
 
@@ -21,15 +21,4 @@ namespace Neon
             std::cout << "AssetManager::~Destructor called\n";
         #endif
     }
-
-    // bool AssetManager::LoadTrueTypeFont(const char* fontPath)
-    // {
-    //     return true;
-    // }
-
-    // Load SoundFiles
-
-    // LoadTextures
-
-    // ..
 }

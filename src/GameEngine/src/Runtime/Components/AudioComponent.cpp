@@ -1,33 +1,11 @@
 /**
  * 
  */
-#include <iostream>
-#include <utility>
-
 #include "AudioComponent.hpp"
 #include "Runtime/Runtime.hpp"
 
 namespace Neon 
 {
-    // AudioConfig config
-    AudioComponent::AudioComponent(std::string filename)
-        : Component()
-        , AudioSystem()
-        , m_filename(std::move(filename))
-        , m_repeats(false)
-    {
-        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-            std::cout << "AudioComponent::Constructor called\n";
-        #endif
-    }
-
-    AudioComponent::~AudioComponent() 
-    {
-        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-            std::cout << "AudioComponent::Destructor completed\n";
-        #endif
-    }
-
     ///
     /// @brief change so that we can pass config to how/when to play.
     ///

@@ -2,9 +2,9 @@
  * 
  */
 
-#include "ShaderComponent.hpp"
-#include "Runtime/Runtime.hpp"
-#include "Runtime/Engine/Shader.hpp"
+#include <Runtime/Runtime.hpp>
+#include <Runtime/Components/ShaderComponent.hpp>
+#include <Runtime/Engine/Shader.hpp>
 
 namespace Neon 
 {
@@ -32,7 +32,7 @@ namespace Neon
 
     void ShaderComponent::OnUpdate()
     {
-        auto& api = GameEngineApi::getInstance();
+        const auto& api = GameEngineApi::getInstance();
 
         api.GetRenderer()->RenderCircle(m_shader->GetShaderProgramId(), m_buffer->GetVao(), m_vertices.size());
     }

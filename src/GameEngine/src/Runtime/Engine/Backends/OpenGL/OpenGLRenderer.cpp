@@ -1,31 +1,16 @@
 /**
  * 
  */
-#include <iostream>
 #include <fstream>
-#include <vector>
+#include <iostream>
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include "Runtime/Runtime.hpp"
+#include <Runtime/Runtime.hpp>
 
 namespace Neon 
 {
-    OpenGLRenderer::OpenGLRenderer()
-    {
-        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-            std::cout << "OpenGLRenderer::Constructor called\n";
-        #endif
-    }
-
-    OpenGLRenderer::~OpenGLRenderer() 
-    {
-        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-            std::cout << "OpenGLRenderer::~Destructor called\n";
-        #endif
-    }
-
     void OpenGLRenderer::BeginFrame()
     {
         glClearColor(0.0f,0.0f,0.0f, 1.0f);

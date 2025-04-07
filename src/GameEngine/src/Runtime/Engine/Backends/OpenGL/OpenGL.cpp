@@ -15,19 +15,11 @@ namespace Neon
         : Platform()
         , m_window(nullptr)
     {
-        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-            std::cout << "OpenGL::Constructor called\n";
-        #endif
-
         m_assetManager = new AssetManager();
     }
 
     OpenGL::~OpenGL() 
     {
-        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-            std::cout << "OpenGL::Destructor called\n";
-        #endif
-
         delete m_assetManager;
 
         if (m_window) 
@@ -77,12 +69,6 @@ namespace Neon
         std::cout << "OpenGL Initialized Successfully!\n";
 
         m_openGlInitialized = true;
-
-        //
-        // Assets
-        // Attempt to load assets, font textures ect here..
-        //
-       // m_assetManager->LoadTrueTypeFont("./assets/fonts/default.ttf");
 
         return true;
     }

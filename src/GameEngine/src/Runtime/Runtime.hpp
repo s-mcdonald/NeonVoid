@@ -52,8 +52,7 @@ namespace Neon
             TextComponent(const std::string& text, float fontSize, const Point& point);
             TextComponent(std::string  text, float fontSize, const Point& point, ColorAlpha color);
             ~TextComponent() override;
-    
-        public:
+
             [[nodiscard]] const std::string& GetText() const;
             void SetText(const std::string& text);
     
@@ -63,7 +62,6 @@ namespace Neon
             void OnInit() override;
             void OnUpdate() override;
 
-        public:
             [[nodiscard]] Point GetPosition() const;
             void OnDestroy() override;
 
@@ -73,18 +71,6 @@ namespace Neon
             Point m_point;
             ColorAlpha m_colorAlpha;
     };
-
-    class PositionComponent
-        : public Component
-    {
-        public:
-            explicit PositionComponent(float, float);
-            void OnDestroy() override;
-            [[nodiscard]] Point GetPoint() const;
-        private:
-            Point m_position;
-    };
-
 
     /********************************************
      *                                          *
@@ -107,17 +93,15 @@ namespace Neon
     class OpenGLRenderer final : public IRenderer
     {
         public:
-            OpenGLRenderer();
-            ~OpenGLRenderer() override;
+            OpenGLRenderer() = default;
+            ~OpenGLRenderer() override = default;
+
         public:
             void BeginFrame() override;
             void EndFrame() override;
             void RenderText(const TextComponent& component) override;
             void RenderQuad(GLuint shaderProgram, GLuint VAO) override;
             void RenderCircle(GLuint shaderProgram, GLuint VAO, GLsizei vertexCount) override;
-
-        private:
-
     };
 
 #ifdef NEON_BUILD_VULKAN

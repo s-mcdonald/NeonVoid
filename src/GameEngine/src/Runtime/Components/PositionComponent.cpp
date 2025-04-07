@@ -3,7 +3,8 @@
  */
 #include <iostream>
 
-#include "Runtime/Runtime.hpp"
+#include <Runtime/Runtime.hpp>
+#include <Runtime/Components/PositionComponent.hpp>
 
 namespace Neon 
 {

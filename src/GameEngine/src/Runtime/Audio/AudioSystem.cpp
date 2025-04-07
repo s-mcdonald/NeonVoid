@@ -4,11 +4,11 @@
 /* #define MINIAUDIO_IMPLEMENTATION */
 
 #include <cstdio>
-#include <stdlib.h>
-#include <unistd.h>
 #include <iostream>
-#include <vector>
+#include <stdlib.h>
 #include <string>
+#include <unistd.h>
+#include <vector>
 
 #define MINIAUDIO_IMPLEMENTATION
 #include <miniaudio.h>

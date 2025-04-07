@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Runtime.hpp"
+#include <Runtime/Runtime.hpp>
 
 namespace Neon
 {

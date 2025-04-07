@@ -2,11 +2,10 @@
  * 
  */
 #include <iostream>
-#include <cmath>
 #include <utility>
 
-#include "Runtime/Runtime.hpp"
-#include "Runtime/Types.hpp"
+#include <Runtime/Runtime.hpp>
+#include <Runtime/Types.hpp>
 
 namespace Neon 
 {
@@ -35,11 +34,7 @@ namespace Neon
         , m_point(point)
         , m_colorAlpha(color)
     {
-        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-            std::cout << "TextComponent::Constructor called\n";
-        #endif
-
-        if (m_fontSize <= NV_MINIMUM_FONT_SIZE) 
+        if (m_fontSize <= NV_MINIMUM_FONT_SIZE)
         {
             m_fontSize = NV_MINIMUM_FONT_SIZE;
         }
