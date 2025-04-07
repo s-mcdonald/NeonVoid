@@ -1,21 +1,13 @@
 /**
  * 
  */
-#include <iostream>
-#include <cmath>
 
-#include "Runtime/Types.hpp"
-#include "Runtime/Scene/Scene.hpp"
+#include <Runtime/Types.hpp>
+#include <Runtime/Scene/Scene.hpp>
 
 namespace Neon
 {
-    Scene::Scene(const SceneType type)
-        : m_scene_type(type)
-    {
-
-    }
-
-    Scene::~Scene() 
+    Scene::~Scene()
     {
         Destroy();
     }
@@ -36,7 +28,9 @@ namespace Neon
     void Scene::Init()
     {
         if (m_isInitialized)
+        {
             return;
+        }
 
         InitRenderable(m_entities);
         InitRenderable(m_components);
@@ -103,5 +97,4 @@ namespace Neon
             delete value;
         }
     }
-
 }

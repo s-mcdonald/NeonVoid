@@ -6,7 +6,8 @@
 #include <iostream>
 #include <unordered_map>
 
-#include "Runtime/Entity/Entity.hpp"
+#include <Runtime/Types.hpp>
+#include <Runtime/Entity/Entity.hpp>
 
 namespace Neon 
 {
@@ -14,7 +15,8 @@ namespace Neon
     {
         public:
             Scene() = delete;
-            explicit Scene(SceneType type);
+            explicit Scene(const SceneType type)
+                : m_scene_type(type) {};
             virtual ~Scene();
 
         public:
