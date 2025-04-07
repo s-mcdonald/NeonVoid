@@ -2,14 +2,17 @@
 
 > **Pre alpha:** This project is in active development and does not yet have a stable release.
 
-An attempt at a OGL C++ retro game(/engine).
+My first GameEngine written in C++ with support for various rendering API.
 
-NeonVoid is a side project I'm currently developing. It's intended to be both a game and a game engine, inspired by 80s arcade games. My goal is to create a framework that makes building retro-style games fun, simple with clean code. Additionally, if the project evolves, I plan to incorporate advanced features like HDR and Bloom effects to enhance the visual experience.
-A real-time scene editor using Imgui to build scenes and levels.
+NeonVoid is a side project I'm currently developing. It's intended to be both a game and a game engine, 
+inspired by 80s arcade space invaders type games.  My goal is to create a framework that
+makes building retro-style "Space Invaders" type games.
+
 
 ### Build System
 
-Then run build script (depending on if you are running Windows or a Linux system, choose the script wisely).
+The current Build system is CMake using the CMakeList.txt to structure the projects.
+I do have future plans to convert this to PreMake
 
 #### Linux
 ```
@@ -39,8 +42,10 @@ Currently sound files are sourced from the below websites ;;
 * [pixabay.com](https://pixabay.com/sound-effects/)
 
 
-### A note on header files
-Using *.hpp for c++ headers or no extension at all, and for c the extension should be *.h
+### Header files
+- *.hpp for c++ headers
+- Header files will be located within the same directory as the implementation only for initial dev.
+  - I do plan to restructure the code so there will be /include folder for these.
 
 
 ### LICENCE
@@ -48,4 +53,5 @@ Using *.hpp for c++ headers or no extension at all, and for c the extension shou
 
 
 ### Other Resources
-[Download Cmake Tools](https://cmake.org/download/)
+ - [Download Cmake Tools](https://cmake.org/download/)
+ - [CLang-format](https://clang.llvm.org/docs/ClangFormat.html)
