@@ -32,10 +32,8 @@ namespace Neon
 
     void ShaderComponent::OnUpdate()
     {
-        // hmm, not sure if we should prob use events instead.
         auto& api = GameEngineApi::getInstance();
 
-        // refactor to send the Buffer and the Shader as ref
         api.GetRenderer()->RenderCircle(m_shader->GetShaderProgramId(), m_buffer->GetVao(), m_vertices.size());
     }
 

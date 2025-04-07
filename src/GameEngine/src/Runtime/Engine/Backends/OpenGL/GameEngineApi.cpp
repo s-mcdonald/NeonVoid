@@ -29,21 +29,13 @@ namespace Neon
         return m_renderer;
     }
 
-    // src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLRenderer::RenderQuad
-    void GameEngineApi::RenderQuad(const GLuint shaderProgram, const GLuint VAO)
+    void GameEngineApi::RenderQuad(const GLuint shaderProgram, const GLuint VAO) const
     {
-        glUseProgram(shaderProgram);
-        glBindVertexArray(VAO);
-        glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
-        glBindVertexArray(0);
+        m_renderer->RenderQuad(shaderProgram, VAO);
     }
 
-    // src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLRenderer::RenderCircle
-    void GameEngineApi::RenderCircle(const GLuint shaderProgram, const GLuint VAO, const GLsizei vertexCount)
+    void GameEngineApi::RenderCircle(const GLuint shaderProgram, const GLuint VAO, const GLsizei vertexCount) const
     {
-        glUseProgram(shaderProgram);
-        glBindVertexArray(VAO);
-        glDrawArrays(GL_TRIANGLE_FAN, 0, vertexCount);
-        glBindVertexArray(0);
+        m_renderer->RenderCircle(shaderProgram, VAO, vertexCount);
     }
 }

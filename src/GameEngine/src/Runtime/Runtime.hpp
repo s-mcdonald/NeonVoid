@@ -224,10 +224,11 @@ namespace Neon
             GameEngineApi(const GameEngineApi&) = delete;
             GameEngineApi& operator=(const GameEngineApi&) = delete;
 
+            void RenderQuad(GLuint shaderProgram, GLuint VAO) const;
+            void RenderCircle(GLuint shaderProgram, GLuint VAO, GLsizei vertexCount) const;
+
         public:
-            static GameEngineApi& getInstance();    
-            static void RenderQuad(GLuint shaderProgram, GLuint VAO);
-            static void RenderCircle(GLuint shaderProgram, GLuint VAO, GLsizei vertexCount);
+            static GameEngineApi& getInstance();
         
             [[nodiscard]] IRenderer* GetRenderer() const;
 
