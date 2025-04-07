@@ -16,6 +16,7 @@
 #include "Scene/Scene.hpp"
 #include "AssetManager/AssetManager.hpp"
 #include "Runtime/Engine/VertexBuffer.hpp"
+#include "Runtime/Engine/Shader.hpp"
 #include "Runtime/Engine/Backends/OpenGL/OpenGLVertexBuffer.hpp"
 
 namespace Neon 
@@ -50,7 +51,10 @@ namespace Neon
     {
         public:
             QuadComponent() = delete;
-            explicit QuadComponent(const std::vector<float>& vertices) : Component(), m_vertices(vertices) {};
+            explicit QuadComponent(const std::vector<float>& vertices, Shader* shader)
+                : Component()
+                , m_shader(shader)
+                , m_vertices(vertices) {};
             ~QuadComponent() override;
 
         public:
@@ -59,7 +63,7 @@ namespace Neon
             void OnDestroy() override;
 
         private:
-            GLuint m_shaderProgram{};
+            Shader* m_shader;
             std::vector<float> m_vertices;
             VertexBuffer* m_buffer{};
     };
