@@ -79,8 +79,7 @@ set(GAME_ENGINE_SRC
     src/GameEngine/src/Runtime/Audio/AudioSystem.cpp
 
     # Components
-    src/GameEngine/src/Runtime/Components/QuadComponent.cpp
-    src/GameEngine/src/Runtime/Components/CircleComponent.cpp
+    src/GameEngine/src/Runtime/Components/ShaderComponent.cpp
     src/GameEngine/src/Runtime/Components/AudioComponent.cpp
     src/GameEngine/src/Runtime/Components/TextComponent.cpp
     src/GameEngine/src/Runtime/Components/PositionComponent.cpp

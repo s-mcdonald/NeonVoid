@@ -35,7 +35,7 @@ namespace Neon
             "/home/sam/Game/Neon/src/Game/assets/shaders/GreenTriangle/shader.frag"
         );
 
-        auto* component = new QuadComponent(vertices, shader);
+        auto* component = new ShaderComponent(vertices, shader);
         AddComponent("vao.triangle", component);
 
         ///
@@ -48,7 +48,7 @@ namespace Neon
             "/home/sam/Game/Neon/src/Game/assets/shaders/WhiteCircle/shader.frag"
         );
 
-        auto* circle_component = new CircleComponent(circle_vertices, circle_shader);
+        auto* circle_component = new ShaderComponent(circle_vertices, circle_shader);
         AddComponent("vao.circle", circle_component);
     }
 

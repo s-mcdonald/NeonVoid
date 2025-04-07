@@ -46,16 +46,16 @@ namespace Neon
             virtual void OnDestroy() = 0;
     };
 
-    class QuadComponent final
+    class ShaderComponent final
         : public Component
     {
         public:
-            QuadComponent() = delete;
-            explicit QuadComponent(const std::vector<float>& vertices, Shader* shader)
+            ShaderComponent() = delete;
+            explicit ShaderComponent(const std::vector<float>& vertices, Shader* shader)
                 : Component()
                 , m_shader(shader)
                 , m_vertices(vertices) {};
-            ~QuadComponent() override;
+            ~ShaderComponent() override;
 
         public:
             void OnInit() override;
@@ -66,28 +66,7 @@ namespace Neon
             Shader* m_shader;
             std::vector<float> m_vertices;
             VertexBuffer* m_buffer{};
-    };
-
-    class CircleComponent final
-        : public Component
-    {
-        public:
-            CircleComponent() = delete;
-            explicit CircleComponent(const std::vector<float>& vertices, Shader* shader)
-                : Component()
-                , m_shader(shader)
-                , m_vertices(vertices) {};
-            ~CircleComponent() override;
-
-        public:
-            void OnInit() override;
-            void OnUpdate() override;
-            void OnDestroy() override;
-
-        private:
-            Shader* m_shader;
-            std::vector<float> m_vertices;
-            VertexBuffer* m_buffer{};
+            int m_verticies_size{};
     };
 
     class AudioComponent final
