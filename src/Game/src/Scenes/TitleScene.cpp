@@ -22,8 +22,8 @@ namespace Neon
         };
 
         auto shader = new Shader(
-            "/home/sam/Game/Neon/src/Game/assets/shaders/shader.vert",
-            "/home/sam/Game/Neon/src/Game/assets/shaders/shader.frag"
+            "/home/sam/Game/Neon/src/Game/assets/shaders/GreenTriangle/shader.vert",
+            "/home/sam/Game/Neon/src/Game/assets/shaders/GreenTriangle/shader.frag"
         );
 
         auto* component = new QuadComponent(vertices, shader);
