@@ -5,6 +5,7 @@
 #include <utility>
 
 #include "Runtime/Runtime.hpp"
+#include "AudioComponent.hpp"
 
 namespace Neon 
 {

@@ -4,20 +4,20 @@
 
 #pragma once
 
-#include <functional>
 #include <deque>
+#include <functional>
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
 #include "Types.hpp"
+#include "AssetManager/AssetManager.hpp"
 #include "Audio/AudioSystem.hpp"
 #include "Audio/Volume.hpp"
-#include "Scene/Scene.hpp"
-#include "AssetManager/AssetManager.hpp"
-#include "Runtime/Engine/VertexBuffer.hpp"
 #include "Runtime/Engine/Shader.hpp"
+#include "Runtime/Engine/VertexBuffer.hpp"
 #include "Runtime/Engine/Backends/OpenGL/OpenGLVertexBuffer.hpp"
+#include "Scene/Scene.hpp"
 
 namespace Neon 
 {
@@ -25,7 +25,6 @@ namespace Neon
 
     using InitFunction = std::function<void()>;
     using RenderFunction = std::function<void()>;
-
 
 
     /******************************************** 
@@ -67,31 +66,6 @@ namespace Neon
             std::vector<float> m_vertices;
             VertexBuffer* m_buffer{};
             int m_verticies_size{};
-    };
-
-    class AudioComponent final
-        : public Component
-          , public AudioSystem
-    {
-        public:
-            explicit AudioComponent(std::string);
-            ~AudioComponent() override;
-
-        public:
-            void OnInit() override;
-            void OnUpdate() override;
-
-        public:
-            void TriggerPlayOnce();
-            void TriggerPlayRepeat();
-
-        public:
-            void SetVolume(const Volume&) override;
-            void OnDestroy() override;
-
-        private:
-            std::string m_filename;    
-            bool m_repeats;
     };
 
     class TextComponent final : public Component

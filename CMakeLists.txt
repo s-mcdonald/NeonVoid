@@ -81,6 +81,7 @@ set(GAME_ENGINE_SRC
     # Components
     src/GameEngine/src/Runtime/Components/ShaderComponent.cpp
     src/GameEngine/src/Runtime/Components/AudioComponent.cpp
+    src/GameEngine/src/Runtime/Components/AudioComponent.hpp
     src/GameEngine/src/Runtime/Components/TextComponent.cpp
     src/GameEngine/src/Runtime/Components/PositionComponent.cpp
 
