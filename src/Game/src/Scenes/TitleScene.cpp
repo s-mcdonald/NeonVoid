@@ -22,7 +22,7 @@ namespace Neon
         AddComponent("aud.intro", introMusic);
 
         ///
-        /// Grren Triangle
+        /// Green Triangle
         ///
         std::vector<float> vertices = {
             0.0f,  0.5f,   // Top vertex
