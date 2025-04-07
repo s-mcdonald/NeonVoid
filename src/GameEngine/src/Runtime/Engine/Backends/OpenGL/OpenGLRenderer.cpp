@@ -48,16 +48,17 @@ namespace Neon
 
     void OpenGLRenderer::RenderQuad(const GLuint shaderProgram, const GLuint VAO)
     {
-        #if defined(NEON_DEBUG)
-            std::cout << "OpenGLRenderer::RenderQuad called\n";
-        #endif
-
         glUseProgram(shaderProgram);
-
         glBindVertexArray(VAO);
-    
         glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+        glBindVertexArray(0);
+    }
 
+    void OpenGLRenderer::RenderCircle(const GLuint shaderProgram, const GLuint VAO, const GLsizei vertexCount)
+    {
+        glUseProgram(shaderProgram);
+        glBindVertexArray(VAO);
+        glDrawArrays(GL_TRIANGLE_FAN, 0, vertexCount);
         glBindVertexArray(0);
     }
 }

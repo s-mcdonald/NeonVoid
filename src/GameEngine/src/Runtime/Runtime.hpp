@@ -68,6 +68,28 @@ namespace Neon
             VertexBuffer* m_buffer{};
     };
 
+    class CircleComponent final
+        : public Component
+    {
+        public:
+            CircleComponent() = delete;
+            explicit CircleComponent(const std::vector<float>& vertices, Shader* shader)
+                : Component()
+                , m_shader(shader)
+                , m_vertices(vertices) {};
+            ~CircleComponent() override;
+
+        public:
+            void OnInit() override;
+            void OnUpdate() override;
+            void OnDestroy() override;
+
+        private:
+            Shader* m_shader;
+            std::vector<float> m_vertices;
+            VertexBuffer* m_buffer{};
+    };
+
     class AudioComponent final
         : public Component
           , public AudioSystem
@@ -151,6 +173,7 @@ namespace Neon
             virtual void EndFrame() = 0;
             virtual void RenderText(const TextComponent& component) = 0;
             virtual void RenderQuad(GLuint shaderProgram, GLuint VAO) = 0;
+            virtual void RenderCircle(GLuint shaderProgram, GLuint VAO, GLsizei vertexCount) = 0;
     };
  
     class OpenGLRenderer final : public IRenderer
@@ -163,6 +186,7 @@ namespace Neon
             void EndFrame() override;
             void RenderText(const TextComponent& component) override;
             void RenderQuad(GLuint shaderProgram, GLuint VAO) override;
+            void RenderCircle(GLuint shaderProgram, GLuint VAO, GLsizei vertexCount) override;
 
         private:
 
@@ -257,6 +281,7 @@ namespace Neon
 
             static GLuint CompileShader(const char* source, GLenum shaderType);
             static GLuint CreateShaderProgram(const char* vertexSource, const char* fragmentSource);
+            static std::vector<float> GenerateCircleVertices(float radius, int segments);
 
         protected:
             GLFWwindow* m_window;
@@ -274,6 +299,7 @@ namespace Neon
         public:
             static GameEngineApi& getInstance();    
             static void RenderQuad(GLuint shaderProgram, GLuint VAO);
+            static void RenderCircle(GLuint shaderProgram, GLuint VAO, GLsizei vertexCount);
         
             [[nodiscard]] IRenderer* GetRenderer() const;
 

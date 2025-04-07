@@ -15,6 +15,15 @@ namespace Neon
     TitleScene::TitleScene(const SceneType type)
         : Scene(type)
     {
+        ///
+        /// Audio - Intro Sound
+        ///
+        auto* introMusic = new AudioComponent("./assets/audio/neon_void_intro.mp3");
+        AddComponent("aud.intro", introMusic);
+
+        ///
+        /// Grren Triangle
+        ///
         std::vector<float> vertices = {
             0.0f,  0.5f,   // Top vertex
            -0.5f, -0.5f,   // Bottom left vertex
@@ -29,9 +38,18 @@ namespace Neon
         auto* component = new QuadComponent(vertices, shader);
         AddComponent("vao.triangle", component);
 
-        // Add Audio
-        auto* introMusic = new AudioComponent("./assets/audio/neon_void_intro.mp3");
-        AddComponent("aud.intro", introMusic);
+        ///
+        /// White Circle
+        ///
+        std::vector<float> circle_vertices = OpenGL::GenerateCircleVertices(1.0f, 100);
+
+        auto circle_shader = new Shader(
+            "/home/sam/Game/Neon/src/Game/assets/shaders/WhiteCircle/shader.vert",
+            "/home/sam/Game/Neon/src/Game/assets/shaders/WhiteCircle/shader.frag"
+        );
+
+        auto* circle_component = new CircleComponent(circle_vertices, circle_shader);
+        AddComponent("vao.circle", circle_component);
     }
 
     void TitleScene::OnInit()

@@ -80,6 +80,7 @@ set(GAME_ENGINE_SRC
 
     # Components
     src/GameEngine/src/Runtime/Components/QuadComponent.cpp
+    src/GameEngine/src/Runtime/Components/CircleComponent.cpp
     src/GameEngine/src/Runtime/Components/AudioComponent.cpp
     src/GameEngine/src/Runtime/Components/TextComponent.cpp
     src/GameEngine/src/Runtime/Components/PositionComponent.cpp
