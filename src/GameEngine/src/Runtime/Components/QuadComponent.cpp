@@ -5,36 +5,28 @@
 #include <cmath>
 
 #include "Runtime/Runtime.hpp"
+#include "Runtime/Engine/Shader.hpp"
 
 namespace Neon 
 {
     QuadComponent::~QuadComponent()
     {
         OnDestroy();
+
+        if (m_shader)
+        {
+            delete m_shader;
+            m_shader = nullptr;
+        }
     }
 
     void QuadComponent::OnInit()
     {
+        m_shader->OnInit();
+
         m_buffer = GameEngine::CreateVertexBuffer(m_vertices.data(), m_vertices.size() * sizeof(float));
 
         m_buffer->Bind();
-
-        // Compile and link shaders
-        const char* vertexSource = R"(
-            #version 330 core
-            layout(location = 0) in vec2 position;
-            void main() {
-                gl_Position = vec4(position, 0.0f, 1.0f);
-            })";
-
-        const char* fragmentSource = R"(
-            #version 330 core
-            out vec4 FragColor;
-            void main() {
-                FragColor = vec4(0.4f, 0.7f, 0.2f, 1.0f);
-            })";
-
-        m_shaderProgram = OpenGL::CreateShaderProgram(vertexSource, fragmentSource);
 
         m_buffer->Unbind();
     }
@@ -44,16 +36,15 @@ namespace Neon
         // hmm, not sure if we should prob use events instead.
         auto& api = GameEngineApi::getInstance();
 
-        api.GetRenderer()->RenderQuad(m_shaderProgram, m_buffer->GetVao());
-        std::cout << "QuadComponent::m_VAO: " << m_buffer->GetVao() << "\n";
+        // refactor to send the Buffer and the Shader as ref
+        api.GetRenderer()->RenderQuad(m_shader->GetShaderProgramId(), m_buffer->GetVao());
     }
 
     void QuadComponent::OnDestroy()
     {
-        if (m_shaderProgram)
+        if (m_shader)
         {
-            glDeleteProgram(m_shaderProgram);
-            m_shaderProgram = 0;
+            m_shader->OnDelete();
         }
 
         if (m_buffer)

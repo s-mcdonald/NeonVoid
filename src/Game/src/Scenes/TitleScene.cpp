@@ -1,11 +1,12 @@
 /**
  * 
  */
-#include <iostream>
 #include <cmath>
+#include <iostream>
 
-#include "../../GameEngine/src/Runtime/Runtime.hpp"
 #include "TitleScene.hpp"
+#include "../../GameEngine/src/Runtime/Runtime.hpp"
+#include "../../GameEngine/src/Runtime/Engine/Shader.hpp"
 
 namespace Neon
 {
@@ -19,7 +20,13 @@ namespace Neon
            -0.5f, -0.5f,   // Bottom left vertex
             0.5f, -0.5f    // Bottom right vertex
         };
-        auto* component = new QuadComponent(vertices); // LoadShaderGSL('triangle'));
+
+        auto shader = new Shader(
+            "/home/sam/Game/Neon/src/Game/assets/shaders/shader.vert",
+            "/home/sam/Game/Neon/src/Game/assets/shaders/shader.frag"
+        );
+
+        auto* component = new QuadComponent(vertices, shader);
         AddComponent("vao.triangle", component);
 
         // Add Audio

@@ -120,7 +120,7 @@ namespace Neon
         GLuint shader = glCreateShader(shaderType);
         glShaderSource(shader, 1, &source, nullptr);
         glCompileShader(shader);
-    
+
         GLint success;
         glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
         if (!success) 
@@ -155,10 +155,10 @@ namespace Neon
                 std::cerr << "Program linking failed: " << infoLog << std::endl;
             #endif
         }
-    
+
         glDeleteShader(vertexShader);
         glDeleteShader(fragmentShader);
-    
+
         return shaderProgram;
     }
 }
