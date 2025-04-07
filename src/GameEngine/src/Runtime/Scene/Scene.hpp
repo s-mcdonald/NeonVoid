@@ -4,11 +4,8 @@
 #pragma once
 
 #include <iostream>
-#include <functional>
-#include <vector>
 #include <unordered_map>
 
-#include "Runtime/Runtime.hpp"
 #include "Runtime/Entity/Entity.hpp"
 
 namespace Neon 
@@ -32,11 +29,6 @@ namespace Neon
         public:
             void AddComponent(const std::string& tag, Component* component);
             Component* GetComponent(const std::string& tag);
-
-            // void SetBackgroundAudio(AudioComponent component);
-            // void SetBackgroundShader BackgroundImage ?
-            // void SetMaxTimeAllowedInScene
-
             SceneType GetSceneType() const;
 
         private:

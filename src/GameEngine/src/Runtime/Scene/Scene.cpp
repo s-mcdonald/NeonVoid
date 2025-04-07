@@ -12,17 +12,11 @@ namespace Neon
     Scene::Scene(const SceneType type)
         : m_scene_type(type)
     {
-        #ifdef NEON_DEBUG
-            std::cout << "Scene::Constructor called\n";
-        #endif
+
     }
 
     Scene::~Scene() 
     {
-        #ifdef NEON_DEBUG
-            std::cout << "Scene::Destructor called\n";
-        #endif
-
         Destroy();
     }
 

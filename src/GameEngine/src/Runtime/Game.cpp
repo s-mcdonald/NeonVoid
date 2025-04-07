@@ -11,12 +11,10 @@ namespace Neon
 {
     Game::~Game()
     {
-        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-            std::cout << "Game::Destructor called\n";
-        #endif
-
         for (const auto s : m_scenes)
+        {
             delete s;
+        }
     }
 
     bool Game::Initialize(const int width, const int height, const char* title) const
