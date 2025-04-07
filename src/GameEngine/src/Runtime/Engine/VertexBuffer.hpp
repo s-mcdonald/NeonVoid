@@ -11,7 +11,6 @@ namespace Neon
             virtual void Unbind() const = 0;
             virtual void UpdateData(const void* data, size_t size) = 0;
 
-            // temp
-            virtual GLuint GetVao() = 0;
+            virtual uint32_t GetVao() = 0;
     };
 }

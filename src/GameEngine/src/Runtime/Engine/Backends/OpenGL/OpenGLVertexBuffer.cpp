@@ -13,7 +13,7 @@
  *
  */
 
-#include "OpenGLVertexBuffer.hpp"
+#include <Runtime/Engine/Backends/OpenGL/OpenGLVertexBuffer.hpp>
 
 namespace Neon
 {
@@ -39,7 +39,7 @@ namespace Neon
         }
     }
 
-    GLuint OpenGLVertexBuffer::GetVao()
+    uint32_t OpenGLVertexBuffer::GetVao()
     {
         return m_VAO;
     }

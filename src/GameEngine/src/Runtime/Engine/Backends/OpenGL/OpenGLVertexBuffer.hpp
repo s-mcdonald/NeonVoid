@@ -3,14 +3,12 @@
  */
 #pragma once
 
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-
-#include "../../../../Runtime/Runtime.hpp"
+#include <Runtime/Runtime.hpp>
+#include <Runtime/Engine/Backends/OpenGL/OpenGLVertexBuffer.hpp>
 
 namespace Neon
 {
-    class OpenGLVertexBuffer : public VertexBuffer
+    class OpenGLVertexBuffer final : public VertexBuffer
     {
         public:
             OpenGLVertexBuffer(const float*, size_t);
@@ -20,12 +18,12 @@ namespace Neon
             void Unbind() const override;
             void UpdateData(const void* data, size_t size) override;
 
-            GLuint GetVao() override;
+            uint32_t GetVao() override;
 
         private:
             const float* m_vertices;
             size_t m_size;
-            GLuint m_VAO{};
-            GLuint m_VBO{};
+            uint32_t m_VAO{};
+            uint32_t m_VBO{};
     };
 }
