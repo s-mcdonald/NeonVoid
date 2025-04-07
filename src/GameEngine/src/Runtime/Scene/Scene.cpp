@@ -1,9 +1,9 @@
 /**
- * 
+ *
  */
 
-#include <Runtime/Types.hpp>
 #include <Runtime/Scene/Scene.hpp>
+#include <Runtime/Types.hpp>
 
 namespace Neon
 {
@@ -41,7 +41,7 @@ namespace Neon
     }
 
     void Scene::Update()
-    {       
+    {
         UpdateRenderable(m_entities);
         UpdateRenderable(m_components);
         OnUpdate();
@@ -54,10 +54,10 @@ namespace Neon
 
     Component* Scene::GetComponent(const std::string& tag)
     {
-        if (auto it = m_components.find(tag); it != m_components.end()) 
+        if (auto it = m_components.find(tag); it != m_components.end())
         {
             auto& [key, component] = *it;
-    
+
             return component;
         }
 
@@ -97,4 +97,4 @@ namespace Neon
             delete value;
         }
     }
-}
+} // namespace Neon

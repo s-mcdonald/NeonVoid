@@ -1,21 +1,20 @@
 /**
- * 
+ *
  */
 #pragma once
 
 #include <unordered_map>
 
-#include <Runtime/Types.hpp>
 #include <Runtime/Entity/Entity.hpp>
+#include <Runtime/Types.hpp>
 
-namespace Neon 
+namespace Neon
 {
     class Scene
     {
         public:
             Scene() = delete;
-            explicit Scene(const SceneType type)
-                : m_scene_type(type) {};
+            explicit Scene(const SceneType type) : m_scene_type(type) {};
             virtual ~Scene();
 
         public:
@@ -50,4 +49,4 @@ namespace Neon
             bool m_isInitialized = false;
             std::unordered_map<std::string, Component*> m_components;
     };
-}
+} // namespace Neon
