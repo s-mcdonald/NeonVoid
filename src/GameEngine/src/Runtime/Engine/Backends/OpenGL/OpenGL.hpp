@@ -1,11 +1,12 @@
 #pragma once
 
+#include <vector>
+
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include <vector>
 #include <Runtime/Engine/Backends/Platform.hpp>
-#include <Runtime/Engine/Backends/IRenderer.hpp>
+#include <Runtime/Runtime.hpp>
 
 namespace Neon
 {

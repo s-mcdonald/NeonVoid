@@ -1,12 +1,13 @@
-/**
- * 
- */
-#include <iostream>
 
 #include <Runtime/Runtime.hpp>
-#include <Runtime/Engine/Backends/OpenGL/OpenGL.hpp>
 
-namespace Neon 
+#ifdef NEON_BUILD_OPENGL
+#include <Runtime/Engine/Backends/OpenGL/OpenGL.hpp>
+#elif defined(NEON_BUILD_VULKAN)
+#else
+#endif
+
+namespace Neon
 {
     GameEngine::GameEngine() : m_platform(nullptr)
     {
@@ -46,7 +47,7 @@ namespace Neon
         #elif defined(NEON_BUILD_VULKAN)
             return new VulkanVertexBuffer(vertices, size);
         #else
-            // let's also do an assert here, i think cherno did this too.
+            // let's also do an assert here, I think cherno did this too.
             // need to learn more about compile time asserts.
             return nullptr;
         #endif

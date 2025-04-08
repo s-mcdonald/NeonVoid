@@ -1,14 +1,10 @@
-/**
- *
- */
 
 #pragma once
-
-#include <string>
 
 namespace Neon
 {
     class Game;
+
     class Platform;
 
     class GameEngine

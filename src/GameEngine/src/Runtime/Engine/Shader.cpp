@@ -1,12 +1,10 @@
-#include <string>
 #include <fstream>
 #include <sstream>
-#include <iostream>
-#include <GL/glew.h>
+#include <string>
 
-#include <Runtime/Runtime.hpp>
 #include <Runtime/Engine/Backends/OpenGL/OpenGL.hpp>
 #include <Runtime/Engine/Shader.hpp>
+#include <Runtime/Runtime.hpp>
 #include <utility>
 
 namespace Neon
@@ -28,6 +26,7 @@ namespace Neon
         auto vertex_shader_source = LoadShaderFromFile(m_vertex_source_path);
         auto frag_shader_source = LoadShaderFromFile(m_fragment_source_path);
 
+        // abstract this to ogl layer
         m_shader_id = OpenGL::CreateShaderProgram(vertex_shader_source.c_str(), frag_shader_source.c_str());
     }
 
