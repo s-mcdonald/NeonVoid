@@ -20,6 +20,7 @@
 #include "Scene/Scene.hpp"
 #include <Runtime/Components/Component.hpp>
 #include <Runtime/Components/TextComponent.hpp>
+#include "Runtime/Engine/Backends/Platform.hpp"
 
 namespace Neon 
 {
@@ -44,7 +45,7 @@ namespace Neon
             virtual void EndFrame() = 0;
             virtual void RenderText(const TextComponent& component) = 0;
             virtual void RenderQuad(uint32_t shaderProgram, uint32_t VAO) = 0;
-            virtual void RenderCircle(uint32_t shaderProgram, uint32_t VAO, GLsizei vertexCount) = 0;
+            virtual void RenderCircle(uint32_t shaderProgram, uint32_t VAO, int vertexCount) = 0;
     };
  
     class OpenGLRenderer final : public IRenderer
@@ -70,25 +71,6 @@ namespace Neon
     //         ~VulkanRenderer() = default;
     //  };
 #endif
-
-    /******************************************** 
-     *                                          *
-     *          G A M E - C O N T R O L         *
-     *                                          *
-     ********************************************/
-
-    class Platform 
-    {
-        public:
-            Platform() = default;
-            virtual ~Platform() = default;
-
-        public:
-            virtual bool Initialize(int width, int height, const char* title) = 0;
-            virtual void Run(Game* game) = 0;
-    };
-
-
 
     /********************************************
      *                                          *
