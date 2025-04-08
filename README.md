@@ -1,12 +1,12 @@
-# NeonVoid (Work in progress)
+# NeonVoid
 
 > **Pre alpha:** This project is in active development and does not yet have a stable release.
 
 My first GameEngine written in C++ with support for various rendering API.
 
-NeonVoid is a side project I'm currently developing. It's intended to be both a game and a game engine, 
-inspired by 80s arcade space invaders type games.  My goal is to create a framework that
-makes building retro-style "Space Invaders" type games.
+NeonVoid is a side project I'm currently developing, intended to be a game engine focused on creating retro-style 
+"Space Invaders" type games. I have never built a game engine, nor game, and have no idea what I'm doing. 
+But just having a tonn of fun figuring it out.
 
 
 ### Build System
@@ -27,10 +27,8 @@ There are a couple of VS options, select the one that suits your needs or modify
 
 ### Libs
 
-The below libs are required to build.
-Future updates will see these libs source code included in the repo.
-
 * [glew](https://github.com/nigels-com/glew)
+* [glfw](https://www.glfw.org/) [(github)](https://github.com/glfw/glfw)
 * [glm](https://github.com/icaven/glm)
 * [minaudio](https://miniaud.io/)
 * [std](https://github.com/nothings/stb/tree/master)
@@ -43,13 +41,15 @@ Currently sound files are sourced from the below websites ;;
 
 
 ### Header files
-- *.hpp for c++ headers
+- Using `*.hpp` for c++ headers.
 - Header files will be located within the same directory as the implementation only for initial dev.
+- Either as the same name as the implementation file or the name of the directory its in.
   - I do plan to restructure the code so there will be /include folder for these.
 
 
+
 ### LICENCE
-[MIT](LICENSE)
+ - [MIT](LICENSE)
 
 
 ### Other Resources
