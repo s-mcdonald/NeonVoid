@@ -1,6 +1,3 @@
-/**
- * 
- */
 
 #include <Runtime/Runtime.hpp>
 #include <Runtime/Components/ShaderComponent.hpp>
