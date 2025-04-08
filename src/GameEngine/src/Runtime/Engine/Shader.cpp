@@ -4,14 +4,16 @@
 #include <iostream>
 #include <GL/glew.h>
 
-#include "../Runtime.hpp"
-#include "Shader.hpp"
+#include <Runtime/Runtime.hpp>
+#include <Runtime/Engine/Backends/OpenGL/OpenGL.hpp>
+#include <Runtime/Engine/Shader.hpp>
+#include <utility>
 
 namespace Neon
 {
-    Shader::Shader(const std::string& vertexPath, const std::string& fragmentPath)
-        : m_vertex_source_path(vertexPath)
-        , m_fragment_source_path(fragmentPath)
+    Shader::Shader(std::string  vertexPath, std::string  fragmentPath)
+        : m_vertex_source_path(std::move(vertexPath))
+        , m_fragment_source_path(std::move(fragmentPath))
     {
         //
     }

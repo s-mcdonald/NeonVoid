@@ -4,7 +4,8 @@
 
 #include <deque>
 
-#include "Runtime/Runtime.hpp"
+#include <Runtime/Runtime.hpp>
+#include <Runtime/Game.hpp>
 
 namespace Neon 
 {

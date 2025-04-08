@@ -9,6 +9,7 @@
 #include "../../GameEngine/src/Runtime/Components/AudioComponent.hpp"
 #include "../../GameEngine/src/Runtime/Components/ShaderComponent.hpp"
 #include "../../GameEngine/src/Runtime/Engine/Shader.hpp"
+#include <Runtime/Engine/Backends/OpenGL/OpenGL.hpp>
 
 namespace Neon
 {

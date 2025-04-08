@@ -4,6 +4,7 @@
 
 #include "Runtime/Runtime.hpp"
 #include <Runtime/Engine/Backends/OpenGL/OpenGLRenderer.hpp>
+#include <Runtime/Engine/Backends/OpenGL/GameEngineApi.hpp>
 
 namespace Neon
 {
@@ -28,12 +29,12 @@ namespace Neon
         return m_renderer;
     }
 
-    void GameEngineApi::RenderQuad(const GLuint shaderProgram, const GLuint VAO) const
+    void GameEngineApi::RenderQuad(const uint32_t shaderProgram, const uint32_t VAO) const
     {
         m_renderer->RenderQuad(shaderProgram, VAO);
     }
 
-    void GameEngineApi::RenderCircle(const GLuint shaderProgram, const GLuint VAO, const GLsizei vertexCount) const
+    void GameEngineApi::RenderCircle(const uint32_t shaderProgram, const uint32_t VAO, const int vertexCount) const
     {
         m_renderer->RenderCircle(shaderProgram, VAO, vertexCount);
     }

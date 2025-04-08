@@ -3,7 +3,8 @@
  */
 #include <iostream>
 
-#include "../Runtime.hpp"
+#include <Runtime/Runtime.hpp>
+#include <Runtime/Engine/Backends/OpenGL/OpenGL.hpp>
 
 namespace Neon 
 {
@@ -20,10 +21,6 @@ namespace Neon
 
     GameEngine::~GameEngine() 
     {
-        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-            std::cout << "GameEngine::Destructor called\n";
-        #endif
-
         delete m_platform;
     }
 

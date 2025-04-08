@@ -55,6 +55,7 @@ set(OpenGL_GL_PREFERENCE GLVND)
 #
 set(GAME_ENGINE_SRC
     src/GameEngine/src/Runtime/Types.hpp
+    src/GameEngine/src/Runtime/Game.hpp
     src/GameEngine/src/Runtime/Game.cpp
     
     # AssetManager
@@ -91,13 +92,16 @@ set(GAME_ENGINE_SRC
     src/GameEngine/src/Runtime/Runtime.hpp
     src/GameEngine/src/Runtime/Engine/Shader.hpp
     src/GameEngine/src/Runtime/Engine/Shader.cpp
+    src/GameEngine/src/Runtime/Engine/GameEngine.hpp
     src/GameEngine/src/Runtime/Engine/GameEngine.cpp
     src/GameEngine/src/Runtime/Engine/VertexBuffer.hpp
 
     # Platform
     src/GameEngine/src/Runtime/Engine/Backends/Platform.hpp
     src/GameEngine/src/Runtime/Engine/Backends/IRenderer.hpp
+    src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGL.hpp
     src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGL.cpp
+    src/GameEngine/src/Runtime/Engine/Backends/OpenGL/GameEngineApi.hpp
     src/GameEngine/src/Runtime/Engine/Backends/OpenGL/GameEngineApi.cpp
     src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLRenderer.cpp
     src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLRenderer.hpp

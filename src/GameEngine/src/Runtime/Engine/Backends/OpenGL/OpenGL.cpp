@@ -8,6 +8,8 @@
 #include <GLFW/glfw3.h>
 
 #include "Runtime/Runtime.hpp"
+#include <Runtime/Game.hpp>
+#include <Runtime/Engine/Backends/OpenGL/OpenGL.hpp>
 
 namespace Neon 
 {

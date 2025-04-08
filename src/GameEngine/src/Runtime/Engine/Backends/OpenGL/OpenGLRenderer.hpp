@@ -18,6 +18,6 @@ namespace Neon
             void EndFrame() override;
             void RenderText(const TextComponent& component) override;
             void RenderQuad(uint32_t shaderProgram, uint32_t VAO) override;
-            void RenderCircle(uint32_t shaderProgram, uint32_t VAO, GLsizei vertexCount) override;
+            void RenderCircle(uint32_t shaderProgram, uint32_t VAO, int vertexCount) override;
     };
 }

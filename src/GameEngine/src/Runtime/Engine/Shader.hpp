@@ -11,7 +11,7 @@ namespace Neon
     class Shader
     {
         public:
-            Shader(const std::string& vertexPath, const std::string& fragmentPath);
+            Shader(std::string, std::string);
             ~Shader();
 
         public:

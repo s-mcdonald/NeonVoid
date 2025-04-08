@@ -5,6 +5,7 @@
 #include <Runtime/Runtime.hpp>
 #include <Runtime/Components/ShaderComponent.hpp>
 #include <Runtime/Engine/Shader.hpp>
+#include <Runtime/Engine/Backends/OpenGL/GameEngineApi.hpp>
 
 namespace Neon 
 {
