@@ -69,6 +69,18 @@ namespace Neon
 
     void TitleScene::OnUpdate()
     {
-        // later we will control entities from here
+        Component* triangle = GetComponent("vao.triangle");
+
+        if (auto* shaderComponent = dynamic_cast<ShaderComponent*>(triangle))
+        {
+            std::vector<float> vertices = {
+                1.0f,  0.5f,   // Top vertex
+               -0.5f, -0.5f,   // Bottom left vertex
+                1.5f, -0.5f    // Bottom right vertex
+            };
+
+            shaderComponent->UpdateData(vertices);
+        }
+
     }
 }

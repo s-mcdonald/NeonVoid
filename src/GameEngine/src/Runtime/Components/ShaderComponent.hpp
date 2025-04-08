@@ -19,6 +19,8 @@ namespace Neon
             void OnUpdate() override;
             void OnDestroy() override;
 
+            void UpdateData(const std::vector<float>& vertices);
+
         private:
             Shader* m_shader;
             std::vector<float> m_vertices;

@@ -4,6 +4,10 @@
 #include <fstream>
 #include <iostream>
 
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
@@ -43,6 +47,13 @@ namespace Neon
     {
         glUseProgram(shaderProgram);
         glBindVertexArray(VAO);
+
+        GLint modelLoc = glGetUniformLocation(shaderProgram, "modelMatrix");
+
+        // ok we can have movement if we change these values in the matrix
+        glm::mat4 modelMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(0.3f, 1.0f, 0.0f));
+        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(modelMatrix));
+
         glDrawArrays(GL_TRIANGLE_FAN, 0, vertexCount);
         glBindVertexArray(0);
     }

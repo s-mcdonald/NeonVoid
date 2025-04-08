@@ -12,5 +12,6 @@ namespace Neon
             virtual void UpdateData(const void* data, size_t size) = 0;
 
             virtual uint32_t GetVao() = 0;
+            virtual uint32_t GetVbo() = 0;
     };
 }

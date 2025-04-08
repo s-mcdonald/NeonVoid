@@ -19,6 +19,7 @@ namespace Neon
             void UpdateData(const void* data, size_t size) override;
 
             uint32_t GetVao() override;
+            uint32_t GetVbo() override;
 
         private:
             const float* m_vertices;

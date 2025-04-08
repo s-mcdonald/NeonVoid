@@ -37,6 +37,13 @@ namespace Neon
         api.GetRenderer()->RenderCircle(m_shader->GetShaderProgramId(), m_buffer->GetVao(), m_vertices.size());
     }
 
+    void ShaderComponent::UpdateData(const std::vector<float>& vertices)
+    {
+        m_vertices = vertices;
+
+        m_buffer->UpdateData(m_vertices.data(), m_vertices.size() * sizeof(float));
+    }
+
     void ShaderComponent::OnDestroy()
     {
         if (m_shader)

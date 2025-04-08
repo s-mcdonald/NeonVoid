@@ -1,17 +1,3 @@
-/**
- * OpenGLVertexBuffer : VertexBuffer
- *
- * - Creates the m_VAO (Vertex Array Object) in the OpenGL context, represented by u_int or GLuint.
- * - Creates the m_VBO (Vertex Buffer Object) in the OpenGL context, represented by u_int or GLuint.
- *
- * - Bind()
- * -  Binds the VAO to the OpenGL context.
- * -  Binds the VBO to the VAO.
- *
- * - UnBind()
- * -  UnBind VAO and VBO to clear the context.
- *
- */
 
 #include <Runtime/Engine/Backends/OpenGL/OpenGLVertexBuffer.hpp>
 
@@ -44,6 +30,11 @@ namespace Neon
         return m_VAO;
     }
 
+    uint32_t OpenGLVertexBuffer::GetVbo()
+    {
+        return m_VBO;
+    }
+
     void OpenGLVertexBuffer::Bind() const
     {
         glBindVertexArray(m_VAO);
@@ -63,6 +54,8 @@ namespace Neon
 
     void OpenGLVertexBuffer::UpdateData(const void* data, size_t size)
     {
+        glBindBuffer(GL_ARRAY_BUFFER, GetVbo());
         glBufferSubData(GL_ARRAY_BUFFER, 0, static_cast<short>(size), data);
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
     }
 }
