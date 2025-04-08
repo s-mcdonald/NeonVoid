@@ -55,3 +55,5 @@ Currently sound files are sourced from the below websites ;;
 ### Other Resources
  - [Download Cmake Tools](https://cmake.org/download/)
  - [CLang-format](https://clang.llvm.org/docs/ClangFormat.html)
+ - [DocsGL](http://docs.gl/)
+ - [OpenGL Docs](https://www.opengl.org/)

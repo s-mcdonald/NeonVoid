@@ -13,8 +13,7 @@
 #include <Runtime/Audio/Volume.hpp>
 
 #include <Runtime/Scene/Scene.hpp>
-#include <Runtime/Components/Component.hpp>
-#include <Runtime/Components/TextComponent.hpp>
+#include <Runtime/Components/Components.hpp>
 
 #include <Runtime/Engine/Shader.hpp>
 #include <Runtime/Engine/VertexBuffer.hpp>

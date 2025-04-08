@@ -5,10 +5,9 @@
 #include <iostream>
 
 #include "TitleScene.hpp"
-#include "../../GameEngine/src/Runtime/Runtime.hpp"
-#include "../../GameEngine/src/Runtime/Components/AudioComponent.hpp"
-#include "../../GameEngine/src/Runtime/Components/ShaderComponent.hpp"
-#include "../../GameEngine/src/Runtime/Engine/Shader.hpp"
+#include <Runtime/Runtime.hpp>
+#include <Runtime/Engine/Shader.hpp>
+#include <Runtime/Components/Components.hpp>
 #include <Runtime/Engine/Backends/OpenGL/OpenGL.hpp>
 
 namespace Neon

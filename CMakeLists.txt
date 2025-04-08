@@ -80,13 +80,9 @@ set(GAME_ENGINE_SRC
     src/GameEngine/src/Runtime/Audio/AudioSystem.cpp
 
     # Components
-    src/GameEngine/src/Runtime/Components/ShaderComponent.hpp
-    src/GameEngine/src/Runtime/Components/ShaderComponent.cpp
-    src/GameEngine/src/Runtime/Components/AudioComponent.hpp
+        src/GameEngine/src/Runtime/Components/ShaderComponent.cpp
     src/GameEngine/src/Runtime/Components/AudioComponent.cpp
-    src/GameEngine/src/Runtime/Components/TextComponent.hpp
     src/GameEngine/src/Runtime/Components/TextComponent.cpp
-    src/GameEngine/src/Runtime/Components/PositionComponent.hpp
     src/GameEngine/src/Runtime/Components/PositionComponent.cpp
 
     src/GameEngine/src/Runtime/Runtime.hpp

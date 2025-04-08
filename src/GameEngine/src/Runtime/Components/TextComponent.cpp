@@ -5,7 +5,7 @@
 #include <utility>
 
 #include <Runtime/Runtime.hpp>
-#include <Runtime/Components/TextComponent.hpp>
+#include <Runtime/Components/Components.hpp>
 #include <Runtime/Types.hpp>
 
 namespace Neon 

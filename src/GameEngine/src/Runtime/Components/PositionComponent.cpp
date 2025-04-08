@@ -4,7 +4,7 @@
 #include <iostream>
 
 #include <Runtime/Runtime.hpp>
-#include <Runtime/Components/PositionComponent.hpp>
+#include <Runtime/Components/Components.hpp>
 
 namespace Neon 
 {
@@ -12,14 +12,12 @@ namespace Neon
         : Component()
         , m_position(x,y)
     {
-        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-            std::cout << "PositionComponent::Constructor called\n";
-        #endif
+        // ...
     }
 
     void PositionComponent::OnDestroy()
     {
-        // ....
+        // ...
     }
 
     Point PositionComponent::GetPoint() const

@@ -1,7 +1,9 @@
 /**
  * 
  */
-#include "AudioComponent.hpp"
+
+#include <Runtime/Components/Components.hpp>
+
 #include "Runtime/Runtime.hpp"
 
 namespace Neon 
