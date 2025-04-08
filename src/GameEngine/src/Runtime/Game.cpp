@@ -2,7 +2,6 @@
  *
  */
 
-#include <iostream>
 #include <deque>
 
 #include "Runtime/Runtime.hpp"

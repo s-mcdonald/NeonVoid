@@ -36,7 +36,7 @@ namespace Neon
         m_shader_id = 0;
     }
 
-    GLuint Shader::GetShaderProgramId()
+    uint32_t Shader::GetShaderProgramId() const
     {
         return m_shader_id;
     }

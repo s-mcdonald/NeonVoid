@@ -4,7 +4,6 @@
 
 #pragma once
 
-#include <GL/glew.h>
 #include <string>
 
 namespace Neon
@@ -18,7 +17,7 @@ namespace Neon
         public:
             void OnInit();
             void OnDelete();
-            GLuint GetShaderProgramId();
+            [[nodiscard]] uint32_t GetShaderProgramId() const;
 
         private:
             static std::string LoadShaderFromFile(const std::string&);
@@ -26,6 +25,6 @@ namespace Neon
         private:
             const std::string m_vertex_source_path;
             const std::string m_fragment_source_path;
-            GLuint m_shader_id;
+            uint32_t m_shader_id;
     };
 }

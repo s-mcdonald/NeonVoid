@@ -81,6 +81,5 @@ namespace Neon
 
             shaderComponent->UpdateData(vertices);
         }
-
     }
 }

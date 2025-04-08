@@ -81,6 +81,11 @@ namespace Neon
 
         while (!glfwWindowShouldClose(m_window)) 
         {
+            glClear(GL_COLOR_BUFFER_BIT);
+            glClearColor(1.0f, 0.0f, 1.0f, 1.0f);
+
+            //RenderCommand::Clear();
+
             auto* scene = game->GetCurrentScene();
 
             if (false == scene->IsInitialized())
@@ -93,8 +98,6 @@ namespace Neon
             scene->Update();
 
             glfwSwapBuffers(m_window);
-
-            glClear(GL_COLOR_BUFFER_BIT);
         }
     }
 
