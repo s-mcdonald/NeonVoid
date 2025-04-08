@@ -3,6 +3,7 @@
  */
 
 #include "Runtime/Runtime.hpp"
+#include <Runtime/Engine/Backends/OpenGL/OpenGLRenderer.hpp>
 
 namespace Neon
 {

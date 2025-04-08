@@ -21,46 +21,13 @@
 #include <Runtime/Components/Component.hpp>
 #include <Runtime/Components/TextComponent.hpp>
 #include "Runtime/Engine/Backends/Platform.hpp"
+#include "Runtime/Engine/Backends/IRenderer.hpp"
 
 namespace Neon 
 {
     class Game;
-
-    using InitFunction = std::function<void()>;
-    using RenderFunction = std::function<void()>;
-
-
-    /********************************************
-     *                                          *
-     *          A P I    R E N D E R E R        *
-     *                                          *
-     ********************************************/
-
-    class IRenderer
-    {
-        public:
-            virtual ~IRenderer() = default;
-        public:
-            virtual void BeginFrame() = 0;
-            virtual void EndFrame() = 0;
-            virtual void RenderText(const TextComponent& component) = 0;
-            virtual void RenderQuad(uint32_t shaderProgram, uint32_t VAO) = 0;
-            virtual void RenderCircle(uint32_t shaderProgram, uint32_t VAO, int vertexCount) = 0;
-    };
  
-    class OpenGLRenderer final : public IRenderer
-    {
-        public:
-            OpenGLRenderer() = default;
-            ~OpenGLRenderer() override = default;
 
-        public:
-            void BeginFrame() override;
-            void EndFrame() override;
-            void RenderText(const TextComponent& component) override;
-            void RenderQuad(uint32_t shaderProgram, uint32_t VAO) override;
-            void RenderCircle(uint32_t shaderProgram, uint32_t VAO, GLsizei vertexCount) override;
-    };
 
 #ifdef NEON_BUILD_VULKAN
     // todo: create a Vulkan renderer
