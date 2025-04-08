@@ -86,8 +86,8 @@ namespace Neon
             virtual void BeginFrame() = 0;
             virtual void EndFrame() = 0;
             virtual void RenderText(const TextComponent& component) = 0;
-            virtual void RenderQuad(GLuint shaderProgram, GLuint VAO) = 0;
-            virtual void RenderCircle(GLuint shaderProgram, GLuint VAO, GLsizei vertexCount) = 0;
+            virtual void RenderQuad(uint32_t shaderProgram, uint32_t VAO) = 0;
+            virtual void RenderCircle(uint32_t shaderProgram, uint32_t VAO, GLsizei vertexCount) = 0;
     };
  
     class OpenGLRenderer final : public IRenderer
@@ -100,8 +100,8 @@ namespace Neon
             void BeginFrame() override;
             void EndFrame() override;
             void RenderText(const TextComponent& component) override;
-            void RenderQuad(GLuint shaderProgram, GLuint VAO) override;
-            void RenderCircle(GLuint shaderProgram, GLuint VAO, GLsizei vertexCount) override;
+            void RenderQuad(uint32_t shaderProgram, uint32_t VAO) override;
+            void RenderCircle(uint32_t shaderProgram, uint32_t VAO, GLsizei vertexCount) override;
     };
 
 #ifdef NEON_BUILD_VULKAN
@@ -191,8 +191,8 @@ namespace Neon
 
             void Run(Game* game) override; 
 
-            static GLuint CompileShader(const char* source, GLenum shaderType);
-            static GLuint CreateShaderProgram(const char* vertexSource, const char* fragmentSource);
+            static uint32_t CompileShader(const char* source, GLenum shaderType);
+            static uint32_t CreateShaderProgram(const char* vertexSource, const char* fragmentSource);
             static std::vector<float> GenerateCircleVertices(float radius, int segments);
 
         protected:
@@ -208,8 +208,8 @@ namespace Neon
             GameEngineApi(const GameEngineApi&) = delete;
             GameEngineApi& operator=(const GameEngineApi&) = delete;
 
-            void RenderQuad(GLuint shaderProgram, GLuint VAO) const;
-            void RenderCircle(GLuint shaderProgram, GLuint VAO, GLsizei vertexCount) const;
+            void RenderQuad(uint32_t shaderProgram, uint32_t VAO) const;
+            void RenderCircle(uint32_t shaderProgram, uint32_t VAO, GLsizei vertexCount) const;
 
         public:
             static GameEngineApi& getInstance();

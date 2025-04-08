@@ -43,8 +43,8 @@ namespace Neon
             return false;
         }
 
-        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
         m_window = glfwCreateWindow(width, height, title, nullptr, nullptr);
@@ -63,17 +63,31 @@ namespace Neon
             return false;
         }
 
-        // just remember the wxh here is not always the same as window wxh
-        glViewport(0, 0, width, height);  // Set OpenGL viewport size
+        glfwSetFramebufferSizeCallback(m_window, [](GLFWwindow* window, int width, int height)
+        {
+            float aspectRatio = 16.0f / 9.0f;
 
-        std::cout << "OpenGL Initialized Successfully!\n";
+            int gameWidth = width;
+            int gameHeight = static_cast<int>(width / aspectRatio);
+
+            if (gameHeight > height)
+            {
+                gameHeight = height;
+                gameWidth = static_cast<int>(height * aspectRatio);
+            }
+
+            int viewportX = (width - gameWidth) / 2;
+            int viewportY = (height - gameHeight) / 2;
+
+            glViewport(viewportX, viewportY, gameWidth, gameHeight);
+        });
 
         m_openGlInitialized = true;
 
         return true;
     }
 
-    void OpenGL::Run(Game* game) 
+    void OpenGL::Run(Game* game)
     {
         if (!m_window) return;
 
@@ -81,10 +95,11 @@ namespace Neon
 
         while (!glfwWindowShouldClose(m_window)) 
         {
+            //Renderer::Clear();
             glClear(GL_COLOR_BUFFER_BIT);
-            glClearColor(1.0f, 0.0f, 1.0f, 1.0f);
-
-            //RenderCommand::Clear();
+            glClearColor(0.0f, 0.0f, 0.0f, 0.5f);
+            // glClearColor(1.0f, 0.0f, 1.0f, 1.0f);
+            //end: Renderer::Clear();
 
             auto* scene = game->GetCurrentScene();
 
@@ -105,7 +120,7 @@ namespace Neon
     /// Statics
     ///
 
-    GLuint OpenGL::CompileShader(const char* source, GLenum shaderType) 
+    uint32_t OpenGL::CompileShader(const char* source, GLenum shaderType)
     {
         GLuint shader = glCreateShader(shaderType);
         glShaderSource(shader, 1, &source, nullptr);
@@ -125,7 +140,7 @@ namespace Neon
         return shader;
     }
     
-    GLuint OpenGL::CreateShaderProgram(const char* vertexSource, const char* fragmentSource) 
+    uint32_t OpenGL::CreateShaderProgram(const char* vertexSource, const char* fragmentSource)
     {
         GLuint vertexShader = OpenGL::CompileShader(vertexSource, GL_VERTEX_SHADER);
         GLuint fragmentShader = OpenGL::CompileShader(fragmentSource, GL_FRAGMENT_SHADER);
