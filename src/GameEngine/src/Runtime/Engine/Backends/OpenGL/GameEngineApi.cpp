@@ -1,10 +1,5 @@
-/**
- * 
- */
 
-#include "Runtime/Runtime.hpp"
-#include <Runtime/Engine/Backends/OpenGL/OpenGLRenderer.hpp>
-#include <Runtime/Engine/Backends/OpenGL/GameEngineApi.hpp>
+#include <Runtime/Runtime.hpp>
 
 namespace Neon
 {

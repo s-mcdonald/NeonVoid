@@ -80,14 +80,14 @@ set(GAME_ENGINE_SRC
     src/GameEngine/src/Runtime/Audio/AudioSystem.cpp
 
     # Components
-    src/GameEngine/src/Runtime/Components/ShaderComponent.cpp
     src/GameEngine/src/Runtime/Components/ShaderComponent.hpp
-    src/GameEngine/src/Runtime/Components/AudioComponent.cpp
+    src/GameEngine/src/Runtime/Components/ShaderComponent.cpp
     src/GameEngine/src/Runtime/Components/AudioComponent.hpp
-    src/GameEngine/src/Runtime/Components/TextComponent.cpp
+    src/GameEngine/src/Runtime/Components/AudioComponent.cpp
     src/GameEngine/src/Runtime/Components/TextComponent.hpp
-    src/GameEngine/src/Runtime/Components/PositionComponent.cpp
+    src/GameEngine/src/Runtime/Components/TextComponent.cpp
     src/GameEngine/src/Runtime/Components/PositionComponent.hpp
+    src/GameEngine/src/Runtime/Components/PositionComponent.cpp
 
     src/GameEngine/src/Runtime/Runtime.hpp
     src/GameEngine/src/Runtime/Engine/Shader.hpp
@@ -103,8 +103,8 @@ set(GAME_ENGINE_SRC
     src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGL.cpp
     src/GameEngine/src/Runtime/Engine/Backends/OpenGL/GameEngineApi.hpp
     src/GameEngine/src/Runtime/Engine/Backends/OpenGL/GameEngineApi.cpp
-    src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLRenderer.cpp
     src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLRenderer.hpp
+    src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLRenderer.cpp
     src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLVertexBuffer.hpp
     src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLVertexBuffer.cpp
 )
