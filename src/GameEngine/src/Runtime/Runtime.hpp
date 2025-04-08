@@ -18,6 +18,8 @@
 #include "Runtime/Engine/VertexBuffer.hpp"
 #include "Runtime/Engine/Backends/OpenGL/OpenGLVertexBuffer.hpp"
 #include "Scene/Scene.hpp"
+#include <Runtime/Components/Component.hpp>
+#include <Runtime/Components/TextComponent.hpp>
 
 namespace Neon 
 {
@@ -26,51 +28,6 @@ namespace Neon
     using InitFunction = std::function<void()>;
     using RenderFunction = std::function<void()>;
 
-
-    /******************************************** 
-     *                                          *
-     *           C O M P O N E N T S            *
-     *                                          *
-     ********************************************/
-
-    class Component
-    {
-        public:
-            Component() = default;
-            virtual ~Component() = default;
-
-            virtual void OnInit() = 0;
-            virtual void OnUpdate() = 0;
-            virtual void OnDestroy() = 0;
-    };
-
-    class TextComponent final : public Component
-    {
-        public:
-            explicit TextComponent(const std::string& text);
-            TextComponent(const std::string& text, float fontSize);
-            TextComponent(const std::string& text, float fontSize, const Point& point);
-            TextComponent(std::string  text, float fontSize, const Point& point, ColorAlpha color);
-            ~TextComponent() override;
-
-            [[nodiscard]] const std::string& GetText() const;
-            void SetText(const std::string& text);
-    
-            [[nodiscard]] float GetFontSize() const;
-            void SetFontSize(float fontSize);
-
-            void OnInit() override;
-            void OnUpdate() override;
-
-            [[nodiscard]] Point GetPosition() const;
-            void OnDestroy() override;
-
-        private:
-            std::string m_text;
-            float m_fontSize;
-            Point m_point;
-            ColorAlpha m_colorAlpha;
-    };
 
     /********************************************
      *                                          *

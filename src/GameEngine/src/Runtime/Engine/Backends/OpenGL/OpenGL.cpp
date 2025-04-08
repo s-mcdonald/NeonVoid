@@ -63,7 +63,7 @@ namespace Neon
             return false;
         }
 
-        glfwSetFramebufferSizeCallback(m_window, [](GLFWwindow* window, int width, int height)
+        glfwSetFramebufferSizeCallback(m_window, []( [[maybe_unused]]GLFWwindow* window, int width, int height)
         {
             float aspectRatio = 16.0f / 9.0f;
 
@@ -76,8 +76,8 @@ namespace Neon
                 gameWidth = static_cast<int>(height * aspectRatio);
             }
 
-            int viewportX = (width - gameWidth) / 2;
-            int viewportY = (height - gameHeight) / 2;
+            const int viewportX = (width - gameWidth) / 2;
+            const int viewportY = (height - gameHeight) / 2;
 
             glViewport(viewportX, viewportY, gameWidth, gameHeight);
         });
