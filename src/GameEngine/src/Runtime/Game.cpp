@@ -19,12 +19,12 @@ namespace Neon
 
     bool Game::Initialize(const int width, const int height, const char* title) const
     {
-        return gameEngine.Initialize(width, height, title);
+        return m_gameEngine.Initialize(width, height, title);
     }
 
     void Game::Run()
     {
-        gameEngine.Run(this);
+        m_gameEngine.Run(this);
     }
 
     void Game::AddScene(Scene* scene)

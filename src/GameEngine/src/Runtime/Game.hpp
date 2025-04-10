@@ -25,6 +25,6 @@ namespace Neon
             Scene* m_currentScene{nullptr};
 
         private:
-            GameEngine gameEngine;
+            GameEngine m_gameEngine;
     };
 }
