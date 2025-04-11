@@ -37,6 +37,9 @@ Thumbs.db
 # Ignore macOS specific files
 .DS_Store
 
+# Ignore Sandbox files
+/src/Sandbox
+/src/Sandbox/*
 
 
 # Include

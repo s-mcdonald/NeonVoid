@@ -80,7 +80,7 @@ set(GAME_ENGINE_SRC
     src/GameEngine/src/Runtime/Audio/AudioSystem.cpp
 
     # Components
-        src/GameEngine/src/Runtime/Components/ShaderComponent.cpp
+    src/GameEngine/src/Runtime/Components/ShaderComponent.cpp
     src/GameEngine/src/Runtime/Components/AudioComponent.cpp
     src/GameEngine/src/Runtime/Components/TextComponent.cpp
     src/GameEngine/src/Runtime/Components/PositionComponent.cpp
@@ -214,3 +214,22 @@ endif()
 set_target_properties(NeonVoid PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build
 )
+
+
+#
+# Sandbox Executable
+#
+#set(SANDBOX_SRC
+#        src/Sandbox/src/Main.cpp
+#        ${CMAKE_SOURCE_DIR}/src/Sandbox/include/glad/glad.c
+#)
+#add_executable(NeonVoidSandbox ${SANDBOX_SRC})
+#target_include_directories(NeonVoidSandbox PUBLIC
+#        ${CMAKE_SOURCE_DIR}/src/Sandbox/include
+#)
+#target_link_libraries(NeonVoidSandbox PRIVATE OpenGL::GL)
+#target_link_libraries(NeonVoidSandbox PRIVATE OpenGL::GL glfw)
+#
+#set_target_properties(NeonVoidSandbox PROPERTIES
+#        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build
+#)
