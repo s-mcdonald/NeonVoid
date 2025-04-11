@@ -14,6 +14,7 @@ namespace Neon
     class Entity 
     {
         public:
+            Entity() = delete;
             explicit Entity(uint32_t id) : m_id(id) {};
             explicit Entity(uint32_t id, std::initializer_list<Component*> components);
             virtual ~Entity();
