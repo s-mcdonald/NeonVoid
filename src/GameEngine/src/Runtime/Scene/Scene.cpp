@@ -49,7 +49,7 @@ namespace Neon
 
     void Scene::AddComponent(const std::string& tag, Component* component)
     {
-        // what do we do if it already exist ?
+        // what do we do if it already exists ?
         m_components[tag] = component;
     }
 

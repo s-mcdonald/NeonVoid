@@ -144,8 +144,11 @@ target_compile_options(GameEngine PRIVATE -Wall -Wextra -Wpedantic)
 # Game - Create the main game executable
 #
 set(GAME_SRC
-        src/Game/src/GameMain.cpp
+
+        src/Game/src/MyGame.hpp
         src/Game/src/MyGame.cpp
+        src/Game/src/Mankind.hpp
+        src/Game/src/GameMain.cpp # Entry
         src/Game/src/Scenes/TitleScene.cpp
         src/Game/src/Scenes/TitleScene.hpp
         src/Game/src/Scenes/GamePlayScene.cpp
