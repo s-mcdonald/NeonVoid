@@ -4,11 +4,13 @@
 #include <cmath>
 #include <iostream>
 
-#include "TitleScene.hpp"
-#include <Runtime/Runtime.hpp>
-#include <Runtime/Engine/Shader.hpp>
 #include <Runtime/Components/Components.hpp>
 #include <Runtime/Engine/Backends/OpenGL/OpenGL.hpp>
+#include <Runtime/Engine/Shader.hpp>
+#include <Runtime/Runtime.hpp>
+#include "TitleScene.hpp"
+
+#include "../Entities/ControllablePlayerEntity.hpp"
 
 namespace Neon
 {
@@ -52,6 +54,9 @@ namespace Neon
 
         auto* circle_component = new ShaderComponent(circle_vertices, circle_shader);
         AddComponent("vao.circle", circle_component);
+
+        auto* mainPlayer = new ControllablePlayerEntity();
+        m_entities[mainPlayer->GetId()] = mainPlayer;
     }
 
     void TitleScene::OnInit()

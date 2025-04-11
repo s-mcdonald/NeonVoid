@@ -54,4 +54,7 @@ namespace Neon
         Gameplay,
         Pause
     };
-} // namespace Neon
+
+
+    typedef uint32_t EntityID;
+}

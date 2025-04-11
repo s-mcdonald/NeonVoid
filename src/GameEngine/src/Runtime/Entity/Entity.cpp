@@ -6,7 +6,7 @@
 
 namespace Neon
 {
-    Entity::Entity(const uint32_t id, const std::initializer_list<Component*> components)
+    Entity::Entity(const EntityID id, const std::initializer_list<Component*> components)
         : m_id(id)
     {
         for (auto& component : components)
@@ -29,7 +29,7 @@ namespace Neon
         m_components.emplace_back(component);
     }
 
-    uint32_t Entity::GetId() const
+    EntityID Entity::GetId() const
     {
         return m_id; 
     }

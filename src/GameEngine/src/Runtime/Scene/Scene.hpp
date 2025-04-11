@@ -32,6 +32,8 @@ namespace Neon
         public:
             void AddComponent(const std::string& tag, Component* component);
             Component* GetComponent(const std::string& tag);
+
+        public:
             SceneType GetSceneType() const;
 
         private:
@@ -45,7 +47,7 @@ namespace Neon
             void DestroyRenderable(const T& t);
 
         protected:
-            std::unordered_map<std::string, Entity*> m_entities;
+            std::unordered_map<EntityID, Entity*> m_entities;
 
         private:
             SceneType m_scene_type;
