@@ -5,11 +5,14 @@
 
 #include <unordered_map>
 
+#include <Runtime/Components/Components.hpp>
 #include <Runtime/Entity/Entity.hpp>
 #include <Runtime/Types.hpp>
 
 namespace Neon
 {
+    class Entity;
+
     class Scene
     {
         public:
