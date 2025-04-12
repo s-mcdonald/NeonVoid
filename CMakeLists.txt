@@ -54,55 +54,59 @@ set(OpenGL_GL_PREFERENCE GLVND)
 # Source files
 #
 set(GAME_ENGINE_SRC
-    src/GameEngine/src/Runtime/Types.hpp
-    src/GameEngine/src/Runtime/Game.hpp
-    src/GameEngine/src/Runtime/Game.cpp
-    
-    # AssetManager
-    src/GameEngine/src/Runtime/AssetManager/AssetManager.hpp
-    src/GameEngine/src/Runtime/AssetManager/AssetManager.cpp
+        src/GameEngine/src/Runtime/Runtime.hpp
+        src/GameEngine/src/Runtime/Types.hpp
+        src/GameEngine/src/Runtime/Game.hpp
+        src/GameEngine/src/Runtime/Game.cpp
 
-    # Scene(s)
-    src/GameEngine/src/Runtime/Scene/Scene.hpp
-    src/GameEngine/src/Runtime/Scene/Scene.cpp
+        # AssetManager
+        src/GameEngine/src/Runtime/AssetManager/AssetManager.hpp
+        src/GameEngine/src/Runtime/AssetManager/AssetManager.cpp
 
-    # Entity
-    src/GameEngine/src/Runtime/Entity/Entity.hpp
-    src/GameEngine/src/Runtime/Entity/Entity.cpp
+        # Input Control
+        src/GameEngine/src/Runtime/Input/Input.hpp
+        src/GameEngine/src/Runtime/Input/Input.cpp
 
-    # Transition
-    src/GameEngine/src/Runtime/Transition/Transition.hpp
-    src/GameEngine/src/Runtime/Transition/Transition.cpp
+        # Scene(s)
+        src/GameEngine/src/Runtime/Scene/Scene.hpp
+        src/GameEngine/src/Runtime/Scene/Scene.cpp
 
-    # Audio
-    src/GameEngine/src/Runtime/Audio/Volume.hpp
-    src/GameEngine/src/Runtime/Audio/AudioSystem.hpp
-    src/GameEngine/src/Runtime/Audio/AudioSystem.cpp
+        # Entity
+        src/GameEngine/src/Runtime/Entity/Entity.hpp
+        src/GameEngine/src/Runtime/Entity/Entity.cpp
 
-    # Components
-    src/GameEngine/src/Runtime/Components/ShaderComponent.cpp
-    src/GameEngine/src/Runtime/Components/AudioComponent.cpp
-    src/GameEngine/src/Runtime/Components/TextComponent.cpp
-    src/GameEngine/src/Runtime/Components/PositionComponent.cpp
+        # Transition
+        src/GameEngine/src/Runtime/Transition/Transition.hpp
+        src/GameEngine/src/Runtime/Transition/Transition.cpp
 
-    src/GameEngine/src/Runtime/Runtime.hpp
-    src/GameEngine/src/Runtime/Engine/Shader.hpp
-    src/GameEngine/src/Runtime/Engine/Shader.cpp
-    src/GameEngine/src/Runtime/Engine/GameEngine.hpp
-    src/GameEngine/src/Runtime/Engine/GameEngine.cpp
-    src/GameEngine/src/Runtime/Engine/VertexBuffer.hpp
+        # Audio
+        src/GameEngine/src/Runtime/Audio/Volume.hpp
+        src/GameEngine/src/Runtime/Audio/AudioSystem.hpp
+        src/GameEngine/src/Runtime/Audio/AudioSystem.cpp
 
-    # Platform
-    src/GameEngine/src/Runtime/Engine/Backends/Platform.hpp
-    src/GameEngine/src/Runtime/Engine/Backends/IRenderer.hpp
-    src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGL.hpp
-    src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGL.cpp
-    src/GameEngine/src/Runtime/Engine/Backends/OpenGL/GameEngineApi.hpp
-    src/GameEngine/src/Runtime/Engine/Backends/OpenGL/GameEngineApi.cpp
-    src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLRenderer.hpp
-    src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLRenderer.cpp
-    src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLVertexBuffer.hpp
-    src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLVertexBuffer.cpp
+        # Components
+        src/GameEngine/src/Runtime/Components/ShaderComponent.cpp
+        src/GameEngine/src/Runtime/Components/AudioComponent.cpp
+        src/GameEngine/src/Runtime/Components/TextComponent.cpp
+        src/GameEngine/src/Runtime/Components/PositionComponent.cpp
+
+        src/GameEngine/src/Runtime/Engine/Shader.hpp
+        src/GameEngine/src/Runtime/Engine/Shader.cpp
+        src/GameEngine/src/Runtime/Engine/GameEngine.hpp
+        src/GameEngine/src/Runtime/Engine/GameEngine.cpp
+        src/GameEngine/src/Runtime/Engine/VertexBuffer.hpp
+
+        # Platform
+        src/GameEngine/src/Runtime/Engine/Backends/Platform.hpp
+        src/GameEngine/src/Runtime/Engine/Backends/IRenderer.hpp
+        src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGL.hpp
+        src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGL.cpp
+        src/GameEngine/src/Runtime/Engine/Backends/OpenGL/GameEngineApi.hpp
+        src/GameEngine/src/Runtime/Engine/Backends/OpenGL/GameEngineApi.cpp
+        src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLRenderer.hpp
+        src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLRenderer.cpp
+        src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLVertexBuffer.hpp
+        src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLVertexBuffer.cpp
 )
 
 # Create GameEngine as a static library
