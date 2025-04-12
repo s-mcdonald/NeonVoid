@@ -49,7 +49,7 @@ namespace Neon
             ~ControllerComponent() override = default;
 
         public:
-            void HandleInput(const Input& input);
+            void HandleInput(Input* input);
             void Update(float deltaTime);
 
         private:

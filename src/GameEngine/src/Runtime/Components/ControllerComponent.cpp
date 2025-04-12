@@ -9,33 +9,37 @@
 
 namespace Neon 
 {
-    void ControllerComponent::HandleInput(const Input& input)
+    void ControllerComponent::HandleInput(Input* input)
     {
-        const float directionUp = -10.0f;
-        const float directionLeft = -10.0f;
-        const float directionRight = 10.0f;
-        const float directionDown = 10.0f;
+        constexpr  float directionUp = -10.0f;
+        constexpr  float directionLeft = -10.0f;
+        constexpr  float directionRight = 10.0f;
+        constexpr  float directionDown = 10.0f;
 
-        const float targetFps = 60.0f;
+        constexpr  float targetFps = 60.0f;
 
-        const float deltaTime = 1.0f / targetFps;
+        constexpr float deltaTime = 1.0f / targetFps;
 
-        if (input.IsKeyPressed(Key::Up))
+        // check if KeyboardInput
+        if (const auto* x = dynamic_cast<KeyboardInput*>(input))
         {
-            m_accelerationY = deltaTime * directionUp;
-        }
-        else if (input.IsKeyPressed(Key::Down))
-        {
-            m_accelerationY = deltaTime * directionDown;
-        }
+            if (x->IsKeyPressed(Key::Up))
+            {
+                m_accelerationY = deltaTime * directionUp;
+            }
+            else if (x->IsKeyPressed(Key::Down))
+            {
+                m_accelerationY = deltaTime * directionDown;
+            }
 
-        if (input.IsKeyPressed(Key::Left))
-        {
-            m_accelerationX = deltaTime * directionLeft;
-        }
-        else if (input.IsKeyPressed(Key::Right))
-        {
-            m_accelerationX = deltaTime * directionRight;
+            if (x->IsKeyPressed(Key::Left))
+            {
+                m_accelerationX = deltaTime * directionLeft;
+            }
+            else if (x->IsKeyPressed(Key::Right))
+            {
+                m_accelerationX = deltaTime * directionRight;
+            }
         }
     }
 

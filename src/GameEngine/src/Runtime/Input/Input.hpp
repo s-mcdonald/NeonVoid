@@ -76,18 +76,23 @@ namespace Neon
 
     class Input
     {
-        // ...
+        public:
+            Input() = default;
+            virtual ~Input() = default;
     };
 
-    class KeyboardInput : public Input
+    class KeyboardInput final : public Input
     {
+        public:
+            KeyboardInput() : Input() {};
+            ~KeyboardInput() override {};
         public:
             [[nodiscard]] bool IsKeyPressed(Key key) const;
             [[nodiscard]] bool IsKeyHeld(Key key) const;
             [[nodiscard]] bool IsKeyReleased(Key key) const;
     };
 
-    class MouseInput : public Input
+    class MouseInput final : public Input
     {
         public:
             [[nodiscard]] int GetMouseX() const;
