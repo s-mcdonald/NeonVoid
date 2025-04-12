@@ -13,11 +13,16 @@ namespace Neon
         {
             m_components.emplace_back(component);
         }
+
+        for (auto& component : components)
+        {
+            m_components.emplace_back(component);
+        }
     }
 
     Entity::~Entity()
     {
-        for (const auto* c : m_components)
+        for (const auto& c : m_components)
         {
             delete c;
         }
