@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Runtime/Runtime.hpp>
+#include <Runtime/Input/Input.hpp>
 
 namespace Neon
 {
@@ -39,6 +40,27 @@ namespace Neon
 
         private:
             Point m_position;
+    };
+
+    class ControllerComponent : public Component
+    {
+        public:
+            ControllerComponent() : Component() {};
+            ~ControllerComponent() override = default;
+
+        public:
+            void HandleInput(const Input& input);
+            void Update(float deltaTime);
+
+        private:
+            float m_velocityX = 0.0f;
+            float m_velocityY = 0.0f;
+            float m_accelerationX = 0.0f;
+            float m_accelerationY = 0.0f;
+            float m_maxSpeed = 500.0f;
+            // rotation below
+            float m_angle = 0.0f;
+            float m_angularVelocity = 0.0f;
     };
 
     class AudioComponent final
