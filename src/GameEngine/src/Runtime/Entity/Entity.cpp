@@ -23,7 +23,31 @@ namespace Neon
         }
     }
 
-    template <typename T>
+    void Entity::OnInit()
+    {
+        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
+                std::cout << "Entity::Init" << std::endl;
+        #endif
+
+        for (const auto& component : m_components)
+        {
+            component->OnInit();
+        }
+    }
+
+    void Entity::OnUpdate()
+    {
+        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
+            std::cout << "Entity::Update" << std::endl;
+        #endif
+
+        for (const auto& component : m_components)
+        {
+            component->OnUpdate();
+        }
+    }
+
+    //template <typename T>
     void Entity::AddComponent(Component* component)
     {
         m_components.emplace_back(component);

@@ -19,14 +19,14 @@ namespace Neon
             explicit Entity(EntityID id, std::initializer_list<Component*> components);
             virtual ~Entity();
         
-            template <typename T>
+            //template <typename T>
             void AddComponent(Component* component);
         
             [[nodiscard]] EntityID GetId() const;
 
         public:
-            virtual void OnInit() {};
-            virtual void OnUpdate() {};
+            virtual void OnInit();
+            virtual void OnUpdate();
             virtual void OnDestroy() {};
 
         private:

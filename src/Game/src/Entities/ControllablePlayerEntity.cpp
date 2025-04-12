@@ -25,6 +25,8 @@ namespace Neon
 
         auto* component = new ShaderComponent(vertices, shader);
         AddComponent(component);
+
+        Entity::OnInit();
     }
 
     void ControllablePlayerEntity::OnUpdate()
@@ -32,6 +34,7 @@ namespace Neon
         #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
                 std::cout << "ControllablePlayerEntity::OnUpdate()" << std::endl;
         #endif
+        Entity::OnUpdate();
     }
 
     void ControllablePlayerEntity::OnDestroy()
