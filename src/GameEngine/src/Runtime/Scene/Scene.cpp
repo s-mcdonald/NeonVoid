@@ -12,14 +12,6 @@ namespace Neon
         Destroy();
     }
 
-    void Scene::Destroy()
-    {
-        DestroyRenderable(m_entities);
-        DestroyRenderable(m_components);
-
-        OnDestroy();
-    }
-
     bool Scene::IsInitialized() const
     {
         return m_isInitialized;
@@ -27,6 +19,10 @@ namespace Neon
 
     void Scene::Init()
     {
+        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
+                std::cout << "Scene::Init\n";
+        #endif
+
         if (m_isInitialized)
         {
             return;
@@ -44,7 +40,16 @@ namespace Neon
     {
         UpdateRenderable(m_entities);
         UpdateRenderable(m_components);
+
         OnUpdate();
+    }
+
+    void Scene::Destroy()
+    {
+        DestroyRenderable(m_entities);
+        DestroyRenderable(m_components);
+
+        OnDestroy();
     }
 
     void Scene::AddComponent(const std::string& tag, Component* component)
