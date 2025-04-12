@@ -4,6 +4,7 @@
 
 namespace Neon
 {
+    class Entity;
     class Shader;
     class VertexBuffer;
 
@@ -13,9 +14,20 @@ namespace Neon
             Component() = default;
             virtual ~Component() = default;
 
+        public:
+            [[nodiscard]] Entity* GetParentEntity() const { return m_entityParent; };
+            void SetParentEntity(Entity* parent)
+            {
+                m_entityParent = parent;
+            }
+
+        public:
             virtual void OnInit() = 0;
             virtual void OnUpdate() = 0;
             virtual void OnDestroy() = 0;
+
+        private:
+            Entity* m_entityParent = nullptr;
     };
 
     class PositionComponent : public Component
