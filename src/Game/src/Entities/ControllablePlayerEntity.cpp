@@ -1,6 +1,7 @@
 
 #include <iostream>
 
+#include <Runtime/Components/Components.hpp>
 #include "ControllablePlayerEntity.hpp"
 
 namespace Neon
@@ -25,6 +26,9 @@ namespace Neon
 
         auto* component = new ShaderComponent(vertices, shader);
         AddComponent(component);
+
+        auto* movementComponent = new ControllerComponent();
+        AddComponent(movementComponent);
 
         Entity::OnInit();
     }

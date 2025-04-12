@@ -1,7 +1,10 @@
 #pragma once
 
-#include <Runtime/Runtime.hpp>
+#include "Runtime/Scene/Scene.hpp"
+
+
 #include <Runtime/Input/Input.hpp>
+#include <Runtime/Runtime.hpp>
 
 namespace Neon
 {
@@ -45,12 +48,29 @@ namespace Neon
     class ControllerComponent : public Component
     {
         public:
-            ControllerComponent() : Component() {};
-            ~ControllerComponent() override = default;
+            ControllerComponent() : Component()
+            {
+                // ...
+            };
+
+            ~ControllerComponent() override
+            {
+                // ...
+            }
 
         public:
             void HandleInput(Input* input);
             void Update(float deltaTime);
+
+        public:
+            virtual void OnInit() {};
+            virtual void OnUpdate()
+            {
+                std::cout << "ControllerComponent::OnUpdate" << std::endl;
+                //HandleInput(m_input);
+            };
+
+            virtual void OnDestroy() {};
 
         private:
             float m_velocityX = 0.0f;
@@ -58,6 +78,7 @@ namespace Neon
             float m_accelerationX = 0.0f;
             float m_accelerationY = 0.0f;
             float m_maxSpeed = 500.0f;
+            float m_currentSpeed = 0.0f;
             // rotation below
             float m_angle = 0.0f;
             float m_angularVelocity = 0.0f;

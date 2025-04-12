@@ -10,6 +10,7 @@
 #include "Runtime/Runtime.hpp"
 #include <Runtime/Game.hpp>
 #include <Runtime/Engine/Backends/OpenGL/OpenGL.hpp>
+#include <Runtime/Engine/Backends/Container.hpp>
 
 namespace Neon 
 {
@@ -95,6 +96,11 @@ namespace Neon
 
         if (!m_openGlInitialized) return;
 
+        auto container = Container::GetInstance();
+        container.SetWindow(m_window);
+
+        KeyboardInput keyboardInput(m_window);
+
         while (!glfwWindowShouldClose(m_window)) 
         {
             //Renderer::Clear();
@@ -115,6 +121,8 @@ namespace Neon
             scene->Update();
 
             glfwSwapBuffers(m_window);
+
+            //KeyboardInput::
         }
     }
 

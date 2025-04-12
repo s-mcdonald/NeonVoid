@@ -54,6 +54,9 @@ namespace Neon
 
     void Entity::AddComponent(Component* component)
     {
+        // Set the owning entity
+        component->SetParentEntity(this);
+
         m_components.emplace_back(component);
     }
 

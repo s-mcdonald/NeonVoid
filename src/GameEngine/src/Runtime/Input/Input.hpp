@@ -1,15 +1,19 @@
 
 #pragma once
 
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+
 namespace Neon
 {
+    // @todo refactor/abstract to use diff codes based on backend..
     enum class Key
     {
         Unknown = 0,
-        A,
-        B,
-        C,
-        D,
+        A = GLFW_KEY_A,
+        B = GLFW_KEY_B,
+        C = GLFW_KEY_C,
+        D = GLFW_KEY_D,
         E,
         F,
         G,
@@ -42,10 +46,10 @@ namespace Neon
         Num7,
         Num8,
         Num9,
-        Escape,
-        Enter,
+        Escape =  GLFW_KEY_ESCAPE,
+        Enter =  GLFW_KEY_ENTER,
         Space,
-        Backspace,
+        Backspace = GLFW_KEY_SPACE,
         Tab,
         LeftShift,
         RightShift,
@@ -53,10 +57,10 @@ namespace Neon
         RightCtrl,
         LeftAlt,
         RightAlt,
-        Up,
-        Down,
-        Left,
-        Right,
+        Up = GLFW_KEY_UP,
+        Down = GLFW_KEY_DOWN,
+        Left = GLFW_KEY_LEFT,
+        Right = GLFW_KEY_RIGHT,
         Function1,
         Function2,
         Function3,
@@ -84,19 +88,29 @@ namespace Neon
     class KeyboardInput final : public Input
     {
         public:
-            KeyboardInput() : Input() {};
-            ~KeyboardInput() override {};
+            KeyboardInput() = delete;
+            explicit KeyboardInput(GLFWwindow* rentableWindow)
+                : Input()
+                , mx_window(rentableWindow)
+            {
+                //
+            };
+            ~KeyboardInput() override = default;
+
         public:
-            [[nodiscard]] bool IsKeyPressed(Key key) const;
-            [[nodiscard]] bool IsKeyHeld(Key key) const;
-            [[nodiscard]] bool IsKeyReleased(Key key) const;
+            [[nodiscard]] static bool IsKeyPressed(Key key) ;
+            [[nodiscard]] static bool IsKeyHeld(Key key) ;
+            [[nodiscard]] static bool IsKeyReleased(Key key) ;
+
+        private:
+            GLFWwindow* mx_window{}; // we do not own this window
     };
 
     class MouseInput final : public Input
     {
         public:
-            [[nodiscard]] int GetMouseX() const;
-            [[nodiscard]] int GetMouseY() const;
+            [[nodiscard]] static int GetMouseX() { return 0;};
+            [[nodiscard]] static int GetMouseY() { return 0;};
             //bool IsMouseButtonPressed(MouseButton button) const;
     };
 }
