@@ -16,7 +16,7 @@ namespace Neon
         }
     }
 
-    bool Game::Initialize(const int width, const int height, const char* title) const
+    bool Game::Initialize(const WindowDimension width, const WindowDimension height, const char* title) const
     {
         return m_gameEngine.Initialize(width, height, title);
     }

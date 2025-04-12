@@ -55,6 +55,16 @@ namespace Neon
         Pause
     };
 
+    // @todo: Add a layer to each component + entity
+    // component.layer = Layer::Foreground;
+    enum class Layer : short
+    {
+        Background = 0,
+        Middle = 5,
+        Foreground = 10
+    };
 
+    typedef uint16_t ViewPortDimension;
+    typedef uint16_t WindowDimension;
     typedef uint32_t EntityID;
 }

@@ -13,7 +13,7 @@ namespace Neon
             virtual ~Game();
 
         public:
-            virtual bool Initialize(int width, int height, const char* title) const;
+            virtual bool Initialize(WindowDimension width, WindowDimension height, const char* title) const;
             virtual void Run();
 
         public:
