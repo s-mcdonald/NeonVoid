@@ -3,7 +3,7 @@
 #include "Runtime/Scene/Scene.hpp"
 
 
-#include <Runtime/Input/Input.hpp>
+#include <Runtime/Input/OpenGLInput.hpp>
 #include <Runtime/Runtime.hpp>
 
 namespace Neon
@@ -59,7 +59,7 @@ namespace Neon
             }
 
         public:
-            void HandleInput(Input* input);
+            void HandleInput(OpenGLInput* input);
             void Update(float deltaTime);
 
         public:

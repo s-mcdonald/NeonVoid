@@ -60,7 +60,7 @@ namespace Neon
         m_components.emplace_back(component);
     }
 
-    void Entity::HandleInput(Input* input)
+    void Entity::HandleInput(OpenGLInput* input)
     {
         for (auto& component : m_components)
         {

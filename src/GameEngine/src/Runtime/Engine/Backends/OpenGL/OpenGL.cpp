@@ -11,6 +11,7 @@
 #include <Runtime/Game.hpp>
 #include <Runtime/Engine/Backends/OpenGL/OpenGL.hpp>
 #include <Runtime/Engine/Backends/Container.hpp>
+#include <Runtime/Engine/Backends/OpenGL/OpenGLInput.hpp>
 
 #include <iostream>
 #include <GL/glew.h> // or appropriate OpenGL loader
@@ -94,6 +95,10 @@ namespace Neon
         glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+        //
+        // Debugging..
+        //
         glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GL_TRUE); // Request a debug context
 
         m_window = glfwCreateWindow(width, height, title, nullptr, nullptr);
@@ -152,7 +157,7 @@ namespace Neon
         auto& container = Container::GetInstance();
         container.SetWindow(m_window);
 
-        KeyboardInput keyboardInput(m_window);
+        OpenGLKeyboardInput keyboardInput(m_window);
 
         while (!glfwWindowShouldClose(m_window)) 
         {

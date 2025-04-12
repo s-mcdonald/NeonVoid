@@ -78,35 +78,25 @@ namespace Neon
         MouseMiddleButton
     };
 
-    class Input
+    class OpenGLInput
     {
         public:
-            Input() = default;
-            virtual ~Input() = default;
+            OpenGLInput() = default;
+            virtual ~OpenGLInput() = default;
     };
 
-    class KeyboardInput final : public Input
+    class KeyboardInput : public OpenGLInput
     {
         public:
-            KeyboardInput() = delete;
-            explicit KeyboardInput(GLFWwindow* window)
-                : Input()
-                , mx_window(window)
-            {
-                //
-            };
-            ~KeyboardInput() override = default;
+            virtual ~KeyboardInput() override = default;
 
         public:
-            [[nodiscard]] static bool IsKeyPressed(Key key) ;
-            [[nodiscard]] static bool IsKeyHeld(Key key) ;
-            [[nodiscard]] static bool IsKeyReleased(Key key) ;
-
-        private:
-            GLFWwindow* mx_window{nullptr};
+            virtual bool IsKeyPressed(Key key) = 0;
+            virtual bool IsKeyHeld(Key key) = 0;
+            virtual bool IsKeyReleased(Key key) = 0;
     };
 
-    class MouseInput final : public Input
+    class MouseInput : public OpenGLInput
     {
         public:
             [[nodiscard]] static int GetMouseX() { return 0;};

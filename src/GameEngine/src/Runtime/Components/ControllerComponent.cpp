@@ -3,14 +3,14 @@
  */
 #include <iostream>
 
-#include <Runtime/Runtime.hpp>
 #include <Runtime/Components/Components.hpp>
-#include <Runtime/Input/Input.hpp>
+#include <Runtime/Input/OpenGLInput.hpp>
+#include <Runtime/Runtime.hpp>
 
 namespace Neon 
 {
     // Change the class name to MovementComponent
-    void ControllerComponent::HandleInput(Input* input)
+    void ControllerComponent::HandleInput(OpenGLInput* input)
     {
         // @todo: move these const to Inout potentially or types hpp
         constexpr float directionUp = -10.0f;
@@ -23,7 +23,7 @@ namespace Neon
         constexpr float deltaTime = 1.0f / targetFps;
 
         // check if KeyboardInput
-        if (const auto* x = dynamic_cast<KeyboardInput*>(input))
+        if (auto* x = dynamic_cast<KeyboardInput*>(input))
         {
             std::cout << "KeyboardInput\n";
             std::cout << "Checking for Input\n";

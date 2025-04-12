@@ -64,8 +64,8 @@ set(GAME_ENGINE_SRC
         src/GameEngine/src/Runtime/AssetManager/AssetManager.cpp
 
         # Input Control
-        src/GameEngine/src/Runtime/Input/Input.hpp
-        src/GameEngine/src/Runtime/Input/Input.cpp
+        src/GameEngine/src/Runtime/Input/OpenGLInput.hpp
+        src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLInput.cpp
 
         # Scene(s)
         src/GameEngine/src/Runtime/Scene/Scene.hpp

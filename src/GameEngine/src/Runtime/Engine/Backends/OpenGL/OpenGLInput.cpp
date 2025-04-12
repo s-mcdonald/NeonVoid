@@ -5,26 +5,25 @@
 #include <Runtime/Runtime.hpp>
 #include <Runtime/Engine/Backends/Container.hpp>
 
-#include "Input.hpp"
+#include <Runtime/Engine/Backends/OpenGL/OpenGLInput.hpp>
 
 namespace Neon
 {
-    bool KeyboardInput::IsKeyPressed(Key key)
+    bool OpenGLKeyboardInput::IsKeyPressed(Key key)
     {
         const auto& container = Container::GetInstance();
         auto& window = container.GetWindow();
 
-        // @todo: refactor away from gl
         return glfwGetKey(&window, static_cast<int>(key)) == GLFW_PRESS;
     }
 
-    bool KeyboardInput::IsKeyHeld(const Key key)
+    bool OpenGLKeyboardInput::IsKeyHeld(const Key key)
     {
-        return KeyboardInput::IsKeyPressed(key);
+        return OpenGLKeyboardInput::IsKeyPressed(key);
     }
 
-    bool KeyboardInput::IsKeyReleased(const Key key)
+    bool OpenGLKeyboardInput::IsKeyReleased(const Key key)
     {
-        return false == KeyboardInput::IsKeyPressed(key);
+        return false == OpenGLKeyboardInput::IsKeyPressed(key);
     }
 }

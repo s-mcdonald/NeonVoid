@@ -7,8 +7,8 @@
 
 #include <Runtime/Components/Components.hpp>
 #include <Runtime/Entity/Entity.hpp>
+#include <Runtime/Input/OpenGLInput.hpp>
 #include <Runtime/Types.hpp>
-#include <Runtime/Input/Input.hpp>
 
 namespace Neon
 {
@@ -25,7 +25,7 @@ namespace Neon
             void Init();
             void Update();
             void Destroy();
-            void HandleInput(Input* input);
+            void HandleInput(OpenGLInput* input);
             virtual void OnInit() {};
             virtual void OnUpdate() {};
             virtual void OnDestroy() {};
@@ -50,7 +50,7 @@ namespace Neon
             void DestroyRenderable(const T& t);
 
             template <typename T>
-            void HandlesInput(const T& t, Input* input);
+            void HandlesInput(const T& t, OpenGLInput* input);
 
         protected:
             std::unordered_map<EntityID, Entity*> m_entities;
