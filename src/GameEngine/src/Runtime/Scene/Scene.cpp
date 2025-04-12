@@ -28,8 +28,9 @@ namespace Neon
             return;
         }
 
-        InitRenderable(m_entities);
+        // Scene components but be initialized before entity components
         InitRenderable(m_components);
+        InitRenderable(m_entities);
 
         OnInit();
 
@@ -38,8 +39,9 @@ namespace Neon
 
     void Scene::Update()
     {
-        UpdateRenderable(m_entities);
+        // Scene components but be updated before entity components
         UpdateRenderable(m_components);
+        UpdateRenderable(m_entities);
 
         OnUpdate();
     }
