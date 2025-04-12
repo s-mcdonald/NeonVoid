@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 #include <fstream>
 #include <iostream>
@@ -25,15 +25,6 @@ namespace Neon
     void OpenGLRenderer::EndFrame()
     {
         glFlush();
-    }
-
-    void OpenGLRenderer::RenderText(const TextComponent& component)
-    {
-        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-            std::cout << "OpenGLRenderer::RenderText called\n";
-        #endif
-
-        std::cout << "Rendering Text: " << component.GetText() << std::endl;
     }
 
     void OpenGLRenderer::RenderQuad(const GLuint shaderProgram, const GLuint VAO)

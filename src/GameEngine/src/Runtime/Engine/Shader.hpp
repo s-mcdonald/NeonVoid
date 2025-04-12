@@ -23,8 +23,8 @@ namespace Neon
             static std::string LoadShaderFromFile(const std::string&);
 
         private:
-            const std::string m_vertex_source_path;
-            const std::string m_fragment_source_path;
-            uint32_t m_shader_id;
+            const std::string m_vertexSourcePath;
+            const std::string m_fragmentSourcePath;
+            uint32_t m_shaderId;
     };
 }

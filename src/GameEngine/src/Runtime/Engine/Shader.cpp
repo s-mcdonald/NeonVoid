@@ -10,8 +10,8 @@
 namespace Neon
 {
     Shader::Shader(std::string  vertexPath, std::string  fragmentPath)
-        : m_vertex_source_path(std::move(vertexPath))
-        , m_fragment_source_path(std::move(fragmentPath))
+        : m_vertexSourcePath(std::move(vertexPath))
+        , m_fragmentSourcePath(std::move(fragmentPath))
     {
         //
     }
@@ -23,23 +23,23 @@ namespace Neon
 
     void Shader::OnInit()
     {
-        auto vertex_shader_source = LoadShaderFromFile(m_vertex_source_path);
-        auto frag_shader_source = LoadShaderFromFile(m_fragment_source_path);
+        auto vertex_shader_source = LoadShaderFromFile(m_vertexSourcePath);
+        auto frag_shader_source = LoadShaderFromFile(m_fragmentSourcePath);
 
         // abstract this to ogl layer
-        m_shader_id = OpenGL::CreateShaderProgram(vertex_shader_source.c_str(), frag_shader_source.c_str());
+        m_shaderId = OpenGL::CreateShaderProgram(vertex_shader_source.c_str(), frag_shader_source.c_str());
     }
 
     void Shader::OnDelete()
     {
         // abstract this to ogl layer
-        glDeleteProgram(m_shader_id);
-        m_shader_id = 0;
+        glDeleteProgram(m_shaderId);
+        m_shaderId = 0;
     }
 
     uint32_t Shader::GetShaderProgramId() const
     {
-        return m_shader_id;
+        return m_shaderId;
     }
 
     std::string Shader::LoadShaderFromFile(const std::string& filePath)

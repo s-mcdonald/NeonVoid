@@ -1,8 +1,8 @@
+
 #pragma once
 
 namespace Neon
 {
-    // Forward declaration
     class Game;
 
     class Platform

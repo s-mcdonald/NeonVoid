@@ -15,11 +15,10 @@ namespace Neon
     {
         public:
             Entity() = delete;
-            explicit Entity(EntityID id) : m_id(id) {};
+            explicit Entity(const EntityID id) : m_id(id) {};
             explicit Entity(EntityID id, std::initializer_list<Component*> components);
             virtual ~Entity();
         
-            //template <typename T>
             void AddComponent(Component* component);
         
             [[nodiscard]] EntityID GetId() const;

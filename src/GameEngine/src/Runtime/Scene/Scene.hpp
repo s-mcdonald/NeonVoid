@@ -17,7 +17,7 @@ namespace Neon
     {
         public:
             Scene() = delete;
-            explicit Scene(const SceneType type) : m_scene_type(type) {};
+            explicit Scene(const SceneType type) : m_sceneType(type) {};
             virtual ~Scene();
 
         public:
@@ -50,8 +50,8 @@ namespace Neon
             std::unordered_map<EntityID, Entity*> m_entities;
 
         private:
-            SceneType m_scene_type;
+            SceneType m_sceneType;
             bool m_isInitialized = false;
             std::unordered_map<std::string, Component*> m_components;
     };
-} // namespace Neon
+}

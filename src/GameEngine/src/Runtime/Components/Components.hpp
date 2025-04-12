@@ -102,6 +102,6 @@ namespace Neon
             Shader* m_shader;
             std::vector<float> m_vertices;
             VertexBuffer* m_buffer{};
-            int m_verticies_size{};
+            int m_verticiesSize{};
     };
 }

@@ -1,10 +1,11 @@
 
 #pragma once
 
+#include <Runtime/Scene/Scene.hpp>
+#include <Runtime/Engine/GameEngine.hpp>
+
 namespace Neon
 {
-    class Scene;
-
     class Game
     {
         public:

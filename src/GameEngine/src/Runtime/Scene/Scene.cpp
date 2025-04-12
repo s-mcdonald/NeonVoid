@@ -48,6 +48,7 @@ namespace Neon
 
     void Scene::Destroy()
     {
+        // Reverse the order for destroy
         DestroyRenderable(m_entities);
         DestroyRenderable(m_components);
 
@@ -74,7 +75,7 @@ namespace Neon
 
     SceneType Scene::GetSceneType() const
     {
-        return m_scene_type;
+        return m_sceneType;
     }
 
     template <typename T>
@@ -105,4 +106,4 @@ namespace Neon
             delete value;
         }
     }
-} // namespace Neon
+}

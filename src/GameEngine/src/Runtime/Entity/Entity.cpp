@@ -47,7 +47,6 @@ namespace Neon
         }
     }
 
-    //template <typename T>
     void Entity::AddComponent(Component* component)
     {
         m_components.emplace_back(component);
