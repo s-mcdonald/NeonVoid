@@ -7,18 +7,16 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include "Runtime/Runtime.hpp"
+#include <Runtime/Runtime.hpp>
 #include <Runtime/Game.hpp>
 #include <Runtime/Engine/Backends/OpenGL/OpenGL.hpp>
 #include <Runtime/Engine/Backends/Container.hpp>
 #include <Runtime/Engine/Backends/OpenGL/OpenGLInput.hpp>
 
-#include <iostream>
-#include <GL/glew.h> // or appropriate OpenGL loader
-
 void GLAPIENTRY glDebugOutput(GLenum source, GLenum type, GLuint id,
                               GLenum severity, GLsizei length,
-                              const GLchar* message, const void* userParam) {
+                              const GLchar* message, const void* userParam)
+{
     std::cerr << "OpenGL Debug Message:" << std::endl;
     std::cerr << "---------------------" << std::endl;
     std::cerr << "Source: " << source << ", Type: " << type << std::endl;
@@ -38,14 +36,17 @@ void setupDebugOutput()
 
 const char* getErrorString(GLenum error);
 
-void checkErrors(const char* label) {
+void checkErrors(const char* label)
+{
     GLenum error;
-    while ((error = glGetError()) != GL_NO_ERROR) {
+    while ((error = glGetError()) != GL_NO_ERROR)
+    {
         std::cerr << "OpenGL Error [" << label << "]: " << getErrorString(error) << std::endl;
     }
 }
 
-const char* getErrorString(GLenum error) {
+const char* getErrorString(GLenum error)
+{
     switch (error) {
         case GL_INVALID_ENUM: return "GL_INVALID_ENUM";
         case GL_INVALID_VALUE: return "GL_INVALID_VALUE";
