@@ -3,7 +3,7 @@
 #include "Runtime/Scene/Scene.hpp"
 
 
-#include <Runtime/Input/OpenGLInput.hpp>
+#include <Runtime/Input/Input.hpp>
 #include <Runtime/Runtime.hpp>
 
 namespace Neon

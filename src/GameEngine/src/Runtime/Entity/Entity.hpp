@@ -5,7 +5,7 @@
 
 #include <vector>
 
-#include <Runtime/Input/OpenGLInput.hpp>
+#include <Runtime/Input/Input.hpp>
 #include <Runtime/Runtime.hpp>
 
 namespace Neon 

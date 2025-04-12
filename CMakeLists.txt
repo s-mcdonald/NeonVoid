@@ -55,6 +55,8 @@ set(OpenGL_GL_PREFERENCE GLVND)
 #
 set(GAME_ENGINE_SRC
         src/GameEngine/src/Runtime/Runtime.hpp
+        src/GameEngine/src/Runtime/Runtime.cpp
+
         src/GameEngine/src/Runtime/Types.hpp
         src/GameEngine/src/Runtime/Game.hpp
         src/GameEngine/src/Runtime/Game.cpp
@@ -64,8 +66,7 @@ set(GAME_ENGINE_SRC
         src/GameEngine/src/Runtime/AssetManager/AssetManager.cpp
 
         # Input Control
-        src/GameEngine/src/Runtime/Input/OpenGLInput.hpp
-        src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLInput.cpp
+        src/GameEngine/src/Runtime/Input/Input.hpp
 
         # Scene(s)
         src/GameEngine/src/Runtime/Scene/Scene.hpp
@@ -106,6 +107,8 @@ set(GAME_ENGINE_SRC
         src/GameEngine/src/Runtime/Engine/Backends/IRenderer.hpp
         src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGL.hpp
         src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGL.cpp
+        src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLInput.hpp
+        src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLInput.cpp
         src/GameEngine/src/Runtime/Engine/Backends/OpenGL/GameEngineApi.hpp
         src/GameEngine/src/Runtime/Engine/Backends/OpenGL/GameEngineApi.cpp
         src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLRenderer.hpp
