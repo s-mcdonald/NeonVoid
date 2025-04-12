@@ -28,32 +28,20 @@ namespace Neon
         ///
         /// Green Triangle
         ///
-        std::vector<float> vertices = {
-            0.0f,  0.5f,   // Top vertex
-           -0.5f, -0.5f,   // Bottom left vertex
-            0.5f, -0.5f    // Bottom right vertex
-        };
 
-        auto shader = new Shader(
-            "/home/sam/Game/Neon/src/Game/assets/shaders/GreenTriangle/shader.vert",
-            "/home/sam/Game/Neon/src/Game/assets/shaders/GreenTriangle/shader.frag"
-        );
-
-        auto* component = new ShaderComponent(vertices, shader);
-        AddComponent("vao.triangle", component);
 
         ///
         /// White Circle
         ///
-        std::vector<float> circle_vertices = OpenGL::GenerateCircleVertices(1.0f, 100);
-
-        auto circle_shader = new Shader(
-            "/home/sam/Game/Neon/src/Game/assets/shaders/WhiteCircle/shader.vert",
-            "/home/sam/Game/Neon/src/Game/assets/shaders/WhiteCircle/shader.frag"
-        );
-
-        auto* circle_component = new ShaderComponent(circle_vertices, circle_shader);
-        AddComponent("vao.circle", circle_component);
+        // std::vector<float> circle_vertices = OpenGL::GenerateCircleVertices(1.0f, 100);
+        //
+        // auto circle_shader = new Shader(
+        //     "/home/sam/Game/Neon/src/Game/assets/shaders/WhiteCircle/shader.vert",
+        //     "/home/sam/Game/Neon/src/Game/assets/shaders/WhiteCircle/shader.frag"
+        // );
+        //
+        // auto* circle_component = new ShaderComponent(circle_vertices, circle_shader);
+        // AddComponent("vao.circle", circle_component);
 
         auto* mainPlayer = new ControllablePlayerEntity();
         m_entities[mainPlayer->GetId()] = mainPlayer;
@@ -61,30 +49,34 @@ namespace Neon
 
     void TitleScene::OnInit()
     {
-        std::cout << "Child \n";
+        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
+                std::cout << "<GAME> TitleScene::OnInit\n";
+        #endif
 
-        // Need to give config to AudioComponents so the comp
-        // knows when and how to start playing..
-        if (auto* x = GetComponent("aud.intro"))
-        {
-            auto* ac = dynamic_cast<AudioComponent*>(x);
-            ac->TriggerPlayOnce();
-        }
+        // std::cout << "TitleScene::OnInit \n";
+        //
+        // // Need to give config to AudioComponents so the comp
+        // // knows when and how to start playing..
+        // if (auto* x = GetComponent("aud.intro"))
+        // {
+        //     auto* ac = dynamic_cast<AudioComponent*>(x);
+        //     ac->TriggerPlayOnce();
+        // }
     }
 
     void TitleScene::OnUpdate()
     {
-        Component* triangle = GetComponent("vao.triangle");
-
-        if (auto* shaderComponent = dynamic_cast<ShaderComponent*>(triangle))
-        {
-            std::vector<float> vertices = {
-                1.0f,  0.5f,   // Top vertex
-               -0.5f, -0.5f,   // Bottom left vertex
-                1.5f, -0.5f    // Bottom right vertex
-            };
-
-            shaderComponent->UpdateData(vertices);
-        }
+        // Component* triangle = GetComponent("vao.triangle");
+        //
+        // if (auto* shaderComponent = dynamic_cast<ShaderComponent*>(triangle))
+        // {
+        //     std::vector<float> vertices = {
+        //         1.0f,  0.5f,   // Top vertex
+        //        -0.5f, -0.5f,   // Bottom left vertex
+        //         1.5f, -0.5f    // Bottom right vertex
+        //     };
+        //
+        //     shaderComponent->UpdateData(vertices);
+        // }
     }
 }
