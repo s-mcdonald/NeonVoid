@@ -33,15 +33,15 @@ namespace Neon
         ///
         /// White Circle
         ///
-        // std::vector<float> circle_vertices = OpenGL::GenerateCircleVertices(1.0f, 100);
-        //
-        // auto circle_shader = new Shader(
-        //     "/home/sam/Game/Neon/src/Game/assets/shaders/WhiteCircle/shader.vert",
-        //     "/home/sam/Game/Neon/src/Game/assets/shaders/WhiteCircle/shader.frag"
-        // );
-        //
-        // auto* circle_component = new ShaderComponent(circle_vertices, circle_shader);
-        // AddComponent("vao.circle", circle_component);
+        std::vector<float> circle_vertices = OpenGL::GenerateCircleVertices(1.0f, 100);
+
+        auto circle_shader = new Shader(
+            "/home/sam/Game/Neon/src/Game/assets/shaders/WhiteCircle/shader.vert",
+            "/home/sam/Game/Neon/src/Game/assets/shaders/WhiteCircle/shader.frag"
+        );
+
+        auto* circle_component = new ShaderComponent(circle_vertices, circle_shader);
+        AddComponent("vao.circle", circle_component);
 
         auto* mainPlayer = new ControllablePlayerEntity();
         m_entities[mainPlayer->GetId()] = mainPlayer;
@@ -53,15 +53,15 @@ namespace Neon
                 std::cout << "<GAME> TitleScene::OnInit\n";
         #endif
 
-        // std::cout << "TitleScene::OnInit \n";
-        //
-        // // Need to give config to AudioComponents so the comp
-        // // knows when and how to start playing..
-        // if (auto* x = GetComponent("aud.intro"))
-        // {
-        //     auto* ac = dynamic_cast<AudioComponent*>(x);
-        //     ac->TriggerPlayOnce();
-        // }
+        std::cout << "TitleScene::OnInit \n";
+
+        // Need to give config to AudioComponents so the comp
+        // knows when and how to start playing..
+        if (auto* x = GetComponent("aud.intro"))
+        {
+            auto* ac = dynamic_cast<AudioComponent*>(x);
+            ac->TriggerPlayOnce();
+        }
     }
 
     void TitleScene::OnUpdate()
