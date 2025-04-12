@@ -60,6 +60,17 @@ namespace Neon
         m_components.emplace_back(component);
     }
 
+    void Entity::HandleInput(Input* input)
+    {
+        for (auto& component : m_components)
+        {
+            if (auto* x = dynamic_cast<ControllerComponent*>(component))
+            {
+                x->HandleInput(input);
+            }
+        }
+    }
+
     EntityID Entity::GetId() const
     {
         return m_id; 

@@ -8,8 +8,6 @@ namespace Neon
 {
     void ControllablePlayerEntity::OnInit()
     {
-        std::cout << "ControllablePlayerEntity::OnInit()" << std::endl;
-
         ///
         /// Green Triangle
         ///
@@ -35,9 +33,9 @@ namespace Neon
 
     void ControllablePlayerEntity::OnUpdate()
     {;
-        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-                std::cout << "ControllablePlayerEntity::OnUpdate()" << std::endl;
-        #endif
+        // #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
+        //         std::cout << "ControllablePlayerEntity::OnUpdate()" << std::endl;
+        // #endif
         Entity::OnUpdate();
     }
 

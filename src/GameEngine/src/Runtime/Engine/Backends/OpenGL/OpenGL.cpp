@@ -12,6 +12,51 @@
 #include <Runtime/Engine/Backends/OpenGL/OpenGL.hpp>
 #include <Runtime/Engine/Backends/Container.hpp>
 
+#include <iostream>
+#include <GL/glew.h> // or appropriate OpenGL loader
+
+void GLAPIENTRY glDebugOutput(GLenum source, GLenum type, GLuint id,
+                              GLenum severity, GLsizei length,
+                              const GLchar* message, const void* userParam) {
+    std::cerr << "OpenGL Debug Message:" << std::endl;
+    std::cerr << "---------------------" << std::endl;
+    std::cerr << "Source: " << source << ", Type: " << type << std::endl;
+    std::cerr << "Severity: " << severity << std::endl;
+    std::cerr << "Message: " << message << std::endl;
+    std::cerr << "---------------------" << std::endl;
+}
+
+void setupDebugOutput()
+{
+    glEnable(GL_DEBUG_OUTPUT);
+    glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS); // Ensure errors are logged immediately
+    glDebugMessageCallback(glDebugOutput, nullptr);
+    // Optionally: Configure the severity of messages you want to listen for
+    glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, nullptr, GL_TRUE);
+}
+
+const char* getErrorString(GLenum error);
+
+void checkErrors(const char* label) {
+    GLenum error;
+    while ((error = glGetError()) != GL_NO_ERROR) {
+        std::cerr << "OpenGL Error [" << label << "]: " << getErrorString(error) << std::endl;
+    }
+}
+
+const char* getErrorString(GLenum error) {
+    switch (error) {
+        case GL_INVALID_ENUM: return "GL_INVALID_ENUM";
+        case GL_INVALID_VALUE: return "GL_INVALID_VALUE";
+        case GL_INVALID_OPERATION: return "GL_INVALID_OPERATION";
+        case GL_STACK_OVERFLOW: return "GL_STACK_OVERFLOW";
+        case GL_STACK_UNDERFLOW: return "GL_STACK_UNDERFLOW";
+        case GL_OUT_OF_MEMORY: return "GL_OUT_OF_MEMORY";
+        case GL_INVALID_FRAMEBUFFER_OPERATION: return "GL_INVALID_FRAMEBUFFER_OPERATION";
+        default: return "Unknown error";
+    }
+}
+
 namespace Neon 
 {
     OpenGL::OpenGL() 
@@ -49,6 +94,7 @@ namespace Neon
         glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+        glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GL_TRUE); // Request a debug context
 
         m_window = glfwCreateWindow(width, height, title, nullptr, nullptr);
         if (!m_window) 
@@ -87,6 +133,13 @@ namespace Neon
 
         m_openGlInitialized = true;
 
+        // Debug only
+        // if (glewIsSupported("GL_ARB_debug_output")) {
+        //     std::cout << "GL_ARB_debug_output is supported!" << std::endl;
+        // } else {
+        //     std::cerr << "GL_ARB_debug_output is NOT supported on this system!" << std::endl;
+        // }
+
         return true;
     }
 
@@ -96,7 +149,7 @@ namespace Neon
 
         if (!m_openGlInitialized) return;
 
-        auto container = Container::GetInstance();
+        auto& container = Container::GetInstance();
         container.SetWindow(m_window);
 
         KeyboardInput keyboardInput(m_window);
@@ -116,13 +169,11 @@ namespace Neon
                 scene->Init();
             }
 
-            glfwPollEvents();
-
             scene->Update();
+            scene->HandleInput(&keyboardInput);
 
             glfwSwapBuffers(m_window);
-
-            //KeyboardInput::
+            glfwPollEvents();
         }
     }
 

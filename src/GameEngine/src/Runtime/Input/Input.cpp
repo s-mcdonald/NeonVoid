@@ -12,11 +12,10 @@ namespace Neon
     bool KeyboardInput::IsKeyPressed(Key key)
     {
         const auto& container = Container::GetInstance();
-
-        const auto window = container.GetWindow();
+        auto& window = container.GetWindow();
 
         // @todo: refactor away from gl
-        return glfwGetKey(window, static_cast<int>(key)) == GLFW_PRESS;
+        return glfwGetKey(&window, static_cast<int>(key)) == GLFW_PRESS;
     }
 
     bool KeyboardInput::IsKeyHeld(const Key key)

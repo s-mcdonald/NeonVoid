@@ -55,6 +55,11 @@ namespace Neon
         OnDestroy();
     }
 
+    void Scene::HandleInput(Input* input)
+    {
+        HandlesInput(m_entities, input);
+    }
+
     void Scene::AddComponent(const std::string& tag, Component* component)
     {
         // what do we do if it already exists ?
@@ -104,6 +109,15 @@ namespace Neon
             value->OnDestroy();
 
             delete value;
+        }
+    }
+
+    template <typename T>
+    void Scene::HandlesInput(const T& t, Input* input)
+    {
+        for (auto& [key, value] : t)
+        {
+            value->HandleInput(input);
         }
     }
 }

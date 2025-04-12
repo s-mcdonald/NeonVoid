@@ -8,9 +8,13 @@ namespace Neon
     class Container
     {
         public:
+            Container(const Container&) = delete;
+            Container& operator=(const Container&) = delete;
+
+        public:
             static Container& GetInstance();
             void SetWindow(GLFWwindow*);
-            [[nodiscard]] GLFWwindow* GetWindow() const;
+            [[nodiscard]] GLFWwindow& GetWindow() const;
 
             Container(): mx_window(nullptr) {};
             ~Container() = default;

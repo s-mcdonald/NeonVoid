@@ -89,9 +89,9 @@ namespace Neon
     {
         public:
             KeyboardInput() = delete;
-            explicit KeyboardInput(GLFWwindow* rentableWindow)
+            explicit KeyboardInput(GLFWwindow* window)
                 : Input()
-                , mx_window(rentableWindow)
+                , mx_window(window)
             {
                 //
             };
@@ -103,7 +103,7 @@ namespace Neon
             [[nodiscard]] static bool IsKeyReleased(Key key) ;
 
         private:
-            GLFWwindow* mx_window{}; // we do not own this window
+            GLFWwindow* mx_window{nullptr};
     };
 
     class MouseInput final : public Input

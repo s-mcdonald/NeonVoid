@@ -6,6 +6,7 @@
 #include <vector>
 
 #include <Runtime/Runtime.hpp>
+#include <Runtime/Input/Input.hpp>
 
 namespace Neon 
 {
@@ -27,6 +28,7 @@ namespace Neon
             virtual void OnInit();
             virtual void OnUpdate();
             virtual void OnDestroy() {};
+            void HandleInput(Input* input);
 
         private:
             EntityID m_id;

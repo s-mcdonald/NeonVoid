@@ -14,8 +14,8 @@ namespace Neon
         mx_window = window;
     }
 
-    GLFWwindow* Container::GetWindow() const
+    GLFWwindow& Container::GetWindow() const
     {
-        return mx_window;
+        return *mx_window;
     }
 }

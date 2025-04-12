@@ -63,14 +63,9 @@ namespace Neon
             void Update(float deltaTime);
 
         public:
-            virtual void OnInit() {};
-            virtual void OnUpdate()
-            {
-                std::cout << "ControllerComponent::OnUpdate" << std::endl;
-                //HandleInput(m_input);
-            };
-
-            virtual void OnDestroy() {};
+            void OnInit() override {};
+            void OnUpdate() override {};
+            void OnDestroy() override {};
 
         private:
             float m_velocityX = 0.0f;

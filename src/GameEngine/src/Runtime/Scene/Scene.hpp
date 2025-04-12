@@ -8,6 +8,7 @@
 #include <Runtime/Components/Components.hpp>
 #include <Runtime/Entity/Entity.hpp>
 #include <Runtime/Types.hpp>
+#include <Runtime/Input/Input.hpp>
 
 namespace Neon
 {
@@ -24,9 +25,11 @@ namespace Neon
             void Init();
             void Update();
             void Destroy();
+            void HandleInput(Input* input);
             virtual void OnInit() {};
             virtual void OnUpdate() {};
             virtual void OnDestroy() {};
+
             bool IsInitialized() const;
 
         public:
@@ -45,6 +48,9 @@ namespace Neon
 
             template <typename T>
             void DestroyRenderable(const T& t);
+
+            template <typename T>
+            void HandlesInput(const T& t, Input* input);
 
         protected:
             std::unordered_map<EntityID, Entity*> m_entities;
