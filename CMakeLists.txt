@@ -101,6 +101,8 @@ set(GAME_ENGINE_SRC
         src/GameEngine/src/Runtime/Engine/Backends/Container.hpp
         src/GameEngine/src/Runtime/Engine/Backends/Container.cpp
         src/GameEngine/src/Runtime/Engine/Backends/Platform.hpp
+        src/GameEngine/src/Runtime/Engine/Backends/IWindow.hpp
+        src/GameEngine/src/Runtime/Engine/Backends/IWindow.hpp
         src/GameEngine/src/Runtime/Engine/Backends/IRenderer.hpp
         src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGL.hpp
         src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGL.cpp
