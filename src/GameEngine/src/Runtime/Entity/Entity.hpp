@@ -4,9 +4,11 @@
 #pragma once
 
 #include <vector>
+#include <stdexcept>
 
+#include <Runtime/Types.hpp>
 #include <Runtime/Input/Input.hpp>
-#include <Runtime/Runtime.hpp>
+#include <Runtime/Entity/Entity.hpp>
 
 namespace Neon 
 {
@@ -37,7 +39,7 @@ namespace Neon
             }
 
             // Check if the entity has a component of type T
-            // we can do some optimizing in the storage..
+            // we can do some optimizing in the storage.
             template<typename T>
             bool HasComponent() const
             {

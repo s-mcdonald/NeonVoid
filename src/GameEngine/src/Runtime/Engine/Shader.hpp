@@ -12,7 +12,7 @@ namespace Neon
     {
         public:
             Shader(std::string, std::string);
-            ~Shader();
+            ~Shader() = default;
 
         public:
             void OnInit();

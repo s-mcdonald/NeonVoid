@@ -16,11 +16,6 @@ namespace Neon
         //
     }
 
-    Shader::~Shader()
-    {
-        //
-    }
-
     void Shader::OnInit()
     {
         auto vertex_shader_source = LoadShaderFromFile(m_vertexSourcePath);
