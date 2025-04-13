@@ -175,11 +175,19 @@ namespace Neon
                 scene->Init();
             }
 
-            scene->Update();
+            // Poll and get events
+            glfwPollEvents();
+
+            // Handle input from user
             scene->HandleInput(&keyboardInput);
 
+            // Update component/object data (now it also does render)
+            scene->Update();
+
+            // Do all Rendering here..
+
             glfwSwapBuffers(m_window);
-            glfwPollEvents();
+
         }
     }
 
