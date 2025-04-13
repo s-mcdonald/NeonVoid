@@ -4,14 +4,13 @@
 #include <cmath>
 #include <iostream>
 
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-
 #include <Runtime/Game.hpp>
 #include <Runtime/Runtime.hpp>
+#include <Runtime/Runtime/Container.hpp>
+#include <Runtime/Runtime/Backends/OpenGL/OpenGLHeaders.hpp>
 #include <Runtime/Runtime/Backends/OpenGL/OpenGL.hpp>
 #include <Runtime/Runtime/Backends/OpenGL/OpenGLInput.hpp>
-#include <Runtime/Runtime/Container.hpp>
+
 
 void GLAPIENTRY glDebugOutput(GLenum source, GLenum type, GLuint id,
                               GLenum severity, GLsizei length,

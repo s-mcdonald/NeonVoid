@@ -1,7 +1,5 @@
 
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-
+#include <Runtime/Runtime/Backends/OpenGL/OpenGLHeaders.hpp>
 #include <Runtime/Runtime/Backends/OpenGL/OpenGLVertexBuffer.hpp>
 
 namespace Neon

@@ -104,6 +104,8 @@ set(GAME_ENGINE_SRC
         src/GameEngine/src/Runtime/Runtime/Backends/IWindow.hpp
         src/GameEngine/src/Runtime/Runtime/Backends/IRenderer.hpp
         src/GameEngine/src/Runtime/Runtime/Backends/VertexBuffer.hpp
+
+        src/GameEngine/src/Runtime/Runtime/Backends/OpenGL/OpenGLHeaders.hpp
         src/GameEngine/src/Runtime/Runtime/Backends/OpenGL/OpenGL.hpp
         src/GameEngine/src/Runtime/Runtime/Backends/OpenGL/OpenGL.cpp
         src/GameEngine/src/Runtime/Runtime/Backends/OpenGL/OpenGLInput.hpp

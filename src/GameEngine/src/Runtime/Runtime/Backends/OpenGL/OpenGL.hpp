@@ -2,11 +2,9 @@
 
 #include <vector>
 
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-
 #include <Runtime/Runtime.hpp>
 #include <Runtime/Runtime/Backends/Platform.hpp>
+#include <Runtime/Runtime/Backends/OpenGL/OpenGLHeaders.hpp>
 
 namespace Neon
 {

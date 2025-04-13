@@ -1,10 +1,9 @@
 
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
 
 #include <Runtime/Runtime.hpp>
 #include <Runtime/Runtime/Container.hpp>
 
+#include <Runtime/Runtime/Backends/OpenGL/OpenGLHeaders.hpp>
 #include <Runtime/Runtime/Backends/OpenGL/OpenGLInput.hpp>
 
 namespace Neon
