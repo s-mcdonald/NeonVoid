@@ -26,6 +26,7 @@ namespace Neon
     typedef uint16_t WindowDimension;
     typedef uint32_t EntityID;
     typedef uint32_t Score;
+    typedef short Health;
 
     constexpr inline auto DirectionDeltaUp = -10.0f;
     constexpr inline auto DirectionDeltaDown = 10.0f;

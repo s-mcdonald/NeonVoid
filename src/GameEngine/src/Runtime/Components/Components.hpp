@@ -177,4 +177,22 @@ namespace Neon
         private:
             Score m_score;
     };
+
+    class HealthComponent final : public Component
+    {
+        public:
+            HealthComponent(): Component(), m_health{0} {};
+            ~HealthComponent() override = default;
+
+        public:
+            void OnInit() override {};
+            void OnUpdate() override {};
+            void OnDestroy() override {};
+
+        public:
+            [[nodiscard]] Score GetHealth() const;
+
+        private:
+            Health m_health;
+    };
 }
