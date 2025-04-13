@@ -66,7 +66,7 @@ set(GAME_ENGINE_SRC
         src/GameEngine/src/Runtime/AssetManager/AssetManager.cpp
 
         # Input Control
-        src/GameEngine/src/Runtime/Input/Input.hpp
+        src/GameEngine/src/Runtime/Engine/Input.hpp
 
         # Scene(s)
         src/GameEngine/src/Runtime/Scene/Scene.hpp

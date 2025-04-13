@@ -6,9 +6,9 @@
 #include <vector>
 #include <stdexcept>
 
-#include <Runtime/Types.hpp>
-#include <Runtime/Input/Input.hpp>
+#include <Runtime/Engine/Input.hpp>
 #include <Runtime/Entity/Entity.hpp>
+#include <Runtime/Types.hpp>
 
 namespace Neon 
 {

@@ -3,10 +3,10 @@
  */
 #include <iostream>
 
-#include <Runtime/Types.hpp>
+#include <Runtime/Engine/Input.hpp>
 #include <Runtime/Components/Components.hpp>
-#include <Runtime/Input/Input.hpp>
 #include <Runtime/Runtime.hpp>
+#include <Runtime/Types.hpp>
 
 namespace Neon 
 {
