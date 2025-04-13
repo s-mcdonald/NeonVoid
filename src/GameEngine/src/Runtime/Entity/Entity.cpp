@@ -9,22 +9,17 @@ namespace Neon
     Entity::Entity(const EntityID id, const std::initializer_list<Component*> components)
         : m_id(id)
     {
-        for (auto& component : components)
+        for (auto* component : components)
         {
-            m_components.emplace_back(component);
-        }
-
-        for (auto& component : components)
-        {
-            m_components.emplace_back(component);
+            AddComponent(component);
         }
     }
 
     Entity::~Entity()
     {
-        for (const auto& c : m_components)
+        for (auto& [_, component] : m_components)
         {
-            delete c;
+            delete component;
         }
     }
 
@@ -34,7 +29,7 @@ namespace Neon
             std::cout << "Entity::Init" << std::endl;
         #endif
 
-        for (const auto& component : m_components)
+        for (const auto& [_, component] : m_components)
         {
             component->OnInit();
         }
@@ -46,7 +41,7 @@ namespace Neon
             std::cout << "Entity::Update" << std::endl;
         #endif
 
-        for (const auto& component : m_components)
+        for (const auto& [_, component] : m_components)
         {
             component->OnUpdate();
         }
@@ -54,20 +49,27 @@ namespace Neon
 
     void Entity::AddComponent(Component* component)
     {
-        // Set the owning entity
         component->SetParentEntity(this);
 
-        m_components.emplace_back(component);
+        auto type = std::type_index(typeid(*component));
+        if (m_components.contains(type))
+        {
+            delete m_components[type];
+        }
+
+        m_components[type] = component;
     }
 
     void Entity::HandleInput(OpenGLInput* input)
     {
-        for (auto& component : m_components)
+        try
         {
-            if (auto* x = dynamic_cast<MovementComponent*>(component))
-            {
-                x->HandleInput(input);
-            }
+            auto* movementComponent = GetComponent<MovementComponent>();
+            movementComponent->HandleInput(input);
+        }
+        catch (const std::runtime_error& ex)
+        {
+            // ..
         }
     }
 
