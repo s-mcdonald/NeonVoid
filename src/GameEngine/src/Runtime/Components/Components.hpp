@@ -159,4 +159,22 @@ namespace Neon
             VertexBuffer* m_buffer{};
             int m_verticiesSize{};
     };
+
+    class ScoreComponent final : public Component
+    {
+        public:
+            ScoreComponent(): Component(), m_score{0} {};
+            ~ScoreComponent() override = default;
+
+        public:
+            void OnInit() override {};
+            void OnUpdate() override {};
+            void OnDestroy() override {};
+
+        public:
+            [[nodiscard]] Score GetScore() const;
+
+        private:
+            Score m_score;
+    };
 }
