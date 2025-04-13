@@ -3,6 +3,7 @@
  */
 #include <iostream>
 
+#include <Runtime/Types.hpp>
 #include <Runtime/Components/Components.hpp>
 #include <Runtime/Input/Input.hpp>
 #include <Runtime/Runtime.hpp>
@@ -11,22 +12,9 @@ namespace Neon
 {
     void MovementComponent::HandleInput(OpenGLInput* input)
     {
-        // @todo: move these const to Inout potentially or types hpp
-        constexpr float directionUp = -10.0f;
-        constexpr float directionLeft = -10.0f;
-        constexpr float directionRight = 10.0f;
-        constexpr float directionDown = 10.0f;
-
-        constexpr float targetFps = 60.0f;
-
-        constexpr float deltaTime = 1.0f / targetFps;
-
         // check if KeyboardInput
         if (auto* x = dynamic_cast<KeyboardInput*>(input))
         {
-            std::cout << "KeyboardInput\n";
-            std::cout << "Checking for Input\n";
-
             if (x->IsKeyPressed(Key::Up))
             {
                 #ifdef NEON_DEBUG_KB_INPUT
@@ -70,8 +58,18 @@ namespace Neon
         for (auto* component : mx_positionalComponents)
         {
             Point x = component->GetPoint();
-            x.y += m_accelerationY;
-            x.x += m_accelerationX;
+
+            // #ifdef NEON_DEBUG_KB_INPUT
+            //         std::cout << "[DEBUG](Keyboard) OLD: x: " << x.x << " y: " << x.y << "\n";
+            // #endif
+
+            x.y += m_directionY;
+            x.x += m_directionX;
+
+            // #ifdef NEON_DEBUG_KB_INPUT
+            //             std::cout << "[DEBUG](Keyboard) NEW: x: " << x.x << " y: " << x.y << "\n";
+            // #endif
+
             component->UpdateData(x);
         }
     }

@@ -72,7 +72,6 @@ namespace Neon
         public:
             void AllowMovementOf(PositionComponent* component);
             void HandleInput(OpenGLInput* input);
-            //void Update(float deltaTime);
 
         public:
             void OnInit() override {};
@@ -81,15 +80,8 @@ namespace Neon
 
         private:
             std::vector<PositionComponent*> mx_positionalComponents;
-            float m_velocityX = 0.0f;
-            float m_velocityY = 0.0f;
-            float m_accelerationX = 0.0f;
-            float m_accelerationY = 0.0f;
-            float m_maxSpeed = 500.0f;
-            float m_currentSpeed = 0.0f;
-            // rotation below
-            float m_angle = 0.0f;
-            float m_angularVelocity = 0.0f;
+            float m_directionX = 0.0f;
+            float m_directionY = 0.0f;
     };
 
     class AudioComponent final
