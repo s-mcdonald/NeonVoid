@@ -1,6 +1,7 @@
 /**
- * 
+ * {SourceHeader}
  */
+
 #include <cmath>
 #include <iostream>
 

@@ -1,5 +1,5 @@
 /**
- *
+ * {SourceHeader}
  */
 
 #include <Runtime/Scene/Scene.hpp>

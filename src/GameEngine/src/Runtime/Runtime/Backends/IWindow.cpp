@@ -1,3 +1,6 @@
+/**
+ * {SourceHeader}
+ */
 
 #include "IWindow.hpp"
 

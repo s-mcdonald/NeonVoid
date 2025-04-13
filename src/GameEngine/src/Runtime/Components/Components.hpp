@@ -1,3 +1,7 @@
+/**
+ * {SourceHeader}
+ */
+
 #pragma once
 
 #include "Runtime/Scene/Scene.hpp"

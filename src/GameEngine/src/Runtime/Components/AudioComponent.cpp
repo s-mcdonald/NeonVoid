@@ -1,5 +1,5 @@
 /**
- * 
+ * {SourceHeader}
  */
 
 #include <Runtime/Components/Components.hpp>

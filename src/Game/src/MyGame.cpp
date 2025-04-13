@@ -1,5 +1,5 @@
 /**
- *
+ * {SourceHeader}
  */
 
 #include "MyGame.hpp"

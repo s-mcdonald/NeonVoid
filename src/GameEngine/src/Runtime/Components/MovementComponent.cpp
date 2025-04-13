@@ -1,6 +1,7 @@
 /**
- * 
+ * {SourceHeader}
  */
+
 #include <iostream>
 
 #include <Runtime/Components/Components.hpp>
@@ -48,11 +49,13 @@ namespace Neon
         }
     }
 
+    // @todo: we need to fire events instead of tightly bound object here
     void MovementComponent::AllowMovementOf(PositionComponent* component)
     {
         mx_positionalComponents.emplace_back(component);
     }
 
+    // @todo: we need to fire events instead of tightly bound object here
     void MovementComponent::OnUpdate()
     {
         for (auto* component : mx_positionalComponents)
@@ -67,7 +70,7 @@ namespace Neon
             x.x += m_directionX;
 
             // #ifdef NEON_DEBUG_KB_INPUT
-            //             std::cout << "[DEBUG](Keyboard) NEW: x: " << x.x << " y: " << x.y << "\n";
+            //      std::cout << "[DEBUG](Keyboard) NEW: x: " << x.x << " y: " << x.y << "\n";
             // #endif
 
             component->UpdateData(x);
