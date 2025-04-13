@@ -21,7 +21,36 @@ namespace Neon
             virtual ~Entity();
         
             void AddComponent(Component* component);
-        
+
+            template<typename T>
+            T* GetComponent()
+            {
+                for (auto* component : m_components)
+                {
+                    if (auto* target = dynamic_cast<T*>(component))
+                    {
+                        return target;
+                    }
+                }
+
+                throw std::runtime_error("Component of requested type not found!");
+            }
+
+            // Check if the entity has a component of type T
+            // we can do some optimizing in the storage..
+            template<typename T>
+            bool HasComponent() const
+            {
+                for (auto* component : m_components)
+                {
+                    if (dynamic_cast<T*>(component))
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+
             [[nodiscard]] EntityID GetId() const;
 
         public:
@@ -32,6 +61,8 @@ namespace Neon
 
         private:
             EntityID m_id;
+
+            // optimize the storage.
             std::vector<Component*> m_components;
     };
 }
