@@ -10,7 +10,7 @@
 #include <Runtime/Runtime.hpp>
 #include "TitleScene.hpp"
 
-#include "../Entities/ControllablePlayerEntity.hpp"
+#include "../Entities/MoveablePlayerEntity.hpp"
 
 namespace Neon
 {
@@ -38,7 +38,7 @@ namespace Neon
         auto* circle_component = new ShaderComponent(circle_vertices, circle_shader);
         AddComponent("vao.circle", circle_component);
 
-        auto* mainPlayer = new ControllablePlayerEntity();
+        auto* mainPlayer = new MoveablePlayerEntity();
         m_entities[mainPlayer->GetId()] = mainPlayer;
     }
 
