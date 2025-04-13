@@ -15,6 +15,18 @@ namespace Neon
     constexpr float NV_DEFAULT_FONT_SIZE = BASE_FONT_SIZE * MULTIPLIER_RESOLUTION;
     constexpr float NV_MINIMUM_FONT_SIZE = MIN_FONT_SIZE * MULTIPLIER_RESOLUTION;
 
+    typedef uint16_t ViewPortDimension;
+    typedef uint16_t WindowDimension;
+    typedef uint32_t EntityID;
+
+    constexpr inline auto DirectionDeltaUp = -10.0f;
+    constexpr inline auto DirectionDeltaDown = 10.0f;
+    constexpr inline auto DirectionDeltaLeft = -10.0f;
+    constexpr inline auto DirectionDeltaRight = 10.0f;
+
+    constexpr inline auto targetFps = 60.0f;
+    constexpr inline auto deltaTime = 1.0f / targetFps;
+
     typedef struct
     {
             float x, y;
@@ -63,8 +75,4 @@ namespace Neon
         Middle = 5,
         Foreground = 10
     };
-
-    typedef uint16_t ViewPortDimension;
-    typedef uint16_t WindowDimension;
-    typedef uint32_t EntityID;
 }
