@@ -32,7 +32,42 @@ namespace Neon
 
     void ShaderComponent::OnUpdate()
     {
+        Point p;
+
+        if (GetParentEntity() != nullptr && GetParentEntity()->HasComponent<PositionComponent>())
+        {
+            auto* pos = GetParentEntity()->GetComponent<PositionComponent>();
+            p = pos->GetPoint();
+
+            #ifdef NEON_DEBUG_KB_INPUT
+                std::cout << "[DEBUG](Sahder) NEW: x: " << p.x << " y: " << p.y << "\n";
+            #endif
+
+            for (size_t i = 0; i < m_vertices.size(); i += 2) {
+                m_vertices[i] += p.x;
+                m_vertices[i + 1] += p.y;
+            }
+
+            UpdateData(m_vertices);
+        }
+        else
+        {
+            p.x = 0.0f;
+            p.y = 0.0f;
+        }
+
         const auto& api = GameEngineApi::getInstance();
+
+        // auto m_modelMatrix = glm::mat4(1.0f);
+        // // Update the model transformation matrix to translate by (x, y)
+        // m_modelMatrix = glm::mat4(1.0f); // Reset to identity
+        // m_modelMatrix = glm::translate(m_modelMatrix, glm::vec3(p.x , p.y, 0.0f)); // Apply translation
+        //
+        // glUseProgram(m_shader->GetShaderProgramId());
+        //
+        // GLint uniformLoc = glGetUniformLocation(m_shader->GetShaderProgramId(), "modelMatrix");
+        // glUniformMatrix4fv(uniformLoc, 1, GL_FALSE, &m_modelMatrix[0][0]);
+
 
         api.GetRenderer()->RenderCircle(m_shader->GetShaderProgramId(), m_buffer->GetVao(), m_vertices.size());
     }
