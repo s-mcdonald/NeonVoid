@@ -65,9 +65,6 @@ set(GAME_ENGINE_SRC
         src/GameEngine/src/Runtime/AssetManager/AssetManager.hpp
         src/GameEngine/src/Runtime/AssetManager/AssetManager.cpp
 
-        # Input Control
-        src/GameEngine/src/Runtime/Engine/Input.hpp
-
         # Scene(s)
         src/GameEngine/src/Runtime/Scene/Scene.hpp
         src/GameEngine/src/Runtime/Scene/Scene.cpp
@@ -92,19 +89,21 @@ set(GAME_ENGINE_SRC
         src/GameEngine/src/Runtime/Components/PositionComponent.cpp
         src/GameEngine/src/Runtime/Components/MovementComponent.cpp
 
+        # Engine Abstracts
+        src/GameEngine/src/Runtime/Engine/Input.hpp
         src/GameEngine/src/Runtime/Engine/Shader.hpp
         src/GameEngine/src/Runtime/Engine/Shader.cpp
-        src/GameEngine/src/Runtime/Engine/GameEngine.hpp
-        src/GameEngine/src/Runtime/Engine/GameEngine.cpp
-        src/GameEngine/src/Runtime/Engine/Backends/VertexBuffer.hpp
-
-        # Platform
         src/GameEngine/src/Runtime/Engine/Container.hpp
         src/GameEngine/src/Runtime/Engine/Container.cpp
+        src/GameEngine/src/Runtime/Engine/GameEngine.hpp
+        src/GameEngine/src/Runtime/Engine/GameEngine.cpp
+
+        # Platform
         src/GameEngine/src/Runtime/Engine/Backends/Platform.hpp
         src/GameEngine/src/Runtime/Engine/Backends/IWindow.hpp
         src/GameEngine/src/Runtime/Engine/Backends/IWindow.hpp
         src/GameEngine/src/Runtime/Engine/Backends/IRenderer.hpp
+        src/GameEngine/src/Runtime/Engine/Backends/VertexBuffer.hpp
         src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGL.hpp
         src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGL.cpp
         src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLInput.hpp
@@ -156,7 +155,6 @@ target_compile_options(GameEngine PRIVATE -Wall -Wextra -Wpedantic)
 # Game - Create the main game executable
 #
 set(GAME_SRC
-
         src/Game/src/MyGame.hpp
         src/Game/src/MyGame.cpp
         src/Game/src/Mankind.hpp
