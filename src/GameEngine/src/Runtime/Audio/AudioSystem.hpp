@@ -34,5 +34,6 @@ namespace Neon
             bool m_isPlaying{false};
             bool m_onLoop{false};
             bool m_isStopRequested{false};
+            bool m_isAudioEnabled{false};
     };
 }

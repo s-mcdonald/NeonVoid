@@ -7,27 +7,31 @@
 
 namespace Neon 
 {
-    AudioSystem::AudioSystem() 
-        : m_isPlaying(false)
-        , m_onLoop(false)
+    AudioSystem::AudioSystem()
     {
+#if defined(NEON_DEBUG) && defined(NEON_DEBUG_AUDIO)
+        std::cout << "AudioSystem::Constructor\n";
+#endif
+
         const ma_device_config deviceConfig = getDeviceConfig();
 
-        if (ma_result result = ma_device_init(nullptr, &deviceConfig, &m_device); result != MA_SUCCESS)
+        if (const ma_result result = ma_device_init(nullptr, &deviceConfig, &m_device); result != MA_SUCCESS)
         {
             #ifdef NEON_DEBUG_AUDIO
                 std::cerr << "[ERROR] Failed to initialize audio device!" << std::endl;
             #endif
-        }
 
-        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_AUDIO)
-            std::cout << "AudioSystem::Constructor completed\n";
-        #endif
+            m_isAudioEnabled = false;
+        }
+        else
+        {
+            m_isAudioEnabled = true;
+        }
     }
 
     AudioSystem::~AudioSystem() 
     {
-        if (m_isPlaying) 
+        if (true == m_isPlaying)
         {
             AudioSystem::Stop();
         }
@@ -42,7 +46,7 @@ namespace Neon
 
     void AudioSystem::Play(const std::string& filename) 
     {
-        if (m_isPlaying) 
+        if (true == m_isPlaying && true == m_isAudioEnabled)
         {
             #ifdef NEON_DEBUG_AUDIO
                 std::cerr << "[ERROR] Already playing audio!" << std::endl;
@@ -88,7 +92,7 @@ namespace Neon
 
     void AudioSystem::Stop() 
     {
-        if (!m_isPlaying) 
+        if (false == m_isPlaying)
         {
             #ifdef NEON_DEBUG_AUDIO
                 std::cerr << "[ERROR] No audio is playing!" << std::endl;
