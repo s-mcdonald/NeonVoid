@@ -2,11 +2,11 @@
 #include <iostream>
 
 #include <Runtime/Components/Components.hpp>
-#include "ControllablePlayerEntity.hpp"
+#include "MoveablePlayerEntity.hpp"
 
 namespace Neon
 {
-    void ControllablePlayerEntity::OnInit()
+    void MoveablePlayerEntity::OnInit()
     {
         ///
         /// Green Triangle
@@ -35,7 +35,7 @@ namespace Neon
         Entity::OnInit();
     }
 
-    void ControllablePlayerEntity::OnUpdate()
+    void MoveablePlayerEntity::OnUpdate()
     {;
         // #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
         //         std::cout << "ControllablePlayerEntity::OnUpdate()" << std::endl;
@@ -43,7 +43,7 @@ namespace Neon
         Entity::OnUpdate();
     }
 
-    void ControllablePlayerEntity::OnDestroy()
+    void MoveablePlayerEntity::OnDestroy()
     {
 #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
         std::cout << "ControllablePlayerEntity::OnDestroy()" << std::endl;

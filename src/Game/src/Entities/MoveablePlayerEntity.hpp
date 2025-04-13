@@ -6,14 +6,14 @@
 
 namespace Neon
 {
-    class ControllablePlayerEntity final : public Entity
+    class MoveablePlayerEntity final : public Entity
     {
         public:
-            ControllablePlayerEntity(): Entity(ENTITY_ID_MAIN_PLAYER) {};
-            ControllablePlayerEntity(const std::initializer_list<Component*> components)
+            MoveablePlayerEntity(): Entity(ENTITY_ID_MAIN_PLAYER) {};
+            MoveablePlayerEntity(const std::initializer_list<Component*> components)
                 : Entity(ENTITY_ID_MAIN_PLAYER, components) {};
 
-            ~ControllablePlayerEntity() override = default;
+            ~MoveablePlayerEntity() override = default;
 
             void OnInit() override;
             void OnUpdate() override;
