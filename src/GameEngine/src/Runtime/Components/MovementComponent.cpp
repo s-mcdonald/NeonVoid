@@ -29,24 +29,33 @@ namespace Neon
 
             if (x->IsKeyPressed(Key::Up))
             {
-                std::cout << "Up\n";
-                m_accelerationY = deltaTime * directionUp;
+                #ifdef NEON_DEBUG_KB_INPUT
+                    std::cout << "[DEBUG][KeyInput] : Up" << "\n";
+                #endif
+
+                m_directionY = deltaTime * DirectionDeltaUp;
             }
             else if (x->IsKeyPressed(Key::Down))
             {
-                std::cout << "Down\n";
-                m_accelerationY = deltaTime * directionDown;
+                #ifdef NEON_DEBUG_KB_INPUT
+                    std::cout << "[DEBUG][KeyInput] : Down" << "\n";
+                #endif
+                m_directionY = deltaTime * DirectionDeltaDown;
             }
 
             if (x->IsKeyPressed(Key::Left))
             {
-                std::cout << "Left\n";
-                m_accelerationX = deltaTime * directionLeft;
+                #ifdef NEON_DEBUG_KB_INPUT
+                    std::cout << "[DEBUG][KeyInput] : Left" << "\n";
+                #endif
+                m_directionX = deltaTime * DirectionDeltaLeft;
             }
             else if (x->IsKeyPressed(Key::Right))
             {
-                std::cout << "Right\n";
-                m_accelerationX = deltaTime * directionRight;
+                #ifdef NEON_DEBUG_KB_INPUT
+                    std::cout << "[DEBUG][KeyInput] : Right" << "\n";
+                #endif
+                m_directionX = deltaTime * DirectionDeltaRight;
             }
         }
     }

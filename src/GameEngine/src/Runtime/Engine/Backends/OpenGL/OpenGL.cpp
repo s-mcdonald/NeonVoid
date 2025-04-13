@@ -230,6 +230,7 @@ namespace Neon
         {
             char infoLog[512];
             glGetProgramInfoLog(shaderProgram, 512, nullptr, infoLog);
+
             #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
                 std::cerr << "Program linking failed: " << infoLog << std::endl;
             #endif

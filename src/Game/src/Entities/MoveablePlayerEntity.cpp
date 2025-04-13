@@ -37,16 +37,17 @@ namespace Neon
 
     void MoveablePlayerEntity::OnUpdate()
     {;
-        // #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-        //         std::cout << "ControllablePlayerEntity::OnUpdate()" << std::endl;
-        // #endif
+        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
+                std::cout << "ControllablePlayerEntity::OnUpdate()" << std::endl;
+        #endif
+
         Entity::OnUpdate();
     }
 
     void MoveablePlayerEntity::OnDestroy()
     {
-#if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-        std::cout << "ControllablePlayerEntity::OnDestroy()" << std::endl;
-#endif
+        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
+            std::cout << "ControllablePlayerEntity::OnDestroy()" << std::endl;
+        #endif
     }
 }

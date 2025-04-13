@@ -31,7 +31,7 @@ namespace Neon
     void Entity::OnInit()
     {
         #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-                std::cout << "Entity::Init" << std::endl;
+            std::cout << "Entity::Init" << std::endl;
         #endif
 
         for (const auto& component : m_components)

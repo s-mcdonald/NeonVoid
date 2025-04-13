@@ -45,7 +45,7 @@ namespace Neon
     void TitleScene::OnInit()
     {
         #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-                std::cout << "<GAME> TitleScene::OnInit\n";
+            std::cout << "<GAME> TitleScene::OnInit\n";
         #endif
 
         // Need to give config to AudioComponents so the comp
