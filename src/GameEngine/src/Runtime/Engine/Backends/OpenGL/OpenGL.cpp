@@ -7,11 +7,11 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include <Runtime/Runtime.hpp>
-#include <Runtime/Game.hpp>
+#include <Runtime/Engine/Container.hpp>
 #include <Runtime/Engine/Backends/OpenGL/OpenGL.hpp>
-#include <Runtime/Engine/Backends/Container.hpp>
 #include <Runtime/Engine/Backends/OpenGL/OpenGLInput.hpp>
+#include <Runtime/Game.hpp>
+#include <Runtime/Runtime.hpp>
 
 void GLAPIENTRY glDebugOutput(GLenum source, GLenum type, GLuint id,
                               GLenum severity, GLsizei length,
