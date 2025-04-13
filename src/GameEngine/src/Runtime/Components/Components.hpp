@@ -46,7 +46,7 @@ namespace Neon
         public:
             void OnInit() override {};
             void OnUpdate() override {};
-            void OnDestroy() override;;
+            void OnDestroy() override;
 
         public:
             [[nodiscard]] Point GetPoint() const;

@@ -187,7 +187,6 @@ namespace Neon
             // Do all Rendering here..
 
             glfwSwapBuffers(m_window);
-
         }
     }
 
