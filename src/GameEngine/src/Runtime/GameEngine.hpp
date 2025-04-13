@@ -2,6 +2,7 @@
 #pragma once
 
 #include <Runtime/Engine/Backends/Platform.hpp>
+#include <Runtime/Engine/Backends/VertexBuffer.hpp>
 
 namespace Neon
 {

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <Runtime/Types.hpp>
+
 namespace Neon
 {
     class VertexBuffer

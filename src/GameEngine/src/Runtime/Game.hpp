@@ -1,8 +1,8 @@
 
 #pragma once
 
+#include <Runtime/GameEngine.hpp>
 #include <Runtime/Scene/Scene.hpp>
-#include <Runtime/Engine/GameEngine.hpp>
 
 namespace Neon
 {

@@ -95,8 +95,8 @@ set(GAME_ENGINE_SRC
         src/GameEngine/src/Runtime/Engine/Shader.cpp
         src/GameEngine/src/Runtime/Engine/Container.hpp
         src/GameEngine/src/Runtime/Engine/Container.cpp
-        src/GameEngine/src/Runtime/Engine/GameEngine.hpp
-        src/GameEngine/src/Runtime/Engine/GameEngine.cpp
+        src/GameEngine/src/Runtime/GameEngine.hpp
+        src/GameEngine/src/Runtime/GameEngine.cpp
 
         # Platform
         src/GameEngine/src/Runtime/Engine/Backends/Platform.hpp
