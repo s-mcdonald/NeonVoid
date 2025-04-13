@@ -165,8 +165,8 @@ set(GAME_SRC
         src/Game/src/Scenes/TitleScene.hpp
         src/Game/src/Scenes/GamePlayScene.cpp
         src/Game/src/Scenes/GamePlayScene.hpp
-        src/Game/src/Entities/ControllablePlayerEntity.hpp
-        src/Game/src/Entities/ControllablePlayerEntity.cpp
+        src/Game/src/Entities/MoveablePlayerEntity.hpp
+        src/Game/src/Entities/MoveablePlayerEntity.cpp
 )
 
 # Create the game executable
@@ -198,19 +198,21 @@ endif()
 # Debug Preprocessor values
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     target_compile_definitions(
-        NeonVoid PRIVATE 
-        NEON_DEBUG
-        NEON_DEBUG_VERBOSE
-        NEON_DEBUG_AUDIO
-        ${NEON_BACKEND_GPU_LIB}
+            NeonVoid PRIVATE
+            NEON_DEBUG
+            NEON_DEBUG_VERBOSE
+            NEON_DEBUG_KB_INPUT
+            #NEON_DEBUG_AUDIO
+            ${NEON_BACKEND_GPU_LIB}
     )
 
     target_compile_definitions(
-        GameEngine PRIVATE 
-        NEON_DEBUG
-        NEON_DEBUG_VERBOSE
-        NEON_DEBUG_AUDIO
-        ${NEON_BACKEND_GPU_LIB}
+            GameEngine PRIVATE
+            NEON_DEBUG
+            NEON_DEBUG_VERBOSE
+            NEON_DEBUG_KB_INPUT
+            #NEON_DEBUG_AUDIO
+            ${NEON_BACKEND_GPU_LIB}
     )
 else()
     target_compile_definitions(
