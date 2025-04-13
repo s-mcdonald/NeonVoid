@@ -96,7 +96,7 @@ set(GAME_ENGINE_SRC
         src/GameEngine/src/Runtime/Engine/Shader.cpp
         src/GameEngine/src/Runtime/Engine/GameEngine.hpp
         src/GameEngine/src/Runtime/Engine/GameEngine.cpp
-        src/GameEngine/src/Runtime/Engine/VertexBuffer.hpp
+        src/GameEngine/src/Runtime/Engine/Backends/VertexBuffer.hpp
 
         # Platform
         src/GameEngine/src/Runtime/Engine/Backends/Container.hpp

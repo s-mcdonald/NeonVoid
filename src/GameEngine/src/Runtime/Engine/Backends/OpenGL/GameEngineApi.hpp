@@ -1,5 +1,7 @@
 #pragma once
 
+#include <Runtime/Engine/Backends/IRenderer.hpp>
+
 namespace Neon
 {
     class GameEngineApi
