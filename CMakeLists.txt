@@ -200,7 +200,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     target_compile_definitions(
             NeonVoid PRIVATE
             NEON_DEBUG
-            NEON_DEBUG_VERBOSE
+            #NEON_DEBUG_VERBOSE
             NEON_DEBUG_KB_INPUT
             #NEON_DEBUG_AUDIO
             ${NEON_BACKEND_GPU_LIB}
@@ -209,7 +209,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     target_compile_definitions(
             GameEngine PRIVATE
             NEON_DEBUG
-            NEON_DEBUG_VERBOSE
+            #NEON_DEBUG_VERBOSE
             NEON_DEBUG_KB_INPUT
             #NEON_DEBUG_AUDIO
             ${NEON_BACKEND_GPU_LIB}
