@@ -15,6 +15,13 @@ namespace Neon
     constexpr float NV_DEFAULT_FONT_SIZE = BASE_FONT_SIZE * MULTIPLIER_RESOLUTION;
     constexpr float NV_MINIMUM_FONT_SIZE = MIN_FONT_SIZE * MULTIPLIER_RESOLUTION;
 
+    constexpr float ViewPortRatio_1_1 = 1.0f;             // Square 1:1
+    constexpr float ViewPortRatio_4_3 = 4.0f / 3.0f;      // Aspect ratio (4:3)
+    constexpr float ViewPortRatio_16_9 = 16.0f / 9.0f;    // Aspect ratio (16:9)
+    constexpr float ViewPortRatio_16_10 = 16.0f / 10.0f;  // Aspect ratio (16:10)
+    constexpr float ViewPortRatio_21_9 = 21.0f / 9.0f;    // Ultra-wide aspect ratio (21:9)
+    constexpr float ViewPortRatio_32_9 = 32.0f / 9.0f;    // Super ultra-wide aspect ratio (32:9)
+
     typedef uint16_t ViewPortDimension;
     typedef uint16_t WindowDimension;
     typedef uint32_t EntityID;
