@@ -24,4 +24,9 @@ namespace Neon
     {
         return m_position;
     }
+
+    void PositionComponent::UpdateData(Point p)
+    {
+        m_position = p;
+    }
 }

@@ -60,7 +60,10 @@ namespace Neon
     {
         for (auto* component : mx_positionalComponents)
         {
-            component->OnUpdate();
+            Point x = component->GetPoint();
+            x.y += m_accelerationY;
+            x.x += m_accelerationX;
+            component->UpdateData(x);
         }
     }
 }

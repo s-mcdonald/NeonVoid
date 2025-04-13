@@ -50,6 +50,7 @@ namespace Neon
 
         public:
             [[nodiscard]] Point GetPoint() const;
+            void UpdateData(Point p);
 
         private:
             Point m_position;
