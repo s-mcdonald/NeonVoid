@@ -2,9 +2,9 @@
 #include <sstream>
 #include <string>
 
-#include <Runtime/Engine/Backends/OpenGL/OpenGL.hpp>
-#include <Runtime/Engine/Shader.hpp>
 #include <Runtime/Runtime.hpp>
+#include <Runtime/Runtime/Backends/OpenGL/OpenGL.hpp>
+#include <Runtime/Runtime/Shader.hpp>
 #include <utility>
 
 namespace Neon

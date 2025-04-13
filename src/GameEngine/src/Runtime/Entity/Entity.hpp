@@ -6,8 +6,8 @@
 #include <vector>
 #include <stdexcept>
 
-#include <Runtime/Engine/Input.hpp>
 #include <Runtime/Entity/Entity.hpp>
+#include <Runtime/Runtime/Input.hpp>
 #include <Runtime/Types.hpp>
 
 namespace Neon 

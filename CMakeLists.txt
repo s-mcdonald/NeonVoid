@@ -90,30 +90,30 @@ set(GAME_ENGINE_SRC
         src/GameEngine/src/Runtime/Components/MovementComponent.cpp
 
         # Engine Abstracts
-        src/GameEngine/src/Runtime/Engine/Input.hpp
-        src/GameEngine/src/Runtime/Engine/Shader.hpp
-        src/GameEngine/src/Runtime/Engine/Shader.cpp
-        src/GameEngine/src/Runtime/Engine/Container.hpp
-        src/GameEngine/src/Runtime/Engine/Container.cpp
+        src/GameEngine/src/Runtime/Runtime/Input.hpp
+        src/GameEngine/src/Runtime/Runtime/Shader.hpp
+        src/GameEngine/src/Runtime/Runtime/Shader.cpp
+        src/GameEngine/src/Runtime/Runtime/Container.hpp
+        src/GameEngine/src/Runtime/Runtime/Container.cpp
         src/GameEngine/src/Runtime/GameEngine.hpp
         src/GameEngine/src/Runtime/GameEngine.cpp
 
         # Platform
-        src/GameEngine/src/Runtime/Engine/Backends/Platform.hpp
-        src/GameEngine/src/Runtime/Engine/Backends/IWindow.hpp
-        src/GameEngine/src/Runtime/Engine/Backends/IWindow.hpp
-        src/GameEngine/src/Runtime/Engine/Backends/IRenderer.hpp
-        src/GameEngine/src/Runtime/Engine/Backends/VertexBuffer.hpp
-        src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGL.hpp
-        src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGL.cpp
-        src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLInput.hpp
-        src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLInput.cpp
-        src/GameEngine/src/Runtime/Engine/Backends/OpenGL/GameEngineApi.hpp
-        src/GameEngine/src/Runtime/Engine/Backends/OpenGL/GameEngineApi.cpp
-        src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLRenderer.hpp
-        src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLRenderer.cpp
-        src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLVertexBuffer.hpp
-        src/GameEngine/src/Runtime/Engine/Backends/OpenGL/OpenGLVertexBuffer.cpp
+        src/GameEngine/src/Runtime/Runtime/Backends/Platform.hpp
+        src/GameEngine/src/Runtime/Runtime/Backends/IWindow.hpp
+        src/GameEngine/src/Runtime/Runtime/Backends/IWindow.hpp
+        src/GameEngine/src/Runtime/Runtime/Backends/IRenderer.hpp
+        src/GameEngine/src/Runtime/Runtime/Backends/VertexBuffer.hpp
+        src/GameEngine/src/Runtime/Runtime/Backends/OpenGL/OpenGL.hpp
+        src/GameEngine/src/Runtime/Runtime/Backends/OpenGL/OpenGL.cpp
+        src/GameEngine/src/Runtime/Runtime/Backends/OpenGL/OpenGLInput.hpp
+        src/GameEngine/src/Runtime/Runtime/Backends/OpenGL/OpenGLInput.cpp
+        src/GameEngine/src/Runtime/Runtime/Backends/OpenGL/GameEngineApi.hpp
+        src/GameEngine/src/Runtime/Runtime/Backends/OpenGL/GameEngineApi.cpp
+        src/GameEngine/src/Runtime/Runtime/Backends/OpenGL/OpenGLRenderer.hpp
+        src/GameEngine/src/Runtime/Runtime/Backends/OpenGL/OpenGLRenderer.cpp
+        src/GameEngine/src/Runtime/Runtime/Backends/OpenGL/OpenGLVertexBuffer.hpp
+        src/GameEngine/src/Runtime/Runtime/Backends/OpenGL/OpenGLVertexBuffer.cpp
 )
 
 # Create GameEngine as a static library

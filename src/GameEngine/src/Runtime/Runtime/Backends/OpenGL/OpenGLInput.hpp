@@ -4,7 +4,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include <Runtime/Engine/Backends/OpenGL/OpenGLInput.hpp>
+#include <Runtime/Runtime/Backends/OpenGL/OpenGLInput.hpp>
 
 namespace Neon
 {

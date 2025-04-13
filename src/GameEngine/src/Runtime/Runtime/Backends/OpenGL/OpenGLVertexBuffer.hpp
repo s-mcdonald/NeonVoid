@@ -4,8 +4,8 @@
 #pragma once
 
 #include <Runtime/Runtime.hpp>
-#include <Runtime/Engine/Backends/VertexBuffer.hpp>
-#include <Runtime/Engine/Backends/OpenGL/OpenGLVertexBuffer.hpp>
+#include <Runtime/Runtime/Backends/OpenGL/OpenGLVertexBuffer.hpp>
+#include <Runtime/Runtime/Backends/VertexBuffer.hpp>
 
 namespace Neon
 {

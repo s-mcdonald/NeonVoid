@@ -5,9 +5,9 @@
 #include <iostream>
 
 #include <Runtime/Components/Components.hpp>
-#include <Runtime/Engine/Backends/OpenGL/OpenGL.hpp>
-#include <Runtime/Engine/Shader.hpp>
 #include <Runtime/Runtime.hpp>
+#include <Runtime/Runtime/Backends/OpenGL/OpenGL.hpp>
+#include <Runtime/Runtime/Shader.hpp>
 #include "TitleScene.hpp"
 
 #include "../Entities/MoveablePlayerEntity.hpp"

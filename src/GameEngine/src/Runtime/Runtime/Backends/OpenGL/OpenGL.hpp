@@ -5,8 +5,8 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include <Runtime/Engine/Backends/Platform.hpp>
 #include <Runtime/Runtime.hpp>
+#include <Runtime/Runtime/Backends/Platform.hpp>
 
 namespace Neon
 {

@@ -5,9 +5,9 @@
 
 #include <unordered_map>
 
-#include <Runtime/Engine/Input.hpp>
 #include <Runtime/Components/Components.hpp>
 #include <Runtime/Entity/Entity.hpp>
+#include <Runtime/Runtime/Input.hpp>
 #include <Runtime/Types.hpp>
 
 namespace Neon

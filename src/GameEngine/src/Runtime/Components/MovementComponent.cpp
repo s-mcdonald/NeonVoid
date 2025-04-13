@@ -3,9 +3,9 @@
  */
 #include <iostream>
 
-#include <Runtime/Engine/Input.hpp>
 #include <Runtime/Components/Components.hpp>
 #include <Runtime/Runtime.hpp>
+#include <Runtime/Runtime/Input.hpp>
 #include <Runtime/Types.hpp>
 
 namespace Neon 

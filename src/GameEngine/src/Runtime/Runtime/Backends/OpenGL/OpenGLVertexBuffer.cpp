@@ -2,7 +2,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include <Runtime/Engine/Backends/OpenGL/OpenGLVertexBuffer.hpp>
+#include <Runtime/Runtime/Backends/OpenGL/OpenGLVertexBuffer.hpp>
 
 namespace Neon
 {

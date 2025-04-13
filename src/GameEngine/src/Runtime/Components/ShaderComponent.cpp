@@ -1,10 +1,10 @@
 
 #include <glm/gtc/matrix_transform.hpp>
 
-#include <Runtime/Runtime.hpp>
 #include <Runtime/Components/Components.hpp>
-#include <Runtime/Engine/Shader.hpp>
-#include <Runtime/Engine/Backends/OpenGL/GameEngineApi.hpp>
+#include <Runtime/Runtime.hpp>
+#include <Runtime/Runtime/Backends/OpenGL/GameEngineApi.hpp>
+#include <Runtime/Runtime/Shader.hpp>
 
 namespace Neon 
 {

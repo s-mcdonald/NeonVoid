@@ -15,11 +15,11 @@
 #include <Runtime/Scene/Scene.hpp>
 #include <Runtime/Components/Components.hpp>
 
-#include <Runtime/Engine/Backends/OpenGL/GameEngineApi.hpp>
-#include <Runtime/Engine/Backends/OpenGL/OpenGLRenderer.hpp>
-#include <Runtime/Engine/Backends/OpenGL/OpenGLVertexBuffer.hpp>
-#include <Runtime/Engine/Backends/VertexBuffer.hpp>
-#include <Runtime/Engine/Shader.hpp>
+#include <Runtime/Runtime/Backends/OpenGL/GameEngineApi.hpp>
+#include <Runtime/Runtime/Backends/OpenGL/OpenGLRenderer.hpp>
+#include <Runtime/Runtime/Backends/OpenGL/OpenGLVertexBuffer.hpp>
+#include <Runtime/Runtime/Backends/VertexBuffer.hpp>
+#include <Runtime/Runtime/Shader.hpp>
 #include "GameEngine.hpp"
-#include "Runtime/Engine/Backends/IRenderer.hpp"
-#include "Runtime/Engine/Backends/Platform.hpp"
+#include "Runtime/Runtime/Backends/IRenderer.hpp"
+#include "Runtime/Runtime/Backends/Platform.hpp"
