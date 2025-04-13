@@ -1,14 +1,5 @@
-/**
- * 
- */
-/* #define MINIAUDIO_IMPLEMENTATION */
 
-#include <cstdio>
-#include <iostream>
-#include <stdlib.h>
 #include <string>
-#include <unistd.h>
-#include <vector>
 
 #define MINIAUDIO_IMPLEMENTATION
 #include <miniaudio.h>
@@ -169,9 +160,9 @@ namespace Neon
             return;
         }
 
-        // #ifdef NEON_DEBUG_AUDIO
-        //     std::cout << "[DEBUG] Callback called with frameCount: " << frameCount << std::endl;
-        // #endif
+        #ifdef NEON_DEBUG_AUDIO
+            std::cout << "[DEBUG] Callback called with frameCount: " << frameCount << std::endl;
+        #endif
 
         // OK here is the guts of it, read from decoder into the OutputBuffer
         ma_decoder* pDecoder = &player->m_decoder;
