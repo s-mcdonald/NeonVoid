@@ -34,40 +34,52 @@ namespace Neon
             Entity* m_entityParent = nullptr;
     };
 
-    class PositionComponent : public Component
+    class PositionComponent final : public Component
     {
         public:
+            PositionComponent()
+                : Component()
+                , m_position(0.0f,0.0f) {};
             explicit PositionComponent(float, float);
-            void OnDestroy() override;
+            ~PositionComponent() override = default;
+
+        public:
+            void OnInit() override {};
+            void OnUpdate() override {};
+            void OnDestroy() override;;
+
+        public:
             [[nodiscard]] Point GetPoint() const;
 
         private:
             Point m_position;
     };
 
-    class ControllerComponent : public Component
+    class MovementComponent : public Component
     {
         public:
-            ControllerComponent() : Component()
+            MovementComponent() : Component()
             {
                 // ...
             };
 
-            ~ControllerComponent() override
+            ~MovementComponent() override
             {
                 // ...
             }
 
         public:
+            void AllowMovementOf(PositionComponent* component);
             void HandleInput(OpenGLInput* input);
-            void Update(float deltaTime);
+            //void Update(float deltaTime);
 
         public:
             void OnInit() override {};
-            void OnUpdate() override {};
+            void OnUpdate() override;
             void OnDestroy() override {};
 
         private:
+            std::vector<PositionComponent*> mx_positionalComponents;
             float m_velocityX = 0.0f;
             float m_velocityY = 0.0f;
             float m_accelerationX = 0.0f;

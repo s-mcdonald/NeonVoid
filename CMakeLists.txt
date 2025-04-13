@@ -90,7 +90,7 @@ set(GAME_ENGINE_SRC
         src/GameEngine/src/Runtime/Components/AudioComponent.cpp
         src/GameEngine/src/Runtime/Components/TextComponent.cpp
         src/GameEngine/src/Runtime/Components/PositionComponent.cpp
-        src/GameEngine/src/Runtime/Components/ControllerComponent.cpp
+        src/GameEngine/src/Runtime/Components/MovementComponent.cpp
 
         src/GameEngine/src/Runtime/Engine/Shader.hpp
         src/GameEngine/src/Runtime/Engine/Shader.cpp

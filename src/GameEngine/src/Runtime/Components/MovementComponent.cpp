@@ -9,8 +9,7 @@
 
 namespace Neon 
 {
-    // Change the class name to MovementComponent
-    void ControllerComponent::HandleInput(OpenGLInput* input)
+    void MovementComponent::HandleInput(OpenGLInput* input)
     {
         // @todo: move these const to Inout potentially or types hpp
         constexpr float directionUp = -10.0f;
@@ -52,8 +51,16 @@ namespace Neon
         }
     }
 
-    void ControllerComponent::Update(float deltaTime)
+    void MovementComponent::AllowMovementOf(PositionComponent* component)
     {
-        // ...
+        mx_positionalComponents.emplace_back(component);
+    }
+
+    void MovementComponent::OnUpdate()
+    {
+        for (auto* component : mx_positionalComponents)
+        {
+            component->OnUpdate();
+        }
     }
 }

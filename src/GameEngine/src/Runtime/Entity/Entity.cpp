@@ -64,7 +64,7 @@ namespace Neon
     {
         for (auto& component : m_components)
         {
-            if (auto* x = dynamic_cast<ControllerComponent*>(component))
+            if (auto* x = dynamic_cast<MovementComponent*>(component))
             {
                 x->HandleInput(input);
             }

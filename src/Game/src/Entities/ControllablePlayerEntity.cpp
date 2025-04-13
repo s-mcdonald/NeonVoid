@@ -25,7 +25,10 @@ namespace Neon
         auto* component = new ShaderComponent(vertices, shader);
         AddComponent(component);
 
-        auto* movementComponent = new ControllerComponent();
+        auto* positionComponent = new PositionComponent(0.0f, 0.0f);
+
+        auto* movementComponent = new MovementComponent();
+        movementComponent->AllowMovementOf(positionComponent);
         AddComponent(movementComponent);
 
         Entity::OnInit();

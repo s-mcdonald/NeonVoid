@@ -26,11 +26,6 @@ namespace Neon
         AddComponent("aud.intro", introMusic);
 
         ///
-        /// Green Triangle
-        ///
-
-
-        ///
         /// White Circle
         ///
         std::vector<float> circle_vertices = OpenGL::GenerateCircleVertices(1.0f, 100);
@@ -52,8 +47,6 @@ namespace Neon
         #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
                 std::cout << "<GAME> TitleScene::OnInit\n";
         #endif
-
-        std::cout << "TitleScene::OnInit \n";
 
         // Need to give config to AudioComponents so the comp
         // knows when and how to start playing..
