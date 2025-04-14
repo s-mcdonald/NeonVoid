@@ -17,6 +17,5 @@ namespace Neon
         public:
             virtual bool Initialize(int width, int height, const char* title) = 0;
             virtual void Run(Application* game) = 0;
-
     };
 }

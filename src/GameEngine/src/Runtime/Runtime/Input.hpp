@@ -91,7 +91,7 @@ namespace Neon
     class KeyboardInput : public OpenGLInput
     {
         public:
-            virtual ~KeyboardInput() override = default;
+            ~KeyboardInput() override = default;
 
         public:
             virtual bool IsKeyPressed(Key key) = 0;
