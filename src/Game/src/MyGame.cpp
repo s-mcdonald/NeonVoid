@@ -21,6 +21,6 @@ namespace Neon
 
     bool MyGame::Initialize() const
     {
-        return Game::Initialize(800, 600, "Neon Void (0.0.4)");
+        return Application::Initialize(800, 600, "Neon Void (0.0.4)");
     }
 }

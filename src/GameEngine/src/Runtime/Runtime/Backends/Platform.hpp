@@ -6,7 +6,7 @@
 
 namespace Neon
 {
-    class Game;
+    class Application;
 
     class Platform
     {
@@ -16,6 +16,6 @@ namespace Neon
 
         public:
         virtual bool Initialize(int width, int height, const char* title) = 0;
-        virtual void Run(Game* game) = 0;
+        virtual void Run(Application* game) = 0;
     };
 }
