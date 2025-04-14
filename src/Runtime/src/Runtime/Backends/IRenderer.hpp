@@ -6,6 +6,8 @@
 
 #include <cstdint>
 
+#include <Runtime/Runtime.hpp>
+
 namespace Neon
 {
     class IRenderer

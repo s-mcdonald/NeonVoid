@@ -2,7 +2,7 @@
  * {SourceHeader}
  */
 
-#include <Runtime/Runtime.hpp>
+#include <Runtime/Backends/OpenGL/OpenGLRenderer.hpp>
 
 namespace Neon
 {

@@ -8,6 +8,7 @@
 
 namespace Neon
 {
+    class IRenderer;
     class GameEngineApi
     {
         public:

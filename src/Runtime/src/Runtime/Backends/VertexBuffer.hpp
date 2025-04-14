@@ -4,7 +4,9 @@
 
 #pragma once
 
-#include <NeonEngine/Types.hpp>
+#include <cstdint>
+
+#include <Runtime/Runtime.hpp>
 
 namespace Neon
 {

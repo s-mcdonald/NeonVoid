@@ -2,11 +2,11 @@
 
 > **Pre alpha:** This project is in active development and does not yet have a stable release.
 
-My first GameEngine written in C++ with support for various rendering API.
+A simple GameEngine written in C++.
+
 
 NeonVoid is a side project I'm currently developing, intended to be a game engine focused on creating retro-style 
-"Space Invaders" type games. I have never built a game engine, nor game, and have no idea what I'm doing. 
-But just having a tonn of fun figuring it out.
+"Space Invaders" type games. I have never built a game engine, nor game, so I'm figuring it out along the way.
 
 
 ### Build System
