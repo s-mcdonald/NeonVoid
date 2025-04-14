@@ -1,5 +1,5 @@
 /**
- * Entry to the game of NeonVoid.
+ * {SourceHeader}
  */
 
 #include "MyGame.hpp"

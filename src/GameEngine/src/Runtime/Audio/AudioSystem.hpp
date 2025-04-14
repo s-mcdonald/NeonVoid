@@ -1,6 +1,7 @@
 /**
- * 
+ * {SourceHeader}
  */
+
 #pragma once
 
 #include <miniaudio.h>

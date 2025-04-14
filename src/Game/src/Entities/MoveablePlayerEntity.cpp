@@ -1,3 +1,6 @@
+/**
+ * {SourceHeader}
+ */
 
 #include <iostream>
 
@@ -29,7 +32,7 @@ namespace Neon
         AddComponent(positionComponent);
 
         auto* movementComponent = new MovementComponent();
-        movementComponent->AllowMovementOf(positionComponent);
+        movementComponent->AllowMovementOf(positionComponent); // change to using events instead
         AddComponent(movementComponent);
 
         Entity::OnInit();
@@ -38,7 +41,7 @@ namespace Neon
     void MoveablePlayerEntity::OnUpdate()
     {;
         #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-                std::cout << "ControllablePlayerEntity::OnUpdate()" << std::endl;
+            std::cout << "ControllablePlayerEntity::OnUpdate()" << std::endl;
         #endif
 
         Entity::OnUpdate();

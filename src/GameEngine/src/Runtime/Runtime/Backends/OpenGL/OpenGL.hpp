@@ -1,3 +1,7 @@
+/**
+ * {SourceHeader}
+ */
+
 #pragma once
 
 #include <vector>
