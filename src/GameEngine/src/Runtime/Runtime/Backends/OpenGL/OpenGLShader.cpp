@@ -17,7 +17,7 @@ namespace Neon
         : m_vertexSourcePath(std::move(vertexPath))
         , m_fragmentSourcePath(std::move(fragmentPath))
     {
-        //
+        // ..
     }
 
     void OpenGLShader::OnInit()
@@ -25,15 +25,25 @@ namespace Neon
         auto vertex_shader_source = LoadShaderFromFile(m_vertexSourcePath);
         auto frag_shader_source = LoadShaderFromFile(m_fragmentSourcePath);
 
-        // abstract this to ogl layer
         m_shaderId = OpenGLShader::CreateShaderProgram(vertex_shader_source.c_str(), frag_shader_source.c_str());
     }
 
     void OpenGLShader::OnDelete()
     {
-        // abstract this to ogl layer
         glDeleteProgram(m_shaderId);
         m_shaderId = 0;
+    }
+
+    // we want to bind all shaders before game loop
+    void OpenGLShader::Bind() const
+    {
+        glUseProgram(m_shaderId);
+    }
+
+    // unbind after game loop
+    void OpenGLShader::Unbind() const
+    {
+        glUseProgram(0);
     }
 
     uint32_t OpenGLShader::GetShaderProgramId() const
@@ -41,6 +51,7 @@ namespace Neon
         return m_shaderId;
     }
 
+    // Loads from file
     std::string OpenGLShader::LoadShaderFromFile(const std::string& filePath)
     {
         std::ifstream file(filePath, std::ios::in | std::ios::binary);
@@ -67,21 +78,22 @@ namespace Neon
 
     uint32_t OpenGLShader::CompileShader(const char* source, GLenum shaderType)
     {
-        GLuint shader = glCreateShader(shaderType);
-        glShaderSource(shader, 1, &source, nullptr);
+        uint32_t shader = glCreateShader(shaderType);
+        const char* sourceCStr = source;
+        glShaderSource(shader, 1, &sourceCStr, nullptr);
         glCompileShader(shader);
 
-        GLint success;
+        // Check for compilation errors
+        int success = 0;
+        char infoLog[512];
         glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
         if (!success)
         {
-            char infoLog[512];
             glGetShaderInfoLog(shader, 512, nullptr, infoLog);
-
-#if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-            std::cerr << "Shader compilation failed: " << infoLog << std::endl;
-#endif
+            std::string compiledShaderType = (shaderType == GL_VERTEX_SHADER) ? "VERTEX" : "FRAGMENT";
+            throw std::runtime_error(compiledShaderType + " Shader compilation failed: " + std::string(infoLog));
         }
+
         return shader;
     }
 

@@ -23,6 +23,10 @@ namespace Neon
             void OnDelete() override;
             [[nodiscard]] uint32_t GetShaderProgramId() const override;
 
+        public:
+            void Bind() const;
+            void Unbind() const;
+
         private:
             static std::string LoadShaderFromFile(const std::string&);
             static uint32_t CompileShader(const char* source, GLenum shaderType);

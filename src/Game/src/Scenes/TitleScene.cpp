@@ -2,16 +2,13 @@
  * {SourceHeader}
  */
 
-#include <cmath>
-#include <iostream>
-
-#include <../../../GameEngine/src/Runtime/Runtime/Backends/Shader.hpp>
 #include <Runtime/Components/Components.hpp>
 #include <Runtime/Runtime.hpp>
 #include <Runtime/Runtime/Backends/OpenGL/OpenGL.hpp>
-#include "TitleScene.hpp"
+#include <Runtime/Runtime/Backends/Shader.hpp>
 #include <Runtime/Runtime/Backends/OpenGL/OpenGLShader.hpp>
 
+#include "TitleScene.hpp"
 #include "../Entities/MoveablePlayerEntity.hpp"
 
 namespace Neon

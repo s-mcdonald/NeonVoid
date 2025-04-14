@@ -12,9 +12,7 @@ namespace Neon
 {
     void MoveablePlayerEntity::OnInit()
     {
-        ///
         /// Green Triangle
-        ///
         std::vector<float> vertices = {
             0.0f,  0.5f,   // Top vertex
            -0.5f, -0.5f,   // Bottom left vertex

@@ -24,6 +24,9 @@ namespace Neon
 
     void ShaderComponent::OnInit()
     {
+        // Bind should be before the loop for the shader
+        m_shader->Bind();
+
         m_shader->OnInit();
 
         m_buffer = GameEngine::CreateVertexBuffer(m_vertices.data(), m_vertices.size() * sizeof(float));
@@ -86,6 +89,8 @@ namespace Neon
     {
         if (m_shader)
         {
+            // UnBind should be after the loop for the shader
+            m_shader->Unbind();
             m_shader->OnDelete();
         }
 
