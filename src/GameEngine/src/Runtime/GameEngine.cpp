@@ -6,6 +6,7 @@
 
 #ifdef NEON_BUILD_OPENGL
 #include <Runtime/Runtime/Backends/OpenGL/OpenGL.hpp>
+#include <Runtime/Runtime/Backends/OpenGL/OpenGLShader.hpp>
 #elif defined(NEON_BUILD_VULKAN)
 #else
 #endif
@@ -33,9 +34,9 @@ namespace Neon
         return m_platform->Initialize(width, height,title);
     }
 
-    void GameEngine::Run(Application* game) const
+    void GameEngine::Run(Application* application) const
     {
-        m_platform->Run(game);
+        m_platform->Run(application);
     }
 
     Platform* GameEngine::GetPlatform() const
@@ -45,14 +46,25 @@ namespace Neon
 
     VertexBuffer* GameEngine::CreateVertexBuffer(float* vertices, size_t size)
     {
-        #ifdef NEON_BUILD_OPENGL
-            return new OpenGLVertexBuffer(vertices, size);
-        #elif defined(NEON_BUILD_VULKAN)
-            return new VulkanVertexBuffer(vertices, size);
-        #else
-            // let's also do an assert here, I think cherno did this too.
-            // need to learn more about compile time asserts.
-            return nullptr;
-        #endif
+#ifdef NEON_BUILD_OPENGL
+        return new OpenGLVertexBuffer(vertices, size);
+#elif defined(NEON_BUILD_VULKAN)
+        // return new VulkanVertexBuffer(vertices, size);
+#else
+        // let's also do an assert here, I think cherno did this too.
+        // need to learn more about compile time asserts.
+        return nullptr;
+#endif
+    }
+
+    Shader* GameEngine::CreateShader(std::string vertexPath, std::string fragmentPath)
+    {
+#ifdef NEON_BUILD_OPENGL
+        return new OpenGLShader(vertexPath, fragmentPath);
+#elif defined(NEON_BUILD_VULKAN)
+        // send back the Vulkan Shader
+#else
+        return nullptr;
+#endif
     }
 }

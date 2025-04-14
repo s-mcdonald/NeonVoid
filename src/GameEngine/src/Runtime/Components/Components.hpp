@@ -6,7 +6,6 @@
 
 #include "Runtime/Scene/Scene.hpp"
 
-
 #include <Runtime/Runtime.hpp>
 #include <Runtime/Runtime/Input.hpp>
 
