@@ -4,7 +4,6 @@
 
 #pragma once
 
-#include <Runtime/Runtime/Backends/OpenGL/OpenGLHeaders.hpp>
 #include <Runtime/Runtime/Backends/OpenGL/OpenGLInput.hpp>
 
 namespace Neon

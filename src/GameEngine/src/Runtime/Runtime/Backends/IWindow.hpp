@@ -14,7 +14,7 @@ namespace Neon
             virtual ~IWindow() = default;
 
         public:
-            virtual void* GetNativeWindowHandle() const = 0;
+            [[nodiscard]] virtual void* GetNativeWindowHandle() const = 0;
 
         // @todo: Implement these below so we can abstract away the runtime game loop
 

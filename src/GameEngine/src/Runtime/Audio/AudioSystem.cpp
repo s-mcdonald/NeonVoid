@@ -21,9 +21,9 @@ namespace Neon
 
         if (const ma_result result = ma_device_init(nullptr, &deviceConfig, &m_device); result != MA_SUCCESS)
         {
-            #ifdef NEON_DEBUG_AUDIO
-                std::cerr << "[ERROR] Failed to initialize audio device!" << std::endl;
-            #endif
+#ifdef NEON_DEBUG_AUDIO
+            std::cerr << "[ERROR] Failed to initialize audio device!" << std::endl;
+#endif
 
             m_isAudioEnabled = false;
         }
@@ -43,18 +43,18 @@ namespace Neon
         ma_decoder_uninit(&m_decoder);
         ma_device_uninit(&m_device);
 
-        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_AUDIO)
-            std::cout << "AudioSystem::Destructor completed\n";
-        #endif
+#if defined(NEON_DEBUG) && defined(NEON_DEBUG_AUDIO)
+        std::cout << "AudioSystem::Destructor completed\n";
+#endif
     }
 
     void AudioSystem::Play(const std::string& filename) 
     {
         if (true == m_isPlaying && true == m_isAudioEnabled)
         {
-            #ifdef NEON_DEBUG_AUDIO
-                std::cerr << "[ERROR] Already playing audio!" << std::endl;
-            #endif
+#ifdef NEON_DEBUG_AUDIO
+            std::cerr << "[ERROR] Already playing audio!" << std::endl;
+#endif
 
             return;
         }
@@ -62,9 +62,9 @@ namespace Neon
         ma_result result = ma_decoder_init_file(filename.c_str(), nullptr, &m_decoder);
         if (result != MA_SUCCESS) 
         {
-            #ifdef NEON_DEBUG_AUDIO
-                std::cerr << "[ERROR] Failed to load audio file: " << filename << std::endl;
-            #endif
+#ifdef NEON_DEBUG_AUDIO
+            std::cerr << "[ERROR] Failed to load audio file: " << filename << std::endl;
+#endif
             
             return;
         }
@@ -72,9 +72,9 @@ namespace Neon
         result = ma_device_start(&m_device);
         if (result != MA_SUCCESS) 
         {
-            #ifdef NEON_DEBUG_AUDIO
-                std::cerr << "[ERROR] Failed to start playback!" << std::endl;
-            #endif
+#ifdef NEON_DEBUG_AUDIO
+            std::cerr << "[ERROR] Failed to start playback!" << std::endl;
+#endif
             
             return;
         }
@@ -98,9 +98,9 @@ namespace Neon
     {
         if (false == m_isPlaying)
         {
-            #ifdef NEON_DEBUG_AUDIO
-                std::cerr << "[ERROR] No audio is playing!" << std::endl;
-            #endif
+#ifdef NEON_DEBUG_AUDIO
+            std::cerr << "[ERROR] No audio is playing!" << std::endl;
+#endif
             
             return;
         }
@@ -110,18 +110,18 @@ namespace Neon
 
         ma_decoder_seek_to_pcm_frame(&m_decoder, 0);
 
-        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_AUDIO)
-            std::cout << "Audio stopped!" << std::endl;
-        #endif
+#if defined(NEON_DEBUG) && defined(NEON_DEBUG_AUDIO)
+        std::cout << "Audio stopped!" << std::endl;
+#endif
     }
 
     void AudioSystem::Update() 
     {
         if (m_isStopRequested) 
         {
-            #ifdef NEON_DEBUG_AUDIO
-                std::cerr << "[INFO] Attempting to stop player." << std::endl;
-            #endif
+#ifdef NEON_DEBUG_AUDIO
+            std::cerr << "[INFO] Attempting to stop player." << std::endl;
+#endif
             
             Stop();
             m_isStopRequested = false;
@@ -130,9 +130,9 @@ namespace Neon
 
     void AudioSystem::SetVolume([[ maybe_unused ]]const Volume& volume) 
     {
-        #ifdef NEON_DEBUG_AUDIO
-            std::cerr << "[INFO] Set volume..." << std::endl;
-        #endif
+#ifdef NEON_DEBUG_AUDIO
+        std::cerr << "[INFO] Set volume..." << std::endl;
+#endif
     }
 
     ma_device_config AudioSystem::getDeviceConfig() 
@@ -161,16 +161,16 @@ namespace Neon
 
         if (player == nullptr) 
         {
-            #ifdef NEON_DEBUG_AUDIO
-                std::cerr << "[ERROR] Player is null in callback!" << std::endl;
-            #endif
+#ifdef NEON_DEBUG_AUDIO
+            std::cerr << "[ERROR] Player is null in callback!" << std::endl;
+#endif
             
             return;
         }
 
-        #ifdef NEON_DEBUG_AUDIO
-            std::cout << "[DEBUG] Callback called with frameCount: " << frameCount << std::endl;
-        #endif
+#ifdef NEON_DEBUG_AUDIO
+        std::cout << "[DEBUG] Callback called with frameCount: " << frameCount << std::endl;
+#endif
 
         // OK here is the guts of it, read from decoder into the OutputBuffer
         ma_decoder* pDecoder = &player->m_decoder;
@@ -180,26 +180,26 @@ namespace Neon
             case MA_AT_END:
                 if (false == player->m_onLoop) 
                 {
-                    #ifdef NEON_DEBUG_AUDIO
-                        std::cout << "[INFO] Reached end of file, stopping audio." << std::endl;
-                    #endif
+#ifdef NEON_DEBUG_AUDIO
+                    std::cout << "[INFO] Reached end of file, stopping audio." << std::endl;
+#endif
         
                     player->m_isStopRequested = true;
                     return;
                 } 
 
-                #ifdef NEON_DEBUG_AUDIO
-                    std::cout << "[INFO] Reached end of file, replay because on loop." << std::endl;
-                #endif
+#ifdef NEON_DEBUG_AUDIO
+                std::cout << "[INFO] Reached end of file, replay because on loop." << std::endl;
+#endif
 
                 ma_decoder_seek_to_pcm_frame(pDecoder, 0);
                 break;
             case MA_SUCCESS:
                 break;
             default:
-                #ifdef NEON_DEBUG_AUDIO
-                    std::cerr << "[ERROR] Failed to read PCM frames!" << std::endl;
-                #endif
+#ifdef NEON_DEBUG_AUDIO
+                std::cerr << "[ERROR] Failed to read PCM frames!" << std::endl;
+#endif
                 break;
         }
     }

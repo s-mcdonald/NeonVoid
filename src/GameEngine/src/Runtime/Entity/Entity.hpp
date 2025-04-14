@@ -45,7 +45,7 @@ namespace Neon
             bool HasComponent() const
             {
                 auto type = std::type_index(typeid(T));
-                return m_components.find(type) != m_components.end();
+                return m_components.contains(type);
             }
 
             [[nodiscard]] EntityID GetId() const;

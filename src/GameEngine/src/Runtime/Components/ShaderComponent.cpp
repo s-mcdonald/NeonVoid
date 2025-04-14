@@ -38,16 +38,16 @@ namespace Neon
 
     void ShaderComponent::OnUpdate()
     {
-        Point p;
+        Point p{};
 
         if (GetParentEntity() != nullptr && GetParentEntity()->HasComponent<PositionComponent>())
         {
             auto* pos = GetParentEntity()->GetComponent<PositionComponent>();
             p = pos->GetPoint();
 
-            #ifdef NEON_DEBUG_KB_INPUT
-                std::cout << "[DEBUG](Sahder) NEW: x: " << p.x << " y: " << p.y << "\n";
-            #endif
+#ifdef NEON_DEBUG_KB_INPUT
+            std::cout << "[DEBUG](Sahder) NEW: x: " << p.x << " y: " << p.y << "\n";
+#endif
 
             for (size_t i = 0; i < m_vertices.size(); i += 2) {
                 m_vertices[i] += p.x;

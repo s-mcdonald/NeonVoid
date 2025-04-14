@@ -4,9 +4,8 @@
 
 #pragma once
 
-#include "Runtime/Scene/Scene.hpp"
-
 #include <Runtime/Runtime.hpp>
+#include <Runtime/Scene/Scene.hpp>
 #include <Runtime/Runtime/Input.hpp>
 
 namespace Neon

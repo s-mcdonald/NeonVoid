@@ -24,8 +24,8 @@ namespace Neon
             [[nodiscard]] uint32_t GetShaderProgramId() const override;
 
         public:
-            void Bind() const;
-            void Unbind() const;
+            void Bind() const override;
+            void Unbind() const override;
 
         private:
             static std::string LoadShaderFromFile(const std::string&);

@@ -44,9 +44,9 @@ namespace Neon
 
     TextComponent::~TextComponent() 
     {
-        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-            std::cout << "TextComponent::Destructor completed\n";
-        #endif
+#if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
+        std::cout << "TextComponent::Destructor completed\n";
+#endif
     }
 
     void TextComponent::OnInit() 

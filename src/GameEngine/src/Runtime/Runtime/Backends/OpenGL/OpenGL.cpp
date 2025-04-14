@@ -39,9 +39,9 @@ namespace Neon
     {
         if (!glfwInit()) 
         {
-            #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-                std::cerr << "Failed to initialize GLFW!\n";
-            #endif
+#if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
+            std::cerr << "Failed to initialize GLFW!\n";
+#endif
             
             return false;
         }

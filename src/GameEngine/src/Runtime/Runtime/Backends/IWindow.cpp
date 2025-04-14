@@ -8,6 +8,6 @@ namespace Neon
 {
     void* IWindow::GetNativeWindowHandle() const
     {
-
+        // ..
     }
 }

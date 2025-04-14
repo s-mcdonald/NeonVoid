@@ -18,32 +18,32 @@ namespace Neon
         {
             if (x->IsKeyPressed(Key::Up))
             {
-                #ifdef NEON_DEBUG_KB_INPUT
-                    std::cout << "[DEBUG][KeyInput] : Up" << "\n";
-                #endif
+#ifdef NEON_DEBUG_KB_INPUT
+                std::cout << "[DEBUG][KeyInput] : Up" << "\n";
+#endif
 
                 m_directionY = deltaTime * DirectionDeltaUp;
             }
             else if (x->IsKeyPressed(Key::Down))
             {
-                #ifdef NEON_DEBUG_KB_INPUT
-                    std::cout << "[DEBUG][KeyInput] : Down" << "\n";
-                #endif
+#ifdef NEON_DEBUG_KB_INPUT
+                std::cout << "[DEBUG][KeyInput] : Down" << "\n";
+#endif
                 m_directionY = deltaTime * DirectionDeltaDown;
             }
 
             if (x->IsKeyPressed(Key::Left))
             {
-                #ifdef NEON_DEBUG_KB_INPUT
-                    std::cout << "[DEBUG][KeyInput] : Left" << "\n";
-                #endif
+#ifdef NEON_DEBUG_KB_INPUT
+                std::cout << "[DEBUG][KeyInput] : Left" << "\n";
+#endif
                 m_directionX = deltaTime * DirectionDeltaLeft;
             }
             else if (x->IsKeyPressed(Key::Right))
             {
-                #ifdef NEON_DEBUG_KB_INPUT
-                    std::cout << "[DEBUG][KeyInput] : Right" << "\n";
-                #endif
+#ifdef NEON_DEBUG_KB_INPUT
+                std::cout << "[DEBUG][KeyInput] : Right" << "\n";
+#endif
                 m_directionX = deltaTime * DirectionDeltaRight;
             }
         }
@@ -62,16 +62,8 @@ namespace Neon
         {
             Point x = component->GetPoint();
 
-            // #ifdef NEON_DEBUG_KB_INPUT
-            //         std::cout << "[DEBUG](Keyboard) OLD: x: " << x.x << " y: " << x.y << "\n";
-            // #endif
-
             x.y += m_directionY;
             x.x += m_directionX;
-
-            // #ifdef NEON_DEBUG_KB_INPUT
-            //      std::cout << "[DEBUG](Keyboard) NEW: x: " << x.x << " y: " << x.y << "\n";
-            // #endif
 
             component->UpdateData(x);
         }

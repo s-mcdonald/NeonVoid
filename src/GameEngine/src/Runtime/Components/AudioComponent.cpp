@@ -2,8 +2,8 @@
  * {SourceHeader}
  */
 
-#include <Runtime/Components/Components.hpp>
 #include <Runtime/Runtime.hpp>
+#include <Runtime/Components/Components.hpp>
 
 namespace Neon
 {

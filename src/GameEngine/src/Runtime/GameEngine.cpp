@@ -7,6 +7,7 @@
 #ifdef NEON_BUILD_OPENGL
 #include <Runtime/Runtime/Backends/OpenGL/OpenGL.hpp>
 #include <Runtime/Runtime/Backends/OpenGL/OpenGLShader.hpp>
+#include <utility>
 #elif defined(NEON_BUILD_VULKAN)
 #else
 #endif
@@ -15,13 +16,13 @@ namespace Neon
 {
     GameEngine::GameEngine() : m_platform(nullptr)
     {
-        #ifdef NEON_BUILD_OPENGL
-            m_platform = new Neon::OpenGL();
-        #elif defined(NEON_BUILD_VULKAN)
-            m_platform = new Neon::Vulkan();
-        #else
-                return nullptr;
-        #endif
+#ifdef NEON_BUILD_OPENGL
+        m_platform = new Neon::OpenGL();
+#elif defined(NEON_BUILD_VULKAN)
+        m_platform = new Neon::Vulkan();
+#else
+        return nullptr;
+#endif
     }
 
     GameEngine::~GameEngine() 
@@ -60,7 +61,7 @@ namespace Neon
     Shader* GameEngine::CreateShader(std::string vertexPath, std::string fragmentPath)
     {
 #ifdef NEON_BUILD_OPENGL
-        return new OpenGLShader(vertexPath, fragmentPath);
+        return new OpenGLShader(std::move(vertexPath), std::move(fragmentPath));
 #elif defined(NEON_BUILD_VULKAN)
         // send back the Vulkan Shader
 #else
