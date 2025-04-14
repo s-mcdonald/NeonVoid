@@ -5,8 +5,6 @@
 #pragma once
 
 #include <cstdint>
-#include <iostream>
-#include <stdexcept>
 
 namespace Neon 
 {

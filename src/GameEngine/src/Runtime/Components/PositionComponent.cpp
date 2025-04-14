@@ -2,8 +2,6 @@
  * {SourceHeader}
  */
 
-#include <iostream>
-
 #include <Runtime/Runtime.hpp>
 #include <Runtime/Components/Components.hpp>
 

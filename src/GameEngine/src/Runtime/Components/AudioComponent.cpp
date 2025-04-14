@@ -3,10 +3,9 @@
  */
 
 #include <Runtime/Components/Components.hpp>
+#include <Runtime/Runtime.hpp>
 
-#include "Runtime/Runtime.hpp"
-
-namespace Neon 
+namespace Neon
 {
     ///
     /// @brief change so that we can pass config to how/when to play.

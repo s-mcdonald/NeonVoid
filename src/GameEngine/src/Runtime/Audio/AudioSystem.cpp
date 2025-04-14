@@ -6,7 +6,8 @@
 
 #define MINIAUDIO_IMPLEMENTATION
 #include <miniaudio.h>
-#include "Runtime/Runtime.hpp"
+
+#include <Runtime/Runtime.hpp>
 
 namespace Neon 
 {

@@ -55,7 +55,6 @@ set(OpenGL_GL_PREFERENCE GLVND)
 #
 set(GAME_ENGINE_SRC
         src/GameEngine/src/Runtime/Runtime.hpp
-        src/GameEngine/src/Runtime/Runtime.cpp
 
         src/GameEngine/src/Runtime/Types.hpp
         src/GameEngine/src/Runtime/Application.hpp

@@ -5,6 +5,8 @@
 #pragma once
 
 #include <miniaudio.h>
+#include <string>
+#include <iostream>
 
 #include "Volume.hpp"
 
