@@ -7,19 +7,21 @@
 #include <string>
 
 #include <Runtime/Runtime/Backends/OpenGL/OpenGLHeaders.hpp>
+#include <Runtime/Runtime/Backends/Shader.hpp>
 
 namespace Neon
 {
-    class Shader
+    class OpenGLShader : public Shader
     {
         public:
-            Shader(std::string, std::string);
-            ~Shader() = default;
+            OpenGLShader() = default;
+            OpenGLShader(std::string, std::string);
+            ~OpenGLShader() override = default;
 
         public:
-            void OnInit();
-            void OnDelete();
-            [[nodiscard]] uint32_t GetShaderProgramId() const;
+            void OnInit() override;
+            void OnDelete() override;
+            [[nodiscard]] uint32_t GetShaderProgramId() const override;
 
         private:
             static std::string LoadShaderFromFile(const std::string&);
@@ -29,6 +31,6 @@ namespace Neon
         private:
             const std::string m_vertexSourcePath;
             const std::string m_fragmentSourcePath;
-            uint32_t m_shaderId;
+            uint32_t m_shaderId{};
     };
 }

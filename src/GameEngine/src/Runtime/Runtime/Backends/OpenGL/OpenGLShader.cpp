@@ -9,39 +9,39 @@
 
 #include <Runtime/Runtime.hpp>
 #include <Runtime/Runtime/Backends/OpenGL/OpenGLHeaders.hpp>
-#include <Runtime/Runtime/Shader.hpp>
+#include <Runtime/Runtime/Backends/OpenGL/OpenGLShader.hpp>
 
 namespace Neon
 {
-    Shader::Shader(std::string  vertexPath, std::string  fragmentPath)
+    OpenGLShader::OpenGLShader(std::string  vertexPath, std::string  fragmentPath)
         : m_vertexSourcePath(std::move(vertexPath))
         , m_fragmentSourcePath(std::move(fragmentPath))
     {
         //
     }
 
-    void Shader::OnInit()
+    void OpenGLShader::OnInit()
     {
         auto vertex_shader_source = LoadShaderFromFile(m_vertexSourcePath);
         auto frag_shader_source = LoadShaderFromFile(m_fragmentSourcePath);
 
         // abstract this to ogl layer
-        m_shaderId = Shader::CreateShaderProgram(vertex_shader_source.c_str(), frag_shader_source.c_str());
+        m_shaderId = OpenGLShader::CreateShaderProgram(vertex_shader_source.c_str(), frag_shader_source.c_str());
     }
 
-    void Shader::OnDelete()
+    void OpenGLShader::OnDelete()
     {
         // abstract this to ogl layer
         glDeleteProgram(m_shaderId);
         m_shaderId = 0;
     }
 
-    uint32_t Shader::GetShaderProgramId() const
+    uint32_t OpenGLShader::GetShaderProgramId() const
     {
         return m_shaderId;
     }
 
-    std::string Shader::LoadShaderFromFile(const std::string& filePath)
+    std::string OpenGLShader::LoadShaderFromFile(const std::string& filePath)
     {
         std::ifstream file(filePath, std::ios::in | std::ios::binary);
         if (!file)
@@ -65,7 +65,7 @@ namespace Neon
         return shaderCode;
     }
 
-    uint32_t Shader::CompileShader(const char* source, GLenum shaderType)
+    uint32_t OpenGLShader::CompileShader(const char* source, GLenum shaderType)
     {
         GLuint shader = glCreateShader(shaderType);
         glShaderSource(shader, 1, &source, nullptr);
@@ -85,10 +85,10 @@ namespace Neon
         return shader;
     }
 
-    uint32_t Shader::CreateShaderProgram(const char* vertexSource, const char* fragmentSource)
+    uint32_t OpenGLShader::CreateShaderProgram(const char* vertexSource, const char* fragmentSource)
     {
-        GLuint vertexShader = Shader::CompileShader(vertexSource, GL_VERTEX_SHADER);
-        GLuint fragmentShader = Shader::CompileShader(fragmentSource, GL_FRAGMENT_SHADER);
+        GLuint vertexShader = OpenGLShader::CompileShader(vertexSource, GL_VERTEX_SHADER);
+        GLuint fragmentShader = OpenGLShader::CompileShader(fragmentSource, GL_FRAGMENT_SHADER);
 
         GLuint shaderProgram = glCreateProgram();
         glAttachShader(shaderProgram, vertexShader);

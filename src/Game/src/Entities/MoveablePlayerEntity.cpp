@@ -4,6 +4,7 @@
 
 #include <iostream>
 
+#include <Runtime/Runtime/Backends/OpenGL/OpenGLShader.hpp>
 #include <Runtime/Components/Components.hpp>
 #include "MoveablePlayerEntity.hpp"
 
@@ -20,7 +21,7 @@ namespace Neon
             0.5f, -0.5f    // Bottom right vertex
         };
 
-        auto shader = new Shader(
+        auto shader = new OpenGLShader(
             "/home/sam/Game/Neon/src/Game/assets/shaders/GreenTriangle/shader.vert",
             "/home/sam/Game/Neon/src/Game/assets/shaders/GreenTriangle/shader.frag"
         );

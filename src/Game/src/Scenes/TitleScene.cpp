@@ -5,11 +5,12 @@
 #include <cmath>
 #include <iostream>
 
+#include <../../../GameEngine/src/Runtime/Runtime/Backends/Shader.hpp>
 #include <Runtime/Components/Components.hpp>
 #include <Runtime/Runtime.hpp>
 #include <Runtime/Runtime/Backends/OpenGL/OpenGL.hpp>
-#include <Runtime/Runtime/Shader.hpp>
 #include "TitleScene.hpp"
+#include <Runtime/Runtime/Backends/OpenGL/OpenGLShader.hpp>
 
 #include "../Entities/MoveablePlayerEntity.hpp"
 
@@ -31,7 +32,7 @@ namespace Neon
         ///
         std::vector<float> circle_vertices = OpenGL::GenerateCircleVertices(1.0f, 100);
 
-        auto circle_shader = new Shader(
+        auto circle_shader = new OpenGLShader(
             "/home/sam/Game/Neon/src/Game/assets/shaders/WhiteCircle/shader.vert",
             "/home/sam/Game/Neon/src/Game/assets/shaders/WhiteCircle/shader.frag"
         );
