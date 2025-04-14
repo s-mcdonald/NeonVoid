@@ -194,54 +194,6 @@ namespace Neon
     /// Statics
     ///
 
-    uint32_t OpenGL::CompileShader(const char* source, GLenum shaderType)
-    {
-        GLuint shader = glCreateShader(shaderType);
-        glShaderSource(shader, 1, &source, nullptr);
-        glCompileShader(shader);
-
-        GLint success;
-        glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
-        if (!success) 
-        {
-            char infoLog[512];
-            glGetShaderInfoLog(shader, 512, nullptr, infoLog);
-
-            #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-                std::cerr << "Shader compilation failed: " << infoLog << std::endl;
-            #endif
-        }
-        return shader;
-    }
-    
-    uint32_t OpenGL::CreateShaderProgram(const char* vertexSource, const char* fragmentSource)
-    {
-        GLuint vertexShader = OpenGL::CompileShader(vertexSource, GL_VERTEX_SHADER);
-        GLuint fragmentShader = OpenGL::CompileShader(fragmentSource, GL_FRAGMENT_SHADER);
-    
-        GLuint shaderProgram = glCreateProgram();
-        glAttachShader(shaderProgram, vertexShader);
-        glAttachShader(shaderProgram, fragmentShader);
-        glLinkProgram(shaderProgram);
-    
-        GLint success;
-        glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
-        if (!success) 
-        {
-            char infoLog[512];
-            glGetProgramInfoLog(shaderProgram, 512, nullptr, infoLog);
-
-            #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-                std::cerr << "Program linking failed: " << infoLog << std::endl;
-            #endif
-        }
-
-        glDeleteShader(vertexShader);
-        glDeleteShader(fragmentShader);
-
-        return shaderProgram;
-    }
-
     std::vector<float> OpenGL::GenerateCircleVertices(const float radius, const int segments)
     {
         std::vector<float> vertices;

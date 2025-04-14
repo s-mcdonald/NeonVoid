@@ -8,7 +8,6 @@
 
 #include <Runtime/Runtime.hpp>
 #include <Runtime/Runtime/Backends/Platform.hpp>
-#include <Runtime/Runtime/Backends/OpenGL/OpenGLHeaders.hpp>
 
 namespace Neon
 {
@@ -22,8 +21,6 @@ namespace Neon
 
             void Run(Application* game) override;
 
-            static uint32_t CompileShader(const char* source, GLenum shaderType);
-            static uint32_t CreateShaderProgram(const char* vertexSource, const char* fragmentSource);
             static std::vector<float> GenerateCircleVertices(float radius, int segments);
 
         protected:

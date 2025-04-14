@@ -6,6 +6,8 @@
 
 #include <string>
 
+#include <Runtime/Runtime/Backends/OpenGL/OpenGLHeaders.hpp>
+
 namespace Neon
 {
     class Shader
@@ -21,6 +23,8 @@ namespace Neon
 
         private:
             static std::string LoadShaderFromFile(const std::string&);
+            static uint32_t CompileShader(const char* source, GLenum shaderType);
+            static uint32_t CreateShaderProgram(const char* vertexSource, const char* fragmentSource);
 
         private:
             const std::string m_vertexSourcePath;
