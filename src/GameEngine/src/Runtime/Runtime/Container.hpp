@@ -4,9 +4,6 @@
 
 #pragma once
 
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-
 #include <Runtime/Types.hpp>
 
 namespace Neon
@@ -18,9 +15,21 @@ namespace Neon
             Container& operator=(const Container&) = delete;
 
         public:
-            static Container& GetInstance();
-            void SetWindow(WindowHandlePtr);
-            [[nodiscard]] WindowHandlePtr GetWindowAsPtr() const;
+            static Container& GetInstance()
+            {
+                static Container instance;
+                return instance;
+            }
+
+            void SetWindow(WindowHandlePtr window)
+            {
+                mx_window = window;
+            }
+
+            [[nodiscard]] WindowHandlePtr GetWindowAsPtr() const
+            {
+                return mx_window;
+            }
 
             Container(): mx_window(nullptr) {};
             ~Container() = default;
