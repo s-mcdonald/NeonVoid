@@ -8,6 +8,8 @@
 
 namespace Neon
 {
+    typedef void* WindowHandlePtr;
+
     constexpr float MIN_FONT_SIZE = 8;
     constexpr float BASE_FONT_SIZE = 18;
     constexpr float MULTIPLIER_RESOLUTION = 1;

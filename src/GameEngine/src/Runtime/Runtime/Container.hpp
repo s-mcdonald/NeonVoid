@@ -7,6 +7,8 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
+#include <Runtime/Types.hpp>
+
 namespace Neon
 {
     class Container
@@ -17,13 +19,13 @@ namespace Neon
 
         public:
             static Container& GetInstance();
-            void SetWindow(GLFWwindow*);
-            [[nodiscard]] GLFWwindow& GetWindow() const;
+            void SetWindow(WindowHandlePtr);
+            [[nodiscard]] WindowHandlePtr GetWindowAsPtr() const;
 
             Container(): mx_window(nullptr) {};
             ~Container() = default;
 
         private:
-            GLFWwindow* mx_window{nullptr};
+            WindowHandlePtr mx_window{nullptr};
     };
 }

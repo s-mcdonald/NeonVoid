@@ -11,8 +11,6 @@
 
 namespace Neon
 {
-    class Application;
-
     class GameEngine
     {
         public:

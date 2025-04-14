@@ -19,16 +19,16 @@ namespace Neon
 
     void Scene::Init()
     {
-        #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-                std::cout << "Scene::Init\n";
-        #endif
+#if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
+        std::cout << "Scene::Init\n";
+#endif
 
         if (m_isInitialized)
         {
             return;
         }
 
-        // Scene components but be initialized before entity components
+        // Scene components must be initialized before entity components
         InitRenderable(m_components);
         InitRenderable(m_entities);
 
@@ -39,7 +39,7 @@ namespace Neon
 
     void Scene::Update()
     {
-        // Scene components but be updated before entity components
+        // Scene components must be updated before entity components
         UpdateRenderable(m_components);
         UpdateRenderable(m_entities);
 
@@ -48,11 +48,11 @@ namespace Neon
 
     void Scene::Render()
     {
-        // Scene components but be updated before entity components
+        // Scene components must be rendered before entity components
         RenderRenderable(m_components);
         RenderRenderable(m_entities);
 
-        OnUpdate();
+        OnRender();
     }
 
     void Scene::Destroy()

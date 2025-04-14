@@ -3,6 +3,7 @@
  */
 
 #include <Runtime/Runtime/Container.hpp>
+#include <Runtime/Types.hpp>
 
 namespace Neon
 {
@@ -12,13 +13,13 @@ namespace Neon
         return instance;
     }
 
-    void Container::SetWindow(GLFWwindow* window)
+    void Container::SetWindow(WindowHandlePtr window)
     {
         mx_window = window;
     }
 
-    GLFWwindow& Container::GetWindow() const
+    WindowHandlePtr Container::GetWindowAsPtr() const
     {
-        return *mx_window;
+        return mx_window;
     }
 }
