@@ -5,6 +5,7 @@
 
 #include <vector>
 #include <stdexcept>
+#include <typeindex>
 
 #include <Runtime/Entity/Entity.hpp>
 #include <Runtime/Runtime/Input.hpp>
@@ -27,12 +28,12 @@ namespace Neon
             template<typename T>
             T* GetComponent()
             {
-                for (auto* component : m_components)
+                auto type = std::type_index(typeid(T));
+                auto it = m_components.find(type);
+
+                if (it != m_components.end())
                 {
-                    if (auto* target = dynamic_cast<T*>(component))
-                    {
-                        return target;
-                    }
+                    return dynamic_cast<T*>(it->second);
                 }
 
                 throw std::runtime_error("Component of requested type not found!");
@@ -43,14 +44,8 @@ namespace Neon
             template<typename T>
             bool HasComponent() const
             {
-                for (auto* component : m_components)
-                {
-                    if (dynamic_cast<T*>(component))
-                    {
-                        return true;
-                    }
-                }
-                return false;
+                auto type = std::type_index(typeid(T));
+                return m_components.find(type) != m_components.end();
             }
 
             [[nodiscard]] EntityID GetId() const;
@@ -63,8 +58,6 @@ namespace Neon
 
         private:
             EntityID m_id;
-
-            // optimize the storage.
-            std::vector<Component*> m_components;
+            std::unordered_map<std::type_index, Component*> m_components;
     };
 }
