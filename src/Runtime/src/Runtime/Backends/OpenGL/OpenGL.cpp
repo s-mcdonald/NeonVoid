@@ -7,9 +7,9 @@
 
 #include <NeonEngine/Application.hpp>
 #include <NeonEngine/Runtime.hpp>
-#include <NeonEngine/Runtime/Backends/OpenGL/OpenGL.hpp>
-#include <NeonEngine/Runtime/Backends/OpenGL/OpenGLInput.hpp>
-#include <NeonEngine/Runtime/Container.hpp>
+#include <Runtime/Backends/OpenGL/OpenGL.hpp>
+#include <Runtime/Backends/OpenGL/OpenGLInput.hpp>
+#include <Runtime/Container.hpp>
 
 namespace Neon 
 {

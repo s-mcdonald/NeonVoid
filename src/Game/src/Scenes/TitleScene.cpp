@@ -4,9 +4,9 @@
 
 #include <NeonEngine/Components/Components.hpp>
 #include <NeonEngine/Runtime.hpp>
-#include <NeonEngine/Runtime/Backends/OpenGL/OpenGL.hpp>
-#include <NeonEngine/Runtime/Backends/OpenGL/OpenGLShader.hpp>
-#include <NeonEngine/Runtime/Backends/Shader.hpp>
+#include <Runtime/Backends/OpenGL/OpenGL.hpp>
+#include <Runtime/Backends/OpenGL/OpenGLShader.hpp>
+#include <Runtime/Backends/Shader.hpp>
 
 #include "../Entities/MoveablePlayerEntity.hpp"
 #include "TitleScene.hpp"

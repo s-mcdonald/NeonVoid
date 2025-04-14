@@ -10,7 +10,7 @@
 
 #include <NeonEngine/Types.hpp>
 #include <NeonEngine/Entity/Entity.hpp>
-#include <NeonEngine/Runtime/Input.hpp>
+#include <Runtime/Input.hpp>
 
 namespace Neon 
 {

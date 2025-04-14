@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include <NeonEngine/Runtime/Backends/OpenGL/OpenGLInput.hpp>
+#include <Runtime/Backends/OpenGL/OpenGLInput.hpp>
 
 namespace Neon
 {

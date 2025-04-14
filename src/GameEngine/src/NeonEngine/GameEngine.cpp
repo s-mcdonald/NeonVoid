@@ -5,8 +5,8 @@
 #include <NeonEngine/Runtime.hpp>
 
 #ifdef NEON_BUILD_OPENGL
-#include <NeonEngine/Runtime/Backends/OpenGL/OpenGL.hpp>
-#include <NeonEngine/Runtime/Backends/OpenGL/OpenGLShader.hpp>
+#include <Runtime/Backends/OpenGL/OpenGL.hpp>
+#include <Runtime/Backends/OpenGL/OpenGLShader.hpp>
 #include <utility>
 #elif defined(NEON_BUILD_VULKAN)
 #else

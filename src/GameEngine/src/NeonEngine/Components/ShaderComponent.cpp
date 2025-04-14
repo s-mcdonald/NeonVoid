@@ -6,8 +6,8 @@
 
 #include <NeonEngine/Components/Components.hpp>
 #include <NeonEngine/Runtime.hpp>
-#include <NeonEngine/Runtime/Backends/OpenGL/GameEngineApi.hpp>
-#include <NeonEngine/Runtime/Backends/Shader.hpp>
+#include <Runtime/Backends/OpenGL/GameEngineApi.hpp>
+#include <Runtime/Backends/Shader.hpp>
 
 namespace Neon 
 {

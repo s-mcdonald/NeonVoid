@@ -6,7 +6,7 @@
 
 #include <NeonEngine/Runtime.hpp>
 #include <NeonEngine/Scene/Scene.hpp>
-#include <NeonEngine/Runtime/Input.hpp>
+#include <Runtime/Input.hpp>
 
 namespace Neon
 {

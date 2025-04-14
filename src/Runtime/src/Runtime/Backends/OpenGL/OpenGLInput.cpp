@@ -3,10 +3,10 @@
  */
 
 #include <NeonEngine/Runtime.hpp>
-#include <NeonEngine/Runtime/Container.hpp>
+#include <Runtime/Container.hpp>
 
-#include <NeonEngine/Runtime/Backends/OpenGL/OpenGLHeaders.hpp>
-#include <NeonEngine/Runtime/Backends/OpenGL/OpenGLInput.hpp>
+#include <Runtime/Backends/OpenGL/OpenGLHeaders.hpp>
+#include <Runtime/Backends/OpenGL/OpenGLInput.hpp>
 
 namespace Neon
 {

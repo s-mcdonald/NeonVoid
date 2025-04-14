@@ -10,8 +10,8 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include <NeonEngine/Runtime.hpp>
-#include <NeonEngine/Runtime/Backends/OpenGL/OpenGLHeaders.hpp>
-#include <NeonEngine/Runtime/Backends/OpenGL/OpenGLRenderer.hpp>
+#include <Runtime/Backends/OpenGL/OpenGLHeaders.hpp>
+#include <Runtime/Backends/OpenGL/OpenGLRenderer.hpp>
 
 namespace Neon 
 {

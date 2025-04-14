@@ -6,8 +6,8 @@
 
 #include <string>
 
-#include <NeonEngine/Runtime/Backends/OpenGL/OpenGLHeaders.hpp>
-#include <NeonEngine/Runtime/Backends/Shader.hpp>
+#include <Runtime/Backends/OpenGL/OpenGLHeaders.hpp>
+#include <Runtime/Backends/Shader.hpp>
 
 namespace Neon
 {

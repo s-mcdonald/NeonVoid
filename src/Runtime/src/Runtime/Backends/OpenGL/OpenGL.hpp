@@ -7,7 +7,7 @@
 #include <vector>
 
 #include <NeonEngine/Runtime.hpp>
-#include <NeonEngine/Runtime/Backends/Platform.hpp>
+#include <Runtime/Backends/Platform.hpp>
 
 namespace Neon
 {

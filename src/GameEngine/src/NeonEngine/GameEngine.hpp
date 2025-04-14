@@ -5,9 +5,9 @@
 #pragma once
 
 #include <NeonEngine/Runtime.hpp>
-#include <NeonEngine/Runtime/Backends/Platform.hpp>
-#include <NeonEngine/Runtime/Backends/Shader.hpp>
-#include <NeonEngine/Runtime/Backends/VertexBuffer.hpp>
+#include <Runtime/Backends/Platform.hpp>
+#include <Runtime/Backends/Shader.hpp>
+#include <Runtime/Backends/VertexBuffer.hpp>
 
 namespace Neon
 {

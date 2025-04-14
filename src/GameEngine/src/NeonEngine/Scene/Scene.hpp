@@ -8,7 +8,7 @@
 
 #include <NeonEngine/Components/Components.hpp>
 #include <NeonEngine/Entity/Entity.hpp>
-#include <NeonEngine/Runtime/Input.hpp>
+#include <Runtime/Input.hpp>
 #include <NeonEngine/Types.hpp>
 
 namespace Neon

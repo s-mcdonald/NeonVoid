@@ -5,7 +5,7 @@
 #include <iostream>
 
 #include <NeonEngine/Components/Components.hpp>
-#include <NeonEngine/Runtime/Backends/OpenGL/OpenGLShader.hpp>
+#include <Runtime/Backends/OpenGL/OpenGLShader.hpp>
 #include "MoveablePlayerEntity.hpp"
 
 namespace Neon

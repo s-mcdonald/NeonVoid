@@ -8,8 +8,8 @@
 #include <utility>
 
 #include <NeonEngine/Runtime.hpp>
-#include <NeonEngine/Runtime/Backends/OpenGL/OpenGLHeaders.hpp>
-#include <NeonEngine/Runtime/Backends/OpenGL/OpenGLShader.hpp>
+#include <Runtime/Backends/OpenGL/OpenGLHeaders.hpp>
+#include <Runtime/Backends/OpenGL/OpenGLShader.hpp>
 
 namespace Neon
 {

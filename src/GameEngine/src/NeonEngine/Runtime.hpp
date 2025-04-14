@@ -15,11 +15,11 @@
 #include <NeonEngine/Components/Components.hpp>
 #include <NeonEngine/Scene/Scene.hpp>
 
-#include <NeonEngine/Runtime/Backends/OpenGL/GameEngineApi.hpp>
-#include <NeonEngine/Runtime/Backends/OpenGL/OpenGLRenderer.hpp>
-#include <NeonEngine/Runtime/Backends/OpenGL/OpenGLVertexBuffer.hpp>
-#include <NeonEngine/Runtime/Backends/Shader.hpp>
-#include <NeonEngine/Runtime/Backends/VertexBuffer.hpp>
-#include "../NeonEngine/Runtime/Backends/IRenderer.hpp"
-#include "../NeonEngine/Runtime/Backends/Platform.hpp"
+#include <Runtime/Backends/OpenGL/GameEngineApi.hpp>
+#include <Runtime/Backends/OpenGL/OpenGLRenderer.hpp>
+#include <Runtime/Backends/OpenGL/OpenGLVertexBuffer.hpp>
+#include <Runtime/Backends/Shader.hpp>
+#include <Runtime/Backends/VertexBuffer.hpp>
+#include <Runtime/Backends/IRenderer.hpp>
+#include <Runtime/Backends/Platform.hpp>
 #include "GameEngine.hpp"

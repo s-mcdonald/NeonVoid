@@ -5,8 +5,8 @@
 #pragma once
 
 #include <NeonEngine/Runtime.hpp>
-#include <NeonEngine/Runtime/Backends/OpenGL/OpenGLVertexBuffer.hpp>
-#include <NeonEngine/Runtime/Backends/VertexBuffer.hpp>
+#include <Runtime/Backends/OpenGL/OpenGLVertexBuffer.hpp>
+#include <Runtime/Backends/VertexBuffer.hpp>
 
 namespace Neon
 {
