@@ -2,8 +2,10 @@
  * {SourceHeader}
  */
 
+#include <NeonEngine/NeonEngine.hpp>
+#include <Runtime/Runtime.hpp>
+
 #include <NeonEngine/Components/Components.hpp>
-#include <NeonEngine/Runtime.hpp>
 #include <Runtime/Backends/OpenGL/OpenGL.hpp>
 #include <Runtime/Backends/OpenGL/OpenGLShader.hpp>
 #include <Runtime/Backends/Shader.hpp>

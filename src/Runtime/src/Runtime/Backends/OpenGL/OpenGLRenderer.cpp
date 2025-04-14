@@ -9,7 +9,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include <NeonEngine/Runtime.hpp>
+#include <NeonEngine/NeonEngine.hpp>
 #include <Runtime/Backends/OpenGL/OpenGLHeaders.hpp>
 #include <Runtime/Backends/OpenGL/OpenGLRenderer.hpp>
 

@@ -2,7 +2,7 @@
  * {SourceHeader}
  */
 
-#include <NeonEngine/Runtime.hpp>
+#include <NeonEngine/NeonEngine.hpp>
 #include <Runtime/Container.hpp>
 
 #include <Runtime/Backends/OpenGL/OpenGLHeaders.hpp>

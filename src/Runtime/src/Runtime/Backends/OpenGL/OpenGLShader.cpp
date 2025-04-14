@@ -7,7 +7,7 @@
 #include <string>
 #include <utility>
 
-#include <NeonEngine/Runtime.hpp>
+#include <NeonEngine/NeonEngine.hpp>
 #include <Runtime/Backends/OpenGL/OpenGLHeaders.hpp>
 #include <Runtime/Backends/OpenGL/OpenGLShader.hpp>
 

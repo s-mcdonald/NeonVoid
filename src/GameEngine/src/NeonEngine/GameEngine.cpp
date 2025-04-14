@@ -2,7 +2,8 @@
  * {SourceHeader}
  */
 
-#include <NeonEngine/Runtime.hpp>
+#include <NeonEngine/NeonEngine.hpp>
+#include <Runtime/Runtime.hpp>
 
 #ifdef NEON_BUILD_OPENGL
 #include <Runtime/Backends/OpenGL/OpenGL.hpp>

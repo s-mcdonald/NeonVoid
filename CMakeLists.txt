@@ -54,7 +54,7 @@ set(OpenGL_GL_PREFERENCE GLVND)
 # Source files
 #
 set(GAME_ENGINE_SRC
-        src/GameEngine/src/NeonEngine/Runtime.hpp
+        src/GameEngine/src/NeonEngine/NeonEngine.hpp
 
         src/GameEngine/src/NeonEngine/Types.hpp
         src/GameEngine/src/NeonEngine/Application.hpp
@@ -94,6 +94,7 @@ set(GAME_ENGINE_SRC
         src/GameEngine/src/NeonEngine/GameEngine.cpp
 
         # Platform
+        src/Runtime/src/Runtime/Runtime.hpp
         src/Runtime/src/Runtime/Input.hpp
         src/Runtime/src/Runtime/Container.hpp
 
@@ -218,13 +219,13 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     )
 else()
     target_compile_definitions(
-        NeonVoid PRIVATE 
-        ${NEON_BACKEND_GPU_LIB}
+            NeonVoid PRIVATE
+            ${NEON_BACKEND_GPU_LIB}
     )
 
     target_compile_definitions(
-        GameEngine PRIVATE 
-        ${NEON_BACKEND_GPU_LIB}
+            GameEngine PRIVATE
+            ${NEON_BACKEND_GPU_LIB}
     )
 endif()
 
@@ -233,7 +234,7 @@ endif()
 # Specify the output directory for the executable
 #
 set_target_properties(NeonVoid PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build
+        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build
 )
 
 

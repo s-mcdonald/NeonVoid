@@ -2,7 +2,7 @@
  * {SourceHeader}
  */
 
-#include <NeonEngine/Runtime.hpp>
+#include <Runtime/Runtime.hpp>
 
 namespace Neon
 {

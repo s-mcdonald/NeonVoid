@@ -6,7 +6,7 @@
 #include <iostream>
 
 #include <NeonEngine/Application.hpp>
-#include <NeonEngine/Runtime.hpp>
+#include <NeonEngine/NeonEngine.hpp>
 #include <Runtime/Backends/OpenGL/OpenGL.hpp>
 #include <Runtime/Backends/OpenGL/OpenGLInput.hpp>
 #include <Runtime/Container.hpp>

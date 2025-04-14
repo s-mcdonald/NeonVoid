@@ -5,7 +5,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 #include <NeonEngine/Components/Components.hpp>
-#include <NeonEngine/Runtime.hpp>
+#include <NeonEngine/NeonEngine.hpp>
 #include <Runtime/Backends/OpenGL/GameEngineApi.hpp>
 #include <Runtime/Backends/Shader.hpp>
 

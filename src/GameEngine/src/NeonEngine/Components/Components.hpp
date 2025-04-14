@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include <NeonEngine/Runtime.hpp>
+#include <NeonEngine/NeonEngine.hpp>
 #include <NeonEngine/Scene/Scene.hpp>
 #include <Runtime/Input.hpp>
 

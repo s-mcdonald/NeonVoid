@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include <NeonEngine/Runtime.hpp>
+#include <NeonEngine/NeonEngine.hpp>
 #include <Runtime/Backends/Platform.hpp>
 #include <Runtime/Backends/Shader.hpp>
 #include <Runtime/Backends/VertexBuffer.hpp>

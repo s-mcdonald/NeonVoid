@@ -5,7 +5,7 @@
 #include <iostream>
 
 #include <NeonEngine/Components/Components.hpp>
-#include <NeonEngine/Runtime.hpp>
+#include <NeonEngine/NeonEngine.hpp>
 #include <Runtime/Input.hpp>
 #include <NeonEngine/Types.hpp>
 
