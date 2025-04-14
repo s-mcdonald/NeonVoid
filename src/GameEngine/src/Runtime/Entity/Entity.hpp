@@ -54,6 +54,7 @@ namespace Neon
         public:
             virtual void OnInit();
             virtual void OnUpdate();
+            virtual void OnRender();
             virtual void OnDestroy() {};
             void HandleInput(OpenGLInput* input);
 

@@ -46,6 +46,15 @@ namespace Neon
         OnUpdate();
     }
 
+    void Scene::Render()
+    {
+        // Scene components but be updated before entity components
+        RenderRenderable(m_components);
+        RenderRenderable(m_entities);
+
+        OnUpdate();
+    }
+
     void Scene::Destroy()
     {
         // Reverse the order for destroy
@@ -98,6 +107,15 @@ namespace Neon
         for (auto& [key, value] : t)
         {
             value->OnUpdate();
+        }
+    }
+
+    template <typename T>
+    void Scene::RenderRenderable(const T& t)
+    {
+        for (auto& [key, value] : t)
+        {
+            value->OnRender();
         }
     }
 

@@ -184,7 +184,8 @@ namespace Neon
             // Update component/object data (now it also does render)
             scene->Update();
 
-            // Do all Rendering here..
+            // Do all Rendering here.
+            scene->Render();
 
             glfwSwapBuffers(m_window);
         }

@@ -48,6 +48,19 @@ namespace Neon
         }
     }
 
+    void Entity::OnRender()
+    {
+#if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
+        std::cout << "Entity::Render" << std::endl;
+#endif
+
+        for (const auto& [_, component] : m_components)
+        {
+            component->OnRender();
+        }
+    }
+
+
     void Entity::AddComponent(Component* component)
     {
         component->SetParentEntity(this);

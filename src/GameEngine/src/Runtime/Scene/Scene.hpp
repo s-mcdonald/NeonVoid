@@ -25,10 +25,13 @@ namespace Neon
         public:
             void Init();
             void Update();
+            void Render();
             void Destroy();
+
             void HandleInput(OpenGLInput* input);
             virtual void OnInit() {};
             virtual void OnUpdate() {};
+            virtual void OnRender() {};
             virtual void OnDestroy() {};
 
             bool IsInitialized() const;
@@ -46,6 +49,9 @@ namespace Neon
 
             template <typename T>
             void UpdateRenderable(const T& t);
+
+            template <typename T>
+            void RenderRenderable(const T& t);
 
             template <typename T>
             void DestroyRenderable(const T& t);

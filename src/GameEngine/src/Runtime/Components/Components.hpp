@@ -30,9 +30,10 @@ namespace Neon
             }
 
         public:
-            virtual void OnInit() = 0;
-            virtual void OnUpdate() = 0;
-            virtual void OnDestroy() = 0;
+            virtual void OnInit() {};
+            virtual void OnUpdate() {};
+            virtual void OnRender() {};
+            virtual void OnDestroy() {};
 
         private:
             Entity* m_entityParent = nullptr;
@@ -50,6 +51,7 @@ namespace Neon
         public:
             void OnInit() override {};
             void OnUpdate() override {};
+            void OnRender() override {};
             void OnDestroy() override;
 
         public:
@@ -80,6 +82,7 @@ namespace Neon
         public:
             void OnInit() override {};
             void OnUpdate() override;
+            void OnRender() override {};
             void OnDestroy() override {};
 
         private:
@@ -102,6 +105,8 @@ namespace Neon
 
             void OnInit() override;
             void OnUpdate() override;
+            void OnRender() override {};
+
             void TriggerPlayOnce();
             void TriggerPlayRepeat();
             void SetVolume(const Volume&) override;
@@ -129,6 +134,7 @@ namespace Neon
 
             void OnInit() override;
             void OnUpdate() override;
+            void OnRender() override {};
 
             [[nodiscard]] Point GetPosition() const;
             void OnDestroy() override;
@@ -153,6 +159,7 @@ namespace Neon
 
             void OnInit() override;
             void OnUpdate() override;
+            void OnRender() override {};
             void OnDestroy() override;
 
             void UpdateData(const std::vector<float>& vertices);
@@ -173,6 +180,7 @@ namespace Neon
         public:
             void OnInit() override {};
             void OnUpdate() override {};
+            void OnRender() override {};
             void OnDestroy() override {};
 
         public:
@@ -191,6 +199,7 @@ namespace Neon
         public:
             void OnInit() override {};
             void OnUpdate() override {};
+            void OnRender() override {};
             void OnDestroy() override {};
 
         public:
