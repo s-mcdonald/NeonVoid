@@ -9,11 +9,11 @@
 
 namespace Neon
 {
-    class Game
+    class Application
     {
         public:
-            Game() = default;
-            virtual ~Game();
+            Application() = default;
+            virtual ~Application();
 
         public:
             virtual bool Initialize(WindowDimension width, WindowDimension height, const char* title) const;

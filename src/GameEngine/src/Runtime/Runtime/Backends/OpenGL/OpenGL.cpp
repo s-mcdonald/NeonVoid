@@ -5,7 +5,7 @@
 #include <cmath>
 #include <iostream>
 
-#include <Runtime/Game.hpp>
+#include <Runtime/Application.hpp>
 #include <Runtime/Runtime.hpp>
 #include <Runtime/Runtime/Container.hpp>
 #include <Runtime/Runtime/Backends/OpenGL/OpenGLHeaders.hpp>
@@ -149,7 +149,7 @@ namespace Neon
         return true;
     }
 
-    void OpenGL::Run(Game* game)
+    void OpenGL::Run(Application* game)
     {
         if (!m_window) return;
 

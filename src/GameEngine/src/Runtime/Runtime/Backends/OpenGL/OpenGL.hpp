@@ -20,7 +20,7 @@ namespace Neon
 
             bool Initialize(int width, int height, const char* title) override;
 
-            void Run(Game* game) override;
+            void Run(Application* game) override;
 
             static uint32_t CompileShader(const char* source, GLenum shaderType);
             static uint32_t CreateShaderProgram(const char* vertexSource, const char* fragmentSource);

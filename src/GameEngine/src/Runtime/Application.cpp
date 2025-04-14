@@ -7,11 +7,11 @@
 
 #include <deque>
 
-#include <Runtime/Game.hpp>
+#include <Runtime/Application.hpp>
 
 namespace Neon 
 {
-    Game::~Game()
+    Application::~Application()
     {
         for (const auto s : m_scenes)
         {
@@ -19,22 +19,22 @@ namespace Neon
         }
     }
 
-    bool Game::Initialize(const WindowDimension width, const WindowDimension height, const char* title) const
+    bool Application::Initialize(const WindowDimension width, const WindowDimension height, const char* title) const
     {
         return m_gameEngine.Initialize(width, height, title);
     }
 
-    void Game::Run()
+    void Application::Run()
     {
         m_gameEngine.Run(this);
     }
 
-    void Game::AddScene(Scene* scene)
+    void Application::AddScene(Scene* scene)
     {
         m_scenes.push_back(scene);
     }
 
-    Scene* Game::GetCurrentScene()
+    Scene* Application::GetCurrentScene()
     {
         if (m_currentScene == nullptr)
         {
@@ -44,7 +44,7 @@ namespace Neon
         return m_currentScene;
     }
 
-    void Game::SwitchScene()
+    void Application::SwitchScene()
     {
         if (m_currentScene == nullptr && !m_scenes.empty())
         {
@@ -62,7 +62,7 @@ namespace Neon
             return;
         }
 
-        // we must have reached the end of the game..
+        // we must have reached the end of the Application..
         // if (m_scenes.empty())....
     }
 }

@@ -33,7 +33,7 @@ namespace Neon
         return m_platform->Initialize(width, height,title);
     }
 
-    void GameEngine::Run(Game* game) const
+    void GameEngine::Run(Application* game) const
     {
         m_platform->Run(game);
     }

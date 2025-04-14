@@ -58,8 +58,8 @@ set(GAME_ENGINE_SRC
         src/GameEngine/src/Runtime/Runtime.cpp
 
         src/GameEngine/src/Runtime/Types.hpp
-        src/GameEngine/src/Runtime/Game.hpp
-        src/GameEngine/src/Runtime/Game.cpp
+        src/GameEngine/src/Runtime/Application.hpp
+        src/GameEngine/src/Runtime/Application.cpp
 
         # AssetManager
         src/GameEngine/src/Runtime/AssetManager/AssetManager.hpp

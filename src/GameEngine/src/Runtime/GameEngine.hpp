@@ -9,7 +9,7 @@
 
 namespace Neon
 {
-    class Game;
+    class Application;
 
     class GameEngine
     {
@@ -19,7 +19,7 @@ namespace Neon
 
         public:
             bool Initialize(int width, int height, const char* title) const;
-            void Run(Game* game) const;
+            void Run(Application* game) const;
 
             [[nodiscard]] Platform* GetPlatform() const;
 

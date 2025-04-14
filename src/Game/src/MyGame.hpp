@@ -5,11 +5,11 @@
 #pragma once
 
 #include <Runtime/Runtime.hpp>
-#include <Runtime/Game.hpp>
+#include <Runtime/Application.hpp>
 
 namespace Neon
 {
-    class MyGame final : public Game
+    class MyGame final : public Application
     {
         public:
             MyGame();
