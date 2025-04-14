@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include <Runtime/Entity/Entity.hpp>
+#include <NeonEngine/Entity/Entity.hpp>
 #include "../Mankind.hpp"
 
 namespace Neon

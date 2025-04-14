@@ -4,8 +4,8 @@
 
 #include <iostream>
 
+#include "../../GameEngine/src/NeonEngine/Runtime.hpp"
 #include "GamePlayScene.hpp"
-#include "../../GameEngine/src/Runtime/Runtime.hpp"
 
 namespace Neon
 {

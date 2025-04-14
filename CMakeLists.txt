@@ -54,67 +54,67 @@ set(OpenGL_GL_PREFERENCE GLVND)
 # Source files
 #
 set(GAME_ENGINE_SRC
-        src/GameEngine/src/Runtime/Runtime.hpp
+        src/GameEngine/src/NeonEngine/Runtime.hpp
 
-        src/GameEngine/src/Runtime/Types.hpp
-        src/GameEngine/src/Runtime/Application.hpp
-        src/GameEngine/src/Runtime/Application.cpp
+        src/GameEngine/src/NeonEngine/Types.hpp
+        src/GameEngine/src/NeonEngine/Application.hpp
+        src/GameEngine/src/NeonEngine/Application.cpp
 
         # AssetManager
-        src/GameEngine/src/Runtime/AssetManager/AssetManager.hpp
-        src/GameEngine/src/Runtime/AssetManager/AssetManager.cpp
+        src/GameEngine/src/NeonEngine/AssetManager/AssetManager.hpp
+        src/GameEngine/src/NeonEngine/AssetManager/AssetManager.cpp
 
         # Scene(s)
-        src/GameEngine/src/Runtime/Scene/Scene.hpp
-        src/GameEngine/src/Runtime/Scene/Scene.cpp
+        src/GameEngine/src/NeonEngine/Scene/Scene.hpp
+        src/GameEngine/src/NeonEngine/Scene/Scene.cpp
 
         # Entity
-        src/GameEngine/src/Runtime/Entity/Entity.hpp
-        src/GameEngine/src/Runtime/Entity/Entity.cpp
+        src/GameEngine/src/NeonEngine/Entity/Entity.hpp
+        src/GameEngine/src/NeonEngine/Entity/Entity.cpp
 
         # Transition
-        src/GameEngine/src/Runtime/Transition/Transition.hpp
-        src/GameEngine/src/Runtime/Transition/Transition.cpp
+        src/GameEngine/src/NeonEngine/Transition/Transition.hpp
+        src/GameEngine/src/NeonEngine/Transition/Transition.cpp
 
         # Audio
-        src/GameEngine/src/Runtime/Audio/Volume.hpp
-        src/GameEngine/src/Runtime/Audio/AudioSystem.hpp
-        src/GameEngine/src/Runtime/Audio/AudioSystem.cpp
+        src/GameEngine/src/NeonEngine/Audio/Volume.hpp
+        src/GameEngine/src/NeonEngine/Audio/AudioSystem.hpp
+        src/GameEngine/src/NeonEngine/Audio/AudioSystem.cpp
 
         # Components
-        src/GameEngine/src/Runtime/Components/ShaderComponent.cpp
-        src/GameEngine/src/Runtime/Components/AudioComponent.cpp
-        src/GameEngine/src/Runtime/Components/TextComponent.cpp
-        src/GameEngine/src/Runtime/Components/PositionComponent.cpp
-        src/GameEngine/src/Runtime/Components/MovementComponent.cpp
+        src/GameEngine/src/NeonEngine/Components/ShaderComponent.cpp
+        src/GameEngine/src/NeonEngine/Components/AudioComponent.cpp
+        src/GameEngine/src/NeonEngine/Components/TextComponent.cpp
+        src/GameEngine/src/NeonEngine/Components/PositionComponent.cpp
+        src/GameEngine/src/NeonEngine/Components/MovementComponent.cpp
 
         # Engine Abstracts
-        src/GameEngine/src/Runtime/Runtime/Input.hpp
-        src/GameEngine/src/Runtime/Runtime/Container.hpp
-        src/GameEngine/src/Runtime/GameEngine.hpp
-        src/GameEngine/src/Runtime/GameEngine.cpp
+        src/GameEngine/src/NeonEngine/Runtime/Input.hpp
+        src/GameEngine/src/NeonEngine/Runtime/Container.hpp
+        src/GameEngine/src/NeonEngine/GameEngine.hpp
+        src/GameEngine/src/NeonEngine/GameEngine.cpp
 
         # Platform
-        src/GameEngine/src/Runtime/Runtime/Backends/Platform.hpp
-        src/GameEngine/src/Runtime/Runtime/Backends/IWindow.hpp
-        src/GameEngine/src/Runtime/Runtime/Backends/IWindow.hpp
-        src/GameEngine/src/Runtime/Runtime/Backends/Shader.hpp
-        src/GameEngine/src/Runtime/Runtime/Backends/IRenderer.hpp
-        src/GameEngine/src/Runtime/Runtime/Backends/VertexBuffer.hpp
+        src/GameEngine/src/NeonEngine/Runtime/Backends/Platform.hpp
+        src/GameEngine/src/NeonEngine/Runtime/Backends/IWindow.hpp
+        src/GameEngine/src/NeonEngine/Runtime/Backends/IWindow.hpp
+        src/GameEngine/src/NeonEngine/Runtime/Backends/Shader.hpp
+        src/GameEngine/src/NeonEngine/Runtime/Backends/IRenderer.hpp
+        src/GameEngine/src/NeonEngine/Runtime/Backends/VertexBuffer.hpp
 
-        src/GameEngine/src/Runtime/Runtime/Backends/OpenGL/OpenGLHeaders.hpp
-        src/GameEngine/src/Runtime/Runtime/Backends/OpenGL/OpenGL.hpp
-        src/GameEngine/src/Runtime/Runtime/Backends/OpenGL/OpenGL.cpp
-        src/GameEngine/src/Runtime/Runtime/Backends/OpenGL/OpenGLInput.hpp
-        src/GameEngine/src/Runtime/Runtime/Backends/OpenGL/OpenGLInput.cpp
-        src/GameEngine/src/Runtime/Runtime/Backends/OpenGL/OpenGLShader.hpp
-        src/GameEngine/src/Runtime/Runtime/Backends/OpenGL/OpenGLShader.cpp
-        src/GameEngine/src/Runtime/Runtime/Backends/OpenGL/GameEngineApi.hpp
-        src/GameEngine/src/Runtime/Runtime/Backends/OpenGL/GameEngineApi.cpp
-        src/GameEngine/src/Runtime/Runtime/Backends/OpenGL/OpenGLRenderer.hpp
-        src/GameEngine/src/Runtime/Runtime/Backends/OpenGL/OpenGLRenderer.cpp
-        src/GameEngine/src/Runtime/Runtime/Backends/OpenGL/OpenGLVertexBuffer.hpp
-        src/GameEngine/src/Runtime/Runtime/Backends/OpenGL/OpenGLVertexBuffer.cpp
+        src/GameEngine/src/NeonEngine/Runtime/Backends/OpenGL/OpenGLHeaders.hpp
+        src/GameEngine/src/NeonEngine/Runtime/Backends/OpenGL/OpenGL.hpp
+        src/GameEngine/src/NeonEngine/Runtime/Backends/OpenGL/OpenGL.cpp
+        src/GameEngine/src/NeonEngine/Runtime/Backends/OpenGL/OpenGLInput.hpp
+        src/GameEngine/src/NeonEngine/Runtime/Backends/OpenGL/OpenGLInput.cpp
+        src/GameEngine/src/NeonEngine/Runtime/Backends/OpenGL/OpenGLShader.hpp
+        src/GameEngine/src/NeonEngine/Runtime/Backends/OpenGL/OpenGLShader.cpp
+        src/GameEngine/src/NeonEngine/Runtime/Backends/OpenGL/GameEngineApi.hpp
+        src/GameEngine/src/NeonEngine/Runtime/Backends/OpenGL/GameEngineApi.cpp
+        src/GameEngine/src/NeonEngine/Runtime/Backends/OpenGL/OpenGLRenderer.hpp
+        src/GameEngine/src/NeonEngine/Runtime/Backends/OpenGL/OpenGLRenderer.cpp
+        src/GameEngine/src/NeonEngine/Runtime/Backends/OpenGL/OpenGLVertexBuffer.hpp
+        src/GameEngine/src/NeonEngine/Runtime/Backends/OpenGL/OpenGLVertexBuffer.cpp
 )
 
 # Create GameEngine as a static library
