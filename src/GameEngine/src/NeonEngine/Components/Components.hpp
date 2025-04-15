@@ -150,7 +150,7 @@ namespace Neon
     {
         public:
             ShaderComponent() = delete;
-            explicit ShaderComponent(const std::vector<float>& vertices, Shader* shader)
+            explicit ShaderComponent(const std::vector<float>& vertices, IShader* shader)
                 : Component()
                 , m_shader(shader)
                 , m_vertices(vertices) {};
@@ -164,7 +164,7 @@ namespace Neon
             void UpdateData(const std::vector<float>& vertices);
 
         private:
-            Shader* m_shader;
+            IShader* m_shader;
             std::vector<float> m_vertices;
             VertexBuffer* m_buffer{};
             int m_verticiesSize{};

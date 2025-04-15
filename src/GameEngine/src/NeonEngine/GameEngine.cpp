@@ -58,7 +58,7 @@ namespace Neon
 #endif
     }
 
-    Shader* GameEngine::CreateShader(std::string vertexPath, std::string fragmentPath)
+    IShader* GameEngine::CreateShader(std::string vertexPath, std::string fragmentPath)
     {
 #ifdef NEON_BUILD_OPENGL
         return new OpenGLShader(std::move(vertexPath), std::move(fragmentPath));

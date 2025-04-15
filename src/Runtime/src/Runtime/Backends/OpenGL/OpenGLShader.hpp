@@ -8,11 +8,11 @@
 #include <string>
 
 #include <Runtime/Backends/OpenGL/OpenGLHeaders.hpp>
-#include <Runtime/Backends/Shader.hpp>
+#include <Runtime/Backends/IShader.hpp>
 
 namespace Neon
 {
-    class OpenGLShader : public Shader
+    class OpenGLShader : public IShader
     {
         public:
             OpenGLShader() = default;

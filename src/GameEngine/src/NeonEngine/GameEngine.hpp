@@ -24,7 +24,7 @@ namespace Neon
             [[nodiscard]] IPlatform* GetPlatform() const;
 
             static VertexBuffer* CreateVertexBuffer(float* vertices, size_t size);
-            static Shader* CreateShader(std::string vertexPath, std::string fragmentPath);
+            static IShader* CreateShader(std::string vertexPath, std::string fragmentPath);
 
         private:
             IPlatform* m_platform;

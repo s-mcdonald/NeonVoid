@@ -101,7 +101,7 @@ set(GAME_ENGINE_SRC
         src/Runtime/src/Runtime/Backends/Input.hpp
         src/Runtime/src/Runtime/Backends/IWindow.hpp
         src/Runtime/src/Runtime/Backends/IWindow.hpp
-        src/Runtime/src/Runtime/Backends/Shader.hpp
+        src/Runtime/src/Runtime/Backends/IShader.hpp
         src/Runtime/src/Runtime/Backends/IRenderer.hpp
         src/Runtime/src/Runtime/Backends/VertexBuffer.hpp
 

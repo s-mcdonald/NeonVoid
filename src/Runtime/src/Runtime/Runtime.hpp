@@ -19,7 +19,7 @@
     #include <Runtime/Backends/IWindow.hpp>
     #include <Runtime/Backends/IRenderer.hpp>
     #include <Runtime/Backends/IPlatform.hpp>
-    #include <Runtime/Backends/Shader.hpp>
+    #include <Runtime/Backends/IShader.hpp>
     #include <Runtime/Backends/VertexBuffer.hpp>
 
     // OpenGL Abstractions ;;

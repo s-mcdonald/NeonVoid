@@ -6,11 +6,11 @@
 
 namespace Neon
 {
-    class Shader
+    class IShader
     {
         public:
-            Shader() = default;
-            virtual ~Shader() = default;
+            IShader() = default;
+            virtual ~IShader() = default;
 
         public:
             virtual void Bind() const = 0;
