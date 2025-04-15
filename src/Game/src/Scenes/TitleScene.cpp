@@ -2,11 +2,7 @@
  * {SourceHeader}
  */
 
-#include <NeonEngine/NeonEngine.hpp>
-
-#include <NeonEngine/Components/Components.hpp>
-#include <Runtime/Backends/OpenGL/OpenGL.hpp>
-#include <Runtime/Backends/Shader.hpp>
+#include <NeonEngine/All.hpp>
 
 #include "../Entities/MoveablePlayerEntity.hpp"
 #include "TitleScene.hpp"

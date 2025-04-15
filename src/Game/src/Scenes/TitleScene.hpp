@@ -4,8 +4,7 @@
 
 #pragma once
 
-#include <NeonEngine/NeonEngine.hpp>
-#include <Runtime/Runtime.hpp>
+#include <NeonEngine/All.hpp>
 
 namespace Neon
 {

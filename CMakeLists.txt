@@ -54,7 +54,7 @@ set(OpenGL_GL_PREFERENCE GLVND)
 # Source files
 #
 set(GAME_ENGINE_SRC
-        src/GameEngine/src/NeonEngine/NeonEngine.hpp
+        src/GameEngine/src/NeonEngine/All.hpp
 
         src/GameEngine/src/NeonEngine/Types.hpp
         src/GameEngine/src/NeonEngine/Application.hpp
