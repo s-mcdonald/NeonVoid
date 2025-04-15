@@ -5,16 +5,16 @@
 #include <cmath>
 #include <iostream>
 
-#include <NeonEngine/NeonEngine.hpp>
 #include <NeonEngine/Application.hpp>
+#include <NeonEngine/AssetManager/AssetManager.hpp>
 
-#include <Runtime/Container.hpp>
 #include <Runtime/Backends/OpenGL/OpenGL.hpp>
 #include <Runtime/Backends/OpenGL/OpenGLInput.hpp>
+#include <Runtime/Container.hpp>
 
 namespace Neon 
 {
-    OpenGL::OpenGL() 
+    OpenGL::OpenGL()
         : Platform()
         , m_window(nullptr)
     {

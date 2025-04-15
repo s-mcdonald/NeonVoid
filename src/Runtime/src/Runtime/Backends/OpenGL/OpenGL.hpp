@@ -6,10 +6,13 @@
 
 #include <vector>
 
+#include <Runtime/Backends/OpenGL/OpenGLHeaders.hpp>
 #include <Runtime/Backends/Platform.hpp>
 
 namespace Neon
 {
+    class AssetManager;
+
     class OpenGL final : public Platform
     {
         public:
