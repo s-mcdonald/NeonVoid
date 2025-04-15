@@ -15,7 +15,7 @@
 namespace Neon 
 {
     OpenGL::OpenGL()
-        : Platform()
+        : IPlatform()
         , m_window(nullptr)
     {
         // not a good ref, since this points to GameEngine code, not runtime code.

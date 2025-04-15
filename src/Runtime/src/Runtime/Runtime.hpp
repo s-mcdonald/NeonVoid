@@ -17,7 +17,7 @@
     #include <Runtime/Backends/Input.hpp>
     #include <Runtime/Backends/IWindow.hpp>
     #include <Runtime/Backends/IRenderer.hpp>
-    #include <Runtime/Backends/Platform.hpp>
+    #include <Runtime/Backends/IPlatform.hpp>
     #include <Runtime/Backends/Shader.hpp>
     #include <Runtime/Backends/VertexBuffer.hpp>
 

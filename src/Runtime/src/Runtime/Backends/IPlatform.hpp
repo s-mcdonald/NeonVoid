@@ -8,11 +8,11 @@ namespace Neon
 {
     class Application;
 
-    class Platform
+    class IPlatform
     {
         public:
-            Platform() = default;
-            virtual ~Platform() = default;
+            IPlatform() = default;
+            virtual ~IPlatform() = default;
 
         public:
             virtual bool Initialize(int width, int height, const char* title) = 0;

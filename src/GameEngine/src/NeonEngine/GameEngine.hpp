@@ -18,12 +18,12 @@ namespace Neon
             bool Initialize(int width, int height, const char* title) const;
             void Run(Application* application) const;
 
-            [[nodiscard]] Platform* GetPlatform() const;
+            [[nodiscard]] IPlatform* GetPlatform() const;
 
             static VertexBuffer* CreateVertexBuffer(float* vertices, size_t size);
             static Shader* CreateShader(std::string vertexPath, std::string fragmentPath);
 
         private:
-            Platform* m_platform;
+            IPlatform* m_platform;
     };
 }

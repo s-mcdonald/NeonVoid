@@ -40,7 +40,7 @@ namespace Neon
         m_platform->Run(application);
     }
 
-    Platform* GameEngine::GetPlatform() const
+    IPlatform* GameEngine::GetPlatform() const
     {
         return m_platform;
     }
