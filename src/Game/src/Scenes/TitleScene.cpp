@@ -3,11 +3,9 @@
  */
 
 #include <NeonEngine/NeonEngine.hpp>
-#include <Runtime/Runtime.hpp>
 
 #include <NeonEngine/Components/Components.hpp>
 #include <Runtime/Backends/OpenGL/OpenGL.hpp>
-#include <Runtime/Backends/OpenGL/OpenGLShader.hpp>
 #include <Runtime/Backends/Shader.hpp>
 
 #include "../Entities/MoveablePlayerEntity.hpp"

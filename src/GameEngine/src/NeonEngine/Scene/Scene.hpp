@@ -7,16 +7,11 @@
 #include <string>
 #include <unordered_map>
 
-#include <Runtime/Backends/Input.hpp>
-
 #include <NeonEngine/Components/Components.hpp>
 #include <NeonEngine/Entity/Entity.hpp>
-#include <NeonEngine/Types.hpp>
 
 namespace Neon
 {
-    // class Entity;
-
     class Scene
     {
         public:

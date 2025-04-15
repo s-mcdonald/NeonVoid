@@ -3,7 +3,6 @@
  */
 
 #include <NeonEngine/Scene/Scene.hpp>
-#include <NeonEngine/Types.hpp>
 
 namespace Neon
 {

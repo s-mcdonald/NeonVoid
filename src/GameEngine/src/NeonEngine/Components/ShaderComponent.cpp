@@ -2,11 +2,10 @@
  * {SourceHeader}
  */
 
-#include <glm/gtc/matrix_transform.hpp>
+#include <iostream>
 
-#include <Runtime/Runtime.hpp>
-
-#include <NeonEngine/NeonEngine.hpp>
+#include <NeonEngine/Entity/Entity.hpp>
+#include <NeonEngine/GameEngine.hpp>
 #include <NeonEngine/Components/Components.hpp>
 
 namespace Neon 

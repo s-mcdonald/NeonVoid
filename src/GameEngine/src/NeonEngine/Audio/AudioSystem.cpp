@@ -7,7 +7,7 @@
 #define MINIAUDIO_IMPLEMENTATION
 #include <miniaudio.h>
 
-#include <NeonEngine/NeonEngine.hpp>
+#include <NeonEngine/Audio/AudioSystem.hpp>
 
 namespace Neon 
 {

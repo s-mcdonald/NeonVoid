@@ -3,7 +3,6 @@
  */
 
 #include <NeonEngine/Entity/Entity.hpp>
-#include <NeonEngine/NeonEngine.hpp>
 
 namespace Neon
 {

@@ -2,11 +2,12 @@
  * {SourceHeader}
  */
 
-#include <NeonEngine/NeonEngine.hpp>
+#include <utility>
+#include <NeonEngine/GameEngine.hpp>
 
 #ifdef NEON_BUILD_OPENGL
-#include <Runtime/Runtime.hpp>
-#include <utility>
+// #include <Runtime/Runtime.hpp>
+
 #elif defined(NEON_BUILD_VULKAN)
 #else
 #endif

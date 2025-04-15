@@ -11,7 +11,6 @@
 
 namespace Neon
 {
-
     class Application
     {
         public:

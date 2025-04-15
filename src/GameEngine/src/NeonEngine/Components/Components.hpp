@@ -5,9 +5,8 @@
 #pragma once
 
 #include <Runtime/Runtime.hpp>
-#include <NeonEngine/Audio/AudioSystem.hpp>
-// #include <NeonEngine/Scene/Scene.hpp>
 
+#include <NeonEngine/Audio/AudioSystem.hpp>
 #include <NeonEngine/Types.hpp>
 
 namespace Neon

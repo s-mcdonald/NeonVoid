@@ -9,13 +9,12 @@
 #include <unordered_map>
 
 #include <Runtime/Backends/Input.hpp>
-#include <NeonEngine/Entity/Entity.hpp>
+
+#include <NeonEngine/Components/Components.hpp>
 #include <NeonEngine/Types.hpp>
 
 namespace Neon 
 {
-    class Component;
-
     class Entity 
     {
         public:
