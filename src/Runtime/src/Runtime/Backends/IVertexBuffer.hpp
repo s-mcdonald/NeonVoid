@@ -9,10 +9,10 @@
 
 namespace Neon
 {
-    class VertexBuffer
+    class IVertexBuffer
     {
         public:
-            virtual ~VertexBuffer() = default;
+            virtual ~IVertexBuffer() = default;
 
         public:
             virtual void Bind() const = 0;

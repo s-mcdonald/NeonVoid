@@ -45,7 +45,7 @@ namespace Neon
         return m_platform;
     }
 
-    VertexBuffer* GameEngine::CreateVertexBuffer(float* vertices, size_t size)
+    IVertexBuffer* GameEngine::CreateVertexBuffer(float* vertices, size_t size)
     {
 #ifdef NEON_BUILD_OPENGL
         return new OpenGLVertexBuffer(vertices, size);

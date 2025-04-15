@@ -103,7 +103,7 @@ set(GAME_ENGINE_SRC
         src/Runtime/src/Runtime/Backends/IWindow.hpp
         src/Runtime/src/Runtime/Backends/IShader.hpp
         src/Runtime/src/Runtime/Backends/IRenderer.hpp
-        src/Runtime/src/Runtime/Backends/VertexBuffer.hpp
+        src/Runtime/src/Runtime/Backends/IVertexBuffer.hpp
 
         src/Runtime/src/Runtime/Backends/OpenGL/OpenGLHeaders.hpp
         src/Runtime/src/Runtime/Backends/OpenGL/OpenGL.hpp

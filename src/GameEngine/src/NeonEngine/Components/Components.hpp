@@ -13,7 +13,7 @@ namespace Neon
 {
     class Entity;
     class Shader;
-    class VertexBuffer;
+    class IVertexBuffer;
 
     class Component
     {
@@ -166,7 +166,7 @@ namespace Neon
         private:
             IShader* m_shader;
             std::vector<float> m_vertices;
-            VertexBuffer* m_buffer{};
+            IVertexBuffer* m_buffer{};
             int m_verticiesSize{};
     };
 

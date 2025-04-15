@@ -20,7 +20,7 @@
     #include <Runtime/Backends/IRenderer.hpp>
     #include <Runtime/Backends/IPlatform.hpp>
     #include <Runtime/Backends/IShader.hpp>
-    #include <Runtime/Backends/VertexBuffer.hpp>
+    #include <Runtime/Backends/IVertexBuffer.hpp>
 
     // OpenGL Abstractions ;;
     #include <Runtime/Backends/OpenGL/OpenGL.hpp>

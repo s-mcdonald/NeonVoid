@@ -4,11 +4,11 @@
 
 #pragma once
 
-#include <Runtime/Backends/VertexBuffer.hpp>
+#include <Runtime/Backends/IVertexBuffer.hpp>
 
 namespace Neon
 {
-    class OpenGLVertexBuffer final : public VertexBuffer
+    class OpenGLVertexBuffer final : public IVertexBuffer
     {
         public:
             OpenGLVertexBuffer(const float*, size_t);
