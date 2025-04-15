@@ -8,9 +8,9 @@
 #include <typeindex>
 #include <unordered_map>
 
-#include <NeonEngine/Types.hpp>
+#include <Runtime/Backends/Input.hpp>
 #include <NeonEngine/Entity/Entity.hpp>
-#include <Runtime/Input.hpp>
+#include <NeonEngine/Types.hpp>
 
 namespace Neon 
 {

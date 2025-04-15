@@ -95,10 +95,10 @@ set(GAME_ENGINE_SRC
 
         # Platform
         src/Runtime/src/Runtime/Runtime.hpp
-        src/Runtime/src/Runtime/Input.hpp
         src/Runtime/src/Runtime/Container.hpp
 
         src/Runtime/src/Runtime/Backends/Platform.hpp
+        src/Runtime/src/Runtime/Backends/Input.hpp
         src/Runtime/src/Runtime/Backends/IWindow.hpp
         src/Runtime/src/Runtime/Backends/IWindow.hpp
         src/Runtime/src/Runtime/Backends/Shader.hpp
