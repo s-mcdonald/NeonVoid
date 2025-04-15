@@ -4,11 +4,14 @@
 
 #pragma once
 
+#include <deque>
+
 #include <NeonEngine/GameEngine.hpp>
 #include <NeonEngine/Scene/Scene.hpp>
 
 namespace Neon
 {
+
     class Application
     {
         public:

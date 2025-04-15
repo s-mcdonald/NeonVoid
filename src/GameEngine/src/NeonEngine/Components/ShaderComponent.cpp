@@ -4,10 +4,10 @@
 
 #include <glm/gtc/matrix_transform.hpp>
 
-#include <NeonEngine/Components/Components.hpp>
-#include <NeonEngine/NeonEngine.hpp>
-
 #include <Runtime/Runtime.hpp>
+
+#include <NeonEngine/NeonEngine.hpp>
+#include <NeonEngine/Components/Components.hpp>
 
 namespace Neon 
 {

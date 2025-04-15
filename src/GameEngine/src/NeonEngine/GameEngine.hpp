@@ -4,10 +4,7 @@
 
 #pragma once
 
-#include <NeonEngine/NeonEngine.hpp>
-#include <Runtime/Backends/Platform.hpp>
-#include <Runtime/Backends/Shader.hpp>
-#include <Runtime/Backends/VertexBuffer.hpp>
+#include <Runtime/Runtime.hpp>
 
 namespace Neon
 {

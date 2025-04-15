@@ -4,9 +4,11 @@
 
 #pragma once
 
-#include <Runtime/Backends/Input.hpp>
-#include <NeonEngine/NeonEngine.hpp>
-#include <NeonEngine/Scene/Scene.hpp>
+#include <Runtime/Runtime.hpp>
+#include <NeonEngine/Audio/AudioSystem.hpp>
+// #include <NeonEngine/Scene/Scene.hpp>
+
+#include <NeonEngine/Types.hpp>
 
 namespace Neon
 {
