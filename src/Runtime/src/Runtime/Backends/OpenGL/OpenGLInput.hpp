@@ -4,8 +4,6 @@
 
 #pragma once
 
-#include <Runtime/Backends/OpenGL/OpenGLInput.hpp>
-
 namespace Neon
 {
     class OpenGLKeyboardInput : public KeyboardInput

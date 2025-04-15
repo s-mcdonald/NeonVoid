@@ -4,11 +4,10 @@
 
 #pragma once
 
-#include <Runtime/Backends/IRenderer.hpp>
-
 namespace Neon
 {
     class IRenderer;
+
     class GameEngineApi
     {
         public:

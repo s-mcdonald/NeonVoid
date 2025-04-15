@@ -6,7 +6,6 @@
 
 #include <vector>
 
-#include <NeonEngine/NeonEngine.hpp>
 #include <Runtime/Backends/Platform.hpp>
 
 namespace Neon

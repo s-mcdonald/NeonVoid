@@ -4,8 +4,6 @@
 
 #pragma once
 
-#include <NeonEngine/Types.hpp>
-
 namespace Neon
 {
     class IWindow

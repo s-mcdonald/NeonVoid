@@ -3,6 +3,7 @@
  */
 
 #include <Runtime/Backends/OpenGL/OpenGLRenderer.hpp>
+#include <Runtime/Backends/OpenGL/GameEngineApi.hpp>
 
 namespace Neon
 {

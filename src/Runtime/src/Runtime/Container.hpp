@@ -4,10 +4,10 @@
 
 #pragma once
 
-#include <NeonEngine/Types.hpp>
-
 namespace Neon
 {
+    typedef void* WindowHandlePtr;
+
     class Container
     {
         public:

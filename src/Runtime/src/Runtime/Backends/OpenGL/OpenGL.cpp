@@ -5,11 +5,12 @@
 #include <cmath>
 #include <iostream>
 
-#include <NeonEngine/Application.hpp>
 #include <NeonEngine/NeonEngine.hpp>
+#include <NeonEngine/Application.hpp>
+
+#include <Runtime/Container.hpp>
 #include <Runtime/Backends/OpenGL/OpenGL.hpp>
 #include <Runtime/Backends/OpenGL/OpenGLInput.hpp>
-#include <Runtime/Container.hpp>
 
 namespace Neon 
 {
@@ -17,6 +18,7 @@ namespace Neon
         : Platform()
         , m_window(nullptr)
     {
+        // not a good ref, since this points to GameEngine code, not runtime code.
         m_assetManager = new AssetManager();
     }
 
@@ -102,7 +104,7 @@ namespace Neon
         return true;
     }
 
-    void OpenGL::Run(Application* game)
+    void OpenGL::Run(Application* application)
     {
         if (!m_window) return;
 
@@ -121,23 +123,18 @@ namespace Neon
             // glClearColor(1.0f, 0.0f, 1.0f, 1.0f);
             //end: Renderer::Clear();
 
-            auto* scene = game->GetCurrentScene();
+            auto* scene = application->GetCurrentScene();
 
             if (false == scene->IsInitialized())
             {
                 scene->Init();
             }
 
-            // Poll and get events
+
             glfwPollEvents();
 
-            // Handle input from user
             scene->HandleInput(&keyboardInput);
-
-            // Update component/object data (now it also does render)
             scene->Update();
-
-            // Do all Rendering here.
             scene->Render();
 
             glfwSwapBuffers(m_window);

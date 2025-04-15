@@ -4,6 +4,7 @@
 
 #pragma once
 
+#include <cstdint>
 #include <string>
 
 #include <Runtime/Backends/OpenGL/OpenGLHeaders.hpp>

@@ -3,12 +3,7 @@
  */
 
 #include <fstream>
-#include <sstream>
-#include <string>
-#include <utility>
 
-#include <NeonEngine/NeonEngine.hpp>
-#include <Runtime/Backends/OpenGL/OpenGLHeaders.hpp>
 #include <Runtime/Backends/OpenGL/OpenGLShader.hpp>
 
 namespace Neon

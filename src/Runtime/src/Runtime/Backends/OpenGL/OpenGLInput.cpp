@@ -2,10 +2,8 @@
  * {SourceHeader}
  */
 
-#include <NeonEngine/NeonEngine.hpp>
-#include <Runtime/Container.hpp>
+#include <Runtime/Runtime.hpp>
 
-#include <Runtime/Backends/OpenGL/OpenGLHeaders.hpp>
 #include <Runtime/Backends/OpenGL/OpenGLInput.hpp>
 
 namespace Neon
