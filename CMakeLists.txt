@@ -94,30 +94,30 @@ set(GAME_ENGINE_SRC
         src/GameEngine/src/NeonEngine/GameEngine.cpp
 
         # Platform
-        src/Runtime/src/Runtime/Runtime.hpp
-        src/Runtime/src/Runtime/ExtRuntime.hpp
-        src/Runtime/src/Runtime/RuntimeApi.hpp
-        src/Runtime/src/Runtime/RuntimeApi.cpp
+        src/Runtime/Runtime.hpp
+        src/Runtime/ExtRuntime.hpp
+        src/Runtime/RuntimeApi.hpp
+        src/Runtime/RuntimeApi.cpp
 
-        src/Runtime/src/Runtime/Backends/IPlatform.hpp
-        src/Runtime/src/Runtime/Backends/Input.hpp
-        src/Runtime/src/Runtime/Backends/IWindow.hpp
-        src/Runtime/src/Runtime/Backends/IWindow.hpp
-        src/Runtime/src/Runtime/Backends/IShader.hpp
-        src/Runtime/src/Runtime/Backends/IRenderer.hpp
-        src/Runtime/src/Runtime/Backends/IVertexBuffer.hpp
+        src/Runtime/Backends/IPlatform.hpp
+        src/Runtime/Backends/Input.hpp
+        src/Runtime/Backends/IWindow.hpp
+        src/Runtime/Backends/IWindow.hpp
+        src/Runtime/Backends/IShader.hpp
+        src/Runtime/Backends/IRenderer.hpp
+        src/Runtime/Backends/IVertexBuffer.hpp
 
-        src/Runtime/src/Runtime/Backends/OpenGL/OpenGLHeaders.hpp
-        src/Runtime/src/Runtime/Backends/OpenGL/OpenGL.hpp
-        src/Runtime/src/Runtime/Backends/OpenGL/OpenGL.cpp
-        src/Runtime/src/Runtime/Backends/OpenGL/OpenGLInput.hpp
-        src/Runtime/src/Runtime/Backends/OpenGL/OpenGLInput.cpp
-        src/Runtime/src/Runtime/Backends/OpenGL/OpenGLShader.hpp
-        src/Runtime/src/Runtime/Backends/OpenGL/OpenGLShader.cpp
-        src/Runtime/src/Runtime/Backends/OpenGL/OpenGLRenderer.hpp
-        src/Runtime/src/Runtime/Backends/OpenGL/OpenGLRenderer.cpp
-        src/Runtime/src/Runtime/Backends/OpenGL/OpenGLVertexBuffer.hpp
-        src/Runtime/src/Runtime/Backends/OpenGL/OpenGLVertexBuffer.cpp
+        src/Runtime/Backends/OpenGL/OpenGLHeaders.hpp
+        src/Runtime/Backends/OpenGL/OpenGL.hpp
+        src/Runtime/Backends/OpenGL/OpenGL.cpp
+        src/Runtime/Backends/OpenGL/OpenGLInput.hpp
+        src/Runtime/Backends/OpenGL/OpenGLInput.cpp
+        src/Runtime/Backends/OpenGL/OpenGLShader.hpp
+        src/Runtime/Backends/OpenGL/OpenGLShader.cpp
+        src/Runtime/Backends/OpenGL/OpenGLRenderer.hpp
+        src/Runtime/Backends/OpenGL/OpenGLRenderer.cpp
+        src/Runtime/Backends/OpenGL/OpenGLVertexBuffer.hpp
+        src/Runtime/Backends/OpenGL/OpenGLVertexBuffer.cpp
 )
 
 # Create GameEngine as a static library
@@ -131,7 +131,7 @@ set_target_properties(GameEngine PROPERTIES
 
 # GameENgine include directories
 target_include_directories(GameEngine PUBLIC
-        ${CMAKE_SOURCE_DIR}/src/Runtime/src
+        ${CMAKE_SOURCE_DIR}/src
         ${CMAKE_SOURCE_DIR}/src/GameEngine/src
         ${CMAKE_SOURCE_DIR}/src/GameEngine/vendor/stb
         ${CMAKE_SOURCE_DIR}/src/GameEngine/vendor/miniaudio
