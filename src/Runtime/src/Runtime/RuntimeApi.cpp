@@ -4,45 +4,52 @@
 
 #include <string>
 
-#include <Runtime/GameEngineApi.hpp>
+#include <Runtime/RuntimeApi.hpp>
+#include <Runtime/Backends/OpenGL/OpenGL.hpp>
+#include <Runtime/Backends/OpenGL/OpenGLShader.hpp>
 #include <Runtime/Backends/OpenGL/OpenGLRenderer.hpp>
+#include <Runtime/Backends/OpenGL/OpenGLVertexBuffer.hpp>
 
 namespace Neon
 {
     typedef void* WindowHandlePtr;
 
-    GameEngineApi& GameEngineApi::GetInstance()
+    RuntimeApi& RuntimeApi::GetInstance()
     {
-        static GameEngineApi instance;
+        static RuntimeApi instance;
         return instance;
     }
 
-    GameEngineApi::GameEngineApi() : mx_window(nullptr)
+    RuntimeApi::RuntimeApi() : mx_window(nullptr)
     {
         m_renderer = new OpenGLRenderer();
     }
 
-    GameEngineApi::~GameEngineApi()
+    RuntimeApi::~RuntimeApi()
     {
         delete m_renderer;
     }
 
-    IRenderer* GameEngineApi::GetRenderer() const
+    IRenderer* RuntimeApi::GetRenderer() const
     {
         return m_renderer;
     }
 
-    void GameEngineApi::SetWindow(WindowHandlePtr window)
+    // Window Handle (temp)
+
+    void RuntimeApi::SetWindow(WindowHandlePtr window)
     {
         mx_window = window;
     }
 
-    [[nodiscard]] WindowHandlePtr GameEngineApi::GetWindowAsPtr() const
+    [[nodiscard]] WindowHandlePtr RuntimeApi::GetWindowAsPtr() const
     {
         return mx_window;
     }
 
-    IPlatform* GameEngineApi::CreatePlatform()
+    // Renderer Primitives
+
+    IPlatform* RuntimeApi::CreatePlatform()
     {
 #ifdef NEON_BUILD_OPENGL
         // System::GetPlatform()
@@ -54,7 +61,7 @@ namespace Neon
 #endif
     }
 
-    IVertexBuffer* GameEngineApi::CreateVertexBuffer(float* vertices, size_t size)
+    IVertexBuffer* RuntimeApi::CreateVertexBuffer(float* vertices, size_t size)
     {
 #ifdef NEON_BUILD_OPENGL
         return new OpenGLVertexBuffer(vertices, size);
@@ -67,7 +74,7 @@ namespace Neon
 #endif
     }
 
-    IShader* GameEngineApi::CreateShader(std::string vertexPath, std::string fragmentPath)
+    IShader* RuntimeApi::CreateShader(std::string vertexPath, std::string fragmentPath)
     {
 #ifdef NEON_BUILD_OPENGL
         return new OpenGLShader(std::move(vertexPath), std::move(fragmentPath));

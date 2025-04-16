@@ -4,14 +4,10 @@
 
 #pragma once
 
-#include <string>
-
 #include <Runtime/ExtRuntime.hpp>
 
 namespace Neon
 {
-    // Move this to the Application class
-    class Application;
     class GameEngine
     {
         public:

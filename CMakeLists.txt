@@ -96,9 +96,8 @@ set(GAME_ENGINE_SRC
         # Platform
         src/Runtime/src/Runtime/Runtime.hpp
         src/Runtime/src/Runtime/ExtRuntime.hpp
-        src/Runtime/src/Runtime/Container.hpp
-        src/Runtime/src/Runtime/GameEngineApi.hpp
-        src/Runtime/src/Runtime/GameEngineApi.cpp
+        src/Runtime/src/Runtime/RuntimeApi.hpp
+        src/Runtime/src/Runtime/RuntimeApi.cpp
 
         src/Runtime/src/Runtime/Backends/IPlatform.hpp
         src/Runtime/src/Runtime/Backends/Input.hpp

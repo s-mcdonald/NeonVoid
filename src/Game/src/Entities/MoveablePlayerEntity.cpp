@@ -21,7 +21,7 @@ namespace Neon
             0.5f, -0.5f    // Bottom right vertex
         };
 
-        auto shader = GameEngineApi::GetInstance().CreateShader(
+        auto shader = RuntimeApi::GetInstance().CreateShader(
             "/home/sam/Game/Neon/src/Game/assets/shaders/GreenTriangle/shader.vert",
             "/home/sam/Game/Neon/src/Game/assets/shaders/GreenTriangle/shader.frag"
         );

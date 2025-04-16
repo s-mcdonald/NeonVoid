@@ -28,7 +28,7 @@ namespace Neon
 
         m_shader->OnInit();
 
-        m_buffer = GameEngineApi::GetInstance().CreateVertexBuffer(m_vertices.data(), m_vertices.size() * sizeof(float));
+        m_buffer = RuntimeApi::GetInstance().CreateVertexBuffer(m_vertices.data(), m_vertices.size() * sizeof(float));
 
         m_buffer->Bind();
 
@@ -72,7 +72,7 @@ namespace Neon
         // glUniformMatrix4fv(uniformLoc, 1, GL_FALSE, &m_modelMatrix[0][0]);
 
 
-        GameEngineApi::GetInstance().GetRenderer()->RenderCircle(m_shader->GetShaderProgramId(), m_buffer->GetVao(), m_vertices.size());
+        RuntimeApi::GetInstance().GetRenderer()->RenderCircle(m_shader->GetShaderProgramId(), m_buffer->GetVao(), m_vertices.size());
     }
 
     void ShaderComponent::UpdateData(const std::vector<float>& vertices)
