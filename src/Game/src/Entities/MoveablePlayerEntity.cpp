@@ -4,6 +4,8 @@
 
 #include <iostream>
 
+#include <Runtime/ExtRuntime.hpp>
+
 #include <NeonEngine/Components/Components.hpp>
 #include <NeonEngine/GameEngine.hpp>
 #include "MoveablePlayerEntity.hpp"
@@ -19,7 +21,7 @@ namespace Neon
             0.5f, -0.5f    // Bottom right vertex
         };
 
-        auto shader = GameEngine::CreateShader(
+        auto shader = GameEngineApi::GetInstance().CreateShader(
             "/home/sam/Game/Neon/src/Game/assets/shaders/GreenTriangle/shader.vert",
             "/home/sam/Game/Neon/src/Game/assets/shaders/GreenTriangle/shader.frag"
         );

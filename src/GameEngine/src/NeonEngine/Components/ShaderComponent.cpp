@@ -28,7 +28,7 @@ namespace Neon
 
         m_shader->OnInit();
 
-        m_buffer = GameEngine::CreateVertexBuffer(m_vertices.data(), m_vertices.size() * sizeof(float));
+        m_buffer = GameEngineApi::GetInstance().CreateVertexBuffer(m_vertices.data(), m_vertices.size() * sizeof(float));
 
         m_buffer->Bind();
 
@@ -61,8 +61,6 @@ namespace Neon
             p.y = 0.0f;
         }
 
-        const auto& api = GameEngineApi::getInstance();
-
         // auto m_modelMatrix = glm::mat4(1.0f);
         // // Update the model transformation matrix to translate by (x, y)
         // m_modelMatrix = glm::mat4(1.0f); // Reset to identity
@@ -74,7 +72,7 @@ namespace Neon
         // glUniformMatrix4fv(uniformLoc, 1, GL_FALSE, &m_modelMatrix[0][0]);
 
 
-        api.GetRenderer()->RenderCircle(m_shader->GetShaderProgramId(), m_buffer->GetVao(), m_vertices.size());
+        GameEngineApi::GetInstance().GetRenderer()->RenderCircle(m_shader->GetShaderProgramId(), m_buffer->GetVao(), m_vertices.size());
     }
 
     void ShaderComponent::UpdateData(const std::vector<float>& vertices)

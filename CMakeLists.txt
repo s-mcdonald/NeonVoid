@@ -97,6 +97,8 @@ set(GAME_ENGINE_SRC
         src/Runtime/src/Runtime/Runtime.hpp
         src/Runtime/src/Runtime/ExtRuntime.hpp
         src/Runtime/src/Runtime/Container.hpp
+        src/Runtime/src/Runtime/GameEngineApi.hpp
+        src/Runtime/src/Runtime/GameEngineApi.cpp
 
         src/Runtime/src/Runtime/Backends/IPlatform.hpp
         src/Runtime/src/Runtime/Backends/Input.hpp
@@ -113,8 +115,6 @@ set(GAME_ENGINE_SRC
         src/Runtime/src/Runtime/Backends/OpenGL/OpenGLInput.cpp
         src/Runtime/src/Runtime/Backends/OpenGL/OpenGLShader.hpp
         src/Runtime/src/Runtime/Backends/OpenGL/OpenGLShader.cpp
-        src/Runtime/src/Runtime/Backends/OpenGL/GameEngineApi.hpp
-        src/Runtime/src/Runtime/Backends/OpenGL/GameEngineApi.cpp
         src/Runtime/src/Runtime/Backends/OpenGL/OpenGLRenderer.hpp
         src/Runtime/src/Runtime/Backends/OpenGL/OpenGLRenderer.cpp
         src/Runtime/src/Runtime/Backends/OpenGL/OpenGLVertexBuffer.hpp

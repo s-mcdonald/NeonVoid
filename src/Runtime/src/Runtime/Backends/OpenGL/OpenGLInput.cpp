@@ -10,7 +10,7 @@ namespace Neon
 {
     bool OpenGLKeyboardInput::IsKeyPressed(Key key)
     {
-        const auto& container = Container::GetInstance();
+        const auto& container = GameEngineApi::GetInstance();
         GLFWwindow& window = *static_cast<GLFWwindow*>(container.GetWindowAsPtr());
         return glfwGetKey(&window, static_cast<int>(key)) == GLFW_PRESS;
     }

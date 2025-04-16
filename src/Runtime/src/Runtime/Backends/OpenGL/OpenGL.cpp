@@ -10,7 +10,6 @@
 
 #include <Runtime/Backends/OpenGL/OpenGL.hpp>
 #include <Runtime/Backends/OpenGL/OpenGLInput.hpp>
-#include <Runtime/Container.hpp>
 
 namespace Neon 
 {
@@ -110,7 +109,7 @@ namespace Neon
 
         if (!m_openGlInitialized) return;
 
-        auto& container = Container::GetInstance();
+        auto& container = GameEngineApi::GetInstance();
         container.SetWindow(m_window);
 
         OpenGLKeyboardInput keyboardInput(m_window);
@@ -129,7 +128,6 @@ namespace Neon
             {
                 scene->Init();
             }
-
 
             glfwPollEvents();
 

@@ -6,7 +6,7 @@
 #include <NeonEngine/GameEngine.hpp>
 
 #ifdef NEON_BUILD_OPENGL
-#include <Runtime/ExtRuntime.hpp>
+#include <Runtime/Backends/OpenGL/OpenGL.hpp>
 
 #elif defined(NEON_BUILD_VULKAN)
 #else
@@ -44,29 +44,5 @@ namespace Neon
     IPlatform* GameEngine::GetPlatform() const
     {
         return m_platform;
-    }
-
-    IVertexBuffer* GameEngine::CreateVertexBuffer(float* vertices, size_t size)
-    {
-#ifdef NEON_BUILD_OPENGL
-        return new OpenGLVertexBuffer(vertices, size);
-#elif defined(NEON_BUILD_VULKAN)
-        // return new VulkanVertexBuffer(vertices, size);
-#else
-        // let's also do an assert here, I think cherno did this too.
-        // need to learn more about compile time asserts.
-        return nullptr;
-#endif
-    }
-
-    IShader* GameEngine::CreateShader(std::string vertexPath, std::string fragmentPath)
-    {
-#ifdef NEON_BUILD_OPENGL
-        return new OpenGLShader(std::move(vertexPath), std::move(fragmentPath));
-#elif defined(NEON_BUILD_VULKAN)
-        // send back the Vulkan Shader
-#else
-        return nullptr;
-#endif
     }
 }

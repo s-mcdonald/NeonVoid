@@ -10,6 +10,7 @@
 
 namespace Neon
 {
+    // Move this to the Application class
     class Application;
     class GameEngine
     {
@@ -22,9 +23,6 @@ namespace Neon
             void Run(Application* application) const;
 
             [[nodiscard]] IPlatform* GetPlatform() const;
-
-            static IVertexBuffer* CreateVertexBuffer(float* vertices, size_t size);
-            static IShader* CreateShader(std::string vertexPath, std::string fragmentPath);
 
         private:
             IPlatform* m_platform;

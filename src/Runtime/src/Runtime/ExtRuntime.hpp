@@ -8,9 +8,6 @@
 
 #ifdef NEON_BUILD_OPENGL
 
-    // Game and Game Engine should ONLY see the below interfaces
-    #include <Runtime/Container.hpp>
-
     // Core Abstractions ;;
     #include <Runtime/Backends/Input.hpp>
     #include <Runtime/Backends/IWindow.hpp>

@@ -11,9 +11,6 @@
     // OpenGL Header list
     #include <Runtime/Backends/OpenGL/OpenGLHeaders.hpp>
 
-    // Game and Game Engine should ONLY see the below interfaces
-    #include <Runtime/Container.hpp>
-
     // Core Abstractions ;;
     #include <Runtime/Backends/Input.hpp>
     #include <Runtime/Backends/IWindow.hpp>
@@ -23,11 +20,11 @@
     #include <Runtime/Backends/IVertexBuffer.hpp>
 
     // OpenGL Abstractions ;;
+    #include <Runtime/GameEngineApi.hpp>
     #include <Runtime/Backends/OpenGL/OpenGL.hpp>
     #include <Runtime/Backends/OpenGL/OpenGLInput.hpp>
-    #include <Runtime/Backends/OpenGL/OpenGLShader.hpp>
-    #include <Runtime/Backends/OpenGL/GameEngineApi.hpp>
     #include <Runtime/Backends/OpenGL/OpenGLRenderer.hpp>
+    #include <Runtime/Backends/OpenGL/OpenGLShader.hpp>
     #include <Runtime/Backends/OpenGL/OpenGLVertexBuffer.hpp>
 
 #elif defined(NEON_BUILD_VULKAN)
