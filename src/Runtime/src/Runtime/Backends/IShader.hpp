@@ -4,6 +4,8 @@
 
 #pragma once
 
+#include <cstdint>                          // For uint32_t
+
 namespace Neon
 {
     class IShader

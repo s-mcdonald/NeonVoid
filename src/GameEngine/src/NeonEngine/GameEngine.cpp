@@ -6,7 +6,7 @@
 #include <NeonEngine/GameEngine.hpp>
 
 #ifdef NEON_BUILD_OPENGL
-#include <Runtime/Runtime.hpp>
+#include <Runtime/ExtRuntime.hpp>
 
 #elif defined(NEON_BUILD_VULKAN)
 #else
@@ -17,6 +17,7 @@ namespace Neon
     GameEngine::GameEngine() : m_platform(nullptr)
     {
 #ifdef NEON_BUILD_OPENGL
+        // System::GetPlatform()
         m_platform = new Neon::OpenGL();
 #elif defined(NEON_BUILD_VULKAN)
         m_platform = new Neon::Vulkan();

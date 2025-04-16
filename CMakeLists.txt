@@ -95,6 +95,7 @@ set(GAME_ENGINE_SRC
 
         # Platform
         src/Runtime/src/Runtime/Runtime.hpp
+        src/Runtime/src/Runtime/ExtRuntime.hpp
         src/Runtime/src/Runtime/Container.hpp
 
         src/Runtime/src/Runtime/Backends/IPlatform.hpp
