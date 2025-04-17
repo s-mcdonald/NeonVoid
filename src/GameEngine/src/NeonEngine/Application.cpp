@@ -18,12 +18,12 @@ namespace Neon
 
     bool Application::Initialize(const WindowDimension width, const WindowDimension height, const char* title) const
     {
-        return m_gameEngine.Initialize(width, height, title);
+        return m_runtime.Initialize(width, height, title);
     }
 
     void Application::Run()
     {
-        m_gameEngine.Run(this);
+        m_runtime.Run(this);
     }
 
     void Application::AddScene(Scene* scene)

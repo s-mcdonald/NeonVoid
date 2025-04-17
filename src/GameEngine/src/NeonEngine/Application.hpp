@@ -31,6 +31,6 @@ namespace Neon
             Scene* m_currentScene{nullptr};
 
         private:
-            RuntimeBridge m_gameEngine;
+            RuntimeBridge m_runtime;
     };
 }
