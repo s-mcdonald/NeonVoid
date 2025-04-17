@@ -1,3 +1,6 @@
+scene:
+  audio: "./audio/neon_void_intro.mp3"
+
 shaders:
     -
       name: id.white_circle

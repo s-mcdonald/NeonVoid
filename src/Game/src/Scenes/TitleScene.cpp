@@ -19,15 +19,6 @@ namespace Neon
         auto& runtimeApi = RuntimeApi::GetInstance();
 
 
-        // Load All Shaders
-        // runtimeApi.LoadShaderPair
-        // (
-        //     "id.white_circle",
-        //     "/home/sam/Game/Neon/src/Game/assets/shaders/WhiteCircle/shader.vert",
-        //     "/home/sam/Game/Neon/src/Game/assets/shaders/WhiteCircle/shader.frag"
-        // );
-
-
         /// Audio - Intro Sound
         auto* introMusic = new AudioComponent("./assets/audio/neon_void_intro.mp3");
         AddComponent("aud.intro", introMusic);

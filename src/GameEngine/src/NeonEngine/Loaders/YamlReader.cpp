@@ -18,27 +18,33 @@ namespace Neon
         m_yamlRoot = fkyaml::node::deserialize(ifs);
     }
 
-    std::vector<SceneShader> YamlReader::Load() const
+    SceneConfig YamlReader::Load() const
     {
+        if (m_yamlRoot["scene"] == nullptr) {
+            throw std::runtime_error("Missing 'scene' node in YAML.");
+        }
+
+        const auto& sceneNode = m_yamlRoot["scene"];
+
         std::vector<SceneShader> shaders;
 
-        for (const auto& shaderNode : m_yamlRoot["shaders"]) {
+        SceneConfig sceneConfig;
+
+        sceneConfig.audioPath = m_yamlRoot["scene"]["audio"].get_value<std::string>();
+
+        for (const auto& shaderNode : m_yamlRoot["scene"]["shaders"]) {
             SceneShader shader;
+
             shader.id = shaderNode["name"].get_value<std::string>();
             shader.dir = shaderNode["dir"].get_value<std::string>();
             shader.vertexShader = shaderNode["vertex"].get_value<std::string>();
             shader.fragShader = shaderNode["frag"].get_value<std::string>();
 
-            std::cout << "---------------------------------------" << std::endl;
-            std::cout << shader.id << std::endl;
-            std::cout << shader.dir << std::endl;
-            std::cout << shader.vertexShader << std::endl;
-            std::cout << shader.fragShader << std::endl;
-            std::cout << "---------------------------------------" << std::endl;
-
             shaders.push_back(shader);
         }
 
-        return shaders;
+        sceneConfig.shaders = shaders;
+
+        return sceneConfig;
     }
 }

@@ -86,4 +86,18 @@ namespace Neon
         Middle = 5,
         Foreground = 10
     };
+
+    // need a better name for this struct
+    struct SceneShader
+    {
+        std::string id;
+        std::string dir;
+        std::string vertexShader;
+        std::string fragShader;
+    };
+
+    struct SceneConfig {
+        std::string audioPath;
+        std::vector<SceneShader> shaders;
+    };
 }

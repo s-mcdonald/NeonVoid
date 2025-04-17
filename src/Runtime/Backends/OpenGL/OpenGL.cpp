@@ -120,19 +120,25 @@ namespace Neon
             //end: Renderer::Clear();
 
             auto* scene = application->GetCurrentScene();
-
-            if (false == scene->IsInitialized())
+            if (scene == nullptr)
             {
-                scene->Init();
+                glfwSetWindowShouldClose(m_window, true);
             }
+            else
+            {
+                if (false == scene->IsInitialized())
+                {
+                    scene->Init();
+                }
 
-            glfwPollEvents();
+                glfwPollEvents();
 
-            scene->HandleInput(&keyboardInput);
-            scene->Update();
-            scene->Render();
+                scene->HandleInput(&keyboardInput);
+                scene->Update();
+                scene->Render();
 
-            glfwSwapBuffers(m_window);
+                glfwSwapBuffers(m_window);
+            }
         }
     }
 }
