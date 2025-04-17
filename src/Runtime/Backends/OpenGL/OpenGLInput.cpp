@@ -2,8 +2,6 @@
  * {SourceHeader}
  */
 
-#include <Runtime/Runtime.hpp>
-
 #include <Runtime/Backends/OpenGL/OpenGLInput.hpp>
 
 namespace Neon

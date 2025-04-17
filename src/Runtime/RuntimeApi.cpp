@@ -2,9 +2,10 @@
  * {SourceHeader}
  */
 
+#include <cmath>
 #include <string>
 
-#include <Runtime/RuntimeApi.hpp>
+#include <Runtime/ExtRuntime.hpp>
 #include <Runtime/Backends/OpenGL/OpenGL.hpp>
 #include <Runtime/Backends/OpenGL/OpenGLShader.hpp>
 #include <Runtime/Backends/OpenGL/OpenGLRenderer.hpp>
@@ -33,6 +34,25 @@ namespace Neon
     IRenderer* RuntimeApi::GetRenderer() const
     {
         return m_renderer;
+    }
+
+    std::vector<float> RuntimeApi::GenerateCircleVertices(const float radius, const int segments) const
+    {
+        std::vector<float> vertices;
+
+        vertices.push_back(0.0f); // X
+        vertices.push_back(0.0f); // Y
+
+        const float angleStep = 2.0f * M_PI / segments;
+
+        for (auto i = 0; i <= segments; ++i)
+        {
+            const float angle = i * angleStep;
+            vertices.push_back(std::cos(angle) * radius); // X
+            vertices.push_back(std::sin(angle) * radius); // Y
+        }
+
+        return vertices;
     }
 
     // Renderer Primitives

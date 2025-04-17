@@ -4,6 +4,8 @@
 
 #include <NeonEngine/All.hpp>
 
+#include <Runtime/ExtRuntime.hpp>
+
 #include "../Entities/MoveablePlayerEntity.hpp"
 #include "TitleScene.hpp"
 
@@ -14,6 +16,10 @@ namespace Neon
     TitleScene::TitleScene(const SceneType type)
         : Scene(type)
     {
+        auto& runtimeApi = RuntimeApi::GetInstance();
+
+
+
         /// Audio - Intro Sound
         auto* introMusic = new AudioComponent("./assets/audio/neon_void_intro.mp3");
         AddComponent("aud.intro", introMusic);
@@ -21,9 +27,9 @@ namespace Neon
         ///
         /// White Circle
         ///
-        std::vector<float> circle_vertices = OpenGL::GenerateCircleVertices(1.0f, 100);
+        std::vector<float> circle_vertices = runtimeApi.GenerateCircleVertices(1.0f, 100);
 
-        auto circle_shader = RuntimeApi::GetInstance().CreateShader(
+        auto circle_shader = Neon::RuntimeApi::CreateShader(
             "/home/sam/Game/Neon/src/Game/assets/shaders/WhiteCircle/shader.vert",
             "/home/sam/Game/Neon/src/Game/assets/shaders/WhiteCircle/shader.frag"
         );

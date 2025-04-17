@@ -4,7 +4,9 @@
 
 #pragma once
 
-#include <Runtime/Runtime.hpp>
+#include <vector>
+
+#include <Runtime/ExtRuntime.hpp>
 
 #include <NeonEngine/Audio/AudioSystem.hpp>
 #include <NeonEngine/Types.hpp>

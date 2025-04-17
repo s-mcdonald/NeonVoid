@@ -5,6 +5,7 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
 #include <Runtime/ExtRuntime.hpp>
 
@@ -20,6 +21,7 @@ namespace Neon
         public:
             static IPlatform* CreatePlatform();
             [[nodiscard]] IRenderer* GetRenderer() const;
+            [[nodiscard]] std::vector<float> GenerateCircleVertices(float radius, int segments) const;
 
             static IVertexBuffer* CreateVertexBuffer(float* vertices, size_t size) ;
             static IShader* CreateShader(std::string vertexPath, std::string fragmentPath);

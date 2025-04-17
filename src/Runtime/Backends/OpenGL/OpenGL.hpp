@@ -4,8 +4,6 @@
 
 #pragma once
 
-#include <vector>
-
 #include <Runtime/Backends/OpenGL/OpenGLHeaders.hpp>
 #include <Runtime/Backends/IPlatform.hpp>
 
@@ -22,8 +20,6 @@ namespace Neon
             bool Initialize(int width, int height, const char* title) override;
 
             void Run(Application* game) override;
-
-            static std::vector<float> GenerateCircleVertices(float radius, int segments);
 
         protected:
             GLFWwindow* m_window;
