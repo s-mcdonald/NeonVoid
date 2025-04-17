@@ -108,6 +108,7 @@ set(GAME_ENGINE_SRC
         src/Runtime/Backends/IShader.hpp
         src/Runtime/Backends/IPlatform.hpp
         src/Runtime/Backends/IRenderer.hpp
+        src/Runtime/Backends/IFrameBuffer.hpp
         src/Runtime/Backends/IVertexArray.hpp
         src/Runtime/Backends/IVertexBuffer.hpp
 

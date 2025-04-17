@@ -14,6 +14,7 @@
     #include <Runtime/Backends/IRenderer.hpp>
     #include <Runtime/Backends/IPlatform.hpp>
     #include <Runtime/Backends/IVertexArray.hpp>
+    #include <Runtime/Backends/IFrameBuffer.hpp>
     #include <Runtime/Backends/IVertexBuffer.hpp>
     #include <Runtime/RuntimeApi.hpp>
 
