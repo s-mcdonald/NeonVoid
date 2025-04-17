@@ -3,7 +3,7 @@
  */
 
 #include <ExtRuntime.hpp>
-#include <NeonEngine/RuntimeBridge.hpp>
+#include <RuntimeBridge.hpp>
 
 namespace Neon
 {

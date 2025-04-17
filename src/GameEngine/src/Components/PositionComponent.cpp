@@ -2,7 +2,7 @@
  * {SourceHeader}
  */
 
-#include <NeonEngine/Components/Components.hpp>
+#include <Components/Components.hpp>
 
 namespace Neon 
 {

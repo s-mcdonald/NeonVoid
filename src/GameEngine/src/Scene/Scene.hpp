@@ -7,8 +7,8 @@
 #include <string>
 #include <unordered_map>
 
-#include <NeonEngine/Components/Components.hpp>
-#include <NeonEngine/Entity/Entity.hpp>
+#include <Components/Components.hpp>
+#include <Entity/Entity.hpp>
 
 namespace Neon
 {

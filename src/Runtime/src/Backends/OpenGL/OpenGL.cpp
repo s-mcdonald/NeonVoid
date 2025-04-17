@@ -5,8 +5,8 @@
 #include <cmath>
 #include <iostream>
 
-#include <NeonEngine/Application.hpp>
-#include <NeonEngine/AssetManager/AssetManager.hpp>
+#include <Application.hpp>
+#include <AssetManager/AssetManager.hpp>
 
 #include <Backends/OpenGL/OpenGL.hpp>
 #include <Backends/OpenGL/OpenGLInput.hpp>

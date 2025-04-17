@@ -4,8 +4,8 @@
 
 #include <iostream>
 
-#include <NeonEngine/Entity/Entity.hpp>
-#include <NeonEngine/Components/Components.hpp>
+#include <Entity/Entity.hpp>
+#include <Components/Components.hpp>
 
 namespace Neon 
 {

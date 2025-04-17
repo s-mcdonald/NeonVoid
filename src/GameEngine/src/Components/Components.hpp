@@ -8,8 +8,8 @@
 
 #include <ExtRuntime.hpp>
 
-#include <NeonEngine/Audio/AudioSystem.hpp>
-#include <NeonEngine/Types.hpp>
+#include <Types.hpp>
+#include <Audio/AudioSystem.hpp>
 
 namespace Neon
 {

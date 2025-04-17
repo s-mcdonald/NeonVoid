@@ -4,8 +4,8 @@
 
 #include <deque>
 
-#include <fkYAML/node.hpp>
-#include <NeonEngine/Application.hpp>
+#include <../vendor/fkYAML/node.hpp>
+#include <Application.hpp>
 
 namespace Neon 
 {

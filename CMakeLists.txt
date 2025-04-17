@@ -54,48 +54,48 @@ set(OpenGL_GL_PREFERENCE GLVND)
 # Source files
 #
 set(GAME_ENGINE_SRC
-        src/GameEngine/src/NeonEngine/All.hpp
+        src/GameEngine/src/All.hpp
 
-        src/GameEngine/src/NeonEngine/Types.hpp
-        src/GameEngine/src/NeonEngine/Application.hpp
-        src/GameEngine/src/NeonEngine/Application.cpp
+        src/GameEngine/src/Types.hpp
+        src/GameEngine/src/Application.hpp
+        src/GameEngine/src/Application.cpp
 
         # Loaders
-        src/GameEngine/src/NeonEngine/Loaders/YamlReader.hpp
-        src/GameEngine/src/NeonEngine/Loaders/YamlReader.cpp
+        src/GameEngine/src/Loaders/YamlReader.hpp
+        src/GameEngine/src/Loaders/YamlReader.cpp
 
         # AssetManager
-        src/GameEngine/src/NeonEngine/AssetManager/AssetManager.hpp
-        src/GameEngine/src/NeonEngine/AssetManager/AssetManager.cpp
+        src/GameEngine/src/AssetManager/AssetManager.hpp
+        src/GameEngine/src/AssetManager/AssetManager.cpp
 
         # Scene(s)
-        src/GameEngine/src/NeonEngine/Scene/Scene.hpp
-        src/GameEngine/src/NeonEngine/Scene/Scene.cpp
+        src/GameEngine/src/Scene/Scene.hpp
+        src/GameEngine/src/Scene/Scene.cpp
 
         # Entity
-        src/GameEngine/src/NeonEngine/Entity/Entity.hpp
-        src/GameEngine/src/NeonEngine/Entity/Entity.cpp
+        src/GameEngine/src/Entity/Entity.hpp
+        src/GameEngine/src/Entity/Entity.cpp
 
         # Transition
-        src/GameEngine/src/NeonEngine/Transition/Transition.hpp
-        src/GameEngine/src/NeonEngine/Transition/Transition.cpp
+        src/GameEngine/src/Transition/Transition.hpp
+        src/GameEngine/src/Transition/Transition.cpp
 
         # Audio
-        src/GameEngine/src/NeonEngine/Audio/Volume.hpp
-        src/GameEngine/src/NeonEngine/Audio/AudioSystem.hpp
-        src/GameEngine/src/NeonEngine/Audio/AudioSystem.cpp
+        src/GameEngine/src/Audio/Volume.hpp
+        src/GameEngine/src/Audio/AudioSystem.hpp
+        src/GameEngine/src/Audio/AudioSystem.cpp
 
         # Components
-        src/GameEngine/src/NeonEngine/Components/ShaderComponent.cpp
-        src/GameEngine/src/NeonEngine/Components/AudioComponent.cpp
-        src/GameEngine/src/NeonEngine/Components/TextComponent.cpp
-        src/GameEngine/src/NeonEngine/Components/PositionComponent.cpp
-        src/GameEngine/src/NeonEngine/Components/MovementComponent.cpp
+        src/GameEngine/src/Components/ShaderComponent.cpp
+        src/GameEngine/src/Components/AudioComponent.cpp
+        src/GameEngine/src/Components/TextComponent.cpp
+        src/GameEngine/src/Components/PositionComponent.cpp
+        src/GameEngine/src/Components/MovementComponent.cpp
 
         # Engine Abstracts
 
-        src/GameEngine/src/NeonEngine/RuntimeBridge.hpp
-        src/GameEngine/src/NeonEngine/RuntimeBridge.cpp
+        src/GameEngine/src/RuntimeBridge.hpp
+        src/GameEngine/src/RuntimeBridge.cpp
 
         # Platform
         src/Runtime/src/IntRuntime.hpp
@@ -146,6 +146,7 @@ target_include_directories(GameEngine PUBLIC
         ${CMAKE_SOURCE_DIR}/src
         ${CMAKE_SOURCE_DIR}/src/GameEngine/src
         ${CMAKE_SOURCE_DIR}/src/GameEngine/vendor
+        ${CMAKE_SOURCE_DIR}/src/GameEngine/include
         ${CMAKE_SOURCE_DIR}/src/Runtime/src
         ${CMAKE_SOURCE_DIR}/src/Runtime/vendor
         ${CMAKE_SOURCE_DIR}/src/Runtime/include

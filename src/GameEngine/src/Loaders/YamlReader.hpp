@@ -8,7 +8,7 @@
 #include <fstream>
 #include <string>
 
-#include <NeonEngine/Types.hpp>
+#include <Types.hpp>
 #include <fkYAML/node.hpp>
 
 namespace Neon

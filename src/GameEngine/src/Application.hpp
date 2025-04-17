@@ -6,9 +6,10 @@
 
 #include <deque>
 
-#include <NeonEngine/All.hpp>
-#include <NeonEngine/RuntimeBridge.hpp>
-#include <NeonEngine/Scene/Scene.hpp>
+#include <All.hpp>
+#include <Loaders/YamlReader.hpp>
+#include <RuntimeBridge.hpp>
+#include <Scene/Scene.hpp>
 
 namespace Neon
 {
