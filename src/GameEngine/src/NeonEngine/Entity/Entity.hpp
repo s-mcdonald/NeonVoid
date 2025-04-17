@@ -8,8 +8,6 @@
 #include <typeindex>
 #include <unordered_map>
 
-#include <Runtime/Backends/Input.hpp>
-
 #include <NeonEngine/Components/Components.hpp>
 #include <NeonEngine/Types.hpp>
 

@@ -10,12 +10,6 @@
 
 namespace Neon
 {
-    typedef void* WindowHandlePtr;
-    class IPlatform;
-    class IRenderer;
-    class IVertexBuffer;
-    class IShader;
-
     class RuntimeApi
     {
         public:
@@ -29,9 +23,6 @@ namespace Neon
 
             static IVertexBuffer* CreateVertexBuffer(float* vertices, size_t size) ;
             static IShader* CreateShader(std::string vertexPath, std::string fragmentPath);
-
-            void SetWindow(WindowHandlePtr window);
-            [[nodiscard]] WindowHandlePtr GetWindowAsPtr() const;
 
         private:
             RuntimeApi();

@@ -35,18 +35,6 @@ namespace Neon
         return m_renderer;
     }
 
-    // Window Handle (temp)
-
-    void RuntimeApi::SetWindow(WindowHandlePtr window)
-    {
-        mx_window = window;
-    }
-
-    [[nodiscard]] WindowHandlePtr RuntimeApi::GetWindowAsPtr() const
-    {
-        return mx_window;
-    }
-
     // Renderer Primitives
 
     IPlatform* RuntimeApi::CreatePlatform()

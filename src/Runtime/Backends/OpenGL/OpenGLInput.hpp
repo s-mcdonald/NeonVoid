@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include <Runtime/Backends/Input.hpp>
+#include <Runtime/Backends/IInput.hpp>
 
 namespace Neon
 {

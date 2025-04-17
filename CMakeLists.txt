@@ -100,7 +100,7 @@ set(GAME_ENGINE_SRC
         src/Runtime/RuntimeApi.cpp
 
         src/Runtime/Backends/IPlatform.hpp
-        src/Runtime/Backends/Input.hpp
+        src/Runtime/Backends/IInput.hpp
         src/Runtime/Backends/IWindow.hpp
         src/Runtime/Backends/IWindow.hpp
         src/Runtime/Backends/IShader.hpp
