@@ -31,6 +31,7 @@ namespace Neon
         SceneConfig sceneConfig;
 
         sceneConfig.audioPath = m_yamlRoot["scene"]["audio"].get_value<std::string>();
+        sceneConfig.sceneType = m_yamlRoot["scene"]["type"].get_value<std::string>();
 
         for (const auto& shaderNode : m_yamlRoot["scene"]["shaders"]) {
             SceneShader shader;

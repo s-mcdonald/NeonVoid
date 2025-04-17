@@ -27,6 +27,12 @@ namespace Neon
             Scene* GetCurrentScene();
             void SwitchScene();
 
+        protected:
+            void SetSceneYaml(const std::string& sceneName);
+
+        private:
+            std::string GetSceneYaml() const;
+
         private:
             std::deque<Scene*> m_scenes;
             Scene* m_currentScene{nullptr};
@@ -34,5 +40,7 @@ namespace Neon
         private:
             RuntimeBridge m_runtime;
             YamlReader m_yamlReader;
+            std::string m_sceneYamlPath{};
+            SceneConfig m_sceneConfig;
     };
 }

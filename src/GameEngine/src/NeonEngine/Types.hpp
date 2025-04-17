@@ -8,6 +8,11 @@
 
 namespace Neon
 {
+    ///
+    /// Player / Entity IDs
+    ///
+    constexpr uint8_t MAIN_PLAYER = 1;
+
     typedef void* WindowHandlePtr;
 
     constexpr float MIN_FONT_SIZE = 8;
@@ -98,6 +103,7 @@ namespace Neon
 
     struct SceneConfig {
         std::string audioPath;
+        std::string sceneType;
         std::vector<SceneShader> shaders;
     };
 }

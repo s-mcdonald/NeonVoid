@@ -21,9 +21,48 @@ namespace Neon
     {
         if (m_runtime.Initialize(width, height, title))
         {
-            m_yamlReader.Read("/home/sam/Game/Neon/build/assets/game.yaml");
+            m_yamlReader.Read(m_sceneYamlPath);
 
-            m_yamlReader.Init();
+            // @todo: we need to validate this data
+            m_sceneConfig = m_yamlReader.Init();
+
+            Scene* scene = new Scene(SceneType::Title);
+
+            if (m_sceneConfig.audioPath != "")
+            {
+                auto* introMusic = new AudioComponent(m_sceneConfig.audioPath);
+                scene->AddComponent("aud.intro", introMusic);
+
+                // pass config from yaml for this
+                introMusic->TriggerPlayRepeat();
+            }
+
+
+            auto& runtimeApi = RuntimeApi::GetInstance();
+            for (auto& shaders : m_sceneConfig.shaders)
+            {
+                std::vector<float> circle_vertices = runtimeApi.GenerateCircleVertices(1.0f, 100);
+
+                auto vertexPath = shaders.dir + shaders.vertexShader;
+                auto fragPath = shaders.dir + shaders.fragShader;
+
+                std::cout << vertexPath << std::endl;
+                std::cout << fragPath << std::endl;
+
+                auto circle_shader = runtimeApi.CreateShader(vertexPath,fragPath);
+
+                auto* circle_component = new ShaderComponent(circle_vertices, circle_shader);
+                scene->AddComponent(shaders.id, circle_component);
+
+
+                // auto* mainPlayer = new MoveablePlayerEntity();
+                // m_entities[mainPlayer->GetId()] = mainPlayer;
+                // scene->AddEntity();
+            }
+
+
+
+            AddScene(scene);
 
             return true;
         }
@@ -34,6 +73,16 @@ namespace Neon
     void Application::Run()
     {
         m_runtime.Run(this);
+    }
+
+    void Application::SetSceneYaml(const std::string& sceneName)
+    {
+        m_sceneYamlPath = sceneName;
+    }
+
+    std::string Application::GetSceneYaml() const
+    {
+        return m_sceneYamlPath;
     }
 
     void Application::AddScene(Scene* scene)
