@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include <Runtime/Backends/IVertexArray.hpp>
+#include <Backends/IVertexArray.hpp>
 
 namespace Neon
 {

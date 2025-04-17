@@ -8,8 +8,8 @@
 #include <NeonEngine/Application.hpp>
 #include <NeonEngine/AssetManager/AssetManager.hpp>
 
-#include <Runtime/Backends/OpenGL/OpenGL.hpp>
-#include <Runtime/Backends/OpenGL/OpenGLInput.hpp>
+#include <Backends/OpenGL/OpenGL.hpp>
+#include <Backends/OpenGL/OpenGLInput.hpp>
 
 namespace Neon 
 {

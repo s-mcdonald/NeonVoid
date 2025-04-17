@@ -2,8 +2,8 @@
  * {SourceHeader}
  */
 
-#include <Runtime/Backends/OpenGL/OpenGLHeaders.hpp>
-#include <Runtime/Backends/OpenGL/OpenGLVertexBuffer.hpp>
+#include <Backends/OpenGL/OpenGLHeaders.hpp>
+#include <Backends/OpenGL/OpenGLVertexBuffer.hpp>
 
 namespace Neon
 {

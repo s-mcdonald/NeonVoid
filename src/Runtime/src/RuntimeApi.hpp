@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include <Runtime/IntRuntime.hpp>
+#include <IntRuntime.hpp>
 
 #include "Factory/ShaderFactory.hpp"
 

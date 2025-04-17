@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include <Runtime/Backends/IRenderer.hpp>
+#include <Backends/IRenderer.hpp>
 
 namespace Neon
 {

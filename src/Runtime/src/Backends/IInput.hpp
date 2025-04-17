@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include <Runtime/Backends/OpenGL/OpenGLHeaders.hpp>
+#include <Backends/OpenGL/OpenGLHeaders.hpp>
 
 namespace Neon
 {

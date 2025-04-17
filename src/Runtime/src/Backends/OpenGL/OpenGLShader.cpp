@@ -4,7 +4,7 @@
 
 #include <fstream>
 
-#include <Runtime/Backends/OpenGL/OpenGLShader.hpp>
+#include <Backends/OpenGL/OpenGLShader.hpp>
 
 namespace Neon
 {

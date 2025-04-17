@@ -98,38 +98,38 @@ set(GAME_ENGINE_SRC
         src/GameEngine/src/NeonEngine/RuntimeBridge.cpp
 
         # Platform
-        src/Runtime/IntRuntime.hpp
-        src/Runtime/ExtRuntime.hpp
-        src/Runtime/RuntimeApi.hpp
-        src/Runtime/RuntimeApi.cpp
+        src/Runtime/src/IntRuntime.hpp
+        src/Runtime/src/ExtRuntime.hpp
+        src/Runtime/src/RuntimeApi.hpp
+        src/Runtime/src/RuntimeApi.cpp
 
-        src/Runtime/Factory/ShaderFactory.hpp
-        src/Runtime/Factory/ShaderFactory.cpp
+        src/Runtime/src/Factory/ShaderFactory.hpp
+        src/Runtime/src/Factory/ShaderFactory.cpp
 
-        src/Runtime/Backends/IInput.hpp
-        src/Runtime/Backends/IWindow.hpp
-        src/Runtime/Backends/IWindow.hpp
-        src/Runtime/Backends/IShader.hpp
-        src/Runtime/Backends/IPlatform.hpp
-        src/Runtime/Backends/IRenderer.hpp
-        src/Runtime/Backends/IFrameBuffer.hpp
-        src/Runtime/Backends/IVertexArray.hpp
-        src/Runtime/Backends/IVertexBuffer.hpp
+        src/Runtime/src/Backends/IInput.hpp
+        src/Runtime/src/Backends/IWindow.hpp
+        src/Runtime/src/Backends/IWindow.hpp
+        src/Runtime/src/Backends/IShader.hpp
+        src/Runtime/src/Backends/IPlatform.hpp
+        src/Runtime/src/Backends/IRenderer.hpp
+        src/Runtime/src/Backends/IFrameBuffer.hpp
+        src/Runtime/src/Backends/IVertexArray.hpp
+        src/Runtime/src/Backends/IVertexBuffer.hpp
 
 
-        src/Runtime/Backends/OpenGL/OpenGLHeaders.hpp
-        src/Runtime/Backends/OpenGL/OpenGL.hpp
-        src/Runtime/Backends/OpenGL/OpenGL.cpp
-        src/Runtime/Backends/OpenGL/OpenGLInput.hpp
-        src/Runtime/Backends/OpenGL/OpenGLInput.cpp
-        src/Runtime/Backends/OpenGL/OpenGLShader.hpp
-        src/Runtime/Backends/OpenGL/OpenGLShader.cpp
-        src/Runtime/Backends/OpenGL/OpenGLRenderer.hpp
-        src/Runtime/Backends/OpenGL/OpenGLRenderer.cpp
-        src/Runtime/Backends/OpenGL/OpenGLVertexArray.hpp
-        src/Runtime/Backends/OpenGL/OpenGLVertexArray.cpp
-        src/Runtime/Backends/OpenGL/OpenGLVertexBuffer.hpp
-        src/Runtime/Backends/OpenGL/OpenGLVertexBuffer.cpp
+        src/Runtime/src/Backends/OpenGL/OpenGLHeaders.hpp
+        src/Runtime/src/Backends/OpenGL/OpenGL.hpp
+        src/Runtime/src/Backends/OpenGL/OpenGL.cpp
+        src/Runtime/src/Backends/OpenGL/OpenGLInput.hpp
+        src/Runtime/src/Backends/OpenGL/OpenGLInput.cpp
+        src/Runtime/src/Backends/OpenGL/OpenGLShader.hpp
+        src/Runtime/src/Backends/OpenGL/OpenGLShader.cpp
+        src/Runtime/src/Backends/OpenGL/OpenGLRenderer.hpp
+        src/Runtime/src/Backends/OpenGL/OpenGLRenderer.cpp
+        src/Runtime/src/Backends/OpenGL/OpenGLVertexArray.hpp
+        src/Runtime/src/Backends/OpenGL/OpenGLVertexArray.cpp
+        src/Runtime/src/Backends/OpenGL/OpenGLVertexBuffer.hpp
+        src/Runtime/src/Backends/OpenGL/OpenGLVertexBuffer.cpp
 )
 
 # Create GameEngine as a static library
@@ -146,6 +146,9 @@ target_include_directories(GameEngine PUBLIC
         ${CMAKE_SOURCE_DIR}/src
         ${CMAKE_SOURCE_DIR}/src/GameEngine/src
         ${CMAKE_SOURCE_DIR}/src/GameEngine/vendor
+        ${CMAKE_SOURCE_DIR}/src/Runtime/src
+        ${CMAKE_SOURCE_DIR}/src/Runtime/vendor
+        ${CMAKE_SOURCE_DIR}/src/Runtime/include
 )
 
 # removed inc dirs
@@ -174,8 +177,6 @@ set(GAME_SRC
         src/Game/src/MyGame.hpp
         src/Game/src/Mankind.hpp
         src/Game/src/GameMain.cpp # Entry
-        src/Game/src/Entities/MoveablePlayerEntity.hpp
-        src/Game/src/Entities/MoveablePlayerEntity.cpp
 )
 
 # Create the game executable

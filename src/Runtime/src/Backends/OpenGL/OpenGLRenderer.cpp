@@ -9,8 +9,8 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include <Runtime/Backends/OpenGL/OpenGLHeaders.hpp>
-#include <Runtime/Backends/OpenGL/OpenGLRenderer.hpp>
+#include <Backends/OpenGL/OpenGLHeaders.hpp>
+#include <Backends/OpenGL/OpenGLRenderer.hpp>
 
 namespace Neon 
 {
