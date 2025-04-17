@@ -130,6 +130,8 @@ set(GAME_ENGINE_SRC
         src/Runtime/src/Backends/OpenGL/OpenGLVertexArray.cpp
         src/Runtime/src/Backends/OpenGL/OpenGLVertexBuffer.hpp
         src/Runtime/src/Backends/OpenGL/OpenGLVertexBuffer.cpp
+
+        src/Runtime/vendor/glad/glad.c
 )
 
 # Create GameEngine as a static library
@@ -152,6 +154,7 @@ target_include_directories(GameEngine PUBLIC
         ${CMAKE_SOURCE_DIR}/src/Runtime/include
 )
 
+
 # removed inc dirs
 # ${GLEW_INCLUDE_DIR}
 # ${GLEW_INCLUDE_DIRS}
@@ -161,10 +164,11 @@ target_include_directories(GameEngine PUBLIC
 find_package(OpenGL REQUIRED)
 find_package(glfw3 REQUIRED)
 find_package(glm REQUIRED)
-find_package(GLEW REQUIRED)
+#find_package(GLEW REQUIRED)
 
 # Link OpenGL libraries
-target_link_libraries(GameEngine PRIVATE OpenGL::GL glfw ${GLEW_LIBRARY} ${GLEW_LIBRARIES})
+#target_link_libraries(GameEngine PRIVATE OpenGL::GL glfw ${GLEW_LIBRARY} ${GLEW_LIBRARIES})
+target_link_libraries(GameEngine PRIVATE OpenGL::GL glfw )
 
 # Enable compiler warnings for GameEngine
 target_compile_options(GameEngine PRIVATE -Wall -Wextra -Wpedantic)

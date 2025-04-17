@@ -8,6 +8,7 @@
 #include <Application.hpp>
 #include <AssetManager/AssetManager.hpp>
 
+#include <Backends/OpenGL/OpenGLHeaders.hpp>
 #include <Backends/OpenGL/OpenGL.hpp>
 #include <Backends/OpenGL/OpenGLInput.hpp>
 
@@ -66,11 +67,17 @@ namespace Neon
 
         glfwMakeContextCurrent(m_window);
 
-        if (glewInit() != GLEW_OK) 
+        if (!gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress)))
         {
-            std::cerr << "Failed to initialize GLEW!" << std::endl;
+            std::cout << "Failed to initialize GLAD" << std::endl;
             return false;
         }
+
+        // if (glewInit() != GLEW_OK)
+        // {
+        //     std::cerr << "Failed to initialize GLEW!" << std::endl;
+        //     return false;
+        // }
 
         glfwSetFramebufferSizeCallback(m_window, []( [[maybe_unused]]GLFWwindow* window, int width, int height)
         {

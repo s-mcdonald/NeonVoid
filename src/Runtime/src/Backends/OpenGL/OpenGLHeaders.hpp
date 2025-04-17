@@ -4,5 +4,5 @@
 
 #pragma once
 
-#include <GL/glew.h>
+#include "glad/glad.h"   // Include glad first
 #include <GLFW/glfw3.h>
