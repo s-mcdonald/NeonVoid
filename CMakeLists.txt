@@ -121,8 +121,8 @@ set(GAME_ENGINE_SRC
         src/Runtime/Backends/OpenGL/OpenGLShader.cpp
         src/Runtime/Backends/OpenGL/OpenGLRenderer.hpp
         src/Runtime/Backends/OpenGL/OpenGLRenderer.cpp
-        src/Runtime/Backends/OpenGL/OpenGlVertexArray.hpp
-        src/Runtime/Backends/OpenGL/OpenGlVertexArray.cpp
+        src/Runtime/Backends/OpenGL/OpenGLVertexArray.hpp
+        src/Runtime/Backends/OpenGL/OpenGLVertexArray.cpp
         src/Runtime/Backends/OpenGL/OpenGLVertexBuffer.hpp
         src/Runtime/Backends/OpenGL/OpenGLVertexBuffer.cpp
 )

@@ -22,8 +22,9 @@
     #include <Runtime/RuntimeApi.hpp>
     #include <Runtime/Backends/OpenGL/OpenGL.hpp>
     #include <Runtime/Backends/OpenGL/OpenGLInput.hpp>
-    #include <Runtime/Backends/OpenGL/OpenGLRenderer.hpp>
     #include <Runtime/Backends/OpenGL/OpenGLShader.hpp>
+    #include <Runtime/Backends/OpenGL/OpenGLRenderer.hpp>
+    #include <Runtime/Backends/OpenGL/OpenGLVertexArray.hpp>
     #include <Runtime/Backends/OpenGL/OpenGLVertexBuffer.hpp>
 
 #elif defined(NEON_BUILD_VULKAN)
