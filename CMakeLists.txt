@@ -60,6 +60,10 @@ set(GAME_ENGINE_SRC
         src/GameEngine/src/NeonEngine/Application.hpp
         src/GameEngine/src/NeonEngine/Application.cpp
 
+        # Loaders
+        src/GameEngine/src/NeonEngine/Loaders/YamlReader.hpp
+        src/GameEngine/src/NeonEngine/Loaders/YamlReader.cpp
+
         # AssetManager
         src/GameEngine/src/NeonEngine/AssetManager/AssetManager.hpp
         src/GameEngine/src/NeonEngine/AssetManager/AssetManager.cpp

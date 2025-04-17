@@ -1,16 +1,12 @@
-neon:
-  scenes:
-    scene1:
-      name: titleScene
+shaders:
+    -
+      name: id.white_circle
+      dir: WhiteCircle
+      vertex: shader.vert
+      frag: shader.frag
 
-      shaders:
-          vertex:
-            name: id.vertex_only
-            dir: VertexOnly
-            vertex: shader.vert
-
-          pair:
-            name: id.white_circle
-            dir: WhiteCircle
-            vertex: shader.vert
-            frag: shader.frag
+    -
+      name: id.green_triangle
+      dir: GreenTriangle
+      vertex: shader.vert
+      frag: shader.frag

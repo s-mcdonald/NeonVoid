@@ -2,6 +2,8 @@
  * {SourceHeader}
  */
 
+#include <NeonEngine/All.hpp>
+
 #include "MyGame.hpp"
 #include "Scenes/GamePlayScene.hpp"
 #include "Scenes/TitleScene.hpp"
@@ -10,6 +12,10 @@ namespace Neon
 {
     MyGame::MyGame()
     {
+        YamlReader yamlReader("/home/sam/Game/Neon/src/Game/assets/shaders/shaders.yaml");
+
+        yamlReader.Load();
+
         // eventually we should use a scene loader where the scene will load when needed
         // and not be instantiated at load time.
         auto* scene = new TitleScene(SceneType::Title);
