@@ -76,7 +76,7 @@ namespace Neon
 
         public:
             void AllowMovementOf(PositionComponent* component);
-            void HandleInput(OpenGLInput* input); // keyboadInput ?
+            void HandleInput(Input* input); // keyboadInput ?
 
         public:
             void OnInit() override {};

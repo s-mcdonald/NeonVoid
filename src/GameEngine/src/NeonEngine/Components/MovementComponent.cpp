@@ -8,7 +8,7 @@
 
 namespace Neon 
 {
-    void MovementComponent::HandleInput(OpenGLInput* input)
+    void MovementComponent::HandleInput(Input* input)
     {
         // check if KeyboardInput
         if (auto* x = dynamic_cast<KeyboardInput*>(input))

@@ -25,7 +25,7 @@ namespace Neon
             void Render();
             void Destroy();
 
-            void HandleInput(OpenGLInput* input);
+            void HandleInput(Input* input);
             virtual void OnInit() {};
             virtual void OnUpdate() {};
             virtual void OnRender() {};
@@ -54,7 +54,7 @@ namespace Neon
             void DestroyRenderable(const T& t);
 
             template <typename T>
-            void HandlesInput(const T& t, OpenGLInput* input);
+            void HandlesInput(const T& t, Input* input);
 
         protected:
             std::unordered_map<EntityID, Entity*> m_entities;

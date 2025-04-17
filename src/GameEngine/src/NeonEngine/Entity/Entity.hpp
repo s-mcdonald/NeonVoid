@@ -55,7 +55,7 @@ namespace Neon
             virtual void OnUpdate();
             virtual void OnRender();
             virtual void OnDestroy() {};
-            void HandleInput(OpenGLInput* input);
+            void HandleInput(Input* input);
 
         private:
             EntityID m_id;

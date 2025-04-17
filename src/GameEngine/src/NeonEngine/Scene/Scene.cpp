@@ -63,7 +63,7 @@ namespace Neon
         OnDestroy();
     }
 
-    void Scene::HandleInput(OpenGLInput* input)
+    void Scene::HandleInput(Input* input)
     {
         HandlesInput(m_entities, input);
     }
@@ -130,7 +130,7 @@ namespace Neon
     }
 
     template <typename T>
-    void Scene::HandlesInput(const T& t, OpenGLInput* input)
+    void Scene::HandlesInput(const T& t, Input* input)
     {
         for (auto& [key, value] : t)
         {

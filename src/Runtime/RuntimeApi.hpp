@@ -11,6 +11,10 @@
 namespace Neon
 {
     typedef void* WindowHandlePtr;
+    class IPlatform;
+    class IRenderer;
+    class IVertexBuffer;
+    class IShader;
 
     class RuntimeApi
     {

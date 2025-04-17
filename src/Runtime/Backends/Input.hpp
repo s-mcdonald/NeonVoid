@@ -6,8 +6,12 @@
 
 #include <Runtime/Backends/OpenGL/OpenGLHeaders.hpp>
 
+#include "Runtime/RuntimeApi.hpp"
+
 namespace Neon
 {
+    typedef void* WindowHandlePtr;
+
     // @todo refactor/abstract to use diff codes based on backend..
     enum class Key
     {
@@ -80,14 +84,16 @@ namespace Neon
         MouseMiddleButton
     };
 
-    class OpenGLInput
+    class Input
     {
         public:
-            OpenGLInput() = default;
-            virtual ~OpenGLInput() = default;
+            Input() = default;
+            virtual ~Input() = default;
+        private:
+            WindowHandlePtr mx_window{nullptr};
     };
 
-    class KeyboardInput : public OpenGLInput
+    class KeyboardInput : public Input
     {
         public:
             ~KeyboardInput() override = default;
@@ -98,7 +104,7 @@ namespace Neon
             virtual bool IsKeyReleased(Key key) = 0;
     };
 
-    class MouseInput : public OpenGLInput
+    class MouseInput : public Input
     {
         public:
             [[nodiscard]] static int GetMouseX() { return 0;};
