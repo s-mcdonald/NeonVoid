@@ -75,7 +75,7 @@ namespace Neon
 #endif
     }
 
-    IShader* RuntimeApi::CreateShader(std::string vertexPath, std::string fragmentPath)
+    IShader* RuntimeApi::CreateShader(const std::string& vertexPath, const std::string& fragmentPath)
     {
         return m_shaderFactory.CreateShader(vertexPath, fragmentPath);
     }

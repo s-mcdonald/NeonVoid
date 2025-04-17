@@ -24,7 +24,7 @@ namespace Neon
             [[nodiscard]] static std::vector<float> GenerateCircleVertices(float radius, int segments) ;
 
             static IVertexBuffer* CreateVertexBuffer(float* vertices, size_t size) ;
-            IShader* CreateShader(std::string vertexPath, std::string fragmentPath);
+            IShader* CreateShader(const std::string& vertexPath, const std::string& fragmentPath);
 
         private:
             RuntimeApi();
