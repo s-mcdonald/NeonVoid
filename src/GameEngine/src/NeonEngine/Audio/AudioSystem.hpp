@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include <miniaudio.h>
+#include <miniaudio/miniaudio.h>
 #include <string>
 
 #include "Volume.hpp"

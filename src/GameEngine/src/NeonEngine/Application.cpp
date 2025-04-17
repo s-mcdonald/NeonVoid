@@ -4,6 +4,7 @@
 
 #include <deque>
 
+#include <fkYAML/node.hpp>
 #include <NeonEngine/Application.hpp>
 
 namespace Neon 

@@ -4,14 +4,12 @@
 
 #pragma once
 
-
 #include <Runtime/IntRuntime.hpp>
 
 #include "Factory/ShaderFactory.hpp"
 
 namespace Neon
 {
-
     class RuntimeApi
     {
         public:
