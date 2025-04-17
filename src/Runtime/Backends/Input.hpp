@@ -6,8 +6,6 @@
 
 #include <Runtime/Backends/OpenGL/OpenGLHeaders.hpp>
 
-#include "Runtime/RuntimeApi.hpp"
-
 namespace Neon
 {
     typedef void* WindowHandlePtr;
@@ -87,7 +85,8 @@ namespace Neon
     class Input
     {
         public:
-            Input() = default;
+            Input() = delete;
+            explicit Input(const WindowHandlePtr windowHandle) : mx_window(windowHandle) {};
             virtual ~Input() = default;
         private:
             WindowHandlePtr mx_window{nullptr};
@@ -96,6 +95,7 @@ namespace Neon
     class KeyboardInput : public Input
     {
         public:
+            explicit KeyboardInput(const WindowHandlePtr windowHandle) : Input(windowHandle) {};
             ~KeyboardInput() override = default;
 
         public:
@@ -107,6 +107,8 @@ namespace Neon
     class MouseInput : public Input
     {
         public:
+            explicit MouseInput(const WindowHandlePtr windowHandle) : Input(windowHandle) {};
+            ~MouseInput() override = default;
             [[nodiscard]] static int GetMouseX() { return 0;};
             [[nodiscard]] static int GetMouseY() { return 0;};
             //bool IsMouseButtonPressed(MouseButton button) const;

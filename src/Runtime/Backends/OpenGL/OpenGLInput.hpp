@@ -12,7 +12,7 @@ namespace Neon
     {
         public:
             explicit OpenGLKeyboardInput(GLFWwindow* window)
-                : KeyboardInput()
+                : KeyboardInput(window)
                 , mx_window(window)
                 {
                     //

@@ -109,9 +109,6 @@ namespace Neon
 
         if (!m_openGlInitialized) return;
 
-        auto& container = RuntimeApi::GetInstance();
-        container.SetWindow(m_window);
-
         OpenGLKeyboardInput keyboardInput(m_window);
 
         while (!glfwWindowShouldClose(m_window)) 
