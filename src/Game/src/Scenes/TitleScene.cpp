@@ -29,7 +29,8 @@ namespace Neon
         ///
         std::vector<float> circle_vertices = runtimeApi.GenerateCircleVertices(1.0f, 100);
 
-        auto circle_shader = Neon::RuntimeApi::CreateShader(
+
+        auto circle_shader = runtimeApi.CreateShader(
             "/home/sam/Game/Neon/src/Game/assets/shaders/WhiteCircle/shader.vert",
             "/home/sam/Game/Neon/src/Game/assets/shaders/WhiteCircle/shader.frag"
         );

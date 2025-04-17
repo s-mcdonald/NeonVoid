@@ -94,10 +94,13 @@ set(GAME_ENGINE_SRC
         src/GameEngine/src/NeonEngine/RuntimeBridge.cpp
 
         # Platform
-        src/Runtime/Runtime.hpp
+        src/Runtime/IntRuntime.hpp
         src/Runtime/ExtRuntime.hpp
         src/Runtime/RuntimeApi.hpp
         src/Runtime/RuntimeApi.cpp
+
+        src/Runtime/Factory/ShaderFactory.hpp
+        src/Runtime/Factory/ShaderFactory.cpp
 
         src/Runtime/Backends/IPlatform.hpp
         src/Runtime/Backends/IInput.hpp

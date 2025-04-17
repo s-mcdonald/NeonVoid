@@ -2,14 +2,7 @@
  * {SourceHeader}
  */
 
-#include <cmath>
-#include <string>
-
-#include <Runtime/ExtRuntime.hpp>
-#include <Runtime/Backends/OpenGL/OpenGL.hpp>
-#include <Runtime/Backends/OpenGL/OpenGLShader.hpp>
-#include <Runtime/Backends/OpenGL/OpenGLRenderer.hpp>
-#include <Runtime/Backends/OpenGL/OpenGLVertexBuffer.hpp>
+#include <Runtime/IntRuntime.hpp>
 
 namespace Neon
 {
@@ -36,7 +29,7 @@ namespace Neon
         return m_renderer;
     }
 
-    std::vector<float> RuntimeApi::GenerateCircleVertices(const float radius, const int segments) const
+    std::vector<float> RuntimeApi::GenerateCircleVertices(const float radius, const int segments)
     {
         std::vector<float> vertices;
 
@@ -84,12 +77,6 @@ namespace Neon
 
     IShader* RuntimeApi::CreateShader(std::string vertexPath, std::string fragmentPath)
     {
-#ifdef NEON_BUILD_OPENGL
-        return new OpenGLShader(std::move(vertexPath), std::move(fragmentPath));
-#elif defined(NEON_BUILD_VULKAN)
-        // send back the Vulkan Shader
-#else
-        return nullptr;
-#endif
+        return m_shaderFactory.CreateShader(vertexPath, fragmentPath);
     }
 }

@@ -4,13 +4,14 @@
 
 #pragma once
 
-#include <string>
-#include <vector>
 
-#include <Runtime/ExtRuntime.hpp>
+#include <Runtime/IntRuntime.hpp>
+
+#include "Factory/ShaderFactory.hpp"
 
 namespace Neon
 {
+
     class RuntimeApi
     {
         public:
@@ -18,13 +19,12 @@ namespace Neon
             RuntimeApi& operator=(const RuntimeApi&) = delete;
             static RuntimeApi& GetInstance();
 
-        public:
             static IPlatform* CreatePlatform();
             [[nodiscard]] IRenderer* GetRenderer() const;
-            [[nodiscard]] std::vector<float> GenerateCircleVertices(float radius, int segments) const;
+            [[nodiscard]] static std::vector<float> GenerateCircleVertices(float radius, int segments) ;
 
             static IVertexBuffer* CreateVertexBuffer(float* vertices, size_t size) ;
-            static IShader* CreateShader(std::string vertexPath, std::string fragmentPath);
+            IShader* CreateShader(std::string vertexPath, std::string fragmentPath);
 
         private:
             RuntimeApi();
@@ -33,5 +33,6 @@ namespace Neon
         private:
             WindowHandlePtr mx_window{nullptr};
             IRenderer* m_renderer;
+            ShaderFactory m_shaderFactory;
     };
 }
