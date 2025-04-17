@@ -141,8 +141,7 @@ set_target_properties(GameEngine PROPERTIES
 target_include_directories(GameEngine PUBLIC
         ${CMAKE_SOURCE_DIR}/src
         ${CMAKE_SOURCE_DIR}/src/GameEngine/src
-        ${CMAKE_SOURCE_DIR}/src/GameEngine/vendor/stb
-        ${CMAKE_SOURCE_DIR}/src/GameEngine/vendor/miniaudio
+        ${CMAKE_SOURCE_DIR}/src/GameEngine/vendor
 )
 
 # removed inc dirs
