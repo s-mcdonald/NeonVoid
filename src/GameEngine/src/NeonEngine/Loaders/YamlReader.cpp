@@ -12,13 +12,13 @@
 
 namespace Neon
 {
-    YamlReader::YamlReader(const std::string& filepath)
+    void YamlReader::Read(const std::string& filepath)
     {
         std::ifstream ifs(filepath);
         m_yamlRoot = fkyaml::node::deserialize(ifs);
     }
 
-    SceneConfig YamlReader::Load() const
+    SceneConfig YamlReader::Init() const
     {
         if (m_yamlRoot["scene"] == nullptr) {
             throw std::runtime_error("Missing 'scene' node in YAML.");

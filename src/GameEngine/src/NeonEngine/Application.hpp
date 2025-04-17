@@ -6,6 +6,7 @@
 
 #include <deque>
 
+#include <NeonEngine/All.hpp>
 #include <NeonEngine/RuntimeBridge.hpp>
 #include <NeonEngine/Scene/Scene.hpp>
 
@@ -18,7 +19,7 @@ namespace Neon
             virtual ~Application();
 
         public:
-            virtual bool Initialize(WindowDimension width, WindowDimension height, const char* title) const;
+            virtual bool Initialize(WindowDimension width, WindowDimension height, const char* title);
             virtual void Run();
 
         public:
@@ -32,5 +33,6 @@ namespace Neon
 
         private:
             RuntimeBridge m_runtime;
+            YamlReader m_yamlReader;
     };
 }

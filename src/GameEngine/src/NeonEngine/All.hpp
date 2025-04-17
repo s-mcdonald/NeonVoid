@@ -7,8 +7,8 @@
 #include <deque>
 #include <functional>
 
-#include <NeonEngine/Application.hpp>
 #include <NeonEngine/Loaders/YamlReader.hpp>
+#include <NeonEngine/Application.hpp>
 #include <NeonEngine/AssetManager/AssetManager.hpp>
 #include <NeonEngine/Audio/AudioSystem.hpp>
 #include <NeonEngine/Audio/Volume.hpp>

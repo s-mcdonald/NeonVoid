@@ -16,8 +16,9 @@ namespace Neon
     class YamlReader
     {
         public:
-            explicit YamlReader(const std::string& filepath);
-            SceneConfig Load() const;
+            YamlReader() = default;
+            void Read(const std::string& filepath);
+            SceneConfig Init() const;
 
         private:
             fkyaml::node m_yamlRoot{};

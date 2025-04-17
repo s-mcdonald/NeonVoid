@@ -17,9 +17,18 @@ namespace Neon
         }
     }
 
-    bool Application::Initialize(const WindowDimension width, const WindowDimension height, const char* title) const
+    bool Application::Initialize(const WindowDimension width, const WindowDimension height, const char* title)
     {
-        return m_runtime.Initialize(width, height, title);
+        if (m_runtime.Initialize(width, height, title))
+        {
+            m_yamlReader.Read("/home/sam/Game/Neon/build/assets/game.yaml");
+
+            m_yamlReader.Init();
+
+            return true;
+        }
+
+        return false;
     }
 
     void Application::Run()

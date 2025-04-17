@@ -12,6 +12,6 @@ namespace Neon
     {
         public:
             MyGame();
-            [[nodiscard]] bool Initialize() const;
+            [[nodiscard]] bool Initialize();
     };
 }
