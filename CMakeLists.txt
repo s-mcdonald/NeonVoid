@@ -102,13 +102,15 @@ set(GAME_ENGINE_SRC
         src/Runtime/Factory/ShaderFactory.hpp
         src/Runtime/Factory/ShaderFactory.cpp
 
-        src/Runtime/Backends/IPlatform.hpp
         src/Runtime/Backends/IInput.hpp
         src/Runtime/Backends/IWindow.hpp
         src/Runtime/Backends/IWindow.hpp
         src/Runtime/Backends/IShader.hpp
+        src/Runtime/Backends/IPlatform.hpp
         src/Runtime/Backends/IRenderer.hpp
+        src/Runtime/Backends/IVertexArray.hpp
         src/Runtime/Backends/IVertexBuffer.hpp
+
 
         src/Runtime/Backends/OpenGL/OpenGLHeaders.hpp
         src/Runtime/Backends/OpenGL/OpenGL.hpp
@@ -119,6 +121,8 @@ set(GAME_ENGINE_SRC
         src/Runtime/Backends/OpenGL/OpenGLShader.cpp
         src/Runtime/Backends/OpenGL/OpenGLRenderer.hpp
         src/Runtime/Backends/OpenGL/OpenGLRenderer.cpp
+        src/Runtime/Backends/OpenGL/OpenGlVertexArray.hpp
+        src/Runtime/Backends/OpenGL/OpenGlVertexArray.cpp
         src/Runtime/Backends/OpenGL/OpenGLVertexBuffer.hpp
         src/Runtime/Backends/OpenGL/OpenGLVertexBuffer.cpp
 )
