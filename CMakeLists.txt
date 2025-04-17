@@ -90,8 +90,8 @@ set(GAME_ENGINE_SRC
 
         # Engine Abstracts
 
-        src/GameEngine/src/NeonEngine/GameEngine.hpp
-        src/GameEngine/src/NeonEngine/GameEngine.cpp
+        src/GameEngine/src/NeonEngine/RuntimeBridge.hpp
+        src/GameEngine/src/NeonEngine/RuntimeBridge.cpp
 
         # Platform
         src/Runtime/Runtime.hpp

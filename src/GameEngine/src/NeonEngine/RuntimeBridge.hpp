@@ -8,11 +8,11 @@
 
 namespace Neon
 {
-    class GameEngine
+    class RuntimeBridge
     {
         public:
-            GameEngine();
-            ~GameEngine();
+            RuntimeBridge();
+            ~RuntimeBridge();
 
         public:
             bool Initialize(int width, int height, const char* title) const;

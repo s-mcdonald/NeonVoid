@@ -7,7 +7,7 @@
 #include <Runtime/ExtRuntime.hpp>
 
 #include <NeonEngine/Components/Components.hpp>
-#include <NeonEngine/GameEngine.hpp>
+#include <NeonEngine/RuntimeBridge.hpp>
 #include "MoveablePlayerEntity.hpp"
 
 namespace Neon

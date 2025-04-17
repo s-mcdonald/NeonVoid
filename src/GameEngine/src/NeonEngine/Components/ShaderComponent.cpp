@@ -4,9 +4,9 @@
 
 #include <iostream>
 
-#include <NeonEngine/Entity/Entity.hpp>
-#include <NeonEngine/GameEngine.hpp>
 #include <NeonEngine/Components/Components.hpp>
+#include <NeonEngine/Entity/Entity.hpp>
+#include <NeonEngine/RuntimeBridge.hpp>
 
 namespace Neon 
 {

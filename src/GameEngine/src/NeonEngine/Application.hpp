@@ -6,7 +6,7 @@
 
 #include <deque>
 
-#include <NeonEngine/GameEngine.hpp>
+#include <NeonEngine/RuntimeBridge.hpp>
 #include <NeonEngine/Scene/Scene.hpp>
 
 namespace Neon
@@ -31,6 +31,6 @@ namespace Neon
             Scene* m_currentScene{nullptr};
 
         private:
-            GameEngine m_gameEngine;
+            RuntimeBridge m_gameEngine;
     };
 }

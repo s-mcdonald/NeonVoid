@@ -2,33 +2,33 @@
  * {SourceHeader}
  */
 
-#include <NeonEngine/GameEngine.hpp>
+#include <NeonEngine/RuntimeBridge.hpp>
 
 #include <Runtime/ExtRuntime.hpp>
 
 namespace Neon
 {
-    GameEngine::GameEngine() : m_platform(nullptr)
+    RuntimeBridge::RuntimeBridge() : m_platform(nullptr)
     {
         m_platform = RuntimeApi::CreatePlatform();
     }
 
-    GameEngine::~GameEngine() 
+    RuntimeBridge::~RuntimeBridge()
     {
         delete m_platform;
     }
 
-    bool GameEngine::Initialize(const int width, const int height, const char* title) const
+    bool RuntimeBridge::Initialize(const int width, const int height, const char* title) const
     {
         return m_platform->Initialize(width, height,title);
     }
 
-    void GameEngine::Run(Application* application) const
+    void RuntimeBridge::Run(Application* application) const
     {
         m_platform->Run(application);
     }
 
-    IPlatform* GameEngine::GetPlatform() const
+    IPlatform* RuntimeBridge::GetPlatform() const
     {
         return m_platform;
     }
