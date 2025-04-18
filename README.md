@@ -27,15 +27,16 @@ There are a couple of VS options, select the one that suits your needs or modify
 
 ### Libs
 
-* [glew](https://github.com/nigels-com/glew)
-* [glfw](https://www.glfw.org/) [(github)](https://github.com/glfw/glfw)
-* [glm](https://github.com/icaven/glm)
-* [minaudio](https://miniaud.io/)
-* [std](https://github.com/nothings/stb/tree/master)
-
+* [glew](https://github.com/nigels-com/glew) - _No longer used_
+* [glad](https://glad.dav1d.de/) [(github)](https://github.com/Dav1dde/glad) - [OpenGL initialization]
+* [glfw](https://www.glfw.org/) [(github)](https://github.com/glfw/glfw) - [GL Context / Window ect]
+* [glm](https://glm.g-truc.net/)[(github)](https://github.com/icaven/glm) - [Math lib]
+* [minaudio](https://miniaud.io/) [(github)](https://github.com/mackron/miniaudio) - [Audio playback]
+* [stb](https://github.com/nothings/stb) - [Text rendering]
+* [fkYaml](https://fktn-k.github.io/fkYAML/) [(github)](https://github.com/fktn-k/fkYAML) - [Yaml io]
 
 ### Sound
-Currently sound files are sourced from the below websites ;;
+Currently, sound files are sourced from the below websites ;
 
 * [pixabay.com](https://pixabay.com/sound-effects/)
 
