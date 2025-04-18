@@ -12,7 +12,7 @@
 ///// This is better because the Game/ folder is always ready to go
 /////
 
-#include <../../GameEngine/src/All.hpp>
+#include <All.hpp>
 
 namespace Neon
 {
@@ -22,7 +22,7 @@ namespace Neon
             MyGame()
             {
                 // @todo: Use a filesystem lib to parse filenames
-                SetSceneYaml("/home/sam/Game/Neon/build/assets/game.yaml");
+                SetSceneYaml("./assets/game.yaml");
             }
 
             [[nodiscard]] bool Initialize()

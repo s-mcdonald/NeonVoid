@@ -18,6 +18,16 @@ namespace Neon
         m_yamlRoot = fkyaml::node::deserialize(ifs);
     }
 
+    // void MoveablePlayerEntity::OnInit()
+    // {
+    //     // auto* positionComponent = new PositionComponent(0.0f, 0.0f);
+    //     // AddComponent(positionComponent);
+    //     //
+    //     // auto* movementComponent = new MovementComponent();
+    //     // movementComponent->AllowMovementOf(positionComponent); // change to using events instead
+    //     // AddComponent(movementComponent);
+    // }
+
     SceneConfig YamlReader::Init() const
     {
         if (m_yamlRoot["scene"] == nullptr) {

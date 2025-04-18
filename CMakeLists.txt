@@ -53,8 +53,7 @@ set(OpenGL_GL_PREFERENCE GLVND)
 #
 set(GAME_SRC
         src/Game/src/MyGame.hpp
-        src/Game/src/Mankind.hpp
-        src/Game/src/GameMain.cpp # Entry
+        src/Game/src/EntryMain.cpp
 )
 
 #
