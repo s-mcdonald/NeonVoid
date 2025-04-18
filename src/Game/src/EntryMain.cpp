@@ -2,9 +2,9 @@
  * {SourceHeader}
  */
 
-#include "MyGame.hpp"
+#include "Core/MyGame.hpp"
 
- int main()
+int main()
  {
      Neon::MyGame game;
 

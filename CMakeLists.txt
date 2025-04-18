@@ -52,7 +52,7 @@ set(OpenGL_GL_PREFERENCE GLVND)
 # Game - Create the main game executable
 #
 set(GAME_SRC
-        src/Game/src/MyGame.hpp
+        src/Game/src/Core/MyGame.hpp
         src/Game/src/EntryMain.cpp
 )
 
@@ -67,12 +67,12 @@ set(GAME_ENGINE_SRC
         src/GameEngine/src/Application.cpp
 
         # Loaders
-        src/GameEngine/src/Loaders/YamlReader.hpp
-        src/GameEngine/src/Loaders/YamlReader.cpp
+        src/GameEngine/src/Assets/Loaders/YamlReader.hpp
+        src/GameEngine/src/Assets/Loaders/YamlReader.cpp
 
         # AssetManager
-        src/GameEngine/src/AssetManager/AssetManager.hpp
-        src/GameEngine/src/AssetManager/AssetManager.cpp
+        src/GameEngine/src/Assets/AssetManager.hpp
+        src/GameEngine/src/Assets/AssetManager.cpp
 
         # Scene(s)
         src/GameEngine/src/Scene/Scene.hpp

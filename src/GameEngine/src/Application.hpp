@@ -7,7 +7,7 @@
 #include <deque>
 
 #include <All.hpp>
-#include <Loaders/YamlReader.hpp>
+#include <Assets/Loaders/YamlReader.hpp>
 #include <RuntimeBridge.hpp>
 #include <Scene/Scene.hpp>
 

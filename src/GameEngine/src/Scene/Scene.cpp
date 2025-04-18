@@ -56,7 +56,7 @@ namespace Neon
 
     void Scene::Destroy()
     {
-        // Reverse the order for destroy
+        // Reverse the order for destruction
         DestroyRenderable(m_entities);
         DestroyRenderable(m_components);
 
@@ -70,7 +70,7 @@ namespace Neon
 
     void Scene::AddComponent(const std::string& tag, Component* component)
     {
-        // what do we do if it already exists ?
+        // what do we do if it already exists?
         m_components[tag] = component;
     }
 
