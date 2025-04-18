@@ -35,7 +35,7 @@ set(${PROJECT_NAME}_PATCH_LEVEL 0)
 # Build Mode
 set(CMAKE_BUILD_TYPE ${NeonReleaseMode})
 
-# Specify the compiler (g++/c++)
+# Compiler
 if(WIN32)
 	set(CMAKE_CXX_COMPILER "cl.exe")
 elseif(UNIX)
@@ -45,8 +45,6 @@ endif()
 # Set C++ standard
 set(CMAKE_CXX_STANDARD ${NeonCppVersion})
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-# OpenGL Configurations
 set(OpenGL_GL_PREFERENCE GLVND)
 
 
@@ -103,10 +101,8 @@ set(GAME_ENGINE_SRC
         src/GameEngine/src/Components/MovementComponent.cpp
 
         # Engine Abstracts
-
         src/GameEngine/src/RuntimeBridge.hpp
         src/GameEngine/src/RuntimeBridge.cpp
-
 )
 
 #
@@ -133,7 +129,6 @@ set(NEON_RUNTIME_SRC
         src/Runtime/src/Backends/IVertexArray.hpp
         src/Runtime/src/Backends/IVertexBuffer.hpp
 
-
         src/Runtime/src/Backends/OpenGL/OpenGLHeaders.hpp
         src/Runtime/src/Backends/OpenGL/OpenGL.hpp
         src/Runtime/src/Backends/OpenGL/OpenGL.cpp
@@ -151,6 +146,14 @@ set(NEON_RUNTIME_SRC
         src/Runtime/vendor/glad/glad.c
 )
 
+
+# Define the executable project
+if(WIN32)
+    add_executable(NeonVoid WIN32 ${GAME_SRC})
+elseif(UNIX)
+    add_executable(NeonVoid ${GAME_SRC})
+endif()
+
 #
 # Define GameEngine & NeonRuntime as a static library
 #
@@ -160,17 +163,27 @@ add_library(NeonRuntime STATIC ${NEON_RUNTIME_SRC})
 #
 # Set the output name of the GameEngine static library (optional)
 #
-set_target_properties(GameEngine PROPERTIES
-    ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build
-    OUTPUT_NAME "GameEngine"
+set_target_properties(
+        GameEngine PROPERTIES
+        ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build
+        OUTPUT_NAME "GameEngine"
 )
-set_target_properties(NeonRuntime PROPERTIES
+set_target_properties(
+        NeonRuntime PROPERTIES
         ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build
         OUTPUT_NAME "NeonRuntime"
 )
 
-# GameENgine include directories
-target_include_directories(GameEngine PUBLIC
+set_target_properties(
+        NeonVoid PROPERTIES
+        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build
+        OUTPUT_NAME "NeonVoid"
+)
+
+
+# GameEngine include directories
+target_include_directories(
+        GameEngine PUBLIC
         ${CMAKE_SOURCE_DIR}/src
         ${CMAKE_SOURCE_DIR}/src/GameEngine/src
         ${CMAKE_SOURCE_DIR}/src/GameEngine/vendor
@@ -181,7 +194,8 @@ target_include_directories(GameEngine PUBLIC
 )
 
 # NeonRuntime include directories
-target_include_directories(NeonRuntime PUBLIC
+target_include_directories(
+        NeonRuntime PUBLIC
         ${CMAKE_SOURCE_DIR}/src
         ${CMAKE_SOURCE_DIR}/src/GameEngine/src
         ${CMAKE_SOURCE_DIR}/src/GameEngine/vendor
@@ -189,6 +203,11 @@ target_include_directories(NeonRuntime PUBLIC
         ${CMAKE_SOURCE_DIR}/src/Runtime/src
         ${CMAKE_SOURCE_DIR}/src/Runtime/vendor
         ${CMAKE_SOURCE_DIR}/src/Runtime/include
+)
+
+# Include dir for Main Game
+target_include_directories(NeonVoid PRIVATE
+        ${CMAKE_SOURCE_DIR}/src/Game/include
 )
 
 
@@ -206,7 +225,7 @@ find_package(glm REQUIRED)
 
 # Link OpenGL libraries
 #target_link_libraries(GameEngine PRIVATE OpenGL::GL glfw ${GLEW_LIBRARY} ${GLEW_LIBRARIES})
-target_link_libraries(GameEngine PRIVATE OpenGL::GL glfw )
+#target_link_libraries(GameEngine PRIVATE OpenGL::GL glfw )
 target_link_libraries(NeonRuntime PRIVATE OpenGL::GL glfw )
 
 # Enable compiler warnings for GameEngine
@@ -219,35 +238,9 @@ target_compile_options(NeonRuntime PRIVATE -Wall -Wextra -Wpedantic)
 
 
 
-#
-# Create the Runtime
-#
-#if(WIN32)
-#    add_executable(NeonRuntime WIN32 ${RUNTIME_SRC})
-#elseif(UNIX)
-#    add_executable(NeonRuntime ${RUNTIME_SRC})
-#endif()
-
-
-
-
-
-
-# Create the game executable
-if(WIN32)
-	add_executable(NeonVoid WIN32 ${GAME_SRC})
-elseif(UNIX)
-	add_executable(NeonVoid ${GAME_SRC})
-endif()
-
-
 # Link GameEngine to the game executable & Runtime
 target_link_libraries(NeonVoid PRIVATE GameEngine NeonRuntime)
 
-# Specify include directories for the Game (can be expanded)
-target_include_directories(NeonVoid PRIVATE 
-    ${CMAKE_SOURCE_DIR}/Game/include
-)
 
 
 
@@ -306,14 +299,6 @@ else()
             ${NEON_BACKEND_GPU_LIB}
     )
 endif()
-
-
-#
-# Specify the output directory for the executable
-#
-set_target_properties(NeonVoid PROPERTIES
-        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build
-)
 
 
 #
