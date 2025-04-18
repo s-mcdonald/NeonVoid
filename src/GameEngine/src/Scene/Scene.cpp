@@ -2,7 +2,7 @@
  * {SourceHeader}
  */
 
-#include <Scene/Scene.hpp>
+#include <NeonEngine/Scene.hpp>
 
 namespace Neon
 {

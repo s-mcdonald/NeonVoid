@@ -7,8 +7,8 @@
 #include <cstdint>
 #include <string>
 
-#include <Backends/OpenGL/OpenGLHeaders.hpp>
-#include <Backends/IShader.hpp>
+#include <NeonRuntime/Backends/OpenGLHeaders.hpp>
+#include <NeonRuntime/IShader.hpp>
 
 namespace Neon
 {

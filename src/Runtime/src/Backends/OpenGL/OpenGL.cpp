@@ -5,12 +5,12 @@
 #include <cmath>
 #include <iostream>
 
-#include <Application.hpp>
+#include <NeonEngine/Application.hpp>
 
 
-#include <Backends/OpenGL/OpenGLHeaders.hpp>
-#include <Backends/OpenGL/OpenGL.hpp>
-#include <Backends/OpenGL/OpenGLInput.hpp>
+#include <NeonRuntime/Backends/OpenGL.hpp>
+#include <NeonRuntime/Backends/OpenGLInput.hpp>
+#include <NeonRuntime/Backends/OpenGLHeaders.hpp>
 
 namespace Neon 
 {

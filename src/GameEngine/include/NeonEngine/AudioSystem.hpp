@@ -7,7 +7,7 @@
 #include <miniaudio/miniaudio.h>
 #include <string>
 
-#include "Volume.hpp"
+#include <NeonEngine/Volume.hpp>
 
 namespace Neon 
 {

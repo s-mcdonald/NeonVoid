@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-#include <Components/Components.hpp>
+#include <NeonEngine/Components.hpp>
 
 namespace Neon 
 {

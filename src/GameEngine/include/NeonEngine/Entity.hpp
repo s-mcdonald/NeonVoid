@@ -8,8 +8,8 @@
 #include <typeindex>
 #include <unordered_map>
 
-#include <Types.hpp>
-#include <Components/Components.hpp>
+#include <NeonEngine/Components.hpp>
+#include <NeonEngine/Types.hpp>
 
 namespace Neon 
 {

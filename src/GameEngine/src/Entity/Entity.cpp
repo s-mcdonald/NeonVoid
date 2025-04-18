@@ -2,7 +2,7 @@
  * {SourceHeader}
  */
 
-#include <Entity/Entity.hpp>
+#include <NeonEngine/Entity.hpp>
 
 namespace Neon
 {

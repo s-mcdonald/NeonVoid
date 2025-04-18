@@ -4,8 +4,8 @@
 
 #pragma once
 
-#include <Backends/OpenGL/OpenGLHeaders.hpp>
-#include <Backends/IPlatform.hpp>
+#include <NeonRuntime/IPlatform.hpp>
+#include <NeonRuntime/Backends/OpenGLHeaders.hpp>
 
 namespace Neon
 {

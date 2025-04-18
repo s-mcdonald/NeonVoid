@@ -2,7 +2,7 @@
  * {SourceHeader}
  */
 
-#include "OpenGLVertexArray.hpp"
+#include <NeonRuntime/Backends/OpenGLVertexArray.hpp>
 
 namespace Neon
 {

@@ -2,7 +2,7 @@
  * {SourceHeader}
  */
 
-#include "IWindow.hpp"
+#include <NeonRuntime/IWindow.hpp>
 
 namespace Neon
 {

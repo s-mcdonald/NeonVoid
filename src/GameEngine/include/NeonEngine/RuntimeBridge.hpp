@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include <../../Runtime/src/ExtRuntime.hpp>
+#include <NeonRuntime/ExtRuntime.hpp>
 
 namespace Neon
 {

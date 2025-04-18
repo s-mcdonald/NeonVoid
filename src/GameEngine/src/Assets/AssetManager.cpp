@@ -5,7 +5,7 @@
 #include <fstream>
 #include <iostream>
 
-#include <Assets/AssetManager.hpp>
+#include <NeonEngine/AssetManager.hpp>
 
 namespace Neon 
 {

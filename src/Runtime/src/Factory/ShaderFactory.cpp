@@ -2,7 +2,8 @@
  * {SourceHeader}
  */
 
-#include <IntRuntime.hpp>
+#include <NeonRuntime/ShaderFactory.hpp>
+#include <NeonRuntime/IntRuntime.hpp>
 
 namespace Neon
 {

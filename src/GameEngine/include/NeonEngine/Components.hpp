@@ -6,10 +6,10 @@
 
 #include <vector>
 
-#include <ExtRuntime.hpp>
+#include <NeonRuntime/ExtRuntime.hpp>
 
-#include <Types.hpp>
-#include <Audio/AudioSystem.hpp>
+#include <NeonEngine/AudioSystem.hpp>
+#include <NeonEngine/Types.hpp>
 
 namespace Neon
 {

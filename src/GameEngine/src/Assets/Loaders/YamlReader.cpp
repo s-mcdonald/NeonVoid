@@ -8,7 +8,7 @@
 
 #include <fkYAML/node.hpp>
 
-#include "YamlReader.hpp"
+#include <NeonEngine/YamlReader.hpp>
 
 namespace Neon
 {

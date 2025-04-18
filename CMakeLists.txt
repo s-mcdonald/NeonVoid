@@ -60,39 +60,41 @@ set(GAME_SRC
 # Game Engine Source files
 #
 set(GAME_ENGINE_SRC
-        src/GameEngine/src/All.hpp
+        # Includes
+        src/GameEngine/include/NeonEngine/YamlReader.hpp
+        src/GameEngine/include/NeonEngine/AssetManager.hpp
+        src/GameEngine/include/NeonEngine/Types.hpp
+        src/GameEngine/include/NeonEngine/Application.hpp
+        src/GameEngine/include/NeonEngine/All.hpp
+        src/GameEngine/include/NeonEngine/Scene.hpp
+        src/GameEngine/include/NeonEngine/Entity.hpp
+        src/GameEngine/include/NeonEngine/Transition.hpp
+        src/GameEngine/include/NeonEngine/Volume.hpp
+        src/GameEngine/include/NeonEngine/AudioSystem.hpp
+        src/GameEngine/include/NeonEngine/RuntimeBridge.hpp
+        src/GameEngine/include/NeonEngine/Components.hpp
 
-        src/GameEngine/src/Types.hpp
-        src/GameEngine/src/Application.hpp
+
+        # App
         src/GameEngine/src/Application.cpp
 
         # Loaders
-        src/GameEngine/src/Assets/Loaders/YamlReader.hpp
         src/GameEngine/src/Assets/Loaders/YamlReader.cpp
-
-        # AssetManager
-        src/GameEngine/src/Assets/AssetManager.hpp
         src/GameEngine/src/Assets/AssetManager.cpp
 
         # Scene(s)
-        src/GameEngine/src/Scene/Scene.hpp
         src/GameEngine/src/Scene/Scene.cpp
 
         # Entity
-        src/GameEngine/src/Entity/Entity.hpp
         src/GameEngine/src/Entity/Entity.cpp
 
         # Transition
-        src/GameEngine/src/Transition/Transition.hpp
         src/GameEngine/src/Transition/Transition.cpp
 
         # Audio
-        src/GameEngine/src/Audio/Volume.hpp
-        src/GameEngine/src/Audio/AudioSystem.hpp
         src/GameEngine/src/Audio/AudioSystem.cpp
 
         # Components
-        src/GameEngine/src/Components/Components.hpp
         src/GameEngine/src/Components/ShaderComponent.cpp
         src/GameEngine/src/Components/AudioComponent.cpp
         src/GameEngine/src/Components/TextComponent.cpp
@@ -100,7 +102,6 @@ set(GAME_ENGINE_SRC
         src/GameEngine/src/Components/MovementComponent.cpp
 
         # Engine Abstracts
-        src/GameEngine/src/RuntimeBridge.hpp
         src/GameEngine/src/RuntimeBridge.cpp
 )
 
@@ -108,40 +109,39 @@ set(GAME_ENGINE_SRC
 # NeonRuntime Source files
 #
 set(NEON_RUNTIME_SRC
+        # Includes
+        src/Runtime/include/NeonRuntime/IntRuntime.hpp
+        src/Runtime/include/NeonRuntime/ExtRuntime.hpp
+        src/Runtime/include/NeonRuntime/RuntimeApi.hpp
+        src/Runtime/include/NeonRuntime/ShaderFactory.hpp
+        src/Runtime/include/NeonRuntime/IInput.hpp
+        src/Runtime/include/NeonRuntime/IWindow.hpp
+        src/Runtime/include/NeonRuntime/IWindow.hpp
+        src/Runtime/include/NeonRuntime/IShader.hpp
+        src/Runtime/include/NeonRuntime/IPlatform.hpp
+        src/Runtime/include/NeonRuntime/IRenderer.hpp
+        src/Runtime/include/NeonRuntime/IFrameBuffer.hpp
+        src/Runtime/include/NeonRuntime/IVertexArray.hpp
+        src/Runtime/include/NeonRuntime/IVertexBuffer.hpp
+        src/Runtime/include/NeonRuntime/Backends/OpenGLHeaders.hpp
+        src/Runtime/include/NeonRuntime/Backends/OpenGL.hpp
+        src/Runtime/include/NeonRuntime/Backends/OpenGLInput.hpp
+        src/Runtime/include/NeonRuntime/Backends/OpenGLShader.hpp
+        src/Runtime/include/NeonRuntime/Backends/OpenGLRenderer.hpp
+        src/Runtime/include/NeonRuntime/Backends/OpenGLVertexArray.hpp
+        src/Runtime/include/NeonRuntime/Backends/OpenGLVertexBuffer.hpp
 
         # Platform
-        src/Runtime/src/IntRuntime.hpp
-        src/Runtime/src/ExtRuntime.hpp
-        src/Runtime/src/RuntimeApi.hpp
         src/Runtime/src/RuntimeApi.cpp
-
-        src/Runtime/src/Factory/ShaderFactory.hpp
         src/Runtime/src/Factory/ShaderFactory.cpp
-
-        src/Runtime/src/Backends/IInput.hpp
-        src/Runtime/src/Backends/IWindow.hpp
-        src/Runtime/src/Backends/IWindow.hpp
-        src/Runtime/src/Backends/IShader.hpp
-        src/Runtime/src/Backends/IPlatform.hpp
-        src/Runtime/src/Backends/IRenderer.hpp
-        src/Runtime/src/Backends/IFrameBuffer.hpp
-        src/Runtime/src/Backends/IVertexArray.hpp
-        src/Runtime/src/Backends/IVertexBuffer.hpp
-
-        src/Runtime/src/Backends/OpenGL/OpenGLHeaders.hpp
-        src/Runtime/src/Backends/OpenGL/OpenGL.hpp
         src/Runtime/src/Backends/OpenGL/OpenGL.cpp
-        src/Runtime/src/Backends/OpenGL/OpenGLInput.hpp
         src/Runtime/src/Backends/OpenGL/OpenGLInput.cpp
-        src/Runtime/src/Backends/OpenGL/OpenGLShader.hpp
         src/Runtime/src/Backends/OpenGL/OpenGLShader.cpp
-        src/Runtime/src/Backends/OpenGL/OpenGLRenderer.hpp
         src/Runtime/src/Backends/OpenGL/OpenGLRenderer.cpp
-        src/Runtime/src/Backends/OpenGL/OpenGLVertexArray.hpp
         src/Runtime/src/Backends/OpenGL/OpenGLVertexArray.cpp
-        src/Runtime/src/Backends/OpenGL/OpenGLVertexBuffer.hpp
         src/Runtime/src/Backends/OpenGL/OpenGLVertexBuffer.cpp
 
+        # External compile
         src/Runtime/vendor/glad/glad.c
 )
 

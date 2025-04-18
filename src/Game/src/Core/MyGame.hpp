@@ -12,7 +12,7 @@
 ///// This is better because the Game/ folder is always ready to go
 /////
 
-#include <All.hpp>
+#include <NeonEngine/All.hpp>
 
 namespace Neon
 {

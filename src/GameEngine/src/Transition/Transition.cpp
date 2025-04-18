@@ -2,7 +2,7 @@
  * {SourceHeader}
  */
 
-#include "Transition.hpp"
+#include <NeonEngine/Transition.hpp>
 
 namespace Neon
 {

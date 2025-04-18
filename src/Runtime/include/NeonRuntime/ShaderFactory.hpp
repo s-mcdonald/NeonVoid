@@ -4,10 +4,11 @@
 
 #pragma once
 
-#include <IntRuntime.hpp>
+#include <string>
 
 namespace Neon
 {
+    class IShader;
     class ShaderFactory
     {
         public:
