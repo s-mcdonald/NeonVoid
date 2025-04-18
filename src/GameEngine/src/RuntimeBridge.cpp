@@ -2,7 +2,7 @@
  * {SourceHeader}
  */
 
-#include <../../Runtime/include/NeonRuntime/ExtRuntime.hpp>
+#include <NeonRuntime/ExtRuntime.hpp>
 #include <NeonEngine/RuntimeBridge.hpp>
 
 namespace Neon

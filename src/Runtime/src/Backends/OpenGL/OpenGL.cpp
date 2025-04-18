@@ -7,7 +7,6 @@
 
 #include <NeonEngine/Application.hpp>
 
-
 #include <NeonRuntime/Backends/OpenGL.hpp>
 #include <NeonRuntime/Backends/OpenGLInput.hpp>
 #include <NeonRuntime/Backends/OpenGLHeaders.hpp>
