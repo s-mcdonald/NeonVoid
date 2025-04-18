@@ -3,6 +3,7 @@
  */
 
 #include <NeonRuntime/IntRuntime.hpp>
+#include <NeonRuntime/PlatformFactory.hpp>
 
 namespace Neon
 {
@@ -24,7 +25,7 @@ namespace Neon
         delete m_renderer;
     }
 
-    IRenderer* RuntimeApi::GetRenderer() const
+    auto RuntimeApi::GetRenderer() const -> IRenderer*
     {
         return m_renderer;
     }
@@ -52,14 +53,7 @@ namespace Neon
 
     IPlatform* RuntimeApi::CreatePlatform()
     {
-#ifdef NEON_BUILD_OPENGL
-        // System::GetPlatform()
-        return new Neon::OpenGL();
-#elif defined(NEON_BUILD_VULKAN)
-        //
-#else
-        return nullptr;
-#endif
+        return PlatformFactory::CreatePlatform();
     }
 
     IVertexBuffer* RuntimeApi::CreateVertexBuffer(float* vertices, size_t size)

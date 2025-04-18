@@ -18,10 +18,10 @@ namespace Neon
             RuntimeApi& operator=(const RuntimeApi&) = delete;
             static RuntimeApi& GetInstance();
 
-            static IPlatform* CreatePlatform();
             [[nodiscard]] IRenderer* GetRenderer() const;
-            [[nodiscard]] static std::vector<float> GenerateCircleVertices(float radius, int segments) ;
+            [[nodiscard]] static std::vector<float> GenerateCircleVertices(float radius, int segments);
 
+            static IPlatform* CreatePlatform();
             IVertexBuffer* CreateVertexBuffer(float* vertices, size_t size);
             IShader* CreateShader(const std::string& vertexPath, const std::string& fragmentPath);
 
