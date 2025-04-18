@@ -6,7 +6,7 @@
 #include <iostream>
 
 #include <Application.hpp>
-#include <AssetManager/AssetManager.hpp>
+
 
 #include <Backends/OpenGL/OpenGLHeaders.hpp>
 #include <Backends/OpenGL/OpenGL.hpp>
@@ -18,15 +18,12 @@ namespace Neon
         : IPlatform()
         , m_window(nullptr)
     {
-        // not a good ref, since this points to GameEngine code, not runtime code.
-        m_assetManager = new AssetManager();
+        // ..
     }
 
     OpenGL::~OpenGL() 
     {
-        delete m_assetManager;
-
-        if (m_window) 
+        if (m_window)
         {
             glfwDestroyWindow(m_window);
         }

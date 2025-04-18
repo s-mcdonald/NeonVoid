@@ -51,7 +51,16 @@ set(OpenGL_GL_PREFERENCE GLVND)
 
 
 #
-# Source files
+# Game - Create the main game executable
+#
+set(GAME_SRC
+        src/Game/src/MyGame.hpp
+        src/Game/src/Mankind.hpp
+        src/Game/src/GameMain.cpp # Entry
+)
+
+#
+# Game Engine Source files
 #
 set(GAME_ENGINE_SRC
         src/GameEngine/src/All.hpp
@@ -86,6 +95,7 @@ set(GAME_ENGINE_SRC
         src/GameEngine/src/Audio/AudioSystem.cpp
 
         # Components
+        src/GameEngine/src/Components/Components.hpp
         src/GameEngine/src/Components/ShaderComponent.cpp
         src/GameEngine/src/Components/AudioComponent.cpp
         src/GameEngine/src/Components/TextComponent.cpp
@@ -96,6 +106,13 @@ set(GAME_ENGINE_SRC
 
         src/GameEngine/src/RuntimeBridge.hpp
         src/GameEngine/src/RuntimeBridge.cpp
+
+)
+
+#
+# NeonRuntime Source files
+#
+set(NEON_RUNTIME_SRC
 
         # Platform
         src/Runtime/src/IntRuntime.hpp
@@ -134,13 +151,22 @@ set(GAME_ENGINE_SRC
         src/Runtime/vendor/glad/glad.c
 )
 
-# Create GameEngine as a static library
+#
+# Define GameEngine & NeonRuntime as a static library
+#
 add_library(GameEngine STATIC ${GAME_ENGINE_SRC})
+add_library(NeonRuntime STATIC ${NEON_RUNTIME_SRC})
 
+#
 # Set the output name of the GameEngine static library (optional)
+#
 set_target_properties(GameEngine PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build
     OUTPUT_NAME "GameEngine"
+)
+set_target_properties(NeonRuntime PROPERTIES
+        ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build
+        OUTPUT_NAME "NeonRuntime"
 )
 
 # GameENgine include directories
@@ -153,6 +179,18 @@ target_include_directories(GameEngine PUBLIC
         ${CMAKE_SOURCE_DIR}/src/Runtime/vendor
         ${CMAKE_SOURCE_DIR}/src/Runtime/include
 )
+
+# NeonRuntime include directories
+target_include_directories(NeonRuntime PUBLIC
+        ${CMAKE_SOURCE_DIR}/src
+        ${CMAKE_SOURCE_DIR}/src/GameEngine/src
+        ${CMAKE_SOURCE_DIR}/src/GameEngine/vendor
+        ${CMAKE_SOURCE_DIR}/src/GameEngine/include
+        ${CMAKE_SOURCE_DIR}/src/Runtime/src
+        ${CMAKE_SOURCE_DIR}/src/Runtime/vendor
+        ${CMAKE_SOURCE_DIR}/src/Runtime/include
+)
+
 
 
 # removed inc dirs
@@ -169,20 +207,31 @@ find_package(glm REQUIRED)
 # Link OpenGL libraries
 #target_link_libraries(GameEngine PRIVATE OpenGL::GL glfw ${GLEW_LIBRARY} ${GLEW_LIBRARIES})
 target_link_libraries(GameEngine PRIVATE OpenGL::GL glfw )
+target_link_libraries(NeonRuntime PRIVATE OpenGL::GL glfw )
 
 # Enable compiler warnings for GameEngine
 target_compile_options(GameEngine PRIVATE -Wall -Wextra -Wpedantic)
+target_compile_options(NeonRuntime PRIVATE -Wall -Wextra -Wpedantic)
+
+
+
+
 
 
 
 #
-# Game - Create the main game executable
+# Create the Runtime
 #
-set(GAME_SRC
-        src/Game/src/MyGame.hpp
-        src/Game/src/Mankind.hpp
-        src/Game/src/GameMain.cpp # Entry
-)
+#if(WIN32)
+#    add_executable(NeonRuntime WIN32 ${RUNTIME_SRC})
+#elseif(UNIX)
+#    add_executable(NeonRuntime ${RUNTIME_SRC})
+#endif()
+
+
+
+
+
 
 # Create the game executable
 if(WIN32)
@@ -192,8 +241,8 @@ elseif(UNIX)
 endif()
 
 
-# Link GameEngine to the game executable
-target_link_libraries(NeonVoid PRIVATE GameEngine)
+# Link GameEngine to the game executable & Runtime
+target_link_libraries(NeonVoid PRIVATE GameEngine NeonRuntime)
 
 # Specify include directories for the Game (can be expanded)
 target_include_directories(NeonVoid PRIVATE 
@@ -210,7 +259,10 @@ if(NeonBackendSystem STREQUAL "Vulkan")
     set(NEON_BACKEND_GPU_LIB NEON_BUILD_VULKAN)
 endif()
 
+
+#
 # Debug Preprocessor values
+#
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     target_compile_definitions(
             NeonVoid PRIVATE
@@ -229,6 +281,15 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
             #NEON_DEBUG_AUDIO
             ${NEON_BACKEND_GPU_LIB}
     )
+
+    target_compile_definitions(
+            NeonRuntime PRIVATE
+            NEON_DEBUG
+            #NEON_DEBUG_VERBOSE
+            NEON_DEBUG_KB_INPUT
+            #NEON_DEBUG_AUDIO
+            ${NEON_BACKEND_GPU_LIB}
+    )
 else()
     target_compile_definitions(
             NeonVoid PRIVATE
@@ -237,6 +298,11 @@ else()
 
     target_compile_definitions(
             GameEngine PRIVATE
+            ${NEON_BACKEND_GPU_LIB}
+    )
+
+    target_compile_definitions(
+            NeonRuntime PRIVATE
             ${NEON_BACKEND_GPU_LIB}
     )
 endif()
