@@ -267,3 +267,31 @@ set_target_properties(NeonVoid PROPERTIES
 #set_target_properties(NeonVoidSandbox PROPERTIES
 #        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build
 #)
+
+
+#
+# Specify the output directory for the executable
+#
+#set(BINARY_OUTPUT_DIR ${CMAKE_BINARY_DIR}/build) # Original build directory
+#set(FINAL_OUTPUT_DIR ${CMAKE_BINARY_DIR}/src/Sandbox/app) # Destination directory for final binary
+#
+#set_target_properties(NeonVoid PROPERTIES
+#        RUNTIME_OUTPUT_DIRECTORY ${BINARY_OUTPUT_DIR}
+#)
+
+
+
+#
+# Copy files on post build action
+#
+
+#set(SOURCE_FILE ${CMAKE_SOURCE_DIR}/path/to/your/file.png)
+#set(TARGET_FILE ${CMAKE_BINARY_DIR}/deploy/file.png)
+
+#add_custom_command(
+#        OUTPUT ${TARGET_FILE}
+#        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${SOURCE_FILE} ${TARGET_FILE}
+#        COMMENT "Copying ${SOURCE_FILE} to ${TARGET_FILE} if it does not already exist"
+#        VERBATIM
+#)
+

@@ -73,12 +73,6 @@ namespace Neon
             return false;
         }
 
-        // if (glewInit() != GLEW_OK)
-        // {
-        //     std::cerr << "Failed to initialize GLEW!" << std::endl;
-        //     return false;
-        // }
-
         glfwSetFramebufferSizeCallback(m_window, []( [[maybe_unused]]GLFWwindow* window, int width, int height)
         {
             float aspectRatio = 16.0f / 9.0f;
