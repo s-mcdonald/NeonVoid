@@ -1,17 +1,29 @@
 # NeonVoid
 
-> **Pre alpha:** This project is in active development and does not yet have a stable release.
+> **Pre-alpha:** This project is in active development and does not yet have a stable release.
 
-A simple GameEngine written in C++.
+A simple 2D GameEngine written in C++.
+
+# About NeonVoid Engine
+
+This project started as a personal journey to learn C++. Coming from a web development background, I was inspired by YouTuber 
+[The Cherno](https://github.com/thecherno) to venture into game development.
+
+What began as a simple one-day game project evolved into a more ambitious goal: building a game engine from scratch. 
+While I'm neither a game developer nor a C++ programmer by trade, I chose to challenge myself by designing the engine architecture independently, 
+preferring to learn through experimentation rather than copying existing solutions from tutorials.
+This approach, though more challenging, provides a unique learning experience and pushes me to think creatively about problem-solving in a 
+native programming environment.
+
+I do spend most of my time refactoring as I learn, so the commit history is a bit long-winded, but as the project evolves, I do see some clarity.
+
 
 ### OS Support
 Eventually this will support Windows and Linux OS. I am currently in phase 1, development so only OpenGL at this time on linux.
 
 ### Build System
 
-The current Build system is CMake using the CMakeList.txt to structure the projects.
-I do have plans to convert this to PreMake.
-For now a single CMake project, the CMakeList.txt file, will set up all project 3 ;
+A single CMake project, the `CMakeList.txt` has been described to set up all three projects listed below ;
  - Game
  - GameEngine (static lib)
  - NeonRuntime (static lib)
