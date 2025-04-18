@@ -64,15 +64,7 @@ namespace Neon
 
     IVertexBuffer* RuntimeApi::CreateVertexBuffer(float* vertices, size_t size)
     {
-#ifdef NEON_BUILD_OPENGL
-        return new OpenGLVertexBuffer(vertices, size);
-#elif defined(NEON_BUILD_VULKAN)
-        // return new VulkanVertexBuffer(vertices, size);
-#else
-        // let's also do an assert here, I think cherno did this too.
-        // need to learn more about compile time asserts.
-        return nullptr;
-#endif
+        return m_bufferFactory.CreateVertexBuffer(vertices, size);
     }
 
     IShader* RuntimeApi::CreateShader(const std::string& vertexPath, const std::string& fragmentPath)
