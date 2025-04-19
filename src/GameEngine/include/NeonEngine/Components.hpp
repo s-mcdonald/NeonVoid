@@ -7,7 +7,6 @@
 #include <vector>
 
 #include <NeonRuntime/ExtRuntime.hpp>
-
 #include <NeonEngine/AudioSystem.hpp>
 #include <NeonEngine/Types.hpp>
 
@@ -51,7 +50,7 @@ namespace Neon
 
         public:
             void OnInit() override {};
-            void OnUpdate() override {};
+            void OnUpdate() override;
             void OnRender() override {};
             void OnDestroy() override;
 

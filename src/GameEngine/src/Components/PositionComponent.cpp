@@ -2,6 +2,7 @@
  * {SourceHeader}
  */
 
+#include <iostream>
 #include <NeonEngine/Components.hpp>
 
 namespace Neon 
@@ -21,6 +22,12 @@ namespace Neon
     Point PositionComponent::GetPoint() const
     {
         return m_position;
+    }
+
+    void PositionComponent::OnUpdate()
+    {
+        std::cout << "[DEBUG][Movement] : " << m_position.x << "\n";
+        std::cout << "[DEBUG][Movement] : " << m_position.y << "\n";
     }
 
     void PositionComponent::UpdateData(Point p)

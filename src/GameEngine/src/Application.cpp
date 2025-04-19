@@ -71,6 +71,8 @@ namespace Neon
                 scene->AddEntity(entityToAdd->GetId(), entityToAdd);
             }
 
+            // we need to be able to load multiple scenes.
+            // either multiple yaml scene files or a game yaml with all scenes.
             AddScene(scene);
 
             return true;

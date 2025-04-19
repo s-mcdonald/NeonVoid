@@ -52,10 +52,10 @@ namespace Neon
     {
         auto* parent = GetParentEntity();
 
-        // if (parent == nullptr)
-        // {
-        //     return;
-        // }
+        if (parent == nullptr)
+        {
+            return;
+        }
 
         auto* component = parent->GetComponent<PositionComponent>();
 
@@ -65,10 +65,6 @@ namespace Neon
         }
 
         Point p = component->GetPoint();
-
-        std::cout << "[DEBUG][Movement] : " << m_directionY << "\n";
-        std::cout << "[DEBUG][Movement] : " << m_directionX << "\n";
-        std::cout << "[DEBUG][Movement] : " << p.x << " " << p.y << "\n";
 
         p.y += m_directionY;
         p.x += m_directionX;
