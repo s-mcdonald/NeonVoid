@@ -41,53 +41,72 @@ namespace Neon
 
         for (const auto& component : sceneNode["components"])
         {
-            YComponent sceneComponent;
+            sceneConfig.components.push_back(LoadComponent(component));
+        }
 
-            sceneComponent.name = component["name"].as_str();
-            sceneComponent.type = component["type"].as_str();
+        for (const auto& entity : sceneNode["entities"])
+        {
+            YEntity sceneEntity;
 
-            if (sceneComponent.type == "audio")
+            sceneEntity.name = entity["name"].as_str();
+
+            for (const auto& component : entity["components"])
             {
-                sceneComponent.configType = YComponent::ConfigType::Audio;
-                sceneComponent.audioConfig = new YAudioConfigData{};
-                sceneComponent.audioConfig->path = component["data"]["path"].as_str();
-                if (component["data"].contains("loop"))
-                {
-                    sceneComponent.audioConfig->loop = component["data"]["loop"].as_bool();
-                }
+                sceneEntity.components.push_back(LoadComponent(component));
             }
 
-            if (sceneComponent.type == "movement")
-            {
-                sceneComponent.configType = YComponent::ConfigType::Movement;
-                // Movement does not have data
-            }
-
-            if (sceneComponent.type == "position")
-            {
-                sceneComponent.configType = YComponent::ConfigType::Position;
-                if (component.contains("data"))
-                {
-                    sceneComponent.posConfig = new YPosConfigData{};
-                    sceneComponent.posConfig->p.x = component["data"]["initial"]["x"].as_float();
-                    sceneComponent.posConfig->p.y = component["data"]["initial"]["y"].as_float();
-                }
-            }
-
-            if (sceneComponent.type == "shader")
-            {
-                sceneComponent.configType = YComponent::ConfigType::Shader;
-                sceneComponent.shaderConfig = new YShader{};
-                sceneComponent.shaderConfig->name = component["data"]["name"].as_str();
-                sceneComponent.shaderConfig->layer = component["data"]["layer"].as_str();
-                sceneComponent.shaderConfig->dir = component["data"]["dir"].as_str();
-                sceneComponent.shaderConfig->vertexShader = component["data"]["vertex"].as_str();
-                sceneComponent.shaderConfig->fragShader = component["data"]["frag"].as_str();
-            }
-
-            sceneConfig.components.push_back(sceneComponent);
+            sceneConfig.entities.push_back(sceneEntity);
         }
 
         return sceneConfig;
+    }
+
+    YComponent YamlReader::LoadComponent(const fkyaml::basic_node<>& value)
+    {
+        YComponent yComponent;
+
+        yComponent.name = value["name"].as_str();
+        yComponent.type = value["type"].as_str();
+
+        if (yComponent.type == "audio")
+        {
+            yComponent.configType = YComponent::ConfigType::Audio;
+            yComponent.audioConfig = new YAudioConfigData{};
+            yComponent.audioConfig->path = value["data"]["path"].as_str();
+            if (value["data"].contains("loop"))
+            {
+                yComponent.audioConfig->loop = value["data"]["loop"].as_bool();
+            }
+        }
+
+        if (yComponent.type == "movement")
+        {
+            yComponent.configType = YComponent::ConfigType::Movement;
+            // Movement does not have data
+        }
+
+        if (yComponent.type == "position")
+        {
+            yComponent.configType = YComponent::ConfigType::Position;
+            if (value.contains("data"))
+            {
+                yComponent.posConfig = new YPosConfigData{};
+                yComponent.posConfig->p.x = value["data"]["initial"]["x"].as_float();
+                yComponent.posConfig->p.y = value["data"]["initial"]["y"].as_float();
+            }
+        }
+
+        if (yComponent.type == "shader")
+        {
+            yComponent.configType = YComponent::ConfigType::Shader;
+            yComponent.shaderConfig = new YShader{};
+            yComponent.shaderConfig->name = value["data"]["name"].as_str();
+            yComponent.shaderConfig->layer = value["data"]["layer"].as_str();
+            yComponent.shaderConfig->dir = value["data"]["dir"].as_str();
+            yComponent.shaderConfig->vertexShader = value["data"]["vertex"].as_str();
+            yComponent.shaderConfig->fragShader = value["data"]["frag"].as_str();
+        }
+
+        return yComponent;
     }
 }

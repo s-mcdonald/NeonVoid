@@ -34,6 +34,7 @@ namespace Neon
             bool IsInitialized() const;
 
         public:
+            void AddEntity(EntityID id, Entity* entity);
             void AddComponent(const std::string& tag, Component* component);
             Component* GetComponent(const std::string& tag);
 

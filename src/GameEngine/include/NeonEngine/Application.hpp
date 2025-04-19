@@ -30,6 +30,7 @@ namespace Neon
 
         protected:
             void SetSceneYaml(const std::string& sceneName);
+            static std::unordered_map<std::string, Component*> CollectComponents(std::vector<YComponent> components);
 
         private:
             std::string GetSceneYaml() const;

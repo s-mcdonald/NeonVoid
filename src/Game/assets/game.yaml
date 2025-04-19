@@ -32,9 +32,3 @@ scene:
             initial:
               x: 123.0
               y: 123.0
-        -
-          name: audioComponent
-          type: audio
-          data:
-            path: "/home/sam/Game/Neon/build/assets/audio/bullet.mp3"
-            loop: true

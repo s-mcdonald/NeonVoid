@@ -28,71 +28,28 @@ namespace Neon
 
             auto* scene = new Scene(m_sceneConfig.sceneType);
 
-            for (auto& comp : m_sceneConfig.components)
+            std::unordered_map<std::string, Component*> componentsForScene  = CollectComponents(m_sceneConfig.components);
+
+            for (auto [name, comp] : componentsForScene)
             {
-                if (comp.type == "audio")
-                {
-                    auto* introMusic = new AudioComponent(comp.audioConfig->path);
-                    scene->AddComponent(comp.name, introMusic);
-
-                    if (comp.audioConfig->loop)
-                    {
-                        introMusic->TriggerPlayRepeat();
-                    }
-                    else
-                    {
-                        introMusic->TriggerPlayOnce();
-                    }
-
-                    // cleanup
-                    delete comp.audioConfig;
-                }
-
-                if (comp.type == "position")
-                {
-                    // @todo, make PosComp accept point so we can pass initial
-                    auto* positionComp = new PositionComponent();
-                    scene->AddComponent(comp.name, positionComp);
-
-                    // cleanup
-                    delete comp.posConfig;
-                }
-
-                if (comp.type == "movement")
-                {
-                    // @todo, add data: key bindings
-                    auto* movementComp = new MovementComponent();
-                    scene->AddComponent(comp.name, movementComp);
-                }
-
-                if (comp.type == "shader")
-                {
-                    std::vector<float> circle_vertices = RuntimeApi::GetInstance().GenerateCircleVertices(1.0f, 100);
-
-                    auto vertexPath = comp.shaderConfig->dir + comp.shaderConfig->vertexShader;
-                    auto fragPath = comp.shaderConfig->dir + comp.shaderConfig->fragShader;
-
-                    auto shaderPgm = RuntimeApi::GetInstance().CreateShader(vertexPath,fragPath);
-
-                    // @todo, make PosComp accept point so we can pass initial
-                    auto* shaderComp = new ShaderComponent(circle_vertices, shaderPgm);
-
-                    scene->AddComponent(comp.name, shaderComp);
-
-                    // cleanup
-                    delete comp.shaderConfig;
-                }
+                scene->AddComponent(name, comp);
             }
 
-            // auto& runtimeApi = RuntimeApi::GetInstance();
-            // for (auto& shaders : m_sceneConfig.shaders)
-            // {
-            //
-            //
-            //     // auto* mainPlayer = new Entity();
-            //     // m_entities[mainPlayer->GetId()] = mainPlayer;
-            //     // scene->AddEntity();
-            // }
+            for (auto& entity : m_sceneConfig.entities)
+            {
+                auto* entityToAdd = new Entity(1);
+
+                std::unordered_map<std::string, Component*> componentsForEntity  = CollectComponents(entity.components);
+
+                componentsForEntity = CollectComponents(entity.components);
+
+                for (auto [name, comp] : componentsForEntity)
+                {
+                    entityToAdd->AddComponent(comp);
+                }
+
+                scene->AddEntity(entityToAdd->GetId(), entityToAdd);
+            }
 
             AddScene(scene);
 
@@ -100,6 +57,69 @@ namespace Neon
         }
 
         return false;
+    }
+
+    std::unordered_map<std::string, Component*> Application::CollectComponents(std::vector<YComponent> components)
+    {
+        std::unordered_map<std::string, Component*> componentsForScene;
+
+        for (auto& comp : components)
+        {
+            if (comp.type == "audio")
+            {
+                auto* theComponent = new AudioComponent(comp.audioConfig->path);
+                if (comp.audioConfig->loop)
+                {
+                    theComponent->TriggerPlayRepeat();
+                }
+                else
+                {
+                    theComponent->TriggerPlayOnce();
+                }
+
+                componentsForScene.emplace(comp.name, theComponent);
+
+                // cleanup
+                //delete comp.audioConfig;
+            }
+
+            if (comp.type == "position")
+            {
+                // @todo, make PosComp accept point so we can pass initial
+                auto* theComponent = new PositionComponent();
+                componentsForScene.emplace(comp.name, theComponent);
+
+                // cleanup
+                //delete comp.posConfig;
+            }
+
+            if (comp.type == "movement")
+            {
+                // @todo, add data: key bindings
+                auto* theComponent = new MovementComponent();
+                componentsForScene.emplace(comp.name, theComponent);
+            }
+
+            if (comp.type == "shader")
+            {
+                std::vector<float> circle_vertices = RuntimeApi::GetInstance().GenerateCircleVertices(1.0f, 100);
+
+                auto vertexPath = comp.shaderConfig->dir + comp.shaderConfig->vertexShader;
+                auto fragPath = comp.shaderConfig->dir + comp.shaderConfig->fragShader;
+
+                auto shaderPgm = RuntimeApi::GetInstance().CreateShader(vertexPath,fragPath);
+
+                // @todo, make PosComp accept point so we can pass initial
+                auto* theComponent = new ShaderComponent(circle_vertices, shaderPgm);
+
+                componentsForScene.emplace(comp.name, theComponent);
+
+                // cleanup
+                //delete comp.shaderConfig;
+            }
+        }
+
+        return componentsForScene;
     }
 
     void Application::Run()

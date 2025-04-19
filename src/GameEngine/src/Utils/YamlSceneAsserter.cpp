@@ -19,7 +19,8 @@ namespace Neon
         for (const auto& [parentKey, value] : node.map_items())
         {
             // Move string values to const later
-            if (parentKey != "scene") {
+            if (parentKey != "scene")
+            {
                 throw std::runtime_error("The parent value of the Yaml must be scene");
             }
 
@@ -43,11 +44,13 @@ namespace Neon
         }
 
         // Sanity check
-        if (node["scene"] == nullptr) {
+        if (node["scene"] == nullptr)
+        {
             throw std::runtime_error("Missing 'scene' node in YAML.");
         }
 
-        if (node["scene"]["type"] == nullptr) {
+        if (node["scene"]["type"] == nullptr)
+        {
             throw std::runtime_error("Missing 'scene.type' node in YAML.");
         }
     }

@@ -68,6 +68,11 @@ namespace Neon
         HandlesInput(m_entities, input);
     }
 
+    void Scene::AddEntity(const EntityID id, Entity* entity)
+    {
+        m_entities[id] = entity;
+    }
+
     void Scene::AddComponent(const std::string& tag, Component* component)
     {
         // what do we do if it already exists?
