@@ -339,13 +339,23 @@ endif()
 # Copy files on post build action
 #
 
-#set(SOURCE_FILE ${CMAKE_SOURCE_DIR}/path/to/your/file.png)
-#set(TARGET_FILE ${CMAKE_BINARY_DIR}/deploy/file.png)
+file(GLOB_RECURSE ASSET_FILES
+        "${CMAKE_SOURCE_DIR}/src/Game/assets/*"
+)
 
-#add_custom_command(
-#        OUTPUT ${TARGET_FILE}
-#        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${SOURCE_FILE} ${TARGET_FILE}
-#        COMMENT "Copying ${SOURCE_FILE} to ${TARGET_FILE} if it does not already exist"
-#        VERBATIM
-#)
+file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/build/assets")
+
+file(COPY ${CMAKE_SOURCE_DIR}/src/Game/assets/
+        DESTINATION ${CMAKE_BINARY_DIR}/assets
+        PATTERN "*"
+)
+
+add_custom_target(copy_assets ALL
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_SOURCE_DIR}/src/Game/assets
+        ${CMAKE_BINARY_DIR}/build/assets
+        COMMENT "Copying assets to build directory"
+)
+
+add_dependencies(NeonVoid copy_assets)
 
