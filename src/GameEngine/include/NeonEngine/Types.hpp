@@ -93,8 +93,9 @@ namespace Neon
         Foreground = 10
     };
 
+
     // need a better name for this struct
-    struct SceneShader
+    struct YShader
     {
         std::string id;
         std::string dir;
@@ -102,9 +103,25 @@ namespace Neon
         std::string fragShader;
     };
 
+    struct YComponent
+    {
+        std::string name;
+        std::string type;
+        YComponent* component;
+        YShader* shader;
+        std::string path;
+    };
+
+    struct YEntity
+    {
+        std::string name;
+        std::vector<YComponent> components;
+    };
+
     struct SceneConfig {
         std::string audioPath;
         std::string sceneType;
-        std::vector<SceneShader> shaders;
+        std::vector<YShader> shaders;
+        std::vector<YEntity> entities;
     };
 }

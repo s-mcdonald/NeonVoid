@@ -40,9 +40,16 @@ There are a couple of VS options, select the one that suits your needs or modify
 ```
 
 ### Backend API Support
-* Phase 1: >= `OpenGL 3.3` <-- in development
-* Phase 2: >= `DirectX (Windows)`
-* Phase 3: >= `Vulkan`
+
+> **Note:** This project is still in early development of phase 1.
+
+
+| Phase | API | Platforms | Status | Resources |
+|-------|-----|-----------|---------|-----------|
+| 1 | OpenGL 3.3+ | Linux, Windows | **In Development** | [OpenGL Website](https://www.opengl.org/) |
+| 2 | DirectX | Windows | <sub>Not Started</sub> | [NVIDIA Docs](https://developer.nvidia.com/directx), [Microsoft Docs](https://learn.microsoft.com/en-us/windows/win32/directx) |
+| 3 | Vulkan | Linux, Windows, Android | <sub>Not Started</sub> | [Vulkan Website](https://www.vulkan.org/) |
+
 
 
 ### Resources & Reference

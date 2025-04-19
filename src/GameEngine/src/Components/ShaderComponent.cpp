@@ -36,11 +36,11 @@ namespace Neon
 
     void ShaderComponent::OnUpdate()
     {
-        Point p{};
-
         if (GetParentEntity() != nullptr && GetParentEntity()->HasComponent<PositionComponent>())
         {
             auto* pos = GetParentEntity()->GetComponent<PositionComponent>();
+
+            Point p{};
             p = pos->GetPoint();
 
 #ifdef NEON_DEBUG_KB_INPUT
@@ -54,11 +54,6 @@ namespace Neon
             }
 
             UpdateData(m_vertices);
-        }
-        else
-        {
-            p.x = 0.0f;
-            p.y = 0.0f;
         }
 
         RuntimeApi::GetInstance().GetRenderer()->RenderCircle(m_shader->GetShaderProgramId(), m_buffer->GetVao(), m_vertices.size());

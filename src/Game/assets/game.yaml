@@ -1,26 +1,41 @@
 scene:
+  type: Gameplay
+  audio: "/home/sam/Game/Neon/build/assets/audio/background.mp3" #neon_void_intro # background
+  audio_loop: true
   window:
     resolution: 9
     allow_max: false
     allow_min: true
-
-  type: Gameplay
-  audio: "/home/sam/Game/Neon/build/assets/audio/neon_void_intro.mp3"
-  audio_loop: true
 
   entities:
     -
       name: player1
       components:
         -
+          name: audioComponent
+          type: audio
+          path: "bullet.mp3"
+        -
           name: positionPlayer
-          type:
-            name: position
+          type: position
         -
           name: movementComponent
-          type:
-            name: movement
-            position: positionPlayer
+          type: movement
+          component: positionPlayer
+        -
+          name: greenTriangle
+          type: shader
+          shader:
+            layer: background
+            name: id.green_triangle
+            dir: /home/sam/Game/Neon/build/assets/shaders/GreenTriangle/
+            vertex: shader.vert
+            frag: shader.frag
+            vertices:
+              - position: [ 0.0, 0.5 ]     # Top vertex
+              - position: [ -0.5, -0.5 ]   # Bottom left vertex
+              - position: [ 0.5, -0.5 ]    # Bottom right vertex
+
 
   # Shaders will create Shader components
   shaders:
