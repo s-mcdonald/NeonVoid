@@ -107,6 +107,14 @@ namespace Neon
                             AssertValidateComponentTypePosition(component["data"]);
                         }
                     }
+
+                    if (component["type"].as_str() == "movement")
+                    {
+                        if (component.contains("data"))
+                        {
+                            AssertValidateComponentTypeMovement(component["data"]);
+                        }
+                    }
                 }
             }
 
@@ -201,5 +209,11 @@ namespace Neon
         {
             throw std::runtime_error("scene.components.component.position.data.initial.y must be a float");
         }
+    }
+
+    // This validates the Data sequence for Position Type
+    void YamlSceneAsserter::AssertValidateComponentTypeMovement(const fkyaml::basic_node<>& value)
+    {
+        throw std::runtime_error("scene.components.component.movement.data SHOULD NOT be allowed.");
     }
 };

@@ -50,11 +50,19 @@ namespace Neon
 
                 if (comp.type == "position")
                 {
+                    // @todo, make PosComp accept point so we can pass initial
                     auto* positionComp = new PositionComponent();
                     scene->AddComponent(comp.name, positionComp);
 
                     // cleanup
                     delete comp.posConfig;
+                }
+
+                if (comp.type == "movement")
+                {
+                    // @todo, add data: key bindings
+                    auto* movementComp = new MovementComponent();
+                    scene->AddComponent(comp.name, movementComp);
                 }
 
                 if (comp.component != nullptr)
