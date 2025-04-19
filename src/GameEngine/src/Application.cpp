@@ -49,6 +49,12 @@ namespace Neon
                 cleanupComponent(comp);
             }
         }
+
+        if (m_currentScene)
+        {
+            delete m_currentScene;
+            m_currentScene = nullptr;
+        }
     }
 
     bool Application::Initialize(const WindowDimension width, const WindowDimension height, const char* title)
@@ -73,9 +79,7 @@ namespace Neon
             {
                 auto* entityToAdd = new Entity(1);
 
-                std::unordered_map<std::string, Component*> componentsForEntity  = CollectComponents(entity.components);
-
-                componentsForEntity = CollectComponents(entity.components);
+                std::unordered_map<std::string, Component*> componentsForEntity = CollectComponents(entity.components);
 
                 for (auto [name, comp] : componentsForEntity)
                 {

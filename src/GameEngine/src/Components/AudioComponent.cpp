@@ -6,6 +6,12 @@
 
 namespace Neon
 {
+    AudioComponent::~AudioComponent()
+    {
+        AudioSystem::Stop();
+        AudioSystem::~AudioSystem();
+    }
+
     ///
     /// @brief change so that we can pass config to how/when to play.
     ///

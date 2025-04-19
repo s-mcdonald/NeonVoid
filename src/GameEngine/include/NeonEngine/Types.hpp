@@ -112,11 +112,17 @@ namespace Neon
 
         ConfigType configType = ConfigType::None;
 
-        union {
+        union
+        {
             YShader* shaderConfig;
             YAudioConfigData* audioConfig;
             YPosConfigData* posConfig;
         };
+
+        YComponent() : shaderConfig(nullptr)
+        {
+            // ..
+        }
     };
 
     struct YEntity

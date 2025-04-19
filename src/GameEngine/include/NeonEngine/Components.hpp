@@ -101,7 +101,7 @@ namespace Neon
                 , m_filename(std::move(filename))
                 , m_volume(50)
                 , m_repeats(false) {};
-            ~AudioComponent() override = default;
+            ~AudioComponent() override;
 
             void OnInit() override;
             void OnUpdate() override;

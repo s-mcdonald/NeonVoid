@@ -1,0 +1,60 @@
+# suppresions.supp
+
+{
+   GalliumDriverShaderAlloc
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:malloc
+   obj:*/libgallium*.so
+   obj:*/libgallium*.so
+   obj:*/libgallium*.so
+   obj:*/libgallium*.so
+   obj:*/libgallium*.so
+   obj:*/libgallium*.so
+   obj:*/libgallium*.so
+   obj:*/libgallium*.so
+   fun:_ZN4Neon12OpenGLShader13CompileShaderEPKcj
+   fun:_ZN4Neon12OpenGLShader18CreateShaderProgramEPKcS2_
+   fun:_ZN4Neon12OpenGLShader6OnInitEv
+}
+
+{
+   OpenGLGenericDriverAlloc
+   Memcheck:Leak
+   match-leak-kinds: possible,reachable
+   ...
+   obj:*/libGLX*.so
+   ...
+}
+
+{
+   GLXContextMemory
+   Memcheck:Leak
+   match-leak-kinds: possible,reachable
+   ...
+   obj:*/libGL*.so
+   ...
+}
+
+{
+   X11DriverMemory
+   Memcheck:Leak
+   match-leak-kinds: possible,reachable
+   ...
+   obj:*/libX11*.so
+   ...
+}
+
+{
+   GLFWWindowCreationMemoryAlloc
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:*
+   obj:*/libgallium*.so*
+   ...
+   obj:*/libGLX*.so*
+   ...
+   fun:glfwCreateWindow
+   fun:_ZN4Neon7OpenGL10InitializeEiiPKc
+   ...
+}

@@ -58,7 +58,12 @@ namespace Neon
 
             return;
         }
-    
+
+        if (m_isPlaying)
+        {
+            ma_decoder_uninit(&m_decoder);
+        }
+
         ma_result result = ma_decoder_init_file(filename.c_str(), nullptr, &m_decoder);
         if (result != MA_SUCCESS) 
         {
@@ -106,6 +111,7 @@ namespace Neon
         }
     
         ma_device_stop(&m_device);
+        ma_decoder_uninit(&m_decoder);
         m_isPlaying = false;
 
         ma_decoder_seek_to_pcm_frame(&m_decoder, 0);

@@ -40,7 +40,7 @@ namespace Neon
 
         for (const auto& component : sceneNode["components"])
         {
-            sceneConfig.components.push_back(LoadComponent(component));
+            sceneConfig.components.emplace_back(LoadComponent(component));
         }
 
         for (const auto& entity : sceneNode["entities"])
@@ -51,10 +51,10 @@ namespace Neon
 
             for (const auto& component : entity["components"])
             {
-                sceneEntity.components.push_back(LoadComponent(component));
+                sceneEntity.components.emplace_back(LoadComponent(component));
             }
 
-            sceneConfig.entities.push_back(sceneEntity);
+            sceneConfig.entities.emplace_back(sceneEntity);
         }
 
         return sceneConfig;
