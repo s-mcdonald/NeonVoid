@@ -342,18 +342,6 @@ endif()
 #
 # Copy files on post build action
 #
-
-file(GLOB_RECURSE ASSET_FILES
-        "${CMAKE_SOURCE_DIR}/src/Game/assets/*"
-)
-
-file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/build/assets")
-
-file(COPY ${CMAKE_SOURCE_DIR}/src/Game/assets/
-        DESTINATION ${CMAKE_BINARY_DIR}/assets
-        PATTERN "*"
-)
-
 add_custom_target(copy_assets ALL
         COMMAND ${CMAKE_COMMAND} -E copy_directory
         ${CMAKE_SOURCE_DIR}/src/Game/assets
