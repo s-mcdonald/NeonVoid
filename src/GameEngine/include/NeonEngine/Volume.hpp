@@ -21,6 +21,11 @@ namespace Neon
                 return m_volume;
             }
 
+            [[nodiscard]] void SetVolume(Volume v)
+            {
+                m_volume = v.GetVolume();
+            }
+
         private:
             uint8_t m_volume;
     };

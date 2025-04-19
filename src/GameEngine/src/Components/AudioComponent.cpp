@@ -31,7 +31,7 @@ namespace Neon
 
     void AudioComponent::SetVolume(const Volume& volume)
     {
-        m_volume = volume;
+        m_volume.SetVolume(volume);
         AudioSystem::SetVolume(volume);
     }
 

@@ -6,6 +6,7 @@
 
 #include <fkYAML/node.hpp>
 
+#include <NeonEngine/Types.hpp>
 #include <NeonEngine/Application.hpp>
 
 namespace Neon 
@@ -19,23 +20,35 @@ namespace Neon
 
         auto cleanupComponent = [](YComponent& comp)
         {
-            delete comp.posConfig;
-            delete comp.shaderConfig;
-            delete comp.audioConfig;
+            switch(comp.configType)
+            {
+                case ConfigType::Shader:
+                    delete comp.shaderConfig;
+                    break;
+                case ConfigType::Audio:
+                    delete comp.audioConfig;
+                    break;
+                case ConfigType::Position:
+                    delete comp.posConfig;
+                    break;
+                case ConfigType::None:
+                case ConfigType::Movement:
+                    break;
+            }
         };
 
-        // for (auto& comp : m_sceneConfig.components)
-        // {
-        //     cleanupComponent(comp);
-        // }
+        for (auto& comp : m_sceneConfig.components)
+        {
+            cleanupComponent(comp);
+        }
 
-        // for (auto& entity : m_sceneConfig.entities)
-        // {
-        //     for (auto& comp : entity.components)
-        //     {
-        //         cleanupComponent(comp);
-        //     }
-        // }
+        for (auto& entity : m_sceneConfig.entities)
+        {
+            for (auto& comp : entity.components)
+            {
+                cleanupComponent(comp);
+            }
+        }
     }
 
     bool Application::Initialize(const WindowDimension width, const WindowDimension height, const char* title)
@@ -91,8 +104,8 @@ namespace Neon
             if (comp.type == "audio")
             {
                 auto* theComponent = new AudioComponent(comp.audioConfig->path);
-                auto v = new Volume(comp.audioConfig->volume);
-                theComponent->SetVolume(*v);
+                Volume v(comp.audioConfig->volume);
+                theComponent->SetVolume(v);
                 if (comp.audioConfig->loop)
                 {
                     theComponent->TriggerPlayRepeat();

@@ -97,20 +97,20 @@ namespace Neon
         uint8_t volume = 30;
     };
 
+    enum class ConfigType {
+        None = 0,
+        Movement,
+        Shader,
+        Audio,
+        Position
+    };
+
     struct YComponent
     {
         std::string name;
         std::string type;
 
-        enum class ConfigType {
-            None,
-            Movement,
-            Shader,
-            Audio,
-            Position
-        };
-
-        ConfigType configType = ConfigType::Shader;
+        ConfigType configType = ConfigType::None;
 
         union {
             YShader* shaderConfig;

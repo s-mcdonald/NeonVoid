@@ -69,7 +69,7 @@ namespace Neon
 
         if (yComponent.type == "audio")
         {
-            yComponent.configType = YComponent::ConfigType::Audio;
+            yComponent.configType = ConfigType::Audio;
             yComponent.audioConfig = new YAudioConfigData{};
             yComponent.audioConfig->path = value["data"]["path"].as_str();
             if (value["data"].contains("loop"))
@@ -88,13 +88,13 @@ namespace Neon
 
         if (yComponent.type == "movement")
         {
-            yComponent.configType = YComponent::ConfigType::Movement;
+            yComponent.configType = ConfigType::Movement;
             // Movement does not have data
         }
 
         if (yComponent.type == "position")
         {
-            yComponent.configType = YComponent::ConfigType::Position;
+            yComponent.configType = ConfigType::Position;
             if (value.contains("data"))
             {
                 yComponent.posConfig = new YPosConfigData{};
@@ -105,7 +105,7 @@ namespace Neon
 
         if (yComponent.type == "shader")
         {
-            yComponent.configType = YComponent::ConfigType::Shader;
+            yComponent.configType = ConfigType::Shader;
             yComponent.shaderConfig = new YShader{};
             yComponent.shaderConfig->name = value["data"]["name"].as_str();
             yComponent.shaderConfig->layer = value["data"]["layer"].as_str();
