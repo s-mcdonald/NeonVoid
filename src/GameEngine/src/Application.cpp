@@ -26,39 +26,65 @@ namespace Neon
             // @todo: we need to validate this data
             m_sceneConfig = m_yamlReader.Init();
 
-            Scene* scene = new Scene(SceneType::Title);
+            auto* scene = new Scene(m_sceneConfig.sceneType);
 
-            if (m_sceneConfig.audioPath != "")
+            for (auto& comp : m_sceneConfig.components)
             {
-                auto* introMusic = new AudioComponent(m_sceneConfig.audioPath);
-                scene->AddComponent("aud.intro", introMusic);
+                if (comp.type == "audio")
+                {
+                    auto* introMusic = new AudioComponent(comp.audioConfig->path);
+                    scene->AddComponent(comp.name, introMusic);
 
-                // pass config from yaml for this
-                introMusic->TriggerPlayRepeat();
+                    if (comp.audioConfig->loop)
+                    {
+                        introMusic->TriggerPlayRepeat();
+                    }
+                    else
+                    {
+                        introMusic->TriggerPlayOnce();
+                    }
+
+                    // cleanup
+                    delete comp.audioConfig;
+                }
+
+                if (comp.type == "position")
+                {
+                    auto* positionComp = new PositionComponent();
+                    scene->AddComponent(comp.name, positionComp);
+
+                    // cleanup
+                    delete comp.posConfig;
+                }
+
+                if (comp.component != nullptr)
+                {
+                    delete comp.component;
+                }
             }
 
 
-            auto& runtimeApi = RuntimeApi::GetInstance();
-            for (auto& shaders : m_sceneConfig.shaders)
-            {
-                std::vector<float> circle_vertices = runtimeApi.GenerateCircleVertices(1.0f, 100);
-
-                auto vertexPath = shaders.dir + shaders.vertexShader;
-                auto fragPath = shaders.dir + shaders.fragShader;
-
-                std::cout << vertexPath << std::endl;
-                std::cout << fragPath << std::endl;
-
-                auto circle_shader = runtimeApi.CreateShader(vertexPath,fragPath);
-
-                auto* circle_component = new ShaderComponent(circle_vertices, circle_shader);
-                scene->AddComponent(shaders.id, circle_component);
-
-
-                // auto* mainPlayer = new MoveablePlayerEntity();
-                // m_entities[mainPlayer->GetId()] = mainPlayer;
-                // scene->AddEntity();
-            }
+            // auto& runtimeApi = RuntimeApi::GetInstance();
+            // for (auto& shaders : m_sceneConfig.shaders)
+            // {
+            //     std::vector<float> circle_vertices = runtimeApi.GenerateCircleVertices(1.0f, 100);
+            //
+            //     auto vertexPath = shaders.dir + shaders.vertexShader;
+            //     auto fragPath = shaders.dir + shaders.fragShader;
+            //
+            //     std::cout << vertexPath << std::endl;
+            //     std::cout << fragPath << std::endl;
+            //
+            //     auto circle_shader = runtimeApi.CreateShader(vertexPath,fragPath);
+            //
+            //     auto* circle_component = new ShaderComponent(circle_vertices, circle_shader);
+            //     scene->AddComponent(shaders.id, circle_component);
+            //
+            //
+            //     // auto* mainPlayer = new MoveablePlayerEntity();
+            //     // m_entities[mainPlayer->GetId()] = mainPlayer;
+            //     // scene->AddEntity();
+            // }
 
 
 

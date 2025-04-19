@@ -24,5 +24,6 @@ namespace Neon
             static void AssertSceneEntitiesYaml(const fkyaml::basic_node<>& value);
 
             static void AssertValidateComponentTypeAudio(const fkyaml::basic_node<>& value);
+            static void AssertValidateComponentTypePosition(const fkyaml::basic_node<>& value);
     };
 }

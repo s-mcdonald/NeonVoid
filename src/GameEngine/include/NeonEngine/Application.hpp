@@ -42,6 +42,6 @@ namespace Neon
             RuntimeBridge m_runtime;
             YamlReader m_yamlReader;
             std::string m_sceneYamlPath{};
-            SceneConfig m_sceneConfig;
+            YScene m_sceneConfig;
     };
 }

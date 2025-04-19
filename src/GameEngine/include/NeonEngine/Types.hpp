@@ -103,13 +103,24 @@ namespace Neon
         std::string fragShader;
     };
 
+    struct YPosConfigData
+    {
+        Point p{0,0};
+    };
+
+    struct YAudioConfigData
+    {
+        std::string path;
+        bool loop = false;
+    };
+
     struct YComponent
     {
         std::string name;
         std::string type;
-        YComponent* component;
-        YShader* shader;
-        std::string path;
+        YComponent* component{};
+        YAudioConfigData* audioConfig{};
+        YPosConfigData* posConfig{};
     };
 
     struct YEntity
@@ -118,10 +129,9 @@ namespace Neon
         std::vector<YComponent> components;
     };
 
-    struct SceneConfig {
-        std::string audioPath;
-        std::string sceneType;
-        std::vector<YShader> shaders;
+    struct YScene {
+        SceneType sceneType;
+        std::vector<YComponent> components;
         std::vector<YEntity> entities;
     };
 }

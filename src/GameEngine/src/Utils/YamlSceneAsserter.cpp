@@ -95,11 +95,17 @@ namespace Neon
 
                 if (component.contains("data"))
                 {
-                    // Components can have differing dependencies, so we need
-                    // to validate each type.
                     if (component["type"].as_str() == "audio")
                     {
                         AssertValidateComponentTypeAudio(component["data"]);
+                    }
+
+                    if (component["type"].as_str() == "position")
+                    {
+                        if (component.contains("data"))
+                        {
+                            AssertValidateComponentTypePosition(component["data"]);
+                        }
                     }
                 }
             }
@@ -160,6 +166,40 @@ namespace Neon
             {
                 throw std::runtime_error("scene.components.component.audio.data.loop MUST be a boolean value");
             }
+        }
+    }
+
+    // This validates the Data sequence for Position Type
+    void YamlSceneAsserter::AssertValidateComponentTypePosition(const fkyaml::basic_node<>& value)
+    {
+        if (false == value.is_mapping())
+        {
+            throw std::runtime_error("scene.components.component.position.data MUST be a mapping value");
+        }
+
+        if (false == value.contains("initial"))
+        {
+            throw std::runtime_error("scene.components.component.position.data.initial IS required when providing data.");
+        }
+
+        if (false == value["initial"].contains("x"))
+        {
+            throw std::runtime_error("scene.components.component.position.data.initial.x must be provided");
+        }
+
+        if (false == value["initial"].contains("y"))
+        {
+            throw std::runtime_error("scene.components.component.position.data.initial.y must be provided");
+        }
+
+        if (false == value["initial"]["x"].is_float_number())
+        {
+            throw std::runtime_error("scene.components.component.position.data.initial.x must be a float");
+        }
+
+        if (false == value["initial"]["y"].is_float_number())
+        {
+            throw std::runtime_error("scene.components.component.position.data.initial.y must be a float");
         }
     }
 };
