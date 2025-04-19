@@ -46,9 +46,9 @@ namespace Neon
             sceneComponent.name = component["name"].as_str();
             sceneComponent.type = component["type"].as_str();
 
-
             if (sceneComponent.type == "audio")
             {
+                sceneComponent.configType = YComponent::ConfigType::Audio;
                 sceneComponent.audioConfig = new YAudioConfigData{};
                 sceneComponent.audioConfig->path = component["data"]["path"].as_str();
                 if (component["data"].contains("loop"))
@@ -57,8 +57,15 @@ namespace Neon
                 }
             }
 
+            if (sceneComponent.type == "movement")
+            {
+                sceneComponent.configType = YComponent::ConfigType::Movement;
+                // Movement does not have data
+            }
+
             if (sceneComponent.type == "position")
             {
+                sceneComponent.configType = YComponent::ConfigType::Position;
                 if (component.contains("data"))
                 {
                     sceneComponent.posConfig = new YPosConfigData{};
@@ -67,9 +74,16 @@ namespace Neon
                 }
             }
 
-            // sceneComponent.dir = shaderNode["dir"].get_value<std::string>();
-            // shader.vertexShader = shaderNode["vertex"].get_value<std::string>();
-            // shader.fragShader = shaderNode["frag"].get_value<std::string>();
+            if (sceneComponent.type == "shader")
+            {
+                sceneComponent.configType = YComponent::ConfigType::Shader;
+                sceneComponent.shaderConfig = new YShader{};
+                sceneComponent.shaderConfig->name = component["data"]["name"].as_str();
+                sceneComponent.shaderConfig->layer = component["data"]["layer"].as_str();
+                sceneComponent.shaderConfig->dir = component["data"]["dir"].as_str();
+                sceneComponent.shaderConfig->vertexShader = component["data"]["vertex"].as_str();
+                sceneComponent.shaderConfig->fragShader = component["data"]["frag"].as_str();
+            }
 
             sceneConfig.components.push_back(sceneComponent);
         }

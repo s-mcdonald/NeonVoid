@@ -97,7 +97,8 @@ namespace Neon
     // need a better name for this struct
     struct YShader
     {
-        std::string id;
+        std::string name;
+        std::string layer;
         std::string dir;
         std::string vertexShader;
         std::string fragShader;
@@ -118,9 +119,22 @@ namespace Neon
     {
         std::string name;
         std::string type;
-        YComponent* component{};
-        YAudioConfigData* audioConfig{};
-        YPosConfigData* posConfig{};
+
+        enum class ConfigType {
+            None,
+            Movement,
+            Shader,
+            Audio,
+            Position
+        };
+
+        ConfigType configType = ConfigType::Shader;
+
+        union {
+            YShader* shaderConfig;
+            YAudioConfigData* audioConfig;
+            YPosConfigData* posConfig;
+        };
     };
 
     struct YEntity

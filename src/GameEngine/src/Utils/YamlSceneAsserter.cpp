@@ -115,6 +115,11 @@ namespace Neon
                             AssertValidateComponentTypeMovement(component["data"]);
                         }
                     }
+
+                    if (component["type"].as_str() == "shader")
+                    {
+                        AssertValidateComponentTypeShader(component["data"]);
+                    }
                 }
             }
 
@@ -209,6 +214,67 @@ namespace Neon
         {
             throw std::runtime_error("scene.components.component.position.data.initial.y must be a float");
         }
+    }
+
+    // This validates the Data sequence for shader Type
+    void YamlSceneAsserter::AssertValidateComponentTypeShader(const fkyaml::basic_node<>& value)
+    {
+        if (false == value.is_mapping())
+        {
+            throw std::runtime_error("scene.components.component.shader.data MUST be a mapping value");
+        }
+
+        if (false == value.contains("name"))
+        {
+            throw std::runtime_error("scene.components.component.shader.data.name IS required");
+        }
+
+        if (false == value.contains("layer"))
+        {
+            throw std::runtime_error("scene.components.component.shader.data.layer IS required.");
+        }
+
+        if (false == value.contains("dir"))
+        {
+            throw std::runtime_error("scene.components.component.shader.data.dir IS required.");
+        }
+
+        if (false == value.contains("vertex"))
+        {
+            throw std::runtime_error("scene.components.component.shader.data.vertex IS required.");
+        }
+
+        if (false == value.contains("frag"))
+        {
+            throw std::runtime_error("scene.components.component.shader.data.frag IS required.");
+        }
+
+
+        if (false == value["name"].is_string())
+        {
+            throw std::runtime_error("scene.components.component.shader.data.name Must be a string");
+        }
+
+        if (false == value["layer"].is_string())
+        {
+            throw std::runtime_error("scene.components.component.shader.data.layer Must be a one of background|foreground");
+        }
+
+        if (false == value["dir"].is_string())
+        {
+            throw std::runtime_error("scene.components.component.shader.data.dir Must be a string");
+        }
+
+        if (false == value["vertex"].is_string())
+        {
+            throw std::runtime_error("scene.components.component.shader.data.vertex Must be a string");
+        }
+
+        if (false == value["frag"].is_string())
+        {
+            throw std::runtime_error("scene.components.component.shader.data.frag Must be a string");
+        }
+
     }
 
     // This validates the Data sequence for Position Type

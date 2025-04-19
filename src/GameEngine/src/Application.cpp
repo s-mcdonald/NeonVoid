@@ -65,36 +65,34 @@ namespace Neon
                     scene->AddComponent(comp.name, movementComp);
                 }
 
-                if (comp.component != nullptr)
+                if (comp.type == "shader")
                 {
-                    delete comp.component;
+                    std::vector<float> circle_vertices = RuntimeApi::GetInstance().GenerateCircleVertices(1.0f, 100);
+
+                    auto vertexPath = comp.shaderConfig->dir + comp.shaderConfig->vertexShader;
+                    auto fragPath = comp.shaderConfig->dir + comp.shaderConfig->fragShader;
+
+                    auto shaderPgm = RuntimeApi::GetInstance().CreateShader(vertexPath,fragPath);
+
+                    // @todo, make PosComp accept point so we can pass initial
+                    auto* shaderComp = new ShaderComponent(circle_vertices, shaderPgm);
+
+                    scene->AddComponent(comp.name, shaderComp);
+
+                    // cleanup
+                    delete comp.shaderConfig;
                 }
             }
-
 
             // auto& runtimeApi = RuntimeApi::GetInstance();
             // for (auto& shaders : m_sceneConfig.shaders)
             // {
-            //     std::vector<float> circle_vertices = runtimeApi.GenerateCircleVertices(1.0f, 100);
-            //
-            //     auto vertexPath = shaders.dir + shaders.vertexShader;
-            //     auto fragPath = shaders.dir + shaders.fragShader;
-            //
-            //     std::cout << vertexPath << std::endl;
-            //     std::cout << fragPath << std::endl;
-            //
-            //     auto circle_shader = runtimeApi.CreateShader(vertexPath,fragPath);
-            //
-            //     auto* circle_component = new ShaderComponent(circle_vertices, circle_shader);
-            //     scene->AddComponent(shaders.id, circle_component);
             //
             //
-            //     // auto* mainPlayer = new MoveablePlayerEntity();
+            //     // auto* mainPlayer = new Entity();
             //     // m_entities[mainPlayer->GetId()] = mainPlayer;
             //     // scene->AddEntity();
             // }
-
-
 
             AddScene(scene);
 

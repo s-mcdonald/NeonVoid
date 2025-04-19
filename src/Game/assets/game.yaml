@@ -8,6 +8,15 @@ scene:
       data:
         path: "/home/sam/Game/Neon/build/assets/audio/background.mp3"
         loop: true
+    -
+      name: greenTriangle
+      type: shader
+      data:
+        name: id.green_triangle
+        layer: background
+        dir: /home/sam/Game/Neon/build/assets/shaders/GreenTriangle/
+        vertex: shader.vert
+        frag: shader.frag
 
   entities:
     -

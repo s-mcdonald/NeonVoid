@@ -4,14 +4,7 @@
 
 #pragma once
 
-#include <stdexcept>
-#include <unordered_map>
-#include <string>
-
 #include <fkYAML/node.hpp>
-
-#include <NeonEngine/Types.hpp>
-#include <NeonEngine/SceneTypeConverter.hpp>
 
 namespace Neon
 {
@@ -26,5 +19,6 @@ namespace Neon
             static void AssertValidateComponentTypeAudio(const fkyaml::basic_node<>& value);
             static void AssertValidateComponentTypePosition(const fkyaml::basic_node<>& value);
             static void AssertValidateComponentTypeMovement(const fkyaml::basic_node<>& value);
+            static void AssertValidateComponentTypeShader(const fkyaml::basic_node<>& value);
     };
 }
