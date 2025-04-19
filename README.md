@@ -1,12 +1,10 @@
 # NeonVoid
 
-> **Note:** This project is for educational purposes only.
-
-> **Pre-alpha:** This project is in active development and does not yet have a stable release.
+> **Note:** This project is for educational purposes and is currently in active development.
 
 A simple 2D GameEngine written in C++.
 
-# About NeonVoid Engine
+## About NeonVoid Engine
 
 This project started as a personal journey to learn C++. It's been many years since playing around with a compiled lang, 
 and in more recent years I have only been working with web development, and was inspired by a 
