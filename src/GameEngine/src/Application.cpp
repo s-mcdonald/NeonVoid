@@ -15,6 +15,26 @@ namespace Neon
         {
             delete s;
         }
+
+        auto cleanupComponent = [](YComponent& comp)
+        {
+            delete comp.posConfig;
+            delete comp.shaderConfig;
+            delete comp.audioConfig;
+        };
+
+        // for (auto& comp : m_sceneConfig.components)
+        // {
+        //     cleanupComponent(comp);
+        // }
+
+        // for (auto& entity : m_sceneConfig.entities)
+        // {
+        //     for (auto& comp : entity.components)
+        //     {
+        //         cleanupComponent(comp);
+        //     }
+        // }
     }
 
     bool Application::Initialize(const WindowDimension width, const WindowDimension height, const char* title)
@@ -78,9 +98,6 @@ namespace Neon
                 }
 
                 componentsForScene.emplace(comp.name, theComponent);
-
-                // cleanup
-                //delete comp.audioConfig;
             }
 
             if (comp.type == "position")
@@ -88,9 +105,6 @@ namespace Neon
                 // @todo, make PosComp accept point so we can pass initial
                 auto* theComponent = new PositionComponent();
                 componentsForScene.emplace(comp.name, theComponent);
-
-                // cleanup
-                //delete comp.posConfig;
             }
 
             if (comp.type == "movement")
@@ -113,9 +127,6 @@ namespace Neon
                 auto* theComponent = new ShaderComponent(circle_vertices, shaderPgm);
 
                 componentsForScene.emplace(comp.name, theComponent);
-
-                // cleanup
-                //delete comp.shaderConfig;
             }
         }
 

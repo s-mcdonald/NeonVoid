@@ -6,6 +6,12 @@
 
 namespace Neon
 {
+    Scene::Scene(const SceneType type)
+        : m_sceneType(type)
+    {
+        m_nextEntityID = 1;
+    }
+
     Scene::~Scene()
     {
         Destroy();
@@ -94,6 +100,16 @@ namespace Neon
     SceneType Scene::GetSceneType() const
     {
         return m_sceneType;
+    }
+
+    // Dynamically makes an entity and adds to the current gameplay/scene.
+    Entity* Scene::MakeEntity(const YEntity& yentity)
+    {
+        auto* e = new Entity(++m_nextEntityID);
+
+        AddEntity(e->GetId(), e);
+
+        return e;
     }
 
     template <typename T>
