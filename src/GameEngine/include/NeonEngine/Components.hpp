@@ -100,12 +100,15 @@ namespace Neon
                 : Component()
                 , AudioSystem()
                 , m_filename(std::move(filename))
+                , m_volume(50)
                 , m_repeats(false) {};
             ~AudioComponent() override = default;
 
             void OnInit() override;
             void OnUpdate() override;
-            void OnRender() override {};
+            void OnRender() override
+            {
+            };
 
             void TriggerPlayOnce();
             void TriggerPlayRepeat();
@@ -115,6 +118,7 @@ namespace Neon
         private:
             std::string m_filename;
             bool m_repeats;
+            Volume m_volume;
     };
 
     class TextComponent final : public Component

@@ -183,6 +183,20 @@ namespace Neon
                 throw std::runtime_error("scene.components.component.audio.data.loop MUST be a boolean value");
             }
         }
+
+        // optional
+        if (value.contains("volume"))
+        {
+            if (false == value["volume"].is_integer())
+            {
+                throw std::runtime_error("scene.components.component.audio.data.volume MUST be a integer value");
+            }
+
+            if (value["volume"].as_int() > 100 && value["volume"].as_int() < 0)
+            {
+                throw std::runtime_error("scene.components.component.audio.data.volume MUST be between 0-100");
+            }
+        }
     }
 
     // This validates the Data sequence for Position Type

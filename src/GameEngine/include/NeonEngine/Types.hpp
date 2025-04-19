@@ -47,7 +47,8 @@ namespace Neon
     typedef struct
     {
             bool repeat = false;
-            uint8_t delay = 0; // milliseconds of delay time once play initialized
+            uint8_t delayMs = 0;
+            uint8_t volume = 30;
     } AudioConfig;
 
     struct Point
@@ -93,6 +94,7 @@ namespace Neon
     {
         std::string path;
         bool loop = false;
+        uint8_t volume = 30;
     };
 
     struct YComponent

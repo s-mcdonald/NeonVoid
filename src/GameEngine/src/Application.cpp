@@ -88,6 +88,8 @@ namespace Neon
             if (comp.type == "audio")
             {
                 auto* theComponent = new AudioComponent(comp.audioConfig->path);
+                auto v = new Volume(comp.audioConfig->volume);
+                theComponent->SetVolume(*v);
                 if (comp.audioConfig->loop)
                 {
                     theComponent->TriggerPlayRepeat();

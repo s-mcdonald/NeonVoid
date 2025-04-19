@@ -133,6 +133,9 @@ namespace Neon
 #ifdef NEON_DEBUG_AUDIO
         std::cerr << "[INFO] Set volume..." << std::endl;
 #endif
+
+        float normalizedVolume = static_cast<float>(volume.GetVolume()) / 100.0f;
+        ma_device_set_master_volume(&m_device, normalizedVolume);
     }
 
     ma_device_config AudioSystem::getDeviceConfig() 

@@ -17,6 +17,7 @@ scene:
       data:
         path: "/home/sam/Game/Neon/build/assets/audio/background.mp3" #neon_void_intro # background
         loop: true
+        volume: 50
     -
       name: greenTriangle
       type: shader
