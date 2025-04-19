@@ -46,26 +46,6 @@ namespace Neon
 
     typedef struct
     {
-            float x, y;
-    } Vec2;
-
-    typedef struct
-    {
-            float x, y, z;
-    } Vec3;
-
-    typedef struct
-    {
-            float r, g, b;
-    } Color;
-
-    typedef struct
-    {
-            float r, g, b, a;
-    } ColorAlpha;
-
-    typedef struct
-    {
             bool repeat = false;
             uint8_t delay = 0; // milliseconds of delay time once play initialized
     } AudioConfig;

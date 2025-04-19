@@ -1,12 +1,21 @@
 scene:
   type: Gameplay
 
+  window:
+    allow_max: false
+    allow_min: true
+    top_most: false
+    show_icon: false
+    resolution:
+      width: 800
+      height: 600
+
   components:
     -
       name: backgroundSound
       type: audio
       data:
-        path: "/home/sam/Game/Neon/build/assets/audio/background.mp3"
+        path: "/home/sam/Game/Neon/build/assets/audio/background.mp3" #neon_void_intro # background
         loop: true
     -
       name: greenTriangle
@@ -17,6 +26,10 @@ scene:
         dir: /home/sam/Game/Neon/build/assets/shaders/GreenTriangle/
         vertex: shader.vert
         frag: shader.frag
+        vertices:
+          - position: [ 0.0, 0.5 ]     # Top vertex
+          - position: [ -0.5, -0.5 ]   # Bottom left vertex
+          - position: [ 0.5, -0.5 ]    # Bottom right vertex
 
   entities:
     -
@@ -32,3 +45,10 @@ scene:
             initial:
               x: 123.0
               y: 123.0
+        -
+          name: gunshot
+          type: audio
+          data:
+            path: "/home/sam/Game/Neon/build/assets/audio/bullet.mp3"
+            loop: false
+            volume: 3
