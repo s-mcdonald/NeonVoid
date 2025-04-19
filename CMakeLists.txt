@@ -74,6 +74,7 @@ set(GAME_ENGINE_SRC
         src/GameEngine/include/NeonEngine/RuntimeBridge.hpp
         src/GameEngine/include/NeonEngine/Components.hpp
         src/GameEngine/include/NeonEngine/SceneTypeConverter.hpp
+        src/GameEngine/include/NeonEngine/YamlSceneAsserter.hpp
 
 
         # App
@@ -104,6 +105,7 @@ set(GAME_ENGINE_SRC
 
         # Utils
         src/GameEngine/src/Utils/SceneTypeConverter.cpp
+        src/GameEngine/src/Utils/YamlSceneAsserter.cpp
 
         # Engine Abstracts
         src/GameEngine/src/RuntimeBridge.cpp
