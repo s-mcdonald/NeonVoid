@@ -5,6 +5,7 @@
 #include <iostream>
 
 #include <NeonEngine/Components.hpp>
+#include <NeonEngine/Entity.hpp>
 
 namespace Neon 
 {
@@ -47,22 +48,31 @@ namespace Neon
     }
 
     // @todo: we need to fire events instead of tightly bound object here
-    void MovementComponent::AllowMovementOf(PositionComponent* component)
-    {
-        mx_positionalComponents.emplace_back(component);
-    }
-
-    // @todo: we need to fire events instead of tightly bound object here
     void MovementComponent::OnUpdate()
     {
-        for (auto* component : mx_positionalComponents)
+        auto* parent = GetParentEntity();
+
+        // if (parent == nullptr)
+        // {
+        //     return;
+        // }
+
+        auto* component = parent->GetComponent<PositionComponent>();
+
+        if (component == nullptr)
         {
-            Point x = component->GetPoint();
-
-            x.y += m_directionY;
-            x.x += m_directionX;
-
-            component->UpdateData(x);
+            return;
         }
+
+        Point p = component->GetPoint();
+
+        std::cout << "[DEBUG][Movement] : " << m_directionY << "\n";
+        std::cout << "[DEBUG][Movement] : " << m_directionX << "\n";
+        std::cout << "[DEBUG][Movement] : " << p.x << " " << p.y << "\n";
+
+        p.y += m_directionY;
+        p.x += m_directionX;
+
+        component->UpdateData(p);
     }
 }

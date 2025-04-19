@@ -1,1 +1,0 @@
-This dir is where custom game object entities can be defined to extend the core GameEngine.

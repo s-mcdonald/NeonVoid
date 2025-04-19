@@ -84,11 +84,9 @@ set(GAME_ENGINE_SRC
         src/GameEngine/src/Assets/Loaders/YamlReader.cpp
         src/GameEngine/src/Assets/AssetManager.cpp
 
-        # Scene(s)
+        # Scene
         src/GameEngine/src/Scene/Scene.cpp
-
-        # Entity
-        src/GameEngine/src/Entity/Entity.cpp
+        src/GameEngine/src/Scene/Entity.cpp
 
         # Transition
         src/GameEngine/src/Transition/Transition.cpp

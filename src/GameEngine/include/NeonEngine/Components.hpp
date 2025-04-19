@@ -77,7 +77,6 @@ namespace Neon
             }
 
         public:
-            void AllowMovementOf(PositionComponent* component);
             void HandleInput(Input* input); // keyboadInput ?
 
         public:

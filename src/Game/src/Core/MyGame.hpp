@@ -4,14 +4,6 @@
 
 #pragma once
 
-
-/////
-///// GOAL: Make Game project an empty clean project for new devs to use
-///// Make sandbox where we can dev and experiment.
-///// On build, sandbox app will compile.
-///// This is better because the Game/ folder is always ready to go
-/////
-
 #include <NeonEngine/All.hpp>
 
 namespace Neon
