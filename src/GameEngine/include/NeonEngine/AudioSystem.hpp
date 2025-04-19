@@ -4,8 +4,9 @@
 
 #pragma once
 
-#include <miniaudio/miniaudio.h>
 #include <string>
+
+#include <miniaudio/miniaudio.h>
 
 #include <NeonEngine/Volume.hpp>
 

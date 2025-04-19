@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include <cstdint>                          // For uint32_t
+#include <cstdint>
 
 namespace Neon
 {

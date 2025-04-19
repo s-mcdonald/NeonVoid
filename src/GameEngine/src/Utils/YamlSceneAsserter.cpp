@@ -3,10 +3,8 @@
  */
 
 #include <stdexcept>
-#include <unordered_map>
 #include <string>
 
-#include <NeonEngine/Types.hpp>
 #include <NeonEngine/SceneTypeConverter.hpp>
 #include <NeonEngine/YamlSceneAsserter.hpp>
 

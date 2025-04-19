@@ -7,7 +7,6 @@
 #include <deque>
 
 #include <NeonEngine/RuntimeBridge.hpp>
-#include <NeonEngine/All.hpp>
 #include <NeonEngine/Scene.hpp>
 #include <NeonEngine/YamlReader.hpp>
 

@@ -6,8 +6,9 @@
 
 #include <string>
 
-#include <NeonEngine/Types.hpp>
 #include <fkYAML/node.hpp>
+
+#include <NeonEngine/Types.hpp>
 
 namespace Neon
 {

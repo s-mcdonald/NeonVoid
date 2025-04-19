@@ -2,9 +2,6 @@
  * {SourceHeader}
  */
 
-#include <fstream>
-#include <iostream>
-
 #include <NeonEngine/AssetManager.hpp>
 
 namespace Neon 

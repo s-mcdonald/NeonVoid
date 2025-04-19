@@ -3,11 +3,11 @@
  */
 
 #include <stdexcept>
-#include <unordered_map>
 #include <string>
+#include <unordered_map>
 
-#include <NeonEngine/Types.hpp>
 #include <NeonEngine/SceneTypeConverter.hpp>
+#include <NeonEngine/Types.hpp>
 
 namespace Neon
 {
