@@ -50,11 +50,12 @@ namespace Neon
             }
         }
 
-        if (m_currentScene)
-        {
-            delete m_currentScene;
-            m_currentScene = nullptr;
-        }
+        // temp fix until we know why..
+        // if (m_currentScene)
+        // {
+        //     delete m_currentScene;
+        //     m_currentScene = nullptr;
+        // }
     }
 
     bool Application::Initialize(const WindowDimension width, const WindowDimension height, const char* title)
