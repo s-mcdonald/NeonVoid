@@ -73,6 +73,7 @@ set(GAME_ENGINE_SRC
         src/GameEngine/include/NeonEngine/AudioSystem.hpp
         src/GameEngine/include/NeonEngine/RuntimeBridge.hpp
         src/GameEngine/include/NeonEngine/Components.hpp
+        src/GameEngine/include/NeonEngine/SceneTypeConverter.hpp
 
 
         # App
@@ -100,6 +101,9 @@ set(GAME_ENGINE_SRC
         src/GameEngine/src/Components/TextComponent.cpp
         src/GameEngine/src/Components/PositionComponent.cpp
         src/GameEngine/src/Components/MovementComponent.cpp
+
+        # Utils
+        src/GameEngine/src/Utils/SceneTypeConverter.cpp
 
         # Engine Abstracts
         src/GameEngine/src/RuntimeBridge.cpp
