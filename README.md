@@ -68,7 +68,7 @@ There are a couple of VS options, select the one that suits your needs or modify
 - Using `*.hpp` for c++ headers.
 - Header files will be located within the `include` dir of the respective project.
 - Purposefully used only raw pointers, no smart pointers/shared pointers in this codebase.
-- Member Variables `m_` on stack or must be cleaned up by the owning obejct, `mx_` are not owned by the object.
+- Member Variables `m_` on stack or must be cleaned up by the owning obeject, `mx_` are not owned by the object so no cleanup required.
 
 #### Resources
 List of websites where we may source content from for demonstration and included in this repo.
@@ -77,11 +77,15 @@ List of websites where we may source content from for demonstration and included
 
 
 #### References
- - [Download CMake Tools](https://cmake.org/download/)
- - [CLang-format](https://clang.llvm.org/docs/ClangFormat.html)
- - [DocsGL](http://docs.gl/)
- - [OpenGL Docs](https://www.opengl.org/)
 
+| Tool | Description |
+|------|-------------|
+| [CMake Tools](https://cmake.org/download/) | Build system generator |
+| [CLang-format](https://clang.llvm.org/docs/ClangFormat.html) | Code formatting tool |
+| [DocsGL](http://docs.gl/) | OpenGL documentation |
+| [OpenGL](https://www.opengl.org/) | Graphics API documentation |
+| [Valgrind](https://valgrind.org/) | Memory leak checker (Linux) |
+| [DrMemory](https://drmemory.org) | Memory leak checker (Windows/Linux) |
 
 ### LICENCE
 - [MIT](LICENSE)
