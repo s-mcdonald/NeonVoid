@@ -25,7 +25,11 @@ namespace Neon
             static void AssertSceneTypeYaml(const fkyaml::basic_node<>& value);
             static void AssertSceneAudioYaml(const fkyaml::basic_node<>& value);
             static void AssertSceneAudioLoopYaml(const fkyaml::basic_node<>& value);
+            static void AssertSceneComponentsYaml(const fkyaml::basic_node<>& value);
+            static void AssertSceneComponentCoreYaml(const fkyaml::basic_node<>& value);
             static void AssertSceneEntitiesYaml(const fkyaml::basic_node<>& value);
+
+            static void AssertValidateComponentAudioType(const fkyaml::basic_node<>& value);
 
         private:
             fkyaml::node m_yamlRoot{};

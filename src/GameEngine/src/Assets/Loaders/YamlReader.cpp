@@ -106,14 +106,9 @@ namespace Neon
                     AssertSceneTypeYaml(sceneValue);
                 }
 
-                if (sceneKey == "audio")
+                if (sceneKey == "components")
                 {
-                    AssertSceneAudioYaml(sceneValue);
-                }
-
-                if (sceneKey == "audio_loop")
-                {
-                    AssertSceneAudioLoopYaml(sceneValue);
+                    AssertSceneComponentsYaml(sceneValue);
                 }
 
                 if (sceneKey == "entities")
@@ -137,16 +132,14 @@ namespace Neon
     {
         if (value.is_string())
         {
-            SceneTypeConverter::Parse(value.as_str());
+            std::cout << "Scene::Type: " << value.as_str() << std::endl;
 
-
-                std::cout << "Scene::Type:" << value.as_str() << std::endl;
+            if (SceneTypeConverter::IsValid(value.as_str()))
+            {
                 return;
+            }
 
-          //  return false;
-
-
-            return;
+            throw std::runtime_error("component.audio has an invalid type.");
         }
 
         throw std::runtime_error("scene.audio Must be a string value");
@@ -174,20 +167,87 @@ namespace Neon
         throw std::runtime_error("scene.audio_loop Must be a boolean value");
     }
 
+    void YamlReader::AssertSceneComponentsYaml(const fkyaml::basic_node<>& value)
+    {
+        if (value.is_sequence())
+        {
+            std::cout << "\n--- Components --- " << std::endl;
+            for (const auto& component : value)
+            {
+                AssertSceneComponentCoreYaml(component);
+
+                std::cout << "Component: " << std::endl;
+                std::cout << " - name: " << component["name"].as_str() << std::endl;
+                std::cout << " - type: " << component["type"].as_str() << std::endl;
+
+                if (component.contains("data"))
+                {
+                    // Components can have differing dependencies, so we need
+                    // to validate each type.
+                    if (component["type"].as_str() == "audio")
+                    {
+                        AssertValidateComponentAudioType(component["data"]);
+                    }
+
+                    // if we dont throw then we are good.
+
+                    std::cout << " - data: "  << std::endl;
+                    // If you want to see all keys/values in each entity
+                    for (const auto& [key, val] : component["data"].map_items())
+                    {
+                        std::cout << "\tKey: " << key.get_value<std::string>()
+                                 << ", [Type: " << to_string(val.get_type()) << "] "<< std::endl;
+                    }
+                }
+            }
+
+            return;
+        }
+
+        throw std::runtime_error("scene.components Must be an array sequence value");
+    }
+
+    void YamlReader::AssertSceneComponentCoreYaml(const fkyaml::basic_node<>& component)
+    {
+        if (false == component.contains("name"))
+        {
+            throw std::runtime_error("scene.components.component MUST have a `name`");
+        }
+
+        if (false == component.contains("type"))
+        {
+            throw std::runtime_error("scene.components.component MUST have a `type`");
+        }
+
+        if (false == component["name"].is_string())
+        {
+            throw std::runtime_error("scene.components.component.name MUST be a `string`");
+        }
+
+        if (false == component["type"].is_string())
+        {
+            throw std::runtime_error("scene.components.component.type MUST be a `string`");
+        }
+    }
+
     void YamlReader::AssertSceneEntitiesYaml(const fkyaml::basic_node<>& value)
     {
         if (value.is_sequence())
         {
-            for (const auto& entity : value) {
+            std::cout << "\n--- Entities --- " << std::endl;
+            for (const auto& entity : value)
+            {
                 // Access entity properties
-                if (entity.contains("name")) {
+                if (entity.contains("name"))
+                {
                     std::cout << "Entity name: " << entity["name"].get_value<std::string>() << std::endl;
                 }
 
                 // If you want to see all keys/values in each entity
-                for (const auto& [key, val] : entity.map_items()) {
-                    std::cout << "Key: " << key.get_value<std::string>()
-                             << ", Type: " << to_string(val.get_type()) << std::endl;
+                for (const auto& [key, val] : entity.map_items())
+                {
+                    std::cout << "\tKey: " << key.get_value<std::string>()
+                             << ", [Type: " << to_string(val.get_type()) << "] " << std::endl;
                 }
             }
 
@@ -195,5 +255,33 @@ namespace Neon
         }
 
        throw std::runtime_error("scene.entities Must be an array sequence value");
+    }
+
+    // This validates the Data sequence for Audio Type
+    void YamlReader::AssertValidateComponentAudioType(const fkyaml::basic_node<>& value)
+    {
+        if (false == value.is_mapping())
+        {
+            throw std::runtime_error("scene.components.component.audio.data MUST be a mapping value");
+        }
+
+        if (false == value.contains("path"))
+        {
+            throw std::runtime_error("scene.components.component.audio.data.path IS required.");
+        }
+
+        if (false == value["path"].is_string())
+        {
+            throw std::runtime_error("scene.components.component.audio.data.path MUST be a string.");
+        }
+
+        // Optional
+        if (value.contains("loop"))
+        {
+            if (false == value["loop"].is_boolean())
+            {
+                throw std::runtime_error("scene.components.component.audio.data.loop MUST be a boolean value");
+            }
+        }
     }
 }
