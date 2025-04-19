@@ -16,6 +16,7 @@ namespace Neon
         public:
             static SceneType Parse(const std::string& str);
             static bool TryParse(const std::string& str, SceneType& outType);
+            static bool IsValid(const std::string& str);
             static std::string ToString(SceneType type);
 
         public:

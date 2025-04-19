@@ -36,6 +36,16 @@ namespace Neon
         return false;
     }
 
+    bool SceneTypeConverter::IsValid(const std::string& str)
+    {
+        auto it = SceneTypeConverter::stringToEnum.find(str);
+        if (it != SceneTypeConverter::stringToEnum.end())
+        {
+            return true;
+        }
+        return false;
+    }
+
     SceneType SceneTypeConverter::Parse(const std::string& str)
     {
         auto it = SceneTypeConverter::stringToEnum.find(str);

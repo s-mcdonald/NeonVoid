@@ -10,6 +10,8 @@
 
 #include <NeonEngine/YamlReader.hpp>
 
+#include "NeonEngine/SceneTypeConverter.hpp"
+
 namespace Neon
 {
     void YamlReader::Read(const std::string& filepath)
@@ -94,11 +96,16 @@ namespace Neon
         {
             // Move string values to const later
             if (parentKey != "scene") {
-                throw std::runtime_error("The first Parent value of the Yaml must be scene");
+                throw std::runtime_error("The parent value of the Yaml must be scene");
             }
 
             for (const auto& [sceneKey, sceneValue] : value.map_items())
             {
+                if (sceneKey == "type")
+                {
+                    AssertSceneTypeYaml(sceneValue);
+                }
+
                 if (sceneKey == "audio")
                 {
                     AssertSceneAudioYaml(sceneValue);
@@ -126,6 +133,25 @@ namespace Neon
         }
     }
 
+    void YamlReader::AssertSceneTypeYaml(const fkyaml::basic_node<>& value)
+    {
+        if (value.is_string())
+        {
+            SceneTypeConverter::Parse(value.as_str());
+
+
+                std::cout << "Scene::Type:" << value.as_str() << std::endl;
+                return;
+
+          //  return false;
+
+
+            return;
+        }
+
+        throw std::runtime_error("scene.audio Must be a string value");
+    }
+
     void YamlReader::AssertSceneAudioYaml(const fkyaml::basic_node<>& value)
     {
         if (value.is_string())
@@ -150,6 +176,24 @@ namespace Neon
 
     void YamlReader::AssertSceneEntitiesYaml(const fkyaml::basic_node<>& value)
     {
-        //
+        if (value.is_sequence())
+        {
+            for (const auto& entity : value) {
+                // Access entity properties
+                if (entity.contains("name")) {
+                    std::cout << "Entity name: " << entity["name"].get_value<std::string>() << std::endl;
+                }
+
+                // If you want to see all keys/values in each entity
+                for (const auto& [key, val] : entity.map_items()) {
+                    std::cout << "Key: " << key.get_value<std::string>()
+                             << ", Type: " << to_string(val.get_type()) << std::endl;
+                }
+            }
+
+            return;
+        }
+
+       throw std::runtime_error("scene.entities Must be an array sequence value");
     }
 }
