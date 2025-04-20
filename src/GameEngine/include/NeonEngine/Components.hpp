@@ -167,7 +167,7 @@ namespace Neon
             IShader* m_shader;
             std::vector<float> m_vertices;
             IVertexBuffer* m_buffer{};
-            int m_verticiesSize{};
+            int m_verticesSize{};
     };
 
     class ScoreComponent final : public Component

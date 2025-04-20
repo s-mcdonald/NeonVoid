@@ -30,26 +30,10 @@ namespace Neon
         return m_renderer;
     }
 
-    std::vector<float> RuntimeApi::GenerateCircleVertices(const float radius, const int segments)
+    std::vector<float> RuntimeApi::GenerateCircleVertices(float radius, const int segments)
     {
-        std::vector<float> vertices;
-
-        vertices.push_back(0.0f); // X
-        vertices.push_back(0.0f); // Y
-
-        const float angleStep = 2.0f * M_PI / segments;
-
-        for (auto i = 0; i <= segments; ++i)
-        {
-            const float angle = i * angleStep;
-            vertices.push_back(std::cos(angle) * radius); // X
-            vertices.push_back(std::sin(angle) * radius); // Y
-        }
-
-        return vertices;
+        return m_verticesFactory.GenerateCircleVertices(radius, segments);
     }
-
-    // Renderer Primitives
 
     IPlatform* RuntimeApi::CreatePlatform()
     {

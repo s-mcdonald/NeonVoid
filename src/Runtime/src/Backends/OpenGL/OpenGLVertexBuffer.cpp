@@ -43,7 +43,10 @@ namespace Neon
     {
         glBindVertexArray(m_VAO);
         glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-        glBufferData(GL_ARRAY_BUFFER, static_cast<short>(m_size), m_vertices, GL_STATIC_DRAW);
+        // needs work
+        glBufferData(GL_ARRAY_BUFFER, static_cast<size_t>(m_size), m_vertices, GL_STATIC_DRAW);
+        //glBufferData(GL_ARRAY_BUFFER, m_size * sizeof(float), m_vertices, GL_STATIC_DRAW);
+
 
         // Set the vertex attribute pointer
         glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (GLvoid*)0);
@@ -59,7 +62,7 @@ namespace Neon
     void OpenGLVertexBuffer::UpdateData(const void* data, size_t size)
     {
         glBindBuffer(GL_ARRAY_BUFFER, GetVbo());
-        glBufferSubData(GL_ARRAY_BUFFER, 0, static_cast<short>(size), data);
+        glBufferSubData(GL_ARRAY_BUFFER, 0, static_cast<GLsizeiptr>(size), data);
         glBindBuffer(GL_ARRAY_BUFFER, 0);
     }
 }

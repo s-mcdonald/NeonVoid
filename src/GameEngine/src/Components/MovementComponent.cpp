@@ -66,8 +66,11 @@ namespace Neon
 
         Point p = component->GetPoint();
 
-        p.y += m_directionY;
-        p.x += m_directionX;
+        //if (p.y < MaxSpeed)
+            p.y = m_directionY;
+
+        //if (p.x < MaxSpeed)
+            p.x = m_directionX;
 
         component->UpdateData(p);
     }

@@ -6,8 +6,9 @@
 
 #include <vector>
 
-#include <NeonRuntime/ShaderFactory.hpp>
 #include <NeonRuntime/BufferFactory.hpp>
+#include <NeonRuntime/ShaderFactory.hpp>
+#include <NeonRuntime/VerticesFactory.hpp>
 
 namespace Neon
 {
@@ -19,7 +20,7 @@ namespace Neon
             static RuntimeApi& GetInstance();
 
             [[nodiscard]] IRenderer* GetRenderer() const;
-            [[nodiscard]] static std::vector<float> GenerateCircleVertices(float radius, int segments);
+            [[nodiscard]] std::vector<float> GenerateCircleVertices(float radius, int segments);
 
             static IPlatform* CreatePlatform();
             IVertexBuffer* CreateVertexBuffer(float* vertices, size_t size);
@@ -34,5 +35,6 @@ namespace Neon
             IRenderer* m_renderer;
             ShaderFactory m_shaderFactory;
             BufferFactory m_bufferFactory;
+            VerticesFactory m_verticesFactory;
     };
 }
