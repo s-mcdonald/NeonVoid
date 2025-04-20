@@ -24,23 +24,14 @@ namespace Neon
         glFlush();
     }
 
-    void OpenGLRenderer::RenderQuad(const GLuint shaderProgram, const GLuint VAO)
-    {
-        glUseProgram(shaderProgram);
-        glBindVertexArray(VAO);
-        glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
-        glBindVertexArray(0);
-    }
-
-    void OpenGLRenderer::RenderCircle(const GLuint shaderProgram, const GLuint VAO, const GLsizei vertexCount)
+    void OpenGLRenderer::RenderTriangle(const GLuint shaderProgram, const GLuint VAO, const GLsizei vertexCount)
     {
         glUseProgram(shaderProgram);
         glBindVertexArray(VAO);
 
         GLint modelLoc = glGetUniformLocation(shaderProgram, "modelMatrix");
 
-        // ok we can have movement if we change these values in the matrix
-        glm::mat4 modelMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(0.3f, 1.0f, 0.0f));
+        glm::mat4 modelMatrix = glm::mat4(1.0f);
         glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(modelMatrix));
 
         glDrawArrays(GL_TRIANGLES, 0, vertexCount);

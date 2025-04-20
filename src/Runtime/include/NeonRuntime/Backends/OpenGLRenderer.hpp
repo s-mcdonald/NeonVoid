@@ -17,7 +17,6 @@ namespace Neon
         public:
             void BeginFrame() override;
             void EndFrame() override;
-            void RenderQuad(uint32_t shaderProgram, uint32_t VAO) override;
-            void RenderCircle(uint32_t shaderProgram, uint32_t VAO, int vertexCount) override;
+            void RenderTriangle(uint32_t shaderProgram, uint32_t VAO, int vertexCount) override;
     };
 }

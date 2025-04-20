@@ -56,7 +56,7 @@ namespace Neon
             UpdateData(m_vertices);
         }
 
-        RuntimeApi::GetInstance().GetRenderer()->RenderCircle(m_shader->GetShaderProgramId(), m_buffer->GetVao(), m_vertices.size());
+        RuntimeApi::GetInstance().GetRenderer()->RenderTriangle(m_shader->GetShaderProgramId(), m_buffer->GetVao(), m_vertices.size());
     }
 
     void ShaderComponent::UpdateData(const std::vector<float>& vertices)

@@ -30,15 +30,10 @@ namespace Neon
     // actual vertices will come from the yaml pre-compiled
     std::vector<float> VerticesFactory::GenerateBasicTriangleVertices()
     {
-        std::vector<float> vertices;
-
-        vertices.push_back(0.0f);
-        vertices.push_back(0.5f);
-        vertices.push_back(-0.5f);
-        vertices.push_back(-0.5f);
-        vertices.push_back(0.5f);
-        vertices.push_back(0.5f);
-
-        return vertices;
+        return {
+            -0.5f, -0.5f,    // Bottom left
+             0.5f, -0.5f,    // Bottom right
+             0.0f,  0.5f     // Top
+        };
     }
 }
