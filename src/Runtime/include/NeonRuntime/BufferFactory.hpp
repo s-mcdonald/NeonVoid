@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include <string>
+#include <stddef.h>
 
 namespace Neon
 {
@@ -14,8 +14,7 @@ namespace Neon
         public:
             BufferFactory() = default;
             ~BufferFactory() = default;
-        public:
+
             IVertexBuffer* CreateVertexBuffer(float* vertices, size_t size);
     };
 }
-

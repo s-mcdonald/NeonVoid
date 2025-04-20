@@ -24,10 +24,6 @@ namespace Neon
 
     void Scene::Init()
     {
-#if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-        std::cout << "Scene::Init\n";
-#endif
-
         if (m_isInitialized)
         {
             return;

@@ -12,7 +12,7 @@ namespace Neon
 #ifdef NEON_BUILD_OPENGL
         return new OpenGLShader(std::move(vertexPath), std::move(fragmentPath));
 #elif defined(NEON_BUILD_VULKAN)
-        // send back the Vulkan Shader
+        return nullptr;
 #else
         return nullptr;
 #endif

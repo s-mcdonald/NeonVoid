@@ -36,4 +36,3 @@ namespace Neon
             //bool IsMouseButtonPressed(MouseButton button) const;
     };
 }
-

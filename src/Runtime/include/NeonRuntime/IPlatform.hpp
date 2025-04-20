@@ -14,7 +14,6 @@ namespace Neon
             IPlatform() = default;
             virtual ~IPlatform() = default;
 
-        public:
             virtual bool Initialize(int width, int height, const char* title) = 0;
             virtual void Run(Application* game) = 0;
     };

@@ -12,7 +12,7 @@ namespace Neon
         public:
             PlatformFactory() = default;
             ~PlatformFactory() = default;
-        public:
+
             static IPlatform* CreatePlatform();
     };
 }

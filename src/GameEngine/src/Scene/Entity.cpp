@@ -25,10 +25,6 @@ namespace Neon
 
     void Entity::OnInit()
     {
-#if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-        std::cout << "Entity::Init" << std::endl;
-#endif
-
         for (const auto& [_, component] : m_components)
         {
             component->OnInit();
@@ -37,10 +33,6 @@ namespace Neon
 
     void Entity::OnUpdate()
     {
-#if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-        std::cout << "Entity::Update" << std::endl;
-#endif
-
         for (const auto& [_, component] : m_components)
         {
             component->OnUpdate();
@@ -49,10 +41,6 @@ namespace Neon
 
     void Entity::OnRender()
     {
-#if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-        std::cout << "Entity::Render" << std::endl;
-#endif
-
         for (const auto& [_, component] : m_components)
         {
             component->OnRender();

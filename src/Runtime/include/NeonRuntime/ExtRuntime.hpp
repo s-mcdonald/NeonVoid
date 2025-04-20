@@ -8,7 +8,6 @@
 
 #ifdef NEON_BUILD_OPENGL
 
-#include <NeonRuntime/IFrameBuffer.hpp>
 #include <NeonRuntime/IShader.hpp>
 #include <NeonRuntime/IWindow.hpp>
 #include <NeonRuntime/IInput.hpp>
