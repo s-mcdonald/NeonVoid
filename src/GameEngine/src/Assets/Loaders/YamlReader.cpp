@@ -8,6 +8,7 @@
 #include <fkYAML/node.hpp>
 
 #include <NeonEngine/YamlReader.hpp>
+#include "NeonEngine/EntityTypeConverter.hpp"
 #include "NeonEngine/SceneTypeConverter.hpp"
 #include "NeonEngine/YamlSceneAsserter.hpp"
 
@@ -44,6 +45,7 @@ namespace Neon
             YEntity sceneEntity;
 
             sceneEntity.name = entity["name"].as_str();
+            sceneEntity.type = EntityTypeConverter::Parse(entity["type"].as_str());
 
             for (const auto& component : entity["components"])
             {
@@ -119,12 +121,12 @@ namespace Neon
             std::vector<float> vertices;
             for (const auto& vertex : value["data"]["vertices"].as_seq())
             {
-                auto position = vertex.as_seq();
-                vertices.push_back(position[0].as_float());
-                vertices.push_back(position[1].as_float());
-                vertices.push_back(position[2].as_float());
-                vertices.push_back(position[3].as_float());
-                vertices.push_back(position[4].as_float());
+                auto vertexData = vertex.as_seq();
+                vertices.push_back(vertexData[0].as_float());
+                vertices.push_back(vertexData[1].as_float());
+                vertices.push_back(vertexData[2].as_float());
+                vertices.push_back(vertexData[3].as_float());
+                vertices.push_back(vertexData[4].as_float());
             }
 
             yComponent.shaderConfig->vertices = vertices;

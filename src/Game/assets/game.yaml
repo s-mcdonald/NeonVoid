@@ -27,6 +27,7 @@ scene:
   entities:
     -
       name: mainPlayer
+      type: Player
       components:
         -
           name: playerMovement
