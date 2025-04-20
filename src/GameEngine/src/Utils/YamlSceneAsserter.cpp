@@ -121,6 +121,14 @@ namespace Neon
                     {
                         AssertValidateComponentTypeShader(component["data"]);
                     }
+
+                    if (component["type"].as_str() == "text")
+                    {
+                        if (component.contains("data"))
+                        {
+                            AssertValidateComponentTypeText(component["data"]);
+                        }
+                    }
                 }
             }
 
@@ -300,5 +308,18 @@ namespace Neon
     void YamlSceneAsserter::AssertValidateComponentTypeMovement(const fkyaml::basic_node<>& value)
     {
         throw std::runtime_error("scene.components.component.movement.data SHOULD NOT be allowed.");
+    }
+
+    void YamlSceneAsserter::AssertValidateComponentTypeText(const fkyaml::basic_node<>& value)
+    {
+        if (false == value.is_mapping())
+        {
+            throw std::runtime_error("scene.components.component.text.data MUST be a mapping value");
+        }
+
+        if (false == value.contains("text"))
+        {
+            throw std::runtime_error("scene.components.component.text.data.text IS required");
+        }
     }
 };

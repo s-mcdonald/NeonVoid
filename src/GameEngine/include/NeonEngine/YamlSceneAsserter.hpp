@@ -22,5 +22,6 @@ namespace Neon
             static void AssertValidateComponentTypePosition(const fkyaml::basic_node<>& value);
             static void AssertValidateComponentTypeMovement(const fkyaml::basic_node<>& value);
             static void AssertValidateComponentTypeShader(const fkyaml::basic_node<>& value);
+            static void AssertValidateComponentTypeText(const fkyaml::basic_node<>& value);
     };
 }

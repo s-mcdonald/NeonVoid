@@ -18,5 +18,6 @@ namespace Neon
             void BeginFrame() override;
             void EndFrame() override;
             void RenderTriangle(uint32_t shaderProgram, uint32_t VAO, int vertexCount) override;
+            void RenderText(uint32_t shaderProgram, uint32_t VAO, const std::string& text) override;
     };
 }

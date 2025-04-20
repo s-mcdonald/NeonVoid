@@ -18,6 +18,11 @@ scene:
         path: "/home/sam/Game/Neon/build/assets/audio/background.mp3" #neon_void_intro # background
         loop: true
         volume: 50
+    -
+      name: titleText
+      type: text
+      data:
+        text: "NeonVoid"
 
   entities:
     -

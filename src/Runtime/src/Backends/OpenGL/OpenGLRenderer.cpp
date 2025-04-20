@@ -3,10 +3,8 @@
  */
 
 #include <fstream>
-
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
+#include <iostream>
+#include <map>
 
 #include <NeonRuntime/Backends/OpenGLHeaders.hpp>
 #include <NeonRuntime/Backends/OpenGLRenderer.hpp>
@@ -36,5 +34,11 @@ namespace Neon
 
         glDrawArrays(GL_TRIANGLES, 0, vertexCount);
         glBindVertexArray(0);
+    }
+
+    void OpenGLRenderer::RenderText(const GLuint shaderProgram, const GLuint VAO, const std::string& text)
+    {
+        // ..
+        std::cout << "Rendering Text: " << text << std::endl;
     }
 }

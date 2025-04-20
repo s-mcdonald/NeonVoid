@@ -90,13 +90,6 @@ namespace Neon
 
         m_openGlInitialized = true;
 
-        // Debug only
-        // if (glewIsSupported("GL_ARB_debug_output")) {
-        //     std::cout << "GL_ARB_debug_output is supported!" << std::endl;
-        // } else {
-        //     std::cerr << "GL_ARB_debug_output is NOT supported on this system!" << std::endl;
-        // }
-
         return true;
     }
 

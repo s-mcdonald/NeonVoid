@@ -3,6 +3,7 @@
  */
 
 #include <deque>
+#include <iostream>
 
 #include <fkYAML/node.hpp>
 
@@ -145,6 +146,18 @@ namespace Neon
                 // @todo, make PosComp accept point so we can pass initial
                 auto* theComponent = new ShaderComponent(comp.shaderConfig->vertices, shaderPgm);
 
+                componentsForScene.emplace(comp.name, theComponent);
+            }
+
+            if (comp.type == "text")
+            {
+                // built-in shader for text
+                std::cout << "Loading Text" << std::endl;
+                auto vertexPath = "/home/sam/Game/Neon/build/assets/shaders/Text/shader.vert";
+                auto fragPath = "/home/sam/Game/Neon/build/assets/shaders/Text/shader.frag";
+
+                auto shaderPgm = RuntimeApi::GetInstance().CreateShader(vertexPath,fragPath);
+                auto* theComponent = new TextComponent(comp.textConfig.text, shaderPgm);
                 componentsForScene.emplace(comp.name, theComponent);
             }
         }

@@ -102,6 +102,11 @@ namespace Neon
         uint8_t volume = 30;
     };
 
+    struct YTextConfigData
+    {
+        std::string text;
+    };
+
     enum class ConfigType {
         None = 0,
         Movement,
@@ -123,6 +128,8 @@ namespace Neon
             YAudioConfigData* audioConfig;
             YPosConfigData* posConfig;
         };
+
+        YTextConfigData textConfig;
 
         YComponent() : shaderConfig(nullptr)
         {

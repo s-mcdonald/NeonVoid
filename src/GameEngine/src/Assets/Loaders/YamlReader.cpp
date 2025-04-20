@@ -99,6 +99,14 @@ namespace Neon
             }
         }
 
+        if (yComponent.type == "text")
+        {
+            yComponent.configType = ConfigType::Position;
+
+            yComponent.textConfig;
+            yComponent.textConfig.text = value["data"]["text"].as_str();
+        }
+
         if (yComponent.type == "shader")
         {
             yComponent.configType = ConfigType::Shader;

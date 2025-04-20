@@ -228,12 +228,17 @@ target_include_directories(NeonVoid PRIVATE
 find_package(OpenGL REQUIRED)
 find_package(glfw3 REQUIRED)
 find_package(glm REQUIRED)
-#find_package(GLEW REQUIRED)
+find_package(Freetype REQUIRED)
 
 # Link OpenGL libraries
 #target_link_libraries(GameEngine PRIVATE OpenGL::GL glfw ${GLEW_LIBRARY} ${GLEW_LIBRARIES})
 #target_link_libraries(GameEngine PRIVATE OpenGL::GL glfw )
 target_link_libraries(NeonRuntime PRIVATE OpenGL::GL glfw )
+target_include_directories(GameEngine PUBLIC ${FREETYPE_INCLUDE_DIRS})
+target_include_directories(NeonRuntime PUBLIC ${FREETYPE_INCLUDE_DIRS})
+target_link_libraries(GameEngine PRIVATE ${FREETYPE_LIBRARIES})
+target_link_libraries(NeonRuntime PRIVATE ${FREETYPE_LIBRARIES})
+
 
 # Enable compiler warnings for GameEngine
 target_compile_options(GameEngine PRIVATE -Wall -Wextra -Wpedantic)

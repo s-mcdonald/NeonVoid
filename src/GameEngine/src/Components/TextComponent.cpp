@@ -9,9 +9,10 @@
 
 namespace Neon 
 {
-    TextComponent::TextComponent(const std::string& text)
+    TextComponent::TextComponent(const std::string& text, IShader* shader)
         : Component()
         , m_text(std::move(text))
+        , m_shader(shader)
     {
         if (m_fontSize <= NV_MINIMUM_FONT_SIZE)
         {
@@ -33,7 +34,7 @@ namespace Neon
 
     void TextComponent::OnUpdate() 
     {
-        std::cout << "Rendering Text: " << m_text << " with Font Size: " << m_fontSize << std::endl;
+       /////////// RuntimeApi::GetInstance().GetRenderer()->RenderText(m_shader->GetShaderProgramId(), m_text );
     }
 
     const std::string& TextComponent::GetText() const 

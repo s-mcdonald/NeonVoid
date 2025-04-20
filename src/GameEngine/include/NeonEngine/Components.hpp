@@ -123,7 +123,7 @@ namespace Neon
     class TextComponent final : public Component
     {
         public:
-            explicit TextComponent(const std::string& text);
+            explicit TextComponent(const std::string& text, IShader* shader);
             ~TextComponent() override;
 
             [[nodiscard]] const std::string& GetText() const;
@@ -141,6 +141,8 @@ namespace Neon
 
         private:
             std::string m_text;
+            IShader* m_shader;
+            IVertexBuffer* m_buffer{};
             float m_fontSize;
             Point m_point;
     };
