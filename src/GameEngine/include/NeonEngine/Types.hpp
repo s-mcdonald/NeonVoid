@@ -87,6 +87,7 @@ namespace Neon
         std::string dir;
         std::string vertexShader;
         std::string fragShader;
+        std::vector<float> vertices;
     };
 
     struct YPosConfigData

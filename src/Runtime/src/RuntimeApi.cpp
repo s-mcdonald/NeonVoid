@@ -30,16 +30,6 @@ namespace Neon
         return m_renderer;
     }
 
-    std::vector<float> RuntimeApi::GenerateCircleVertices(float radius, const int segments)
-    {
-        return m_verticesFactory.GenerateCircleVertices(radius, segments);
-    }
-
-    std::vector<float> RuntimeApi::GenerateBasicTriangleVertices()
-    {
-        return m_verticesFactory.GenerateBasicTriangleVertices();
-    }
-
     IPlatform* RuntimeApi::CreatePlatform()
     {
         return PlatformFactory::CreatePlatform();

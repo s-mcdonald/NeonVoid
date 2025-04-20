@@ -137,15 +137,13 @@ namespace Neon
 
             if (comp.type == "shader")
             {
-                std::vector<float> circle_vertices = RuntimeApi::GetInstance().GenerateBasicTriangleVertices();
-
                 auto vertexPath = comp.shaderConfig->dir + comp.shaderConfig->vertexShader;
                 auto fragPath = comp.shaderConfig->dir + comp.shaderConfig->fragShader;
 
                 auto shaderPgm = RuntimeApi::GetInstance().CreateShader(vertexPath,fragPath);
 
                 // @todo, make PosComp accept point so we can pass initial
-                auto* theComponent = new ShaderComponent(circle_vertices, shaderPgm);
+                auto* theComponent = new ShaderComponent(comp.shaderConfig->vertices, shaderPgm);
 
                 componentsForScene.emplace(comp.name, theComponent);
             }

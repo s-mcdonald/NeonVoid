@@ -8,7 +8,6 @@
 #include <fkYAML/node.hpp>
 
 #include <NeonEngine/YamlReader.hpp>
-
 #include "NeonEngine/SceneTypeConverter.hpp"
 #include "NeonEngine/YamlSceneAsserter.hpp"
 
@@ -22,9 +21,6 @@ namespace Neon
 
     YScene YamlReader::Init() const
     {
-        // Ensure the YAML coming in is valid and will throw
-        // exception if not valid so we can
-        // trust the object coming in.
         YamlSceneAsserter::AssertValidYaml(m_yamlRoot);
 
         const auto& sceneNode = m_yamlRoot["scene"];
@@ -112,6 +108,16 @@ namespace Neon
             yComponent.shaderConfig->dir = value["data"]["dir"].as_str();
             yComponent.shaderConfig->vertexShader = value["data"]["vertex"].as_str();
             yComponent.shaderConfig->fragShader = value["data"]["frag"].as_str();
+
+            std::vector<float> vertices;
+            for (const auto& vertex : value["data"]["vertices"].as_seq())
+            {
+                auto position = vertex["position"].as_seq();
+                vertices.push_back(position[0].as_float());
+                vertices.push_back(position[1].as_float());
+            }
+
+            yComponent.shaderConfig->vertices = vertices;
         }
 
         return yComponent;

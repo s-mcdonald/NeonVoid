@@ -290,6 +290,10 @@ namespace Neon
             throw std::runtime_error("scene.components.component.shader.data.frag Must be a string");
         }
 
+        if (false == value["vertices"].is_sequence())
+        {
+            throw std::runtime_error("scene.components.component.shader.data.vertices Must be a sequence");
+        }
     }
 
     // This validates the Data sequence for Position Type
