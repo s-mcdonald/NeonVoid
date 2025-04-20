@@ -2,7 +2,9 @@
  * {SourceHeader}
  */
 
+#ifdef NEON_DEBUG
 #include <iostream>
+#endif
 
 #include <NeonEngine/Entity.hpp>
 #include <NeonEngine/Components.hpp>
@@ -13,6 +15,12 @@ namespace Neon
     {
         OnDestroy();
 
+        if (m_buffer)
+        {
+            delete m_buffer;
+            m_buffer = nullptr;
+        }
+
         if (m_shader)
         {
             delete m_shader;
@@ -22,7 +30,6 @@ namespace Neon
 
     void ShaderComponent::OnInit()
     {
-        // Bind should be before the loop for the shader
         m_shader->Bind();
 
         m_shader->OnInit();
@@ -43,7 +50,7 @@ namespace Neon
             Point p{};
             p = pos->GetPoint();
 
-#ifdef NEON_DEBUG_KB_INPUT
+#ifdef NEON_DEBUG && NEON_DEBUG_KB_INPUT
             std::cout << "[DEBUG](Sahder) NEW: x: " << p.x << " y: " << p.y << "\n";
 #endif
 
@@ -72,12 +79,6 @@ namespace Neon
         {
             m_shader->Unbind();
             m_shader->OnDelete();
-        }
-
-        if (m_buffer)
-        {
-            delete m_buffer;
-            m_buffer = nullptr;
         }
     }
 }
