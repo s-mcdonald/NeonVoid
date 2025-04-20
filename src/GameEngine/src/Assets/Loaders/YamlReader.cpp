@@ -120,9 +120,12 @@ namespace Neon
             std::vector<float> vertices;
             for (const auto& vertex : value["data"]["vertices"].as_seq())
             {
-                auto position = vertex["position"].as_seq();
+                auto position = vertex.as_seq();
                 vertices.push_back(position[0].as_float());
                 vertices.push_back(position[1].as_float());
+                vertices.push_back(position[2].as_float());
+                vertices.push_back(position[3].as_float());
+                vertices.push_back(position[4].as_float());
             }
 
             yComponent.shaderConfig->vertices = vertices;

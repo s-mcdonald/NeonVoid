@@ -47,7 +47,7 @@ namespace Neon
             std::cout << "[DEBUG](Sahder) NEW: x: " << p.x << " y: " << p.y << "\n";
 #endif
 
-            for (size_t i = 0; i < m_vertices.size(); i += 2)
+            for (size_t i = 0; i < m_vertices.size(); i += 5)
             {
                 m_vertices[i] += p.x;
                 m_vertices[i + 1] += p.y;
@@ -70,7 +70,6 @@ namespace Neon
     {
         if (m_shader)
         {
-            // UnBind should be after the loop for the shader
             m_shader->Unbind();
             m_shader->OnDelete();
         }
