@@ -3,13 +3,15 @@
  */
 
 #include <NeonEngine/Scene.hpp>
+#include <NeonEngine/ComponentLoader.hpp>
 
 namespace Neon
 {
-    Scene::Scene(const SceneType type)
-        : m_sceneType(type)
+    Scene::Scene(const YScene config)
+        : m_sceneConfig(config)
     {
         m_nextEntityID = 1;
+        MakeAll();
     }
 
     Scene::~Scene()
@@ -95,7 +97,7 @@ namespace Neon
 
     SceneType Scene::GetSceneType() const
     {
-        return m_sceneType;
+        return m_sceneConfig.sceneType;
     }
 
     // Dynamically makes an entity and adds to the current gameplay/scene.
@@ -106,6 +108,23 @@ namespace Neon
         AddEntity(e->GetId(), e);
 
         return e;
+    }
+
+    void Scene::MakeAll()
+    {
+        for (auto& entity : m_sceneConfig.entities)
+        {
+            auto* entityToAdd = new Entity(1);
+
+            std::unordered_map<std::string, Component*> componentsForEntity = ComponentLoader::CollectComponents(entity.components);
+
+            for (auto [name, comp] : componentsForEntity)
+            {
+                entityToAdd->AddComponent(comp);
+            }
+
+            AddEntity(entityToAdd->GetId(), entityToAdd);
+        }
     }
 
     template <typename T>

@@ -29,7 +29,6 @@ namespace Neon
 
         protected:
             void SetSceneYaml(const std::string& sceneName);
-            static std::unordered_map<std::string, Component*> CollectComponents(std::vector<YComponent> components);
 
         private:
             std::string GetSceneYaml() const;
@@ -37,8 +36,6 @@ namespace Neon
         private:
             std::deque<Scene*> m_scenes;
             Scene* m_currentScene{nullptr};
-
-        private:
             RuntimeBridge m_runtime;
             YamlReader m_yamlReader;
             std::string m_sceneYamlPath{};

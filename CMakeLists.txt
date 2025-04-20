@@ -62,6 +62,7 @@ set(GAME_SRC
 set(GAME_ENGINE_SRC
         # Includes
         src/GameEngine/include/NeonEngine/YamlReader.hpp
+        src/GameEngine/include/NeonEngine/ComponentLoader.hpp
         src/GameEngine/include/NeonEngine/AssetManager.hpp
         src/GameEngine/include/NeonEngine/Types.hpp
         src/GameEngine/include/NeonEngine/Application.hpp
@@ -83,6 +84,7 @@ set(GAME_ENGINE_SRC
 
         # Loaders
         src/GameEngine/src/Assets/Loaders/YamlReader.cpp
+        src/GameEngine/src/Assets/Loaders/ComponentLoader.cpp
         src/GameEngine/src/Assets/AssetManager.cpp
 
         # Scene
