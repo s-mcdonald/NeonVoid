@@ -6,24 +6,35 @@ A simple 2D GameEngine written in C++.
 
 ## About NeonVoid Engine
 
-This project started as a personal journey to learn C++. It's been many years since playing around with a compiled lang, 
-and in more recent years I have only been working with web development, and was inspired by a 
-YouTuber [The Cherno](https://github.com/thecherno) to venture into game development.
+This project started as a personal journey to learn C++. I have been inspired by the
+YouTuber [The Cherno](https://github.com/thecherno) to venture and explore game development.
 
-What began as a simple one-day game project evolved into a more ambitious goal: building a game engine from scratch. 
-While I'm neither a game developer nor a C++ programmer, I chose to challenge myself by designing the engine 
-architecture independently.
+What began as a simple one-day game project evolved into a more ambitious goal: building a game engine from the ground up.
+I didn't want to use Unity or UE, as I wanted to know how the inner mechanics worked.
 
 
 ### OS Support
 Eventually this will support Windows and Linux OS. I am currently in phase 1, development so only OpenGL at this time on linux.
 
+
+### Backend API Support
+
+> **Note:** This project is still in early development of phase 1.
+
+
+| Phase | API | Platforms | Status | Resources |
+|-------|-----|-----------|---------|-----------|
+| 1 | OpenGL 3.3+ | Linux, Windows | **In Development** | [OpenGL Website](https://www.opengl.org/) |
+| 2 | DirectX | Windows | <sub>Not Started</sub> | [NVIDIA Docs](https://developer.nvidia.com/directx), [Microsoft Docs](https://learn.microsoft.com/en-us/windows/win32/directx) |
+| 3 | Vulkan | Linux, Windows, Android | <sub>Not Started</sub> | [Vulkan Website](https://www.vulkan.org/) |
+
+
 ### Build System
 
 A single CMake project, the `CMakeLists.txt` has been described to set up all three projects listed below ;
- - Game
- - GameEngine (static lib)
- - NeonRuntime (static lib)
+- Game
+- GameEngine (static lib)
+- NeonRuntime (static lib)
 
 
 #### Linux
@@ -36,17 +47,6 @@ There are a couple of VS options, select the one that suits your needs or modify
 ```
 ./scripts/setup-vs-2022.bat 
 ```
-
-### Backend API Support
-
-> **Note:** This project is still in early development of phase 1.
-
-
-| Phase | API | Platforms | Status | Resources |
-|-------|-----|-----------|---------|-----------|
-| 1 | OpenGL 3.3+ | Linux, Windows | **In Development** | [OpenGL Website](https://www.opengl.org/) |
-| 2 | DirectX | Windows | <sub>Not Started</sub> | [NVIDIA Docs](https://developer.nvidia.com/directx), [Microsoft Docs](https://learn.microsoft.com/en-us/windows/win32/directx) |
-| 3 | Vulkan | Linux, Windows, Android | <sub>Not Started</sub> | [Vulkan Website](https://www.vulkan.org/) |
 
 
 
@@ -71,9 +71,9 @@ There are a couple of VS options, select the one that suits your needs or modify
 - Member Variables `m_` on stack or must be cleaned up by the owning obeject, `mx_` are not owned by the object so no cleanup required.
 
 #### Resources
-List of websites where we may source content from for demonstration and included in this repo.
 
 * [pixabay.com](https://pixabay.com/sound-effects/)
+* [OpenGameArt](https://opengameart.org/)
 
 
 #### References
