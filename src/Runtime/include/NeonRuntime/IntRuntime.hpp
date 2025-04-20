@@ -18,7 +18,6 @@
 #include <NeonRuntime/Backends/OpenGLInput.hpp>
 #include <NeonRuntime/Backends/OpenGLRenderer.hpp>
 #include <NeonRuntime/Backends/OpenGLShader.hpp>
-#include <NeonRuntime/Backends/OpenGLVertexArray.hpp>
 #include <NeonRuntime/Backends/OpenGLVertexBuffer.hpp>
 #include <NeonRuntime/RuntimeApi.hpp>
 

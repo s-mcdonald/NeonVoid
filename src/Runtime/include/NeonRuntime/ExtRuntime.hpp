@@ -14,7 +14,6 @@
 #include <NeonRuntime/IInput.hpp>
 #include <NeonRuntime/IPlatform.hpp>
 #include <NeonRuntime/IRenderer.hpp>
-#include <NeonRuntime/IVertexArray.hpp>
 #include <NeonRuntime/IVertexBuffer.hpp>
 #include <NeonRuntime/RuntimeApi.hpp>
 

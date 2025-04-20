@@ -134,7 +134,6 @@ set(NEON_RUNTIME_SRC
         src/Runtime/include/NeonRuntime/Backends/OpenGLInput.hpp
         src/Runtime/include/NeonRuntime/Backends/OpenGLShader.hpp
         src/Runtime/include/NeonRuntime/Backends/OpenGLRenderer.hpp
-        src/Runtime/include/NeonRuntime/Backends/OpenGLVertexArray.hpp
         src/Runtime/include/NeonRuntime/Backends/OpenGLVertexBuffer.hpp
 
         # Platform
@@ -146,7 +145,6 @@ set(NEON_RUNTIME_SRC
         src/Runtime/src/Backends/OpenGL/OpenGLInput.cpp
         src/Runtime/src/Backends/OpenGL/OpenGLShader.cpp
         src/Runtime/src/Backends/OpenGL/OpenGLRenderer.cpp
-        src/Runtime/src/Backends/OpenGL/OpenGLVertexArray.cpp
         src/Runtime/src/Backends/OpenGL/OpenGLVertexBuffer.cpp
 
         # External compile
