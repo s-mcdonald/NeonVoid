@@ -15,7 +15,8 @@ namespace Neon
 
         protected:
             static void AssertSceneTypeYaml(const fkyaml::basic_node<>& value);
-            static void AssertSceneComponentsYaml(const fkyaml::basic_node<>& value);
+            static void AssertEntityTypeYaml(const fkyaml::basic_node<>& value);
+            static void AssertComponentsSeqYaml(const fkyaml::basic_node<>& value);
             static void AssertSceneEntitiesYaml(const fkyaml::basic_node<>& value);
 
             static void AssertValidateComponentTypeAudio(const fkyaml::basic_node<>& value);

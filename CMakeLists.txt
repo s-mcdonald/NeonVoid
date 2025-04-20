@@ -74,6 +74,7 @@ set(GAME_ENGINE_SRC
         src/GameEngine/include/NeonEngine/RuntimeBridge.hpp
         src/GameEngine/include/NeonEngine/Components.hpp
         src/GameEngine/include/NeonEngine/SceneTypeConverter.hpp
+        src/GameEngine/include/NeonEngine/EntityTypeConverter.hpp
         src/GameEngine/include/NeonEngine/YamlSceneAsserter.hpp
 
 
@@ -102,6 +103,7 @@ set(GAME_ENGINE_SRC
         src/GameEngine/src/Components/MovementComponent.cpp
 
         # Utils
+        src/GameEngine/src/Utils/EntityTypeConverter.cpp
         src/GameEngine/src/Utils/SceneTypeConverter.cpp
         src/GameEngine/src/Utils/YamlSceneAsserter.cpp
 
@@ -126,8 +128,6 @@ set(NEON_RUNTIME_SRC
         src/Runtime/include/NeonRuntime/IShader.hpp
         src/Runtime/include/NeonRuntime/IPlatform.hpp
         src/Runtime/include/NeonRuntime/IRenderer.hpp
-        src/Runtime/include/NeonRuntime/IFrameBuffer.hpp
-        src/Runtime/include/NeonRuntime/IVertexArray.hpp
         src/Runtime/include/NeonRuntime/IVertexBuffer.hpp
         src/Runtime/include/NeonRuntime/Backends/OpenGLHeaders.hpp
         src/Runtime/include/NeonRuntime/Backends/OpenGL.hpp

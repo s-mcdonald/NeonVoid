@@ -5,6 +5,7 @@
 #include <stdexcept>
 #include <string>
 
+#include <NeonEngine/EntityTypeConverter.hpp>
 #include <NeonEngine/SceneTypeConverter.hpp>
 #include <NeonEngine/YamlSceneAsserter.hpp>
 
@@ -31,7 +32,7 @@ namespace Neon
 
                 if (sceneKey == "components")
                 {
-                    AssertSceneComponentsYaml(sceneValue);
+                    AssertComponentsSeqYaml(sceneValue);
                 }
 
                 if (sceneKey == "entities")
@@ -53,22 +54,7 @@ namespace Neon
         }
     }
 
-    void YamlSceneAsserter::AssertSceneTypeYaml(const fkyaml::basic_node<>& value)
-    {
-        if (value.is_string())
-        {
-            if (SceneTypeConverter::IsValid(value.as_str()))
-            {
-                return;
-            }
-
-            throw std::runtime_error("component.audio has an invalid type.");
-        }
-
-        throw std::runtime_error("scene.audio Must be a string value");
-    }
-
-    void YamlSceneAsserter::AssertSceneComponentsYaml(const fkyaml::basic_node<>& value)
+    void YamlSceneAsserter::AssertComponentsSeqYaml(const fkyaml::basic_node<>& value)
     {
         if (value.is_sequence())
         {
@@ -76,22 +62,22 @@ namespace Neon
             {
                 if (false == component.contains("name"))
                 {
-                    throw std::runtime_error("scene.components.component MUST have a `name`");
+                    throw std::runtime_error(".components.component MUST have a `name`");
                 }
 
                 if (false == component.contains("type"))
                 {
-                    throw std::runtime_error("scene.components.component MUST have a `type`");
+                    throw std::runtime_error("*.components.component MUST have a `type`");
                 }
 
                 if (false == component["name"].is_string())
                 {
-                    throw std::runtime_error("scene.components.component.name MUST be a `string`");
+                    throw std::runtime_error("*.components.component.name MUST be a `string`");
                 }
 
                 if (false == component["type"].is_string())
                 {
-                    throw std::runtime_error("scene.components.component.type MUST be a `string`");
+                    throw std::runtime_error("*.components.component.type MUST be a `string`");
                 }
 
                 if (component.contains("data"))
@@ -135,7 +121,7 @@ namespace Neon
             return;
         }
 
-        throw std::runtime_error("scene.components Must be an array sequence value");
+        throw std::runtime_error("*.components Must be an array sequence value");
     }
 
     void YamlSceneAsserter::AssertSceneEntitiesYaml(const fkyaml::basic_node<>& value)
@@ -150,17 +136,58 @@ namespace Neon
             // Access entity properties
             if (false == entity.contains("name"))
             {
-                throw std::runtime_error("scene.entities Must be an array sequence value");
+                throw std::runtime_error("entities.entity Must contain a type.");
             }
+
+            // Access entity properties
+            if (false == entity.contains("type"))
+            {
+                throw std::runtime_error("entities.entity Must contain a type.");
+            }
+
+            AssertEntityTypeYaml(entity["type"]);
 
             // Access entity properties
             if (false == entity.contains("components"))
             {
-                throw std::runtime_error("scene.entities.entity Must have at least 1 component.");
+                throw std::runtime_error("entities.entity Must have at least 1 component.");
             }
 
-            AssertSceneComponentsYaml(entity["components"]);
+            AssertComponentsSeqYaml(entity["components"]);
         }
+    }
+
+
+    // Assert a value type of SceneType
+    void YamlSceneAsserter::AssertSceneTypeYaml(const fkyaml::basic_node<>& value)
+    {
+        if (value.is_string())
+        {
+            if (SceneTypeConverter::IsValid(value.as_str()))
+            {
+                return;
+            }
+
+            throw std::runtime_error("component.audio has an invalid type.");
+        }
+
+        throw std::runtime_error("component.audio Must be a string value");
+    }
+
+    // Assert a value type of SceneType
+    void YamlSceneAsserter::AssertEntityTypeYaml(const fkyaml::basic_node<>& value)
+    {
+        if (value.is_string())
+        {
+            if (EntityTypeConverter::IsValid(value.as_str()))
+            {
+                return;
+            }
+
+            throw std::runtime_error("entity.type has an invalid type.");
+        }
+
+        throw std::runtime_error("entity.type Must be a string value");
     }
 
     // This validates the Data sequence for Audio Type

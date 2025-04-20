@@ -71,6 +71,12 @@ namespace Neon
         Pause
     };
 
+    enum class EntityType {
+        Player,
+        Enemy,
+        HealthPack
+    };
+
     // @todo: Add a layer to each component + entity
     // component.layer = Layer::Foreground;
     enum class Layer : short
@@ -142,6 +148,7 @@ namespace Neon
     struct YEntity
     {
         std::string name;
+        EntityType type;
         std::vector<YComponent> components;
     };
 
