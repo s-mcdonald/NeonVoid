@@ -15,6 +15,7 @@ namespace Neon
             ~VerticesFactory() = default;
         public:
             std::vector<float> GenerateCircleVertices(float radius, int segments);
+            std::vector<float> GenerateBasicTriangleVertices();
     };
 }
 

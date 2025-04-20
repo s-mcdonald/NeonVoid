@@ -43,7 +43,7 @@ namespace Neon
         glm::mat4 modelMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(0.3f, 1.0f, 0.0f));
         glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(modelMatrix));
 
-        glDrawArrays(GL_TRIANGLE_FAN, 0, vertexCount);
+        glDrawArrays(GL_TRIANGLES, 0, vertexCount);
         glBindVertexArray(0);
     }
 }

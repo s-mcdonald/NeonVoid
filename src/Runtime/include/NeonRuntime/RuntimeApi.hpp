@@ -21,6 +21,7 @@ namespace Neon
 
             [[nodiscard]] IRenderer* GetRenderer() const;
             [[nodiscard]] std::vector<float> GenerateCircleVertices(float radius, int segments);
+            [[nodiscard]] std::vector<float> GenerateBasicTriangleVertices();
 
             static IPlatform* CreatePlatform();
             IVertexBuffer* CreateVertexBuffer(float* vertices, size_t size);

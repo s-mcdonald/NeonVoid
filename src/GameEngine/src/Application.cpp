@@ -137,7 +137,7 @@ namespace Neon
 
             if (comp.type == "shader")
             {
-                std::vector<float> circle_vertices = RuntimeApi::GetInstance().GenerateCircleVertices(1.0f, 100);
+                std::vector<float> circle_vertices = RuntimeApi::GetInstance().GenerateBasicTriangleVertices();
 
                 auto vertexPath = comp.shaderConfig->dir + comp.shaderConfig->vertexShader;
                 auto fragPath = comp.shaderConfig->dir + comp.shaderConfig->fragShader;

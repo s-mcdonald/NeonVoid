@@ -36,8 +36,8 @@ namespace Neon
     typedef uint32_t Score;
     typedef short Health;
 
-    constexpr inline auto DirectionDeltaUp = -0.5f;
-    constexpr inline auto DirectionDeltaDown = 0.5f;
+    constexpr inline auto DirectionDeltaUp = 0.5f;
+    constexpr inline auto DirectionDeltaDown = -0.5f;
     constexpr inline auto DirectionDeltaLeft = -0.5f;
     constexpr inline auto DirectionDeltaRight = 0.5f;
 
