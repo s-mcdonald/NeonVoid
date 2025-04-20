@@ -16,7 +16,7 @@ namespace Neon
     {
         public:
             Scene() = delete;
-            explicit Scene(SceneType type);
+            explicit Scene(const YScene config);
             virtual ~Scene();
 
         public:
@@ -43,6 +43,7 @@ namespace Neon
 
         protected:
             Entity* MakeEntity(const YEntity& yentity);
+            void MakeAll();
 
         private:
             template <typename T>
@@ -64,7 +65,7 @@ namespace Neon
             std::unordered_map<EntityID, Entity*> m_entities;
 
         private:
-            SceneType m_sceneType;
+            YScene m_sceneConfig;
             bool m_isInitialized = false;
             std::unordered_map<std::string, Component*> m_components;
             uint32_t m_nextEntityID;
