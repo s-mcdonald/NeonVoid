@@ -73,8 +73,7 @@ namespace Neon
                 yComponent.audioConfig->loop = value["data"]["loop"].as_bool();
             }
 
-            // by default at 50 for all
-            yComponent.audioConfig->volume = 50;
+            yComponent.audioConfig->volume = DefaultAudioVolume;
 
             if (value["data"].contains("volume"))
             {
