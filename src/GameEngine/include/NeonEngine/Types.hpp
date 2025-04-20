@@ -36,14 +36,16 @@ namespace Neon
     typedef uint32_t Score;
     typedef short Health;
 
-    constexpr inline auto DirectionDeltaUp = 0.5f;
-    constexpr inline auto DirectionDeltaDown = -0.5f;
-    constexpr inline auto DirectionDeltaLeft = -0.5f;
-    constexpr inline auto DirectionDeltaRight = 0.5f;
+    constexpr inline auto DirectionDeltaUp = 0.008f;
+    constexpr inline auto DirectionDeltaDown = -0.008f;
+    constexpr inline auto DirectionDeltaLeft = -0.008f;
+    constexpr inline auto DirectionDeltaRight = 0.008f;
 
-    constexpr inline auto MaxSpeed = 5.0f;
+    constexpr inline auto Deceleration = 0.01f;
 
-    constexpr inline auto targetFps = 60.0f;
+    constexpr inline auto MaxSpeed = 0.2f;
+
+    constexpr inline auto targetFps = 120.0f;
     constexpr inline auto deltaTime = 1.0f / targetFps;
 
     typedef struct

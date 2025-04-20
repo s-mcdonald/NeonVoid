@@ -76,7 +76,7 @@ namespace Neon
             }
 
         public:
-            void HandleInput(Input* input); // keyboadInput ?
+            void HandleInput(Input* input);
 
         public:
             void OnInit() override {};

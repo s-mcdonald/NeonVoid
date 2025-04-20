@@ -39,7 +39,7 @@ scene:
           data:
             path: "/home/sam/Game/Neon/build/assets/audio/bullet.mp3"
             loop: false
-            volume: 3
+            volume: 5
         -
           name: greenTriangle
           type: shader
