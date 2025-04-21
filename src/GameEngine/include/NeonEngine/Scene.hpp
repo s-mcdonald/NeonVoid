@@ -19,26 +19,26 @@ namespace Neon
             explicit Scene(const YScene config);
             virtual ~Scene();
 
-        public:
+
             void Init();
             void Update();
             void Render();
             void Destroy();
 
+
+            bool IsInitialized() const;
             void HandleInput(Input* input);
             virtual void OnInit() {};
             virtual void OnUpdate() {};
             virtual void OnRender() {};
             virtual void OnDestroy() {};
 
-            bool IsInitialized() const;
 
-        public:
+
             void AddEntity(EntityID id, Entity* entity);
             void AddComponent(const std::string& tag, Component* component);
             Component* GetComponent(const std::string& tag);
 
-        public:
             SceneType GetSceneType() const;
 
         protected:

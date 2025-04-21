@@ -2,7 +2,7 @@
  * {SourceHeader}
  */
 
-#include "Core/MyGame.hpp"
+#include "MyGame.hpp"
 
 int main()
  {

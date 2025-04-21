@@ -4,11 +4,14 @@
 
 #pragma once
 
+#include <functional>
+#include <iostream>
+#include <ostream>
 #include <vector>
 
-#include <NeonRuntime/ExtRuntime.hpp>
 #include <NeonEngine/AudioSystem.hpp>
 #include <NeonEngine/Types.hpp>
+#include <NeonRuntime/ExtRuntime.hpp>
 
 namespace Neon
 {
@@ -208,5 +211,28 @@ namespace Neon
 
         private:
             Health m_health;
+    };
+
+    class ScriptComponent final : public Component
+    {
+        public:
+            explicit ScriptComponent(const std::function<void()>& onUpdate)
+                : Component()
+                , m_scriptOnUpdate(onUpdate) {}
+            ~ScriptComponent() override = default;
+
+            void OnInit() override {}
+            void OnUpdate() override
+            {
+                m_scriptOnUpdate();
+            }
+            void OnRender() override
+            {
+
+            }
+            void OnDestroy() override {}
+
+        private:
+            std::function<void()> m_scriptOnUpdate;
     };
 }

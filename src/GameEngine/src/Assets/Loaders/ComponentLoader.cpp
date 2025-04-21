@@ -5,9 +5,10 @@
 #include <iostream>
 #include <unordered_map>
 
-#include <NeonEngine/Types.hpp>
-#include <NeonEngine/Components.hpp>
 #include <NeonEngine/ComponentLoader.hpp>
+#include <NeonEngine/Components.hpp>
+#include <NeonEngine/Types.hpp>
+#include <NeonEngine/FunctionRegistry.hpp>
 
 namespace Neon
 {
@@ -69,6 +70,13 @@ namespace Neon
 
                 auto shaderPgm = RuntimeApi::GetInstance().CreateShader(vertexPath,fragPath);
                 auto* theComponent = new TextComponent(comp.textConfig.text, shaderPgm);
+                componentsForScene.emplace(comp.name, theComponent);
+            }
+
+            if (comp.type == "script")
+            {
+                std::function<void()> funcCallback = FunctionRegistry::Get().Fetch(comp.textConfig.text);
+                auto* theComponent = new ScriptComponent(funcCallback);
                 componentsForScene.emplace(comp.name, theComponent);
             }
         }

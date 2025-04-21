@@ -11,8 +11,6 @@
 
 namespace Neon
 {
-    // Runtime Assert
-    // Assertion Entry
     void YamlSceneAsserter::AssertValidYaml(const fkyaml::node& node)
     {
         for (const auto& [parentKey, value] : node.map_items())
@@ -113,6 +111,14 @@ namespace Neon
                         if (component.contains("data"))
                         {
                             AssertValidateComponentTypeText(component["data"]);
+                        }
+                    }
+
+                    if (component["type"].as_str() == "script")
+                    {
+                        if (component.contains("data"))
+                        {
+                            AssertValidateComponentTypeScript(component["data"]);
                         }
                     }
                 }
@@ -347,6 +353,24 @@ namespace Neon
         if (false == value.contains("text"))
         {
             throw std::runtime_error("scene.components.component.text.data.text IS required");
+        }
+    }
+
+    void YamlSceneAsserter::AssertValidateComponentTypeScript(const fkyaml::basic_node<>& value)
+    {
+        if (false == value.is_mapping())
+        {
+            throw std::runtime_error("component.script.data MUST be a mapping value");
+        }
+
+        if (false == value.contains("on_update"))
+        {
+            throw std::runtime_error("component.script.data.on_update IS required");
+        }
+
+        if (false == value["on_update"].is_string())
+        {
+            throw std::runtime_error("component.script.data.on_update MUST be a string");
         }
     }
 };

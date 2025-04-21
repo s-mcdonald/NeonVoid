@@ -21,7 +21,7 @@ namespace Neon
                 return m_volume;
             }
 
-            [[nodiscard]] void SetVolume(Volume v)
+            void SetVolume(Volume v)
             {
                 m_volume = v.GetVolume();
             }

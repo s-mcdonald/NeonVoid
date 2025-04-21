@@ -102,10 +102,18 @@ namespace Neon
 
         if (yComponent.type == "text")
         {
-            yComponent.configType = ConfigType::Position;
+            yComponent.configType = ConfigType::Text;
 
             yComponent.textConfig;
             yComponent.textConfig.text = value["data"]["text"].as_str();
+        }
+
+        if (yComponent.type == "script")
+        {
+            yComponent.configType = ConfigType::Script;
+
+            yComponent.textConfig;
+            yComponent.textConfig.text = value["data"]["on_update"].as_str();
         }
 
         if (yComponent.type == "shader")

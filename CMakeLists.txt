@@ -52,8 +52,9 @@ set(OpenGL_GL_PREFERENCE GLVND)
 # Game - Create the main game executable
 #
 set(GAME_SRC
-        src/Game/src/Core/MyGame.hpp
+        src/Game/src/MyGame.hpp
         src/Game/src/EntryMain.cpp
+        src/Game/include/SceneScript.hpp
 )
 
 #
@@ -62,6 +63,7 @@ set(GAME_SRC
 set(GAME_ENGINE_SRC
         # Includes
         src/GameEngine/include/NeonEngine/YamlReader.hpp
+        src/GameEngine/include/NeonEngine/FunctionRegistry.hpp
         src/GameEngine/include/NeonEngine/ComponentLoader.hpp
         src/GameEngine/include/NeonEngine/AssetManager.hpp
         src/GameEngine/include/NeonEngine/Types.hpp

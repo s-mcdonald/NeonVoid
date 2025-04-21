@@ -23,6 +23,11 @@ scene:
       type: text
       data:
         text: "NeonVoid"
+    -
+      name: sceneScript
+      type: script
+      data:
+        on_update: "Scene::Foo"
 
   entities:
     -

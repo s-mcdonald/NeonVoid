@@ -34,6 +34,8 @@ namespace Neon
                     delete comp.posConfig;
                     break;
                 case ConfigType::None:
+                case ConfigType::Script:
+                case ConfigType::Text:
                 case ConfigType::Movement:
                     break;
             }

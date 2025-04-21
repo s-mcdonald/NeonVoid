@@ -120,7 +120,9 @@ namespace Neon
         Movement,
         Shader,
         Audio,
-        Position
+        Position,
+        Text,
+        Script
     };
 
     struct YComponent

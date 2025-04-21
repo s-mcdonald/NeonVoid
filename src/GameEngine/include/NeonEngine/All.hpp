@@ -18,3 +18,4 @@
 #include <NeonEngine/Transition.hpp>
 #include <NeonEngine/Volume.hpp>
 #include <NeonEngine/YamlReader.hpp>
+#include <NeonEngine/FunctionRegistry.hpp>
