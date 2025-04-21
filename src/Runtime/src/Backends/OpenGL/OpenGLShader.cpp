@@ -52,6 +52,22 @@ namespace Neon
         glUseProgram(0);
     }
 
+    void OpenGLShader::Use() const
+    {
+        glUseProgram(m_shaderId);
+    }
+
+    void OpenGLShader::SetUniformMat4(std::string name, glm::mat4 value)
+    {
+        GLint location = glGetUniformLocation(m_shaderId, name.c_str());
+        glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(value));
+    }
+
+    void OpenGLShader::Stop() const
+    {
+        glUseProgram(0);
+    }
+
     uint32_t OpenGLShader::GetShaderProgramId() const
     {
         return m_shaderId;

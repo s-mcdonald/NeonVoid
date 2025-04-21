@@ -38,6 +38,10 @@ namespace Neon
             void Bind() const override;
             void Unbind() const override;
 
+            void Use() const override;
+            void Stop() const override;
+            void SetUniformMat4(std::string name, glm::mat4 value);
+
         private:
             static std::string LoadShaderFromFile(const std::string&);
             static uint32_t CompileShader(const char* source, GLenum shaderType);

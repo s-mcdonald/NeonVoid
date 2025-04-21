@@ -13,6 +13,7 @@
  * Copyright (c) : 2024 Sam McDonald
  * Repository: https://github.com/s-mcdonald/NeonVoid
  */
+
 #include <fstream>
 #include <iostream>
 #include <map>
@@ -37,11 +38,6 @@ namespace Neon
     {
         glUseProgram(shaderProgram);
         glBindVertexArray(VAO);
-
-        GLint modelLoc = glGetUniformLocation(shaderProgram, "modelMatrix");
-
-        glm::mat4 modelMatrix = glm::mat4(1.0f);
-        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(modelMatrix));
 
         glDrawArrays(GL_TRIANGLES, 0, vertexCount);
         glBindVertexArray(0);
