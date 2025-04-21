@@ -53,14 +53,21 @@ namespace Neon
 
     constexpr inline auto DirectionDeltaUp = 0.008f;
     constexpr inline auto DirectionDeltaDown = -0.008f;
-    constexpr inline auto DirectionDeltaLeft = -0.008f;
-    constexpr inline auto DirectionDeltaRight = 0.008f;
+    constexpr inline auto DirectionDeltaLeft = -0.010f;
+    constexpr inline auto DirectionDeltaRight = 0.010f;
 
-    constexpr inline auto Deceleration = 0.01f;
+    // Physx
+    constexpr inline auto NV_Friction           = 0.0005f;
+    constexpr inline auto NV_Acceleration       = 0.015f;
+    constexpr inline auto NV_Deceleration       = 0.010f;
+    constexpr inline auto NV_MAX_Velocity       = 0.01f;
+    constexpr inline auto NV_MIN_Velocity       = 0.0001f; // on slowdown, stop once gets to this level
+    constexpr inline auto NV_FULL_Velocity      = 1.00f;
+    constexpr inline auto NV_ZERO_Velocity      = 0.00f;
 
     constexpr inline auto MaxSpeed = 0.2f;
 
-    constexpr inline auto targetFps = 120.0f;
+    constexpr inline auto targetFps = 60.0f;
     constexpr inline auto deltaTime = 1.0f / targetFps;
 
     typedef struct
@@ -99,6 +106,19 @@ namespace Neon
         Foreground = 10
     };
 
+    enum class Direction
+    {
+        None = 0,
+        Up,
+        Right,
+        Down,
+        Left,
+
+        UpLeft,
+        UpRight,
+        DownLeft,
+        DownRight,
+    };
 
     // need a better name for this struct
     struct YShader

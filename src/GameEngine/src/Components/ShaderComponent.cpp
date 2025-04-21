@@ -13,6 +13,7 @@
  * Copyright (c) : 2024 Sam McDonald
  * Repository: https://github.com/s-mcdonald/NeonVoid
  */
+
 #ifdef NEON_DEBUG
 #include <iostream>
 #endif
@@ -57,24 +58,21 @@ namespace Neon
         if (GetParentEntity() != nullptr && GetParentEntity()->HasComponent<PositionComponent>())
         {
             auto* pos = GetParentEntity()->GetComponent<PositionComponent>();
+            Point p = pos->GetPoint();
 
-            Point p{};
-            p = pos->GetPoint();
+            glm::mat4 modelMatrix = glm::mat4(1.0f);
+            modelMatrix = glm::translate(modelMatrix, glm::vec3(p.x, p.y, 0.0f));
 
-#ifdef NEON_DEBUG && NEON_DEBUG_KB_INPUT
-            std::cout << "[DEBUG](Sahder) NEW: x: " << p.x << " y: " << p.y << "\n";
-#endif
-
-            for (size_t i = 0; i < m_vertices.size(); i += 5)
-            {
-                m_vertices[i] += p.x;
-                m_vertices[i + 1] += p.y;
-            }
-
-            UpdateData(m_vertices);
+            m_shader->Use();
+            m_shader->SetUniformMat4("modelMatrix", modelMatrix);
+            m_shader->Stop();
         }
 
-        RuntimeApi::GetInstance().GetRenderer()->RenderTriangle(m_shader->GetShaderProgramId(), m_buffer->GetVao(), m_vertices.size());
+        RuntimeApi::GetInstance().GetRenderer()->RenderTriangle(
+            m_shader->GetShaderProgramId(),
+            m_buffer->GetVao(),
+            m_vertices.size()
+        );
     }
 
     void ShaderComponent::UpdateData(const std::vector<float>& vertices)

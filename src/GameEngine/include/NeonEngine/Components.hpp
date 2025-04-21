@@ -13,6 +13,7 @@
  * Copyright (c) : 2024 Sam McDonald
  * Repository: https://github.com/s-mcdonald/NeonVoid
  */
+
 #pragma once
 
 #include <functional>
@@ -63,55 +64,55 @@ namespace Neon
     class PositionComponent final : public Component
     {
         public:
-            PositionComponent(Point p)
+            PositionComponent(Point p, float bounds = 1.0f)
                 : Component()
-                , m_position(p.x, p.y) {};
+                , m_position(p.x, p.y)
+                , m_bounds(bounds) {};
             PositionComponent()
                 : Component()
-                , m_position(0.0f,0.0f) {};
-            explicit PositionComponent(float, float);
+                , m_position(0.0f,0.0f)
+                , m_bounds(1.0f){};
+            explicit PositionComponent(const float x = 0.0f, const float y = 0.0f)
+                : Component()
+                , m_position(x,y)
+                , m_bounds(1.0f){}
             ~PositionComponent() override = default;
 
         public:
             void OnInit() override {};
-            void OnUpdate() override;
+            void OnUpdate() override {};
             void OnRender() override {};
-            void OnDestroy() override;
+            void OnDestroy() override {};
 
         public:
-            [[nodiscard]] Point GetPoint() const;
-            void UpdateData(Point p);
+            [[nodiscard]] Point GetPoint() const { return m_position; };
+            void UpdateData(Point p) { m_position = p; };
+            [[nodiscard]] float GetBounds() const { return m_bounds; };
 
         private:
             Point m_position;
+            float m_bounds;
     };
 
-    class MovementComponent : public Component
+    class MovementComponent final : public Component
     {
         public:
-            MovementComponent() : Component()
-            {
-                // ...
-            };
+            MovementComponent()
+                : Component()
+                , m_velocity(0.0f, 0.0f)
+                , m_directionInput(0.0f, 0.0f) {};
+            ~MovementComponent() override = default;
 
-            ~MovementComponent() override
-            {
-                // ...
-            }
-
-        public:
             void HandleInput(Input* input);
 
-        public:
             void OnInit() override {};
             void OnUpdate() override;
             void OnRender() override {};
             void OnDestroy() override {};
 
         private:
-            std::vector<PositionComponent*> mx_positionalComponents;
-            float m_directionX = 0.0f;
-            float m_directionY = 0.0f;
+            glm::vec2 m_velocity;
+            glm::vec2 m_directionInput;
     };
 
     class AudioComponent final

@@ -42,8 +42,8 @@ scene:
           type: position
           data:
             initial:
-              x: 0.00010
-              y: 0.00010
+              x: 0.001
+              y: 0.001
         -
           name: gunshot
           type: audio
@@ -73,15 +73,8 @@ scene:
           type: position
           data:
             initial:
-              x: -0.0001
-              y: -0.0001
-        -
-          name: gunshot
-          type: audio
-          data:
-            path: "/home/sam/Game/Neon/build/assets/audio/bullet.mp3"
-            loop: false
-            volume: 5
+              x: 0.0000
+              y: 0.0000
         -
           name: cherry
           type: shader

@@ -26,48 +26,19 @@ namespace Neon
     {
         if (auto* x = dynamic_cast<KeyboardInput*>(input))
         {
-            if (x->IsKeyPressed(Key::Up))
-            {
-                m_directionY = deltaTime * DirectionDeltaUp;
-            }
-            else if (x->IsKeyPressed(Key::Down))
-            {
-                m_directionY = deltaTime * DirectionDeltaDown;
-            }
-            else
-            {
-                if (m_directionY > 0)
-                {
-                    m_directionY = std::max(0.0f, m_directionY - Deceleration);
-                }
-                else if (m_directionY < 0)
-                {
-                    m_directionY = std::min(0.0f, m_directionY + Deceleration);
-                }
-            }
+            m_directionInput = glm::vec2(0.0f, 0.0f);
 
-            if (x->IsKeyPressed(Key::Left))
-            {
-                m_directionX = deltaTime * DirectionDeltaLeft;
-            }
-            else if (x->IsKeyPressed(Key::Right))
-            {
-                m_directionX = deltaTime * DirectionDeltaRight;
-            }
-            else
-            {
-                if (m_directionX > 0)
-                {
-                    m_directionX = std::max(0.0f, m_directionX - Deceleration);
-                }
-                else if (m_directionX < 0)
-                {
-                    m_directionX = std::min(0.0f, m_directionX + Deceleration);
-                }
-            }
+            if (x->IsKeyPressed(Key::Up)) m_directionInput.y += DirectionDeltaUp;
+            if (x->IsKeyPressed(Key::Down)) m_directionInput.y += DirectionDeltaDown;
+            if (x->IsKeyPressed(Key::Left)) m_directionInput.x += DirectionDeltaLeft;
+            if (x->IsKeyPressed(Key::Right)) m_directionInput.x += DirectionDeltaRight;
 
-            m_directionX = std::clamp(m_directionX, -MaxSpeed, MaxSpeed);
-            m_directionY = std::clamp(m_directionY, -MaxSpeed, MaxSpeed);
+            // prevent diagonal speed-up
+            if (m_directionInput.x != 0.0f || m_directionInput.y != 0.0f)
+            {
+                m_directionInput = glm::normalize(m_directionInput);
+                m_velocity += m_directionInput * NV_Acceleration * deltaTime;
+            }
         }
     }
 
@@ -75,14 +46,12 @@ namespace Neon
     void MovementComponent::OnUpdate()
     {
         auto* parent = GetParentEntity();
-
         if (parent == nullptr)
         {
             return;
         }
 
         auto* component = parent->GetComponent<PositionComponent>();
-
         if (component == nullptr)
         {
             return;
@@ -90,13 +59,32 @@ namespace Neon
 
         Point p = component->GetPoint();
 
-        p.x += m_directionX;
-        if (p.x > MaxSpeed) p.x = MaxSpeed;
-        if (p.x < -MaxSpeed) p.x = -MaxSpeed;
+        // No input change, apply gravity and friction will
+        // sump movement in general. Gravity being
+        // the downward force.
+        if (glm::length(m_directionInput) == 0.0f)
+        {
+            m_velocity *= (NV_FULL_Velocity - NV_Friction * deltaTime);
+            if (glm::length(m_velocity) < NV_MIN_Velocity)
+            {
+                m_velocity = glm::vec2(NV_ZERO_Velocity);
+            }
+        }
 
-        p.y += m_directionY;
-        if (p.y > MaxSpeed) p.y = MaxSpeed;
-        if (p.y < -MaxSpeed) p.y = -MaxSpeed;
+        // Clamp velocity to max speed
+        if (glm::length(m_velocity) > NV_MAX_Velocity)
+        {
+            m_velocity = glm::normalize(m_velocity) * NV_MAX_Velocity;
+        }
+
+        // Update the position based on velocity
+        p.x += m_velocity.x;
+        p.y += m_velocity.y;
+
+        // Clamp position to bounds
+        const float bounds = component->GetBounds();
+        p.x = std::clamp(p.x, -bounds, bounds);
+        p.y = std::clamp(p.y, -bounds, bounds);
 
         component->UpdateData(p);
     }

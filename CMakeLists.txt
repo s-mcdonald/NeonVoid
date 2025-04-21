@@ -103,7 +103,6 @@ set(GAME_ENGINE_SRC
         src/GameEngine/src/Components/ShaderComponent.cpp
         src/GameEngine/src/Components/AudioComponent.cpp
         src/GameEngine/src/Components/TextComponent.cpp
-        src/GameEngine/src/Components/PositionComponent.cpp
         src/GameEngine/src/Components/MovementComponent.cpp
 
         # Utils
