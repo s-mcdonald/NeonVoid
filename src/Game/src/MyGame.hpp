@@ -36,7 +36,7 @@ namespace Neon
 
             [[nodiscard]] bool Initialize()
             {
-                return Application::Initialize(800, 600, "Neon Void (0.0.5)");
+                return Application::Initialize(800, 600, "Neon Void (0.0.6)");
             }
     };
 }

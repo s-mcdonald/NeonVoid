@@ -19,12 +19,16 @@
 
 #include <NeonEngine/Types.hpp>
 #include <NeonEngine/Components.hpp>
+#include <NeonEngine/RuntimeBridge.hpp>
 
 namespace Neon
 {
     class ComponentLoader
     {
         public:
-            static std::unordered_map<std::string, Component*> CollectComponents(std::vector<YComponent> components);
+            static std::unordered_map<std::string, Component*> CollectComponents(
+                std::vector<YComponent> components,
+                RuntimeBridge& bridge
+                );
     };
 }

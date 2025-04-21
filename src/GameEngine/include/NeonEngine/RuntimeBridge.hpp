@@ -31,6 +31,8 @@ namespace Neon
 
             [[nodiscard]] IPlatform* GetPlatform() const;
 
+            IShader* CreateShader(const std::string& vertexPath, const std::string& fragmentPath) const;
+
         private:
             IPlatform* m_platform;
     };

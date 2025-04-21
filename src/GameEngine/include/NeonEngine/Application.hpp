@@ -38,6 +38,8 @@ namespace Neon
             Scene* GetCurrentScene();
             void SwitchScene();
 
+            RuntimeBridge& GetBridge();
+
         protected:
             void SetSceneYaml(const std::string& sceneName);
 

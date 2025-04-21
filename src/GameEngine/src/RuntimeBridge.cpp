@@ -42,4 +42,9 @@ namespace Neon
     {
         return m_platform;
     }
+
+    IShader* RuntimeBridge::CreateShader(const std::string& vertexPath, const std::string& fragmentPath) const
+    {
+        return m_platform->CreateShader(vertexPath, fragmentPath);
+    }
 }

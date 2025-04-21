@@ -50,9 +50,4 @@ namespace Neon
     {
         return m_bufferFactory.CreateVertexBuffer(vertices, size);
     }
-
-    IShader* RuntimeApi::CreateShader(const std::string& vertexPath, const std::string& fragmentPath)
-    {
-        return m_shaderFactory.CreateShader(vertexPath, fragmentPath);
-    }
 }

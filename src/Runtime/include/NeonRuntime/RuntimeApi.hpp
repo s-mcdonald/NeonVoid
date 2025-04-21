@@ -18,7 +18,6 @@
 #include <vector>
 
 #include <NeonRuntime/BufferFactory.hpp>
-#include <NeonRuntime/ShaderFactory.hpp>
 
 namespace Neon
 {
@@ -33,7 +32,6 @@ namespace Neon
 
             static IPlatform* CreatePlatform();
             IVertexBuffer* CreateVertexBuffer(float* vertices, size_t size);
-            IShader* CreateShader(const std::string& vertexPath, const std::string& fragmentPath);
 
         private:
             RuntimeApi();
@@ -42,7 +40,6 @@ namespace Neon
         private:
             WindowHandlePtr mx_window{nullptr};
             IRenderer* m_renderer;
-            ShaderFactory m_shaderFactory;
             BufferFactory m_bufferFactory;
     };
 }

@@ -24,7 +24,6 @@
 
 #include <NeonRuntime/Backends/OpenGLHeaders.hpp>
 #include <NeonRuntime/ExtRuntime.hpp>
-#include <NeonRuntime/ShaderFactory.hpp>
 #include <NeonRuntime/Backends/OpenGL.hpp>
 #include <NeonRuntime/Backends/OpenGLInput.hpp>
 #include <NeonRuntime/Backends/OpenGLRenderer.hpp>

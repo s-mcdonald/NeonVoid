@@ -13,6 +13,7 @@
  * Copyright (c) : 2024 Sam McDonald
  * Repository: https://github.com/s-mcdonald/NeonVoid
  */
+
 #include <cmath>
 #include <iostream>
 
@@ -20,6 +21,7 @@
 
 #include <NeonRuntime/Backends/OpenGL.hpp>
 #include <NeonRuntime/Backends/OpenGLInput.hpp>
+#include <NeonRuntime/Backends/OpenGLShader.hpp>
 #include <NeonRuntime/Backends/OpenGLHeaders.hpp>
 
 namespace Neon 
@@ -141,5 +143,10 @@ namespace Neon
                 glfwSwapBuffers(m_window);
             }
         }
+    }
+
+    IShader* OpenGL::CreateShader(std::string vertexPath, std::string fragmentPath)
+    {
+        return new OpenGLShader(std::move(vertexPath), std::move(fragmentPath));
     }
 }

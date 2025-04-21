@@ -27,7 +27,7 @@ namespace Neon
     {
         public:
             Scene() = delete;
-            explicit Scene(const YScene config);
+            explicit Scene(Application* app, const YScene config);
             virtual ~Scene();
 
 
@@ -78,6 +78,7 @@ namespace Neon
             std::unordered_map<EntityID, Entity*> m_entities;
 
         private:
+            Application* mx_app{nullptr};
             YScene m_sceneConfig;
             bool m_isInitialized = false;
             std::unordered_map<std::string, Component*> m_components;

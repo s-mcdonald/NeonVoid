@@ -31,6 +31,7 @@ namespace Neon
             bool Initialize(int width, int height, const char* title) override;
 
             void Run(Application* game) override;
+            IShader* CreateShader(std::string vertexPath, std::string fragmentPath) override;
 
         protected:
             GLFWwindow* m_window;

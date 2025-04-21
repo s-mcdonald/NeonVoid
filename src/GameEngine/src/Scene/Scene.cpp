@@ -13,13 +13,17 @@
  * Copyright (c) : 2024 Sam McDonald
  * Repository: https://github.com/s-mcdonald/NeonVoid
  */
-#include <NeonEngine/Scene.hpp>
+
+#include <NeonEngine/Types.hpp>
 #include <NeonEngine/ComponentLoader.hpp>
+#include <NeonEngine/Scene.hpp>
+#include <NeonEngine/Application.hpp>
 
 namespace Neon
 {
-    Scene::Scene(const YScene config)
-        : m_sceneConfig(config)
+    Scene::Scene(Application* app, const YScene config)
+        : mx_app(app)
+        , m_sceneConfig(config)
     {
         m_nextEntityID = START_NEXT_ENTITY_ID;
         MakeAll();
@@ -142,7 +146,7 @@ namespace Neon
     {
         for (auto& entity : m_sceneConfig.entities)
         {
-            std::unordered_map<std::string, Component*> componentsForEntity = ComponentLoader::CollectComponents(entity.components);
+            std::unordered_map<std::string, Component*> componentsForEntity = ComponentLoader::CollectComponents(entity.components, mx_app->GetBridge());
 
             EntityID entityId = (entity.type == EntityType::Player) ? MAIN_PLAYER_ENTITY_ID : ++m_nextEntityID;
 

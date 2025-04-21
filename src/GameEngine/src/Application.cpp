@@ -80,9 +80,12 @@ namespace Neon
             // @todo: we need to validate this data
             m_sceneConfig = m_yamlReader.Init();
 
-            auto* scene = new Scene(m_sceneConfig);
+            auto* scene = new Scene(this, m_sceneConfig);
 
-            std::unordered_map<std::string, Component*> componentsForScene  = ComponentLoader::CollectComponents(m_sceneConfig.components);
+            std::unordered_map<std::string, Component*> componentsForScene  = ComponentLoader::CollectComponents(
+                m_sceneConfig.components,
+                m_runtime
+                );
 
             for (auto [name, comp] : componentsForScene)
             {
@@ -106,6 +109,11 @@ namespace Neon
     void Application::SetSceneYaml(const std::string& sceneName)
     {
         m_sceneYamlPath = sceneName;
+    }
+
+    RuntimeBridge& Application::GetBridge()
+    {
+        return m_runtime;
     }
 
     std::string Application::GetSceneYaml() const

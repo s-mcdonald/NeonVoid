@@ -16,14 +16,18 @@
 #include <iostream>
 #include <unordered_map>
 
+#include <NeonEngine/Types.hpp>
 #include <NeonEngine/ComponentLoader.hpp>
 #include <NeonEngine/Components.hpp>
-#include <NeonEngine/Types.hpp>
 #include <NeonEngine/FunctionRegistry.hpp>
+#include <NeonEngine/RuntimeBridge.hpp>
 
 namespace Neon
 {
-    std::unordered_map<std::string, Component*> ComponentLoader::CollectComponents(std::vector<YComponent> components)
+    std::unordered_map<std::string, Component*> ComponentLoader::CollectComponents(
+        std::vector<YComponent> components,
+        RuntimeBridge& bridge
+        )
     {
         std::unordered_map<std::string, Component*> componentsForScene;
 
@@ -65,7 +69,7 @@ namespace Neon
                 auto vertexPath = comp.shaderConfig->dir + comp.shaderConfig->vertexShader;
                 auto fragPath = comp.shaderConfig->dir + comp.shaderConfig->fragShader;
 
-                auto shaderPgm = RuntimeApi::GetInstance().CreateShader(vertexPath,fragPath);
+                auto shaderPgm = bridge.CreateShader(vertexPath,fragPath);
 
                 // @todo, make PosComp accept point so we can pass initial
                 auto* theComponent = new ShaderComponent(comp.shaderConfig->vertices, shaderPgm);
@@ -79,7 +83,7 @@ namespace Neon
                 auto vertexPath = "/home/sam/Game/Neon/build/assets/shaders/Text/shader.vert";
                 auto fragPath = "/home/sam/Game/Neon/build/assets/shaders/Text/shader.frag";
 
-                auto shaderPgm = RuntimeApi::GetInstance().CreateShader(vertexPath,fragPath);
+                auto shaderPgm = bridge.CreateShader(vertexPath,fragPath);
                 auto* theComponent = new TextComponent(comp.textConfig.text, shaderPgm);
                 componentsForScene.emplace(comp.name, theComponent);
             }
