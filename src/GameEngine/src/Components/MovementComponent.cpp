@@ -6,8 +6,8 @@
  *    ██║ ╚████║███████╗╚██████╔╝██║ ╚████║
  *    ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═══╝
  * ========================================
- * NeonVoid Engine
- * A 2D Game Engine in C++
+ *                 NeonVoid
+ *         A 2D Game Engine in C++
  * ----------------------------------------
  * License: MIT
  * Copyright (c) : 2024 Sam McDonald
