@@ -157,12 +157,12 @@ namespace Neon
             [[nodiscard]] float GetFontSize() const;
             void SetFontSize(float fontSize);
 
-            void OnInit() override;
+            void OnInit() override {};
             void OnUpdate() override;
             void OnRender() override {};
 
             [[nodiscard]] Point GetPosition() const;
-            void OnDestroy() override;
+            void OnDestroy() override {};
 
         private:
             std::string m_text;

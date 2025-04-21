@@ -13,7 +13,11 @@
  * Copyright (c) : 2024 Sam McDonald
  * Repository: https://github.com/s-mcdonald/NeonVoid
  */
+
+#if defined(NEON_DEBUG)
 #include <iostream>
+#endif
+
 #include <utility>
 
 #include <NeonEngine/Components.hpp>
@@ -36,11 +40,6 @@ namespace Neon
 #if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
         std::cout << "TextComponent::Destructor completed\n";
 #endif
-    }
-
-    void TextComponent::OnInit() 
-    {
-        //
     }
 
     void TextComponent::OnUpdate() 
@@ -71,10 +70,5 @@ namespace Neon
     Point TextComponent::GetPosition() const
     {
         return m_point;
-    }
-
-    void TextComponent::OnDestroy()
-    {
-        // ....
     }
 }
