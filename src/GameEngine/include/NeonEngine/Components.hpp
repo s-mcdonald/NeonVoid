@@ -63,6 +63,9 @@ namespace Neon
     class PositionComponent final : public Component
     {
         public:
+            PositionComponent(Point p)
+                : Component()
+                , m_position(p.x, p.y) {};
             PositionComponent()
                 : Component()
                 , m_position(0.0f,0.0f) {};

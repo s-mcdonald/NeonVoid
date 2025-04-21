@@ -52,8 +52,7 @@ namespace Neon
 
             if (comp.type == "position")
             {
-                // @todo, make PosComp accept point so we can pass initial
-                auto* theComponent = new PositionComponent();
+                auto* theComponent = new PositionComponent(comp.posConfig->p);
                 componentsForScene.emplace(comp.name, theComponent);
             }
 
