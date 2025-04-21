@@ -13,6 +13,7 @@
  * Copyright (c) : 2024 Sam McDonald
  * Repository: https://github.com/s-mcdonald/NeonVoid
  */
+
 #include <NeonRuntime/ExtRuntime.hpp>
 #include <NeonEngine/RuntimeBridge.hpp>
 
@@ -20,12 +21,12 @@ namespace Neon
 {
     RuntimeBridge::RuntimeBridge() : m_platform(nullptr)
     {
-        m_platform = RuntimeApi::CreatePlatform();
+        m_platform = RuntimeApi::GetInstance().GetPlatform();
     }
 
     RuntimeBridge::~RuntimeBridge()
     {
-        delete m_platform;
+        //
     }
 
     bool RuntimeBridge::Initialize(const int width, const int height, const char* title) const

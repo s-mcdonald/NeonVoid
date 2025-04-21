@@ -15,8 +15,6 @@
  */
 #pragma once
 
-#include <vector>
-
 #include <NeonRuntime/BufferFactory.hpp>
 
 namespace Neon
@@ -30,16 +28,15 @@ namespace Neon
 
             [[nodiscard]] IRenderer* GetRenderer() const;
 
-            static IPlatform* CreatePlatform();
+            IPlatform* GetPlatform() const;
             IVertexBuffer* CreateVertexBuffer(float* vertices, size_t size);
 
         private:
             RuntimeApi();
             ~RuntimeApi();
 
-        private:
-            WindowHandlePtr mx_window{nullptr};
             IRenderer* m_renderer;
+            IPlatform* m_platform;
             BufferFactory m_bufferFactory;
     };
 }

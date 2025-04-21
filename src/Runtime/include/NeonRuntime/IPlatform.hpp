@@ -31,6 +31,6 @@ namespace Neon
             virtual bool Initialize(int width, int height, const char* title) = 0;
             virtual void Run(Application* game) = 0;
 
-            virtual IShader* CreateShader(std::string vertexPath, std::string fragmentPath) = 0;
+            virtual IShader* CreateShader(const std::string& vertexPath, const std::string& fragmentPath) = 0;
     };
 }

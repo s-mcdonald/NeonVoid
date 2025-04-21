@@ -24,18 +24,10 @@ namespace Neon
 {
     AudioSystem::AudioSystem()
     {
-#if defined(NEON_DEBUG) && defined(NEON_DEBUG_AUDIO)
-        std::cout << "AudioSystem::Constructor\n";
-#endif
-
         const ma_device_config deviceConfig = getDeviceConfig();
 
         if (const ma_result result = ma_device_init(nullptr, &deviceConfig, &m_device); result != MA_SUCCESS)
         {
-#ifdef NEON_DEBUG_AUDIO
-            std::cerr << "[ERROR] Failed to initialize audio device!" << std::endl;
-#endif
-
             m_isAudioEnabled = false;
         }
         else
@@ -48,25 +40,22 @@ namespace Neon
     {
         if (true == m_isPlaying)
         {
-            AudioSystem::Stop();
+            Stop();
         }
 
-        ma_decoder_uninit(&m_decoder);
-        ma_device_uninit(&m_device);
+        if (m_isAudioEnabled)
+        {
+            ma_device_uninit(&m_device);
+        }
 
-#if defined(NEON_DEBUG) && defined(NEON_DEBUG_AUDIO)
-        std::cout << "AudioSystem::Destructor completed\n";
-#endif
+        ma_decoder_seek_to_pcm_frame(&m_decoder, 0);
+        ma_decoder_uninit(&m_decoder);
     }
 
     void AudioSystem::Play(const std::string& filename) 
     {
         if (true == m_isPlaying && true == m_isAudioEnabled)
         {
-#ifdef NEON_DEBUG_AUDIO
-            std::cerr << "[ERROR] Already playing audio!" << std::endl;
-#endif
-
             return;
         }
 
@@ -78,20 +67,12 @@ namespace Neon
         ma_result result = ma_decoder_init_file(filename.c_str(), nullptr, &m_decoder);
         if (result != MA_SUCCESS) 
         {
-#ifdef NEON_DEBUG_AUDIO
-            std::cerr << "[ERROR] Failed to load audio file: " << filename << std::endl;
-#endif
-            
             return;
         }
     
         result = ma_device_start(&m_device);
         if (result != MA_SUCCESS) 
         {
-#ifdef NEON_DEBUG_AUDIO
-            std::cerr << "[ERROR] Failed to start playback!" << std::endl;
-#endif
-            
             return;
         }
     
@@ -114,10 +95,6 @@ namespace Neon
     {
         if (false == m_isPlaying)
         {
-#ifdef NEON_DEBUG_AUDIO
-            std::cerr << "[ERROR] No audio is playing!" << std::endl;
-#endif
-            
             return;
         }
     

@@ -13,6 +13,7 @@
  * Copyright (c) : 2024 Sam McDonald
  * Repository: https://github.com/s-mcdonald/NeonVoid
  */
+
 #include <fstream>
 
 #include <NeonRuntime/Backends/OpenGLShader.hpp>
@@ -73,7 +74,6 @@ namespace Neon
         return m_shaderId;
     }
 
-    // Loads from file
     std::string OpenGLShader::LoadShaderFromFile(const std::string& filePath)
     {
         std::ifstream file(filePath, std::ios::in | std::ios::binary);

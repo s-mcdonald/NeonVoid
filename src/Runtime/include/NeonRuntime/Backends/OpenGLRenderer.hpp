@@ -13,6 +13,7 @@
  * Copyright (c) : 2024 Sam McDonald
  * Repository: https://github.com/s-mcdonald/NeonVoid
  */
+
 #pragma once
 
 #include <NeonRuntime/IRenderer.hpp>
@@ -25,7 +26,6 @@ namespace Neon
             OpenGLRenderer() = default;
             ~OpenGLRenderer() override = default;
 
-        public:
             void BeginFrame() override;
             void EndFrame() override;
             void RenderTriangle(uint32_t shaderProgram, uint32_t VAO, int vertexCount) override;

@@ -13,6 +13,7 @@
  * Copyright (c) : 2024 Sam McDonald
  * Repository: https://github.com/s-mcdonald/NeonVoid
  */
+
 #include <NeonRuntime/IntRuntime.hpp>
 #include <NeonRuntime/PlatformFactory.hpp>
 
@@ -26,14 +27,16 @@ namespace Neon
         return instance;
     }
 
-    RuntimeApi::RuntimeApi() : mx_window(nullptr)
+    RuntimeApi::RuntimeApi()
     {
         m_renderer = new OpenGLRenderer();
+        m_platform = PlatformFactory::CreatePlatform();
     }
 
     RuntimeApi::~RuntimeApi()
     {
         delete m_renderer;
+        delete m_platform;
     }
 
     auto RuntimeApi::GetRenderer() const -> IRenderer*
@@ -41,9 +44,9 @@ namespace Neon
         return m_renderer;
     }
 
-    IPlatform* RuntimeApi::CreatePlatform()
+    IPlatform* RuntimeApi::GetPlatform() const
     {
-        return PlatformFactory::CreatePlatform();
+        return m_platform;
     }
 
     IVertexBuffer* RuntimeApi::CreateVertexBuffer(float* vertices, size_t size)

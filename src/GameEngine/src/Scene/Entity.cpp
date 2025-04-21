@@ -13,6 +13,7 @@
  * Copyright (c) : 2024 Sam McDonald
  * Repository: https://github.com/s-mcdonald/NeonVoid
  */
+
 #include <NeonEngine/Entity.hpp>
 
 namespace Neon
@@ -57,7 +58,6 @@ namespace Neon
             component->OnRender();
         }
     }
-
 
     void Entity::AddComponent(Component* component)
     {

@@ -154,7 +154,7 @@ namespace Neon
             return;
         }
 
-        // we must have reached the end of the Application..
+        // we must have reached the end of the Application.
         // if (m_scenes.empty())....
     }
 }

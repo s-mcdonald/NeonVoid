@@ -40,7 +40,7 @@ namespace Neon
 
             void Use() const override;
             void Stop() const override;
-            void SetUniformMat4(std::string name, glm::mat4 value);
+            void SetUniformMat4(std::string name, glm::mat4 value) override;
 
         private:
             static std::string LoadShaderFromFile(const std::string&);

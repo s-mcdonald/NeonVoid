@@ -32,6 +32,11 @@ namespace Neon
     Scene::~Scene()
     {
         Destroy();
+
+        m_sceneConfig.components.clear();
+        m_sceneConfig.components.shrink_to_fit();
+        m_sceneConfig.entities.clear();
+        m_sceneConfig.entities.shrink_to_fit();
     }
 
     bool Scene::IsInitialized() const

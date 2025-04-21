@@ -145,8 +145,8 @@ namespace Neon
         }
     }
 
-    IShader* OpenGL::CreateShader(std::string vertexPath, std::string fragmentPath)
+    IShader* OpenGL::CreateShader(const std::string& vertexPath, const std::string& fragmentPath)
     {
-        return new OpenGLShader(std::move(vertexPath), std::move(fragmentPath));
+        return new OpenGLShader(vertexPath, fragmentPath);
     }
 }
