@@ -25,7 +25,7 @@ namespace Neon
                 m_functions[name] = std::forward<Func>(func);
             }
 
-            std::function<void()> Fetch(const std::string& name)
+            std::function<void(Scene* scene)> Fetch(const std::string& name)
             {
                 auto it = m_functions.find(name);
                 if (it != m_functions.end())
@@ -36,7 +36,7 @@ namespace Neon
             }
 
         private:
-            std::unordered_map<std::string, std::function<void()>> m_functions;
+            std::unordered_map<std::string, std::function<void(Scene* scene)>> m_functions;
     };
 }
 

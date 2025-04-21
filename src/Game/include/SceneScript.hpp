@@ -11,11 +11,18 @@ namespace Neon
     class SceneScript
     {
         public:
-            static std::function<void()> GetUpdateScript()
+            static std::function<void(Scene* scene)> GetUpdateScript()
             {
-                return []()
+                return[](Scene* scene)
                 {
-                    std::cout << "Hello World! from the custom script." << std::endl;
+                    // if (scene->GetComponent("mainPlayer"))
+                    // {
+                    //     std::cout << "Hello World! from the custom script." << std::endl;
+                    // }
+                    // else
+                    // {
+                    //     std::cout <<"We dont have a bomb" << std::endl;
+                    // }
                 };
             }
     };

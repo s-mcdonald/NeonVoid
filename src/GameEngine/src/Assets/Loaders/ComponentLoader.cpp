@@ -75,7 +75,7 @@ namespace Neon
 
             if (comp.type == "script")
             {
-                std::function<void()> funcCallback = FunctionRegistry::Get().Fetch(comp.textConfig.text);
+                std::function<void(Scene* scene)> funcCallback = FunctionRegistry::Get().Fetch(comp.textConfig.text);
                 auto* theComponent = new ScriptComponent(funcCallback);
                 componentsForScene.emplace(comp.name, theComponent);
             }

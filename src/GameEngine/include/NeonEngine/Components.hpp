@@ -15,6 +15,7 @@
 
 namespace Neon
 {
+    class Scene;
     class Entity;
     class Shader;
     class IVertexBuffer;
@@ -25,11 +26,16 @@ namespace Neon
             Component() = default;
             virtual ~Component() = default;
 
-        public:
             [[nodiscard]] Entity* GetParentEntity() const { return m_entityParent; };
             void SetParentEntity(Entity* parent)
             {
                 m_entityParent = parent;
+            }
+
+            [[nodiscard]] Scene* GetScene() const { return m_scene; };
+            void SetScene(Scene* parent)
+            {
+                m_scene = parent;
             }
 
         public:
@@ -40,6 +46,7 @@ namespace Neon
 
         private:
             Entity* m_entityParent = nullptr;
+            Scene* m_scene = nullptr;
     };
 
     class PositionComponent final : public Component
@@ -216,7 +223,7 @@ namespace Neon
     class ScriptComponent final : public Component
     {
         public:
-            explicit ScriptComponent(const std::function<void()>& onUpdate)
+            explicit ScriptComponent(const std::function<void(Scene* scene)>& onUpdate)
                 : Component()
                 , m_scriptOnUpdate(onUpdate) {}
             ~ScriptComponent() override = default;
@@ -224,7 +231,11 @@ namespace Neon
             void OnInit() override {}
             void OnUpdate() override
             {
-                m_scriptOnUpdate();
+                auto* x = GetScene();
+                if (x != nullptr)
+                {
+                    m_scriptOnUpdate(GetScene());
+                }
             }
             void OnRender() override
             {
@@ -233,6 +244,6 @@ namespace Neon
             void OnDestroy() override {}
 
         private:
-            std::function<void()> m_scriptOnUpdate;
+            std::function<void(Scene* scene)> m_scriptOnUpdate;
     };
 }
