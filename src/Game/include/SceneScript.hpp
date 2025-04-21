@@ -15,14 +15,14 @@ namespace Neon
             {
                 return[](Scene* scene)
                 {
-                    // if (scene->GetComponent("mainPlayer"))
-                    // {
-                    //     std::cout << "Hello World! from the custom script." << std::endl;
-                    // }
-                    // else
-                    // {
-                    //     std::cout <<"We dont have a bomb" << std::endl;
-                    // }
+                    if (scene->GetPlayerEntity())
+                    {
+                        std::cout << "We found the main player" << std::endl;
+                    }
+                    else
+                    {
+                        std::cout <<"We dont have a player entity" << std::endl;
+                    }
                 };
             }
     };

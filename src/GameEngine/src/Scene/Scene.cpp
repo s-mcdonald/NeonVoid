@@ -10,7 +10,7 @@ namespace Neon
     Scene::Scene(const YScene config)
         : m_sceneConfig(config)
     {
-        m_nextEntityID = 1;
+        m_nextEntityID = START_NEXT_ENTITY_ID;
         MakeAll();
     }
 
@@ -95,6 +95,23 @@ namespace Neon
         return nullptr;
     }
 
+    Entity* Scene::GetEntity(const EntityID id) const
+    {
+        if (auto it = m_entities.find(id); it != m_entities.end())
+        {
+            auto& [key, entity] = *it;
+
+            return entity;
+        }
+
+        return nullptr;
+    }
+
+    Entity* Scene::GetPlayerEntity() const
+    {
+        return GetEntity(MAIN_PLAYER_ENTITY_ID);
+    }
+
     SceneType Scene::GetSceneType() const
     {
         return m_sceneConfig.sceneType;
@@ -114,12 +131,15 @@ namespace Neon
     {
         for (auto& entity : m_sceneConfig.entities)
         {
-            auto* entityToAdd = new Entity(1);
-
             std::unordered_map<std::string, Component*> componentsForEntity = ComponentLoader::CollectComponents(entity.components);
 
+            EntityID entityId = (entity.type == EntityType::Player) ? MAIN_PLAYER_ENTITY_ID : ++m_nextEntityID;
+
+            auto* entityToAdd = new Entity(entityId);
             for (auto [name, comp] : componentsForEntity)
             {
+                // redundant code, need to refactor, @see application comp->SetScene(scene);
+                comp->SetScene(this);
                 entityToAdd->AddComponent(comp);
             }
 

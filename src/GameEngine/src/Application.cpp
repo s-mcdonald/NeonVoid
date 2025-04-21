@@ -75,6 +75,7 @@ namespace Neon
 
             for (auto [name, comp] : componentsForScene)
             {
+                comp->SetScene(scene);
                 scene->AddComponent(name, comp);
             }
 

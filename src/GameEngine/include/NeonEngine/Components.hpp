@@ -231,10 +231,10 @@ namespace Neon
             void OnInit() override {}
             void OnUpdate() override
             {
-                auto* x = GetScene();
-                if (x != nullptr)
+                auto* _s = GetScene();
+                if (_s != nullptr)
                 {
-                    m_scriptOnUpdate(GetScene());
+                    m_scriptOnUpdate(_s);
                 }
             }
             void OnRender() override

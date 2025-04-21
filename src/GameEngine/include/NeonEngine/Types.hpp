@@ -9,10 +9,17 @@
 
 namespace Neon
 {
+    typedef uint16_t ViewPortDimension;
+    typedef uint16_t WindowDimension;
+    typedef uint32_t EntityID;
+    typedef uint32_t Score;
+    typedef short Health;
+
     ///
     /// Player / Entity IDs
     ///
-    constexpr uint8_t MAIN_PLAYER = 1;
+    constexpr EntityID MAIN_PLAYER_ENTITY_ID = 1;
+    constexpr EntityID START_NEXT_ENTITY_ID = 5;
 
     typedef void* WindowHandlePtr;
 
@@ -29,12 +36,6 @@ namespace Neon
     constexpr float ViewPortRatio_16_10 = 16.0f / 10.0f;  // Aspect ratio (16:10)
     constexpr float ViewPortRatio_21_9 = 21.0f / 9.0f;    // Ultra-wide aspect ratio (21:9)
     constexpr float ViewPortRatio_32_9 = 32.0f / 9.0f;    // Super ultra-wide aspect ratio (32:9)
-
-    typedef uint16_t ViewPortDimension;
-    typedef uint16_t WindowDimension;
-    typedef uint32_t EntityID;
-    typedef uint32_t Score;
-    typedef short Health;
 
     constexpr inline auto DefaultAudioVolume = 50.00f;
 
