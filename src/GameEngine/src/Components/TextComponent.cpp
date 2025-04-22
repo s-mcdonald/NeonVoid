@@ -37,9 +37,10 @@ namespace Neon
 
     TextComponent::~TextComponent()
     {
-#if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-        std::cout << "TextComponent::Destructor completed\n";
-#endif
+        m_text.clear();
+        m_fontSize = 0.0f;
+        if (m_shader) m_shader;
+        m_shader = nullptr;
     }
 
     void TextComponent::OnUpdate() 

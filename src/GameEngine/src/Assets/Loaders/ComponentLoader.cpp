@@ -14,6 +14,7 @@
  * Repository: https://github.com/s-mcdonald/NeonVoid
  */
 
+#include <filesystem>
 #include <iostream>
 #include <unordered_map>
 

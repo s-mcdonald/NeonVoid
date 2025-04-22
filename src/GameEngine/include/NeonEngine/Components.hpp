@@ -151,7 +151,6 @@ namespace Neon
         public:
             explicit TextComponent(const std::string& text, IShader* shader);
             ~TextComponent() override;
-
             [[nodiscard]] const std::string& GetText() const;
             void SetText(const std::string& text);
 
@@ -169,8 +168,8 @@ namespace Neon
             std::string m_text;
             IShader* m_shader;
             IVertexBuffer* m_buffer{};
-            float m_fontSize;
-            Point m_point;
+            float m_fontSize{NV_DEFAULT_FONT_SIZE};
+            Point m_point{};
     };
 
     class ShaderComponent final
@@ -324,7 +323,7 @@ namespace Neon
                 std::cout << "Collision detected" << std::endl;
 
                 // perhaps we can call a user script.
-                // or script can be part of a collision ?
+                // or a script can be part of a collision?
             };
 
         private:

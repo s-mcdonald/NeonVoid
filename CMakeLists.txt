@@ -320,35 +320,6 @@ else()
 endif()
 
 
-#
-# Sandbox Executable
-#
-#set(SANDBOX_SRC
-#        src/Sandbox/src/Main.cpp
-#        ${CMAKE_SOURCE_DIR}/src/Sandbox/include/glad/glad.c
-#)
-#add_executable(NeonVoidSandbox ${SANDBOX_SRC})
-#target_include_directories(NeonVoidSandbox PUBLIC
-#        ${CMAKE_SOURCE_DIR}/src/Sandbox/include
-#)
-#target_link_libraries(NeonVoidSandbox PRIVATE OpenGL::GL)
-#target_link_libraries(NeonVoidSandbox PRIVATE OpenGL::GL glfw)
-#
-#set_target_properties(NeonVoidSandbox PROPERTIES
-#        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build
-#)
-
-
-#
-# Specify the output directory for the executable
-#
-#set(BINARY_OUTPUT_DIR ${CMAKE_BINARY_DIR}/build) # Original build directory
-#set(FINAL_OUTPUT_DIR ${CMAKE_BINARY_DIR}/src/Sandbox/app) # Destination directory for final binary
-#
-#set_target_properties(NeonVoid PROPERTIES
-#        RUNTIME_OUTPUT_DIRECTORY ${BINARY_OUTPUT_DIR}
-#)
-
 
 
 #
@@ -362,4 +333,3 @@ add_custom_target(copy_assets ALL
 )
 
 add_dependencies(NeonVoid copy_assets)
-

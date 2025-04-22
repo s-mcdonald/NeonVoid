@@ -159,7 +159,7 @@ namespace Neon
             EntityID entityId = (entity.type == EntityType::Player) ? MAIN_PLAYER_ENTITY_ID : ++m_nextEntityID;
 
             auto* entityToAdd = new Entity(entityId);
-            for (auto [c_type, comp] : componentsForEntity)
+            for (auto& [c_type, comp] : componentsForEntity)
             {
                 // redundant code, need to refactor, @see application comp->SetScene(scene);
                 comp->SetScene(this);
@@ -167,8 +167,6 @@ namespace Neon
 
                 if (c_type == "collision")
                 {
-                    //std::cout << "Adding component: " << c_type << " to E: " << entityToAdd->GetId() << std::endl;
-
                     m_collisionSystem.RegisterEntity(entityToAdd);
                 }
             }

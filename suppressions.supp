@@ -58,3 +58,12 @@
    fun:_ZN4Neon7OpenGL10InitializeEiiPKc
    ...
 }
+
+{
+   miniaudio_dlopen_memory
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   fun:_dl_new_object
+   ...
+}

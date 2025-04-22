@@ -15,6 +15,7 @@
  */
 
 #include <deque>
+#include <filesystem>
 #include <iostream>
 
 #include <fkYAML/node.hpp>
@@ -74,6 +75,8 @@ namespace Neon
 
     bool Application::Initialize(const WindowDimension width, const WindowDimension height, const char* title)
     {
+        m_rootPath = std::filesystem::current_path().string();
+
         if (m_runtime.Initialize(width, height, title))
         {
             m_yamlReader.Read(m_sceneYamlPath);
@@ -88,10 +91,10 @@ namespace Neon
                 m_runtime
                 );
 
-            for (auto [name, comp] : componentsForScene)
+            for (auto& [name, comp] : componentsForScene)
             {
                 comp->SetScene(scene);
-                scene->AddComponent(name, comp);
+                scene->AddComponent(name, std::move(comp));
             }
 
             AddScene(scene);

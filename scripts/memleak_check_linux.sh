@@ -12,4 +12,5 @@ valgrind \
     --trace-children=yes \
     --trace-children-skip=/bin/cat,/bin/rm \
     --track-fds=yes \
+    -s \
     ./NeonVoid

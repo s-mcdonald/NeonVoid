@@ -52,5 +52,6 @@ namespace Neon
             YamlReader m_yamlReader;
             std::string m_sceneYamlPath{};
             YScene m_sceneConfig;
+            std::string m_rootPath{};
     };
 }

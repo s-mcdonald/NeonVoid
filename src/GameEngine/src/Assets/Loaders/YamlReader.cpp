@@ -15,6 +15,7 @@
  */
 
 #include <fstream>
+#include <iostream>
 #include <string>
 
 #include <fkYAML/node.hpp>
@@ -30,6 +31,9 @@ namespace Neon
     {
         std::ifstream ifs(filepath);
         m_yamlRoot = fkyaml::node::deserialize(ifs);
+
+        std::cout << filepath << std::endl;
+        // std::cout << m_yamlRoot << std::endl;
     }
 
     YScene YamlReader::Init() const
