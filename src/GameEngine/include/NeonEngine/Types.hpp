@@ -100,18 +100,19 @@ namespace Neon
 
     enum class ScriptType
     {
-        None    = 0, // this would be an error in some circumstances
-        Scene   = 1,
-        Entity  = 2,
+        None                = 0, // this would be an error in some circumstances
+        SceneInit           = 1,
+        SceneUpdate         = 2,
+        EntityUpdate        = 3,
     };
 
     // @todo: Add a layer to each component + entity
     // component.layer = Layer::Foreground;
     enum class Layer : short
     {
-        Background = 0,
-        Middle = 5,
-        Foreground = 10
+        Background  = 0,
+        Middle      = 5,
+        Foreground  = 10
     };
 
     enum class Direction
