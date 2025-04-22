@@ -41,10 +41,6 @@ namespace Neon
 
             bool IsInitialized() const;
             void HandleInput(Input* input);
-            virtual void OnInit() {};
-            virtual void OnUpdate() {};
-            virtual void OnRender() {};
-            virtual void OnDestroy() {};
 
             void AddEntity(EntityID id, Entity* entity);
             void AddComponent(const std::string& tag, Component* component);
@@ -54,9 +50,8 @@ namespace Neon
 
             SceneType GetSceneType() const;
 
-        protected:
-            Entity* MakeEntity(const YEntity& yentity);
-            void MakeAll();
+            bool MakeComponents(const std::string& compoTag);
+            Entity* MakeEntity(const std::string& entityTag);
 
         private:
             template <typename T>

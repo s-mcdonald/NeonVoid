@@ -26,7 +26,6 @@ namespace Neon
         , m_sceneConfig(config)
     {
         m_nextEntityID = START_NEXT_ENTITY_ID;
-        MakeAll();
     }
 
     Scene::~Scene()
@@ -55,8 +54,6 @@ namespace Neon
         InitRenderable(m_components);
         InitRenderable(m_entities);
 
-        OnInit();
-
         m_isInitialized = true;
     }
 
@@ -68,8 +65,6 @@ namespace Neon
         // Scene components must be updated before entity components
         UpdateRenderable(m_components);
         UpdateRenderable(m_entities);
-
-        OnUpdate();
     }
 
     void Scene::Render()
@@ -77,8 +72,6 @@ namespace Neon
         // Scene components must be rendered before entity components
         RenderRenderable(m_components);
         RenderRenderable(m_entities);
-
-        OnRender();
     }
 
     void Scene::Destroy()
@@ -86,8 +79,6 @@ namespace Neon
         // Reverse the order for destruction
         DestroyRenderable(m_entities);
         DestroyRenderable(m_components);
-
-        OnDestroy();
     }
 
     void Scene::HandleInput(Input* input)
@@ -140,39 +131,43 @@ namespace Neon
         return m_sceneConfig.sceneType;
     }
 
-    // Dynamically makes an entity and adds to the current gameplay/scene.
-    Entity* Scene::MakeEntity(const YEntity& yentity)
+    bool Scene::MakeComponents(const std::string& compoTag)
     {
-        auto* e = new Entity(++m_nextEntityID);
+        auto components = ComponentLoader::CollectComponents(m_sceneConfig.components, mx_app->GetBridge());
 
-        AddEntity(e->GetId(), e);
-
-        return e;
+        for (auto& [c_type, comp] : components)
+        {
+            comp->SetScene(this);
+            AddComponent(compoTag, comp);
+        }
     }
 
-    void Scene::MakeAll()
+    Entity* Scene::MakeEntity(const std::string& entityTag)
     {
-        for (auto& entity : m_sceneConfig.entities)
+        for (auto entity : m_sceneConfig.entities)
         {
-            std::unordered_map<std::string, Component*> componentsForEntity = ComponentLoader::CollectComponents(entity.components, mx_app->GetBridge());
-
-            EntityID entityId = (entity.type == EntityType::Player) ? MAIN_PLAYER_ENTITY_ID : ++m_nextEntityID;
-
-            auto* entityToAdd = new Entity(entityId);
-            for (auto& [c_type, comp] : componentsForEntity)
+            if (entity.name == entityTag)
             {
-                // redundant code, need to refactor, @see application comp->SetScene(scene);
-                comp->SetScene(this);
-                entityToAdd->AddComponent(comp);
+                auto* e = new Entity(++m_nextEntityID);
 
-                if (c_type == "collision")
+                auto components = ComponentLoader::CollectComponents(entity.components, mx_app->GetBridge());
+
+                for (auto& [c_type, comp] : components)
                 {
-                    m_collisionSystem.RegisterEntity(entityToAdd);
-                }
-            }
+                     comp->SetScene(this);
+                     e->AddComponent(comp);
 
-            AddEntity(entityToAdd->GetId(), entityToAdd);
+                     if (c_type == "collision")
+                     {
+                         m_collisionSystem.RegisterEntity(e);
+                     }
+                }
+                AddEntity(e->GetId(), e);
+                return e;
+            }
         }
+
+        throw std::runtime_error("Entity not found");
     }
 
     template <typename T>

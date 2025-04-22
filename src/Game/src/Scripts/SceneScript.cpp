@@ -22,7 +22,40 @@
 
 namespace Neon
 {
-    std::function<void(Scene* scene)> SceneScript::GetUpdateScript()
+    std::function<void(Scene* scene)> SceneScript::GetLevelOneInitScript()
+    {
+        return[](Scene* scene)
+        {
+            try
+            {
+                // if (scene->MakeComponents("scene_renderable_test"))
+                // {
+                //     std::cout << "Render components" << std::endl;
+                // }
+
+                if (scene->MakeEntity("mainPlayer"))
+                {
+                    std::cout << "Created Player Entity" << std::endl;
+                }
+
+            }
+            catch (const std::exception& e)
+            {
+                std::cout << "foo Exception in script: " << e.what() << std::endl;
+            }
+            catch (...)
+            {
+                std::cout << "Exception in script" << std::endl;
+            }
+
+            if (scene->MakeEntity("cherryHealthPack"))
+            {
+                std::cout << "Created Cherry" << std::endl;
+            }
+        };
+    }
+
+    std::function<void(Scene* scene)> SceneScript::GetLevelOneUpdateScript()
     {
         return[](Scene* scene)
         {

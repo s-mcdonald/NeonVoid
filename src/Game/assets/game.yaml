@@ -24,10 +24,28 @@ scene:
       data:
         text: "NeonVoid"
     -
-      name: sceneScript
+      name: sceneInitScript
+      type: script
+      data:
+        on_update: "Scene::OnInit"
+    -
+      name: sceneUpdateScript
       type: script
       data:
         on_update: "Scene::OnUpdate"
+    -
+      name: sceneRenderable2
+      type: shader
+      data:
+        name: scene_renderable_test
+        layer: background
+        dir: "./assets/shaders/Entities/"
+        vertex: "spaceship_shader.vert"
+        frag: "spaceship_shader.frag"
+        vertices:
+          - [  0.0,    0.125,   1.0, 0.0, 0.0 ]    # Top vertex
+          - [ -0.125, -0.125,   1.0, 0.0, 0.0 ]    # Bottom left vertex
+          - [  0.125, -0.125,   1.0, 0.0, 0.0 ]    # Bottom right vertex
 
   entities:
     -
@@ -72,7 +90,7 @@ scene:
               - [ -0.125, -0.125,   0.0,  0.3,  1.0 ]    # Bottom left vertex
               - [  0.125, -0.125,   0.3,  0.3,  1.0 ]    # Bottom right vertex
     -
-      name: cherry
+      name: cherryHealthPack
       type: HealthPack
       components:
         -
