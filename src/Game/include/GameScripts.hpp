@@ -30,7 +30,9 @@ namespace Neon
     class EntityScript
     {
         public:
-            static std::function<void(Entity* e, Scene* scene)> GetUpdateScript();
+            static std::function<void(Entity* e, Scene* scene)> GetPlayerUpdateScript();
+            static std::function<void(Entity* e, Scene* scene)> GetBombUpdateScript();
+            static std::function<void(Entity* e, Scene* scene)> GetCherryUpdateScript();
     };
 }
 

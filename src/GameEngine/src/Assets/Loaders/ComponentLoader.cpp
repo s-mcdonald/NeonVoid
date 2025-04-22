@@ -80,8 +80,8 @@ namespace Neon
             if (comp.type == "text")
             {
                 // built-in shader for text
-                auto vertexPath = "/home/sam/Game/Neon/build/assets/shaders/Text/shader.vert";
-                auto fragPath = "/home/sam/Game/Neon/build/assets/shaders/Text/shader.frag";
+                auto vertexPath = "./assets/shaders/Text/shader.vert";
+                auto fragPath = "./assets/shaders/Text/shader.frag";
 
                 auto shaderPgm = bridge.CreateShader(vertexPath,fragPath);
                 auto* theComponent = new TextComponent(comp.textConfig.text, shaderPgm);

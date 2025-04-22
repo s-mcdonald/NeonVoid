@@ -30,7 +30,7 @@ namespace Neon
                 // we could also make the FR as part of Application!!!!\
                 // we can do that later
                 FunctionRegistry::Get().RegisterSceneScript("Scene::OnUpdate", SceneScript::GetUpdateScript());
-                FunctionRegistry::Get().RegisterEntityScript("Entity::Cherry::OnUpdate", EntityScript::GetUpdateScript());
+                FunctionRegistry::Get().RegisterEntityScript("Entity::Cherry::OnUpdate", EntityScript::GetCherryUpdateScript());
 
                 // @todo: Use a filesystem lib to parse filenames
                 SetSceneYaml("./assets/game.yaml");

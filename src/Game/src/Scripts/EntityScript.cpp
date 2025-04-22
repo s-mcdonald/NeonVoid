@@ -22,11 +22,42 @@
 
 namespace Neon
 {
-    std::function<void(Entity* e, Scene* scene)> EntityScript::GetUpdateScript()
+    // Player Entity
+    std::function<void(Entity* e, Scene* scene)> EntityScript::GetPlayerUpdateScript()
     {
         return[](Entity* e, Scene* scene)
         {
-            PositionComponent* x = e->GetComponent<PositionComponent>();
+            auto c = e->GetComponent<CollisionComponent>();
+            if (c)
+            {
+                //..
+            }
+        };
+    }
+
+    // BOMB Entity !!!!
+    std::function<void(Entity* e, Scene* scene)> EntityScript::GetBombUpdateScript()
+    {
+        return[](Entity* e, Scene* scene)
+        {
+            auto* x = e->GetComponent<PositionComponent>();
+            if (!x)
+            {
+                return;
+            }
+
+            Point p = x->GetPoint();
+            p.y -= 0.0003;
+            x->UpdateData(p);
+        };
+    }
+
+    // Cherry Entity
+    std::function<void(Entity* e, Scene* scene)> EntityScript::GetCherryUpdateScript()
+    {
+        return[](Entity* e, Scene* scene)
+        {
+            auto* x = e->GetComponent<PositionComponent>();
             if (!x)
             {
                 return;

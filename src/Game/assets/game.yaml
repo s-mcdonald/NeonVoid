@@ -15,7 +15,7 @@ scene:
       name: backgroundSound
       type: audio
       data:
-        path: "/home/sam/Game/Neon/build/assets/audio/background.mp3" #neon_void_intro # background
+        path: "./assets/audio/background.mp3" #neon_void_intro # background
         loop: true
         volume: 50
     -
@@ -55,7 +55,7 @@ scene:
           name: gunshot
           type: audio
           data:
-            path: "/home/sam/Game/Neon/build/assets/audio/bullet.mp3"
+            path: "./assets/audio/bullet.mp3"
             loop: false
             volume: 5
         -
@@ -64,7 +64,7 @@ scene:
           data:
             name: id.green_triangle
             layer: background
-            dir: "/home/sam/Game/Neon/build/assets/shaders/Entities/"
+            dir: "./assets/shaders/Entities/"
             vertex: "spaceship_shader.vert"
             frag: "spaceship_shader.frag"
             vertices:
@@ -90,12 +90,17 @@ scene:
               x: 0.05 # Box size HxW
               y: 0.05 # Box size HxW
         -
+          name: cherryScript
+          type: script
+          data:
+            on_update: "Entity::Cherry::OnUpdate"
+        -
           name: cherry
           type: shader
           data:
             name: id.cherry
             layer: middle
-            dir: "/home/sam/Game/Neon/build/assets/shaders/Entities/"
+            dir: "./assets/shaders/Entities/"
             vertex: "spaceship_shader.vert"
             frag: "spaceship_shader.frag"
             vertices:
@@ -198,8 +203,3 @@ scene:
               - [  0.0,    0.0,     1.0,  0.0,  0.0 ]
               - [  0.019, -0.0062,  1.0,  0.0,  0.0 ]
               - [  0.02,   0.0,     1.0,  0.0,  0.0 ]
-        -
-          name: cherryScript
-          type: script
-          data:
-            on_update: "Entity::Cherry::OnUpdate"
