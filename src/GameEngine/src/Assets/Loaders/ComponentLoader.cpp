@@ -89,9 +89,32 @@ namespace Neon
 
             if (comp.type == "script")
             {
-                std::function<void(Scene* scene)> funcCallback = FunctionRegistry::Get().Fetch(comp.textConfig.text);
-                auto* theComponent = new ScriptComponent(funcCallback);
-                componentsForScene.emplace(comp.name, theComponent);
+                // @todo: reminder to clean this up later
+                ScriptType scriptType = FunctionRegistry::Get().FetchScriptType(comp.textConfig.text);
+                switch(scriptType)
+                {
+                    case ScriptType::Scene:
+                    {
+                        auto funcCallback = FunctionRegistry::Get().FetchSceneScript(comp.textConfig.text);
+                        auto* theComponent = new ScriptComponent(funcCallback);
+                        componentsForScene.emplace(comp.name, theComponent);
+                        break;
+                    }
+
+                    case ScriptType::Entity:
+                    {
+                        auto funcCallback = FunctionRegistry::Get().FetchEntityScript(comp.textConfig.text);
+                        auto* theComponent = new ScriptComponent(funcCallback);
+                        componentsForScene.emplace(comp.name, theComponent);
+                        break;
+                    }
+
+                    default:
+                    {
+                        // @todo: lets notify the game developer that scene or entity script not found
+                        break;
+                    }
+                }
             }
         }
 

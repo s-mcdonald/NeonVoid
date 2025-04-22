@@ -13,11 +13,14 @@
  * Copyright (c) : 2024 Sam McDonald
  * Repository: https://github.com/s-mcdonald/NeonVoid
  */
+
 #pragma once
 
-#include <unordered_map>
 #include <functional>
 #include <string>
+#include <unordered_map>
+
+#include "Types.hpp"
 
 namespace Neon
 {
@@ -31,15 +34,48 @@ namespace Neon
             }
 
             template<typename Func>
-            void Register(const std::string& name, Func&& func)
+            void RegisterSceneScript(const std::string& name, Func&& func)
             {
-                m_functions[name] = std::forward<Func>(func);
+                m_functionsScenes[name] = std::forward<Func>(func);
             }
 
-            std::function<void(Scene* scene)> Fetch(const std::string& name)
+            template<typename Func>
+            void RegisterEntityScript(const std::string& name, Func&& func)
             {
-                auto it = m_functions.find(name);
-                if (it != m_functions.end())
+                m_functionsEntity[name] = std::forward<Func>(func);
+            }
+
+            ScriptType FetchScriptType(const std::string& name)
+            {
+                auto it = m_functionsScenes.find(name);
+                if (it != m_functionsScenes.end())
+                {
+                    return ScriptType::Scene;
+                }
+
+                auto eit = m_functionsEntity.find(name);
+                if (eit != m_functionsEntity.end())
+                {
+                    return ScriptType::Entity;
+                }
+
+                return ScriptType::None;
+            }
+
+            std::function<void(Scene* scene)> FetchSceneScript(const std::string& name)
+            {
+                auto it = m_functionsScenes.find(name);
+                if (it != m_functionsScenes.end())
+                {
+                    return it->second;
+                }
+                return nullptr;
+            }
+
+            std::function<void(Entity* entity, Scene* scene)> FetchEntityScript(const std::string& name)
+            {
+                auto it = m_functionsEntity.find(name);
+                if (it != m_functionsEntity.end())
                 {
                     return it->second;
                 }
@@ -47,7 +83,8 @@ namespace Neon
             }
 
         private:
-            std::unordered_map<std::string, std::function<void(Scene* scene)>> m_functions;
+            std::unordered_map<std::string, std::function<void(Scene* scene)>> m_functionsScenes;
+            std::unordered_map<std::string, std::function<void(Entity* entity, Scene* scene)>> m_functionsEntity;
     };
 }
 

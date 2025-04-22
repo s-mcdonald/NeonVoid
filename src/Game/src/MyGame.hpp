@@ -13,11 +13,12 @@
  * Copyright (c) : 2024 Sam McDonald
  * Repository: https://github.com/s-mcdonald/NeonVoid
  */
+
 #pragma once
 
 #include <NeonEngine/All.hpp>
 
-#include <SceneScript.hpp>
+#include <GameScripts.hpp>
 
 namespace Neon
 {
@@ -28,7 +29,8 @@ namespace Neon
             {
                 // we could also make the FR as part of Application!!!!\
                 // we can do that later
-                FunctionRegistry::Get().Register("Scene::Foo", SceneScript::GetUpdateScript());
+                FunctionRegistry::Get().RegisterSceneScript("Scene::OnUpdate", SceneScript::GetUpdateScript());
+                FunctionRegistry::Get().RegisterEntityScript("Entity::Cherry::OnUpdate", EntityScript::GetUpdateScript());
 
                 // @todo: Use a filesystem lib to parse filenames
                 SetSceneYaml("./assets/game.yaml");

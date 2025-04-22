@@ -240,25 +240,65 @@ namespace Neon
         public:
             explicit ScriptComponent(const std::function<void(Scene* scene)>& onUpdate)
                 : Component()
-                , m_scriptOnUpdate(onUpdate) {}
-            ~ScriptComponent() override = default;
+                , m_scriptOnUpdateScene(onUpdate)
+                , m_scriptOnUpdateEntity(nullptr)
+                , m_isEntityScript(false)
+            {}
+            explicit ScriptComponent(const std::function<void(Entity* entity, Scene* scene)>& onUpdate)
+                : Component()
+                , m_scriptOnUpdateEntity(onUpdate)
+                , m_scriptOnUpdateScene(nullptr)
+                , m_isEntityScript(true)
+            {}
+
+            ~ScriptComponent() override
+            {
+                m_scriptOnUpdateScene = nullptr;
+                m_scriptOnUpdateEntity = nullptr;
+                m_isEntityScript = false;
+            };
 
             void OnInit() override {}
             void OnUpdate() override
             {
                 auto* _s = GetScene();
-                if (_s != nullptr)
+                auto* _e = GetParentEntity();
+
+                if (_s == nullptr)
                 {
-                    m_scriptOnUpdate(_s);
+                    return;
+                }
+
+                try
+                {
+                    if (m_isEntityScript)
+                    {
+                        if (_e != nullptr && m_scriptOnUpdateEntity != nullptr)
+                        {
+                            m_scriptOnUpdateEntity(_e, _s);
+                        }
+                    }
+                    else
+                    {
+                        m_scriptOnUpdateScene(_s);
+                    }
+                }
+                catch (const std::exception& e)
+                {
+                    std::cout << "Exception in script: " << e.what() << std::endl;
+                }
+                catch (...)
+                {
+                    std::cout << "Exception in script" << std::endl;
                 }
             }
-            void OnRender() override
-            {
 
-            }
+            void OnRender() override {}
             void OnDestroy() override {}
 
         private:
-            std::function<void(Scene* scene)> m_scriptOnUpdate;
+            std::function<void(Scene* scene)> m_scriptOnUpdateScene;
+            std::function<void(Entity* entity, Scene* scene)> m_scriptOnUpdateEntity;
+            bool m_isEntityScript;
     };
 }

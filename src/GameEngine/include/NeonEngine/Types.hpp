@@ -91,10 +91,18 @@ namespace Neon
         Pause
     };
 
-    enum class EntityType {
+    enum class EntityType
+    {
         Player,
         Enemy,
         HealthPack
+    };
+
+    enum class ScriptType
+    {
+        None    = 0, // this would be an error in some circumstances
+        Scene   = 1,
+        Entity  = 2,
     };
 
     // @todo: Add a layer to each component + entity
