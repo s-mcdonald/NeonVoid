@@ -34,22 +34,19 @@ It is unlikely I will ever get to implement DX or Vulkan; however, the project h
 
 ### Build System
 
-A single CMake project, the `CMakeLists.txt` has been described to set up all three projects listed below ;
+CMake project: Has been described to set up the three projects listed below ;
 - Game
 - GameEngine (static lib)
 - NeonRuntime (static lib)
 
-
-#### Linux
-```
-./scripts/build.sh
-```
-
-#### Windows
+The scripts directory should have a relevant script for either Windows or Linux.
 There are a couple of VS options, select the one that suits your needs or modify as required.
-```
-./scripts/setup-vs-2022.bat 
-```
+
+| Operating System | Command                          |
+|------------------|----------------------------------|
+| Linux            | `./scripts/build.sh`            |
+| Windows          | `./scripts/setup-vs-2022.bat`   |
+
 
 ### Game Engine Features
 
