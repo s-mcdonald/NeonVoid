@@ -13,6 +13,7 @@
  * Copyright (c) : 2024 Sam McDonald
  * Repository: https://github.com/s-mcdonald/NeonVoid
  */
+
 #include <stdexcept>
 #include <string>
 
@@ -377,14 +378,14 @@ namespace Neon
             throw std::runtime_error("component.script.data MUST be a mapping value");
         }
 
-        if (false == value.contains("on_update"))
+        if (false == value.contains("bind"))
         {
-            throw std::runtime_error("component.script.data.on_update IS required");
+            throw std::runtime_error("component.script.data.bind IS required");
         }
 
-        if (false == value["on_update"].is_string())
+        if (false == value["bind"].is_string())
         {
-            throw std::runtime_error("component.script.data.on_update MUST be a string");
+            throw std::runtime_error("component.script.data.bind MUST be a string");
         }
     }
 

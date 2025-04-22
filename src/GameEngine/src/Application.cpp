@@ -86,12 +86,12 @@ namespace Neon
 
             auto* scene = new Scene(this, m_sceneConfig);
 
-            std::unordered_map<std::string, Component*> componentsForScene  = ComponentLoader::CollectComponents(
-                m_sceneConfig.components,
+            std::unordered_map<std::string, Component*> scriptsForScene  = ComponentLoader::CollectComponents(
+                m_sceneConfig.scripts,
                 m_runtime
                 );
 
-            for (auto& [name, comp] : componentsForScene)
+            for (auto& [name, comp] : scriptsForScene)
             {
                 comp->SetScene(scene);
                 scene->AddComponent(name, std::move(comp));

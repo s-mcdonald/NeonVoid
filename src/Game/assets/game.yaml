@@ -10,6 +10,21 @@ scene:
       width: 800
       height: 600
 
+
+  # Scripts are just components; however, they load up when the scene is created.
+  scripts:
+    -
+      name: sceneOnInit
+      type: script
+      data:
+        bind: "Scene::OnInit"
+
+    -
+      name: sceneOnUpdate
+      type: script
+      data:
+        bind: "Scene::OnUpdate"
+
   components:
     -
       name: backgroundSound
@@ -23,16 +38,6 @@ scene:
       type: text
       data:
         text: "NeonVoid"
-    -
-      name: sceneInitScript
-      type: script
-      data:
-        on_update: "Scene::OnInit"
-    -
-      name: sceneUpdateScript
-      type: script
-      data:
-        on_update: "Scene::OnUpdate"
     -
       name: sceneRenderable2
       type: shader
@@ -111,7 +116,7 @@ scene:
           name: cherryScript
           type: script
           data:
-            on_update: "Entity::Cherry::OnUpdate"
+            bind: "Entity::Cherry::OnUpdate"
         -
           name: cherry
           type: shader

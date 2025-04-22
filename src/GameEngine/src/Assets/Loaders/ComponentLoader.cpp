@@ -53,12 +53,15 @@ namespace Neon
                     theComponent->TriggerPlayOnce();
                 }
 
+                theComponent->OnInit();
+
                 componentsForScene.emplace(comp.type, theComponent);
             }
 
             if (comp.type == "position")
             {
                 auto* theComponent = new PositionComponent(comp.posConfig->p);
+                theComponent->OnInit();
                 componentsForScene.emplace(comp.type, theComponent);
             }
 
@@ -66,6 +69,7 @@ namespace Neon
             {
                 // @todo, add data: key bindings
                 auto* theComponent = new MovementComponent();
+                theComponent->OnInit();
                 componentsForScene.emplace(comp.type, theComponent);
             }
 
@@ -78,6 +82,7 @@ namespace Neon
 
                 // @todo, make PosComp accept point so we can pass initial
                 auto* theComponent = new ShaderComponent(comp.shaderConfig->vertices, shaderPgm);
+                theComponent->OnInit();
 
                 componentsForScene.emplace(comp.type, theComponent);
             }
@@ -90,6 +95,7 @@ namespace Neon
 
                 auto shaderPgm = bridge.CreateShader(vertexPath,fragPath);
                 auto* theComponent = new TextComponent(comp.textConfig.text, shaderPgm);
+                theComponent->OnInit();
                 componentsForScene.emplace(comp.type, theComponent);
             }
 
@@ -134,6 +140,7 @@ namespace Neon
             if (comp.type == "collision")
             {
                 auto* theComponent = new CollisionComponent(comp.posConfig->p.x, comp.posConfig->p.y);
+                theComponent->OnInit();
                 componentsForScene.emplace(comp.type, theComponent);
             }
         }

@@ -31,9 +31,6 @@ namespace Neon
     {
         std::ifstream ifs(filepath);
         m_yamlRoot = fkyaml::node::deserialize(ifs);
-
-        std::cout << filepath << std::endl;
-        // std::cout << m_yamlRoot << std::endl;
     }
 
     YScene YamlReader::Init() const
@@ -44,12 +41,12 @@ namespace Neon
 
         YScene sceneConfig;
 
-        std::vector<YShader> shaders;
-        std::vector<YEntity> entities;
-        std::vector<YComponent> scene_components;
-        std::vector<YComponent> entity_components;
-
         sceneConfig.sceneType = SceneTypeConverter::Parse(sceneNode["type"].as_str());
+
+        for (const auto& scripts : sceneNode["scripts"])
+        {
+            sceneConfig.scripts.emplace_back(LoadComponent(scripts));
+        }
 
         for (const auto& component : sceneNode["components"])
         {
@@ -129,7 +126,7 @@ namespace Neon
             yComponent.configType = ConfigType::Script;
 
             yComponent.textConfig;
-            yComponent.textConfig.text = value["data"]["on_update"].as_str();
+            yComponent.textConfig.text = value["data"]["bind"].as_str();
         }
 
         if (yComponent.type == "shader")
