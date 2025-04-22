@@ -133,13 +133,17 @@ namespace Neon
 
     bool Scene::MakeComponent(const std::string& compoTag)
     {
-        auto components = ComponentLoader::CollectComponents(m_sceneConfig.components, mx_app->GetBridge());
-
-        for (auto& [c_type, comp] : components)
+        for (auto& c : m_sceneConfig.components)
         {
-            comp->SetScene(this);
-            AddComponent(compoTag, comp);
+            if (c.name == compoTag)
+            {
+                auto* realComponent = ComponentLoader::MakeComponentReal(c, mx_app->GetBridge());
+                realComponent->SetScene(this);
+                AddComponent(compoTag, realComponent);
+            }
         }
+
+        auto components = ComponentLoader::CollectComponents(m_sceneConfig.components, mx_app->GetBridge());
 
         return true;
     }
