@@ -318,7 +318,14 @@ namespace Neon
 
             [[nodiscard]] float GetWidth() const { return m_width; }
             [[nodiscard]] float GetHeight() const { return m_height; }
-            void OnCollision(Entity* other) {};
+
+            void OnCollision(Entity* other)
+            {
+                std::cout << "Collision detected" << std::endl;
+
+                // perhaps we can call a user script.
+                // or script can be part of a collision ?
+            };
 
         private:
             float m_width;

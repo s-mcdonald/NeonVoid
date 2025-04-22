@@ -13,6 +13,7 @@
  * Copyright (c) : 2024 Sam McDonald
  * Repository: https://github.com/s-mcdonald/NeonVoid
  */
+
 #include <fstream>
 #include <string>
 
@@ -149,6 +150,17 @@ namespace Neon
             }
 
             yComponent.shaderConfig->vertices = vertices;
+        }
+
+        if (yComponent.type == "collision")
+        {
+            yComponent.configType = ConfigType::Position;
+            if (value.contains("data"))
+            {
+                yComponent.posConfig = new YPosConfigData{};
+                yComponent.posConfig->p.x = value["data"]["box"]["x"].as_float();
+                yComponent.posConfig->p.y = value["data"]["box"]["y"].as_float();
+            }
         }
 
         return yComponent;

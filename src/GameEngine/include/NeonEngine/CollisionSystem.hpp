@@ -22,8 +22,21 @@ namespace Neon
 {
     class CollisionSystem
     {
-        void RegisterEntity(Entity* entity);
-        static bool AABBCollision(const CollisionComponent& a, const CollisionComponent& b);
+        public:
+            CollisionSystem() = default;
+            ~CollisionSystem() = default;
+            void RegisterEntity(Entity* entity);
+            static bool AABBCollision(
+                const CollisionComponent& aC,
+                const PositionComponent& aP,
+                const CollisionComponent& bC,
+                const PositionComponent& bP
+                );
+            void OnUpdate();
+
+        private:
+            void CheckCollision(Entity* a, Entity* b);
+            std::vector<Entity*> m_entities;
     };
 }
 
