@@ -26,7 +26,15 @@ namespace Neon
     {
         return[](Entity* e, Scene* scene)
         {
-            // ..
+            PositionComponent* x = e->GetComponent<PositionComponent>();
+            if (!x)
+            {
+                return;
+            }
+
+            Point p = x->GetPoint();
+            p.y += 0.0001;
+            x->UpdateData(p);
         };
     }
 }
