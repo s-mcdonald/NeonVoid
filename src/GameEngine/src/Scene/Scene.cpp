@@ -140,6 +140,8 @@ namespace Neon
             comp->SetScene(this);
             AddComponent(compoTag, comp);
         }
+
+        return true;
     }
 
     Entity* Scene::MakeEntity(const std::string& entityTag)
