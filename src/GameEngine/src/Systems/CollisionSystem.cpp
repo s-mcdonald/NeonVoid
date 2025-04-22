@@ -54,6 +54,11 @@ namespace Neon
         auto* collisionA = a->GetComponent<CollisionComponent>();
         auto* collisionB = b->GetComponent<CollisionComponent>();
 
+        if (collisionA == nullptr || collisionB == nullptr)
+        {
+            return;
+        }
+
         auto* collisionAP = a->GetComponent<PositionComponent>();
         auto* collisionBP = b->GetComponent<PositionComponent>();
 
