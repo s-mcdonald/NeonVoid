@@ -19,8 +19,8 @@
 #include <typeindex>
 #include <unordered_map>
 
-#include <NeonEngine/Components.hpp>
 #include <NeonEngine/Types.hpp>
+#include <NeonEngine/Components.hpp>
 
 namespace Neon 
 {

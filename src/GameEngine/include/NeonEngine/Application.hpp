@@ -13,6 +13,7 @@
  * Copyright (c) : 2024 Sam McDonald
  * Repository: https://github.com/s-mcdonald/NeonVoid
  */
+
 #pragma once
 
 #include <deque>
@@ -29,11 +30,9 @@ namespace Neon
             Application() = default;
             virtual ~Application();
 
-        public:
             virtual bool Initialize(WindowDimension width, WindowDimension height, const char* title);
             virtual void Run();
 
-        public:
             void AddScene(Scene* scene);
             Scene* GetCurrentScene();
             void SwitchScene();

@@ -13,6 +13,7 @@
  * Copyright (c) : 2024 Sam McDonald
  * Repository: https://github.com/s-mcdonald/NeonVoid
  */
+
 #pragma once
 
 #include <string>
@@ -29,7 +30,6 @@ namespace Neon
             AudioSystem();
             virtual ~AudioSystem();
 
-        public:
             virtual void Play(const std::string& filename);
             virtual void PlayOnce(const std::string& filename);
             virtual void PlayOnLoop(const std::string& filename);

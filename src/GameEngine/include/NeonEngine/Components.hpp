@@ -29,8 +29,6 @@ namespace Neon
 {
     class Scene;
     class Entity;
-    class Shader;
-    class IVertexBuffer;
 
     class Component
     {
