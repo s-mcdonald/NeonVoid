@@ -131,7 +131,7 @@ namespace Neon
         return m_sceneConfig.sceneType;
     }
 
-    bool Scene::MakeComponents(const std::string& compoTag)
+    bool Scene::MakeComponent(const std::string& compoTag)
     {
         auto components = ComponentLoader::CollectComponents(m_sceneConfig.components, mx_app->GetBridge());
 

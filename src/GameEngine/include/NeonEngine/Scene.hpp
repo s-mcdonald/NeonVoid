@@ -13,6 +13,7 @@
  * Copyright (c) : 2024 Sam McDonald
  * Repository: https://github.com/s-mcdonald/NeonVoid
  */
+
 #pragma once
 
 #include <string>
@@ -50,7 +51,7 @@ namespace Neon
 
             SceneType GetSceneType() const;
 
-            bool MakeComponents(const std::string& compoTag);
+            bool MakeComponent(const std::string& compoTag);
             Entity* MakeEntity(const std::string& entityTag);
 
         private:
