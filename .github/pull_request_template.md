@@ -14,7 +14,7 @@
 <!-- Mark the checkbox(es) that apply with an `x`. -->
 - [ ] Bug fix
 - [ ] New feature
-- [ ] Improvement/Optimizing
+- [ ] Feature Improvement/Optimizing
 - [ ] Refactoring/Code improvement
 - [ ] Documentation update
 - [ ] Other

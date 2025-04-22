@@ -6,15 +6,18 @@ A simple 2D GameEngine written in C++.
 
 ## About NeonVoid Engine
 
-This project started as a personal journey to learn C++. I have been inspired by the
+This project started as a personal journey to learn C++. I had been inspired by the
 YouTuber [The Cherno](https://github.com/thecherno) to venture and explore game development.
 
-What began as a simple one-day game project evolved into a more ambitious goal: building a game engine from the ground up.
-I didn't want to use Unity or UE, as I wanted to know how the inner mechanics worked.
+What began as a simple one-day game project to build a simple game, evolved into a more ambitious goal: building a game engine from the ground up.
+I didn't want to use Unity or UE, as I wanted to know how the inner mechanics of game engines and systems worked.
 
 
 ### OS Support
-Eventually this will support Windows and Linux OS. I am currently in phase 1, development so only OpenGL at this time on linux.
+Eventually, this project will support both Windows and Linux OS. I am currently in phase 1 and only developing on Linux currently.
+Once the project is in a state where a simple game can be developed, i will switch over to Windows to build in support and compatibility.
+
+It is unlikely I will ever get to implement DX or Vulkan; however, the project has been built to support it from the beginning.
 
 
 ### Backend API Support
@@ -48,6 +51,14 @@ There are a couple of VS options, select the one that suits your needs or modify
 ./scripts/setup-vs-2022.bat 
 ```
 
+### Game Engine Features
+
+| Features                                                 |
+|----------------------------------------------------------|
+| Collision Detection
+| Composable Entities
+| Separation of Runtime by Backend 
+
 
 
 ### Resources & Reference
@@ -63,12 +74,6 @@ There are a couple of VS options, select the one that suits your needs or modify
 | fkYAML | [Website](https://fktn-k.github.io/fkYAML/) | [Repository](https://github.com/fktn-k/fkYAML) | YAML I/O |
 | stb | - | [Repository](https://github.com/nothings/stb) | Text rendering |
 
-
-#### General Source Code Style
-- Using `*.hpp` for c++ headers.
-- Header files will be located within the `include` dir of the respective project.
-- Purposefully used only raw pointers, no smart pointers/shared pointers in this codebase.
-- Member Variables `m_` on stack or must be cleaned up by the owning obeject, `mx_` are not owned by the object so no cleanup required.
 
 #### Resources
 
