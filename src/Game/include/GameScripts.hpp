@@ -24,7 +24,8 @@ namespace Neon
     class SceneScript
     {
         public:
-            static std::function<void(Scene* scene)> GetUpdateScript();
+            static std::function<void(Scene* scene)> GetLevelOneInitScript();
+            static std::function<void(Scene* scene)> GetLevelOneUpdateScript();
     };
 
     class EntityScript
