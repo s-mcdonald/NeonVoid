@@ -84,7 +84,7 @@ set(GAME_ENGINE_SRC
         src/GameEngine/include/NeonEngine/SceneTypeConverter.hpp
         src/GameEngine/include/NeonEngine/EntityTypeConverter.hpp
         src/GameEngine/include/NeonEngine/YamlSceneAsserter.hpp
-
+        src/GameEngine/include/NeonEngine/CollisionSystem.hpp
 
         # App
         src/GameEngine/src/Application.cpp
@@ -93,6 +93,9 @@ set(GAME_ENGINE_SRC
         src/GameEngine/src/Assets/Loaders/YamlReader.cpp
         src/GameEngine/src/Assets/Loaders/ComponentLoader.cpp
         src/GameEngine/src/Assets/AssetManager.cpp
+
+        # Systems
+        src/GameEngine/src/Systems/CollisionSystem.cpp
 
         # Scene
         src/GameEngine/src/Scene/Scene.cpp

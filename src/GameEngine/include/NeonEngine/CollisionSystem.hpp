@@ -16,25 +16,27 @@
 
 #pragma once
 
-#include <string>
-
-#include <fkYAML/node.hpp>
-
-#include <NeonEngine/Types.hpp>
+#include <NeonEngine/Components.hpp>
 
 namespace Neon
 {
-    class YamlReader
+    class CollisionSystem
     {
         public:
-            YamlReader() = default;
-            void Read(const std::string& filepath);
-            YScene Init() const;
+            CollisionSystem() = default;
+            ~CollisionSystem() = default;
+            void RegisterEntity(Entity* entity);
+            static bool AABBCollision(
+                const CollisionComponent& aC,
+                const PositionComponent& aP,
+                const CollisionComponent& bC,
+                const PositionComponent& bP
+                );
+            void OnUpdate();
 
         private:
-            static YComponent LoadComponent(const fkyaml::basic_node<>& value) ;
-
-        private:
-            fkyaml::node m_yamlRoot{};
+            void CheckCollision(Entity* a, Entity* b);
+            std::vector<Entity*> m_entities;
     };
 }
+

@@ -51,7 +51,6 @@ namespace Neon
             }
         }
 
-        // Sanity check
         if (node["scene"] == nullptr)
         {
             throw std::runtime_error("Missing 'scene' node in YAML.");
@@ -131,6 +130,11 @@ namespace Neon
                         {
                             AssertValidateComponentTypeScript(component["data"]);
                         }
+                    }
+
+                    if (component["type"].as_str() == "collision")
+                    {
+                        AssertValidateComponentTypeCollision(component["data"]);
                     }
                 }
             }
@@ -316,7 +320,6 @@ namespace Neon
             throw std::runtime_error("scene.components.component.shader.data.frag IS required.");
         }
 
-
         if (false == value["name"].is_string())
         {
             throw std::runtime_error("scene.components.component.shader.data.name Must be a string");
@@ -382,6 +385,39 @@ namespace Neon
         if (false == value["on_update"].is_string())
         {
             throw std::runtime_error("component.script.data.on_update MUST be a string");
+        }
+    }
+
+    void YamlSceneAsserter::AssertValidateComponentTypeCollision(const fkyaml::basic_node<>& value)
+    {
+        if (false == value.is_mapping())
+        {
+            throw std::runtime_error("component.collision.data MUST be a mapping value");
+        }
+
+        if (false == value.contains("box"))
+        {
+            throw std::runtime_error("component.collision.data.box IS required");
+        }
+
+        if (false == value["box"].contains("x"))
+        {
+            throw std::runtime_error("component.collision.data.box.x must be provided");
+        }
+
+        if (false == value["box"].contains("y"))
+        {
+            throw std::runtime_error("component.collision.data.box.y must be provided");
+        }
+
+        if (false == value["box"]["x"].is_float_number())
+        {
+            throw std::runtime_error("component.collision.data.box.x must be a float");
+        }
+
+        if (false == value["box"]["y"].is_float_number())
+        {
+            throw std::runtime_error("component.collision.data.box.y must be a float");
         }
     }
 };

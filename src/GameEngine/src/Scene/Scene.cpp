@@ -62,6 +62,9 @@ namespace Neon
 
     void Scene::Update()
     {
+        // check for collision prior to other updates
+        m_collisionSystem.OnUpdate();
+
         // Scene components must be updated before entity components
         UpdateRenderable(m_components);
         UpdateRenderable(m_entities);
@@ -156,11 +159,18 @@ namespace Neon
             EntityID entityId = (entity.type == EntityType::Player) ? MAIN_PLAYER_ENTITY_ID : ++m_nextEntityID;
 
             auto* entityToAdd = new Entity(entityId);
-            for (auto [name, comp] : componentsForEntity)
+            for (auto [c_type, comp] : componentsForEntity)
             {
                 // redundant code, need to refactor, @see application comp->SetScene(scene);
                 comp->SetScene(this);
                 entityToAdd->AddComponent(comp);
+
+                if (c_type == "collision")
+                {
+                    //std::cout << "Adding component: " << c_type << " to E: " << entityToAdd->GetId() << std::endl;
+
+                    m_collisionSystem.RegisterEntity(entityToAdd);
+                }
             }
 
             AddEntity(entityToAdd->GetId(), entityToAdd);

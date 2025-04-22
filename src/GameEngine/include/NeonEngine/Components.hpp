@@ -21,8 +21,9 @@
 #include <ostream>
 #include <vector>
 
-#include <NeonEngine/AudioSystem.hpp>
 #include <NeonEngine/Types.hpp>
+#include <NeonEngine/AudioSystem.hpp>
+
 #include <NeonRuntime/ExtRuntime.hpp>
 
 namespace Neon
@@ -300,5 +301,34 @@ namespace Neon
             std::function<void(Scene* scene)> m_scriptOnUpdateScene;
             std::function<void(Entity* entity, Scene* scene)> m_scriptOnUpdateEntity;
             bool m_isEntityScript;
+    };
+
+    class CollisionComponent final : public Component
+    {
+        public:
+            CollisionComponent(float width, float height)
+                : m_width(width)
+                , m_height(height) {}
+            ~CollisionComponent() override {};
+
+            void OnInit() override {};
+            void OnUpdate() override {};
+            void OnRender() override {};
+            void OnDestroy() override {};
+
+            [[nodiscard]] float GetWidth() const { return m_width; }
+            [[nodiscard]] float GetHeight() const { return m_height; }
+
+            void OnCollision(Entity* other)
+            {
+                std::cout << "Collision detected" << std::endl;
+
+                // perhaps we can call a user script.
+                // or script can be part of a collision ?
+            };
+
+        private:
+            float m_width;
+            float m_height;
     };
 }

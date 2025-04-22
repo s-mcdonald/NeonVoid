@@ -42,8 +42,15 @@ scene:
           type: position
           data:
             initial:
-              x: 0.001
-              y: 0.001
+              x: 0.00
+              y: 0.00
+        -
+          name: playerCollision
+          type: collision
+          data:
+            box:
+              x: 0.15 # Box size HxW
+              y: 0.15 # Box size HxW
         -
           name: gunshot
           type: audio
@@ -75,6 +82,13 @@ scene:
             initial:
               x: 0.000
               y: 0.500
+        -
+          name: cherryCollision
+          type: collision
+          data:
+            box:
+              x: 0.05 # Box size HxW
+              y: 0.05 # Box size HxW
         -
           name: cherry
           type: shader

@@ -47,20 +47,20 @@ namespace Neon
                     theComponent->TriggerPlayOnce();
                 }
 
-                componentsForScene.emplace(comp.name, theComponent);
+                componentsForScene.emplace(comp.type, theComponent);
             }
 
             if (comp.type == "position")
             {
                 auto* theComponent = new PositionComponent(comp.posConfig->p);
-                componentsForScene.emplace(comp.name, theComponent);
+                componentsForScene.emplace(comp.type, theComponent);
             }
 
             if (comp.type == "movement")
             {
                 // @todo, add data: key bindings
                 auto* theComponent = new MovementComponent();
-                componentsForScene.emplace(comp.name, theComponent);
+                componentsForScene.emplace(comp.type, theComponent);
             }
 
             if (comp.type == "shader")
@@ -73,7 +73,7 @@ namespace Neon
                 // @todo, make PosComp accept point so we can pass initial
                 auto* theComponent = new ShaderComponent(comp.shaderConfig->vertices, shaderPgm);
 
-                componentsForScene.emplace(comp.name, theComponent);
+                componentsForScene.emplace(comp.type, theComponent);
             }
 
             if (comp.type == "text")
@@ -84,7 +84,7 @@ namespace Neon
 
                 auto shaderPgm = bridge.CreateShader(vertexPath,fragPath);
                 auto* theComponent = new TextComponent(comp.textConfig.text, shaderPgm);
-                componentsForScene.emplace(comp.name, theComponent);
+                componentsForScene.emplace(comp.type, theComponent);
             }
 
             if (comp.type == "script")
@@ -97,7 +97,7 @@ namespace Neon
                     {
                         auto funcCallback = FunctionRegistry::Get().FetchSceneScript(comp.textConfig.text);
                         auto* theComponent = new ScriptComponent(funcCallback);
-                        componentsForScene.emplace(comp.name, theComponent);
+                        componentsForScene.emplace(comp.type, theComponent);
                         break;
                     }
 
@@ -105,7 +105,7 @@ namespace Neon
                     {
                         auto funcCallback = FunctionRegistry::Get().FetchEntityScript(comp.textConfig.text);
                         auto* theComponent = new ScriptComponent(funcCallback);
-                        componentsForScene.emplace(comp.name, theComponent);
+                        componentsForScene.emplace(comp.type, theComponent);
                         break;
                     }
 
@@ -115,6 +115,12 @@ namespace Neon
                         break;
                     }
                 }
+            }
+
+            if (comp.type == "collision")
+            {
+                auto* theComponent = new CollisionComponent(comp.posConfig->p.x, comp.posConfig->p.y);
+                componentsForScene.emplace(comp.type, theComponent);
             }
         }
 

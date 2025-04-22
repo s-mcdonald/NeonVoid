@@ -18,8 +18,10 @@
 #include <string>
 #include <unordered_map>
 
-#include <NeonEngine/Entity.hpp>
 #include <NeonEngine/Components.hpp>
+#include <NeonEngine/Entity.hpp>
+
+#include <NeonEngine/CollisionSystem.hpp>
 
 namespace Neon
 {
@@ -73,6 +75,9 @@ namespace Neon
 
             template <typename T>
             void HandlesInput(const T& t, Input* input);
+
+            // make this a private member and use funcs instead
+            CollisionSystem m_collisionSystem;
 
         protected:
             std::unordered_map<EntityID, Entity*> m_entities;
