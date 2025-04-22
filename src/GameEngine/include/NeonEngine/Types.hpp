@@ -198,7 +198,16 @@ namespace Neon
 
     struct YScene {
         SceneType sceneType;
+        std::vector<YComponent> scripts;
         std::vector<YComponent> components;
         std::vector<YEntity> entities;
+    };
+
+    class Component;
+
+    struct MComp
+    {
+        std::string type{};
+        Component* mx_comp{nullptr};
     };
 }
