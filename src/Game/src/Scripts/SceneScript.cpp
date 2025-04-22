@@ -26,26 +26,15 @@ namespace Neon
     {
         return[](Scene* scene)
         {
-            try
-            {
-                // if (scene->MakeComponents("scene_renderable_test"))
-                // {
-                //     std::cout << "Render components" << std::endl;
-                // }
+            // if (scene->MakeComponent("scene_renderable_test"))
+            // {
+            //     std::cout << "Render components" << std::endl;
+            // }
+            //
 
-                if (scene->MakeEntity("mainPlayer"))
-                {
-                    std::cout << "Created Player Entity" << std::endl;
-                }
-
-            }
-            catch (const std::exception& e)
+            if (scene->MakeEntity("mainPlayer"))
             {
-                std::cout << "foo Exception in script: " << e.what() << std::endl;
-            }
-            catch (...)
-            {
-                std::cout << "Exception in script" << std::endl;
+                std::cout << "Created Player Entity" << std::endl;
             }
 
             if (scene->MakeEntity("cherryHealthPack"))
