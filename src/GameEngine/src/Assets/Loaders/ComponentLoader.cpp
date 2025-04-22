@@ -26,6 +26,10 @@
 
 namespace Neon
 {
+    /**
+     * This should only be called when creating/Making entities or components since this will call
+     * new on them.
+     */
     std::unordered_map<std::string, Component*> ComponentLoader::CollectComponents(
         std::vector<YComponent> components,
         RuntimeBridge& bridge
@@ -95,18 +99,26 @@ namespace Neon
                 ScriptType scriptType = FunctionRegistry::Get().FetchScriptType(comp.textConfig.text);
                 switch(scriptType)
                 {
-                    case ScriptType::Scene:
+                    case ScriptType::SceneInit:
                     {
-                        auto funcCallback = FunctionRegistry::Get().FetchSceneScript(comp.textConfig.text);
-                        auto* theComponent = new ScriptComponent(funcCallback);
+                        auto funcCallback = FunctionRegistry::Get().FetchSceneInitScript(comp.textConfig.text);
+                        auto* theComponent = new ScriptComponent(funcCallback, ScriptType::SceneInit);
                         componentsForScene.emplace(comp.type, theComponent);
                         break;
                     }
 
-                    case ScriptType::Entity:
+                    case ScriptType::SceneUpdate:
                     {
-                        auto funcCallback = FunctionRegistry::Get().FetchEntityScript(comp.textConfig.text);
-                        auto* theComponent = new ScriptComponent(funcCallback);
+                        auto funcCallback = FunctionRegistry::Get().FetchSceneUpdateScript(comp.textConfig.text);
+                        auto* theComponent = new ScriptComponent(funcCallback, ScriptType::SceneUpdate);
+                        componentsForScene.emplace(comp.type, theComponent);
+                        break;
+                    }
+
+                    case ScriptType::EntityUpdate:
+                    {
+                        auto funcCallback = FunctionRegistry::Get().FetchEntityUpdateScript(comp.textConfig.text);
+                        auto* theComponent = new ScriptComponent(funcCallback, ScriptType::EntityUpdate);
                         componentsForScene.emplace(comp.type, theComponent);
                         break;
                     }

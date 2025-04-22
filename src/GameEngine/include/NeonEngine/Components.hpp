@@ -238,31 +238,28 @@ namespace Neon
     class ScriptComponent final : public Component
     {
         public:
-            explicit ScriptComponent(const std::function<void(Scene* scene)>& onUpdate)
+            explicit ScriptComponent(const std::function<void(Scene* scene)>& onUpdate, ScriptType type)
                 : Component()
-                , m_scriptOnUpdateScene(onUpdate)
-                , m_scriptOnUpdateEntity(nullptr)
-                , m_isEntityScript(false)
+                , m_scriptScene(onUpdate)
+                , m_scriptEntity(nullptr)
+                , m_scriptType(type)
             {}
-            explicit ScriptComponent(const std::function<void(Entity* entity, Scene* scene)>& onUpdate)
+            explicit ScriptComponent(const std::function<void(Entity* entity, Scene* scene)>& onUpdate, ScriptType type)
                 : Component()
-                , m_scriptOnUpdateEntity(onUpdate)
-                , m_scriptOnUpdateScene(nullptr)
-                , m_isEntityScript(true)
+                , m_scriptEntity(onUpdate)
+                , m_scriptScene(nullptr)
+                , m_scriptType(type)
             {}
 
             ~ScriptComponent() override
             {
-                m_scriptOnUpdateScene = nullptr;
-                m_scriptOnUpdateEntity = nullptr;
-                m_isEntityScript = false;
+                m_scriptScene = nullptr;
+                m_scriptEntity = nullptr;
             };
 
-            void OnInit() override {}
-            void OnUpdate() override
+            void OnInit() override
             {
                 auto* _s = GetScene();
-                auto* _e = GetParentEntity();
 
                 if (_s == nullptr)
                 {
@@ -271,16 +268,9 @@ namespace Neon
 
                 try
                 {
-                    if (m_isEntityScript)
+                    if (m_scriptType == ScriptType::SceneInit)
                     {
-                        if (_e != nullptr && m_scriptOnUpdateEntity != nullptr)
-                        {
-                            m_scriptOnUpdateEntity(_e, _s);
-                        }
-                    }
-                    else
-                    {
-                        m_scriptOnUpdateScene(_s);
+                        m_scriptScene(_s);
                     }
                 }
                 catch (const std::exception& e)
@@ -293,13 +283,38 @@ namespace Neon
                 }
             }
 
+            void OnUpdate() override
+            {
+                auto* _s = GetScene();
+
+                if (_s == nullptr)
+                {
+                    return;
+                }
+
+                if (m_scriptType == ScriptType::EntityUpdate)
+                {
+                    auto* _e = GetParentEntity();
+
+                    if (_e != nullptr && m_scriptEntity != nullptr)
+                    {
+                        m_scriptEntity(_e, _s);
+                    }
+                }
+
+                if (m_scriptType == ScriptType::SceneUpdate)
+                {
+                    m_scriptScene(_s);
+                }
+            }
+
             void OnRender() override {}
             void OnDestroy() override {}
 
         private:
-            std::function<void(Scene* scene)> m_scriptOnUpdateScene;
-            std::function<void(Entity* entity, Scene* scene)> m_scriptOnUpdateEntity;
-            bool m_isEntityScript;
+            std::function<void(Scene* scene)> m_scriptScene;
+            std::function<void(Entity* entity, Scene* scene)> m_scriptEntity;
+            ScriptType m_scriptType;
     };
 
     class CollisionComponent final : public Component

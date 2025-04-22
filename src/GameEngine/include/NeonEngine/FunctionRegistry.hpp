@@ -34,45 +34,67 @@ namespace Neon
             }
 
             template<typename Func>
-            void RegisterSceneScript(const std::string& name, Func&& func)
+            void RegisterSceneInitScript(const std::string& name, Func&& func)
             {
-                m_functionsScenes[name] = std::forward<Func>(func);
+                m_functionsInitScenes[name] = std::forward<Func>(func);
             }
 
             template<typename Func>
-            void RegisterEntityScript(const std::string& name, Func&& func)
+            void RegisterSceneUpdateScript(const std::string& name, Func&& func)
+            {
+                m_functionsUpdateScenes[name] = std::forward<Func>(func);
+            }
+
+            template<typename Func>
+            void RegisterEntityUpdateScript(const std::string& name, Func&& func)
             {
                 m_functionsEntity[name] = std::forward<Func>(func);
             }
 
             ScriptType FetchScriptType(const std::string& name)
             {
-                auto it = m_functionsScenes.find(name);
-                if (it != m_functionsScenes.end())
+                auto it = m_functionsUpdateScenes.find(name);
+                if (it != m_functionsUpdateScenes.end())
                 {
-                    return ScriptType::Scene;
+                    return ScriptType::SceneUpdate;
                 }
 
                 auto eit = m_functionsEntity.find(name);
                 if (eit != m_functionsEntity.end())
                 {
-                    return ScriptType::Entity;
+                    return ScriptType::EntityUpdate;
+                }
+
+                auto eiti = m_functionsInitScenes.find(name);
+                if (eiti != m_functionsInitScenes.end())
+                {
+                    return ScriptType::SceneInit;
                 }
 
                 return ScriptType::None;
             }
 
-            std::function<void(Scene* scene)> FetchSceneScript(const std::string& name)
+            std::function<void(Scene* scene)> FetchSceneInitScript(const std::string& name)
             {
-                auto it = m_functionsScenes.find(name);
-                if (it != m_functionsScenes.end())
+                auto it = m_functionsInitScenes.find(name);
+                if (it != m_functionsInitScenes.end())
                 {
                     return it->second;
                 }
                 return nullptr;
             }
 
-            std::function<void(Entity* entity, Scene* scene)> FetchEntityScript(const std::string& name)
+            std::function<void(Scene* scene)> FetchSceneUpdateScript(const std::string& name)
+            {
+                auto it = m_functionsUpdateScenes.find(name);
+                if (it != m_functionsUpdateScenes.end())
+                {
+                    return it->second;
+                }
+                return nullptr;
+            }
+
+            std::function<void(Entity* entity, Scene* scene)> FetchEntityUpdateScript(const std::string& name)
             {
                 auto it = m_functionsEntity.find(name);
                 if (it != m_functionsEntity.end())
@@ -83,7 +105,8 @@ namespace Neon
             }
 
         private:
-            std::unordered_map<std::string, std::function<void(Scene* scene)>> m_functionsScenes;
+            std::unordered_map<std::string, std::function<void(Scene* scene)>> m_functionsInitScenes;
+            std::unordered_map<std::string, std::function<void(Scene* scene)>> m_functionsUpdateScenes;
             std::unordered_map<std::string, std::function<void(Entity* entity, Scene* scene)>> m_functionsEntity;
     };
 }
