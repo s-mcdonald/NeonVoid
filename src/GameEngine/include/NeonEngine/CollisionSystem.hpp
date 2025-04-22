@@ -24,7 +24,10 @@ namespace Neon
     {
         public:
             CollisionSystem() = default;
-            ~CollisionSystem() = default;
+            ~CollisionSystem()
+            {
+                m_entities.empty();
+            };
             void RegisterEntity(Entity* entity);
             static bool AABBCollision(
                 const CollisionComponent& aC,

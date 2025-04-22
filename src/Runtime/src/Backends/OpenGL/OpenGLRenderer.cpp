@@ -21,8 +21,20 @@
 #include <NeonRuntime/Backends/OpenGLHeaders.hpp>
 #include <NeonRuntime/Backends/OpenGLRenderer.hpp>
 
+// @todo : this class needs work!
 namespace Neon 
 {
+    void OpenGLRenderer::Clear()
+    {
+        glClearColor(0.3f,0.3f,0.3f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
+    }
+
+    void OpenGLRenderer::Reset()
+    {
+        glFlush();
+    }
+
     void OpenGLRenderer::BeginFrame()
     {
         glClearColor(0.0f,0.0f,0.0f, 1.0f);
