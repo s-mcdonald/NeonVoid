@@ -26,6 +26,9 @@ namespace Neon
             OpenGLRenderer() = default;
             ~OpenGLRenderer() override = default;
 
+            static void Clear();
+            static void Reset();
+
             void BeginFrame() override;
             void EndFrame() override;
             void RenderTriangle(uint32_t shaderProgram, uint32_t VAO, int vertexCount) override;

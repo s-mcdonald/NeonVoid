@@ -46,8 +46,6 @@ namespace Neon
             virtual void OnRender() {};
             virtual void OnDestroy() {};
 
-
-
             void AddEntity(EntityID id, Entity* entity);
             void AddComponent(const std::string& tag, Component* component);
             Component* GetComponent(const std::string& tag);
@@ -76,9 +74,6 @@ namespace Neon
             template <typename T>
             void HandlesInput(const T& t, Input* input);
 
-            // make this a private member and use funcs instead
-            CollisionSystem m_collisionSystem;
-
         protected:
             std::unordered_map<EntityID, Entity*> m_entities;
 
@@ -88,5 +83,6 @@ namespace Neon
             bool m_isInitialized = false;
             std::unordered_map<std::string, Component*> m_components;
             uint32_t m_nextEntityID;
+            CollisionSystem m_collisionSystem;
     };
 }

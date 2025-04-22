@@ -23,6 +23,7 @@
 #include <NeonRuntime/Backends/OpenGLInput.hpp>
 #include <NeonRuntime/Backends/OpenGLShader.hpp>
 #include <NeonRuntime/Backends/OpenGLHeaders.hpp>
+#include <NeonRuntime/Backends/OpenGLRenderer.hpp>
 
 namespace Neon 
 {
@@ -116,11 +117,7 @@ namespace Neon
 
         while (!glfwWindowShouldClose(m_window)) 
         {
-            //Renderer::Clear();
-            glClear(GL_COLOR_BUFFER_BIT);
-            glClearColor(0.0f, 0.0f, 0.0f, 0.5f);
-            // glClearColor(1.0f, 0.0f, 1.0f, 1.0f);
-            //end: Renderer::Clear();
+            OpenGLRenderer::Clear();
 
             auto* scene = application->GetCurrentScene();
             if (scene == nullptr)
@@ -143,6 +140,8 @@ namespace Neon
                 glfwSwapBuffers(m_window);
             }
         }
+
+        OpenGLRenderer::Reset();
     }
 
     IShader* OpenGL::CreateShader(const std::string& vertexPath, const std::string& fragmentPath)
