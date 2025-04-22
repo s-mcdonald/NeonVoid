@@ -275,11 +275,11 @@ namespace Neon
                 }
                 catch (const std::exception& e)
                 {
-                    std::cout << "Exception in script: " << e.what() << std::endl;
+                    std::cout << "Exception in OnInit::Script: " << e.what() << std::endl;
                 }
                 catch (...)
                 {
-                    std::cout << "Exception in script" << std::endl;
+                    std::cout << "Exception in OnInit::Script" << std::endl;
                 }
             }
 

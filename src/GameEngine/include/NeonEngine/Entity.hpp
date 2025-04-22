@@ -45,7 +45,7 @@ namespace Neon
                     return dynamic_cast<T*>(it->second);
                 }
 
-                throw std::runtime_error("Component of requested type not found!");
+                return nullptr;
             }
 
             // Check if the entity has a component of type T

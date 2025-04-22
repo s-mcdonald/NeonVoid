@@ -74,14 +74,10 @@ namespace Neon
 
     void Entity::HandleInput(Input* input)
     {
-        try
+        auto* movementComponent = GetComponent<MovementComponent>();
+        if (movementComponent)
         {
-            auto* movementComponent = GetComponent<MovementComponent>();
             movementComponent->HandleInput(input);
-        }
-        catch (const std::runtime_error& ex)
-        {
-            // ..
         }
     }
 
