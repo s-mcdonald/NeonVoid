@@ -27,7 +27,7 @@ scene:
       name: sceneScript
       type: script
       data:
-        on_update: "Scene::Foo"
+        on_update: "Scene::OnUpdate"
 
   entities:
     -
@@ -69,12 +69,12 @@ scene:
       type: HealthPack
       components:
         -
-          name: positionPlayer
+          name: positionCherry
           type: position
           data:
             initial:
-              x: 0.0000
-              y: 0.0000
+              x: 0.000
+              y: 0.500
         -
           name: cherry
           type: shader
@@ -184,3 +184,8 @@ scene:
               - [  0.0,    0.0,     1.0,  0.0,  0.0 ]
               - [  0.019, -0.0062,  1.0,  0.0,  0.0 ]
               - [  0.02,   0.0,     1.0,  0.0,  0.0 ]
+        -
+          name: cherryScript
+          type: script
+          data:
+            on_update: "Entity::Cherry::OnUpdate"

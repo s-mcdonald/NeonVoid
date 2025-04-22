@@ -13,29 +13,21 @@
  * Copyright (c) : 2024 Sam McDonald
  * Repository: https://github.com/s-mcdonald/NeonVoid
  */
-#pragma once
 
 #include <functional>
+#include <iostream>
+
+#include <NeonEngine/All.hpp>
+#include <GameScripts.hpp>
 
 namespace Neon
 {
-    class SceneScript
+    std::function<void(Entity* e, Scene* scene)> EntityScript::GetUpdateScript()
     {
-        public:
-            static std::function<void(Scene* scene)> GetUpdateScript()
-            {
-                return[](Scene* scene)
-                {
-                    if (scene->GetPlayerEntity())
-                    {
-                        std::cout << "We found the main player" << std::endl;
-                    }
-                    else
-                    {
-                        std::cout <<"We dont have a player entity" << std::endl;
-                    }
-                };
-            }
-    };
+        return[](Entity* e, Scene* scene)
+        {
+            // ..
+        };
+    }
 }
 

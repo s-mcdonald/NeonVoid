@@ -52,9 +52,14 @@ set(OpenGL_GL_PREFERENCE GLVND)
 # Game - Create the main game executable
 #
 set(GAME_SRC
+        # includes
+        src/Game/include/GameScripts.hpp
+
+        # src
         src/Game/src/MyGame.hpp
         src/Game/src/EntryMain.cpp
-        src/Game/include/SceneScript.hpp
+        src/Game/src/Scripts/EntityScript.cpp
+        src/Game/src/Scripts/SceneScript.cpp
 )
 
 #
