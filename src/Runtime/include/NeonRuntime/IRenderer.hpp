@@ -13,10 +13,14 @@
  * Copyright (c) : 2024 Sam McDonald
  * Repository: https://github.com/s-mcdonald/NeonVoid
  */
+
 #pragma once
 
 #include <cstdint>
 #include <string>
+
+#include <NeonRuntime/Backends/OpenGLVertexBuffer.hpp>
+#include <NeonRuntime/Backends/OpenGLTextBuffer.hpp>
 
 namespace Neon
 {
@@ -28,6 +32,7 @@ namespace Neon
             virtual void BeginFrame() = 0;
             virtual void EndFrame() = 0;
             virtual void RenderTriangle(uint32_t shaderProgram, uint32_t VAO, int vertexCount) = 0;
-            virtual void RenderText(uint32_t shaderProgram, uint32_t VAO, const std::string& text) = 0;
+            virtual void RenderText(uint32_t shaderProgram, ITextBuffer* vbuffer, int vertexCount, const std::string& text) = 0;
+            virtual void LoadFont(const std::string& fontPath, int fontSize) = 0;
     };
 }
