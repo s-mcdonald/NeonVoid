@@ -13,6 +13,7 @@
  * Copyright (c) : 2024 Sam McDonald
  * Repository: https://github.com/s-mcdonald/NeonVoid
  */
+
 #pragma once
 
 #include <NeonRuntime/BufferFactory.hpp>
@@ -30,6 +31,7 @@ namespace Neon
 
             IPlatform* GetPlatform() const;
             IVertexBuffer* CreateVertexBuffer(float* vertices, size_t size);
+            ITextBuffer* CreateTextBuffer(size_t bufferSize);
 
         private:
             RuntimeApi();
