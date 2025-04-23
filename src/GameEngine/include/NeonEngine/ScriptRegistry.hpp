@@ -24,12 +24,12 @@
 
 namespace Neon
 {
-    class FunctionRegistry
+    class ScriptRegistry
     {
         public:
-            static FunctionRegistry& Get()
+            static ScriptRegistry& Get()
             {
-                static FunctionRegistry instance;
+                static ScriptRegistry instance;
                 return instance;
             }
 

@@ -67,7 +67,7 @@ set(GAME_SRC
 set(GAME_ENGINE_SRC
         # Includes
         src/GameEngine/include/NeonEngine/YamlReader.hpp
-        src/GameEngine/include/NeonEngine/FunctionRegistry.hpp
+        src/GameEngine/include/NeonEngine/ScriptRegistry.hpp
         src/GameEngine/include/NeonEngine/ComponentLoader.hpp
         src/GameEngine/include/NeonEngine/AssetManager.hpp
         src/GameEngine/include/NeonEngine/Types.hpp

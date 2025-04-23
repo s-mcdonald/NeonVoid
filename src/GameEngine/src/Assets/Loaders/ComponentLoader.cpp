@@ -21,8 +21,8 @@
 #include <NeonEngine/Types.hpp>
 #include <NeonEngine/ComponentLoader.hpp>
 #include <NeonEngine/Components.hpp>
-#include <NeonEngine/FunctionRegistry.hpp>
 #include <NeonEngine/RuntimeBridge.hpp>
+#include <NeonEngine/ScriptRegistry.hpp>
 
 namespace Neon
 {
@@ -97,12 +97,12 @@ namespace Neon
         if (yComp.type == "script")
         {
             // @todo: reminder to clean this up later
-            ScriptType scriptType = FunctionRegistry::Get().FetchScriptType(yComp.textConfig.text);
+            ScriptType scriptType = ScriptRegistry::Get().FetchScriptType(yComp.textConfig.text);
             switch(scriptType)
             {
                 case ScriptType::SceneInit:
                 {
-                    auto funcCallback = FunctionRegistry::Get().FetchSceneInitScript(yComp.textConfig.text);
+                    auto funcCallback = ScriptRegistry::Get().FetchSceneInitScript(yComp.textConfig.text);
                     auto* theComponent = new ScriptComponent(funcCallback, ScriptType::SceneInit);
                     return theComponent;
                     break;
@@ -110,7 +110,7 @@ namespace Neon
 
                 case ScriptType::SceneUpdate:
                 {
-                    auto funcCallback = FunctionRegistry::Get().FetchSceneUpdateScript(yComp.textConfig.text);
+                    auto funcCallback = ScriptRegistry::Get().FetchSceneUpdateScript(yComp.textConfig.text);
                     auto* theComponent = new ScriptComponent(funcCallback, ScriptType::SceneUpdate);
                     return theComponent;
                     break;
@@ -118,7 +118,7 @@ namespace Neon
 
                 case ScriptType::EntityUpdate:
                 {
-                    auto funcCallback = FunctionRegistry::Get().FetchEntityUpdateScript(yComp.textConfig.text);
+                    auto funcCallback = ScriptRegistry::Get().FetchEntityUpdateScript(yComp.textConfig.text);
                     auto* theComponent = new ScriptComponent(funcCallback, ScriptType::EntityUpdate);
                     return theComponent;
                     break;
