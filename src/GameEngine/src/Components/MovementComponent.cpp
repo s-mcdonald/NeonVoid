@@ -77,9 +77,26 @@ namespace Neon
             m_velocity = glm::normalize(m_velocity) * NV_MAX_Velocity;
         }
 
+        if (m_directionInput.y > 0.0f) // direction up
+        {
+            float factor = (p.y < -0.90f) ? 1.3f :
+                           (p.y < -0.80f) ? 1.2f :
+                           (p.y < -0.50f) ? 1.1f :
+                           (p.y > 0.25f) ? 0.9f : 1.0f;
+
+            m_velocity.y /= factor;
+        }
+        else if (glm::length(m_directionInput) == 0.0f)
+        {
+            m_velocity.y -= NV_Gravity * deltaTime;
+        }
+
+
         // Update the position based on velocity
         p.x += m_velocity.x;
         p.y += m_velocity.y;
+
+
 
         // Clamp position to bounds
         const float bounds = component->GetBounds();
