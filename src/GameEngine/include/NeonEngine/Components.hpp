@@ -20,10 +20,10 @@
 #include <iostream>
 #include <ostream>
 #include <vector>
+#include <chrono>
 
 #include <NeonEngine/Types.hpp>
 #include <NeonEngine/AudioSystem.hpp>
-
 #include <NeonRuntime/ExtRuntime.hpp>
 
 namespace Neon
@@ -333,5 +333,94 @@ namespace Neon
         private:
             float m_width;
             float m_height;
+    };
+
+    class TimerComponent final : public Component
+    {
+        public:
+            TimerComponent(float delayInSeconds, const std::function<void()>& callback, const bool repeat = false)
+                : Component()
+                , m_delay(std::chrono::duration<float>(delayInSeconds))
+                , m_callback(callback)
+                , m_repeat(repeat)
+                , m_running(false)
+                , m_elapsedTime(0.0f)
+            {
+            }
+
+            ~TimerComponent() override = default;
+
+            void Start()
+            {
+                m_running = true;
+                m_elapsedTime = 0.0f;
+            }
+
+            void Stop()
+            {
+                m_running = false;
+            }
+
+            bool IsRunning() const
+            {
+                return m_running;
+            }
+
+            void SetRepeat(bool repeat)
+            {
+                m_repeat = repeat;
+            }
+
+            float GetElapsedTime() const
+            {
+                return m_elapsedTime;
+            }
+
+            void OnInit() override
+            {
+                if (m_running)
+                {
+                    m_elapsedTime = 0.0f;
+                }
+            }
+
+            void OnUpdate() override
+            {
+                if (!m_running)
+                {
+                    return;
+                }
+
+                m_elapsedTime += deltaTime;
+
+                if (m_elapsedTime >= m_delay.count())
+                {
+                    if (m_callback)
+                    {
+                        m_callback();
+                    }
+
+                    if (m_repeat)
+                    {
+                        m_elapsedTime -= m_delay.count();
+                    }
+                    else
+                    {
+                        Stop();
+                    }
+                }
+            }
+
+            void OnDestroy() override
+            {
+                Stop();
+            }
+
+        private:
+            std::chrono::duration<float> m_delay;
+            std::function<void()> m_callback;
+            bool m_repeat;
+            bool m_running;
+            float m_elapsedTime;
     };
 }

@@ -16,6 +16,7 @@
 
 #pragma once
 
+#include <NeonEngine/Types.hpp>
 #include <NeonEngine/Components.hpp>
 
 namespace Neon

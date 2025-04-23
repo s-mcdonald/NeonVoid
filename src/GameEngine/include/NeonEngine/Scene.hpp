@@ -19,9 +19,10 @@
 #include <string>
 #include <unordered_map>
 
+#include <NeonEngine/Types.hpp>
 #include <NeonEngine/Components.hpp>
 #include <NeonEngine/Entity.hpp>
-
+#include <NeonEngine/Application.hpp>
 #include <NeonEngine/CollisionSystem.hpp>
 
 namespace Neon
