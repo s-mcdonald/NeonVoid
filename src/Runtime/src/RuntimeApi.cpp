@@ -53,4 +53,9 @@ namespace Neon
     {
         return m_bufferFactory.CreateVertexBuffer(vertices, size);
     }
+
+    ITextBuffer* RuntimeApi::CreateTextBuffer(size_t size)
+    {
+        return m_bufferFactory.CreateTextBuffer(size);
+    }
 }

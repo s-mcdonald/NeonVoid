@@ -26,6 +26,11 @@ namespace Neon
     {
         return[](Scene* scene)
         {
+            if (scene->MakeComponent("sceneCompText"))
+            {
+                std::cout << "Render sceneCompText" << std::endl;
+            }
+
             if (scene->MakeComponent("sceneCompShader"))
             {
                 std::cout << "Render sceneCompShader" << std::endl;

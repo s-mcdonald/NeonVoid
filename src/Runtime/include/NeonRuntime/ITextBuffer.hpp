@@ -17,22 +17,22 @@
 #pragma once
 
 #include <cstdint>
-#include <string>
-
-#include <NeonRuntime/Backends/OpenGLVertexBuffer.hpp>
-#include <NeonRuntime/Backends/OpenGLTextBuffer.hpp>
 
 namespace Neon
 {
-    class IRenderer
+    class ITextBuffer
     {
         public:
-            virtual ~IRenderer() = default;
+            virtual ~ITextBuffer() = default;
 
-            virtual void BeginFrame() = 0;
-            virtual void EndFrame() = 0;
-            virtual void RenderTriangle(uint32_t shaderProgram, uint32_t VAO, int vertexCount) = 0;
-            virtual void RenderText(uint32_t shaderProgram, ITextBuffer* textbuffer, const std::string& text) = 0;
-            virtual void LoadFont(const std::string& fontPath, int fontSize) = 0;
+        public:
+            virtual void Init() = 0;
+            virtual void Update() const = 0;
+
+            virtual void Bind() const = 0;
+            virtual void Unbind() const = 0;
+
+            virtual uint32_t GetVao() = 0;
+            virtual uint32_t GetVbo() = 0;
     };
 }

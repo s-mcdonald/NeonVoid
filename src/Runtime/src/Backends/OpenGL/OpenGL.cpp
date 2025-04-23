@@ -51,15 +51,11 @@ namespace Neon
     {
         if (!glfwInit()) 
         {
-#if defined(NEON_DEBUG) && defined(NEON_DEBUG_VERBOSE)
-            std::cerr << "Failed to initialize GLFW!\n";
-#endif
-            
             return false;
         }
 
-        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
         //
@@ -101,6 +97,14 @@ namespace Neon
 
             glViewport(viewportX, viewportY, gameWidth, gameHeight);
         });
+
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glDisable(GL_DEPTH_TEST);
+
+        // std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
+
+        RuntimeApi::GetInstance().GetRenderer()->LoadFont("./assets/fonts/28DaysLater.ttf", 40); // Load font with size 48px
 
         m_openGlInitialized = true;
 

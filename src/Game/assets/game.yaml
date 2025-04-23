@@ -37,7 +37,8 @@ scene:
       name: sceneCompText
       type: text
       data:
-        text: "NeonVoid"
+        text: "Neon Void"
+        font: "./assets/fonts/default.ttf"
     -
       name: sceneCompShader
       type: shader

@@ -139,12 +139,14 @@ set(NEON_RUNTIME_SRC
         src/Runtime/include/NeonRuntime/IPlatform.hpp
         src/Runtime/include/NeonRuntime/IRenderer.hpp
         src/Runtime/include/NeonRuntime/IVertexBuffer.hpp
+        src/Runtime/include/NeonRuntime/ITextBuffer.hpp
         src/Runtime/include/NeonRuntime/Backends/OpenGLHeaders.hpp
         src/Runtime/include/NeonRuntime/Backends/OpenGL.hpp
         src/Runtime/include/NeonRuntime/Backends/OpenGLInput.hpp
         src/Runtime/include/NeonRuntime/Backends/OpenGLShader.hpp
         src/Runtime/include/NeonRuntime/Backends/OpenGLRenderer.hpp
         src/Runtime/include/NeonRuntime/Backends/OpenGLVertexBuffer.hpp
+        src/Runtime/include/NeonRuntime/Backends/OpenGLTextBuffer.hpp
 
         # Platform
         src/Runtime/src/RuntimeApi.cpp
@@ -155,6 +157,7 @@ set(NEON_RUNTIME_SRC
         src/Runtime/src/Backends/OpenGL/OpenGLShader.cpp
         src/Runtime/src/Backends/OpenGL/OpenGLRenderer.cpp
         src/Runtime/src/Backends/OpenGL/OpenGLVertexBuffer.cpp
+        src/Runtime/src/Backends/OpenGL/OpenGLTextBuffer.cpp
 
         # External compile
         src/Runtime/vendor/glad/glad.c

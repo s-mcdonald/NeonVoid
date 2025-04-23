@@ -16,23 +16,27 @@
 
 #pragma once
 
-#include <cstdint>
-#include <string>
-
-#include <NeonRuntime/Backends/OpenGLVertexBuffer.hpp>
-#include <NeonRuntime/Backends/OpenGLTextBuffer.hpp>
+#include <NeonRuntime/ITextBuffer.hpp>
 
 namespace Neon
 {
-    class IRenderer
+    class OpenGLTextBuffer final : public ITextBuffer
     {
         public:
-            virtual ~IRenderer() = default;
+            OpenGLTextBuffer() = default;
+            ~OpenGLTextBuffer() override;
 
-            virtual void BeginFrame() = 0;
-            virtual void EndFrame() = 0;
-            virtual void RenderTriangle(uint32_t shaderProgram, uint32_t VAO, int vertexCount) = 0;
-            virtual void RenderText(uint32_t shaderProgram, ITextBuffer* textbuffer, const std::string& text) = 0;
-            virtual void LoadFont(const std::string& fontPath, int fontSize) = 0;
+            void Init() override;
+            void Update() const override {};
+
+            void Bind() const override;
+            void Unbind() const override;
+
+            uint32_t GetVao() override;
+            uint32_t GetVbo() override;
+
+        private:
+            uint32_t m_VAO = 0;
+            uint32_t m_VBO = 0;
     };
 }

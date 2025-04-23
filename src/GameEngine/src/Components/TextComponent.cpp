@@ -24,52 +24,70 @@
 
 namespace Neon 
 {
-    TextComponent::TextComponent(const std::string& text, IShader* shader)
+    TextComponent::TextComponent(std::string text, IShader* shader)
         : Component()
         , m_text(std::move(text))
         , m_shader(shader)
     {
-        if (m_fontSize <= NV_MINIMUM_FONT_SIZE)
-        {
-            m_fontSize = NV_MINIMUM_FONT_SIZE;
-        }
+        // ..
     }
 
     TextComponent::~TextComponent()
     {
         m_text.clear();
-        m_fontSize = 0.0f;
-        if (m_shader) m_shader;
-        m_shader = nullptr;
+
+        if (m_buffer)
+        {
+            delete m_buffer;
+            m_buffer = nullptr;
+        }
+
+        if (m_shader)
+        {
+            delete m_shader;
+            m_shader = nullptr;
+        }
     }
 
+    void TextComponent::OnInit()
+    {
+        m_shader->Bind();
+
+        m_shader->OnInit();
+
+        size_t glyphSize = 96; // 96 bytes per glyph
+        size_t bufferSize = m_text.size() * glyphSize;
+
+        m_buffer = RuntimeApi::GetInstance().CreateTextBuffer(bufferSize);
+
+        m_buffer->Init();
+        m_buffer->Bind();
+        m_buffer->Unbind();
+
+        std::cout << "TextComponent Initialization Done" << std::endl;
+    }
+
+    // changes throughout the game here
     void TextComponent::OnUpdate() 
     {
-       /////////// RuntimeApi::GetInstance().GetRenderer()->RenderText(m_shader->GetShaderProgramId(), m_text );
+        // ..
     }
 
-    const std::string& TextComponent::GetText() const 
-    { 
-        return m_text; 
-    }
-
-    void TextComponent::SetText(const std::string& text) 
-    { 
-        m_text = text;
-    }
-
-    float TextComponent::GetFontSize() const 
-    { 
-        return m_fontSize; 
-    }
-
-    void TextComponent::SetFontSize(float fontSize) 
+    void TextComponent::OnRender()
     {
-        m_fontSize = fontSize; 
+        RuntimeApi::GetInstance().GetRenderer()->RenderText(
+            m_shader->GetShaderProgramId(),
+            m_buffer,
+            m_text
+        );
     }
 
-    Point TextComponent::GetPosition() const
+    void TextComponent::OnDestroy()
     {
-        return m_point;
+        if (m_shader)
+        {
+            m_shader->Unbind();
+            m_shader->OnDelete();
+        }
     }
 }

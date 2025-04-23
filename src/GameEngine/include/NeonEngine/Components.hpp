@@ -149,27 +149,18 @@ namespace Neon
     class TextComponent final : public Component
     {
         public:
-            explicit TextComponent(const std::string& text, IShader* shader);
+            explicit TextComponent(std::string text, IShader* shader);
             ~TextComponent() override;
-            [[nodiscard]] const std::string& GetText() const;
-            void SetText(const std::string& text);
 
-            [[nodiscard]] float GetFontSize() const;
-            void SetFontSize(float fontSize);
-
-            void OnInit() override {};
+            void OnInit() override;
             void OnUpdate() override;
-            void OnRender() override {};
-
-            [[nodiscard]] Point GetPosition() const;
-            void OnDestroy() override {};
+            void OnRender() override;
+            void OnDestroy() override;
 
         private:
             std::string m_text;
             IShader* m_shader;
-            IVertexBuffer* m_buffer{};
-            float m_fontSize{NV_DEFAULT_FONT_SIZE};
-            Point m_point{};
+            ITextBuffer* m_buffer{};
     };
 
     class ShaderComponent final
@@ -187,8 +178,6 @@ namespace Neon
             void OnUpdate() override;
             void OnRender() override {};
             void OnDestroy() override;
-
-            void UpdateData(const std::vector<float>& vertices);
 
         private:
             IShader* m_shader;
