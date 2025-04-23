@@ -18,12 +18,28 @@
 #include <iostream>
 #include <map>
 
+#include <NeonEngine/Types.hpp>
 #include <NeonRuntime/Backends/OpenGLHeaders.hpp>
+#include <NeonRuntime/Backends/OpenGLVertexBuffer.hpp>
 #include <NeonRuntime/Backends/OpenGLRenderer.hpp>
 
 // @todo : this class needs work!
 namespace Neon 
 {
+    OpenGLRenderer::~OpenGLRenderer()
+    {
+        if (m_face)
+        {
+            FT_Done_Face(m_face);
+        }
+
+        if (m_ft)
+        {
+            FT_Done_FreeType(m_ft);
+        }
+    }
+
+
     void OpenGLRenderer::Clear()
     {
         glClearColor(0.3f,0.3f,0.3f, 1.0f);
@@ -55,9 +71,116 @@ namespace Neon
         glBindVertexArray(0);
     }
 
-    void OpenGLRenderer::RenderText(const GLuint shaderProgram, const GLuint VAO, const std::string& text)
+    void OpenGLRenderer::RenderText(const GLuint shaderProgram, ITextBuffer* textBuffer, const GLsizei vertexCount, const std::string& text)
     {
-        // ..
-        std::cout << "Rendering Text: " << text << std::endl;
+        std::cout << "RenderText(" << text << std::endl;
+
+        glm::ortho(0.0f, 800.0f, 0.0f, 800.0f);
+
+        float x = 25.0f;
+        float y = 300.0f;
+
+        float scale = 1.0f;
+
+        glUseProgram(shaderProgram);
+        glUniform3f(glGetUniformLocation(shaderProgram, "textColor"), 1.0f, 0.0f, 0.0f);
+        glActiveTexture(GL_TEXTURE0);
+        glBindVertexArray(textBuffer->GetVao());
+
+        // iterate through all characters
+        std::string::const_iterator c;
+        for (c = text.begin(); c != text.end(); c++)
+        {
+            Character ch = Characters[*c];
+
+            std::cout << "Rendering char: " << *c << ", TexID: " << ch.TextureID << ", Size: " << ch.Size.x << "x" << ch.Size.y << std::endl;
+
+            float xpos = x + ch.Bearing.x * scale;
+            float ypos = y - (ch.Size.y - ch.Bearing.y) * scale;
+
+            float w = ch.Size.x * scale;
+            float h = ch.Size.y * scale;
+            // update VBO for each character
+            float vertices[6][4] = {
+                { xpos,     ypos + h,   0.0f, 0.0f },
+                { xpos,     ypos,       0.0f, 1.0f },
+                { xpos + w, ypos,       1.0f, 1.0f },
+
+                { xpos,     ypos + h,   0.0f, 0.0f },
+                { xpos + w, ypos,       1.0f, 1.0f },
+                { xpos + w, ypos + h,   1.0f, 0.0f }
+            };
+            // render glyph texture over quad
+            glBindTexture(GL_TEXTURE_2D, ch.TextureID);
+            // update content of VBO memory
+            glBindBuffer(GL_ARRAY_BUFFER, textBuffer->GetVbo());
+            glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
+            glBindBuffer(GL_ARRAY_BUFFER, 0);
+            // render quad
+            glDrawArrays(GL_TRIANGLES, 0, 6);
+            // now advance cursors for next glyph (note that advance is number of 1/64 pixels)
+            x += (ch.Advance >> 6) * scale; // bitshift by 6 to get value in pixels (2^6 = 64)
+        }
+        glBindVertexArray(0);
+        glBindTexture(GL_TEXTURE_2D, 0);
+    }
+
+    // code from: https://learnopengl.com/In-Practice/Text-Rendering
+    void OpenGLRenderer::LoadFont(const std::string& fontPath, int fontSize)
+    {
+        std::cout << "Loading font: " << fontPath << " with font size " << fontSize << std::endl;
+
+        if (FT_Init_FreeType(&m_ft))
+        {
+            std::cout << "ERROR::FREETYPE: Could not init FreeType Library" << std::endl;
+            return;
+        }
+
+        if (FT_New_Face(m_ft, fontPath.c_str(), 0, &m_face))
+        {
+            std::cout << "ERROR::FREETYPE: Failed to load font" << std::endl;
+            return;
+        }
+
+        FT_Set_Pixel_Sizes(m_face, 0, 48);
+
+        glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+
+        for (unsigned char c = 0; c < 128; c++)
+        {
+            if (FT_Load_Char(m_face, c, FT_LOAD_RENDER))
+            {
+                std::cout << "ERROR::FREETYTPE: Failed to load Glyph" << std::endl;
+                continue;
+            }
+            // generate texture
+            unsigned int texture;
+            glGenTextures(1, &texture);
+            glBindTexture(GL_TEXTURE_2D, texture);
+            glTexImage2D(
+                GL_TEXTURE_2D,
+                0,
+                GL_RED,
+                m_face->glyph->bitmap.width,
+                m_face->glyph->bitmap.rows,
+                0,
+                GL_RED,
+                GL_UNSIGNED_BYTE,
+                m_face->glyph->bitmap.buffer
+            );
+            // set texture options
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+            // now store character for later use
+            Character character = {
+                texture,
+                glm::ivec2(m_face->glyph->bitmap.width, m_face->glyph->bitmap.rows),
+                glm::ivec2(m_face->glyph->bitmap_left, m_face->glyph->bitmap_top),
+                m_face->glyph->advance.x
+            };
+            Characters.insert(std::pair<char, Character>(c, character));
+        }
     }
 }

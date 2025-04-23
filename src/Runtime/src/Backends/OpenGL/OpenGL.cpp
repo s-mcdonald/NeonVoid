@@ -98,6 +98,14 @@ namespace Neon
             glViewport(viewportX, viewportY, gameWidth, gameHeight);
         });
 
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glDisable(GL_DEPTH_TEST);
+
+        // std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
+
+        RuntimeApi::GetInstance().GetRenderer()->LoadFont("./assets/fonts/28DaysLater.ttf", 40); // Load font with size 48px
+
         m_openGlInitialized = true;
 
         return true;
