@@ -67,24 +67,10 @@ namespace Neon
         std::cout << "TextComponent Initialization Done" << std::endl;
     }
 
+    // changes throughout the game here
     void TextComponent::OnUpdate() 
     {
-        glm::uint32 texId = 0;
-
-        glUseProgram(m_shader->GetShaderProgramId());
-        glUniform1i(glGetUniformLocation(m_shader->GetShaderProgramId(), "text"), texId);
-
-
-        glUniform3f(glGetUniformLocation(m_shader->GetShaderProgramId(), "textColor"), 1.0f, 0.0f, 0.0f);
-
-
-        glm::mat4 projection = glm::ortho(0.0f, 800.0f, 0.0f, 800.0f);
-        glUniformMatrix4fv(
-            glGetUniformLocation(m_shader->GetShaderProgramId(), "projection"),
-            1,
-            GL_FALSE,
-            glm::value_ptr(projection)
-        );
+        // ..
     }
 
     void TextComponent::OnRender()
@@ -92,7 +78,6 @@ namespace Neon
         RuntimeApi::GetInstance().GetRenderer()->RenderText(
             m_shader->GetShaderProgramId(),
             m_buffer,
-            1, // remove this
             m_text
         );
     }

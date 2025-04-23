@@ -71,15 +71,15 @@ namespace Neon
         glBindVertexArray(0);
     }
 
-    void OpenGLRenderer::RenderText(const GLuint shaderProgram, ITextBuffer* textBuffer, const GLsizei vertexCount, const std::string& text)
+    void OpenGLRenderer::RenderText(const GLuint shaderProgram, ITextBuffer* textBuffer, const std::string& text)
     {
         std::cout << "RenderText(" << text << std::endl;
 
         glm::ortho(0.0f, 800.0f, 0.0f, 800.0f);
 
+        // position
         float x = 25.0f;
         float y = 300.0f;
-
         float scale = 1.0f;
 
         glUseProgram(shaderProgram);
@@ -87,13 +87,21 @@ namespace Neon
         glActiveTexture(GL_TEXTURE0);
         glBindVertexArray(textBuffer->GetVao());
 
+
+        glm::mat4 projection = glm::ortho(0.0f, 800.0f, 0.0f, 800.0f);
+        glUniformMatrix4fv(
+            glGetUniformLocation(shaderProgram, "projection"),
+            1,
+            GL_FALSE,
+            glm::value_ptr(projection)
+        );
+
+
         // iterate through all characters
         std::string::const_iterator c;
-        for (c = text.begin(); c != text.end(); c++)
+        for (c = text.begin(); c != text.end(); ++c)
         {
             Character ch = Characters[*c];
-
-            std::cout << "Rendering char: " << *c << ", TexID: " << ch.TextureID << ", Size: " << ch.Size.x << "x" << ch.Size.y << std::endl;
 
             float xpos = x + ch.Bearing.x * scale;
             float ypos = y - (ch.Size.y - ch.Bearing.y) * scale;
