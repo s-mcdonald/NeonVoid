@@ -18,8 +18,8 @@
 #include <string>
 #include <unordered_map>
 
-#include <NeonEngine/EntityTypeConverter.hpp>
 #include <NeonEngine/Types.hpp>
+#include <NeonEngine/EntityTypeConverter.hpp>
 
 namespace Neon
 {
@@ -35,44 +35,46 @@ namespace Neon
         {EntityType::HealthPack, "HealthPack"},
     };
 
+    namespace
+    {
+        template <typename MapType, typename KeyType, typename ValueType>
+        bool FindInMap(const MapType& map, const KeyType& key, ValueType& value)
+        {
+            auto it = map.find(key);
+            if (it != map.end())
+            {
+                value = it->second;
+                return true;
+            }
+            return false;
+        }
+    }
+
     bool EntityTypeConverter::TryParse(const std::string& str, EntityType& outType)
     {
-        auto it = EntityTypeConverter::stringToEnum.find(str);
-        if (it != EntityTypeConverter::stringToEnum.end())
-        {
-            outType = it->second;
-            return true;
-        }
-        return false;
+        return FindInMap(stringToEnum, str, outType);
     }
 
     bool EntityTypeConverter::IsValid(const std::string& str)
     {
-        auto it = EntityTypeConverter::stringToEnum.find(str);
-        if (it != EntityTypeConverter::stringToEnum.end())
-        {
-            return true;
-        }
-        return false;
+        EntityType temp;
+        return FindInMap(stringToEnum, str, temp);
     }
 
     EntityType EntityTypeConverter::Parse(const std::string& str)
     {
-        auto it = EntityTypeConverter::stringToEnum.find(str);
-        if (it != EntityTypeConverter::stringToEnum.end())
+        try
         {
-            return it->second;
+            return stringToEnum.at(str);
         }
-        throw std::runtime_error("Unable to convert string to EntityType.");
+        catch (const std::out_of_range&)
+        {
+            throw std::runtime_error("Unable to convert string to EntityType.");
+        }
     }
 
     std::string EntityTypeConverter::ToString(EntityType type)
     {
-        auto it = enumToString.find(type);
-        if (it != enumToString.end())
-        {
-            return it->second;
-        }
-        throw std::runtime_error("Unable to convert EntityType to string.");
+        return enumToString.at(type);
     }
 };

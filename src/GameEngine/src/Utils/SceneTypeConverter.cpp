@@ -18,8 +18,8 @@
 #include <string>
 #include <unordered_map>
 
-#include <NeonEngine/SceneTypeConverter.hpp>
 #include <NeonEngine/Types.hpp>
+#include <NeonEngine/SceneTypeConverter.hpp>
 
 namespace Neon
 {
@@ -37,44 +37,46 @@ namespace Neon
         {SceneType::Pause, "Pause"}
     };
 
+    namespace
+    {
+        template <typename MapType, typename KeyType, typename ValueType>
+        bool FindInMap(const MapType& map, const KeyType& key, ValueType& value)
+        {
+            auto it = map.find(key);
+            if (it != map.end())
+            {
+                value = it->second;
+                return true;
+            }
+            return false;
+        }
+    }
+
     bool SceneTypeConverter::TryParse(const std::string& str, SceneType& outType)
     {
-        auto it = SceneTypeConverter::stringToEnum.find(str);
-        if (it != SceneTypeConverter::stringToEnum.end())
-        {
-            outType = it->second;
-            return true;
-        }
-        return false;
+        return FindInMap(stringToEnum, str, outType);
     }
 
     bool SceneTypeConverter::IsValid(const std::string& str)
     {
-        auto it = SceneTypeConverter::stringToEnum.find(str);
-        if (it != SceneTypeConverter::stringToEnum.end())
-        {
-            return true;
-        }
-        return false;
+        SceneType temp;
+        return FindInMap(stringToEnum, str, temp);
     }
 
     SceneType SceneTypeConverter::Parse(const std::string& str)
     {
-        auto it = SceneTypeConverter::stringToEnum.find(str);
-        if (it != SceneTypeConverter::stringToEnum.end())
+        try
         {
-            return it->second;
+            return stringToEnum.at(str);
         }
-        throw std::runtime_error("Unable to convert string to SceneType.");
+        catch (const std::out_of_range&)
+        {
+            throw std::runtime_error("Unable to convert string to SceneType.");
+        }
     }
 
     std::string SceneTypeConverter::ToString(SceneType type)
     {
-        auto it = enumToString.find(type);
-        if (it != enumToString.end())
-        {
-            return it->second;
-        }
-        throw std::runtime_error("Unable to convert SceneType to string.");
+        return enumToString.at(type);
     }
 };
