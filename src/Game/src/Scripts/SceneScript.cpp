@@ -26,10 +26,10 @@ namespace Neon
     {
         return[](Scene* scene)
         {
-            // if (scene->MakeComponent("scene_renderable_test"))
-            // {
-            //     std::cout << "Render components" << std::endl;
-            // }
+            if (scene->MakeComponent("scene_renderable_test"))
+            {
+                std::cout << "Render components" << std::endl;
+            }
             //
 
             if (scene->MakeEntity("mainPlayer"))
