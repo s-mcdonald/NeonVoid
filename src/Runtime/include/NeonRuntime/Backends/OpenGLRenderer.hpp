@@ -41,12 +41,12 @@ namespace Neon
             void BeginFrame() override;
             void EndFrame() override;
             void RenderTriangle(uint32_t shaderProgram, uint32_t VAO, int vertexCount) override;
-            void RenderText(uint32_t shaderProgram, ITextBuffer* vbuffer, const std::string& text) override;
+            void RenderText(uint32_t shaderProgram, ITextBuffer* textBuffer, const std::string& text) override;
 
-            void LoadFont(const std::string& fontPath, int fontSize) override;
+            void LoadFont(const std::string& fontPath) override;
 
         private:
-            std::map<char, Character> Characters;
+            std::map<char, Character> Characters; // prob move this away from the renderer so each TextComp can have its own texture
             FT_Library m_ft;
             FT_Face m_face;
     };
