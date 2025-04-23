@@ -34,6 +34,6 @@ namespace Neon
             IShader* CreateShader(const std::string& vertexPath, const std::string& fragmentPath) const;
 
         private:
-            IPlatform* m_platform;
+            IPlatform* mx_platform;
     };
 }
