@@ -25,13 +25,10 @@ namespace Neon
             RuntimeBridge();
             ~RuntimeBridge();
 
-        public:
             bool Initialize(int width, int height, const char* title) const;
             void Run(Application* application) const;
 
-            [[nodiscard]] IPlatform* GetPlatform() const;
-
-            IShader* CreateShader(const std::string& vertexPath, const std::string& fragmentPath) const;
+            [[nodiscard]] IShader* CreateShader(const std::string& vertexPath, const std::string& fragmentPath) const;
 
         private:
             IPlatform* mx_platform;

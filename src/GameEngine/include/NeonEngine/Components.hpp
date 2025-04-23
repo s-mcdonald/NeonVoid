@@ -37,16 +37,16 @@ namespace Neon
             Component() = default;
             virtual ~Component() = default;
 
-            [[nodiscard]] Entity* GetParentEntity() const { return m_entityParent; };
+            [[nodiscard]] Entity* GetParentEntity() const { return mx_entityParent; };
             void SetParentEntity(Entity* parent)
             {
-                m_entityParent = parent;
+                mx_entityParent = parent;
             }
 
-            [[nodiscard]] Scene* GetScene() const { return m_scene; };
+            [[nodiscard]] Scene* GetScene() const { return mx_scene; };
             void SetScene(Scene* parent)
             {
-                m_scene = parent;
+                mx_scene = parent;
             }
 
         public:
@@ -56,8 +56,8 @@ namespace Neon
             virtual void OnDestroy() {};
 
         private:
-            Entity* m_entityParent = nullptr;
-            Scene* m_scene = nullptr;
+            Entity* mx_entityParent = nullptr;
+            Scene* mx_scene = nullptr;
     };
 
     class PositionComponent final : public Component

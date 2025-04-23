@@ -39,11 +39,6 @@ namespace Neon
         mx_platform->Run(application);
     }
 
-    IPlatform* RuntimeBridge::GetPlatform() const
-    {
-        return mx_platform;
-    }
-
     IShader* RuntimeBridge::CreateShader(const std::string& vertexPath, const std::string& fragmentPath) const
     {
         return mx_platform->CreateShader(vertexPath, fragmentPath);
