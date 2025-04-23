@@ -3,15 +3,6 @@ scene:
   title: "Sandbox Zone"
   type: Gameplay
 
-  window:
-    allow_max: false
-    allow_min: true
-    top_most: false
-    show_icon: false
-    resolution:
-      width: 800
-      height: 600
-
   gameplay:
     config:
       enable_bonus: true
@@ -20,6 +11,19 @@ scene:
     points:
       bonus: 100
       enemy_collision: -250
+
+  # Fonts via YAML not fully impl yet. The idea is that the TextComponent
+  # will have a ref to the desired loaded text buffer for now the
+  # font loaded will be the first of the seq.
+  fonts:
+    -
+      name: 28_days_later
+      size: 40.0
+      path: "./assets/fonts/28DaysLater.ttf"
+    -
+      name: default
+      size: 20.0
+      path: "./assets/fonts/default.ttf"
 
   # Scripts are just components; however, they load up when the scene is created.
   scripts:
@@ -35,18 +39,6 @@ scene:
       data:
         bind: "Scene::OnUpdate"
 
-  # font config via yaml not impl yet, but considering this structure,
-  # the idea is that the TextComponent will have a ref to the desired loaded text buffer
-  # for now the font loaded will be the first of the seq.
-  fonts:
-    -
-      name: &default
-      size: 20
-      path: "./assets/fonts/default.ttf"
-    -
-      name: &28_days_later
-      size: 40
-      path: "./assets/fonts/28DaysLater.ttf"
 
   components:
     -
@@ -61,7 +53,7 @@ scene:
       type: text
       data:
         text: "Neon Void"
-        font: *28_days_later
+        font: 28_days_later
     -
       name: sceneCompShader
       type: shader

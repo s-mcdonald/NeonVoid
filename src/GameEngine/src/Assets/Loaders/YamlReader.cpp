@@ -43,16 +43,62 @@ namespace Neon
 
         sceneConfig.sceneType = SceneTypeConverter::Parse(sceneNode["type"].as_str());
 
+        ///
+        /// GAMEPLAY
+        ///
+        if (sceneNode.contains("gameplay"))
+        {
+            sceneConfig.gamePlay.enable_bonus = sceneNode["gameplay"]["config"]["enable_bonus"].as_bool();
+            sceneConfig.gamePlay.enable_gravity = sceneNode["gameplay"]["config"]["enable_gravity"].as_bool();
+            sceneConfig.gamePlay.enable_friction = sceneNode["gameplay"]["config"]["enable_friction"].as_bool();
+            sceneConfig.gamePlay.bonus = sceneNode["gameplay"]["points"]["bonus"].as_int();
+            sceneConfig.gamePlay.enemy_collision = sceneNode["gameplay"]["points"]["enemy_collision"].as_int();
+        }
+        else
+        {
+            // defaults
+            sceneConfig.gamePlay.enable_bonus = false;
+            sceneConfig.gamePlay.enable_gravity = false;
+            sceneConfig.gamePlay.enable_friction = false;
+            sceneConfig.gamePlay.bonus = 0;
+            sceneConfig.gamePlay.enemy_collision = 0;
+        }
+
+        ///
+        /// FONTS
+        ///
+        if (sceneNode.contains("fonts"))
+        {
+            for (auto& font : sceneNode["fonts"])
+            {
+                sceneConfig.fonts.name = font["name"].as_str();
+                sceneConfig.fonts.path = font["path"].as_str();
+                sceneConfig.fonts.size = font["size"].as_float();
+                // hack exit for now since we can only load the first font
+                break;
+            }
+        }
+
+
+        ///
+        /// SCRIPTS
+        ///
         for (const auto& scripts : sceneNode["scripts"])
         {
             sceneConfig.scripts.emplace_back(LoadComponent(scripts));
         }
 
+        ///
+        /// COMPONENTS
+        ///
         for (const auto& component : sceneNode["components"])
         {
             sceneConfig.components.emplace_back(LoadComponent(component));
         }
 
+        ///
+        /// ENTITIES
+        ///
         for (const auto& entity : sceneNode["entities"])
         {
             YEntity sceneEntity;

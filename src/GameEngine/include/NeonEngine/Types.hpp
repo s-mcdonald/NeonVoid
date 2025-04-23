@@ -201,6 +201,22 @@ namespace Neon
     };
 
     struct YScene {
+        std::string id;
+        std::string title;
+        struct YGamePlay
+        {
+            bool enable_bonus;
+            bool enable_gravity;
+            bool enable_friction;
+            int16_t bonus;
+            int16_t enemy_collision;
+        } gamePlay;
+        struct YFonts
+        {
+            std::string name;
+            float size;
+            std::string path;
+        } fonts; //single font for now, but future change to vector.
         SceneType sceneType;
         std::vector<YComponent> scripts;
         std::vector<YComponent> components;

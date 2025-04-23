@@ -14,6 +14,7 @@
  * Repository: https://github.com/s-mcdonald/NeonVoid
  */
 
+#include <iostream>
 #include <stdexcept>
 #include <string>
 
@@ -38,6 +39,28 @@ namespace Neon
                 if (sceneKey == "type")
                 {
                     AssertSceneTypeYaml(sceneValue);
+                }
+
+                // gameplay is optional, so only assert if we have it
+                if (sceneKey == "gameplay")
+                {
+                    AssertGamePlayYaml(sceneValue);
+                }
+
+                // fonts are required if you want to display text
+                // ideally, I need to provide a default font so
+                // it can be an optional key.
+                if (sceneKey == "fonts")
+                {
+                    AssertFontsYaml(sceneValue);
+                }
+
+                if (sceneKey == "scripts")
+                {
+                    for (auto s : sceneValue.as_seq())
+                    {
+                        AssertValidateComponentTypeScript(s.as_map()["data"]);
+                    }
                 }
 
                 if (sceneKey == "components")
@@ -375,17 +398,17 @@ namespace Neon
     {
         if (false == value.is_mapping())
         {
-            throw std::runtime_error("component.script.data MUST be a mapping value");
+            throw std::runtime_error("script.data MUST be a mapping value");
         }
 
         if (false == value.contains("bind"))
         {
-            throw std::runtime_error("component.script.data.bind IS required");
+            throw std::runtime_error("script.data.bind IS required");
         }
 
         if (false == value["bind"].is_string())
         {
-            throw std::runtime_error("component.script.data.bind MUST be a string");
+            throw std::runtime_error("script.data.bind MUST be a string");
         }
     }
 
@@ -419,6 +442,100 @@ namespace Neon
         if (false == value["box"]["y"].is_float_number())
         {
             throw std::runtime_error("component.collision.data.box.y must be a float");
+        }
+    }
+
+    void YamlSceneAsserter::AssertGamePlayYaml(const fkyaml::basic_node<>& value)
+    {
+        if (false == value.is_mapping())
+        {
+            throw std::runtime_error("scene.gameplay MUST be a mapping value");
+        }
+
+        if (false == value.contains("config"))
+        {
+            throw std::runtime_error("scene.gameplay.config IS required");
+        }
+
+        if (false == value["config"].contains("enable_bonus"))
+        {
+            throw std::runtime_error("scene.gameplay.config.enable_bonus IS required");
+        }
+
+        if (false == value["config"].contains("enable_gravity"))
+        {
+            throw std::runtime_error("scene.gameplay.config.enable_gravity IS required");
+        }
+
+        if (false == value["config"].contains("enable_friction"))
+        {
+            throw std::runtime_error("scene.gameplay.config.enable_friction IS required");
+        }
+
+        if (false == value.contains("points"))
+        {
+            throw std::runtime_error("scene.gameplay.points IS required");
+        }
+
+        if (false == value["points"].contains("bonus"))
+        {
+            throw std::runtime_error("scene.gameplay.points.bonus IS required");
+        }
+
+        if (false == value["points"].contains("enemy_collision"))
+        {
+            throw std::runtime_error("scene.gameplay.points.enemy_collision IS required");
+        }
+
+        if (false == value["config"]["enable_bonus"].is_boolean())
+        {
+            throw std::runtime_error("scene.gameplay.config.enable_bonus MUST be an boolean");
+        }
+
+        if (false == value["config"]["enable_gravity"].is_boolean())
+        {
+            throw std::runtime_error("scene.gameplay.config.enable_gravity MUST be an boolean");
+        }
+
+        if (false == value["config"]["enable_friction"].is_boolean())
+        {
+            throw std::runtime_error("scene.gameplay.config.enable_friction MUST be an boolean");
+        }
+
+        if (false == value["points"]["bonus"].is_integer())
+        {
+            throw std::runtime_error("scene.gameplay.points.bonus MUST be an integer");
+        }
+
+        if (false == value["points"]["enemy_collision"].is_integer())
+        {
+            throw std::runtime_error("scene.gameplay.points.enemy_collision MUST be an integer");
+        }
+    }
+
+    void YamlSceneAsserter::AssertFontsYaml(const fkyaml::basic_node<>& value)
+    {
+        if (false == value.is_sequence())
+        {
+            throw std::runtime_error("scene.gameplay MUST be a sequence value");
+        }
+
+        for (const auto& font : value)
+        {
+            if (false == font.contains("name"))
+            {
+                throw std::runtime_error("scene.fonts.font.name IS required");
+            }
+
+            if (false == font.contains("size"))
+            {
+                throw std::runtime_error("scene.fonts.font.size IS required");
+            }
+
+            if (false == font.contains("path"))
+            {
+                throw std::runtime_error("scene.fonts.font.path IS required");
+            }
         }
     }
 };
