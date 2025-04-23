@@ -134,9 +134,9 @@ namespace Neon
     }
 
     // code from: https://learnopengl.com/In-Practice/Text-Rendering
-    void OpenGLRenderer::LoadFont(const std::string& fontPath, int fontSize)
+    void OpenGLRenderer::LoadFont(const std::string& fontPath)
     {
-        std::cout << "Loading font: " << fontPath << " with font size " << fontSize << std::endl;
+        std::cout << "Loading font: " << fontPath << std::endl;
 
         if (FT_Init_FreeType(&m_ft))
         {
