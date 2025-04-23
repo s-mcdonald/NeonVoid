@@ -24,6 +24,7 @@
 #include <NeonEngine/Entity.hpp>
 #include <NeonEngine/Application.hpp>
 #include <NeonEngine/CollisionSystem.hpp>
+#include <NeonEngine/PhysixSystem.hpp>
 
 namespace Neon
 {
@@ -81,5 +82,6 @@ namespace Neon
             std::unordered_map<std::string, Component*> m_components;
             uint32_t m_nextEntityID;
             CollisionSystem m_collisionSystem;
+            PhysixSystem m_physixSystem;
     };
 }

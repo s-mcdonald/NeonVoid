@@ -71,6 +71,7 @@ set(GAME_ENGINE_SRC
         src/GameEngine/include/NeonEngine/ComponentLoader.hpp
         src/GameEngine/include/NeonEngine/AssetManager.hpp
         src/GameEngine/include/NeonEngine/Types.hpp
+        src/GameEngine/include/NeonEngine/PhysixSystem.hpp
         src/GameEngine/include/NeonEngine/Application.hpp
         src/GameEngine/include/NeonEngine/All.hpp
         src/GameEngine/include/NeonEngine/Scene.hpp
@@ -94,7 +95,9 @@ set(GAME_ENGINE_SRC
         src/GameEngine/src/Assets/AssetManager.cpp
 
         # Systems
+        src/GameEngine/src/Systems/PhysixSystem.cpp
         src/GameEngine/src/Systems/CollisionSystem.cpp
+
 
         # Scene
         src/GameEngine/src/Scene/Scene.cpp

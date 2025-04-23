@@ -1,5 +1,5 @@
 /**
- *    ███╗   ██╗███████╗ ██████╗ ███╗   ██╗
+*    ███╗   ██╗███████╗ ██████╗ ███╗   ██╗
  *    ████╗  ██║██╔════╝██╔═══██╗████╗  ██║
  *    ██╔██╗ ██║█████╗  ██║   ██║██╔██╗ ██║
  *    ██║╚██╗██║██╔══╝  ██║   ██║██║╚██╗██║
@@ -16,22 +16,13 @@
 
 #pragma once
 
-#include <NeonRuntime/ExtRuntime.hpp>
+#include <NeonEngine/Types.hpp>
 
 namespace Neon
 {
-    class RuntimeBridge
+    class PhysixSystem final
     {
         public:
-            RuntimeBridge();
-            ~RuntimeBridge();
-
-            bool Initialize(int width, int height, const char* title) const;
-            void Run(Application* application) const;
-
-            [[nodiscard]] IShader* CreateShader(const std::string& vertexPath, const std::string& fragmentPath) const;
-
-        private:
-            IPlatform* mx_platform;
+            PhysixSystem();
     };
 }
