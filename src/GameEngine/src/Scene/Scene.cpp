@@ -137,7 +137,7 @@ namespace Neon
         {
             if (c.name == compoTag)
             {
-                auto* realComponent = ComponentLoader::MakeComponentReal(c, mx_app->GetBridge());
+                auto* realComponent = ComponentLoader::MakeComponentReal(c, *mx_app);
                 realComponent->SetScene(this);
                 AddComponent(compoTag, realComponent);
                 return true;
@@ -155,7 +155,7 @@ namespace Neon
             {
                 auto* e = new Entity(++m_nextEntityID);
 
-                auto components = ComponentLoader::CollectComponents(entity.components, mx_app->GetBridge());
+                auto components = ComponentLoader::CollectComponents(entity.components, *mx_app);
 
                 for (auto& [c_type, comp] : components)
                 {

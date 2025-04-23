@@ -91,10 +91,7 @@ namespace Neon
                 RuntimeApi::GetInstance().GetRenderer()->LoadFont(m_sceneConfig.fonts.path);
             }
 
-            std::unordered_map<std::string, Component*> scriptsForScene  = ComponentLoader::CollectComponents(
-                m_sceneConfig.scripts,
-                m_runtime
-                );
+            std::unordered_map<std::string, Component*> scriptsForScene  = ComponentLoader::CollectComponents(m_sceneConfig.scripts, *this);
 
             for (auto& [name, comp] : scriptsForScene)
             {
@@ -123,6 +120,11 @@ namespace Neon
     RuntimeBridge& Application::GetBridge()
     {
         return m_runtime;
+    }
+
+    ScriptRegistry& Application::GetScriptRegistry()
+    {
+        return m_scriptRegistry;
     }
 
     std::string Application::GetSceneYaml() const

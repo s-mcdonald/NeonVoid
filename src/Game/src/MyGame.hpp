@@ -29,9 +29,9 @@ class MyGame final : public Application
         {
             // we could also make the FR as part of Application!!!!\
             // we can do that later
-            ScriptRegistry::Get().RegisterSceneInitScript("Scene::OnInit", SceneScript::GetLevelOneInitScript());
-            ScriptRegistry::Get().RegisterSceneUpdateScript("Scene::OnUpdate", SceneScript::GetLevelOneUpdateScript());
-            ScriptRegistry::Get().RegisterEntityUpdateScript("Entity::Cherry::OnUpdate", EntityScript::GetCherryUpdateScript());
+            GetScriptRegistry().RegisterSceneInitScript("Scene::OnInit", SceneScript::GetLevelOneInitScript());
+            GetScriptRegistry().RegisterSceneUpdateScript("Scene::OnUpdate", SceneScript::GetLevelOneUpdateScript());
+            GetScriptRegistry().RegisterEntityUpdateScript("Entity::Cherry::OnUpdate", EntityScript::GetCherryUpdateScript());
 
             // @todo: Use a filesystem lib to parse filenames
             SetSceneYaml("./assets/game.yaml");

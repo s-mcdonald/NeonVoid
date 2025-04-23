@@ -23,17 +23,18 @@
 #include <NeonEngine/Components.hpp>
 #include <NeonEngine/RuntimeBridge.hpp>
 #include <NeonEngine/ScriptRegistry.hpp>
+#include <NeonEngine/Application.hpp>
 
 namespace Neon
 {
-    Component* ComponentLoader::MakeComponentReal(YComponent yComp, RuntimeBridge& bridge)
+    Component* ComponentLoader::MakeComponentReal(YComponent component, Application& app)
     {
-        if (yComp.type == "audio")
+        if (component.type == "audio")
         {
-            auto* theComponent = new AudioComponent(yComp.audioConfig->path);
-            Volume v(yComp.audioConfig->volume);
+            auto* theComponent = new AudioComponent(component.audioConfig->path);
+            Volume v(component.audioConfig->volume);
             theComponent->SetVolume(v);
-            if (yComp.audioConfig->loop)
+            if (component.audioConfig->loop)
             {
                 theComponent->TriggerPlayRepeat();
             }
@@ -47,14 +48,14 @@ namespace Neon
             return theComponent;
         }
 
-        if (yComp.type == "position")
+        if (component.type == "position")
         {
-            auto* theComponent = new PositionComponent(yComp.posConfig->p);
+            auto* theComponent = new PositionComponent(component.posConfig->p);
             theComponent->OnInit();
             return theComponent;
         }
 
-        if (yComp.type == "movement")
+        if (component.type == "movement")
         {
             // @todo, add data: key bindings
             auto* theComponent = new MovementComponent();
@@ -62,73 +63,72 @@ namespace Neon
             return theComponent;
         }
 
-        if (yComp.type == "shader")
+        if (component.type == "shader")
         {
-            auto vertexPath = yComp.shaderConfig->dir + yComp.shaderConfig->vertexShader;
-            auto fragPath = yComp.shaderConfig->dir + yComp.shaderConfig->fragShader;
+            auto vertexPath = component.shaderConfig->dir + component.shaderConfig->vertexShader;
+            auto fragPath = component.shaderConfig->dir + component.shaderConfig->fragShader;
 
-            auto shaderPgm = bridge.CreateShader(vertexPath,fragPath);
+            auto shaderPgm = app.GetBridge().CreateShader(vertexPath,fragPath);
 
             // @todo, make PosComp accept point so we can pass initial
-            auto* theComponent = new ShaderComponent(yComp.shaderConfig->vertices, shaderPgm);
+            auto* theComponent = new ShaderComponent(component.shaderConfig->vertices, shaderPgm);
             theComponent->OnInit();
             return theComponent;
         }
 
-        if (yComp.type == "text")
+        if (component.type == "text")
         {
             // built-in shader for text
             auto vertexPath = "./assets/shaders/Text/shader.vert";
             auto fragPath = "./assets/shaders/Text/shader.frag";
 
-            auto shaderPgm = bridge.CreateShader(vertexPath,fragPath);
-            auto* theComponent = new TextComponent(yComp.textConfig.text, shaderPgm);
+            auto shaderPgm = app.GetBridge().CreateShader(vertexPath,fragPath);
+            auto* theComponent = new TextComponent(component.textConfig.text, shaderPgm);
             theComponent->OnInit();
             return theComponent;
         }
 
-        if (yComp.type == "collision")
+        if (component.type == "collision")
         {
-            auto* theComponent = new CollisionComponent(yComp.posConfig->p.x, yComp.posConfig->p.y);
+            auto* theComponent = new CollisionComponent(component.posConfig->p.x, component.posConfig->p.y);
             theComponent->OnInit();
             return theComponent;
         }
 
-        if (yComp.type == "script")
+        if (component.type == "script")
         {
             // @todo: reminder to clean this up later
-            ScriptType scriptType = ScriptRegistry::Get().FetchScriptType(yComp.textConfig.text);
-            switch(scriptType)
+            switch (ScriptType scriptType = app.GetScriptRegistry().GetScriptType(component.textConfig.text))
             {
                 case ScriptType::SceneInit:
-                {
-                    auto funcCallback = ScriptRegistry::Get().FetchSceneInitScript(yComp.textConfig.text);
-                    auto* theComponent = new ScriptComponent(funcCallback, ScriptType::SceneInit);
-                    return theComponent;
-                    break;
-                }
+                    {
+                        auto funcCallback = app.GetScriptRegistry().FetchSceneInitScript(component.textConfig.text);
+                        auto* theComponent = new ScriptComponent(funcCallback, ScriptType::SceneInit);
+                        return theComponent;
+                        break;
+                    }
 
                 case ScriptType::SceneUpdate:
-                {
-                    auto funcCallback = ScriptRegistry::Get().FetchSceneUpdateScript(yComp.textConfig.text);
-                    auto* theComponent = new ScriptComponent(funcCallback, ScriptType::SceneUpdate);
-                    return theComponent;
-                    break;
-                }
+                    {
+                        auto funcCallback = app.GetScriptRegistry().FetchSceneUpdateScript(component.textConfig.text);
+                        auto* theComponent = new ScriptComponent(funcCallback, ScriptType::SceneUpdate);
+                        return theComponent;
+                        break;
+                    }
 
                 case ScriptType::EntityUpdate:
-                {
-                    auto funcCallback = ScriptRegistry::Get().FetchEntityUpdateScript(yComp.textConfig.text);
-                    auto* theComponent = new ScriptComponent(funcCallback, ScriptType::EntityUpdate);
-                    return theComponent;
-                    break;
-                }
+                    {
+                        auto funcCallback = app.GetScriptRegistry().FetchEntityUpdateScript(component.textConfig.text);
+                        auto* theComponent = new ScriptComponent(funcCallback, ScriptType::EntityUpdate);
+                        return theComponent;
+                        break;
+                    }
 
                 default:
-                {
-                    // @todo: lets notify the game developer that scene or entity script not found
-                    break;
-                }
+                    {
+                        // @todo: lets notify the game developer that scene or entity script not found
+                        break;
+                    }
             }
         }
     }
@@ -137,16 +137,13 @@ namespace Neon
      * This should only be called when creating/Making entities or components since this will call
      * new on them.
      */
-    std::unordered_map<std::string, Component*> ComponentLoader::CollectComponents(
-        std::vector<YComponent> components,
-        RuntimeBridge& bridge
-        )
+    std::unordered_map<std::string, Component*> ComponentLoader::CollectComponents(const std::vector<YComponent>& components, Application& app)
     {
         std::unordered_map<std::string, Component*> componentsForScene;
 
         for (auto& yComp : components)
         {
-            componentsForScene.emplace(yComp.type, MakeComponentReal(yComp, bridge));
+            componentsForScene.emplace(yComp.type, MakeComponentReal(yComp, app));
         }
 
         return componentsForScene;

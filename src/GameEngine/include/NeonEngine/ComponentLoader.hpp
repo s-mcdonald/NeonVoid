@@ -27,11 +27,8 @@ namespace Neon
     class ComponentLoader
     {
         public:
-            static Component* MakeComponentReal(YComponent component,RuntimeBridge& bridge);
+            static Component* MakeComponentReal(YComponent component, Application& app);
 
-            static std::unordered_map<std::string, Component*> CollectComponents(
-                std::vector<YComponent> components,
-                RuntimeBridge& bridge
-                );
+            static std::unordered_map<std::string, Component*> CollectComponents(const std::vector<YComponent>& components, Application& app);
     };
 }

@@ -21,6 +21,7 @@
 #include <NeonEngine/RuntimeBridge.hpp>
 #include <NeonEngine/Scene.hpp>
 #include <NeonEngine/YamlReader.hpp>
+#include <NeonEngine/ScriptRegistry.hpp>
 
 namespace Neon
 {
@@ -35,6 +36,9 @@ namespace Neon
 
             void AddScene(Scene* scene);
             Scene* GetCurrentScene();
+
+            ScriptRegistry& GetScriptRegistry();
+
             void SwitchScene();
 
             RuntimeBridge& GetBridge();
@@ -49,6 +53,7 @@ namespace Neon
             std::deque<Scene*> m_scenes;
             Scene* m_currentScene{nullptr};
             RuntimeBridge m_runtime;
+            ScriptRegistry m_scriptRegistry;
             YamlReader m_yamlReader;
             std::string m_sceneYamlPath{};
             YScene m_sceneConfig;
