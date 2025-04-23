@@ -26,11 +26,10 @@ namespace Neon
     {
         return[](Scene* scene)
         {
-            if (scene->MakeComponent("scene_renderable_test"))
+            if (scene->MakeComponent("sceneCompShader"))
             {
-                std::cout << "Render components" << std::endl;
+                std::cout << "Render sceneCompShader" << std::endl;
             }
-            //
 
             if (scene->MakeEntity("mainPlayer"))
             {
@@ -40,6 +39,11 @@ namespace Neon
             if (scene->MakeEntity("cherryHealthPack"))
             {
                 std::cout << "Created Cherry" << std::endl;
+            }
+
+            if (scene->MakeEntity("bombEnemy"))
+            {
+                std::cout << "Bomb Cherry" << std::endl;
             }
         };
     }

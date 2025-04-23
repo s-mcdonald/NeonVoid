@@ -140,12 +140,11 @@ namespace Neon
                 auto* realComponent = ComponentLoader::MakeComponentReal(c, mx_app->GetBridge());
                 realComponent->SetScene(this);
                 AddComponent(compoTag, realComponent);
+                return true;
             }
         }
 
-        auto components = ComponentLoader::CollectComponents(m_sceneConfig.components, mx_app->GetBridge());
-
-        return true;
+        return false;
     }
 
     Entity* Scene::MakeEntity(const std::string& entityTag)
