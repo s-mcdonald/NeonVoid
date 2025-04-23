@@ -13,6 +13,7 @@
  * Copyright (c) : 2024 Sam McDonald
  * Repository: https://github.com/s-mcdonald/NeonVoid
  */
+
 #pragma once
 
 #include <cstdint>
