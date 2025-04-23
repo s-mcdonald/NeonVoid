@@ -64,6 +64,9 @@ namespace Neon
     constexpr inline auto NV_MIN_Velocity       = 0.0001f; // on slowdown, stop once gets to this level
     constexpr inline auto NV_FULL_Velocity      = 1.00f;
     constexpr inline auto NV_ZERO_Velocity      = 0.00f;
+
+
+    constexpr inline auto NV_EnableGravity      = false;
     constexpr inline auto NV_Gravity            = 0.000050f;
 
     constexpr inline auto MaxSpeed = 0.2f;
