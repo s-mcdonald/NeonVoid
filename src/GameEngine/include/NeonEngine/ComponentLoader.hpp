@@ -27,7 +27,7 @@ namespace Neon
     class ComponentLoader
     {
         public:
-            static Component* MakeComponentReal(YComponent component, Application& app);
+            static Component* MakeComponentReal(const YComponent& component, Application& app);
 
             static std::unordered_map<std::string, Component*> CollectComponents(const std::vector<YComponent>& components, Application& app);
     };

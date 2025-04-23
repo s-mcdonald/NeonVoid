@@ -76,7 +76,6 @@ set(GAME_ENGINE_SRC
         src/GameEngine/include/NeonEngine/All.hpp
         src/GameEngine/include/NeonEngine/Scene.hpp
         src/GameEngine/include/NeonEngine/Entity.hpp
-        src/GameEngine/include/NeonEngine/Transition.hpp
         src/GameEngine/include/NeonEngine/Volume.hpp
         src/GameEngine/include/NeonEngine/AudioSystem.hpp
         src/GameEngine/include/NeonEngine/RuntimeBridge.hpp
@@ -98,13 +97,9 @@ set(GAME_ENGINE_SRC
         src/GameEngine/src/Systems/PhysixSystem.cpp
         src/GameEngine/src/Systems/CollisionSystem.cpp
 
-
         # Scene
         src/GameEngine/src/Scene/Scene.cpp
         src/GameEngine/src/Scene/Entity.cpp
-
-        # Transition
-        src/GameEngine/src/Transition/Transition.cpp
 
         # Audio
         src/GameEngine/src/Audio/AudioSystem.cpp

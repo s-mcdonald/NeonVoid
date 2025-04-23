@@ -25,9 +25,12 @@
 #include <NeonEngine/ScriptRegistry.hpp>
 #include <NeonEngine/Application.hpp>
 
+///
+/// @todo: future task: convert this into a proper Factory class, i.e CreateAudioComponent, CreateTimeComponent
+///
 namespace Neon
 {
-    Component* ComponentLoader::MakeComponentReal(YComponent component, Application& app)
+    Component* ComponentLoader::MakeComponentReal(const YComponent& component, Application& app)
     {
         if (component.type == "audio")
         {
@@ -131,6 +134,8 @@ namespace Neon
                     }
             }
         }
+
+        throw std::runtime_error("Component type not found");
     }
 
     /**
