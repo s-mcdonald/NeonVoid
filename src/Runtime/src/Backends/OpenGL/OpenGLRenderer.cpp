@@ -101,7 +101,7 @@ namespace Neon
         std::string::const_iterator c;
         for (c = text.begin(); c != text.end(); ++c)
         {
-            Character ch = Characters[*c];
+            Character ch = m_characters[*c];
 
             float xpos = x + ch.Bearing.x * scale;
             float ypos = y - (ch.Size.y - ch.Bearing.y) * scale;
@@ -188,7 +188,7 @@ namespace Neon
                 glm::ivec2(m_face->glyph->bitmap_left, m_face->glyph->bitmap_top),
                 m_face->glyph->advance.x
             };
-            Characters.insert(std::pair<char, Character>(c, character));
+            m_characters.insert(std::pair<char, Character>(c, character));
         }
     }
 }

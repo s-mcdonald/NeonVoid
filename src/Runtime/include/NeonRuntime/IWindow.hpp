@@ -13,6 +13,7 @@
  * Copyright (c) : 2024 Sam McDonald
  * Repository: https://github.com/s-mcdonald/NeonVoid
  */
+
 #pragma once
 
 namespace Neon
@@ -22,7 +23,7 @@ namespace Neon
         public:
             virtual ~IWindow() = default;
 
-            [[nodiscard]] virtual void* GetNativeWindowHandle() const = 0;
+            [[nodiscard]] virtual void* GetNativeWindowHandle() const {};
 
         // @todo: Implement these below so we can abstract away the runtime game loop
     };

@@ -46,8 +46,8 @@ namespace Neon
             void LoadFont(const std::string& fontPath) override;
 
         private:
-            std::map<char, Character> Characters; // prob move this away from the renderer so each TextComp can have its own texture
-            FT_Library m_ft;
-            FT_Face m_face;
+            std::map<char, Character> m_characters; // prob move this away from the renderer so each TextComp can have its own texture
+            FT_Library m_ft{};
+            FT_Face m_face{};
     };
 }

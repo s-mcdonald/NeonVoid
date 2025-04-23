@@ -13,6 +13,7 @@
  * Copyright (c) : 2024 Sam McDonald
  * Repository: https://github.com/s-mcdonald/NeonVoid
  */
+
 #pragma once
 
 #include <NeonRuntime/Backends/OpenGLHeaders.hpp>
@@ -122,7 +123,6 @@ namespace Neon
             ~MouseInput() override = default;
             [[nodiscard]] static int GetMouseX() { return 0;};
             [[nodiscard]] static int GetMouseY() { return 0;};
-            //bool IsMouseButtonPressed(MouseButton button) const;
     };
 }
 

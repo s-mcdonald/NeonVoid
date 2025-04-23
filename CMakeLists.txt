@@ -16,7 +16,6 @@ set(NeonBackendSystem OpenGL)   # OpenGL | (Vulkan not yet supported)
 #
 # Warning, dont change below here
 #
-
 set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Configurations" FORCE)
 
 
@@ -133,7 +132,6 @@ set(NEON_RUNTIME_SRC
         src/Runtime/include/NeonRuntime/BufferFactory.hpp
         src/Runtime/include/NeonRuntime/PlatformFactory.hpp
         src/Runtime/include/NeonRuntime/IInput.hpp
-        src/Runtime/include/NeonRuntime/IWindow.hpp
         src/Runtime/include/NeonRuntime/IWindow.hpp
         src/Runtime/include/NeonRuntime/IShader.hpp
         src/Runtime/include/NeonRuntime/IPlatform.hpp
