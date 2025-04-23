@@ -20,7 +20,7 @@
 
 namespace Neon
 {
-    OpenGLShader::OpenGLShader(std::string  vertexPath, std::string  fragmentPath)
+    OpenGLShader::OpenGLShader(std::string vertexPath, std::string fragmentPath)
         : m_vertexSourcePath(std::move(vertexPath))
         , m_fragmentSourcePath(std::move(fragmentPath))
     {
