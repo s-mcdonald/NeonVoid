@@ -20,52 +20,49 @@
 #include <NeonEngine/All.hpp>
 #include <GameScripts.hpp>
 
-namespace Neon
+std::function<void(Neon::Scene* scene)> SceneScript::GetLevelOneInitScript()
 {
-    std::function<void(Scene* scene)> SceneScript::GetLevelOneInitScript()
+    return[](Neon::Scene* scene)
     {
-        return[](Scene* scene)
+        if (scene->MakeComponent("sceneCompText"))
         {
-            if (scene->MakeComponent("sceneCompText"))
-            {
-                std::cout << "Render sceneCompText" << std::endl;
-            }
+            std::cout << "Render sceneCompText" << std::endl;
+        }
 
-            if (scene->MakeComponent("sceneCompShader"))
-            {
-                std::cout << "Render sceneCompShader" << std::endl;
-            }
+        if (scene->MakeComponent("sceneCompShader"))
+        {
+            std::cout << "Render sceneCompShader" << std::endl;
+        }
 
-            if (scene->MakeEntity("mainPlayer"))
-            {
-                std::cout << "Created Player Entity" << std::endl;
-            }
+        if (scene->MakeEntity("mainPlayer"))
+        {
+            std::cout << "Created Player Entity" << std::endl;
+        }
 
-            if (scene->MakeEntity("cherryHealthPack"))
-            {
-                std::cout << "Created Cherry" << std::endl;
-            }
+        if (scene->MakeEntity("cherryHealthPack"))
+        {
+            std::cout << "Created Cherry" << std::endl;
+        }
 
-            if (scene->MakeEntity("bombEnemy"))
-            {
-                std::cout << "Bomb Cherry" << std::endl;
-            }
-        };
-    }
+        if (scene->MakeEntity("bombEnemy"))
+        {
+            std::cout << "Bomb Cherry" << std::endl;
+        }
+    };
+}
 
-    std::function<void(Scene* scene)> SceneScript::GetLevelOneUpdateScript()
+std::function<void(Neon::Scene* scene)> SceneScript::GetLevelOneUpdateScript()
+{
+    return[](Neon::Scene* scene)
     {
-        return[](Scene* scene)
+        if (scene->GetPlayerEntity())
         {
-            if (scene->GetPlayerEntity())
-            {
-                std::cout << "We found the main player" << std::endl;
-            }
-            else
-            {
-                std::cout <<"We dont have a player entity" << std::endl;
-            }
-        };
-    }
+            std::cout << "We found the main player" << std::endl;
+        }
+        else
+        {
+            std::cout <<"We dont have a player entity" << std::endl;
+        }
+    };
 }
 

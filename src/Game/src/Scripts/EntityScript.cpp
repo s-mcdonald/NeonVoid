@@ -20,53 +20,53 @@
 #include <NeonEngine/All.hpp>
 #include <GameScripts.hpp>
 
-namespace Neon
+using namespace Neon;
+
+//
+// Player Entity OnUpdate
+//
+std::function<void(Entity* e, Scene* scene)> EntityScript::GetPlayerUpdateScript()
 {
-    // Player Entity
-    std::function<void(Entity* e, Scene* scene)> EntityScript::GetPlayerUpdateScript()
+    return[](Entity* e, Scene* scene)
     {
-        return[](Entity* e, Scene* scene)
-        {
-            auto c = e->GetComponent<CollisionComponent>();
-            if (c)
-            {
-                //..
-            }
-        };
-    }
-
-    // BOMB Entity !!!!
-    std::function<void(Entity* e, Scene* scene)> EntityScript::GetBombUpdateScript()
-    {
-        return[](Entity* e, Scene* scene)
-        {
-            auto* x = e->GetComponent<PositionComponent>();
-            if (!x)
-            {
-                return;
-            }
-
-            Point p = x->GetPoint();
-            p.y -= 0.0003;
-            x->UpdateData(p);
-        };
-    }
-
-    // Cherry Entity
-    std::function<void(Entity* e, Scene* scene)> EntityScript::GetCherryUpdateScript()
-    {
-        return[](Entity* e, Scene* scene)
-        {
-            auto* x = e->GetComponent<PositionComponent>();
-            if (!x)
-            {
-                return;
-            }
-
-            Point p = x->GetPoint();
-            p.y += 0.0001;
-            x->UpdateData(p);
-        };
-    }
+        // ..
+    };
 }
 
+//
+// BOMB Entity OnUpdate
+//
+std::function<void(Entity* e, Scene* scene)> EntityScript::GetBombUpdateScript()
+{
+    return[](Entity* e, Scene* scene)
+    {
+        auto* x = e->GetComponent<PositionComponent>();
+        if (!x)
+        {
+            return;
+        }
+
+        Point p = x->GetPoint();
+        p.y -= 0.0003;
+        x->UpdateData(p);
+    };
+}
+
+//
+// Cherry Entity OnUpdate
+//
+std::function<void(Entity* e, Scene* scene)> EntityScript::GetCherryUpdateScript()
+{
+    return[](Entity* e, Scene* scene)
+    {
+        auto* x = e->GetComponent<PositionComponent>();
+        if (!x)
+        {
+            return;
+        }
+
+        Point p = x->GetPoint();
+        p.y += 0.0001;
+        x->UpdateData(p);
+    };
+}

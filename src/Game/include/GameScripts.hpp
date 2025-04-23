@@ -19,21 +19,19 @@
 #include <functional>
 #include <NeonEngine/All.hpp>
 
-namespace Neon
+class SceneScript
 {
-    class SceneScript
-    {
-        public:
-            static std::function<void(Scene* scene)> GetLevelOneInitScript();
-            static std::function<void(Scene* scene)> GetLevelOneUpdateScript();
-    };
+    public:
+        static std::function<void(Neon::Scene* scene)> GetLevelOneInitScript();
+        static std::function<void(Neon::Scene* scene)> GetLevelOneUpdateScript();
+};
 
-    class EntityScript
-    {
-        public:
-            static std::function<void(Entity* e, Scene* scene)> GetPlayerUpdateScript();
-            static std::function<void(Entity* e, Scene* scene)> GetBombUpdateScript();
-            static std::function<void(Entity* e, Scene* scene)> GetCherryUpdateScript();
-    };
-}
+class EntityScript
+{
+    public:
+        static std::function<void(Neon::Entity* e, Neon::Scene* scene)> GetPlayerUpdateScript();
+        static std::function<void(Neon::Entity* e, Neon::Scene* scene)> GetBombUpdateScript();
+        static std::function<void(Neon::Entity* e, Neon::Scene* scene)> GetCherryUpdateScript();
+};
+
 

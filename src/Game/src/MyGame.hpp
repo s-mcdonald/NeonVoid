@@ -20,27 +20,26 @@
 
 #include <GameScripts.hpp>
 
-namespace Neon
+using namespace Neon;
+
+class MyGame final : public Application
 {
-    class MyGame final : public Application
-    {
-        public:
-            MyGame()
-            {
-                // we could also make the FR as part of Application!!!!\
-                // we can do that later
-                FunctionRegistry::Get().RegisterSceneInitScript("Scene::OnInit", SceneScript::GetLevelOneInitScript());
-                FunctionRegistry::Get().RegisterSceneUpdateScript("Scene::OnUpdate", SceneScript::GetLevelOneUpdateScript());
-                FunctionRegistry::Get().RegisterEntityUpdateScript("Entity::Cherry::OnUpdate", EntityScript::GetCherryUpdateScript());
+    public:
+        MyGame()
+        {
+            // we could also make the FR as part of Application!!!!\
+            // we can do that later
+            FunctionRegistry::Get().RegisterSceneInitScript("Scene::OnInit", SceneScript::GetLevelOneInitScript());
+            FunctionRegistry::Get().RegisterSceneUpdateScript("Scene::OnUpdate", SceneScript::GetLevelOneUpdateScript());
+            FunctionRegistry::Get().RegisterEntityUpdateScript("Entity::Cherry::OnUpdate", EntityScript::GetCherryUpdateScript());
 
-                // @todo: Use a filesystem lib to parse filenames
-                SetSceneYaml("./assets/game.yaml");
-            }
+            // @todo: Use a filesystem lib to parse filenames
+            SetSceneYaml("./assets/game.yaml");
+        }
 
-            [[nodiscard]] bool Initialize()
-            {
-                // return Application::Initialize(800, 600, "Neon Void (0.0.6)");
-                return Application::Initialize(1920, 1080, "Neon Void (0.0.6)");
-            }
-    };
-}
+        [[nodiscard]] bool Initialize()
+        {
+            // return Application::Initialize(800, 600, "Neon Void (0.0.6)");
+            return Application::Initialize(1920, 1080, "Neon Void (0.0.6)");
+        }
+};

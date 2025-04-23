@@ -17,11 +17,11 @@
 #include "MyGame.hpp"
 
 int main()
- {
-     Neon::MyGame game;
+{
+    MyGame game;
 
-     if (game.Initialize())
-     {
-         game.Run();
-     }
+    if (game.Initialize())
+    {
+        game.Run();
+    }
  }
