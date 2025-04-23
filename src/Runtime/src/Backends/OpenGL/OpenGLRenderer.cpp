@@ -73,13 +73,11 @@ namespace Neon
 
     void OpenGLRenderer::RenderText(const GLuint shaderProgram, ITextBuffer* textBuffer, const std::string& text)
     {
-        std::cout << "RenderText(" << text << std::endl;
-
-        glm::ortho(0.0f, 800.0f, 0.0f, 800.0f);
-
         // position
         float x = 25.0f;
         float y = 300.0f;
+
+        // size
         float scale = 1.0f;
 
         glUseProgram(shaderProgram);
@@ -88,7 +86,7 @@ namespace Neon
         glBindVertexArray(textBuffer->GetVao());
 
 
-        glm::mat4 projection = glm::ortho(0.0f, 800.0f, 0.0f, 800.0f);
+        glm::mat4 projection = glm::ortho(0.0f, 1920.0f, .0f, 1080.0f);
         glUniformMatrix4fv(
             glGetUniformLocation(shaderProgram, "projection"),
             1,
@@ -126,7 +124,7 @@ namespace Neon
             glBindBuffer(GL_ARRAY_BUFFER, 0);
             // render quad
             glDrawArrays(GL_TRIANGLES, 0, 6);
-            // now advance cursors for next glyph (note that advance is number of 1/64 pixels)
+            // now advance cursors for the next glyph (note that advance is the number of 1/64 pixels)
             x += (ch.Advance >> 6) * scale; // bitshift by 6 to get value in pixels (2^6 = 64)
         }
         glBindVertexArray(0);
@@ -136,11 +134,9 @@ namespace Neon
     // code from: https://learnopengl.com/In-Practice/Text-Rendering
     void OpenGLRenderer::LoadFont(const std::string& fontPath)
     {
-        std::cout << "Loading font: " << fontPath << std::endl;
-
         if (FT_Init_FreeType(&m_ft))
         {
-            std::cout << "ERROR::FREETYPE: Could not init FreeType Library" << std::endl;
+            std::cerr << "[DEBUG]::FREETYPE: Could not init FreeType Library" << std::endl;
             return;
         }
 
