@@ -75,13 +75,6 @@ namespace Neon
         );
     }
 
-    void ShaderComponent::UpdateData(const std::vector<float>& vertices)
-    {
-        m_vertices = vertices;
-
-        m_buffer->UpdateData(m_vertices.data(), m_vertices.size() * sizeof(float));
-    }
-
     void ShaderComponent::OnDestroy()
     {
         if (m_shader)
