@@ -86,6 +86,8 @@ namespace Neon
 
             auto* scene = new Scene(this, m_sceneConfig);
 
+            RuntimeApi::GetInstance().GetRenderer()->LoadFont("./assets/fonts/28DaysLater.ttf");
+
             std::unordered_map<std::string, Component*> scriptsForScene  = ComponentLoader::CollectComponents(
                 m_sceneConfig.scripts,
                 m_runtime

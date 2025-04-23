@@ -104,8 +104,6 @@ namespace Neon
 
         // std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
 
-        RuntimeApi::GetInstance().GetRenderer()->LoadFont("./assets/fonts/28DaysLater.ttf", 40); // Load font with size 48px
-
         m_openGlInitialized = true;
 
         return true;
@@ -119,7 +117,7 @@ namespace Neon
 
         OpenGLKeyboardInput keyboardInput(m_window);
 
-        while (!glfwWindowShouldClose(m_window)) 
+        while (!glfwWindowShouldClose(m_window))
         {
             OpenGLRenderer::Clear();
 
