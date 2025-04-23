@@ -24,6 +24,7 @@ class SceneScript
     public:
         static std::function<void(Neon::Scene* scene)> GetLevelOneInitScript();
         static std::function<void(Neon::Scene* scene)> GetLevelOneUpdateScript();
+        static std::function<void(Neon::Scene* scene)> GetSceneTimerScript();
 };
 
 class EntityScript

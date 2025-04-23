@@ -31,6 +31,7 @@ class MyGame final : public Application
             // we can do that later
             GetScriptRegistry().RegisterSceneInitScript("Scene::OnInit", SceneScript::GetLevelOneInitScript());
             GetScriptRegistry().RegisterSceneUpdateScript("Scene::OnUpdate", SceneScript::GetLevelOneUpdateScript());
+            GetScriptRegistry().RegisterSceneScript("Scene::Timer", SceneScript::GetSceneTimerScript());
             GetScriptRegistry().RegisterEntityUpdateScript("Entity::Cherry::OnUpdate", EntityScript::GetCherryUpdateScript());
 
             // @todo: Use a filesystem lib to parse filenames

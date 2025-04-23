@@ -338,11 +338,11 @@ namespace Neon
     class TimerComponent final : public Component
     {
         public:
-            TimerComponent(float delayInSeconds, const std::function<void()>& callback, const bool repeat = false)
+            TimerComponent(const std::function<void(Scene*)>& callback)
                 : Component()
-                , m_delay(std::chrono::duration<float>(delayInSeconds))
+                , m_delay(std::chrono::duration<float>(0.00))
                 , m_callback(callback)
-                , m_repeat(repeat)
+                , m_repeat(false)
                 , m_running(false)
                 , m_elapsedTime(0.0f)
             {
@@ -388,26 +388,16 @@ namespace Neon
             {
                 if (!m_running)
                 {
+                    std::cout << "Timer not running" << std::endl;
                     return;
                 }
 
-                m_elapsedTime += deltaTime;
-
-                if (m_elapsedTime >= m_delay.count())
+                if (m_callback)
                 {
-                    if (m_callback)
-                    {
-                        m_callback();
-                    }
+                    auto* _s = GetScene();
+                    m_callback(_s);
 
-                    if (m_repeat)
-                    {
-                        m_elapsedTime -= m_delay.count();
-                    }
-                    else
-                    {
-                        Stop();
-                    }
+                    m_elapsedTime += deltaTime;
                 }
             }
 
@@ -418,7 +408,7 @@ namespace Neon
 
         private:
             std::chrono::duration<float> m_delay;
-            std::function<void()> m_callback;
+            std::function<void(Scene*)> m_callback;
             bool m_repeat;
             bool m_running;
             float m_elapsedTime;

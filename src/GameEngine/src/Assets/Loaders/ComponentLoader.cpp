@@ -135,6 +135,18 @@ namespace Neon
             }
         }
 
+        if (component.type == "timer")
+        {
+            if (auto funcCallback = app.GetScriptRegistry().FetchSceneScript(component.timerConfig->script))
+            {
+                auto* theComponent = new TimerComponent(funcCallback);
+                theComponent->OnInit();
+                return theComponent;
+            }
+
+            throw std::runtime_error("Timer script has not been defined: " + component.timerConfig->script);
+        }
+
         throw std::runtime_error("Component type not found");
     }
 

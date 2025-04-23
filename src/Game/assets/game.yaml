@@ -39,7 +39,6 @@ scene:
       data:
         bind: "Scene::OnUpdate"
 
-
   components:
     -
       name: sceneCompBackgroundSound
@@ -54,6 +53,11 @@ scene:
       data:
         text: "Neon Void"
         font: 28_days_later
+    -
+      name: sceneCompTimer
+      type: timer
+      data:
+        bind: "Scene::Timer"
     -
       name: sceneCompShader
       type: shader

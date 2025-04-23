@@ -160,6 +160,11 @@ namespace Neon
                     {
                         AssertValidateComponentTypeCollision(component["data"]);
                     }
+
+                    if (component["type"].as_str() == "timer")
+                    {
+                        AssertValidateComponentTypeTimer(component["data"]);
+                    }
                 }
             }
 
@@ -442,6 +447,24 @@ namespace Neon
         if (false == value["box"]["y"].is_float_number())
         {
             throw std::runtime_error("component.collision.data.box.y must be a float");
+        }
+    }
+
+    void YamlSceneAsserter::AssertValidateComponentTypeTimer(const fkyaml::basic_node<>& value)
+    {
+        if (false == value.is_mapping())
+        {
+            throw std::runtime_error("component.timer.data MUST be a mapping value");
+        }
+
+        if (false == value.contains("bind"))
+        {
+            throw std::runtime_error("component.timer.data.bind IS required");
+        }
+
+        if (false == value["bind"].is_string())
+        {
+            throw std::runtime_error("component.timer.data.bind MUST be a string");
         }
     }
 

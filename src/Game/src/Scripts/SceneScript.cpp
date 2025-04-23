@@ -24,6 +24,20 @@ std::function<void(Neon::Scene* scene)> SceneScript::GetLevelOneInitScript()
 {
     return[](Neon::Scene* scene)
     {
+        if (scene->MakeComponent("sceneCompTimer"))
+        {
+            auto timer = static_cast<Neon::TimerComponent*>(scene->GetComponent("sceneCompTimer"));
+
+            timer->Start();
+
+            std::cout << "Render sceneCompTimer" << std::endl;
+        }
+
+        if (scene->MakeComponent("sceneCompBackgroundSound"))
+        {
+            std::cout << "Render sceneCompBackgroundSound" << std::endl;
+        }
+
         if (scene->MakeComponent("sceneCompText"))
         {
             std::cout << "Render sceneCompText" << std::endl;
@@ -66,3 +80,10 @@ std::function<void(Neon::Scene* scene)> SceneScript::GetLevelOneUpdateScript()
     };
 }
 
+std::function<void(Neon::Scene* scene)> SceneScript::GetSceneTimerScript()
+{
+    return[](Neon::Scene* scene)
+    {
+        std::cout << "Scene Timer real callback here..." << std::endl;
+    };
+}

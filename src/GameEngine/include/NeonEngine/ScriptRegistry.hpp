@@ -65,6 +65,22 @@ namespace Neon
                 return nullptr;
             }
 
+            template<typename Func>
+            void RegisterSceneScript(const std::string& name, Func&& func)
+            {
+                m_sceneScripts[name] = std::forward<Func>(func);
+            }
+
+            std::function<void(Scene* scene)> FetchSceneScript(const std::string& name) const
+            {
+                auto it = m_sceneScripts.find(name);
+                if (it != m_sceneScripts.end())
+                {
+                    return it->second;
+                }
+                return nullptr;
+            }
+
             std::function<void(Scene* scene)> FetchSceneUpdateScript(const std::string& name) const
             {
                 auto it = m_functionsUpdateScenes.find(name);
@@ -86,6 +102,8 @@ namespace Neon
             }
 
         private:
+            std::unordered_map<std::string, std::function<void(Scene* scene)>> m_sceneScripts;
+
             std::unordered_map<std::string, std::function<void(Scene* scene)>> m_functionsInitScenes;
             std::unordered_map<std::string, std::function<void(Scene* scene)>> m_functionsUpdateScenes;
             std::unordered_map<std::string, std::function<void(Entity* entity, Scene* scene)>> m_functionsEntity;

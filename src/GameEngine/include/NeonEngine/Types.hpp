@@ -156,6 +156,11 @@ namespace Neon
         uint8_t volume = 30;
     };
 
+    struct YTimerConfigData
+    {
+        std::string script;
+    };
+
     struct YTextConfigData
     {
         std::string text;
@@ -168,7 +173,8 @@ namespace Neon
         Audio,
         Position,
         Text,
-        Script
+        Script,
+        Timer
     };
 
     struct YComponent
@@ -183,6 +189,7 @@ namespace Neon
             YShader* shaderConfig;
             YAudioConfigData* audioConfig;
             YPosConfigData* posConfig;
+            YTimerConfigData* timerConfig;
         };
 
         YTextConfigData textConfig;

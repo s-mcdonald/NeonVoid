@@ -85,7 +85,7 @@ namespace Neon
         ///
         for (const auto& scripts : sceneNode["scripts"])
         {
-            sceneConfig.scripts.emplace_back(LoadComponent(scripts));
+            sceneConfig.scripts.emplace_back(ReadYamlComponentData(scripts));
         }
 
         ///
@@ -93,7 +93,7 @@ namespace Neon
         ///
         for (const auto& component : sceneNode["components"])
         {
-            sceneConfig.components.emplace_back(LoadComponent(component));
+            sceneConfig.components.emplace_back(ReadYamlComponentData(component));
         }
 
         ///
@@ -108,7 +108,7 @@ namespace Neon
 
             for (const auto& component : entity["components"])
             {
-                sceneEntity.components.emplace_back(LoadComponent(component));
+                sceneEntity.components.emplace_back(ReadYamlComponentData(component));
             }
 
             sceneConfig.entities.emplace_back(sceneEntity);
@@ -117,7 +117,7 @@ namespace Neon
         return sceneConfig;
     }
 
-    YComponent YamlReader::LoadComponent(const fkyaml::basic_node<>& value)
+    YComponent YamlReader::ReadYamlComponentData(const fkyaml::basic_node<>& value)
     {
         YComponent yComponent;
 
@@ -207,6 +207,16 @@ namespace Neon
                 yComponent.posConfig = new YPosConfigData{};
                 yComponent.posConfig->p.x = value["data"]["box"]["x"].as_float();
                 yComponent.posConfig->p.y = value["data"]["box"]["y"].as_float();
+            }
+        }
+
+        if (yComponent.type == "timer")
+        {
+            yComponent.configType = ConfigType::Timer;
+            if (value.contains("data"))
+            {
+                yComponent.timerConfig = new YTimerConfigData{};
+                yComponent.timerConfig->script = value["data"]["bind"].as_str();
             }
         }
 
