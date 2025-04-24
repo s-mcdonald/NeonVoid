@@ -30,83 +30,49 @@ namespace Neon
             ScriptRegistry() = default;
 
             template<typename Func>
-            void RegisterSceneInitScript(const std::string& name, Func&& func)
+            void RegisterScript(const std::string& name, ScriptType type, Func&& func)
             {
-                m_functionsInitScenes[name] = std::forward<Func>(func);
-            }
-
-            template<typename Func>
-            void RegisterSceneUpdateScript(const std::string& name, Func&& func)
-            {
-                m_functionsUpdateScenes[name] = std::forward<Func>(func);
-            }
-
-            template<typename Func>
-            void RegisterEntityUpdateScript(const std::string& name, Func&& func)
-            {
-                m_functionsEntity[name] = std::forward<Func>(func);
+                m_scripts[name] = ScriptEntry{ type, std::forward<Func>(func) };
             }
 
             ScriptType GetScriptType(const std::string& name) const
             {
-                if (m_functionsUpdateScenes.count(name)) return ScriptType::SceneUpdate;
-                if (m_functionsEntity.count(name)) return ScriptType::EntityUpdate;
-                if (m_functionsInitScenes.count(name)) return ScriptType::SceneInit;
-                return ScriptType::None;
-            }
-
-            std::function<void(Scene* scene)> FetchSceneInitScript(const std::string& name) const
-            {
-                auto it = m_functionsInitScenes.find(name);
-                if (it != m_functionsInitScenes.end())
+                auto it = m_scripts.find(name);
+                if (it != m_scripts.end())
                 {
-                    return it->second;
+                    return it->second.type;
                 }
-                return nullptr;
-            }
-
-            template<typename Func>
-            void RegisterSceneScript(const std::string& name, Func&& func)
-            {
-                m_sceneScripts[name] = std::forward<Func>(func);
+                return ScriptType::None;
             }
 
             std::function<void(Scene* scene)> FetchSceneScript(const std::string& name) const
             {
-                auto it = m_sceneScripts.find(name);
-                if (it != m_sceneScripts.end())
+                auto it = m_scripts.find(name);
+                if (it != m_scripts.end() && it->second.type != ScriptType::EntityUpdate)
                 {
-                    return it->second;
+                    return std::get<std::function<void(Scene*)>>(it->second.function);
                 }
                 return nullptr;
             }
 
-            std::function<void(Scene* scene)> FetchSceneUpdateScript(const std::string& name) const
+            std::function<void(Entity* entity, Scene* scene)> FetchEntityScript(const std::string& name) const
             {
-                auto it = m_functionsUpdateScenes.find(name);
-                if (it != m_functionsUpdateScenes.end())
+                auto it = m_scripts.find(name);
+                if (it != m_scripts.end() && it->second.type == ScriptType::EntityUpdate)
                 {
-                    return it->second;
-                }
-                return nullptr;
-            }
-
-            std::function<void(Entity* entity, Scene* scene)> FetchEntityUpdateScript(const std::string& name) const
-            {
-                auto it = m_functionsEntity.find(name);
-                if (it != m_functionsEntity.end())
-                {
-                    return it->second;
+                    return std::get<std::function<void(Entity*, Scene*)>>(it->second.function);
                 }
                 return nullptr;
             }
 
         private:
-            std::unordered_map<std::string, std::function<void(Scene* scene)>> m_sceneScripts;
+            struct ScriptEntry
+            {
+                ScriptType type;
+                std::variant<std::function<void(Scene*)>, std::function<void(Entity*, Scene*)>> function;
+            };
 
-            std::unordered_map<std::string, std::function<void(Scene* scene)>> m_functionsInitScenes;
-            std::unordered_map<std::string, std::function<void(Scene* scene)>> m_functionsUpdateScenes;
-            std::unordered_map<std::string, std::function<void(Entity* entity, Scene* scene)>> m_functionsEntity;
+            std::unordered_map<std::string, ScriptEntry> m_scripts;
     };
 }
 

@@ -105,7 +105,7 @@ namespace Neon
             {
                 case ScriptType::SceneInit:
                     {
-                        auto funcCallback = app.GetScriptRegistry().FetchSceneInitScript(component.textConfig.text);
+                        auto funcCallback = app.GetScriptRegistry().FetchSceneScript(component.textConfig.text);
                         auto* theComponent = new ScriptComponent(funcCallback, ScriptType::SceneInit);
                         return theComponent;
                         break;
@@ -113,7 +113,7 @@ namespace Neon
 
                 case ScriptType::SceneUpdate:
                     {
-                        auto funcCallback = app.GetScriptRegistry().FetchSceneUpdateScript(component.textConfig.text);
+                        auto funcCallback = app.GetScriptRegistry().FetchSceneScript(component.textConfig.text);
                         auto* theComponent = new ScriptComponent(funcCallback, ScriptType::SceneUpdate);
                         return theComponent;
                         break;
@@ -121,7 +121,7 @@ namespace Neon
 
                 case ScriptType::EntityUpdate:
                     {
-                        auto funcCallback = app.GetScriptRegistry().FetchEntityUpdateScript(component.textConfig.text);
+                        auto funcCallback = app.GetScriptRegistry().FetchEntityScript(component.textConfig.text);
                         auto* theComponent = new ScriptComponent(funcCallback, ScriptType::EntityUpdate);
                         return theComponent;
                         break;
