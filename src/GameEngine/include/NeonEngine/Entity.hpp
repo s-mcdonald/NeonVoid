@@ -104,5 +104,6 @@ namespace Neon
             EntityType m_type;
             Scene* mx_scene;
             std::unordered_map<std::type_index, Component*> m_components;
+            bool m_destroyed{false};
     };
 }

@@ -20,7 +20,10 @@ namespace Neon
 {
     Entity::~Entity()
     {
-        Entity::OnDestroy();
+        if (false == m_destroyed)
+        {
+            Entity::OnDestroy();
+        }
     }
 
     void Entity::OnInit()
@@ -49,10 +52,27 @@ namespace Neon
 
     void Entity::OnDestroy()
     {
-        for (auto& [_, component] : m_components)
+        if (m_destroyed)
         {
-            delete component;
+            return;
         }
+
+        std::vector<std::type_index> keysToDelete;
+        for (const auto& [type, component] : m_components)
+        {
+            if (component != nullptr)
+            {
+                delete component;
+            }
+            keysToDelete.push_back(type);
+        }
+
+        for (auto& key : keysToDelete)
+        {
+            m_components.erase(key);
+        }
+
+        m_destroyed = true;
     }
 
     void Entity::AddComponent(Component* component)

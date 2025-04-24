@@ -73,10 +73,6 @@ namespace Neon
                 : Component(tag)
                 , m_position(p.x, p.y)
                 , m_bounds(bounds) {};
-            explicit PositionComponent(const std::string& tag, const float x = 0.0f, const float y = 0.0f)
-                : Component(tag)
-                , m_position(x,y)
-                , m_bounds(1.0f){}
             ~PositionComponent() override = default;
 
             void OnInit() override {};
@@ -243,7 +239,7 @@ namespace Neon
     {
         public:
             explicit ScriptComponent(
-            const std::string& tag,
+                const std::string& tag,
                 const std::function<void(Scene* scene)>& onUpdate, ScriptType type)
                 : Component(tag)
                 , m_scriptScene(onUpdate)
@@ -305,12 +301,16 @@ namespace Neon
                     if (_e != nullptr && m_scriptEntity != nullptr)
                     {
                         m_scriptEntity(_e, _s);
+                        return;
                     }
                 }
 
                 if (m_scriptType == ScriptType::SceneUpdate)
                 {
+                    std::cout << "SceneScript: Scene Update" << std::endl;
                     m_scriptScene(_s);
+                    std::cout << "End SceneScript: Scene Update" << std::endl;
+                    return;
                 }
             }
 
@@ -388,11 +388,6 @@ namespace Neon
             bool IsRunning() const
             {
                 return m_running;
-            }
-
-            void SetRepeat(bool repeat)
-            {
-                m_repeat = repeat;
             }
 
             float GetElapsedTime() const

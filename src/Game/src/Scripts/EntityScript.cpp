@@ -29,10 +29,7 @@ std::function<void(Entity* entity, Scene* scene)> EntityScript::GetPlayerUpdateS
 {
     return[](Entity* entity, Scene* scene)
     {
-        if (auto* comp = entity->GetComponentByTag<AudioComponent>("bombAudio"))
-        {
-
-        }
+        // ...
     };
 }
 
@@ -62,6 +59,11 @@ std::function<void(Entity* e, Scene* scene)> EntityScript::GetCherryUpdateScript
 {
     return[](Entity* e, Scene* scene)
     {
+        if (e == nullptr)
+        {
+            return;
+        }
+
         auto* x = e->GetComponent<PositionComponent>();
         if (!x)
         {
@@ -69,7 +71,17 @@ std::function<void(Entity* e, Scene* scene)> EntityScript::GetCherryUpdateScript
         }
 
         Point p = x->GetPoint();
-        p.y += SPEED_CHERRY_SLOW;
-        x->SetPoint(p);
+
+        if (p.y > 0.9f || p.x > 0.9f || p.y < -0.9f || p.x < -0.9f)
+        {
+            // if (scene != nullptr)
+                // scene->DestroyEntity(e);
+        }
+        else
+        {
+
+            p.y += SPEED_CHERRY_SLOW;
+            x->SetPoint(p);
+        }
     };
 }

@@ -111,14 +111,21 @@ namespace Neon
 
     void Scene::DestroyEntity(const EntityID id)
     {
-        for (auto& [key, entity] : m_entities)
+        auto it = m_entities.find(id);
+        if (it != m_entities.end())
         {
-            if (key == id)
+            auto* entity = it->second;
+            if (entity != nullptr)
             {
-                delete entity;
-                m_entities.erase(key);
-                return;
+                entity->OnDestroy();
+                //delete entity; //crashes with this line
             }
+
+            m_entities.erase(it);
+        }
+        else
+        {
+            std::cout << "Entity with ID " << id << " not found." << std::endl;
         }
     }
 
