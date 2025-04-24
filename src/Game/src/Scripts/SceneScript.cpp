@@ -26,6 +26,11 @@ std::function<void(Neon::Scene* scene)> SceneScript::GetLevelOneInitScript()
     {
         Neon::Entity* mainPlayer = nullptr;
 
+        if (scene->MakeComponent("sceneCompBackgroundSound"))
+        {
+            scene->GetComponentByTag<Neon::AudioComponent>("sceneCompBackgroundSound")->TriggerPlayRepeat();
+        }
+
         if (scene->MakeComponent("sceneCompCherrySound"))
         {
             std::cout << "sceneCompCherrySound" << std::endl;
@@ -38,11 +43,6 @@ std::function<void(Neon::Scene* scene)> SceneScript::GetLevelOneInitScript()
             timer->Start();
 
             std::cout << "Render sceneCompTimer" << std::endl;
-        }
-
-        if (scene->MakeComponent("sceneCompBackgroundSound"))
-        {
-            std::cout << "Render sceneCompBackgroundSound" << std::endl;
         }
 
         if (scene->MakeComponent("sceneCompText"))
@@ -126,6 +126,6 @@ std::function<void(Neon::Scene* scene)> SceneScript::GetSceneTimerScript()
 {
     return[](Neon::Scene* scene)
     {
-        std::cout << "Scene Timer real callback here..." << std::endl;
+        // .. do something here
     };
 }

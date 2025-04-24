@@ -37,15 +37,6 @@ namespace Neon
             auto* theComponent = new AudioComponent(component.name, component.audioConfig->path);
             Volume v(component.audioConfig->volume);
             theComponent->SetVolume(v);
-            if (component.audioConfig->loop)
-            {
-                theComponent->TriggerPlayRepeat();
-            }
-            else
-            {
-                theComponent->TriggerPlayOnce();
-            }
-
             theComponent->OnInit();
 
             return theComponent;

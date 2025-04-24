@@ -66,10 +66,10 @@ scene:
       data:
         bind: "Scene::Timer"
     -
-      name: sceneCompShader
+      name: sceneCompShader   # bug: this isn't working!
       type: shader
       data:
-        name: sceneCompShader
+        name: sceneCompShader2
         layer: background
         dir: "./assets/shaders/Entities/"
         vertex: "spaceship_shader.vert"

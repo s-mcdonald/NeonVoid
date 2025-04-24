@@ -50,7 +50,7 @@ std::function<void(Entity* e, Scene* scene)> EntityScript::GetBombUpdateScript()
         }
 
         Point p = x->GetPoint();
-        p.y -= 0.0003;
+        p.y -= SPEED_BOMB_SLOW;
         x->UpdateData(p);
     };
 }
@@ -69,7 +69,7 @@ std::function<void(Entity* e, Scene* scene)> EntityScript::GetCherryUpdateScript
         }
 
         Point p = x->GetPoint();
-        p.y += 0.0001;
+        p.y += SPEED_CHERRY_SLOW;
         x->UpdateData(p);
     };
 }

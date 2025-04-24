@@ -19,6 +19,13 @@
 #include <functional>
 #include <NeonEngine/All.hpp>
 
+constexpr float SPEED_CHERRY_SLOW   = 0.001;
+constexpr float SPEED_CHERRY_FAST   = 0.005;
+
+constexpr float SPEED_BOMB_SLOW     = 0.001;
+constexpr float SPEED_BOMB_MEDIUM   = 0.003;
+constexpr float SPEED_BOMB_FAST     = 0.005;
+
 class SceneScript
 {
     public:
