@@ -109,6 +109,24 @@ namespace Neon
         return nullptr;
     }
 
+    void Scene::DestroyEntity(const EntityID id)
+    {
+        for (auto& [key, entity] : m_entities)
+        {
+            if (key == id)
+            {
+                delete entity;
+                m_entities.erase(key);
+                return;
+            }
+        }
+    }
+
+    void Scene::DestroyEntity(const Entity* entity)
+    {
+        DestroyEntity(entity->GetId());
+    }
+
     Entity* Scene::GetEntity(const EntityID id) const
     {
         if (auto it = m_entities.find(id); it != m_entities.end())

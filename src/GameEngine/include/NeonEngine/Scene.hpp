@@ -48,6 +48,8 @@ namespace Neon
             void AddEntity(EntityID id, Entity* entity);
             void AddComponent(const std::string& tag, Component* component);
             Component* GetComponent(const std::string& tag);
+            void DestroyEntity(EntityID id);
+            void DestroyEntity(const Entity* entity);
             Entity* GetEntity(EntityID id) const;
             Entity* GetPlayerEntity() const;
 
