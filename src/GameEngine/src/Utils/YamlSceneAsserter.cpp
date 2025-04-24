@@ -165,6 +165,11 @@ namespace Neon
                     {
                         AssertValidateComponentTypeTimer(component["data"]);
                     }
+
+                    if (component["type"].as_str() == "score")
+                    {
+                        AssertValidateComponentTypeScore(component["data"]);
+                    }
                 }
             }
 
@@ -560,5 +565,10 @@ namespace Neon
                 throw std::runtime_error("scene.fonts.font.path IS required");
             }
         }
+    }
+
+    void YamlSceneAsserter::AssertValidateComponentTypeScore(const fkyaml::basic_node<>& value)
+    {
+        //.. No child values, just name/type
     }
 };

@@ -159,6 +159,11 @@ namespace Neon
             void OnRender() override;
             void OnDestroy() override;
 
+            void SetText(const std::string& text)
+            {
+                m_text = text;
+            }
+
         private:
             std::string m_text;
             IShader* m_shader;
@@ -194,14 +199,26 @@ namespace Neon
             ScoreComponent(const std::string& tag): Component(tag), m_score{0} {};
             ~ScoreComponent() override = default;
 
-        public:
-            void OnInit() override {};
-            void OnUpdate() override {};
-            void OnRender() override {};
+            // void OnInit() override {};
+            // void OnUpdate() override {};
+            // void OnRender() override {};
+
             void OnDestroy() override {};
 
-        public:
-            [[nodiscard]] Score GetScore() const;
+            Score GetScore() const
+            {
+                return m_score;
+            }
+
+            void AddScore(const Score value)
+            {
+                m_score += value;
+            }
+
+            void SubtractScore(const Score value)
+            {
+                m_score -= value;
+            }
 
         private:
             Score m_score;

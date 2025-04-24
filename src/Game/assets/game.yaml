@@ -54,6 +54,13 @@ scene:
         text: "Neon Void"
         font: 28_days_later
     -
+      name: sceneCompCherrySound
+      type: audio
+      data:
+        path: "./assets/audio/munch.mp3"
+        loop: false
+        volume: 80
+    -
       name: sceneCompTimer
       type: timer
       data:
@@ -77,6 +84,9 @@ scene:
       name: mainPlayer
       type: Player
       components:
+        -
+          name: playerScore
+          type: score
         -
           name: playerMovement
           type: movement

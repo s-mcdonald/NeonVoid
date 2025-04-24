@@ -26,6 +26,11 @@ std::function<void(Neon::Scene* scene)> SceneScript::GetLevelOneInitScript()
     {
         Neon::Entity* mainPlayer = nullptr;
 
+        if (scene->MakeComponent("sceneCompCherrySound"))
+        {
+            std::cout << "sceneCompCherrySound" << std::endl;
+        }
+
         if (scene->MakeComponent("sceneCompTimer"))
         {
             auto timer = static_cast<Neon::TimerComponent*>(scene->GetComponent("sceneCompTimer"));
@@ -71,9 +76,33 @@ std::function<void(Neon::Scene* scene)> SceneScript::GetLevelOneInitScript()
         {
             if (other->GetType() == Neon::EntityType::HealthPack)
             {
-                scene->DestroyEntity(other);
-                // other->OnDestroy();
+                try
+                {
+                    mainPlayer->GetComponentByTag<Neon::ScoreComponent>("playerScore")->AddScore(10);
+                    Neon::Score score = mainPlayer->GetComponentByTag<Neon::ScoreComponent>("playerScore")->GetScore();
+
+
+                    std::cout << "Start to play: " << std::endl;
+                    scene->GetComponentByTag<Neon::AudioComponent>("sceneCompCherrySound")->TriggerPlayOnce();
+
+                    std::cout << "End to play: " << std::endl;
+                    scene->GetComponentByTag<Neon::TextComponent>("sceneCompText")->SetText("Score " + std::to_string(score));
+                    scene->DestroyEntity(other);
+
+                }
+                catch (std::exception& e)
+                {
+                    std::cout << "Error: " << e.what() << std::endl;
+                }
+                catch (...)
+                {
+                    std::cout << "Unknown Error" << std::endl;
+                }
+
+
+                //
             }
+
         });
     };
 }

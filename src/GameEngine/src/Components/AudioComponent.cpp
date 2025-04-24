@@ -55,6 +55,6 @@ namespace Neon
 
     void AudioComponent::OnDestroy()
     {
-        // ....
+        AudioSystem::~AudioSystem();
     }
 }

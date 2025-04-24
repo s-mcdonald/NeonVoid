@@ -56,11 +56,6 @@ namespace Neon
 
     void AudioSystem::Play(const std::string& filename) 
     {
-        if (true == m_isPlaying && true == m_isAudioEnabled)
-        {
-            return;
-        }
-
         ma_decoder_uninit(&m_decoder);
 
         ma_result result = ma_decoder_init_file(filename.c_str(), nullptr, &m_decoder);

@@ -220,6 +220,11 @@ namespace Neon
             }
         }
 
+        if (yComponent.type == "score")
+        {
+            yComponent.configType = ConfigType::None;
+        }
+
         return yComponent;
     }
 }

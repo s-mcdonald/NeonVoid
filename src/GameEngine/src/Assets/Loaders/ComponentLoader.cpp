@@ -147,6 +147,13 @@ namespace Neon
             throw std::runtime_error("Timer script has not been defined: " + component.timerConfig->script);
         }
 
+        if (component.type == "score")
+        {
+            auto* theComponent = new ScoreComponent(component.name);
+            theComponent->OnInit();
+            return theComponent;
+        }
+
         throw std::runtime_error("Component type not found");
     }
 
