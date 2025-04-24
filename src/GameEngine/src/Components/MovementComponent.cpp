@@ -108,6 +108,6 @@ namespace Neon
         p.x = std::clamp(p.x, -bounds, bounds);
         p.y = std::clamp(p.y, -bounds, bounds);
 
-        component->UpdateData(p);
+        component->SetPoint(p);
     }
 }

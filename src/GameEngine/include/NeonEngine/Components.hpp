@@ -79,17 +79,13 @@ namespace Neon
                 , m_bounds(1.0f){}
             ~PositionComponent() override = default;
 
-        public:
             void OnInit() override {};
             void OnUpdate() override {};
             void OnRender() override {};
             void OnDestroy() override {};
 
-        public:
             [[nodiscard]] Point GetPoint() const { return m_position; };
-
-            // should we rename this to SetPoint ? hmm. I'll sit on it for now.
-            void UpdateData(Point p) { m_position = p; };
+            void SetPoint(Point p) { m_position = p; };
             [[nodiscard]] float GetBounds() const { return m_bounds; };
 
         private:
