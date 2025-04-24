@@ -70,15 +70,24 @@ namespace Neon
     // changes throughout the game here
     void TextComponent::OnUpdate() 
     {
-        // ..
+        // m_buffer->SetText(m_text);
+        // m_buffer->SetScale(0.5f);
+        // m_buffer->SetPos(m_point);
+        // m_buffer->SetColor(m_rgb);
+        // m_buffer->SetOrtho(m_ortho);
+
+        // set th data here and pass the buffer into the renderer OnRender
     }
 
     void TextComponent::OnRender()
     {
+        DrawTextMeta textData;
+        textData.text = m_text;
+
         RuntimeApi::GetInstance().GetRenderer()->RenderText(
             m_shader->GetShaderProgramId(),
             m_buffer,
-            m_text
+            textData
         );
     }
 

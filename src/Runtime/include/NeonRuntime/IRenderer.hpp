@@ -32,7 +32,7 @@ namespace Neon
             virtual void BeginFrame() = 0;
             virtual void EndFrame() = 0;
             virtual void RenderTriangle(uint32_t shaderProgram, uint32_t VAO, int vertexCount) = 0;
-            virtual void RenderText(uint32_t shaderProgram, ITextBuffer* textbuffer, const std::string& text) = 0;
+            virtual void RenderText(uint32_t shaderProgram, ITextBuffer* textBuffer, const DrawTextMeta textData) = 0;
             virtual void LoadFont(const std::string& fontPath) = 0;
     };
 }

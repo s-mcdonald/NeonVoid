@@ -17,11 +17,12 @@
 #include <fstream>
 #include <iostream>
 #include <map>
+#include <memory>
 
 #include <NeonEngine/Types.hpp>
 #include <NeonRuntime/Backends/OpenGLHeaders.hpp>
-#include <NeonRuntime/Backends/OpenGLVertexBuffer.hpp>
 #include <NeonRuntime/Backends/OpenGLRenderer.hpp>
+#include <NeonRuntime/Backends/OpenGLVertexBuffer.hpp>
 
 // @todo : this class needs work!
 namespace Neon 
@@ -72,22 +73,15 @@ namespace Neon
         glBindVertexArray(0);
     }
 
-    void OpenGLRenderer::RenderText(const GLuint shaderProgram, ITextBuffer* textBuffer, const std::string& text)
+    void OpenGLRenderer::RenderText(const GLuint shaderProgram, ITextBuffer* textBuffer, DrawTextMeta textData)
     {
-        // position
-        float x = 25.0f;
-        float y = 300.0f;
-
-        // size
-        float scale = 1.0f;
-
         glUseProgram(shaderProgram);
-        glUniform3f(glGetUniformLocation(shaderProgram, "textColor"), 1.0f, 0.0f, 0.0f);
+        glUniform3f(glGetUniformLocation(shaderProgram, "textColor"),  textData.rgb.r, textData.rgb.b, textData.rgb.b);
         glActiveTexture(GL_TEXTURE0);
         glBindVertexArray(textBuffer->GetVao());
 
-
-        glm::mat4 projection = glm::ortho(0.0f, 1920.0f, .0f, 1080.0f);
+        // glm::mat4 projection = glm::ortho(0.0f, 1920.0f, .0f, 1080.0f);
+        glm::mat4 projection = glm::ortho(0.0f, textData.orthoProjection.right, .0f, textData.orthoProjection.top);
         glUniformMatrix4fv(
             glGetUniformLocation(shaderProgram, "projection"),
             1,
@@ -98,15 +92,15 @@ namespace Neon
 
         // iterate through all characters
         std::string::const_iterator c;
-        for (c = text.begin(); c != text.end(); ++c)
+        for (c = textData.text.begin(); c != textData.text.end(); ++c)
         {
             Character ch = m_characters[*c];
 
-            float xpos = x + ch.Bearing.x * scale;
-            float ypos = y - (ch.Size.y - ch.Bearing.y) * scale;
+            float xpos = textData.x + ch.Bearing.x * textData.scale;
+            float ypos = textData.y - (ch.Size.y - ch.Bearing.y) * textData.scale;
 
-            float w = ch.Size.x * scale;
-            float h = ch.Size.y * scale;
+            float w = ch.Size.x * textData.scale;
+            float h = ch.Size.y * textData.scale;
             // update VBO for each character
             float vertices[6][4] = {
                 { xpos,     ypos + h,   0.0f, 0.0f },
@@ -126,7 +120,7 @@ namespace Neon
             // render quad
             glDrawArrays(GL_TRIANGLES, 0, 6);
             // now advance cursors for the next glyph (note that advance is the number of 1/64 pixels)
-            x += (ch.Advance >> 6) * scale; // bitshift by 6 to get value in pixels (2^6 = 64)
+            textData.x += (ch.Advance >> 6) * textData.scale; // bitshift by 6 to get value in pixels (2^6 = 64)
         }
         glBindVertexArray(0);
         glBindTexture(GL_TEXTURE_2D, 0);
