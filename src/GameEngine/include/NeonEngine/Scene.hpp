@@ -61,7 +61,7 @@ namespace Neon
 
             // deprecated
             Component* GetComponent(const std::string& tag);
-            void DestroyEntity(EntityID id);
+            void DestroyEntity(const EntityID id);
             void DestroyEntity(const Entity* entity);
             Entity* GetEntity(EntityID id) const;
             Entity* GetPlayerEntity() const;

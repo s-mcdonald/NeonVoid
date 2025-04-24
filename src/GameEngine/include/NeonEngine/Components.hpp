@@ -327,17 +327,23 @@ namespace Neon
             [[nodiscard]] float GetWidth() const { return m_width; }
             [[nodiscard]] float GetHeight() const { return m_height; }
 
+            void OnCollision(const std::function<void(Entity* other)>& script)
+            {
+                m_script = script;
+            };
+
             void OnCollision(Entity* other)
             {
-                std::cout << "Collision detected" << std::endl;
-
-                // perhaps we can call a user script.
-                // or a script can be part of a collision?
+                if (m_script != nullptr)
+                {
+                    m_script(other);
+                }
             };
 
         private:
             float m_width;
             float m_height;
+            std::function<void(Entity* other)> m_script{};
     };
 
     class TimerComponent final : public Component

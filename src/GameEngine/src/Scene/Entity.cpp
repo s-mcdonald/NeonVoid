@@ -20,10 +20,7 @@ namespace Neon
 {
     Entity::~Entity()
     {
-        for (auto& [_, component] : m_components)
-        {
-            delete component;
-        }
+        Entity::OnDestroy();
     }
 
     void Entity::OnInit()
@@ -47,6 +44,14 @@ namespace Neon
         for (const auto& [_, component] : m_components)
         {
             component->OnRender();
+        }
+    }
+
+    void Entity::OnDestroy()
+    {
+        for (auto& [_, component] : m_components)
+        {
+            delete component;
         }
     }
 

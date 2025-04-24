@@ -95,7 +95,7 @@ namespace Neon
             virtual void OnInit();
             virtual void OnUpdate();
             virtual void OnRender();
-            virtual void OnDestroy() {};
+            virtual void OnDestroy();
             void HandleInput(Input* input);
 
         private:

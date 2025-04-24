@@ -24,6 +24,8 @@ std::function<void(Neon::Scene* scene)> SceneScript::GetLevelOneInitScript()
 {
     return[](Neon::Scene* scene)
     {
+        Neon::Entity* mainPlayer = nullptr;
+
         if (scene->MakeComponent("sceneCompTimer"))
         {
             auto timer = static_cast<Neon::TimerComponent*>(scene->GetComponent("sceneCompTimer"));
@@ -48,7 +50,7 @@ std::function<void(Neon::Scene* scene)> SceneScript::GetLevelOneInitScript()
             std::cout << "Render sceneCompShader" << std::endl;
         }
 
-        if (scene->MakeEntity("mainPlayer"))
+        if (mainPlayer = scene->MakeEntity("mainPlayer"))
         {
             std::cout << "Created Player Entity" << std::endl;
         }
@@ -62,6 +64,17 @@ std::function<void(Neon::Scene* scene)> SceneScript::GetLevelOneInitScript()
         {
             std::cout << "Bomb Cherry" << std::endl;
         }
+
+
+        auto* collisionComponent = mainPlayer->GetComponent<Neon::CollisionComponent>();
+        collisionComponent->OnCollision([scene, mainPlayer](Neon::Entity* other)
+        {
+            if (other->GetType() == Neon::EntityType::HealthPack)
+            {
+                scene->DestroyEntity(other);
+                // other->OnDestroy();
+            }
+        });
     };
 }
 
