@@ -24,8 +24,8 @@
 
 namespace Neon 
 {
-    TextComponent::TextComponent(std::string text, IShader* shader)
-        : Component()
+    TextComponent::TextComponent(const std::string& tag, std::string text, IShader* shader)
+        : Component(tag)
         , m_text(std::move(text))
         , m_shader(shader)
     {

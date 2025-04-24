@@ -34,7 +34,7 @@ namespace Neon
     class Component
     {
         public:
-            Component() = default;
+            Component(std::string tag) : m_tag(tag) {};
             virtual ~Component() = default;
 
             [[nodiscard]] Entity* GetParentEntity() const { return mx_entityParent; };
@@ -49,6 +49,11 @@ namespace Neon
                 mx_scene = parent;
             }
 
+            std::string GetTag() const
+            {
+                return m_tag;
+            }
+
         public:
             virtual void OnInit() {};
             virtual void OnUpdate() {};
@@ -58,21 +63,18 @@ namespace Neon
         private:
             Entity* mx_entityParent = nullptr;
             Scene* mx_scene = nullptr;
+            std::string m_tag;
     };
 
     class PositionComponent final : public Component
     {
         public:
-            PositionComponent(Point p, float bounds = 1.0f)
-                : Component()
+            PositionComponent(const std::string& tag, Point p, float bounds = 1.0f)
+                : Component(tag)
                 , m_position(p.x, p.y)
                 , m_bounds(bounds) {};
-            PositionComponent()
-                : Component()
-                , m_position(0.0f,0.0f)
-                , m_bounds(1.0f){};
-            explicit PositionComponent(const float x = 0.0f, const float y = 0.0f)
-                : Component()
+            explicit PositionComponent(const std::string& tag, const float x = 0.0f, const float y = 0.0f)
+                : Component(tag)
                 , m_position(x,y)
                 , m_bounds(1.0f){}
             ~PositionComponent() override = default;
@@ -98,8 +100,8 @@ namespace Neon
     class MovementComponent final : public Component
     {
         public:
-            MovementComponent()
-                : Component()
+            MovementComponent(const std::string& tag)
+                : Component(tag)
                 , m_velocity(0.0f, 0.0f)
                 , m_directionInput(0.0f, 0.0f) {};
             ~MovementComponent() override = default;
@@ -121,8 +123,8 @@ namespace Neon
         , public AudioSystem
     {
         public:
-            explicit AudioComponent(std::string filename)
-                : Component()
+            explicit AudioComponent(const std::string& tag, std::string filename)
+                : Component(tag)
                 , AudioSystem()
                 , m_filename(std::move(filename))
                 , m_volume(50)
@@ -149,7 +151,7 @@ namespace Neon
     class TextComponent final : public Component
     {
         public:
-            explicit TextComponent(std::string text, IShader* shader);
+            explicit TextComponent(const std::string& tag, std::string text, IShader* shader);
             ~TextComponent() override;
 
             void OnInit() override;
@@ -168,8 +170,8 @@ namespace Neon
     {
         public:
             ShaderComponent() = delete;
-            explicit ShaderComponent(const std::vector<float>& vertices, IShader* shader)
-                : Component()
+            explicit ShaderComponent(const std::string& tag, const std::vector<float>& vertices, IShader* shader)
+                : Component(tag)
                 , m_shader(shader)
                 , m_vertices(vertices) {};
             ~ShaderComponent() override;
@@ -189,7 +191,7 @@ namespace Neon
     class ScoreComponent final : public Component
     {
         public:
-            ScoreComponent(): Component(), m_score{0} {};
+            ScoreComponent(const std::string& tag): Component(tag), m_score{0} {};
             ~ScoreComponent() override = default;
 
         public:
@@ -208,7 +210,7 @@ namespace Neon
     class HealthComponent final : public Component
     {
         public:
-            HealthComponent(): Component(), m_health{0} {};
+            HealthComponent(const std::string& tag): Component(tag), m_health{0} {};
             ~HealthComponent() override = default;
 
         public:
@@ -227,14 +229,16 @@ namespace Neon
     class ScriptComponent final : public Component
     {
         public:
-            explicit ScriptComponent(const std::function<void(Scene* scene)>& onUpdate, ScriptType type)
-                : Component()
+            explicit ScriptComponent(
+            const std::string& tag,
+                const std::function<void(Scene* scene)>& onUpdate, ScriptType type)
+                : Component(tag)
                 , m_scriptScene(onUpdate)
                 , m_scriptEntity(nullptr)
                 , m_scriptType(type)
             {}
-            explicit ScriptComponent(const std::function<void(Entity* entity, Scene* scene)>& onUpdate, ScriptType type)
-                : Component()
+            explicit ScriptComponent(const std::string& tag, const std::function<void(Entity* entity, Scene* scene)>& onUpdate, ScriptType type)
+                : Component(tag)
                 , m_scriptEntity(onUpdate)
                 , m_scriptScene(nullptr)
                 , m_scriptType(type)
@@ -309,8 +313,9 @@ namespace Neon
     class CollisionComponent final : public Component
     {
         public:
-            CollisionComponent(float width, float height)
-                : m_width(width)
+            CollisionComponent(const std::string& tag, float width, float height)
+                : Component(tag)
+                , m_width(width)
                 , m_height(height) {}
             ~CollisionComponent() override {};
 
@@ -338,8 +343,8 @@ namespace Neon
     class TimerComponent final : public Component
     {
         public:
-            TimerComponent(const std::function<void(Scene*)>& callback)
-                : Component()
+            TimerComponent(const std::string& tag, const std::function<void(Scene*)>& callback)
+                : Component(tag)
                 , m_delay(std::chrono::duration<float>(0.00))
                 , m_callback(callback)
                 , m_repeat(false)

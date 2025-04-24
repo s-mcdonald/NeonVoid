@@ -34,7 +34,7 @@ namespace Neon
     {
         if (component.type == "audio")
         {
-            auto* theComponent = new AudioComponent(component.audioConfig->path);
+            auto* theComponent = new AudioComponent(component.name, component.audioConfig->path);
             Volume v(component.audioConfig->volume);
             theComponent->SetVolume(v);
             if (component.audioConfig->loop)
@@ -53,7 +53,7 @@ namespace Neon
 
         if (component.type == "position")
         {
-            auto* theComponent = new PositionComponent(component.posConfig->p);
+            auto* theComponent = new PositionComponent(component.name, component.posConfig->p);
             theComponent->OnInit();
             return theComponent;
         }
@@ -61,7 +61,7 @@ namespace Neon
         if (component.type == "movement")
         {
             // @todo, add data: key bindings
-            auto* theComponent = new MovementComponent();
+            auto* theComponent = new MovementComponent(component.name);
             theComponent->OnInit();
             return theComponent;
         }
@@ -74,7 +74,7 @@ namespace Neon
             auto shaderPgm = app.GetBridge().CreateShader(vertexPath,fragPath);
 
             // @todo, make PosComp accept point so we can pass initial
-            auto* theComponent = new ShaderComponent(component.shaderConfig->vertices, shaderPgm);
+            auto* theComponent = new ShaderComponent(component.name, component.shaderConfig->vertices, shaderPgm);
             theComponent->OnInit();
             return theComponent;
         }
@@ -86,14 +86,14 @@ namespace Neon
             auto fragPath = "./assets/shaders/Text/shader.frag";
 
             auto shaderPgm = app.GetBridge().CreateShader(vertexPath,fragPath);
-            auto* theComponent = new TextComponent(component.textConfig.text, shaderPgm);
+            auto* theComponent = new TextComponent(component.name, component.textConfig.text, shaderPgm);
             theComponent->OnInit();
             return theComponent;
         }
 
         if (component.type == "collision")
         {
-            auto* theComponent = new CollisionComponent(component.posConfig->p.x, component.posConfig->p.y);
+            auto* theComponent = new CollisionComponent(component.name, component.posConfig->p.x, component.posConfig->p.y);
             theComponent->OnInit();
             return theComponent;
         }
@@ -106,7 +106,7 @@ namespace Neon
                 case ScriptType::SceneInit:
                     {
                         auto funcCallback = app.GetScriptRegistry().FetchSceneScript(component.textConfig.text);
-                        auto* theComponent = new ScriptComponent(funcCallback, ScriptType::SceneInit);
+                        auto* theComponent = new ScriptComponent(component.name, funcCallback, ScriptType::SceneInit);
                         return theComponent;
                         break;
                     }
@@ -114,7 +114,7 @@ namespace Neon
                 case ScriptType::SceneUpdate:
                     {
                         auto funcCallback = app.GetScriptRegistry().FetchSceneScript(component.textConfig.text);
-                        auto* theComponent = new ScriptComponent(funcCallback, ScriptType::SceneUpdate);
+                        auto* theComponent = new ScriptComponent(component.name, funcCallback, ScriptType::SceneUpdate);
                         return theComponent;
                         break;
                     }
@@ -122,7 +122,7 @@ namespace Neon
                 case ScriptType::EntityUpdate:
                     {
                         auto funcCallback = app.GetScriptRegistry().FetchEntityScript(component.textConfig.text);
-                        auto* theComponent = new ScriptComponent(funcCallback, ScriptType::EntityUpdate);
+                        auto* theComponent = new ScriptComponent(component.name, funcCallback, ScriptType::EntityUpdate);
                         return theComponent;
                         break;
                     }
@@ -139,7 +139,7 @@ namespace Neon
         {
             if (auto funcCallback = app.GetScriptRegistry().FetchSceneScript(component.timerConfig->script))
             {
-                auto* theComponent = new TimerComponent(funcCallback);
+                auto* theComponent = new TimerComponent(component.name, funcCallback);
                 theComponent->OnInit();
                 return theComponent;
             }

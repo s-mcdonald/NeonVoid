@@ -64,6 +64,23 @@ namespace Neon
                 return nullptr;
             }
 
+            template<typename T>
+            T* GetComponentByTag(const std::string& tag)
+            {
+                auto type = std::type_index(typeid(T));
+                auto it = m_components.find(type);
+
+                if (it != m_components.end())
+                {
+                    if (it->second->GetTag() == tag)
+                    {
+                        return dynamic_cast<T*>(it->second);
+                    }
+                }
+
+                return nullptr;
+            }
+
             // Check if the entity has a component of type T
             // we can do some optimizing in the storage.
             template<typename T>

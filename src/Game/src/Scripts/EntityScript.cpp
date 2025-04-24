@@ -25,11 +25,14 @@ using namespace Neon;
 //
 // Player Entity OnUpdate
 //
-std::function<void(Entity* e, Scene* scene)> EntityScript::GetPlayerUpdateScript()
+std::function<void(Entity* entity, Scene* scene)> EntityScript::GetPlayerUpdateScript()
 {
-    return[](Entity* e, Scene* scene)
+    return[](Entity* entity, Scene* scene)
     {
-        // ..
+        if (auto* comp = entity->GetComponentByTag<AudioComponent>("bombAudio"))
+        {
+
+        }
     };
 }
 
