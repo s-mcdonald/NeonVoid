@@ -47,6 +47,19 @@ namespace Neon
 
             void AddEntity(EntityID id, Entity* entity);
             void AddComponent(const std::string& tag, Component* component);
+
+            template<typename T>
+            T* GetComponentByTag(const std::string& tag)
+            {
+                if (m_components.find(tag) != m_components.end())
+                {
+                    return static_cast<T*>(m_components[tag]);
+                }
+
+                return nullptr;
+            }
+
+            // deprecated
             Component* GetComponent(const std::string& tag);
             void DestroyEntity(EntityID id);
             void DestroyEntity(const Entity* entity);
