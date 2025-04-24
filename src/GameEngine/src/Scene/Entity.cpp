@@ -18,15 +18,6 @@
 
 namespace Neon
 {
-    Entity::Entity(const EntityID id, const std::initializer_list<Component*> components)
-        : m_id(id)
-    {
-        for (auto* component : components)
-        {
-            AddComponent(component);
-        }
-    }
-
     Entity::~Entity()
     {
         for (auto& [_, component] : m_components)

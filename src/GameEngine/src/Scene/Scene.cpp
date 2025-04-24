@@ -153,7 +153,7 @@ namespace Neon
         {
             if (entity.name == entityTag)
             {
-                auto* e = new Entity(++m_nextEntityID);
+                auto* e = new Entity(++m_nextEntityID, entity.name, entity.type, this);
 
                 auto components = ComponentLoader::CollectComponents(entity.components, *mx_app);
 

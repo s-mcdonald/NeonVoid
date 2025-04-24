@@ -29,9 +29,24 @@ namespace Neon
     {
         public:
             Entity() = delete;
-            explicit Entity(const EntityID id) : m_id(id) {};
-            explicit Entity(EntityID id, std::initializer_list<Component*> components);
+            explicit Entity(
+                const EntityID id, const std::string& tag, const EntityType type, Scene* scene)
+                : m_id(id)
+                , m_tag(tag)
+                , m_type(type)
+                , mx_scene(scene) {};
+
             virtual ~Entity();
+
+            std::string GetTag() const
+            {
+                return m_tag;
+            }
+
+            EntityType GetType() const
+            {
+                return m_type;
+            }
         
             void AddComponent(Component* component);
 
@@ -60,7 +75,6 @@ namespace Neon
 
             [[nodiscard]] EntityID GetId() const;
 
-        public:
             virtual void OnInit();
             virtual void OnUpdate();
             virtual void OnRender();
@@ -69,6 +83,9 @@ namespace Neon
 
         private:
             EntityID m_id;
+            std::string m_tag;
+            EntityType m_type;
+            Scene* mx_scene;
             std::unordered_map<std::type_index, Component*> m_components;
     };
 }
