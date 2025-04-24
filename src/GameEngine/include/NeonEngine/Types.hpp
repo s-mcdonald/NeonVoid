@@ -24,7 +24,7 @@ namespace Neon
     typedef uint16_t ViewPortDimension;
     typedef uint16_t WindowDimension;
     typedef uint32_t EntityID;
-    typedef uint32_t Score;
+    typedef int32_t  Score; // we need to have signed so we can detect < 0 as a flag
     typedef short Health;
 
     ///
@@ -66,7 +66,7 @@ namespace Neon
     constexpr inline auto NV_ZERO_Velocity      = 0.00f;
 
 
-    constexpr inline auto NV_EnableGravity      = false;
+    constexpr inline auto NV_EnableGravity      = true;
     constexpr inline auto NV_Gravity            = 0.000050f;
 
     constexpr inline auto MaxSpeed = 0.2f;

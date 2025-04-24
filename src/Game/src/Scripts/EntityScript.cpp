@@ -16,6 +16,9 @@
 
 #include <functional>
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
+
 
 #include <NeonEngine/All.hpp>
 #include <GameScripts.hpp>
@@ -47,8 +50,17 @@ std::function<void(Entity* e, Scene* scene)> EntityScript::GetBombUpdateScript()
         }
 
         Point p = x->GetPoint();
-        p.y -= SPEED_BOMB_SLOW;
-        x->SetPoint(p);
+        if ( p.y < -1.2f)
+        {
+            // if (scene != nullptr)
+            // scene->DestroyEntity(e);
+        }
+        else
+        {
+            p.y -= e->GetUserFlag(BOMB_FLAG_SPEED_FAST) == false ? SPEED_BOMB_SLOW : SPEED_BOMB_FAST;
+
+            x->SetPoint(p);
+        }
     };
 }
 
@@ -72,15 +84,14 @@ std::function<void(Entity* e, Scene* scene)> EntityScript::GetCherryUpdateScript
 
         Point p = x->GetPoint();
 
-        if (p.y > 0.9f || p.x > 0.9f || p.y < -0.9f || p.x < -0.9f)
+        if ( p.y > 1.2)
         {
-            // if (scene != nullptr)
+            // if (scene != nullptr && e != nullptr)
                 // scene->DestroyEntity(e);
         }
         else
         {
-
-            p.y += SPEED_CHERRY_SLOW;
+            p.y += e->GetUserFlag(BOMB_FLAG_SPEED_FAST) == false ? SPEED_CHERRY_SLOW : SPEED_CHERRY_FAST;
             x->SetPoint(p);
         }
     };

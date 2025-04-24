@@ -207,7 +207,7 @@ namespace Neon
                 m_score += value;
             }
 
-            void SubtractScore(const Score value)
+            void SubScore(const Score value)
             {
                 m_score -= value;
             }

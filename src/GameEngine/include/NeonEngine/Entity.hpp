@@ -92,6 +92,9 @@ namespace Neon
 
             [[nodiscard]] EntityID GetId() const;
 
+            void SetUserFlag(uint8_t key, bool flag);
+            bool GetUserFlag(uint8_t key);
+
             virtual void OnInit();
             virtual void OnUpdate();
             virtual void OnRender();
@@ -105,5 +108,6 @@ namespace Neon
             Scene* mx_scene;
             std::unordered_map<std::type_index, Component*> m_components;
             bool m_destroyed{false};
+            std::unordered_map<uint8_t, bool> m_userFlags;
     };
 }

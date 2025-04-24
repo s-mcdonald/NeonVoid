@@ -32,6 +32,8 @@ class MyGame final : public Application
             GetScriptRegistry().RegisterScript("Scene::OnInit", ScriptType::SceneInit, SceneScript::GetLevelOneInitScript());
             GetScriptRegistry().RegisterScript("Scene::OnUpdate", ScriptType::SceneUpdate,  SceneScript::GetLevelOneUpdateScript());
             GetScriptRegistry().RegisterScript("Scene::Timer", ScriptType::SceneUpdate,  SceneScript::GetSceneTimerScript());
+
+            GetScriptRegistry().RegisterScript("Entity::Bomb::OnUpdate",  ScriptType::EntityUpdate, EntityScript::GetBombUpdateScript());
             GetScriptRegistry().RegisterScript("Entity::Cherry::OnUpdate",  ScriptType::EntityUpdate, EntityScript::GetCherryUpdateScript());
 
             // @todo: Use a filesystem lib to parse filenames
@@ -41,6 +43,6 @@ class MyGame final : public Application
         [[nodiscard]] bool Initialize()
         {
             // return Application::Initialize(800, 600, "Neon Void (0.0.6)");
-            return Application::Initialize(1920, 1080, "Neon Void (0.0.6)");
+            return Application::Initialize(2000, 1000, "Neon Void (0.0.6)");
         }
 };

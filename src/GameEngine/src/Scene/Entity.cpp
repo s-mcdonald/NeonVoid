@@ -101,4 +101,15 @@ namespace Neon
     {
         return m_id; 
     }
+
+    void Entity::SetUserFlag(uint8_t key, bool flag)
+    {
+        m_userFlags[key] = flag;
+    }
+
+    bool Entity::GetUserFlag(uint8_t key)
+    {
+        auto it = m_userFlags.find(key);
+        return (it != m_userFlags.end()) ? it->second : false;
+    }
 }
