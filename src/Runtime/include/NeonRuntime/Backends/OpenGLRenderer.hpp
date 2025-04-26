@@ -23,10 +23,10 @@
 namespace Neon
 {
     struct Character {
-        signed long TextureID;  // ID handle of the glyph texture
-        glm::ivec2   Size;       // Size of glyph
-        glm::ivec2   Bearing;    // Offset from baseline to left/top of glyph
-        signed long Advance;    // Offset to advance to next glyph
+        signed long TextureID;      // ID handle of the glyph texture
+        glm::ivec2   Size;          // Size of glyph
+        glm::ivec2   Bearing;       // Offset from baseline to left/top of glyph
+        signed long Advance;        // Offset to advance to next glyph
     };
 
     class OpenGLRenderer final : public IRenderer
@@ -46,7 +46,7 @@ namespace Neon
             void LoadFont(const std::string& fontPath) override;
 
         private:
-            std::map<char, Character> m_characters; // prob move this away from the renderer so each TextComp can have its own texture
+            std::map<char, Character> m_characters; // moves this away from the renderer so each TextComp can have its own texture
             FT_Library m_ft{};
             FT_Face m_face{};
     };

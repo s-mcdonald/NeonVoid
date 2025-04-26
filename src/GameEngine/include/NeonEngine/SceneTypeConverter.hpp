@@ -31,7 +31,6 @@ namespace Neon
             static bool IsValid(const std::string& str);
             static std::string ToString(SceneType type);
 
-        public:
             static const std::unordered_map<std::string, SceneType> stringToEnum;
             static const std::unordered_map<SceneType, std::string> enumToString;
     };

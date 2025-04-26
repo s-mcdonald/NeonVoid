@@ -42,7 +42,6 @@ namespace Neon
             void Destroy();
             void ProcessPendingDeletions();
 
-
             bool IsInitialized() const;
             void HandleInput(Input* input);
 

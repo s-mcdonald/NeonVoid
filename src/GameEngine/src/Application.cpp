@@ -96,7 +96,7 @@ namespace Neon
             for (auto& [name, comp] : scriptsForScene)
             {
                 comp->SetScene(scene);
-                scene->AddComponent(name, std::move(comp));
+                scene->AddComponent(name, comp);
             }
 
             AddScene(scene);

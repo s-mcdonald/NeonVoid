@@ -52,14 +52,12 @@ std::function<void(Entity* e, Scene* scene)> EntityScript::GetBombUpdateScript()
         Point p = x->GetPoint();
         if ( p.y < -1.2f)
         {
-            scene->DestroyEntity(e->GetId());
+            scene->DestroyEntity(e);
+            return;
         }
-        else
-        {
-            p.y -= e->GetUserFlag(BOMB_FLAG_SPEED_FAST) == false ? SPEED_BOMB_SLOW : SPEED_BOMB_FAST;
 
-            x->SetPoint(p);
-        }
+        p.y -= e->GetUserFlag(BOMB_FLAG_SPEED_FAST) == false ? SPEED_BOMB_SLOW : SPEED_BOMB_FAST;
+        x->SetPoint(p);
     };
 }
 
@@ -85,12 +83,11 @@ std::function<void(Entity* e, Scene* scene)> EntityScript::GetCherryUpdateScript
 
         if ( p.y > 1.2)
         {
-            scene->DestroyEntity(e->GetId());
+            scene->DestroyEntity(e);
+            return;
         }
-        else
-        {
-            p.y += e->GetUserFlag(BOMB_FLAG_SPEED_FAST) == false ? SPEED_CHERRY_SLOW : SPEED_CHERRY_FAST;
-            x->SetPoint(p);
-        }
+
+        p.y += e->GetUserFlag(BOMB_FLAG_SPEED_FAST) == false ? SPEED_CHERRY_SLOW : SPEED_CHERRY_FAST;
+        x->SetPoint(p);
     };
 }

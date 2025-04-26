@@ -272,20 +272,9 @@ namespace Neon
                     return;
                 }
 
-                try
+                if (m_scriptType == ScriptType::SceneInit)
                 {
-                    if (m_scriptType == ScriptType::SceneInit)
-                    {
-                        m_scriptScene(_s);
-                    }
-                }
-                catch (const std::exception& e)
-                {
-                    std::cout << "Exception in OnInit::Script: " << e.what() << std::endl;
-                }
-                catch (...)
-                {
-                    std::cout << "Exception in OnInit::Script" << std::endl;
+                    m_scriptScene(_s);
                 }
             }
 

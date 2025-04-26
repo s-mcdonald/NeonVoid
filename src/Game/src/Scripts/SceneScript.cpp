@@ -220,8 +220,6 @@ std::function<void(Neon::Scene* scene)> SceneScript::GetSceneTimerScript()
             auto& pd = cherryPositions.front();
             position->SetPoint(pd.point);
 
-
-            // cherryPositions.erase(cherryPositions.begin());
             cherry->SetUserFlag(BOMB_FLAG_SPEED_FAST, pd.fast);
 
             s_lastSpawnTime = elapsedTime;
@@ -231,9 +229,8 @@ std::function<void(Neon::Scene* scene)> SceneScript::GetSceneTimerScript()
         {
             auto* bomb = scene->MakeEntity("bombEnemy");
             auto* position = bomb->GetComponent<Neon::PositionComponent>();
-            auto& pd = bombPositions.front(); // Get the front point in the queue
+            auto& pd = bombPositions.front();
             position->SetPoint(pd.point);
-            //bombPositions.erase(bombPositions.begin()); // Remove the processed point from the queue
 
             bomb->SetUserFlag(BOMB_FLAG_SPEED_FAST, pd.fast);
 

@@ -19,7 +19,6 @@
 #include <map>
 #include <memory>
 
-#include <NeonEngine/Types.hpp>
 #include <NeonRuntime/Backends/OpenGLHeaders.hpp>
 #include <NeonRuntime/Backends/OpenGLRenderer.hpp>
 #include <NeonRuntime/Backends/OpenGLVertexBuffer.hpp>

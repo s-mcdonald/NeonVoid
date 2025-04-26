@@ -28,7 +28,7 @@
 #include <ft2build.h>
 #include FT_FREETYPE_H
 
-// move to custom types file later
+// move to a custom types file later
 struct DrawTextMeta
 {
     // position
