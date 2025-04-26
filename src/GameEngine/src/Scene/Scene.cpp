@@ -91,13 +91,28 @@ namespace Neon
 
     void Scene::AddEntity(const EntityID id, Entity* entity)
     {
+        auto it = m_entities.find(id);
+
+        if (it != m_entities.end())
+        {
+            it->second->OnDestroy();
+            delete it->second;
+        }
         m_entities[id] = entity;
     }
 
     void Scene::AddComponent(const std::string& tag, Component* component)
     {
-        // what do we do if it already exists?
-        m_components[tag] = component;
+        auto it = m_components.find(tag);
+        if (it != m_components.end())
+        {
+            delete it->second;
+            it->second = component;
+        }
+        else
+        {
+            m_components[tag] = component;
+        }
     }
 
     Component* Scene::GetComponent(const std::string& tag)
@@ -136,11 +151,13 @@ namespace Neon
             auto it = m_entities.find(id);
             if (it != m_entities.end())
             {
-                auto* entity = it->second;
+                Entity* entity = it->second;
 
                 if (entity != nullptr)
                 {
                     entity->OnDestroy();
+                    m_collisionSystem.DeregisterEntity(entity);
+                    delete entity;
                 }
 
                 m_entities.erase(it);
@@ -193,22 +210,32 @@ namespace Neon
         {
             if (entity.name == entityTag)
             {
-                auto* e = new Entity(++m_nextEntityID, entity.name, entity.type, this);
+                Entity* e = nullptr;
 
-                auto components = ComponentLoader::CollectComponents(entity.components, *mx_app);
-
-                for (auto& [c_type, comp] : components)
+                try
                 {
-                     comp->SetScene(this);
-                     e->AddComponent(comp);
+                    e = new Entity(++m_nextEntityID, entity.name, entity.type, this);
 
-                     if (comp->GetType() == "collision")
-                     {
-                         m_collisionSystem.RegisterEntity(e);
-                     }
+                    auto components = ComponentLoader::CollectComponents(entity.components, *mx_app);
+
+                    for (auto& [c_type, comp] : components)
+                    {
+                        comp->SetScene(this);
+                        e->AddComponent(comp);
+
+                        if (comp->GetType() == "collision")
+                        {
+                            m_collisionSystem.RegisterEntity(e);
+                        }
+                    }
+                    AddEntity(e->GetId(), e);
+                    return e;
                 }
-                AddEntity(e->GetId(), e);
-                return e;
+                catch (...)
+                {
+                    delete e;
+                    throw;
+                }
             }
         }
 

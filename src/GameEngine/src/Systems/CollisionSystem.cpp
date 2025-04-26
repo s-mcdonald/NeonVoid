@@ -49,6 +49,18 @@ namespace Neon
         }
     }
 
+    void CollisionSystem::DeregisterEntity(Entity* entity)
+    {
+        if (entity)
+        {
+            auto it = std::find(m_entities.begin(), m_entities.end(), entity);
+            if (it != m_entities.end())
+            {
+                m_entities.erase(it);
+            }
+        }
+    }
+
     void CollisionSystem::CheckCollision(Entity* a, Entity* b)
     {
         auto* collisionA = a->GetComponent<CollisionComponent>();

@@ -30,6 +30,7 @@ namespace Neon
                 m_entities.empty();
             };
             void RegisterEntity(Entity* entity);
+            void DeregisterEntity(Entity* entity);
             static bool AABBCollision(
                 const CollisionComponent& aC,
                 const PositionComponent& aP,

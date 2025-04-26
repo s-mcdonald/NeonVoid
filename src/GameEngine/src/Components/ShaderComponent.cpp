@@ -26,18 +26,7 @@ namespace Neon
     ShaderComponent::~ShaderComponent()
     {
         OnDestroy();
-
-        if (m_buffer)
-        {
-            delete m_buffer;
-            m_buffer = nullptr;
-        }
-
-        if (m_shader)
-        {
-            delete m_shader;
-            m_shader = nullptr;
-        }
+        Component::~Component();
     }
 
     void ShaderComponent::OnInit()
@@ -81,6 +70,18 @@ namespace Neon
         {
             m_shader->Unbind();
             m_shader->OnDelete();
+        }
+
+        if (m_buffer)
+        {
+            delete m_buffer;
+            m_buffer = nullptr;
+        }
+
+        if (m_shader)
+        {
+            delete m_shader;
+            m_shader = nullptr;
         }
     }
 }

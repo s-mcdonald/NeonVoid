@@ -22,7 +22,7 @@ namespace Neon
     {
         if (false == m_destroyed)
         {
-            Entity::OnDestroy();
+            OnDestroy();
         }
     }
 
@@ -72,10 +72,9 @@ namespace Neon
             m_components.erase(key);
         }
 
-        m_destroyed = true;
         m_components.empty();
         mx_scene = nullptr;
-        Entity::~Entity();
+        m_destroyed = true;
     }
 
     void Entity::AddComponent(Component* component)
