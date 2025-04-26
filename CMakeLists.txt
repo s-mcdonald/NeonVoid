@@ -89,7 +89,6 @@ set(GAME_ENGINE_SRC
         src/GameEngine/src/Application.cpp
 
         # Loaders
-        src/GameEngine/src/Assets/Loaders/YamlReader.cpp
         src/GameEngine/src/Assets/Loaders/ComponentLoader.cpp
         src/GameEngine/src/Assets/AssetManager.cpp
 
@@ -113,7 +112,10 @@ set(GAME_ENGINE_SRC
         # Utils
         src/GameEngine/src/Utils/EntityTypeConverter.cpp
         src/GameEngine/src/Utils/SceneTypeConverter.cpp
-        src/GameEngine/src/Utils/YamlSceneAsserter.cpp
+
+        # Serialization
+        src/GameEngine/src/Serialization/YamlReader.cpp
+        src/GameEngine/src/Serialization/YamlSceneAsserter.cpp
 
         # Engine Abstracts
         src/GameEngine/src/RuntimeBridge.cpp
