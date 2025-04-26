@@ -35,6 +35,7 @@ namespace Neon
             virtual void PlayOnLoop(const std::string& filename);
             virtual void Stop();
             virtual void Update();
+            void ResetDecoder();
 
             virtual void SetVolume(const Volume& volume);
 

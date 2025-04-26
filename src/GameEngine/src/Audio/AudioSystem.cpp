@@ -41,9 +41,9 @@ namespace Neon
 
     AudioSystem::~AudioSystem() 
     {
-        if (true == m_isPlaying)
+        if (m_isPlaying)
         {
-            AudioSystem::Stop();
+            Stop();
         }
 
         if (m_isAudioEnabled)
@@ -51,25 +51,28 @@ namespace Neon
             ma_device_uninit(&m_device);
         }
 
-        if (&m_decoder)
-        {
-            ma_decoder_uninit(&m_decoder);
-        }
+        ResetDecoder();
     }
 
     void AudioSystem::Play(const std::string& filename) 
     {
-        ma_decoder_uninit(&m_decoder);
+        if (m_isPlaying)
+        {
+            Stop();
+        }
 
         ma_result result = ma_decoder_init_file(filename.c_str(), nullptr, &m_decoder);
         if (result != MA_SUCCESS)
         {
+            m_isPlaying = false;
             return;
         }
 
         result = ma_device_start(&m_device);
         if (result != MA_SUCCESS)
         {
+            ma_decoder_uninit(&m_decoder);
+            m_isPlaying = false;
             return;
         }
 
@@ -78,53 +81,47 @@ namespace Neon
 
     void AudioSystem::PlayOnce(const std::string& filename)
     {
+        ResetDecoder();
         m_onLoop = false;
         Play(filename);
     }
 
     void AudioSystem::PlayOnLoop(const std::string& filename)
     {
+        ResetDecoder();
         m_onLoop = true;
         Play(filename);
     }
 
     void AudioSystem::Stop() 
     {
-        if (false == m_isPlaying)
+        if (!m_isPlaying)
         {
             return;
         }
-    
+
         ma_device_stop(&m_device);
-        ma_decoder_uninit(&m_decoder);
+
+        if (m_decoder.outputFormat != ma_format_unknown) {
+            ma_decoder_uninit(&m_decoder);
+            m_decoder = {};
+        }
+
+        m_decoder = {};
         m_isPlaying = false;
-
-        ma_decoder_seek_to_pcm_frame(&m_decoder, 0);
-
-#if defined(NEON_DEBUG) && defined(NEON_DEBUG_AUDIO)
-        std::cout << "Audio stopped!" << std::endl;
-#endif
+        m_isStopRequested = false;
     }
 
     void AudioSystem::Update() 
     {
-        if (m_isStopRequested) 
+        if (m_isStopRequested)
         {
-#ifdef NEON_DEBUG_AUDIO
-            std::cerr << "[INFO] Attempting to stop player." << std::endl;
-#endif
-            
             Stop();
-            m_isStopRequested = false;
         }
     }
 
     void AudioSystem::SetVolume([[ maybe_unused ]]const Volume& volume) 
     {
-#ifdef NEON_DEBUG_AUDIO
-        std::cerr << "[INFO] Set volume..." << std::endl;
-#endif
-
         float normalizedVolume = static_cast<float>(volume.GetVolume()) / 100.0f;
         ma_device_set_master_volume(&m_device, normalizedVolume);
     }
@@ -142,33 +139,43 @@ namespace Neon
         return config;
     }
 
+    void AudioSystem::ResetDecoder()
+    {
+        if (m_decoder.outputFormat != ma_format_unknown)
+        {
+            ma_decoder_seek_to_pcm_frame(&m_decoder, 0);
+            ma_decoder_uninit(&m_decoder);
+            m_decoder = {};
+        }
+    }
+
     void AudioSystem::dataCallback(ma_device* pDevice, void* pOutput, [[maybe_unused]] const void* pInput, uint32_t frameCount)
     {
         auto* player = static_cast<AudioSystem*>(pDevice->pUserData);
 
-        if (player == nullptr) 
+        if (!player || !player->m_isPlaying)
         {
             return;
         }
 
-        // OK here is the guts of it, read from decoder into the OutputBuffer
         ma_decoder* pDecoder = &player->m_decoder;
 
-        switch(ma_decoder_read_pcm_frames(pDecoder, pOutput, frameCount, nullptr))
+        ma_result result = ma_decoder_read_pcm_frames(pDecoder, pOutput, frameCount, nullptr);
+        if (result == MA_AT_END)
         {
-            case MA_AT_END:
-                if (false == player->m_onLoop) 
-                {
-                    player->m_isStopRequested = true;
-                    return;
-                } 
-
+            if (!player->m_onLoop)
+            {
+                player->m_isStopRequested = true;
+            }
+            else
+            {
                 ma_decoder_seek_to_pcm_frame(pDecoder, 0);
-                break;
-            case MA_SUCCESS:
-                break;
-            default:
-                break;
+                ma_decoder_uninit(pDecoder);
+            }
+        }
+        else if (result != MA_SUCCESS)
+        {
+            player->m_isStopRequested = true;
         }
     }
 }
