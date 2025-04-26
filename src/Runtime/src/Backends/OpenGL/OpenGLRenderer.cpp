@@ -40,7 +40,7 @@ namespace Neon
         }
     }
 
-    void OpenGLRenderer::Clear(const std::vector<float>& colorData)
+    void OpenGLRenderer::BeginFrame(const std::vector<float>& colorData)
     {
         if (colorData.size() >= 4)
         {
@@ -48,23 +48,12 @@ namespace Neon
         }
         else
         {
-            glClearColor(0.3f,0.3f,0.3f, 1.0f);
+            glClearColor(0.0f,0.0f,0.0f, 1.0f);
         }
 
         glClear(GL_COLOR_BUFFER_BIT);
     }
 
-    void OpenGLRenderer::Reset()
-    {
-        glFlush();
-    }
-
-    void OpenGLRenderer::BeginFrame()
-    {
-        glClearColor(0.0f,0.0f,0.0f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
-    }
-    
     void OpenGLRenderer::EndFrame()
     {
         glFlush();

@@ -29,11 +29,9 @@ namespace Neon
             OpenGLRenderer() = default;
             ~OpenGLRenderer() override;
 
-            static void Clear(const std::vector<float>& colorData);
-            static void Reset();
+            static void BeginFrame(const std::vector<float>& colorData);
+            static void EndFrame();
 
-            void BeginFrame() override;
-            void EndFrame() override;
             void RenderTriangle(uint32_t shaderProgram, uint32_t VAO, int vertexCount) override;
             void RenderQuad(uint32_t shaderProgram, uint32_t VAO, int vertexCount) override;
             void RenderText(uint32_t shaderProgram, ITextBuffer* textBuffer, const DrawTextMeta textData) override;

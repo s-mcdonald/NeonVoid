@@ -119,7 +119,7 @@ namespace Neon
 
         while (!glfwWindowShouldClose(m_window))
         {
-            OpenGLRenderer::Clear(application->GetClearColor());
+            OpenGLRenderer::BeginFrame(application->GetClearColor());
 
             auto* scene = application->GetCurrentScene();
             if (scene == nullptr)
@@ -141,9 +141,9 @@ namespace Neon
 
                 glfwSwapBuffers(m_window);
             }
-        }
 
-        OpenGLRenderer::Reset();
+            OpenGLRenderer::EndFrame();
+        }
     }
 
     IShader* OpenGL::CreateShader(const std::string& vertexPath, const std::string& fragmentPath)
