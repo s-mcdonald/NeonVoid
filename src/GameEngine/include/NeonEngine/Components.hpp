@@ -173,10 +173,12 @@ namespace Neon
     {
         public:
             ShaderComponent() = delete;
-            explicit ShaderComponent(const std::string& tag, const std::vector<float>& vertices, IShader* shader)
+            explicit ShaderComponent(const std::string& tag, const std::vector<float>& vertices, const std::vector<int>& indicies, IShader* shader)
                 : Component(tag)
                 , m_shader(shader)
-                , m_vertices(vertices) {};
+                , m_vertices(vertices)
+                , m_indicies(indicies)
+            {};
             ~ShaderComponent() override;
 
             void OnInit() override;
@@ -187,6 +189,7 @@ namespace Neon
         private:
             IShader* m_shader;
             std::vector<float> m_vertices;
+            std::vector<int> m_indicies;
             IVertexBuffer* m_buffer{};
             int m_verticesSize{};
     };

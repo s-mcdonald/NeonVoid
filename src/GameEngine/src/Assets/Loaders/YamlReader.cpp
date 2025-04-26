@@ -192,6 +192,18 @@ namespace Neon
             yComponent.shaderConfig->vertexShader = value["data"]["vertex"].as_str();
             yComponent.shaderConfig->fragShader = value["data"]["frag"].as_str();
 
+            std::vector<int> indices;
+            for (const auto& vertex : value["data"]["indices"].as_seq())
+            {
+                auto indexData = vertex.as_seq();
+                for (int i = 0; i < indexData.size(); i++)
+                {
+                    indices.push_back(indexData[i].as_int());
+                }
+            }
+
+            yComponent.shaderConfig->indices = indices;
+
             std::vector<float> vertices;
             for (const auto& vertex : value["data"]["vertices"].as_seq())
             {

@@ -96,10 +96,10 @@ scene:
           green: 0.0
           blue: 1.0
         projection:
-            left: 0.0
-            bottom: 0.0
-            top: 900.0
-            right: 1000.0
+          left: 0.0
+          bottom: 0.0
+          top: 900.0
+          right: 1000.0
     -
       name: sceneCompText3
       type: text
@@ -147,6 +147,8 @@ scene:
         dir: "./assets/shaders/Entities/"
         vertex: "entity_shader.vert"
         frag: "entity_shader.frag"
+        indices:
+          - [0, 1, 2]
         vertices:
           - [  0.0, 0.0,   1.0, 0.0, 0.0 ]    # Top vertex
           - [  0.0, 0.0,   1.0, 0.0, 0.0 ]    # Bottom left vertex
@@ -193,6 +195,12 @@ scene:
             dir: "./assets/shaders/Entities/"
             vertex: "entity_shader.vert"
             frag: "entity_shader.frag"
+            indices:
+              - [ 0, 1, 2, ]
+              - [ 3, 4, 5, ]
+              - [ 6, 7, 8, ]
+              #- [ 9, 10, 11,   9, 11, 12 ]
+
             vertices:
               # Main body
               - [  0.0,     0.0,      1.0, 0.6, 0.2 ]  # Top vertex
@@ -208,6 +216,13 @@ scene:
               - [  0.048,  -0.064,    0.7, 0.4, 0.1 ]  # Bottom-right corner
               - [  0.080,  -0.112,    0.7, 0.4, 0.1 ]  # Bottom-right fin tip
               - [  0.032,  -0.096,    0.7, 0.4, 0.1 ]  # Upper-right fin
+
+              # Quad (rectangle with vertices)
+              #- [ -0.06,   0.06,     0.5, 0.3, 0.8 ]  # Top-left vertex of the quad
+              #- [  0.06,   0.06,     0.5, 0.3, 0.8 ]  # Top-right vertex of the quad
+              #- [  0.06,  -0.06,     0.5, 0.3, 0.8 ]  # Bottom-right vertex of the quad
+              #- [ -0.06,  -0.06,     0.5, 0.3, 0.8 ]  # Bottom-left vertex of the quad
+
 
     -
       name: cherryHealthPack
@@ -241,6 +256,8 @@ scene:
             dir: "./assets/shaders/Entities/"
             vertex: "entity_shader.vert"
             frag: "entity_shader.frag"
+            indices:
+              - [0,1,2, 3,4,5, 6,7,8, 9,10,11, 12,13,14, 15,16,17, 18,19]
             vertices:
               # Triangle 1 (0° to 18°)
               - [  0.0,    0.0,     1.0,  0.0,  0.0 ]    # Center
@@ -373,6 +390,15 @@ scene:
             dir: "./assets/shaders/Entities/"
             vertex: "entity_shader.vert"
             frag: "entity_shader.frag"
+            indices:
+              - [
+                0,  1 , 2,    3,  4,  5,    6,  7,  8,    9, 10, 11,
+                9, 11, 12,    9, 12, 13,    9, 13, 14,    9, 14, 15,
+                9, 15, 16,    9, 16, 17,    9, 17, 18,    9, 18, 19,
+                9, 19, 20,    9, 20, 21,    9, 21, 22,    9, 22, 23,
+                9, 23, 24,    9, 24, 25,    9, 25, 26,    9, 26, 27,
+                9, 27, 28,    9, 28, 29,    9, 29, 30,
+              ]
             vertices:
               # Flag Pole (Thin Rectangle, 50% Shorter)
               - [ 0.0,   0.04,     0.0,  1.0,  1.0 ]    # Bottom-left of the pole (connected to the top of the sphere)

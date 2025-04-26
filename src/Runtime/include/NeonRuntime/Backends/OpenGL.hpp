@@ -34,7 +34,7 @@ namespace Neon
             void Run(Application* game) override;
 
             IShader* CreateShader(const std::string& vertexPath, const std::string& fragmentPath) override;
-            IVertexBuffer* CreateVertexBuffer(float* vertices, size_t size) override;
+            IVertexBuffer* CreateVertexBuffer(float* vertices, int* indices, size_t size) override;
             ITextBuffer* CreateTextBuffer(size_t bufferSize) override;
 
         protected:

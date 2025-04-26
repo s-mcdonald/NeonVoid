@@ -151,9 +151,9 @@ namespace Neon
         return new OpenGLShader(vertexPath, fragmentPath);
     }
 
-    IVertexBuffer* OpenGL::CreateVertexBuffer(float* vertices, size_t size)
+    IVertexBuffer* OpenGL::CreateVertexBuffer(float* vertices, int* indices, size_t size)
     {
-        return new OpenGLVertexBuffer(vertices, size);
+        return new OpenGLVertexBuffer(vertices, indices, size);
     }
 
     ITextBuffer* OpenGL::CreateTextBuffer(size_t bufferSize)

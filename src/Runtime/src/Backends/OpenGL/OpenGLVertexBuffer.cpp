@@ -19,12 +19,14 @@
 
 namespace Neon
 {
-    OpenGLVertexBuffer::OpenGLVertexBuffer(const float* vertices, const size_t size)
+    OpenGLVertexBuffer::OpenGLVertexBuffer(const float* vertices, const int* indices, const size_t size)
         : m_vertices(vertices)
+        , m_indices(indices)
         , m_size(size)
     {
         glGenVertexArrays(1, &m_VAO);
         glGenBuffers(1, &m_VBO);
+        glGenBuffers(1, &m_EBO);
     }
 
     OpenGLVertexBuffer::~OpenGLVertexBuffer()
@@ -39,6 +41,12 @@ namespace Neon
         {
             glDeleteBuffers(1, &m_VBO);
             m_VBO = 0;
+        }
+
+        if (m_EBO)
+        {
+            glDeleteBuffers(1, &m_EBO);
+            m_EBO = 0;
         }
     }
 
@@ -58,6 +66,11 @@ namespace Neon
         glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
         glBufferData(GL_ARRAY_BUFFER, m_size, m_vertices, GL_STATIC_DRAW);
 
+        // Bind and set EBO
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_EBO);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(m_indices), m_indices, GL_STATIC_DRAW);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_EBO); // Bind EBO for quad rendering
+
         glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
         glEnableVertexAttribArray(0);
 
@@ -76,5 +89,12 @@ namespace Neon
         glBindBuffer(GL_ARRAY_BUFFER, GetVbo());
         glBufferSubData(GL_ARRAY_BUFFER, 0, static_cast<GLsizeiptr>(size), data);
         glBindBuffer(GL_ARRAY_BUFFER, 0);
+    }
+
+    void OpenGLVertexBuffer::UpdateIndices(const void* indices, size_t size)
+    {
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_EBO); // Bind the EBO
+        glBufferSubData(GL_ELEMENT_ARRAY_BUFFER, 0, static_cast<GLsizeiptr>(size), indices);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0); // Unbind the EBO
     }
 }

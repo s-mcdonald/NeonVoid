@@ -46,7 +46,7 @@ namespace Neon
 
         m_shader->OnInit();
 
-        m_buffer = RuntimeApi::GetInstance().CreateVertexBuffer(m_vertices.data(), m_vertices.size() * sizeof(float));
+        m_buffer = RuntimeApi::GetInstance().CreateVertexBuffer(m_vertices.data(),m_indicies.data(),  m_vertices.size() * sizeof(float));
 
         m_buffer->Bind();
 

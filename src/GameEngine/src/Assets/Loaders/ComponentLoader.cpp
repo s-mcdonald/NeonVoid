@@ -65,7 +65,7 @@ namespace Neon
             auto shaderPgm = app.GetBridge().CreateShader(vertexPath,fragPath);
 
             // @todo, make PosComp accept point so we can pass initial
-            auto* theComponent = new ShaderComponent(component.name, component.shaderConfig->vertices, shaderPgm);
+            auto* theComponent = new ShaderComponent(component.name, component.shaderConfig->vertices, component.shaderConfig->indices, shaderPgm);
             theComponent->OnInit();
             return theComponent;
         }

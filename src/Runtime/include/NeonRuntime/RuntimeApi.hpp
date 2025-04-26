@@ -31,7 +31,7 @@ namespace Neon
             [[nodiscard]] IRenderer* GetRenderer() const;
 
             [[nodiscard]] IPlatform* GetPlatform() const;
-            IVertexBuffer* CreateVertexBuffer(float* vertices, size_t size) const;
+            IVertexBuffer* CreateVertexBuffer(float* vertices, int* indices, size_t size) const;
             ITextBuffer* CreateTextBuffer(size_t bufferSize) const;
 
         private:

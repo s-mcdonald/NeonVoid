@@ -49,9 +49,9 @@ namespace Neon
         return m_platform;
     }
 
-    IVertexBuffer* RuntimeApi::CreateVertexBuffer(float* vertices, size_t size) const
+    IVertexBuffer* RuntimeApi::CreateVertexBuffer(float* vertices, int* indices, size_t size) const
     {
-        return m_platform->CreateVertexBuffer(vertices, size);
+        return m_platform->CreateVertexBuffer(vertices, indices, size);
     }
 
     ITextBuffer* RuntimeApi::CreateTextBuffer(size_t size) const

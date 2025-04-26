@@ -23,20 +23,23 @@ namespace Neon
     class OpenGLVertexBuffer final : public IVertexBuffer
     {
         public:
-            OpenGLVertexBuffer(const float*, size_t);
+            OpenGLVertexBuffer(const float*, const int*, size_t);
             ~OpenGLVertexBuffer() override;
 
             void Bind() const override;
             void Unbind() const override;
             void UpdateData(const void* data, size_t size) override;
+            void UpdateIndices(const void* indices, size_t size) override;
 
             uint32_t GetVao() override;
             uint32_t GetVbo() override;
 
         private:
             const float* m_vertices;
+            const int* m_indices;
             size_t m_size;
             uint32_t m_VAO{};
             uint32_t m_VBO{};
+            uint32_t m_EBO{};
     };
 }

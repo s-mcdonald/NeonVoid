@@ -141,6 +141,7 @@ namespace Neon
         std::string dir;
         std::string vertexShader;
         std::string fragShader;
+        std::vector<int> indices;
         std::vector<float> vertices;
     };
 

@@ -72,6 +72,15 @@ namespace Neon
         glBindVertexArray(0);
     }
 
+    void OpenGLRenderer::RenderQuad(const GLuint shaderProgram, const GLuint VAO, const GLsizei indexCount)
+    {
+        glUseProgram(shaderProgram);
+        glBindVertexArray(VAO);
+
+        glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, 0);
+        glBindVertexArray(0);
+    }
+
     void OpenGLRenderer::RenderText(const GLuint shaderProgram, ITextBuffer* textBuffer, DrawTextMeta textData)
     {
         glUseProgram(shaderProgram);

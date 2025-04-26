@@ -35,7 +35,7 @@ namespace Neon
             virtual void Run(Application* game) = 0;
 
             virtual IShader* CreateShader(const std::string& vertexPath, const std::string& fragmentPath) = 0;
-            virtual IVertexBuffer* CreateVertexBuffer(float* vertices, size_t size) = 0;
+            virtual IVertexBuffer* CreateVertexBuffer(float* vertices, int* indices, size_t size) = 0;
             virtual ITextBuffer* CreateTextBuffer(size_t bufferSize) = 0;
     };
 }
