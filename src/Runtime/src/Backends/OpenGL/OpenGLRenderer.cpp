@@ -88,7 +88,6 @@ namespace Neon
             glm::value_ptr(projection)
         );
 
-
         // iterate through all characters
         std::string::const_iterator c;
         for (c = textData.text.begin(); c != textData.text.end(); ++c)

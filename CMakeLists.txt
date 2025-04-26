@@ -124,6 +124,7 @@ set(GAME_ENGINE_SRC
 #
 set(NEON_RUNTIME_SRC
         # Includes
+        src/Runtime/include/NeonRuntime/RTTypes.hpp
         src/Runtime/include/NeonRuntime/IntRuntime.hpp
         src/Runtime/include/NeonRuntime/ExtRuntime.hpp
         src/Runtime/include/NeonRuntime/RuntimeApi.hpp
