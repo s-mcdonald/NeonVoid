@@ -153,7 +153,8 @@ namespace Neon
             }
             // generate texture
             unsigned int texture;
-            glGenTextures(1, &texture);
+            glGenTextures(1, &texture);   // this is the textureID when we need to abstract it
+                                            // So right now we can only have 1 font
             glBindTexture(GL_TEXTURE_2D, texture);
             glTexImage2D(
                 GL_TEXTURE_2D,
