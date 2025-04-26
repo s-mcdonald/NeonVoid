@@ -77,34 +77,34 @@ namespace Neon
     {
         m_rootPath = std::filesystem::current_path().string();
 
-        if (m_runtime.Initialize(width, height, title))
+        if (false == m_runtime.Initialize(width, height, title))
         {
-            m_yamlReader.Read(m_sceneYamlPath);
-
-            // @todo: we need to validate this data
-            m_sceneConfig = m_yamlReader.Init();
-
-            auto* scene = new Scene(this, m_sceneConfig);
-
-            if (false == m_sceneConfig.fonts.path.empty())
-            {
-                RuntimeApi::GetInstance().GetRenderer()->LoadFont(m_sceneConfig.fonts.path);
-            }
-
-            std::unordered_map<std::string, Component*> scriptsForScene  = ComponentLoader::CollectComponents(m_sceneConfig.scripts, *this);
-
-            for (auto& [name, comp] : scriptsForScene)
-            {
-                comp->SetScene(scene);
-                scene->AddComponent(name, comp);
-            }
-
-            AddScene(scene);
-
-            return true;
+            return false;
         }
 
-        return false;
+        m_yamlReader.Read(m_sceneYamlPath);
+
+        // @todo: we need to validate this data
+        m_sceneConfig = m_yamlReader.Init();
+
+        auto* scene = new Scene(this, m_sceneConfig);
+
+        if (false == m_sceneConfig.fonts.path.empty())
+        {
+            RuntimeApi::GetInstance().GetRenderer()->LoadFont(m_sceneConfig.fonts.path);
+        }
+
+        std::unordered_map<std::string, Component*> scriptsForScene  = ComponentLoader::CollectComponents(m_sceneConfig.scripts, *this);
+
+        for (auto& [name, comp] : scriptsForScene)
+        {
+            comp->SetScene(scene);
+            scene->AddComponent(name, comp);
+        }
+
+        AddScene(scene);
+
+        return true;
     }
 
     void Application::Run()
