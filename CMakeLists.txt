@@ -127,7 +127,6 @@ set(NEON_RUNTIME_SRC
         src/Runtime/include/NeonRuntime/IntRuntime.hpp
         src/Runtime/include/NeonRuntime/ExtRuntime.hpp
         src/Runtime/include/NeonRuntime/RuntimeApi.hpp
-        src/Runtime/include/NeonRuntime/BufferFactory.hpp
         src/Runtime/include/NeonRuntime/PlatformFactory.hpp
         src/Runtime/include/NeonRuntime/IInput.hpp
         src/Runtime/include/NeonRuntime/IWindow.hpp
@@ -146,7 +145,6 @@ set(NEON_RUNTIME_SRC
 
         # Platform
         src/Runtime/src/RuntimeApi.cpp
-        src/Runtime/src/Factory/BufferFactory.cpp
         src/Runtime/src/Factory/PlatformFactory.cpp
         src/Runtime/src/Backends/OpenGL/OpenGL.cpp
         src/Runtime/src/Backends/OpenGL/OpenGLInput.cpp
