@@ -18,6 +18,7 @@
 #include <iostream>
 #include <map>
 #include <memory>
+#include <vector>
 
 #include <NeonRuntime/Backends/OpenGLHeaders.hpp>
 #include <NeonRuntime/Backends/OpenGLRenderer.hpp>
@@ -39,11 +40,17 @@ namespace Neon
         }
     }
 
-
-    void OpenGLRenderer::Clear()
+    void OpenGLRenderer::Clear(const std::vector<float>& colorData)
     {
-        glClearColor(0.3f,0.3f,0.3f, 1.0f);
-        glClearColor(0.2f,0.2f,0.5f, 0.5f);
+        if (colorData.size() >= 4)
+        {
+            glClearColor(colorData[0], colorData[1], colorData[2], colorData[3]);
+        }
+        else
+        {
+            glClearColor(0.3f,0.3f,0.3f, 1.0f);
+        }
+
         glClear(GL_COLOR_BUFFER_BIT);
     }
 

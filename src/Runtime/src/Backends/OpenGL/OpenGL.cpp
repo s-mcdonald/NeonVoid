@@ -119,7 +119,7 @@ namespace Neon
 
         while (!glfwWindowShouldClose(m_window))
         {
-            OpenGLRenderer::Clear();
+            OpenGLRenderer::Clear(application->GetClearColor());
 
             auto* scene = application->GetCurrentScene();
             if (scene == nullptr)

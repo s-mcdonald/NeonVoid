@@ -31,6 +31,7 @@ namespace Neon
             Application() = default;
             virtual ~Application();
 
+            virtual std::vector<float> GetClearColor();
             virtual bool Initialize(WindowDimension width, WindowDimension height, const char* title);
             virtual void Run();
 

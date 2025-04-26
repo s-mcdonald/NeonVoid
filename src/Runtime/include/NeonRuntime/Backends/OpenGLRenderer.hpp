@@ -29,7 +29,7 @@ namespace Neon
             OpenGLRenderer() = default;
             ~OpenGLRenderer() override;
 
-            static void Clear();
+            static void Clear(const std::vector<float>& colorData);
             static void Reset();
 
             void BeginFrame() override;

@@ -45,4 +45,11 @@ class MyGame final : public Application
             // return Application::Initialize(800, 600, "Neon Void (0.0.6)");
             return Application::Initialize(2000, 1000, "Neon Void (0.0.6)");
         }
+
+        std::vector<float> GetClearColor() override
+        {
+            return {
+                0.2f, 0.2f, 0.5f, 0.5f
+            };
+        }
 };

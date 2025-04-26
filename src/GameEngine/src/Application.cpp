@@ -168,4 +168,11 @@ namespace Neon
         // we must have reached the end of the Application.
         // if (m_scenes.empty())....
     }
+
+    std::vector<float> Application::GetClearColor()
+    {
+        return {
+            0.0f, 0.0f, 0.0f, 0.0f
+        };
+    };
 }
