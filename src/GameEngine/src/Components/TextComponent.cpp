@@ -81,6 +81,11 @@ namespace Neon
 
     void TextComponent::OnRender()
     {
+        if (m_visible == false)
+        {
+            return;
+        }
+
         DrawTextMeta textData;
         textData.text = m_text;
         textData.x = m_pos_x;
@@ -106,5 +111,10 @@ namespace Neon
     {
         m_pos_x = x;
         m_pos_y = y;
+    }
+
+    void TextComponent::SetVisible(bool visible)
+    {
+        m_visible = visible;
     }
 }

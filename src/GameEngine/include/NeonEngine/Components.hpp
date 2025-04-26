@@ -157,6 +157,7 @@ namespace Neon
             }
 
             void SetPosition(float x, float y);
+            void SetVisible(bool visible);
 
         private:
             std::string m_text;
@@ -164,6 +165,7 @@ namespace Neon
             ITextBuffer* m_buffer{};
             float m_pos_x{0.0};
             float m_pos_y{0.0};
+            bool m_visible{true};
     };
 
     class ShaderComponent final
