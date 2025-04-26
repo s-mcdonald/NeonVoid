@@ -78,6 +78,7 @@ namespace Neon
 
             auto shaderPgm = app.GetBridge().CreateShader(vertexPath,fragPath);
             auto* theComponent = new TextComponent(component.name, component.textConfig.text, shaderPgm);
+            theComponent->SetPosition(component.textConfig.position_x, component.textConfig.position_y);
             theComponent->OnInit();
             return theComponent;
         }

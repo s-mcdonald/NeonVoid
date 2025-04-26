@@ -83,6 +83,8 @@ namespace Neon
     {
         DrawTextMeta textData;
         textData.text = m_text;
+        textData.x = m_pos_x;
+        textData.y = m_pos_y;
 
         RuntimeApi::GetInstance().GetRenderer()->RenderText(
             m_shader->GetShaderProgramId(),
@@ -98,5 +100,11 @@ namespace Neon
             m_shader->Unbind();
             m_shader->OnDelete();
         }
+    }
+
+    void TextComponent::SetPosition(float x, float y)
+    {
+        m_pos_x = x;
+        m_pos_y = y;
     }
 }

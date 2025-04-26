@@ -395,13 +395,65 @@ namespace Neon
     {
         if (false == value.is_mapping())
         {
-            throw std::runtime_error("scene.components.component.text.data MUST be a mapping value");
+            throw std::runtime_error("components.component.text.data MUST be a mapping value");
         }
 
         if (false == value.contains("text"))
         {
-            throw std::runtime_error("scene.components.component.text.data.text IS required");
+            throw std::runtime_error("components.component.text.data.text IS required");
         }
+
+        if (false == value.contains("font"))
+        {
+            throw std::runtime_error("components.component.text.data.font IS required");
+        }
+
+        if (false == value.contains("scale"))
+        {
+            throw std::runtime_error("components.component.text.data.scale IS required");
+        }
+
+        if (false == value.contains("position"))
+        {
+            throw std::runtime_error("components.component.text.data.position IS required");
+        }
+
+        if (false == value.contains("color"))
+        {
+            throw std::runtime_error("components.component.text.data.color IS required");
+        }
+
+        if (false == value.contains("projection"))
+        {
+            throw std::runtime_error("components.component.text.data.projection IS required");
+        }
+
+        if (false == value["position"].contains("x"))
+        {
+            throw std::runtime_error("components.component.text.data.position.x IS required");
+        }
+
+        if (false == value["position"].contains("y"))
+        {
+            throw std::runtime_error("components.component.text.data.position.y IS required");
+        }
+
+        if (false == value["color"].contains("red"))
+        {
+            throw std::runtime_error("components.component.text.data.color.red IS required");
+        }
+
+        if (false == value["color"].contains("green"))
+        {
+            throw std::runtime_error("components.component.text.data.color.green IS required");
+        }
+
+        if (false == value["color"].contains("blue"))
+        {
+            throw std::runtime_error("components.component.text.data.color.blue IS required");
+        }
+
+        // todo scale
     }
 
     void YamlSceneAsserter::AssertValidateComponentTypeScript(const fkyaml::basic_node<>& value)

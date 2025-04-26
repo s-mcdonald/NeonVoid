@@ -165,6 +165,13 @@ namespace Neon
 
             yComponent.textConfig;
             yComponent.textConfig.text = value["data"]["text"].as_str();
+            yComponent.textConfig.font = value["data"]["font"].as_str();
+            yComponent.textConfig.scale = value["data"]["scale"].as_float();
+            yComponent.textConfig.position_x = value["data"]["position"]["x"].as_float();
+            yComponent.textConfig.position_y = value["data"]["position"]["y"].as_float();
+            yComponent.textConfig.color_r = value["data"]["color"]["red"].as_float();
+            yComponent.textConfig.color_g = value["data"]["color"]["green"].as_float();
+            yComponent.textConfig.color_b = value["data"]["color"]["blue"].as_float();
         }
 
         if (yComponent.type == "script")

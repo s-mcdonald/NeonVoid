@@ -164,6 +164,17 @@ namespace Neon
     struct YTextConfigData
     {
         std::string text;
+        std::string font;
+        float scale = 0.5f;
+        float color_r = 0.0f;
+        float color_g = 0.0f;
+        float color_b = 1.0f;
+        float position_x = 25.0f;
+        float position_y = 100.0f;
+        float projection_top = 0.0f;
+        float projection_bottom = 0.0f;
+        float projection_left = 900.0f;
+        float projection_right = 1000.0f;
     };
 
     enum class ConfigType {

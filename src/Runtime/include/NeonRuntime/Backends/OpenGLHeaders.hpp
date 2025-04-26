@@ -44,9 +44,9 @@ struct DrawTextMeta
     // RGB color struct
     struct
     {
-        float r = 0.0f;
+        float r = 1.0f;
         float g = 0.0f;
-        float b = 1.0f;
+        float b = 0.0f;
     } rgb;
 
     struct

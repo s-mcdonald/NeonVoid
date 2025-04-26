@@ -156,10 +156,14 @@ namespace Neon
                 m_text = text;
             }
 
+            void SetPosition(float x, float y);
+
         private:
             std::string m_text;
             IShader* m_shader;
             ITextBuffer* m_buffer{};
+            float m_pos_x{0.0};
+            float m_pos_y{0.0};
     };
 
     class ShaderComponent final
