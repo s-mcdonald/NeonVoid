@@ -26,7 +26,9 @@ namespace Neon
     class OpenGL final : public IPlatform
     {
         public:
-            OpenGL();
+            OpenGL()
+                : IPlatform()
+                , m_window(nullptr) {};
             ~OpenGL() override;
 
             bool Initialize(int width, int height, const char* title) override;

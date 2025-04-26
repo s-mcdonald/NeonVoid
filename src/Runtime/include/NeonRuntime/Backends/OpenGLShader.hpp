@@ -38,9 +38,6 @@ namespace Neon
         public:
             void Bind() const override;
             void Unbind() const override;
-
-            void Use() const override;
-            void Stop() const override;
             void SetUniformMat4(std::string name, glm::mat4 value) override;
 
         private:

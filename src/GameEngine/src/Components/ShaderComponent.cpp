@@ -63,9 +63,9 @@ namespace Neon
             glm::mat4 modelMatrix = glm::mat4(1.0f);
             modelMatrix = glm::translate(modelMatrix, glm::vec3(p.x, p.y, 0.0f));
 
-            m_shader->Use();
+            m_shader->Bind();
             m_shader->SetUniformMat4("modelMatrix", modelMatrix);
-            m_shader->Stop();
+            m_shader->Unbind();
         }
 
         RuntimeApi::GetInstance().GetRenderer()->RenderTriangle(

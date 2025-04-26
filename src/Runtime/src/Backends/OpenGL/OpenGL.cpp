@@ -27,14 +27,7 @@
 
 namespace Neon 
 {
-    OpenGL::OpenGL()
-        : IPlatform()
-        , m_window(nullptr)
-    {
-        // ..
-    }
-
-    OpenGL::~OpenGL() 
+    OpenGL::~OpenGL()
     {
         if (m_window)
         {
@@ -44,9 +37,6 @@ namespace Neon
         glfwTerminate();
     }
 
-    ///
-    /// Initialize OpenGL core before render
-    ///
     bool OpenGL::Initialize(const int width, const int height, const char* title)
     {
         if (!glfwInit()) 
