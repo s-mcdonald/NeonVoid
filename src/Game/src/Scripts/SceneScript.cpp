@@ -27,6 +27,7 @@
 // Make this a value on the MyGame app.
 static float s_lastSpawnTime        = 0.0f;
 static float s_enemyLastSpawnTime   = 0.0f;
+static bool  s_gameOver             = false;
 
 std::function<void(Neon::Scene* scene)> SceneScript::GetLevelOneInitScript()
 {
@@ -68,7 +69,7 @@ std::function<void(Neon::Scene* scene)> SceneScript::GetLevelOneInitScript()
 
         auto* playerScore = mainPlayer->GetComponentByTag<Neon::ScoreComponent>("playerScore");
 
-        backgroundSoundComp->TriggerPlayRepeat();
+        backgroundSoundComp->TriggerPlayOnce();
         timerComponent->Start();
 
         auto* collisionComponent = mainPlayer->GetComponent<Neon::CollisionComponent>();
@@ -195,9 +196,15 @@ std::function<void(Neon::Scene* scene)> SceneScript::GetSceneTimerScript()
 
     return[cherryPositions, bombPositions](Neon::Scene* scene) mutable
     {
-        auto* gameOverText = scene->GetComponentByTag<Neon::TextComponent>("sceneCompTextGameOver");
+        if (s_gameOver)
+        {
+            return;
+        }
 
-        gameOverText->SetText("Collect the Cherries");
+        // if score > 700 you win
+        // if lives count
+
+        auto* gameOverText = scene->GetComponentByTag<Neon::TextComponent>("sceneCompTextGameOver");
 
         // Create a random number generator
         std::random_device rd; // Seed for randomness
@@ -210,6 +217,29 @@ std::function<void(Neon::Scene* scene)> SceneScript::GetSceneTimerScript()
 
         auto* timerComponent = scene->GetComponentByTag<Neon::TimerComponent>("sceneCompTimer");
         float elapsedTime = timerComponent->GetElapsedTime();
+
+        if (elapsedTime > 60.0f * 4)
+        {
+            s_gameOver = true;
+        }
+
+        if (s_gameOver == false)
+        {
+            if (elapsedTime < 5.0f)
+            {
+                gameOverText->SetText("Collect the Cherries");
+                gameOverText->SetVisible(true);
+            }
+            else if (elapsedTime < 10.0f)
+            {
+                gameOverText->SetVisible(false);
+            }
+        }
+        else
+        {
+            gameOverText->SetText("GAME OVER");
+            gameOverText->SetVisible(true);
+        }
 
         if (false == cherryPositions.empty() && std::abs(elapsedTime - s_lastSpawnTime - CHERRY_SPAWN_INTERVAL) < INTERVAL_TOLERANCE)
         {
