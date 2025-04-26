@@ -136,8 +136,8 @@ namespace Neon
                 glfwPollEvents();
 
                 scene->HandleInput(&keyboardInput);
-                scene->Update();
                 scene->Render();
+                scene->Update();
 
                 glfwSwapBuffers(m_window);
             }

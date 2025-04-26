@@ -311,9 +311,7 @@ namespace Neon
 
                 if (m_scriptType == ScriptType::SceneUpdate)
                 {
-                    std::cout << "SceneScript: Scene Update" << std::endl;
                     m_scriptScene(_s);
-                    std::cout << "End SceneScript: Scene Update" << std::endl;
                     return;
                 }
             }
@@ -339,7 +337,11 @@ namespace Neon
             void OnInit() override {};
             void OnUpdate() override {};
             void OnRender() override {};
-            void OnDestroy() override {};
+            void OnDestroy() override
+            {
+                m_script = nullptr;
+                Component::OnDestroy();
+            };
 
             [[nodiscard]] float GetWidth() const { return m_width; }
             [[nodiscard]] float GetHeight() const { return m_height; }

@@ -107,7 +107,6 @@ std::function<void(Neon::Scene* scene)> SceneScript::GetLevelOneInitScript()
 
                 Neon::Score score = playerScore->GetScore();
 
-
                 bombSound->TriggerPlayOnce();
 
                 if (score < 0)

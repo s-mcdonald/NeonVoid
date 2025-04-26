@@ -40,6 +40,7 @@ namespace Neon
             void Update();
             void Render();
             void Destroy();
+            void ProcessPendingDeletions();
 
 
             bool IsInitialized() const;
@@ -71,6 +72,16 @@ namespace Neon
             bool MakeComponent(const std::string& compoTag);
             Entity* MakeEntity(const std::string& entityTag);
 
+            uint32_t EntityCount() const
+            {
+                return m_entities.size();
+            }
+
+            uint32_t ComponentCount() const
+            {
+                return m_components.size();
+            }
+
         private:
             template <typename T>
             void InitRenderable(const T& t);
@@ -98,5 +109,6 @@ namespace Neon
             uint32_t m_nextEntityID;
             CollisionSystem m_collisionSystem;
             PhysixSystem m_physixSystem;
+            std::vector<EntityID> m_pendingDeletions;
     };
 }

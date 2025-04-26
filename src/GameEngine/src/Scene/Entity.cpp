@@ -73,6 +73,9 @@ namespace Neon
         }
 
         m_destroyed = true;
+        m_components.empty();
+        mx_scene = nullptr;
+        Entity::~Entity();
     }
 
     void Entity::AddComponent(Component* component)

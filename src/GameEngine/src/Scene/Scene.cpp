@@ -59,12 +59,13 @@ namespace Neon
 
     void Scene::Update()
     {
-        // check for collision prior to other updates
         m_collisionSystem.OnUpdate();
 
         // Scene components must be updated before entity components
         UpdateRenderable(m_components);
         UpdateRenderable(m_entities);
+
+        ProcessPendingDeletions();
     }
 
     void Scene::Render()
@@ -114,24 +115,36 @@ namespace Neon
         auto it = m_entities.find(id);
         if (it != m_entities.end())
         {
-            auto* entity = it->second;
-            if (entity != nullptr)
-            {
-                entity->OnDestroy();
-                //delete entity; //crashes with this line
-            }
-
-            m_entities.erase(it);
-        }
-        else
-        {
-            std::cout << "Entity with ID " << id << " not found." << std::endl;
+            m_pendingDeletions.push_back(id);
         }
     }
 
     void Scene::DestroyEntity(const Entity* entity)
     {
-        DestroyEntity(entity->GetId());
+        if (entity != nullptr)
+        {
+            DestroyEntity(entity->GetId());
+        }
+    }
+
+    void Scene::ProcessPendingDeletions()
+    {
+        for (const auto id : m_pendingDeletions)
+        {
+            auto it = m_entities.find(id);
+            if (it != m_entities.end())
+            {
+                auto* entity = it->second;
+
+                if (entity != nullptr)
+                {
+                    entity->OnDestroy();
+                }
+
+                m_entities.erase(it);
+            }
+        }
+        m_pendingDeletions.clear();
     }
 
     Entity* Scene::GetEntity(const EntityID id) const

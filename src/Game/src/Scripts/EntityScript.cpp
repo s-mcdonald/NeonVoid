@@ -52,8 +52,7 @@ std::function<void(Entity* e, Scene* scene)> EntityScript::GetBombUpdateScript()
         Point p = x->GetPoint();
         if ( p.y < -1.2f)
         {
-            // if (scene != nullptr)
-            // scene->DestroyEntity(e);
+            scene->DestroyEntity(e->GetId());
         }
         else
         {
@@ -86,8 +85,7 @@ std::function<void(Entity* e, Scene* scene)> EntityScript::GetCherryUpdateScript
 
         if ( p.y > 1.2)
         {
-            // if (scene != nullptr && e != nullptr)
-                // scene->DestroyEntity(e);
+            scene->DestroyEntity(e->GetId());
         }
         else
         {
