@@ -38,9 +38,13 @@ std::function<void(Neon::Scene* scene)> SceneScript::GetLevelOneInitScript()
         // Make/Create Scene level components
         if (!scene->MakeComponent("sceneCompBackgroundSound"))  { std::cerr << "Failed to create sceneCompBackgroundSound" << std::endl; hasError = true;   }
         if (!scene->MakeComponent("sceneCompCherrySound"))      { std::cerr << "Failed to create sceneCompCherrySound" << std::endl; hasError = true;       }
-        if (!scene->MakeComponent("sceneCompBombSound"))        { std::cerr << "Failed to create sceneCompBombSound" << std::endl; hasError = true;       }
+        if (!scene->MakeComponent("sceneCompBombSound"))        { std::cerr << "Failed to create sceneCompBombSound" << std::endl; hasError = true;         }
 
         if (!scene->MakeComponent("sceneCompText"))             { std::cerr << "Failed to create sceneCompText" << std::endl; hasError = true;              }
+        if (!scene->MakeComponent("sceneCompText2"))            { std::cerr << "Failed to create sceneCompText2" << std::endl; hasError = true;             }
+        if (!scene->MakeComponent("sceneCompText3"))            { std::cerr << "Failed to create sceneCompText3" << std::endl; hasError = true;             }
+        if (!scene->MakeComponent("sceneCompTextGameOver"))     { std::cerr << "Failed to create sceneCompTextGameOver" << std::endl; hasError = true;      }
+
         if (!scene->MakeComponent("sceneCompShader"))           { std::cerr << "Failed to create sceneCompShader" << std::endl; hasError = true;            }
         if (!scene->MakeComponent("sceneCompTimer"))            { std::cerr << "Failed to create sceneCompTimer" << std::endl; hasError = true;             }
 
@@ -129,9 +133,11 @@ std::function<void(Neon::Scene* scene)> SceneScript::GetLevelOneInitScript()
 
 std::function<void(Neon::Scene* scene)> SceneScript::GetLevelOneUpdateScript()
 {
+    // bug: not wired in because of the way scene handles comp+script tags
     return[](Neon::Scene* scene)
     {
-        // ..
+        // auto* entityCount = scene->GetComponentByTag<Neon::TextComponent>("sceneDebugEntityCount");
+        // entityCount->SetText("Entity Count: 55" + std::to_string(scene->EntityCount()));
     };
 }
 
@@ -189,6 +195,9 @@ std::function<void(Neon::Scene* scene)> SceneScript::GetSceneTimerScript()
 
     return[cherryPositions, bombPositions](Neon::Scene* scene) mutable
     {
+        auto* gameOverText = scene->GetComponentByTag<Neon::TextComponent>("sceneCompTextGameOver");
+
+        gameOverText->SetText("Collect the Cherries");
 
         // Create a random number generator
         std::random_device rd; // Seed for randomness

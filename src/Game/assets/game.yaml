@@ -48,11 +48,81 @@ scene:
         loop: true
         volume: 60
     -
-      name: sceneCompText
+      name: sceneCompTextGameOver
+      type: text
+      data:
+        text: "Game Over"
+        font: 28_days_later
+        scale: 0.1
+        position:
+          x: 450.0
+          y: 800.0
+        color:
+          red: 0.0
+          green: 0.0
+          blue: 1.0
+        projection:
+          left: 0.0
+          bottom: 0.0
+          top: 900.0
+          right: 1000.0
+    -
+      name: sceneCompText2
       type: text
       data:
         text: "Neon Void"
         font: 28_days_later
+        scale: 0.5
+        position:
+          x: 25.0
+          y: 25.0
+        color:
+          red: 0.0
+          green: 0.0
+          blue: 1.0
+        projection:
+          left: 0.0
+          bottom: 0.0
+          top: 900.0
+          right: 1000.0
+    -
+      name: sceneCompText
+      type: text
+      data:
+        text: "Score 0"
+        font: 28_days_later
+        scale: 0.5
+        position:
+          x: 25.0
+          y: 50.0
+        color:
+          red: 0.0
+          green: 0.0
+          blue: 1.0
+        projection:
+            left: 0.0
+            bottom: 0.0
+            top: 900.0
+            right: 1000.0
+    -
+      name: sceneCompText3
+      type: text
+      data:
+        text: "Lives 0"
+        font: 28_days_later
+        scale: 0.5
+        position:
+          x: 25.0
+          y: 75.0
+        color:
+          red: 0.0
+          green: 0.0
+          blue: 1.0
+        projection:
+          left: 0.0
+          bottom: 0.0
+          top: 900.0
+          right: 1000.0
     -
       name: sceneCompCherrySound
       type: audio
