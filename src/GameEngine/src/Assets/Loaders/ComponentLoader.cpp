@@ -34,9 +34,7 @@ namespace Neon
     {
         if (component.type == "audio")
         {
-            auto* theComponent = new AudioComponent(component.name, component.audioConfig->path);
-            Volume v(component.audioConfig->volume);
-            theComponent->SetVolume(v);
+            auto* theComponent = new AudioComponent(component);
             theComponent->OnInit();
 
             return theComponent;
@@ -159,7 +157,12 @@ namespace Neon
 
         for (auto& yComp : components)
         {
-            componentsForScene.emplace(yComp.name, MakeComponentReal(yComp, app));
+            auto* component = MakeComponentReal(yComp, app);
+            if (component == nullptr)
+            {
+                continue;
+            }
+            componentsForScene.emplace(yComp.name, component);
         }
 
         return componentsForScene;

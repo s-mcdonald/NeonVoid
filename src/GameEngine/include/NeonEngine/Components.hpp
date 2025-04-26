@@ -120,12 +120,12 @@ namespace Neon
         , public AudioSystem
     {
         public:
-            explicit AudioComponent(const std::string& tag, std::string filename)
-                : Component(tag)
-                , AudioSystem()
-                , m_filename(std::move(filename))
-                , m_volume(50)
-                , m_repeats(false) {};
+            explicit AudioComponent(const YComponent& audioData) :
+                Component(audioData.name), AudioSystem(), m_repeats(false), m_volume(50)
+            {
+                m_filename = audioData.audioConfig->path;
+                m_volume = Volume(audioData.audioConfig->volume);
+            };
             ~AudioComponent() override;
 
             std::string GetType() const override { return "audio"; };
