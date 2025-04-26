@@ -117,31 +117,24 @@ namespace Neon
 
     class AudioComponent final
         : public Component
-        , public AudioSystem
     {
         public:
             explicit AudioComponent(const YComponent& audioData) :
-                Component(audioData.name), AudioSystem(), m_repeats(false), m_volume(50)
+                Component(audioData.name), m_repeats(false), m_volume(50)
             {
                 m_filename = audioData.audioConfig->path;
                 m_volume = Volume(audioData.audioConfig->volume);
             };
-            ~AudioComponent() override;
+            ~AudioComponent() override = default;
 
             std::string GetType() const override { return "audio"; };
 
-            void OnInit() override;
-            void OnUpdate() override;
-            void OnRender() override
-            {
-            };
-
             void TriggerPlayOnce();
             void TriggerPlayRepeat();
-            void SetVolume(const Volume&) override;
-            void OnDestroy() override;
+            void SetVolume(const Volume&);
 
         private:
+            AudioSystem audioSystem;
             std::string m_filename;
             bool m_repeats;
             Volume m_volume;

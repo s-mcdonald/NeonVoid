@@ -51,7 +51,10 @@ namespace Neon
             ma_device_uninit(&m_device);
         }
 
-        ma_decoder_uninit(&m_decoder);
+        if (&m_decoder)
+        {
+            ma_decoder_uninit(&m_decoder);
+        }
     }
 
     void AudioSystem::Play(const std::string& filename) 
