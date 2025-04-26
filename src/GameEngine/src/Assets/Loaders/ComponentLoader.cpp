@@ -159,7 +159,7 @@ namespace Neon
 
         for (auto& yComp : components)
         {
-            componentsForScene.emplace(yComp.type, MakeComponentReal(yComp, app));
+            componentsForScene.emplace(yComp.name, MakeComponentReal(yComp, app));
         }
 
         return componentsForScene;

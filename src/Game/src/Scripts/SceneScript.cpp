@@ -134,11 +134,9 @@ std::function<void(Neon::Scene* scene)> SceneScript::GetLevelOneInitScript()
 
 std::function<void(Neon::Scene* scene)> SceneScript::GetLevelOneUpdateScript()
 {
-    // bug: not wired in because of the way scene handles comp+script tags
     return[](Neon::Scene* scene)
     {
-        // auto* entityCount = scene->GetComponentByTag<Neon::TextComponent>("sceneDebugEntityCount");
-        // entityCount->SetText("Entity Count: 55" + std::to_string(scene->EntityCount()));
+        // ..
     };
 }
 

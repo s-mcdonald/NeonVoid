@@ -200,7 +200,7 @@ namespace Neon
                      comp->SetScene(this);
                      e->AddComponent(comp);
 
-                     if (c_type == "collision")
+                     if (comp->GetType() == "collision")
                      {
                          m_collisionSystem.RegisterEntity(e);
                      }

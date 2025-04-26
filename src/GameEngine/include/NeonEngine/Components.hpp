@@ -54,6 +54,8 @@ namespace Neon
                 return m_tag;
             }
 
+            virtual std::string GetType() const = 0;
+
         public:
             virtual void OnInit() {};
             virtual void OnUpdate() {};
@@ -74,6 +76,8 @@ namespace Neon
                 , m_position(p.x, p.y)
                 , m_bounds(bounds) {};
             ~PositionComponent() override = default;
+
+            std::string GetType() const override { return "position"; };
 
             void OnInit() override {};
             void OnUpdate() override {};
@@ -98,6 +102,7 @@ namespace Neon
                 , m_directionInput(0.0f, 0.0f) {};
             ~MovementComponent() override = default;
 
+            std::string GetType() const override { return "movement"; };
             void HandleInput(Input* input);
 
             void OnInit() override {};
@@ -123,6 +128,8 @@ namespace Neon
                 , m_repeats(false) {};
             ~AudioComponent() override;
 
+            std::string GetType() const override { return "audio"; };
+
             void OnInit() override;
             void OnUpdate() override;
             void OnRender() override
@@ -145,6 +152,8 @@ namespace Neon
         public:
             explicit TextComponent(const std::string& tag, std::string text, IShader* shader);
             ~TextComponent() override;
+
+            std::string GetType() const override { return "text"; };
 
             void OnInit() override;
             void OnUpdate() override;
@@ -181,6 +190,8 @@ namespace Neon
             {};
             ~ShaderComponent() override;
 
+            std::string GetType() const override { return "shader"; };
+
             void OnInit() override;
             void OnUpdate() override;
             void OnRender() override {};
@@ -200,11 +211,7 @@ namespace Neon
             ScoreComponent(const std::string& tag): Component(tag), m_score{0} {};
             ~ScoreComponent() override = default;
 
-            // void OnInit() override {};
-            // void OnUpdate() override {};
-            // void OnRender() override {};
-
-            void OnDestroy() override {};
+            std::string GetType() const override { return "score"; };
 
             Score GetScore() const
             {
@@ -231,11 +238,7 @@ namespace Neon
             HealthComponent(const std::string& tag): Component(tag), m_health{0} {};
             ~HealthComponent() override = default;
 
-        public:
-            void OnInit() override {};
-            void OnUpdate() override {};
-            void OnRender() override {};
-            void OnDestroy() override {};
+            std::string GetType() const override { return "health"; };
 
         public:
             [[nodiscard]] Score GetHealth() const;
@@ -261,6 +264,8 @@ namespace Neon
                 , m_scriptScene(nullptr)
                 , m_scriptType(type)
             {}
+
+            std::string GetType() const override { return "script"; };
 
             ~ScriptComponent() override
             {
@@ -328,9 +333,8 @@ namespace Neon
                 , m_height(height) {}
             ~CollisionComponent() override {};
 
-            void OnInit() override {};
-            void OnUpdate() override {};
-            void OnRender() override {};
+            std::string GetType() const override { return "collision"; };
+
             void OnDestroy() override
             {
                 m_script = nullptr;
@@ -373,6 +377,8 @@ namespace Neon
             }
 
             ~TimerComponent() override = default;
+
+            std::string GetType() const override { return "timer"; };
 
             void Start()
             {
