@@ -40,7 +40,7 @@ scene:
       name: sceneCompBackgroundSound
       type: audio
       data:
-        path: "./assets/audio/epic.mp3" #neon_void_intro # background #epic
+        path: "./assets/audio/epic.mp3"
         loop: true
         volume: 60
     -
@@ -139,7 +139,7 @@ scene:
       data:
         bind: "Scene::Timer"
     -
-      name: sceneCompShader   # bug: this isn't working!
+      name: sceneCompShader
       type: shader
       data:
         name: sceneCompShader2
@@ -179,13 +179,6 @@ scene:
             box:
               x: 0.15 # Box size HxW
               y: 0.15 # Box size HxW
-        -
-          name: gunshot
-          type: audio
-          data:
-            path: "./assets/audio/bullet.mp3"
-            loop: false
-            volume: 5
         -
           name: spaceship
           type: shader
