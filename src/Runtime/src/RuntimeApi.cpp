@@ -30,13 +30,11 @@ namespace Neon
     RuntimeApi::RuntimeApi()
     {
         m_renderer = new OpenGLRenderer();
-        m_platform = PlatformFactory::CreatePlatform();
     }
 
     RuntimeApi::~RuntimeApi()
     {
         delete m_renderer;
-        delete m_platform;
     }
 
     auto RuntimeApi::GetRenderer() const -> IRenderer*
@@ -44,18 +42,18 @@ namespace Neon
         return m_renderer;
     }
 
-    IPlatform* RuntimeApi::GetPlatform() const
+    IPlatform* RuntimeApi::GetPlatform()
     {
-        return m_platform;
+        return &m_platform;
     }
 
-    IVertexBuffer* RuntimeApi::CreateVertexBuffer(float* vertices, int* indices, size_t size) const
+    IVertexBuffer* RuntimeApi::CreateVertexBuffer(float* vertices, int* indices, size_t size)
     {
-        return m_platform->CreateVertexBuffer(vertices, indices, size);
+        return m_platform.CreateVertexBuffer(vertices, indices, size);
     }
 
-    ITextBuffer* RuntimeApi::CreateTextBuffer(size_t size) const
+    ITextBuffer* RuntimeApi::CreateTextBuffer(size_t size)
     {
-        return m_platform->CreateTextBuffer(size);
+        return m_platform.CreateTextBuffer(size);
     }
 }

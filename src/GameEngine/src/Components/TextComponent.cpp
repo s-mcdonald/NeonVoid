@@ -63,8 +63,6 @@ namespace Neon
         m_buffer->Init();
         m_buffer->Bind();
         m_buffer->Unbind();
-
-        std::cout << "TextComponent Initialization Done" << std::endl;
     }
 
     // changes throughout the game here
@@ -75,8 +73,7 @@ namespace Neon
         // m_buffer->SetPos(m_point);
         // m_buffer->SetColor(m_rgb);
         // m_buffer->SetOrtho(m_ortho);
-
-        // set th data here and pass the buffer into the renderer OnRender
+        // set the data here and pass the buffer into the renderer OnRender
     }
 
     void TextComponent::OnRender()

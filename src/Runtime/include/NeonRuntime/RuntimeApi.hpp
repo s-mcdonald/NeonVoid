@@ -16,6 +16,8 @@
 
 #pragma once
 
+#include <NeonRuntime/IntRuntime.hpp>
+#include <NeonRuntime/Backends/OpenGL.hpp>
 #include <NeonRuntime/ITextBuffer.hpp>
 #include <NeonRuntime/IVertexBuffer.hpp>
 
@@ -30,15 +32,19 @@ namespace Neon
 
             [[nodiscard]] IRenderer* GetRenderer() const;
 
-            [[nodiscard]] IPlatform* GetPlatform() const;
-            IVertexBuffer* CreateVertexBuffer(float* vertices, int* indices, size_t size) const;
-            ITextBuffer* CreateTextBuffer(size_t bufferSize) const;
+            [[nodiscard]] IPlatform* GetPlatform();
+            IVertexBuffer* CreateVertexBuffer(float* vertices, int* indices, size_t size);
+            ITextBuffer* CreateTextBuffer(size_t bufferSize);
 
         private:
             RuntimeApi();
             ~RuntimeApi();
 
             IRenderer* m_renderer;
-            IPlatform* m_platform;
+#ifdef NEON_BUILD_OPENGL
+            OpenGL m_platform;
+#elif defined(NEON_BUILD_VULKAN)
+#else
+#endif
     };
 }
