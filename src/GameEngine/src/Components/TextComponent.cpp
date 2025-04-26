@@ -47,6 +47,9 @@ namespace Neon
             delete m_shader;
             m_shader = nullptr;
         }
+
+        OnDestroy();
+        Component::~Component();
     }
 
     void TextComponent::OnInit()
@@ -102,6 +105,9 @@ namespace Neon
             m_shader->Unbind();
             m_shader->OnDelete();
         }
+
+        m_shader = nullptr;
+        m_buffer = nullptr;
     }
 
     void TextComponent::SetPosition(float x, float y)

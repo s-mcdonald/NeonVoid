@@ -56,11 +56,14 @@ namespace Neon
 
             virtual std::string GetType() const = 0;
 
-        public:
             virtual void OnInit() {};
             virtual void OnUpdate() {};
             virtual void OnRender() {};
-            virtual void OnDestroy() {};
+            virtual void OnDestroy()
+            {
+                mx_entityParent = nullptr;
+                mx_scene = nullptr;
+            };
 
         private:
             Entity* mx_entityParent = nullptr;
@@ -75,14 +78,21 @@ namespace Neon
                 : Component(tag)
                 , m_position(p.x, p.y)
                 , m_bounds(bounds) {};
-            ~PositionComponent() override = default;
+            ~PositionComponent() override
+            {
+                OnDestroy();
+                Component::~Component();
+            };
 
             std::string GetType() const override { return "position"; };
 
             void OnInit() override {};
             void OnUpdate() override {};
             void OnRender() override {};
-            void OnDestroy() override {};
+            void OnDestroy() override
+            {
+                m_bounds = 0.0f;
+            };
 
             [[nodiscard]] Point GetPoint() const { return m_position; };
             void SetPoint(Point p) { m_position = p; };
@@ -100,7 +110,10 @@ namespace Neon
                 : Component(tag)
                 , m_velocity(0.0f, 0.0f)
                 , m_directionInput(0.0f, 0.0f) {};
-            ~MovementComponent() override = default;
+            ~MovementComponent() override
+            {
+                Component::OnDestroy();
+            };
 
             std::string GetType() const override { return "movement"; };
             void HandleInput(Input* input);
@@ -108,7 +121,6 @@ namespace Neon
             void OnInit() override {};
             void OnUpdate() override;
             void OnRender() override {};
-            void OnDestroy() override {};
 
         private:
             glm::vec2 m_velocity;
@@ -125,7 +137,10 @@ namespace Neon
                 m_filename = audioData.audioConfig->path;
                 m_volume = Volume(audioData.audioConfig->volume);
             };
-            ~AudioComponent() override = default;
+            ~AudioComponent() override
+            {
+                Component::~Component();
+            };
 
             std::string GetType() const override { return "audio"; };
 
@@ -202,7 +217,10 @@ namespace Neon
     {
         public:
             ScoreComponent(const std::string& tag): Component(tag), m_score{0} {};
-            ~ScoreComponent() override = default;
+            ~ScoreComponent() override
+            {
+                Component::~Component();
+            };
 
             std::string GetType() const override { return "score"; };
 
@@ -262,8 +280,8 @@ namespace Neon
 
             ~ScriptComponent() override
             {
-                m_scriptScene = nullptr;
-                m_scriptEntity = nullptr;
+                OnDestroy();
+                Component::OnDestroy();
             };
 
             void OnInit() override
@@ -309,7 +327,11 @@ namespace Neon
             }
 
             void OnRender() override {}
-            void OnDestroy() override {}
+            void OnDestroy() override
+            {
+                m_scriptScene = nullptr;
+                m_scriptEntity = nullptr;
+            }
 
         private:
             std::function<void(Scene* scene)> m_scriptScene;
@@ -324,14 +346,17 @@ namespace Neon
                 : Component(tag)
                 , m_width(width)
                 , m_height(height) {}
-            ~CollisionComponent() override {};
+            ~CollisionComponent() override
+            {
+                OnDestroy();
+                Component::~Component();
+            };
 
             std::string GetType() const override { return "collision"; };
 
             void OnDestroy() override
             {
                 m_script = nullptr;
-                Component::OnDestroy();
             };
 
             [[nodiscard]] float GetWidth() const { return m_width; }
@@ -369,7 +394,12 @@ namespace Neon
             {
             }
 
-            ~TimerComponent() override = default;
+            ~TimerComponent() override
+            {
+                Stop();
+                m_callback = nullptr;
+                Component::OnDestroy();
+            };
 
             std::string GetType() const override { return "timer"; };
 
@@ -422,6 +452,8 @@ namespace Neon
             void OnDestroy() override
             {
                 Stop();
+                m_callback = nullptr;
+                Component::OnDestroy();
             }
 
         private:

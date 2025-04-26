@@ -24,7 +24,7 @@
 
 namespace Neon 
 {
-    class AudioSystem 
+    class AudioSystem
     {
         public:
             AudioSystem();
@@ -44,6 +44,7 @@ namespace Neon
             static void dataCallback(ma_device* pDevice, void* pOutput, const void* pInput, uint32_t frameCount);
 
         private:
+            ma_context m_context{};
             ma_decoder m_decoder{};
             ma_device m_device{};
             bool m_isPlaying{false};

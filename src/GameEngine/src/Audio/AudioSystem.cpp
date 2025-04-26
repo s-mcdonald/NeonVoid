@@ -35,7 +35,15 @@ namespace Neon
         }
         else
         {
-            m_isAudioEnabled = true;
+
+            if (ma_context_init(nullptr, 0, nullptr, &m_context) != MA_SUCCESS)
+            {
+                m_isAudioEnabled = false;
+            }
+            else
+            {
+                m_isAudioEnabled = true;
+            }
         }
     }
 
@@ -46,12 +54,11 @@ namespace Neon
             Stop();
         }
 
-        if (m_isAudioEnabled)
-        {
-            ma_device_uninit(&m_device);
-        }
+        ma_device_uninit(&m_device);
+        ma_decoder_uninit(&m_decoder);
 
         ResetDecoder();
+        ma_context_uninit(&m_context);
     }
 
     void AudioSystem::Play(const std::string& filename) 

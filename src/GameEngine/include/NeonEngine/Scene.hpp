@@ -92,7 +92,7 @@ namespace Neon
             void RenderRenderable(const T& t);
 
             template <typename T>
-            void DestroyRenderable(const T& t);
+            void DestroyRenderable(T& t);
 
             template <typename T>
             void HandlesInput(const T& t, Input* input);

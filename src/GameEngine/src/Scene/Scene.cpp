@@ -32,6 +32,9 @@ namespace Neon
     {
         Destroy();
 
+        m_entities.clear();
+        m_components.clear();
+
         m_sceneConfig.components.clear();
         m_sceneConfig.components.shrink_to_fit();
         m_sceneConfig.entities.clear();
@@ -77,7 +80,6 @@ namespace Neon
 
     void Scene::Destroy()
     {
-        // Reverse the order for destruction
         DestroyRenderable(m_entities);
         DestroyRenderable(m_components);
     }
@@ -241,7 +243,7 @@ namespace Neon
     }
 
     template <typename T>
-    void Scene::DestroyRenderable(const T& t)
+    void Scene::DestroyRenderable(T& t)
     {
         for (auto& [key, value] : t)
         {
@@ -249,6 +251,8 @@ namespace Neon
 
             delete value;
         }
+
+        t.clear();
     }
 
     template <typename T>

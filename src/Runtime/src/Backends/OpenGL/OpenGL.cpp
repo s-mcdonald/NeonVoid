@@ -134,6 +134,7 @@ namespace Neon
 
             OpenGLRenderer::EndFrame();
         }
+        glfwTerminate();
     }
 
     IShader* OpenGL::CreateShader(const std::string& vertexPath, const std::string& fragmentPath)
