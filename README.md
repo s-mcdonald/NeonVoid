@@ -12,6 +12,13 @@ YouTuber [The Cherno](https://github.com/thecherno) to venture and explore game 
 What began as a simple one-day game project to build a simple game, evolved into a more ambitious goal: building a game engine from the ground up.
 I didn't want to use Unity or UE, as I wanted to know how the inner mechanics of game engines and game systems work.
 
+### Clone with --recursive
+
+You need to recursively clone the repo as I do have a couple of submodules installed for the libs.
+
+```
+git clone --recursive https://github.com/s-mcdonald/NeonVoid.git
+```
 
 ### OS Support
 Eventually, this project will support both Windows and Linux OS. I am currently in phase 1 and only developing on Linux currently.
