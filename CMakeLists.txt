@@ -178,6 +178,11 @@ add_library(NeonRuntime STATIC ${NEON_RUNTIME_SRC})
 # Set the output name of the GameEngine static library (optional)
 #
 set_target_properties(
+        NeonVoid PROPERTIES
+        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build
+        OUTPUT_NAME "NeonVoid"
+)
+set_target_properties(
         GameEngine PROPERTIES
         ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build
         OUTPUT_NAME "GameEngine"
@@ -188,13 +193,11 @@ set_target_properties(
         OUTPUT_NAME "NeonRuntime"
 )
 
-set_target_properties(
-        NeonVoid PROPERTIES
-        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build
-        OUTPUT_NAME "NeonVoid"
+
+# Include dir for Main Game
+target_include_directories(NeonVoid PRIVATE
+        ${CMAKE_SOURCE_DIR}/src/Game/include
 )
-
-
 # GameEngine include directories
 target_include_directories(
         GameEngine PUBLIC
@@ -207,7 +210,6 @@ target_include_directories(
         ${CMAKE_SOURCE_DIR}/src/Runtime/include
         ${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/include
 )
-
 # NeonRuntime include directories
 target_include_directories(
         NeonRuntime PUBLIC
@@ -221,10 +223,6 @@ target_include_directories(
         ${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/include
 )
 
-# Include dir for Main Game
-target_include_directories(NeonVoid PRIVATE
-        ${CMAKE_SOURCE_DIR}/src/Game/include
-)
 
 
 # Specify libraries to link with (GL, GLU, GLUT)
@@ -233,26 +231,22 @@ find_package(glfw3 REQUIRED)
 find_package(glm CONFIG REQUIRED)
 find_package(Freetype REQUIRED)
 
-# Link OpenGL libraries
+set(FREETYPE_LIBRARIES ${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/build/libfreetype.so)
+set(FREETYPE_INCLUDE_DIRS ${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/include)
+
+
+# Linking..
+target_link_libraries(NeonVoid PRIVATE GameEngine NeonRuntime)
 target_link_libraries(NeonRuntime PRIVATE OpenGL::GL glfw )
-target_include_directories(GameEngine PUBLIC ${FREETYPE_INCLUDE_DIRS})
-target_include_directories(NeonRuntime PUBLIC ${FREETYPE_INCLUDE_DIRS})
-target_link_libraries(GameEngine PRIVATE ${FREETYPE_LIBRARIES})
 target_link_libraries(NeonRuntime PRIVATE ${FREETYPE_LIBRARIES})
+target_link_libraries(GameEngine PRIVATE ${FREETYPE_LIBRARIES})
+#target_include_directories(GameEngine PUBLIC ${FREETYPE_INCLUDE_DIRS})
+#target_include_directories(NeonRuntime PUBLIC ${FREETYPE_INCLUDE_DIRS})
 
 
 # Enable compiler warnings for GameEngine
 target_compile_options(GameEngine PRIVATE -Wall -Wextra -Wpedantic)
 target_compile_options(NeonRuntime PRIVATE -Wall -Wextra -Wpedantic)
-
-
-
-
-
-
-
-# Link GameEngine to the game executable & Runtime
-target_link_libraries(NeonVoid PRIVATE GameEngine NeonRuntime)
 
 
 
@@ -316,9 +310,7 @@ endif()
 
 
 
-#
-# Copy files on post build action
-#
+# POST BUILD: Copy files on post build action
 add_custom_target(copy_assets ALL
         COMMAND ${CMAKE_COMMAND} -E copy_directory
         ${CMAKE_SOURCE_DIR}/src/Game/assets

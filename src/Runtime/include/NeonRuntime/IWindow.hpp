@@ -23,7 +23,7 @@ namespace Neon
         public:
             virtual ~IWindow() = default;
 
-            [[nodiscard]] virtual void* GetNativeWindowHandle() const {};
+            [[nodiscard]] virtual void* GetNativeWindowHandle() const;
 
         // @todo: Implement these below so we can abstract away the runtime game loop
     };

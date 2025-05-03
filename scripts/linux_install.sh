@@ -35,8 +35,15 @@ echo ""
 echo ""
 cd "$FREETYPE_DIR"
 mkdir "$FREETYPE_DIR/build"
-cmake -B build -D CMAKE_BUILD_TYPE=Release
+cmake -B build -D BUILD_SHARED_LIBS=true -D CMAKE_BUILD_TYPE=Release
+#cmake -B build -D CMAKE_BUILD_TYPE=Release
 cmake --build build --target install
+
+
+#cd "$FREETYPE_DIR"
+#rm -rf build
+#cmake -B build -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=$HOME/freetype-install
+#cmake --build build --target install
 
 
 
