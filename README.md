@@ -54,14 +54,14 @@ There are a couple of VS options, select the one that suits your needs or modify
 
 #### 3rd Party Libs
 
-| Library   | Website                                       | GitHub | Purpose                       |
-|-----------|-----------------------------------------------|--------|-------------------------------|
-| glad      | [Website](https://glad.dav1d.de/)            | [Repository](https://github.com/Dav1dde/glad) | OpenGL initialization  |
-| glfw      | [Website](https://www.glfw.org/)            | [Repository](https://github.com/glfw/glfw) | GL Context / Window etc. |
-| glm       | [Website](https://glm.g-truc.net/)            | [Repository](https://github.com/icaven/glm) | Math library  |
-| miniaudio | [Website](https://miniaud.io/)            | [Repository](https://github.com/mackron/miniaudio) | Audio playback   |
-| fkYAML    | [Website](https://fktn-k.github.io/fkYAML/)   | [Repository](https://github.com/fktn-k/fkYAML) | YAML I/O  |
-| FT        | [Website](https://freetype.org/)]  | [Repository](https://github.com/freetype/freetype) | Text rendering                |
+| Library   | Website                                      | GitHub | Purpose                       |
+|-----------|----------------------------------------------|--------|-------------------------------|
+| glad      | [Website](https://glad.dav1d.de/)           | [Repository](https://github.com/Dav1dde/glad) | OpenGL initialization  |
+| glfw      | [Website](https://www.glfw.org/)           | [Repository](https://github.com/glfw/glfw) | GL Context / Window etc. |
+| glm       | [Website](https://glm.g-truc.net/)           | [Repository](https://github.com/icaven/glm) | Math library  |
+| miniaudio | [Website](https://miniaud.io/)           | [Repository](https://github.com/mackron/miniaudio) | Audio playback   |
+| fkYAML    | [Website](https://fktn-k.github.io/fkYAML/)  | [Repository](https://github.com/fktn-k/fkYAML) | YAML I/O  |
+| FT        | [Website](https://freetype.org/)  | [Repository](https://github.com/freetype/freetype) | Text rendering                |
 
 
 #### Resources
