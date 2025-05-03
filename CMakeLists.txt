@@ -205,6 +205,7 @@ target_include_directories(
         ${CMAKE_SOURCE_DIR}/src/Runtime/src
         ${CMAKE_SOURCE_DIR}/src/Runtime/vendor
         ${CMAKE_SOURCE_DIR}/src/Runtime/include
+        ${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/include
 )
 
 # NeonRuntime include directories
@@ -217,18 +218,13 @@ target_include_directories(
         ${CMAKE_SOURCE_DIR}/src/Runtime/src
         ${CMAKE_SOURCE_DIR}/src/Runtime/vendor
         ${CMAKE_SOURCE_DIR}/src/Runtime/include
+        ${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/include
 )
 
 # Include dir for Main Game
 target_include_directories(NeonVoid PRIVATE
         ${CMAKE_SOURCE_DIR}/src/Game/include
 )
-
-
-
-# removed inc dirs
-# ${GLEW_INCLUDE_DIR}
-# ${GLEW_INCLUDE_DIRS}
 
 
 # Specify libraries to link with (GL, GLU, GLUT)

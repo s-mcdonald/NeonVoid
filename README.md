@@ -12,6 +12,13 @@ YouTuber [The Cherno](https://github.com/thecherno) to venture and explore game 
 What began as a simple one-day game project to build a simple game, evolved into a more ambitious goal: building a game engine from the ground up.
 I didn't want to use Unity or UE, as I wanted to know how the inner mechanics of game engines and game systems work.
 
+### Clone with --recursive
+
+You need to recursively clone the repo as I do have a couple of submodules installed for the libs.
+
+```
+git clone --recursive https://github.com/s-mcdonald/NeonVoid.git
+```
 
 ### OS Support
 Eventually, this project will support both Windows and Linux OS. I am currently in phase 1 and only developing on Linux currently.
@@ -54,14 +61,14 @@ There are a couple of VS options, select the one that suits your needs or modify
 
 #### 3rd Party Libs
 
-| Library   | Website                                       | GitHub | Purpose                       |
-|-----------|-----------------------------------------------|--------|-------------------------------|
-| glad      | [Website](https://glad.dav1d.de/)            | [Repository](https://github.com/Dav1dde/glad) | OpenGL initialization  |
-| glfw      | [Website](https://www.glfw.org/)            | [Repository](https://github.com/glfw/glfw) | GL Context / Window etc. |
-| glm       | [Website](https://glm.g-truc.net/)            | [Repository](https://github.com/icaven/glm) | Math library  |
-| miniaudio | [Website](https://miniaud.io/)            | [Repository](https://github.com/mackron/miniaudio) | Audio playback   |
-| fkYAML    | [Website](https://fktn-k.github.io/fkYAML/)   | [Repository](https://github.com/fktn-k/fkYAML) | YAML I/O  |
-| FT        | [Website](https://freetype.org/)]  | [Repository](https://github.com/freetype/freetype) | Text rendering                |
+| Library   | Website                                      | GitHub | Purpose                       |
+|-----------|----------------------------------------------|--------|-------------------------------|
+| glad      | [Website](https://glad.dav1d.de/)           | [Repository](https://github.com/Dav1dde/glad) | OpenGL initialization  |
+| glfw      | [Website](https://www.glfw.org/)           | [Repository](https://github.com/glfw/glfw) | GL Context / Window etc. |
+| glm       | [Website](https://glm.g-truc.net/)           | [Repository](https://github.com/icaven/glm) | Math library  |
+| miniaudio | [Website](https://miniaud.io/)           | [Repository](https://github.com/mackron/miniaudio) | Audio playback   |
+| fkYAML    | [Website](https://fktn-k.github.io/fkYAML/)  | [Repository](https://github.com/fktn-k/fkYAML) | YAML I/O  |
+| FT        | [Website](https://freetype.org/)  | [Repository](https://github.com/freetype/freetype) | Text rendering                |
 
 
 #### Resources

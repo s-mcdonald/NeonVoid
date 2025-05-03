@@ -4,6 +4,7 @@
 SCRIPT_DIR="$(dirname "$(realpath "$0")")"
 GLM_DIR="$(realpath "$SCRIPT_DIR/../src/Runtime/vendor/glm")"
 GLFW_DIR="$(realpath "$SCRIPT_DIR/../src/Runtime/vendor/glfw3")"
+FREETYPE_DIR="$(realpath "$SCRIPT_DIR/../src/Runtime/vendor/freetype")"
 
 
 echo ""
@@ -28,6 +29,17 @@ cmake --build build -- all
 cmake --build build -- install
 
 
+echo "Preparing FreeType"
+echo "Link: https://github.com/freetype/freetype"
 echo ""
-echo "GLM should be installed now."
+echo ""
+cd "$FREETYPE_DIR"
+mkdir "$FREETYPE_DIR/build"
+cmake -B build -D CMAKE_BUILD_TYPE=Release
+cmake --build build --target install
+
+
+
+echo ""
+echo "GLM and FreeType should now be installed."
 echo ""
