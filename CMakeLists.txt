@@ -15,11 +15,6 @@ set(NeonCppVersion 20)          # 20 | 23
 set(NeonBackendSystem OpenGL)   # OpenGL | (Vulkan not yet supported)
 
 
-#
-# Warning, dont change below here
-#
-set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Configurations" FORCE)
-
 
 #
 # Project name
@@ -34,10 +29,15 @@ set(${PROJECT_NAME}_MINOR_VERSION 1)
 set(${PROJECT_NAME}_PATCH_LEVEL 0)
 
 
-# Build Mode
+#
+# Build Mode/Configurations
+#
+set("Debug;Release" CACHE STRING "Configurations" FORCE)
 if(UNIX)
     set(CMAKE_BUILD_TYPE ${NeonReleaseMode})
 endif()
+
+
 
 # Compiler
 if(WIN32)
@@ -45,6 +45,8 @@ if(WIN32)
 elseif(UNIX)
 	set(CMAKE_CXX_COMPILER "g++")
 endif()
+
+
 
 # Set C++ standard
 set(CMAKE_CXX_STANDARD ${NeonCppVersion})
@@ -210,6 +212,7 @@ target_include_directories(
         ${CMAKE_SOURCE_DIR}/src/Runtime/src
         ${CMAKE_SOURCE_DIR}/src/Runtime/vendor
         ${CMAKE_SOURCE_DIR}/src/Runtime/include
+#        ${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/build/include
         ${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/include
 )
 
@@ -223,6 +226,7 @@ target_include_directories(
         ${CMAKE_SOURCE_DIR}/src/Runtime/src
         ${CMAKE_SOURCE_DIR}/src/Runtime/vendor
         ${CMAKE_SOURCE_DIR}/src/Runtime/include
+#        ${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/build/include
         ${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/include
 )
 
@@ -233,25 +237,44 @@ target_include_directories(NeonVoid PRIVATE
 
 
 # Specify libraries to link with (GL, GLU, GLUT)
+#find_package(OpenGL REQUIRED)
+#find_package(glfw3 REQUIRED)
+#find_package(glm CONFIG REQUIRED)
+
 find_package(OpenGL REQUIRED)
-find_package(glfw3 REQUIRED)
 find_package(glm CONFIG REQUIRED)
 
-# Hard code paths of freetype
-set(FREETYPE_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/build/include")
-set(FREETYPE_LIBRARY_DIR "${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/build/lib")
-set(FREETYPE_LIBRARIES "${FREETYPE_LIBRARY_DIR}/libfreetype.so")
+# Define the executable project
+if(WIN32)
+    message(FATAL_ERROR "Lib Paths have not been setup for windows")
+elseif(UNIX)
+    # Freetype (Hard Paths)
+    set(FREETYPE_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/build/include")
+    set(FREETYPE_LIBRARY_DIR "${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/build/lib")
+    set(FREETYPE_LIBRARIES "${FREETYPE_LIBRARY_DIR}/libfreetype.so")
+
+    # GLFW (Hard Paths)
+    set(GLFW_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/src/Runtime/vendor/glfw/build/include")
+    set(GLFW_LIBRARY_DIR "${CMAKE_SOURCE_DIR}/src/Runtime/vendor/glfw/build/lib")
+    set(GLFW_LIBRARIES "${GLFW_LIBRARY_DIR}/libglfw.so")
+endif()
+
 
 
 # includes
 target_include_directories(GameEngine PUBLIC ${FREETYPE_INCLUDE_DIRS})
 target_include_directories(NeonRuntime PUBLIC ${FREETYPE_INCLUDE_DIRS})
+target_include_directories(GameEngine PUBLIC ${GLFW_INCLUDE_DIR})
+target_include_directories(NeonRuntime PUBLIC ${GLFW_INCLUDE_DIR})
+
+target_link_libraries(GameEngine PRIVATE ${GLFW_LIBRARIES})
+target_link_libraries(NeonRuntime PRIVATE ${GLFW_LIBRARIES})
 
 # Linking ..
 target_link_libraries(NeonVoid PRIVATE GameEngine NeonRuntime)
 target_link_libraries(GameEngine PRIVATE ${FREETYPE_LIBRARIES})
 target_link_libraries(NeonRuntime PRIVATE ${FREETYPE_LIBRARIES})
-target_link_libraries(NeonRuntime PRIVATE OpenGL::GL glfw )
+target_link_libraries(NeonRuntime PRIVATE OpenGL::GL)
 
 
 # Enable compiler warnings for GameEngine

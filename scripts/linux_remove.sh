@@ -3,7 +3,7 @@
 # Set Paths
 SCRIPT_DIR="$(dirname "$(realpath "$0")")"
 GLM_DIR="$(realpath "$SCRIPT_DIR/../src/Runtime/vendor/glm")"
-GLFW_DIR="$(realpath "$SCRIPT_DIR/../src/Runtime/vendor/glfw3")"
+GLFW_DIR="$(realpath "$SCRIPT_DIR/../src/Runtime/vendor/glfw")"
 FREETYPE_DIR="$(realpath "$SCRIPT_DIR/../src/Runtime/vendor/freetype")"
 
 echo ""

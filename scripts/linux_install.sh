@@ -3,7 +3,7 @@
 # Set Paths
 SCRIPT_DIR="$(dirname "$(realpath "$0")")"
 GLM_DIR="$(realpath "$SCRIPT_DIR/../src/Runtime/vendor/glm")"
-GLFW_DIR="$(realpath "$SCRIPT_DIR/../src/Runtime/vendor/glfw3")"
+GLFW_DIR="$(realpath "$SCRIPT_DIR/../src/Runtime/vendor/glfw")"
 FREETYPE_DIR="$(realpath "$SCRIPT_DIR/../src/Runtime/vendor/freetype")"
 
 
@@ -41,6 +41,23 @@ cmake --build build --target install
 
 
 
+# Navigate to the GLFW directory
+cd "$GLFW_DIR"
+
+# Configure and build GLFW
+cmake \
+    -S . \
+    -B build \
+    -D GLFW_BUILD_EXAMPLES=OFF \
+    -D GLFW_BUILD_TESTS=OFF \
+    -D GLFW_BUILD_DOCS=OFF \
+    -D BUILD_SHARED_LIBS=ON \
+    -D CMAKE_INSTALL_PREFIX="$GLFW_DIR/build"
+
+cmake --build build --target all
+cmake --build build --target install
+
+
 echo ""
-echo "GLM and FreeType should now be installed."
+echo "GLFW, GLM and FreeType should now be installed."
 echo ""

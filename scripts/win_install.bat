@@ -5,7 +5,7 @@ REM Set Paths
 set SCRIPT_DIR=%~dp0
 set SCRIPT_DIR=%SCRIPT_DIR:~0,-1%
 set GLM_DIR=%SCRIPT_DIR%\..\src\Runtime\vendor\glm
-set GLFW_DIR=%SCRIPT_DIR%\..\src\Runtime\vendor\glfw3
+set GLFW_DIR=%SCRIPT_DIR%\..\src\Runtime\vendor\glfw
 set FREETYPE_DIR=%SCRIPT_DIR%\..\src\Runtime\vendor\freetype
 
 echo.

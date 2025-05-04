@@ -4,3 +4,6 @@
 [submodule "src/Runtime/vendor/freetype"]
 	path = src/Runtime/vendor/freetype
 	url = https://github.com/freetype/freetype.git
+[submodule "src/Runtime/vendor/glfw"]
+	path = src/Runtime/vendor/glfw
+	url = https://github.com/glfw/glfw.git
