@@ -1,7 +1,9 @@
 #
 # Minimum CMake version (required)
+# For VS 2022, min ver should 3.2
+# bata fie: cmake -G "Visual Studio 17 2022" ..
 #
-cmake_minimum_required(VERSION 3.30)
+cmake_minimum_required(VERSION 3.20)
 
 
 #
@@ -31,8 +33,11 @@ set(${PROJECT_NAME}_MAJOR_VERSION 0)
 set(${PROJECT_NAME}_MINOR_VERSION 1)
 set(${PROJECT_NAME}_PATCH_LEVEL 0)
 
+
 # Build Mode
-set(CMAKE_BUILD_TYPE ${NeonReleaseMode})
+if(UNIX)
+    set(CMAKE_BUILD_TYPE ${NeonReleaseMode})
+endif()
 
 # Compiler
 if(WIN32)
