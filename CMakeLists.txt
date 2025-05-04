@@ -214,6 +214,7 @@ target_include_directories(
         ${CMAKE_SOURCE_DIR}/src/Runtime/include
 #        ${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/build/include
         ${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/include
+        ${CMAKE_SOURCE_DIR}/src/Runtime/vendor/glfw/build/include
 )
 
 # NeonRuntime include directories
@@ -228,6 +229,7 @@ target_include_directories(
         ${CMAKE_SOURCE_DIR}/src/Runtime/include
 #        ${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/build/include
         ${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/include
+        ${CMAKE_SOURCE_DIR}/src/Runtime/vendor/glfw/build/include
 )
 
 # Include dir for Main Game
