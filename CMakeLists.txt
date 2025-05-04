@@ -262,30 +262,20 @@ elseif(UNIX)
 endif()
 
 
-
 # includes
-target_include_directories(GameEngine PUBLIC ${FREETYPE_INCLUDE_DIRS})
-target_include_directories(NeonRuntime PUBLIC ${FREETYPE_INCLUDE_DIRS})
-target_include_directories(GameEngine PUBLIC ${GLFW_INCLUDE_DIR})
-target_include_directories(NeonRuntime PUBLIC ${GLFW_INCLUDE_DIR})
-
-target_link_libraries(GameEngine PRIVATE ${GLFW_LIBRARIES})
-target_link_libraries(NeonRuntime PRIVATE ${GLFW_LIBRARIES})
+target_include_directories(GameEngine  PUBLIC ${FREETYPE_INCLUDE_DIRS} ${GLFW_INCLUDE_DIR})
+target_include_directories(NeonRuntime PUBLIC ${FREETYPE_INCLUDE_DIRS} ${GLFW_INCLUDE_DIR})
 
 # Linking ..
 target_link_libraries(NeonVoid PRIVATE GameEngine NeonRuntime)
-target_link_libraries(GameEngine PRIVATE ${FREETYPE_LIBRARIES})
-target_link_libraries(NeonRuntime PRIVATE ${FREETYPE_LIBRARIES})
-target_link_libraries(NeonRuntime PRIVATE OpenGL::GL)
+target_link_libraries(GameEngine  PRIVATE ${FREETYPE_LIBRARIES} ${GLFW_LIBRARIES} OpenGL::GL)
+target_link_libraries(NeonRuntime PRIVATE ${FREETYPE_LIBRARIES} ${GLFW_LIBRARIES} OpenGL::GL)
 
-
+#
 # Enable compiler warnings for GameEngine
-target_compile_options(GameEngine PRIVATE -Wall -Wextra -Wpedantic)
-target_compile_options(NeonRuntime PRIVATE -Wall -Wextra -Wpedantic)
-
-
-
-
+#
+#target_compile_options(GameEngine PRIVATE -Wall -Wextra -Wpedantic)
+#target_compile_options(NeonRuntime PRIVATE -Wall -Wextra -Wpedantic)
 
 
 

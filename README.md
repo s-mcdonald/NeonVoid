@@ -102,4 +102,4 @@ For Windows, you have a couple of options for different Visual Studio versions.
 | [DrMemory](https://drmemory.org) | Memory leak checker (Windows/Linux) |
 
 ### LICENCE
-- [MIT](LICENSE)
+[MIT](LICENSE)
