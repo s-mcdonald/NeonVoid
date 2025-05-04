@@ -29,8 +29,6 @@ It is unlikely I will ever get to implement DX or Vulkan; however, the project h
 
 ### Backend API Support
 
-> **Note:** This project is still in early development of phase 1.
-
 
  | API         | Platforms | Status                 | Resources |
  |-------------|-----------|------------------------|-----------|
@@ -39,21 +37,36 @@ It is unlikely I will ever get to implement DX or Vulkan; however, the project h
  | Vulkan      | Linux, Windows, Android | <sub>Not Started</sub> | [Vulkan Website](https://www.vulkan.org/) |
 
 
-### Build System
+### Build
 
 CMake project: Has been described to set up the three projects listed below ;
 - Game
 - GameEngine 
 - NeonRuntime
 
-The scripts directory should have a relevant script for either Windows or Linux.
-There are a couple of VS options, select the one that suits your needs or modify as required.
+#### Linux Build
+```shell
+git clone --recursive https://github.com/s-mcdonald/NeonVoid.git
+cd NeonVoid/scripts
+sudo ./linux_install.sh
+sudo ./linux_build.sh
+```
 
-| Operating System | Command                        |
-|------------------|--------------------------------|
-| Linux            | `./scripts/build.sh`           |
-| Windows          | `./scripts/setup-vs-2019.bat`  |
-| Windows          | `./scripts/setup-vs-2022.bat`  |
+#### Windows Build
+```shell
+git clone --recursive https://github.com/s-mcdonald/NeonVoid.git
+cd NeonVoid\scripts
+windows_install.bat
+setup-vs-2019.bat
+```
+
+For Windows, you have a couple of options for different Visual Studio versions.
+
+| Visual Studio | Command                       |
+|---------------|-------------------------------|
+| 2019          | `./scripts/setup-vs-2019.bat` |
+| 2022          | `./scripts/setup-vs-2022.bat` |
+
 
 
 
