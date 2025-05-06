@@ -6,68 +6,81 @@ A simple 2D GameEngine written in C++.
 
 ## About NeonVoid Engine
 
-This project started as a personal journey to learn C++. I had been inspired by the
-YouTuber [The Cherno](https://github.com/thecherno) to venture and explore game development.
+This project started as a personal journey to learn C++. I had been inspired by the YouTuber [The Cherno](https://github.com/thecherno) 
+to venture and explore game development.
 
-What began as a simple one-day game project to build a simple game, evolved into a more ambitious goal: building a game engine from the ground up.
-I didn't want to use Unity or UE, as I wanted to know how the inner mechanics of game engines and game systems work.
+What began as a simple one-day game project to build a simple game, evolved into a more ambitious goal: building a game 
+engine from the ground up. I didn't want to use Unity or UE, as I wanted to know how the inner mechanics of game 
+engines and game systems work.
 
-### Clone with --recursive
+## Development
 
-You need to recursively clone the repo as I do have a couple of submodules installed for the libs.
+Development has ceased on this project as it was primarily a prototype task and I had achieved my goals from this task. It 
+served as a valuable learning experience and stepping stone for the future development of 
+[NGEN](https://github.com/s-mcdonald/NGEN) (Neon Game ENgine). 
+
+Which will incorporate the strengths and successful components of this work in addition to new features such as 3D, 
+mesh rendering, Camera support and more.
+
+## Checkout and Build
+#### Step 1: Clone with --recursive
+
+Recursively clone the repo as the repo contains submodules.
 
 ```
 git clone --recursive https://github.com/s-mcdonald/NeonVoid.git
 ```
 
-### OS Support
-Eventually, this project will support both Windows and Linux OS. I am currently in phase 1 and only developing on Linux currently.
-Once the project is in a state where a simple game can be developed, I will switch over to Windows to build in support and compatibility.
-
-It is unlikely I will ever get to implement DX or Vulkan; however, the project has been built to support it from the beginning.
 
 
-### Backend API Support
 
-
- | API         | Platforms | Status                 | Resources |
- |-------------|-----------|------------------------|-----------|
- | OpenGL 3.3+ | Linux, Windows | **working**            | [OpenGL Website](https://www.opengl.org/) |
- | DirectX     | Windows | <sub>Not Started</sub> | [NVIDIA Docs](https://developer.nvidia.com/directx), [Microsoft Docs](https://learn.microsoft.com/en-us/windows/win32/directx) |
- | Vulkan      | Linux, Windows, Android | <sub>Not Started</sub> | [Vulkan Website](https://www.vulkan.org/) |
-
-
-### Build
-
-CMake project: Has been described to set up the three projects listed below ;
-- Game
-- GameEngine 
-- NeonRuntime
-
-#### Linux Build
+#### Step 2: Linux Build
 ```shell
-git clone --recursive https://github.com/s-mcdonald/NeonVoid.git
 cd NeonVoid/scripts
 sudo ./linux_install.sh
 sudo ./linux_build.sh
 ```
 
-#### Windows Build
+#### Step 2: Windows Build
 ```shell
-git clone --recursive https://github.com/s-mcdonald/NeonVoid.git
 cd NeonVoid\scripts
 windows_install.bat
-setup-vs-2019.bat
+windows_build_vs2019.bat
 ```
 
 For Windows, you have a couple of options for different Visual Studio versions.
 
-| Visual Studio | Command                       |
-|---------------|-------------------------------|
-| 2019          | `./scripts/setup-vs-2019.bat` |
-| 2022          | `./scripts/setup-vs-2022.bat` |
+| Visual Studio | Command                              |
+|---------------|--------------------------------------|
+| 2019          | `./scripts/windows_build_vs2019.bat` |
+| 2022          | `./scripts/windows_build_vs2022.bat` |
 
 
+
+
+### OS and Backend API Support
+
+
+| API         | Platforms               | Supported     | Resources                                       |
+|-------------|-------------------------|---------------|-------------------------------------------------|
+| OpenGL 3.3+ | Linux, Windows          | **Yes**       | [OpenGL Website](https://www.opengl.org/)                           |
+| DirectX     | Windows                 | <sub>No</sub> | [NVIDIA Docs](https://developer.nvidia.com/directx), [Microsoft Docs](https://learn.microsoft.com/en-us/windows/win32/directx)       |
+| Vulkan      | Linux, Windows, Android | <sub>No</sub> | [Vulkan Website](https://www.vulkan.org/)                           |
+
+
+| OS      | Version         | Supported |
+|---------|-----------------|-----------|
+| Windows | 7+              | **Yes**   |
+| Linux   | Debian / Ubuntu | **Yes**   |
+| MacOS   |                 | No        |
+
+
+### CMake Project files
+
+CMake project: Has been described to set up the three projects listed below ;
+- Game
+- GameEngine
+- NeonRuntime
 
 
 ### Resources & Reference
