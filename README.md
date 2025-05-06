@@ -36,16 +36,16 @@ git clone --recursive https://github.com/s-mcdonald/NeonVoid.git
 
 #### Step 2: Linux Build
 ```shell
-cd NeonVoid/scripts
+cd ./NeonVoid/scripts
 sudo ./linux_install.sh
 sudo ./linux_build.sh
 ```
 
 #### Step 2: Windows Build
 ```shell
-cd NeonVoid\scripts
-windows_install.bat
-windows_build_vs2019.bat
+cd .\NeonVoid\scripts
+.\windows_install.bat
+.\windows_build_vs2019.bat
 ```
 
 For Windows, you have a couple of options for different Visual Studio versions.

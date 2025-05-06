@@ -13,11 +13,20 @@ echo Preparing GLM: OpenGL Mathematics
 echo Link: https://github.com/g-truc/glm
 echo ------------------------------------
 echo.
-
 cd /d "%GLM_DIR%"
-cmake -DGLM_BUILD_TESTS=OFF -DBUILD_SHARED_LIBS=ON -B build .
-cmake --build build -- all
-cmake --build build -- install
+if not exist build mkdir build
+@rem cmake -S . -B build -DGLM_BUILD_TESTS=OFF -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release
+@rem cmake --build build --config Release
+@rem cmake --build build --config Release --target install
+
+cmake -S . -B build ^
+  -DGLM_BUILD_TESTS=OFF ^
+  -DBUILD_SHARED_LIBS=ON ^
+  -DCMAKE_BUILD_TYPE=Release ^
+  -DCMAKE_INSTALL_PREFIX="%GLM_DIR%\build"
+
+cmake --build build --config Release --target install
+
 
 
 
@@ -29,7 +38,8 @@ echo ------------------------------------
 echo.
 cd /d "%FREETYPE_DIR%"
 if not exist build mkdir build
-cmake -B build -S . -D CMAKE_BUILD_TYPE=Release "%FREETYPE_DIR%"
+@rem cmake -B build -S . -D CMAKE_BUILD_TYPE=Release
+cmake -B build -D CMAKE_INSTALL_PREFIX="%FREETYPE_DIR%/build" -D BUILD_SHARED_LIBS=true -D CMAKE_BUILD_TYPE=Release "%FREETYPE_DIR%"
 cmake --build build --target install
 
 
@@ -39,16 +49,9 @@ echo Link: https://github.com/glfw/glfw
 echo ------------------------------------
 echo.
 cd /d "%GLFW_DIR%"
-cmake \
-    -S . \
-    -B build \
-    -D GLFW_BUILD_EXAMPLES=OFF \
-    -D GLFW_BUILD_TESTS=OFF \
-    -D GLFW_BUILD_DOCS=OFF \
-    -D BUILD_SHARED_LIBS=ON \
-    -D CMAKE_INSTALL_PREFIX="%GLFW_DIR%/build"
-
-cmake --build build --target all
+cmake -S . -B build -D GLFW_BUILD_EXAMPLES=OFF -D GLFW_BUILD_TESTS=OFF -D GLFW_BUILD_DOCS=OFF -D BUILD_SHARED_LIBS=ON -D CMAKE_INSTALL_PREFIX="%GLFW_DIR%/build/lib"
+@rem cmake --build build --target all
+cmake --build build
 cmake --build build --target install
 
 
