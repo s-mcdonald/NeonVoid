@@ -79,24 +79,24 @@ set(GAME_SRC
 #
 set(GAME_ENGINE_SRC
         # Includes
-#        src/GameEngine/include/NeonEngine/YamlReader.hpp
-#        src/GameEngine/include/NeonEngine/ScriptRegistry.hpp
-#        src/GameEngine/include/NeonEngine/ComponentLoader.hpp
-#        src/GameEngine/include/NeonEngine/AssetManager.hpp
-#        src/GameEngine/include/NeonEngine/Types.hpp
-#        src/GameEngine/include/NeonEngine/PhysixSystem.hpp
-#        src/GameEngine/include/NeonEngine/Application.hpp
-#        src/GameEngine/include/NeonEngine/All.hpp
-#        src/GameEngine/include/NeonEngine/Scene.hpp
-#        src/GameEngine/include/NeonEngine/Entity.hpp
-#        src/GameEngine/include/NeonEngine/Volume.hpp
-#        src/GameEngine/include/NeonEngine/AudioSystem.hpp
-#        src/GameEngine/include/NeonEngine/RuntimeBridge.hpp
-#        src/GameEngine/include/NeonEngine/Components.hpp
-#        src/GameEngine/include/NeonEngine/SceneTypeConverter.hpp
-#        src/GameEngine/include/NeonEngine/EntityTypeConverter.hpp
-#        src/GameEngine/include/NeonEngine/YamlSceneAsserter.hpp
-#        src/GameEngine/include/NeonEngine/CollisionSystem.hpp
+        src/GameEngine/include/NeonEngine/YamlReader.hpp
+        src/GameEngine/include/NeonEngine/ScriptRegistry.hpp
+        src/GameEngine/include/NeonEngine/ComponentLoader.hpp
+        src/GameEngine/include/NeonEngine/AssetManager.hpp
+        src/GameEngine/include/NeonEngine/Types.hpp
+        src/GameEngine/include/NeonEngine/PhysixSystem.hpp
+        src/GameEngine/include/NeonEngine/Application.hpp
+        src/GameEngine/include/NeonEngine/All.hpp
+        src/GameEngine/include/NeonEngine/Scene.hpp
+        src/GameEngine/include/NeonEngine/Entity.hpp
+        src/GameEngine/include/NeonEngine/Volume.hpp
+        src/GameEngine/include/NeonEngine/AudioSystem.hpp
+        src/GameEngine/include/NeonEngine/RuntimeBridge.hpp
+        src/GameEngine/include/NeonEngine/Components.hpp
+        src/GameEngine/include/NeonEngine/SceneTypeConverter.hpp
+        src/GameEngine/include/NeonEngine/EntityTypeConverter.hpp
+        src/GameEngine/include/NeonEngine/YamlSceneAsserter.hpp
+        src/GameEngine/include/NeonEngine/CollisionSystem.hpp
 
         # App
         src/GameEngine/src/Application.cpp
@@ -140,25 +140,25 @@ set(GAME_ENGINE_SRC
 #
 set(NEON_RUNTIME_SRC
         # Includes
-#        src/Runtime/include/NeonRuntime/RTTypes.hpp
-#        src/Runtime/include/NeonRuntime/IntRuntime.hpp
-#        src/Runtime/include/NeonRuntime/ExtRuntime.hpp
-#        src/Runtime/include/NeonRuntime/RuntimeApi.hpp
-#        src/Runtime/include/NeonRuntime/PlatformFactory.hpp
-#        src/Runtime/include/NeonRuntime/IInput.hpp
-#        src/Runtime/include/NeonRuntime/IWindow.hpp
-#        src/Runtime/include/NeonRuntime/IShader.hpp
-#        src/Runtime/include/NeonRuntime/IPlatform.hpp
-#        src/Runtime/include/NeonRuntime/IRenderer.hpp
-#        src/Runtime/include/NeonRuntime/IVertexBuffer.hpp
-#        src/Runtime/include/NeonRuntime/ITextBuffer.hpp
-#        src/Runtime/include/NeonRuntime/Backends/OpenGLHeaders.hpp
-#        src/Runtime/include/NeonRuntime/Backends/OpenGL.hpp
-#        src/Runtime/include/NeonRuntime/Backends/OpenGLInput.hpp
-#        src/Runtime/include/NeonRuntime/Backends/OpenGLShader.hpp
-#        src/Runtime/include/NeonRuntime/Backends/OpenGLRenderer.hpp
-#        src/Runtime/include/NeonRuntime/Backends/OpenGLVertexBuffer.hpp
-#        src/Runtime/include/NeonRuntime/Backends/OpenGLTextBuffer.hpp
+        src/Runtime/include/NeonRuntime/RTTypes.hpp
+        src/Runtime/include/NeonRuntime/IntRuntime.hpp
+        src/Runtime/include/NeonRuntime/ExtRuntime.hpp
+        src/Runtime/include/NeonRuntime/RuntimeApi.hpp
+        src/Runtime/include/NeonRuntime/PlatformFactory.hpp
+        src/Runtime/include/NeonRuntime/IInput.hpp
+        src/Runtime/include/NeonRuntime/IWindow.hpp
+        src/Runtime/include/NeonRuntime/IShader.hpp
+        src/Runtime/include/NeonRuntime/IPlatform.hpp
+        src/Runtime/include/NeonRuntime/IRenderer.hpp
+        src/Runtime/include/NeonRuntime/IVertexBuffer.hpp
+        src/Runtime/include/NeonRuntime/ITextBuffer.hpp
+        src/Runtime/include/NeonRuntime/Backends/OpenGLHeaders.hpp
+        src/Runtime/include/NeonRuntime/Backends/OpenGL.hpp
+        src/Runtime/include/NeonRuntime/Backends/OpenGLInput.hpp
+        src/Runtime/include/NeonRuntime/Backends/OpenGLShader.hpp
+        src/Runtime/include/NeonRuntime/Backends/OpenGLRenderer.hpp
+        src/Runtime/include/NeonRuntime/Backends/OpenGLVertexBuffer.hpp
+        src/Runtime/include/NeonRuntime/Backends/OpenGLTextBuffer.hpp
 
         # Platform
         src/Runtime/src/RuntimeApi.cpp
@@ -201,32 +201,56 @@ target_include_directories(GLAD PUBLIC ${CMAKE_SOURCE_DIR}/src/Runtime/vendor/gl
 
 # Freetype (Hard Paths)
 set(GLM_INCLUDE_DIR         "${CMAKE_SOURCE_DIR}/src/Runtime/vendor/glm")
-set(GLM_LIBRARY_DIR         "${CMAKE_SOURCE_DIR}/src/Runtime/vendor/glm/build/glm")
-set(GLFW_LIBRARY_DIR        "${CMAKE_SOURCE_DIR}/src/Runtime/vendor/glfw/build/lib")
-set(GLFW_INCLUDE_DIR        "${CMAKE_SOURCE_DIR}/src/Runtime/vendor/glfw/build/include")
-set(FREETYPE_LIBRARY_DIR    "${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/build/lib")
-set(FREETYPE_INCLUDE_DIR    "${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/build/include/freetype2")
+set(FREETYPE_INCLUDE_DIR
+	"${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/include" 
+	"${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/include/freetype2" 
+	"${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/build/include"
+	"${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/build/include/freetype"
+	"${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/build/include/freetype2"
+	"${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/build/include/freetype2"
+)
+
 
 if(WIN32)
-    set(GLM_LIBRARIES       "${GLM_LIBRARY_DIR}/glm.dll")
-    set(GLFW_LIBRARIES      "${GLFW_LIBRARY_DIR}/glfw.dll")
-    set(FREETYPE_LIBRARIES  "${FREETYPE_LIBRARY_DIR}/libfreetype.dll")
+	set(GLM_LIBRARY_DIR_W         "${CMAKE_SOURCE_DIR}/src/Runtime/vendor/glm/build/bin")
+	set(GLFW_INCLUDE_DIR_W      "${CMAKE_SOURCE_DIR}/src/Runtime/vendor/glfw/build/lib/include")
+	set(GLFW_LIBRARY_DIR_W      "${CMAKE_SOURCE_DIR}/src/Runtime/vendor/glfw/build/lib")
+	set(FREETYPE_LIBRARY_DIR_W  "${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/build/bin")
+
+	set(GLM_LIBRARIES       "${GLM_LIBRARY_DIR_W}/glm.dll")
+	set(GLFW_LIBRARIES      "${GLFW_LIBRARY_DIR_W}/glfw3.dll")
+	set(FREETYPE_LIBRARIES  "${FREETYPE_LIBRARY_DIR_W}/freetype.dll")
 elseif(UNIX)
-    set(GLM_LIBRARIES       "${GLM_LIBRARY_DIR}/libglm.so")
-    set(GLFW_LIBRARIES      "${GLFW_LIBRARY_DIR}/libglfw.so")
-    set(FREETYPE_LIBRARIES  "${FREETYPE_LIBRARY_DIR}/libfreetype.so")
+	set(GLM_LIBRARY_DIR         "${CMAKE_SOURCE_DIR}/src/Runtime/vendor/glm/build/glm")
+	set(GLFW_LIBRARY_DIR        "${CMAKE_SOURCE_DIR}/src/Runtime/vendor/glfw/build/lib/bin")
+	set(GLFW_INCLUDE_DIR        "${CMAKE_SOURCE_DIR}/src/Runtime/vendor/glfw/build/include")
+	set(FREETYPE_LIBRARY_DIR    "${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/build/lib")
+
+	set(GLM_LIBRARIES       "${GLM_LIBRARY_DIR}/libglm.so")
+	set(GLFW_LIBRARIES      "${GLFW_LIBRARY_DIR}/libglfw.so")
+	set(FREETYPE_LIBRARIES  "${FREETYPE_LIBRARY_DIR}/libfreetype.so")
 endif()
+
+
+
+if(WIN32)
+	# Includes..
+	target_include_directories(NeonVoid     PRIVATE ${CMAKE_SOURCE_DIR}/src/Game/include)
+	target_include_directories(GameEngine   PUBLIC ${FREETYPE_INCLUDE_DIR} ${GLFW_INCLUDE_DIR_W} ${GLM_INCLUDE_DIR} "${CMAKE_SOURCE_DIR}/src/GameEngine/vendor")
+	target_include_directories(NeonRuntime  PUBLIC ${FREETYPE_INCLUDE_DIR} ${GLFW_INCLUDE_DIR_W} ${GLM_INCLUDE_DIR} )
+elseif(UNIX)
+	# Includes..
+	target_include_directories(NeonVoid     PRIVATE ${CMAKE_SOURCE_DIR}/src/Game/include)
+	target_include_directories(GameEngine   PUBLIC ${FREETYPE_INCLUDE_DIR} ${GLFW_INCLUDE_DIR} "${CMAKE_SOURCE_DIR}/src/GameEngine/vendor")
+	target_include_directories(NeonRuntime  PUBLIC ${FREETYPE_INCLUDE_DIR} ${GLFW_INCLUDE_DIR})
+endif()
+
+
 
 # Linking..
 target_link_libraries(NeonVoid          PRIVATE GameEngine NeonRuntime)
 target_link_libraries(GameEngine        PRIVATE ${FREETYPE_LIBRARIES} ${GLFW_LIBRARIES} ${GLM_LIBRARIES} OpenGL::GL GLAD)
 target_link_libraries(NeonRuntime       PRIVATE ${FREETYPE_LIBRARIES} ${GLFW_LIBRARIES} ${GLM_LIBRARIES} OpenGL::GL GLAD)
-
-# Includes..
-target_include_directories(NeonVoid     PRIVATE ${CMAKE_SOURCE_DIR}/src/Game/include)
-target_include_directories(GameEngine   PUBLIC ${FREETYPE_INCLUDE_DIR} ${GLFW_INCLUDE_DIR} "${CMAKE_SOURCE_DIR}/src/GameEngine/vendor")
-target_include_directories(NeonRuntime  PUBLIC ${FREETYPE_INCLUDE_DIR} ${GLFW_INCLUDE_DIR})
-
 
 
 
@@ -247,29 +271,20 @@ target_include_directories(
 )
 
 
-
 #
 # Enable compiler warnings for GameEngine
 #
-target_compile_options(GameEngine   PRIVATE -Wall -Wextra -Wpedantic)
-target_compile_options(NeonRuntime PRIVATE
-        -Wall
-        -Wextra
-        -Wpedantic
-        -Wconversion              # Warn on implicit type conversions
-        -Wsign-conversion         # Warn on signed/unsigned mismatches
-        -Wshadow                  # Warn when a variable declaration shadows another
-        -Wold-style-cast          # Warn on C-style casts (in C++)
-        -Woverloaded-virtual      # Warn when a function hides a virtual function
-        -Wdouble-promotion        # Warn on float -> double promotion
-        -Wformat=2                # Extra checks for printf/scanf format strings
-)
-
-#if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-#    target_link_options(NeonRuntime     PRIVATE -fsanitize=address)
-#    target_compile_options(NeonRuntime  PRIVATE -fsanitize=address -g)
-#endif()
-
+if(WIN32)
+    target_compile_options(GameEngine PRIVATE /W4 /permissive- /WX)
+    target_compile_options(NeonRuntime PRIVATE /W4 /permissive- /WX)
+elseif(UNIX)
+    target_compile_options(GameEngine   PRIVATE -Wall -Wextra -Wpedantic)
+    target_compile_options(NeonRuntime  PRIVATE -Wall -Wextra -Wpedantic)
+    #if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    #    target_link_options(NeonRuntime     PRIVATE -fsanitize=address)
+    #    target_compile_options(NeonRuntime  PRIVATE -fsanitize=address -g)
+    #endif()
+endif()
 
 
 #

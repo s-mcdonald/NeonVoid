@@ -9,7 +9,12 @@
 *.userosscache
 *.suo
 *.sdf
+*.sln
 *.sln.docstates
+
+# Ignore Visual Studio vcx files
+*.vcxproj
+*.vcxproj.*
 
 # Ignore generated files from builds
 *.o
@@ -64,3 +69,12 @@ cmake_install.cmake
 **/cmake_install.cmake
 **/Makefile
 /Testing/Temporary/LastTest.log
+
+
+# Temp ignore folders
+scripts/x64
+scripts/x64/*
+scripts/GLAD.dir
+scripts/GameEngine.dir
+scripts/NeonRuntime.dir
+scripts/NeonVoid.dir

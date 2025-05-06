@@ -1,0 +1,45 @@
+# CMake build on Windows
+name: CMake on Windows
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  # Release | Debug
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      # Optionally use Chocolatey to install packages
+      - name: Install Dependencies
+        shell: powershell
+        run: |
+          choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System' -y
+          choco install glfw -y
+          choco install glew -y
+          choco install freetype -y
+          # glm is header-only, so include it in your project or manually fetch if needed
+
+      # Run a Windows install script (convert your shell script or make it OS-independent)
+      - name: Run Install Scripts
+        run: scripts\\windows_install.bat
+
+      - name: Configure CMake
+        run: cmake -B ${{github.workspace}}\\build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+
+      - name: Build
+        run: cmake --build ${{github.workspace}}\\build --config ${{env.BUILD_TYPE}}
+
+      - name: Test
+        working-directory: ${{github.workspace}}\\build
+        run: ctest -C ${{env.BUILD_TYPE}}
