@@ -40,13 +40,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 #
 set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Configurations" FORCE)
 if(WIN32)
-    set(CMAKE_CXX_COMPILER "cl.exe")
+	set(CMAKE_CXX_COMPILER "cl.exe")
 elseif(UNIX)
-    set(CMAKE_BUILD_TYPE ${NeonReleaseMode})
-    set(CMAKE_CXX_COMPILER "g++")
-    set(OpenGL_GL_PREFERENCE GLVND) # LEGACY GLVND -- modern or old OPENGL, this is only for unix/linux
+	set(CMAKE_BUILD_TYPE ${NeonReleaseMode})
+	set(CMAKE_CXX_COMPILER "g++")
+	set(OpenGL_GL_PREFERENCE GLVND) # LEGACY GLVND -- modern or old OPENGL, this is only for unix/linux
 else()
-    message(FATAL_ERROR "Invalid platform detected")
+	message(FATAL_ERROR "Invalid platform detected")
 endif()
 
 
@@ -54,9 +54,9 @@ endif()
 # What are we building, Vulkan, OGL or DirectX
 #
 if(NeonBackendSystem STREQUAL "OpenGL")
-    set(NEON_BACKEND_GPU_LIB NEON_BUILD_OPENGL)
+	set(NEON_BACKEND_GPU_LIB NEON_BUILD_OPENGL)
 elseif(NeonBackendSystem STREQUAL "Vulkan")
-    set(NEON_BACKEND_GPU_LIB NEON_BUILD_VULKAN)
+	set(NEON_BACKEND_GPU_LIB NEON_BUILD_VULKAN)
 endif()
 
 
@@ -68,10 +68,10 @@ endif()
 # Game - Create the main game executable
 #
 set(GAME_SRC
-        src/Game/src/MyGame.hpp
-        src/Game/src/EntryMain.cpp
-        src/Game/src/Scripts/EntityScript.cpp
-        src/Game/src/Scripts/SceneScript.cpp
+		src/Game/src/MyGame.hpp
+		src/Game/src/EntryMain.cpp
+		src/Game/src/Scripts/EntityScript.cpp
+		src/Game/src/Scripts/SceneScript.cpp
 )
 
 #
@@ -199,58 +199,50 @@ target_include_directories(GLAD PUBLIC ${CMAKE_SOURCE_DIR}/src/Runtime/vendor/gl
 
 
 
-# Freetype (Hard Paths)
+# Common paths across Win and Lin
+set(RT_LIB_DIR         		"${CMAKE_SOURCE_DIR}/src/Runtime/lib")
 set(GLM_INCLUDE_DIR         "${CMAKE_SOURCE_DIR}/src/Runtime/vendor/glm")
+set(GLFW_LIBRARY_DIR        "${CMAKE_SOURCE_DIR}/src/Runtime/vendor/glfw/build/lib")
 set(FREETYPE_INCLUDE_DIR
-	"${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/include" 
-	"${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/include/freetype2" 
-	"${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/build/include"
-	"${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/build/include/freetype"
-	"${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/build/include/freetype2"
-	"${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/build/include/freetype2"
+		"${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/include"
+		"${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/include/freetype2"
+		"${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/build/include"
+		"${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/build/include/freetype"
+		"${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/build/include/freetype2"
 )
 
 
 if(WIN32)
-	set(GLM_LIBRARY_DIR_W         "${CMAKE_SOURCE_DIR}/src/Runtime/vendor/glm/build/bin")
-	set(GLFW_INCLUDE_DIR_W      "${CMAKE_SOURCE_DIR}/src/Runtime/vendor/glfw/build/lib/include")
-	set(GLFW_LIBRARY_DIR_W      "${CMAKE_SOURCE_DIR}/src/Runtime/vendor/glfw/build/lib")
-	set(FREETYPE_LIBRARY_DIR_W  "${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/build/bin")
+	set(GLM_LIBRARY_DIR_W         	"${CMAKE_SOURCE_DIR}/src/Runtime/vendor/glm/build/bin")
+	set(GLFW_INCLUDE_DIR_W      	"${CMAKE_SOURCE_DIR}/src/Runtime/vendor/glfw/build/lib/include")
+	set(FREETYPE_LIBRARY_DIR_W  	"${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/build/bin")
 
-	set(GLM_LIBRARIES       "${GLM_LIBRARY_DIR_W}/glm.dll")
-	set(GLFW_LIBRARIES      "${GLFW_LIBRARY_DIR_W}/glfw3.dll")
-	set(FREETYPE_LIBRARIES  "${FREETYPE_LIBRARY_DIR_W}/freetype.dll")
+	set(GLM_LIBRARIES       		"${GLM_LIBRARY_DIR_W}/glm.dll")
+	set(GLFW_LIBRARIES      		"${GLFW_LIBRARY_DIR}/glfw3.dll")
+	set(FREETYPE_LIBRARIES  		"${FREETYPE_LIBRARY_DIR_W}/freetype.dll")
 elseif(UNIX)
-	set(GLM_LIBRARY_DIR         "${CMAKE_SOURCE_DIR}/src/Runtime/vendor/glm/build/glm")
-	set(GLFW_LIBRARY_DIR        "${CMAKE_SOURCE_DIR}/src/Runtime/vendor/glfw/build/lib/bin")
-	set(GLFW_INCLUDE_DIR        "${CMAKE_SOURCE_DIR}/src/Runtime/vendor/glfw/build/include")
-	set(FREETYPE_LIBRARY_DIR    "${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/build/lib")
+	set(GLM_LIBRARY_DIR         	"${CMAKE_SOURCE_DIR}/src/Runtime/vendor/glm/build/glm")
+	set(GLFW_INCLUDE_DIR        	"${CMAKE_SOURCE_DIR}/src/Runtime/vendor/glfw/build/include")
+#	set(FREETYPE_LIBRARY_DIR    	"${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/build/lib") # no longer required
 
-	set(GLM_LIBRARIES       "${GLM_LIBRARY_DIR}/libglm.so")
-	set(GLFW_LIBRARIES      "${GLFW_LIBRARY_DIR}/libglfw.so")
-	set(FREETYPE_LIBRARIES  "${FREETYPE_LIBRARY_DIR}/libfreetype.so")
+	set(GLM_LIBRARIES       		"${RT_LIB_DIR}/libglm.so")
+	set(GLFW_LIBRARIES      		"${RT_LIB_DIR}/libglfw.so")
+	set(FREETYPE_LIBRARIES  		"${RT_LIB_DIR}/libfreetype.so")
 endif()
 
 
 
+# Includes..
+	target_include_directories(NeonVoid     PRIVATE ${CMAKE_SOURCE_DIR}/src/Game/include)
+	target_include_directories(GameEngine   PUBLIC ${FREETYPE_INCLUDE_DIR} ${GLM_INCLUDE_DIR} "${CMAKE_SOURCE_DIR}/src/GameEngine/vendor")
+	target_include_directories(NeonRuntime  PUBLIC ${FREETYPE_INCLUDE_DIR} ${GLM_INCLUDE_DIR})
 if(WIN32)
-	# Includes..
-	target_include_directories(NeonVoid     PRIVATE ${CMAKE_SOURCE_DIR}/src/Game/include)
-	target_include_directories(GameEngine   PUBLIC ${FREETYPE_INCLUDE_DIR} ${GLFW_INCLUDE_DIR_W} ${GLM_INCLUDE_DIR} "${CMAKE_SOURCE_DIR}/src/GameEngine/vendor")
-	target_include_directories(NeonRuntime  PUBLIC ${FREETYPE_INCLUDE_DIR} ${GLFW_INCLUDE_DIR_W} ${GLM_INCLUDE_DIR} )
+	target_include_directories(GameEngine   PUBLIC ${GLFW_INCLUDE_DIR_W})
+	target_include_directories(NeonRuntime  PUBLIC ${GLFW_INCLUDE_DIR_W})
 elseif(UNIX)
-	# Includes..
-	target_include_directories(NeonVoid     PRIVATE ${CMAKE_SOURCE_DIR}/src/Game/include)
-	target_include_directories(GameEngine   PUBLIC ${FREETYPE_INCLUDE_DIR} ${GLFW_INCLUDE_DIR} "${CMAKE_SOURCE_DIR}/src/GameEngine/vendor")
-	target_include_directories(NeonRuntime  PUBLIC ${FREETYPE_INCLUDE_DIR} ${GLFW_INCLUDE_DIR})
+	target_include_directories(GameEngine   PUBLIC ${GLFW_INCLUDE_DIR})
+	target_include_directories(NeonRuntime  PUBLIC ${GLFW_INCLUDE_DIR})
 endif()
-
-
-
-# Linking..
-target_link_libraries(NeonVoid          PRIVATE GameEngine NeonRuntime)
-target_link_libraries(GameEngine        PRIVATE ${FREETYPE_LIBRARIES} ${GLFW_LIBRARIES} ${GLM_LIBRARIES} OpenGL::GL GLAD)
-target_link_libraries(NeonRuntime       PRIVATE ${FREETYPE_LIBRARIES} ${GLFW_LIBRARIES} ${GLM_LIBRARIES} OpenGL::GL GLAD)
 
 
 
@@ -270,13 +262,19 @@ target_include_directories(
         ${CMAKE_SOURCE_DIR}/src/Runtime/include
 )
 
+# Linking..
+target_link_libraries(NeonVoid          PRIVATE GameEngine NeonRuntime)
+target_link_libraries(GameEngine        PRIVATE ${FREETYPE_LIBRARIES} ${GLFW_LIBRARIES} ${GLM_LIBRARIES} OpenGL::GL GLAD)
+target_link_libraries(NeonRuntime       PRIVATE ${FREETYPE_LIBRARIES} ${GLFW_LIBRARIES} ${GLM_LIBRARIES} OpenGL::GL GLAD)
+
 
 #
 # Enable compiler warnings for GameEngine
 #
 if(WIN32)
-    target_compile_options(GameEngine PRIVATE /W4 /permissive- /WX)
-    target_compile_options(NeonRuntime PRIVATE /W4 /permissive- /WX)
+# Disable compiler options for win until we get a successfull build
+#    target_compile_options(GameEngine PRIVATE /W4 /permissive- /WX)
+#    target_compile_options(NeonRuntime PRIVATE /W4 /permissive- /WX)
 elseif(UNIX)
     target_compile_options(GameEngine   PRIVATE -Wall -Wextra -Wpedantic)
     target_compile_options(NeonRuntime  PRIVATE -Wall -Wextra -Wpedantic)
