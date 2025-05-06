@@ -7,18 +7,11 @@ GLFW_DIR="$(realpath "$SCRIPT_DIR/../src/Runtime/vendor/glfw")"
 FREETYPE_DIR="$(realpath "$SCRIPT_DIR/../src/Runtime/vendor/freetype")"
 
 
-echo ""
-echo ""
-echo ""
-echo ""
-echo "Removing System Shared Libraries"
-echo "------------------------------------"
-echo ""
-echo ""
+
 echo ""
 echo "Preparing GLM: OpenGL Mathematics"
 echo "Link: https://github.com/g-truc/glm"
-echo ""
+echo "------------------------------------"
 echo ""
 cd "$GLM_DIR"
 cmake \
@@ -29,9 +22,10 @@ cmake --build build -- all
 cmake --build build -- install
 
 
+echo ""
 echo "Preparing FreeType"
 echo "Link: https://github.com/freetype/freetype"
-echo ""
+echo "------------------------------------"
 echo ""
 cd "$FREETYPE_DIR"
 rm -rf "$FREETYPE_DIR/build"
@@ -41,10 +35,13 @@ cmake --build build --target install
 
 
 
+echo ""
+echo "Preparing GLFW:"
+echo "Link: https://github.com/glfw/glfw"
+echo "------------------------------------"
+echo ""
 # Navigate to the GLFW directory
 cd "$GLFW_DIR"
-
-# Configure and build GLFW
 cmake \
     -S . \
     -B build \
@@ -57,7 +54,8 @@ cmake \
 cmake --build build --target all
 cmake --build build --target install
 
-
+echo ""
+echo "===================================="
 echo ""
 echo "GLFW, GLM and FreeType should now be installed."
 echo ""
