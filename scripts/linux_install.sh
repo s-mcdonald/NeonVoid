@@ -6,7 +6,7 @@ GLM_DIR="$(realpath "$SCRIPT_DIR/../src/Runtime/vendor/glm")"
 GLFW_DIR="$(realpath "$SCRIPT_DIR/../src/Runtime/vendor/glfw")"
 FREETYPE_DIR="$(realpath "$SCRIPT_DIR/../src/Runtime/vendor/freetype")"
 RT_LIB_DIR="$(realpath "$SCRIPT_DIR/../src/Runtime/lib")"
-
+RT_INC_DIR="$(realpath "$SCRIPT_DIR/../src/Runtime/include")"
 
 echo ""
 echo "Preparing GLM: OpenGL Mathematics"
@@ -54,6 +54,7 @@ cmake \
 cmake --build build --target all
 cmake --build build --target install
 cp "$GLFW_DIR/build/lib/libglfw.so" "$RT_LIB_DIR/libglfw.so"
+cp -r "$GLFW_DIR/build/include/GLFW" "$RT_INC_DIR"
 
 
 echo ""

@@ -221,10 +221,6 @@ if(WIN32)
 	set(GLFW_LIBRARIES      		"${GLFW_LIBRARY_DIR}/glfw3.dll")
 	set(FREETYPE_LIBRARIES  		"${FREETYPE_LIBRARY_DIR_W}/freetype.dll")
 elseif(UNIX)
-	set(GLM_LIBRARY_DIR         	"${CMAKE_SOURCE_DIR}/src/Runtime/vendor/glm/build/glm")
-	set(GLFW_INCLUDE_DIR        	"${CMAKE_SOURCE_DIR}/src/Runtime/vendor/glfw/build/include")
-#	set(FREETYPE_LIBRARY_DIR    	"${CMAKE_SOURCE_DIR}/src/Runtime/vendor/freetype/build/lib") # no longer required
-
 	set(GLM_LIBRARIES       		"${RT_LIB_DIR}/libglm.so")
 	set(GLFW_LIBRARIES      		"${RT_LIB_DIR}/libglfw.so")
 	set(FREETYPE_LIBRARIES  		"${RT_LIB_DIR}/libfreetype.so")
@@ -240,8 +236,7 @@ if(WIN32)
 	target_include_directories(GameEngine   PUBLIC ${GLFW_INCLUDE_DIR_W})
 	target_include_directories(NeonRuntime  PUBLIC ${GLFW_INCLUDE_DIR_W})
 elseif(UNIX)
-	target_include_directories(GameEngine   PUBLIC ${GLFW_INCLUDE_DIR})
-	target_include_directories(NeonRuntime  PUBLIC ${GLFW_INCLUDE_DIR})
+
 endif()
 
 
