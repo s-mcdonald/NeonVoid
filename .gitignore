@@ -78,3 +78,9 @@ scripts/GLAD.dir
 scripts/GameEngine.dir
 scripts/NeonRuntime.dir
 scripts/NeonVoid.dir
+
+# these files should only exist here after install
+# so we keep them ignored for project
+src/Runtime/include/**
+!src/Runtime/include/NeonRuntime
+
