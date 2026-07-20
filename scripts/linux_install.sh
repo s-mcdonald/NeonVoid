@@ -6,6 +6,7 @@ GLM_DIR="$(realpath "$SCRIPT_DIR/../src/Runtime/vendor/glm")"
 GLFW_DIR="$(realpath "$SCRIPT_DIR/../src/Runtime/vendor/glfw")"
 FREETYPE_DIR="$(realpath "$SCRIPT_DIR/../src/Runtime/vendor/freetype")"
 RT_LIB_DIR="$(realpath "$SCRIPT_DIR/../src/Runtime/lib")"
+RT_INC_DIR="$(realpath "$SCRIPT_DIR/../src/Runtime/include")"
 
 
 echo ""
@@ -54,6 +55,8 @@ cmake \
 cmake --build build --target all
 cmake --build build --target install
 cp -P "$GLFW_DIR/build/lib/"libglfw.so* "$RT_LIB_DIR/"
+rm -rf "$RT_INC_DIR/GLFW"
+cp -r "$GLFW_DIR/build/include/GLFW" "$RT_INC_DIR/"
 
 
 echo ""
