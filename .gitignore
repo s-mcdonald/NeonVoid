@@ -23,6 +23,7 @@
 *.lib
 *.dll
 *.so
+*.so.*
 *.dylib
 *.pdb
 *.idb
@@ -42,16 +43,8 @@ Thumbs.db
 # Ignore macOS specific files
 .DS_Store
 
-# Ignore Sandbox files
-/src/Sandbox
-/src/Sandbox/*
-
-
-# Include
-/include/glew/*
-/include/glm/*
-/include/stb/*
-!/include/miniaudio/miniaudio.h
+# Stray/unused vendor header dump (not referenced by CMakeLists; build uses src/Runtime/vendor/glm)
+/src/Runtime/include/glm/
 
 
 
